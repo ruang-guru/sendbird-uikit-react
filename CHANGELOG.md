@@ -1,4 +1,4 @@
-# Changelog
+# Changelog [Trigger build]
 
 ## [2.4.1](Sep 9 2021)
 
