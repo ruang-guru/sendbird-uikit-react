@@ -9,7 +9,7 @@
   "files": [
     "release/**/*",
     "dist/**/*",
-    "package-lock.json",
+    "package.json",
     "LICENSE",
     "CHANGELOG.md"
   ],
