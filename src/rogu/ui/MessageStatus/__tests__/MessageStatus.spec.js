@@ -16,7 +16,7 @@ describe('MessageStatus', () => {
     const component = shallow(<MessageStatus className={text} />);
 
     expect(
-      component.find(".sendbird-message-status").hasClass(text)
+      component.find(".rogu-message-status").hasClass(text)
     ).toBe(true);
   });
 
