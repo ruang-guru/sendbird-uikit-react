@@ -67,7 +67,7 @@ export default function MessageStatus({
                 type={LabelTypography.CAPTION_3}
                 color={LabelColors.ONBACKGROUND_2}
               >
-                Gagal terkirim (test pre-push)
+                Gagal terkirim
               </Label>
               )}
             <Icon
