@@ -3,11 +3,11 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 var React = require('react');
-var index$1 = require('./index-b6751523.js');
-var LocalizationContext = require('./LocalizationContext-abd404ea.js');
-var index$2 = require('./index-efa0d835.js');
-var index$3 = require('./index-5737cbcc.js');
-var index$4 = require('./index-45615779.js');
+var index$1 = require('./index-74786eb0.js');
+var LocalizationContext = require('./LocalizationContext-268fddf9.js');
+var index$2 = require('./index-bc5b754c.js');
+var index$3 = require('./index-b9297e41.js');
+var index$4 = require('./index-e1691af4.js');
 require('prop-types');
 require('react-dom');
 
@@ -1634,7 +1634,7 @@ function OpenchannelConversationScroll(_a, ref) {
     });
   }) : /*#__PURE__*/React__default["default"].createElement(index$1.PlaceHolder, {
     className: "sendbird-openchannel-conversation-scroll__container__place-holder",
-    type: index$1.PlaceHolderTypes$1.NO_MESSAGES
+    type: index$1.PlaceHolderTypes.NO_MESSAGES
   })), showScrollDownButton && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-openchannel-conversation-scroll__container__scroll-bottom-button",
     onClick: scrollToBottom,
@@ -3437,7 +3437,7 @@ var OpenchannelConversation = function OpenchannelConversation(props) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default["default"].createElement(index$1.PlaceHolder, {
-      type: index$1.PlaceHolderTypes$1.NO_CHANNELS
+      type: index$1.PlaceHolderTypes.NO_CHANNELS
     }));
   }
 
@@ -3445,7 +3445,7 @@ var OpenchannelConversation = function OpenchannelConversation(props) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default["default"].createElement(index$1.PlaceHolder, {
-      type: index$1.PlaceHolderTypes$1.LOADING
+      type: index$1.PlaceHolderTypes.LOADING
     }));
   }
 
@@ -3453,7 +3453,7 @@ var OpenchannelConversation = function OpenchannelConversation(props) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default["default"].createElement(index$1.PlaceHolder, {
-      type: index$1.PlaceHolderTypes$1.WRONG
+      type: index$1.PlaceHolderTypes.WRONG
     }));
   }
 

@@ -1,16 +1,16 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-abd404ea.js');
+var LocalizationContext = require('./LocalizationContext-268fddf9.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index = require('./index-5737cbcc.js');
-var LeaveChannel = require('./LeaveChannel-cf1daceb.js');
-var index$2 = require('./index-b6751523.js');
-var index$1 = require('./index-e3c0ff6b.js');
-var index$3 = require('./index-33cabbb2.js');
-var index$4 = require('./index-4b10031b.js');
+var index = require('./index-b9297e41.js');
+var LeaveChannel = require('./LeaveChannel-6c530bb4.js');
+var index$2 = require('./index-74786eb0.js');
+var index$1 = require('./index-cda29404.js');
+var index$3 = require('./index-cd5bc665.js');
+var index$4 = require('./index-874dbbfe.js');
 require('react-dom');
-require('./utils-74589c7a.js');
+require('./utils-5cc86980.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -1870,7 +1870,7 @@ function ChannelSettings(props) {
         onCloseClick();
       }
     })), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
-      type: index$2.PlaceHolderTypes.WRONG
+      type: index$2.PlaceHolderTypes$1.WRONG
     })));
   }
 
