@@ -12,8 +12,12 @@ export default function Notification({
   onClick,
 }) {
   const { stringSet } = useContext(LocalizationContext);
+  // ex: time = '13.46 14 December 2021', then split into array
   const timeArray = time.split(' ');
+  // add string 'on' after first element of timeArray
+  // before: timeArray = ['13.46', '14', 'December', '2021']
   timeArray.splice(1, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
+  // after: timeArray = ['13.46', 'on', '14', 'December', '2021']
   return (
     // eslint-disable-next-line
     <div className="rogu-notification" onClick={onClick}>
