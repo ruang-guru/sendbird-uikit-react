@@ -13,7 +13,7 @@ export default function Notification({
 }) {
   const { stringSet } = useContext(LocalizationContext);
   const timeArray = time.split(' ');
-  timeArray.splice(-2, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
+  timeArray.splice(1, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
   return (
     // eslint-disable-next-line
     <div className="sendbird-notification" onClick={onClick}>
