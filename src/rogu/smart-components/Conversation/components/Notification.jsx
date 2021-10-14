@@ -16,8 +16,8 @@ export default function Notification({
   timeArray.splice(1, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
   return (
     // eslint-disable-next-line
-    <div className="sendbird-notification" onClick={onClick}>
-      <Label className="sendbird-notification__text" color={LabelColors.ONCONTENT_1} type={LabelTypography.CAPTION_2}>
+    <div className="rogu-notification" onClick={onClick}>
+      <Label className="rogu-notification__text" color={LabelColors.ONCONTENT_1} type={LabelTypography.CAPTION_2}>
         {`${count} `}
         {stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE}
         {` ${timeArray.join(' ')}`}
