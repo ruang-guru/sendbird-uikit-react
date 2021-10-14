@@ -9,7 +9,6 @@ import {
   USER_ID_A,
 } from "../../../../../__mocks__/messagesMock";
 
-// TODO: add more test cases
 describe("MessageContent", () => {
   it("should do a snapshot test of the MessageContent DOM", function () {
     const component = renderer.create(
