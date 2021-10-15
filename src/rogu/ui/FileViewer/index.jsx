@@ -55,7 +55,7 @@ export const FileViewerComponent = ({
                 target="_blank"
               >
                 <Icon
-                  type={IconTypes.DOWNLOAD}
+                  type={IconTypes.ROGU_DOWNLOAD}
                   height="24px"
                   width="24px"
                 />
@@ -64,7 +64,7 @@ export const FileViewerComponent = ({
                 onDelete && isByMe && (
                   <div className="sendbird-fileviewer__header__right__actions__delete">
                     <Icon
-                      type={IconTypes.DELETE}
+                      type={IconTypes.ROGU_DELETE}
                       height="24px"
                       width="24px"
                       onClick={onDelete}
