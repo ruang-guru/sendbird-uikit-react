@@ -4,7 +4,6 @@ import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";
 import TextMessageItemBody from "../TextMessageItemBody";
-import "./index.scss";
 
 import Avatar from "../../../ui/Avatar";
 import ClientAdminMessage from "../../../ui/AdminMessage";
@@ -27,6 +26,10 @@ import {
   isSentMessage,
   isPendingMessage,
 } from "../../../utils";
+
+import { generateColorFromString } from "./utils";
+
+import "./index.scss";
 
 interface Props {
   chainBottom?: boolean;
@@ -114,8 +117,13 @@ Props): ReactElement {
             {!isByMe && !chainTop && (
               <Label
                 className="rogu-message-content__sender-name"
-                type={LabelTypography.CAPTION_1}
                 color={LabelColors.ONBACKGROUND_2}
+                style={{
+                  color: generateColorFromString(
+                    message?.sender?.nickname || ""
+                  ),
+                }}
+                type={LabelTypography.CAPTION_1}
               >
                 {getSenderName(message)}
               </Label>

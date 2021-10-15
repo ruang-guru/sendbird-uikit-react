@@ -7,6 +7,7 @@ import { MenuRoot } from "../../../../ui/ContextMenu";
 
 import COLOR_SET from "../../../../../__mocks__/themeMock";
 import {
+  BASIC_MESSAGE,
   BASIC_MESSAGE_A_1,
   BASIC_MESSAGE_A_2,
   BASIC_MESSAGE_A_3,
@@ -110,6 +111,103 @@ export const Chaining = () => (
           isGroupChannel: () => true,
           getUnreadMemberCount: (_) => 10,
           getUndeliveredMemberCount: (_) => 0,
+        }}
+      />
+      <MenuRoot />
+    </div>
+  </SendbirdProvider>
+);
+
+export const NicknameColoring = () => (
+  <SendbirdProvider colorSet={COLOR_SET}>
+    <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={{
+          ...BASIC_MESSAGE,
+          sender: { ...BASIC_MESSAGE.sender, nickname: "Agus Marto Wardoyo" },
+        }}
+      />
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={{
+          ...BASIC_MESSAGE,
+          sender: { ...BASIC_MESSAGE.sender, nickname: "Ekawati Hikmah" },
+        }}
+      />
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={{
+          ...BASIC_MESSAGE,
+          sender: { ...BASIC_MESSAGE.sender, nickname: "Kukuh Aji Sulistyo" },
+        }}
+      />
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={{
+          ...BASIC_MESSAGE,
+          sender: { ...BASIC_MESSAGE.sender, nickname: "Muhammad Abdul Abadi" },
+        }}
+      />
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={{
+          ...BASIC_MESSAGE,
+          sender: { ...BASIC_MESSAGE.sender, nickname: "Rashley Yeremia" },
+        }}
+      />
+
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={{
+          ...BASIC_MESSAGE,
+          sender: {
+            ...BASIC_MESSAGE.sender,
+            nickname: "Untari Wahyuni Mawardhi",
+          },
+        }}
+      />
+
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={{
+          ...BASIC_MESSAGE,
+          sender: { ...BASIC_MESSAGE.sender, nickname: "Yazid Hafizh" },
         }}
       />
       <MenuRoot />
