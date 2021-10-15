@@ -132,7 +132,10 @@ Props): ReactElement {
 
           {/* Message content */}
           {isTextMessage(message as UserMessage) && (
-            <TextMessageItemBody message={message as UserMessage} />
+            <TextMessageItemBody
+              isByMe={isByMe}
+              message={message as UserMessage}
+            />
           )}
           {isOGMessage(message as UserMessage) && (
             <OGMessageItemBody

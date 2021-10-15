@@ -11,6 +11,8 @@ import {
   BASIC_MESSAGE_A_1,
   BASIC_MESSAGE_A_2,
   BASIC_MESSAGE_A_3,
+  LONG_MESSAGE,
+  LONG_MESSAGE_A_1,
   USER_ID_A,
 } from "../../../../../__mocks__/messagesMock";
 
@@ -107,6 +109,32 @@ export const Chaining = () => (
         message={BASIC_MESSAGE_A_3}
         chainTop={true}
         chainBottom={false}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+      />
+      <MenuRoot />
+    </div>
+  </SendbirdProvider>
+);
+
+export const ClampedMessage = () => (
+  <SendbirdProvider colorSet={COLOR_SET}>
+    <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
+      <MessageContent
+        userId={USER_ID_A}
+        message={LONG_MESSAGE}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+      />
+      <MessageContent
+        userId={USER_ID_A}
+        message={LONG_MESSAGE_A_1}
         channel={{
           isGroupChannel: () => true,
           getUnreadMemberCount: (_) => 10,
