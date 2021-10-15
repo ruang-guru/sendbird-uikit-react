@@ -1,11 +1,18 @@
-import React, { useEffect, useRef, useState, ReactElement } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+  ReactElement,
+} from "react";
 import { UserMessage } from "sendbird";
 
 import TextButton from "../TextButton";
-import "./index.scss";
-
 import Label, { LabelTypography, LabelColors } from "../Label";
 import { getClassName } from "../../../utils";
+import { LocalizationContext } from "../../../lib/LocalizationContext";
+
+import "./index.scss";
 
 interface Props {
   className?: string | Array<string>;
@@ -20,6 +27,7 @@ export default function TextMessageItemBody({
   isByMe = false,
   message,
 }: Props): ReactElement {
+  const { stringSet } = useContext(LocalizationContext);
   const [clampState, setClampState] = useState<ClampType>("init");
   const textRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +75,7 @@ export default function TextMessageItemBody({
           className="rogu-text-message-item-body__read-more"
           onClick={handleExpand}
         >
-          Read more
+          {stringSet.BUTTON__READ_MORE}
         </TextButton>
       )}
     </div>

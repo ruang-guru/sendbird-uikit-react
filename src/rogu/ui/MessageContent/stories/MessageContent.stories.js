@@ -6,6 +6,7 @@ import SendbirdProvider from "../../../../lib/Sendbird";
 import { MenuRoot } from "../../../../ui/ContextMenu";
 
 import COLOR_SET from "../../../../../__mocks__/themeMock";
+import { STRING_SET } from "../../../../../__mocks__/localizationMock";
 import {
   BASIC_MESSAGE,
   BASIC_MESSAGE_A_1,
@@ -19,7 +20,7 @@ import {
 export default { title: "ruangkelas/UI Components/MessageContent" };
 
 export const Basic = () => (
-  <SendbirdProvider colorSet={COLOR_SET}>
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent
         userId={"random-user-id"}
@@ -47,7 +48,7 @@ export const Basic = () => (
 );
 
 export const Chaining = () => (
-  <SendbirdProvider colorSet={COLOR_SET}>
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent
         userId={"user-random-xxx"}
@@ -121,7 +122,7 @@ export const Chaining = () => (
 );
 
 export const ClampedMessage = () => (
-  <SendbirdProvider colorSet={COLOR_SET}>
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent
         userId={USER_ID_A}
