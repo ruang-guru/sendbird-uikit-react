@@ -73,7 +73,7 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
         </span>
       </div>
       <div
-        className=" rogu-text-message-item-body  "
+        className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming"
       >
         <div
           className="rogu-text-message-item-body__inner"

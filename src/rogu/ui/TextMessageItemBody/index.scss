@@ -22,7 +22,7 @@
     -webkit-box-orient: vertical;
   }
 
-  &.rogu-text-message-item-body--outgoing {
+  &.rogu-text-message-item-body--incoming {
     .rogu-text-message-item-body__read-more {
       @include themed() {
         color: t(secondary-3);

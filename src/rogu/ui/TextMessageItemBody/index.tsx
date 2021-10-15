@@ -42,7 +42,7 @@ export default function TextMessageItemBody({
         className,
         "rogu-text-message-item-body",
         clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "",
-        isByMe ? "rogu-text-message-item-body--outgoing" : "",
+        !isByMe ? "rogu-text-message-item-body--incoming" : "",
       ])}
     >
       <div ref={textRef} className="rogu-text-message-item-body__inner">
