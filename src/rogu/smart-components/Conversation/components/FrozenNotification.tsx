@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import './notification.scss';
 
-import { LocalizationContext } from '../../../../lib/LocalizationContext';
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Label, { LabelTypography } from '../../../../ui/Label';
 
 const FrozenNotification = (): JSX.Element => {

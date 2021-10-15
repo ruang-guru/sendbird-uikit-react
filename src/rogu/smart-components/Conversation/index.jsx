@@ -10,8 +10,8 @@ import PropTypes from 'prop-types';
 import './index.scss';
 import * as utils from './utils';
 
-import { UserProfileProvider } from '../../../lib/UserProfileContext';
-import withSendbirdContext from '../../../lib/SendbirdSdkContext';
+import { UserProfileProvider } from '../../lib/UserProfileContext';
+import withSendbirdContext from '../../lib/SendbirdSdkContext';
 import * as messageActionTypes from './dux/actionTypes';
 import messagesInitialState from './dux/initialState';
 import messagesReducer from './dux/reducers';

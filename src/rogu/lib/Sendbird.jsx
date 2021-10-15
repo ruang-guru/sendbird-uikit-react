@@ -17,7 +17,7 @@ import useOnlineStatus from './hooks/useOnlineStatus';
 
 import { LoggerFactory } from './Logger';
 import pubSubFactory from './pubSub/index';
-import useAppendDomNode from '../hooks/useAppendDomNode';
+import useAppendDomNode from '../../hooks/useAppendDomNode';
 
 import { LocalizationProvider } from './LocalizationContext';
 import getStringSet from '../ui/Label/stringSet';

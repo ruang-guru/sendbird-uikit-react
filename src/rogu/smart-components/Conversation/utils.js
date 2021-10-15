@@ -1,8 +1,8 @@
 import format from 'date-fns/format';
 import * as channelActions from './dux/actionTypes';
-import * as topics from '../../../lib/pubSub/topics';
+import * as topics from '../../lib/pubSub/topics';
 
-import { getSendingMessageStatus, getOutgoingMessageStates } from '../../../utils';
+import { getSendingMessageStatus, getOutgoingMessageStates } from '../../utils';
 
 const MessageStatusType = getOutgoingMessageStates();
 const UNDEFINED = 'undefined';

@@ -2,7 +2,7 @@ import React from "react";
 
 import MessageContent from "../index.tsx";
 
-import SendbirdProvider from "../../../../lib/Sendbird";
+import SendbirdProvider from "../../../lib/Sendbird";
 import { MenuRoot } from "../../../../ui/ContextMenu";
 
 import COLOR_SET from "../../../../../__mocks__/themeMock";

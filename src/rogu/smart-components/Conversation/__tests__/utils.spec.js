@@ -10,8 +10,8 @@ import {
   isSameGroup,
   compareMessagesForGrouping,
 } from '../utils';
-import * as topics from '../../../../lib/pubSub/topics';
-import pubsubFactory from '../../../../lib/pubSub';
+import * as topics from '../../../lib/pubSub/topics';
+import pubsubFactory from '../../../lib/pubSub';
 import { frozenChannel } from '../dux/data.mock';
 
 const subscribedTopics = [

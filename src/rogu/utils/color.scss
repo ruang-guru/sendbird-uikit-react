@@ -4,6 +4,7 @@
   @include themed() {
     color: t(on-bg-1);
   }
+
   &--background-color {
     @include themed() {
       background-color: t(on-bg-1);
@@ -15,6 +16,7 @@
   @include themed() {
     color: t(on-bg-2);
   }
+
   &--background-color {
     @include themed() {
       background-color: t(on-bg-2);
@@ -26,6 +28,7 @@
   @include themed() {
     color: t(on-bg-3);
   }
+
   &--background-color {
     @include themed() {
       background-color: t(on-bg-3);
@@ -37,6 +40,7 @@
   @include themed() {
     color: t(on-bg-4);
   }
+
   &--background-color {
     @include themed() {
       background-color: t(on-bg-4);
@@ -48,6 +52,7 @@
   @include themed() {
     color: t(on-content-1);
   }
+
   &--background-color {
     @include themed() {
       background-color: t(on-content-1);
@@ -59,6 +64,7 @@
   @include themed() {
     color: t(primary-3);
   }
+
   &--background-color {
     @include themed() {
       background-color: t(primary-3);
@@ -70,6 +76,7 @@
   @include themed() {
     color: t(error--3-2);
   }
+
   &--background-color {
     @include themed() {
       background-color: t(error-3);

@@ -10,7 +10,7 @@ import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
 
 import Icon, { IconTypes, IconColors } from '../../../ui/Icon';
 import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
-import { LocalizationContext } from '../../../lib/LocalizationContext';
+import { LocalizationContext } from '../../lib/LocalizationContext';
 // import IconSend from '../../svgs/icon-send.svg';
 // import IconAttach from '../../svgs/icon-attach.svg';
 

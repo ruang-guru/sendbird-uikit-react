@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { LocalizationContext } from '../../../../lib/LocalizationContext';
-import { uuidv4 } from '../../../../utils/uuid';
+import { LocalizationContext } from '../../../lib/LocalizationContext';
+import { uuidv4 } from '../../../utils/uuid';
 import Label, { LabelTypography, LabelColors } from '../../../../ui/Label';
 
 const TypingIndicatorText = ({ members }) => {

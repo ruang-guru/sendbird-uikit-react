@@ -1,5 +1,5 @@
 import Sendbird from 'sendbird';
-import { ClientUserMessage, ClientFileMessage } from '../index';
+import { ClientUserMessage, ClientFileMessage } from '../../index';
 
 const OpenChannelMessageStatusTypes = {
   NONE: 'none',

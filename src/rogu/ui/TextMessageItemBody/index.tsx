@@ -3,7 +3,7 @@ import { UserMessage } from "sendbird";
 import "./index.scss";
 
 import Label, { LabelTypography, LabelColors } from "../Label";
-import { getClassName } from "../../../utils";
+import { getClassName } from "../../utils";
 
 interface Props {
   className?: string | Array<string>;

@@ -7,7 +7,7 @@ import { RenderGroupChannelMessageInputProps } from "../index";
 import * as utils from "../utils.js";
 
 import MessageInput from "../../../ui/MessageInput";
-import { LocalizationContext } from "../../../../lib/LocalizationContext";
+import { LocalizationContext } from "../../../lib/LocalizationContext";
 
 interface Props {
   channel: Sendbird.GroupChannel;

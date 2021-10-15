@@ -1,5 +1,5 @@
 // sendbird provider component to handle sdk connection and data
-export SendBirdProvider from './lib/Sendbird';
+export SendBirdProvider from './rogu/lib/Sendbird';
 
 // complete app component - If user wants an out of the box solution
 export App from './smart-components/App/index';
@@ -19,8 +19,8 @@ export App from './smart-components/App/index';
 
 // HOC for using ui-kit state
 // withBird(MyCustomComponent) will give the sendbird state as props to MyCustomComponent
-export withSendBird from './lib/SendbirdSdkContext';
-export sendBirdSelectors from './lib/selectors';
+export withSendBird from './rogu/lib/SendbirdSdkContext';
+export sendBirdSelectors from './rogu/lib/selectors';
 export useSendbirdStateContext from './hooks/useSendbirdStateContext';
 
 // Ruangguru's modified comopnent
