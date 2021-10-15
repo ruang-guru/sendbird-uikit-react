@@ -1,9 +1,9 @@
 import React__default, { useContext, useRef, useState, useMemo, useEffect, useCallback, useReducer } from 'react';
-import { f as format, a6 as Label, a7 as LabelTypography, a5 as Avatar, a as Icon, b as IconTypes, a9 as IconColors, a8 as LabelColors, ac as Loader, I as ImageRenderer, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-491d37fa.js';
-import { L as LocalizationContext, u as uuidv4, l as __spreadArray, i as __assign, w as withSendbirdContext } from './LocalizationContext-1710b68c.js';
-import { M as MessageInput, L as LinkLabel, D as DateSeparator, F as FileViewer, c as compareIds } from './index-401ff101.js';
-import { I as IconButton, Z as UserProfileContext, C as ContextMenu, A as MenuItems, _ as ConnectedUserProfile, F as MenuItem, z as TextButton, M as Modal, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, u as UserProfileProvider } from './index-4621bdd7.js';
-import { i as isSameDay } from './index-1cb75ff1.js';
+import { f as format, a6 as Label, a7 as LabelTypography, a5 as Avatar, a as Icon, b as IconTypes, a9 as IconColors, a8 as LabelColors, ac as Loader, I as ImageRenderer, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-be4a86ff.js';
+import { L as LocalizationContext, u as uuidv4, l as __spreadArray, i as __assign, w as withSendbirdContext } from './LocalizationContext-f19c9dd2.js';
+import { M as MessageInput, L as LinkLabel, D as DateSeparator, F as FileViewer, c as compareIds } from './index-430089cb.js';
+import { I as IconButton, Z as UserProfileContext, C as ContextMenu, A as MenuItems, _ as ConnectedUserProfile, F as MenuItem, z as TextButton, M as Modal, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, u as UserProfileProvider } from './index-9c9f8926.js';
+import { i as isSameDay } from './index-2e2fa02b.js';
 import 'prop-types';
 import 'react-dom';
 
