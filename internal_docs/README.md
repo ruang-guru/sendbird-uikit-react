@@ -8,7 +8,7 @@ To ensure uniformity, easier navigation, and automatic changelog generation, we 
 
 ## Type
 
-Represent the type of the changes, should be on of the following types:
+Represent the type of the changes, should be one of the following types:
 
 - `feat`: new feature for the user, not a new feature for build script
 - `fix`: bug fix for the user, not a fix to a build script
@@ -47,13 +47,15 @@ fix: add ellipsis to handle overflowed content
 
 
 # Versioning, Branches, and Tags
-![Versioning, Branches, and Tags Diagram](https://user-images.githubusercontent.com/24476578/136347141-54d6a270-5063-45f3-8825-d282d234c418.png)
+
+![Release Diagram](https://user-images.githubusercontent.com/24476578/136498688-878e9c18-cbd3-4842-b773-e661124f190f.png)
+
 
 ## Versioning
 We are following the Semantic Version specification. Please read more on the [semver documentation](https://semver.org/)
 
 ## Branches
-There will be at least 3 kind of branches:
+There will be at least 2 kind of branches:
 
 - **Main branch** (i.e. `main`)
 
@@ -65,13 +67,13 @@ There will be at least 3 kind of branches:
 
 ## Tags (e.g. `v1.0.0`)
 
-Tags is some git object that points to a spesific points in the repository. We use tags to release a version of this project. Each tags represent our release version. See [Release](release-version) section for more info.
+Tag is a git object that represents a specific points in the repository. We use tags to release a version of this project. Each tags represent our release version. See [Release](release-version) section for more info.
 
 # Make Changes
 
-All changes should be made via a pull request (PR) that typically will target a version branch. We use Github action to automatically run the build process upon merged PR and commit the built artifacts (i.e. `./release` folder) to the version branch.
+All changes should be made via a pull request (PR) that typically will target a **version branch**. We use Github action to automatically run the build process upon merged PR and commit the artifacts (i.e. `./release` folder) to the version branch.
 
-We can install the current state the branch as dependency via:
+We can install the current state of the branch as dependency via:
 ```
 npm install --save "https://github.com/ruang-guru/sendbird-uikit-react.git#rogu/v1"
 
@@ -83,10 +85,10 @@ yarn add "https://github.com/ruang-guru/sendbird-uikit-react.git#rogu/v1"
 # Release Version
 
 We release a version by creating a release PR ensuring that:
-1. PR title should begin with `"release: "` word, followed by the release version. Example: `"release: v1.0.1"`. (TODO: add github action to check this)
-2. Has `release` label
-3. Update version `package.json` (TODO: add github action to check this)
-4. Update `CHANGELOG.md` (TODO: add github action to auto-generates changelog)
+1. PR title should begin with `"release: "` word, followed by the release version. Example: `"release: v1.0.1"`.
+2. Has a `release` label
+3. Update version in `package.json`
+4. Update `CHANGELOG.md`
 
 > TODO: [ ] Add github action to check points 1 and 2. [ ] Add github action to auto-generates changelog (point 3).
 

@@ -1,12 +1,12 @@
-import './LocalizationContext-1710b68c.js';
+import './LocalizationContext-f19c9dd2.js';
 import 'react';
 import 'prop-types';
-export { c as ConversationPanel, b as default, d as getAllEmojisFromEmojiContainer, g as getEmojiCategoriesFromEmojiContainer, e as getEmojisFromEmojiContainer } from './index-12122856.js';
-import './index-4621bdd7.js';
-import './index-491d37fa.js';
-import './index-401ff101.js';
+export { c as ConversationPanel, b as default, d as getAllEmojisFromEmojiContainer, g as getEmojiCategoriesFromEmojiContainer, e as getEmojisFromEmojiContainer } from './index-75b350c6.js';
+import './index-9c9f8926.js';
+import './index-be4a86ff.js';
+import './index-430089cb.js';
 import 'react-dom';
-import './index-1cb75ff1.js';
-import './index-b1e5a171.js';
-import './utils-3ac41fa1.js';
+import './index-2e2fa02b.js';
+import './index-926cbb20.js';
+import './utils-f90a7ccf.js';
 //# sourceMappingURL=Channel.js.map
