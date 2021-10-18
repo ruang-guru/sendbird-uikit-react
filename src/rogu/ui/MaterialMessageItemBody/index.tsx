@@ -6,6 +6,7 @@ import Label, { LabelTypography, LabelColors } from "../Label";
 import { getClassName } from "../../../utils";
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Icon, { IconTypes } from '../Icon';
+import { convertCtaLinkToWebLink } from "../../utils";
 
 interface Props {
   className?: string | Array<string>;
@@ -24,10 +25,8 @@ export default function MaterialMessageItemBody({
   const openMaterial = (): void => {
     if (materialData?.ctaWeb && materialData?.ctaWeb.length > 0){
       window.open(materialData?.ctaWeb);
-
     } else{
-      //window.open(materialCtaToWeb(materialData?.cta));
-      
+      window.open(convertCtaLinkToWebLink(materialData?.cta, "material"));
     }
   };
   return (

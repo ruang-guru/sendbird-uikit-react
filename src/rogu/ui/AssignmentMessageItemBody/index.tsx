@@ -15,7 +15,7 @@ import {
 } from '../../../utils';
 import uuidv4 from '../../../utils/uuid';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
-import {assignmentCtaToWeb, convertAssignmentDueUTCtoLocale} from '../../utils';
+import {convertCtaLinkToWebLink, convertAssignmentDueUTCtoLocale} from '../../utils';
 
 interface Props {
   className?: string | Array<string>;
@@ -36,9 +36,8 @@ export default function AssignmentMessageItemBody({
   const openAssignment = (): void => {
     if (assignmentData?.ctaWeb && assignmentData?.ctaWeb.length > 0){
       window.open(assignmentData?.ctaWeb);
-
     } else{
-      window.open(assignmentCtaToWeb(assignmentData?.cta));
+      window.open(convertCtaLinkToWebLink(assignmentData?.cta, "assignment"));
     }
   };
  
