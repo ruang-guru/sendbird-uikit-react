@@ -63,6 +63,11 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
       >
         <span
           className="rogu-message-content__sender-name sendbird-label sendbird-label--caption-1 sendbird-label--color-onbackground-2"
+          style={
+            Object {
+              "color": "#6073E2",
+            }
+          }
         >
           Kukuh Aji Sulistyo Bangun Jaya Abadi Mangkubumi
         </span>

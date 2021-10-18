@@ -7,10 +7,7 @@ import { changeTypographyToClassName, changeColorToClassName } from './utils';
 import getStringSet from './stringSet';
 
 export default function Label({
-  className,
-  type,
-  color,
-  children,
+  children, className, color, style, type,
 }) {
   return (
     <span
@@ -20,6 +17,7 @@ export default function Label({
         type ? changeTypographyToClassName(type) : '',
         color ? changeColorToClassName(color) : '',
       ].join(' ')}
+      style={style}
     >
       {children}
     </span>
@@ -39,6 +37,7 @@ Label.propTypes = {
     PropTypes.element,
     PropTypes.any,
   ]),
+  style: PropTypes.object,
 };
 
 Label.defaultProps = {
@@ -46,6 +45,7 @@ Label.defaultProps = {
   type: '',
   color: '',
   children: null,
+  style: undefined,
 };
 
 const LabelTypography = Typography;
