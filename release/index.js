@@ -1,27 +1,27 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { S as SendbirdSdkContext, _ as _toConsumableArray, a as _objectSpread2, u as uuidv4, b as _slicedToArray, c as _defineProperty, L as LocalizationContext, d as _inherits, e as _createSuper, f as _classCallCheck, g as _assertThisInitialized, h as _createClass, w as withSendbirdContext } from './LocalizationContext-f19c9dd2.js';
-export { w as withSendBird } from './LocalizationContext-f19c9dd2.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as getClassName, h as getUIKitMessageTypes, j as isPendingMessage, k as isSentMessage, l as isMessageSentByMe, m as getSenderName, n as isTextMessage, o as isOGMessage, p as getUIKitMessageType, q as isThumbnailMessage, r as getOutgoingMessageState, I as IconButton, B as Button, s as ButtonTypes, t as ButtonSizes, M as Modal, u as UserProfileProvider } from './index-9c9f8926.js';
-export { v as sendBirdSelectors } from './index-9c9f8926.js';
+import { S as SendbirdSdkContext, _ as _toConsumableArray, a as _objectSpread2, u as uuidv4, b as _slicedToArray, c as _defineProperty, L as LocalizationContext, d as _inherits, e as _createSuper, f as _classCallCheck, g as _assertThisInitialized, h as _createClass, w as withSendbirdContext } from './LocalizationContext-28793a92.js';
+export { w as withSendBird } from './LocalizationContext-28793a92.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as getClassName, h as getUIKitMessageTypes, j as isPendingMessage, k as isSentMessage, l as isMessageSentByMe, m as getSenderName, n as isTextMessage, o as isOGMessage, p as getUIKitMessageType, q as isThumbnailMessage, r as getOutgoingMessageState, I as IconButton, B as Button, s as ButtonTypes, t as ButtonSizes, M as Modal, u as UserProfileProvider } from './index-81c43b9b.js';
+export { v as sendBirdSelectors } from './index-81c43b9b.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, useLayoutEffect, Component, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format, I as ImageRenderer, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-be4a86ff.js';
-import { c as compareIds, D as DateSeparator, F as FileViewer } from './index-430089cb.js';
-import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-75b350c6.js';
-import { i as isSameDay } from './index-2e2fa02b.js';
+import { f as format, I as ImageRenderer, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-f52c24a4.js';
+import { c as compareIds, D as DateSeparator, F as FileViewer } from './index-f47b8e75.js';
+import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-7e86d38c.js';
+import { i as isSameDay } from './index-c5ce3652.js';
 import 'sendbird';
-import './actionTypes-298e07c1.js';
+import './actionTypes-86aeca07.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-926cbb20.js';
-import './utils-f90a7ccf.js';
-import './LeaveChannel-b5288d63.js';
-import './index-3a7119b2.js';
-import './index-576fb3dc.js';
+import './index-e0958b55.js';
+import './utils-dd4754d3.js';
+import './LeaveChannel-a13a9378.js';
+import './index-3e4343c5.js';
+import './index-621969a5.js';
 import './ChannelSettings.js';
-import './index-f51e34e2.js';
+import './index-f069f401.js';
 import './MessageSearch.js';
 import 'react-dom';
 
@@ -1775,25 +1775,29 @@ function changeColorToClassName$1(color) {
 }
 
 function Label(_ref) {
-  var className = _ref.className,
-      type = _ref.type,
+  var children = _ref.children,
+      className = _ref.className,
       color = _ref.color,
-      children = _ref.children;
+      style = _ref.style,
+      type = _ref.type;
   return /*#__PURE__*/React__default.createElement("span", {
-    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-label', type ? changeTypographyToClassName(type) : '', color ? changeColorToClassName$1(color) : '']).join(' ')
+    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-label', type ? changeTypographyToClassName(type) : '', color ? changeColorToClassName$1(color) : '']).join(' '),
+    style: style
   }, children);
 }
 Label.propTypes = {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
   type: PropTypes.oneOf([].concat(_toConsumableArray(Object.keys(Typography)), [''])),
   color: PropTypes.oneOf([].concat(_toConsumableArray(Object.keys(Colors$1)), [''])),
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element, PropTypes.any])
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.element, PropTypes.any]),
+  style: PropTypes.object
 };
 Label.defaultProps = {
   className: [],
   type: '',
   color: '',
-  children: null
+  children: null,
+  style: undefined
 };
 var LabelTypography = Typography;
 var LabelColors = Colors$1;
@@ -2303,14 +2307,42 @@ function TextMessageItemBody(_a) {
   }));
 }
 
+var colorSet = {
+  "#DF4141": ["A", "B", "C", "D"],
+  "#61CE5E": ["E", "F", "G", "H"],
+  "#6073E2": ["I", "J", "K", "L"],
+  "#F89825": ["M", "N", "O", "P"],
+  "#2EB5C0": ["Q", "R", "S", "T"],
+  "#BB58D0": ["U", "V", "W", "X"],
+  "#00A5FF": ["Y", "Z"]
+};
+var generateColorFromString = function generateColorFromString(str) {
+  var firstChar = str[0] || "";
+  var normalizedFirstChar = firstChar.toUpperCase();
+  var color = "inherit";
+
+  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
+    var _b = _a[_i],
+        hex = _b[0],
+        chars = _b[1];
+
+    if (chars.includes(normalizedFirstChar)) {
+      color = hex;
+      break;
+    }
+  }
+
+  return color;
+};
+
 function MessageContent(_a) {
-  var _b, _c;
+  var _b, _c, _d;
 
   var channel = _a.channel,
-      _d = _a.chainBottom,
-      chainBottom = _d === void 0 ? false : _d,
-      _e = _a.chainTop,
-      chainTop = _e === void 0 ? false : _e,
+      _e = _a.chainBottom,
+      chainBottom = _e === void 0 ? false : _e,
+      _f = _a.chainTop,
+      chainTop = _f === void 0 ? false : _f,
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
@@ -2350,8 +2382,11 @@ function MessageContent(_a) {
     className: "rogu-message-content__bubble__header"
   }, !isByMe && !chainTop && /*#__PURE__*/React__default.createElement(Label, {
     className: "rogu-message-content__sender-name",
-    type: LabelTypography.CAPTION_1,
-    color: LabelColors.ONBACKGROUND_2
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(((_d = message === null || message === void 0 ? void 0 : message.sender) === null || _d === void 0 ? void 0 : _d.nickname) || "")
+    },
+    type: LabelTypography.CAPTION_1
   }, getSenderName(message))), isTextMessage(message) && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
     message: message
   }), isOGMessage(message) && /*#__PURE__*/React__default.createElement(OGMessageItemBody, {

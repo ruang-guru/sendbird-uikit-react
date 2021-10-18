@@ -4,25 +4,25 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-9ebb5296.js');
-var index$1 = require('./index-0fe713bc.js');
+var LocalizationContext = require('./LocalizationContext-c3943df7.js');
+var index$1 = require('./index-40af236f.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-540c5773.js');
-var index$3 = require('./index-763f8187.js');
-var Channel = require('./index-1565d4ce.js');
-var index$4 = require('./index-c3e8d51d.js');
+var index$2 = require('./index-fd4c78ec.js');
+var index$3 = require('./index-da30253e.js');
+var Channel = require('./index-5ab9db71.js');
+var index$4 = require('./index-a121e954.js');
 require('sendbird');
-require('./actionTypes-7ed344c2.js');
+require('./actionTypes-afa62c2e.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-67d3bd28.js');
-require('./utils-c0663bf9.js');
-require('./LeaveChannel-460ca56a.js');
-require('./index-f39ccabe.js');
-require('./index-355a50eb.js');
+require('./index-7f3c74b4.js');
+require('./utils-c6d43316.js');
+require('./LeaveChannel-a95e9c8e.js');
+require('./index-3219a9ca.js');
+require('./index-aeae77fb.js');
 require('./ChannelSettings.js');
-require('./index-101b401f.js');
+require('./index-54b85eb7.js');
 require('./MessageSearch.js');
 require('react-dom');
 
@@ -1800,25 +1800,29 @@ function changeColorToClassName$1(color) {
 }
 
 function Label(_ref) {
-  var className = _ref.className,
-      type = _ref.type,
+  var children = _ref.children,
+      className = _ref.className,
       color = _ref.color,
-      children = _ref.children;
+      style = _ref.style,
+      type = _ref.type;
   return /*#__PURE__*/React__default["default"].createElement("span", {
-    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-label', type ? changeTypographyToClassName(type) : '', color ? changeColorToClassName$1(color) : '']).join(' ')
+    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-label', type ? changeTypographyToClassName(type) : '', color ? changeColorToClassName$1(color) : '']).join(' '),
+    style: style
   }, children);
 }
 Label.propTypes = {
   className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
   type: PropTypes__default["default"].oneOf([].concat(LocalizationContext._toConsumableArray(Object.keys(Typography)), [''])),
   color: PropTypes__default["default"].oneOf([].concat(LocalizationContext._toConsumableArray(Object.keys(Colors$1)), [''])),
-  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number, PropTypes__default["default"].element, PropTypes__default["default"].any])
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number, PropTypes__default["default"].element, PropTypes__default["default"].any]),
+  style: PropTypes__default["default"].object
 };
 Label.defaultProps = {
   className: [],
   type: '',
   color: '',
-  children: null
+  children: null,
+  style: undefined
 };
 var LabelTypography = Typography;
 var LabelColors = Colors$1;
@@ -2328,14 +2332,42 @@ function TextMessageItemBody(_a) {
   }));
 }
 
+var colorSet = {
+  "#DF4141": ["A", "B", "C", "D"],
+  "#61CE5E": ["E", "F", "G", "H"],
+  "#6073E2": ["I", "J", "K", "L"],
+  "#F89825": ["M", "N", "O", "P"],
+  "#2EB5C0": ["Q", "R", "S", "T"],
+  "#BB58D0": ["U", "V", "W", "X"],
+  "#00A5FF": ["Y", "Z"]
+};
+var generateColorFromString = function generateColorFromString(str) {
+  var firstChar = str[0] || "";
+  var normalizedFirstChar = firstChar.toUpperCase();
+  var color = "inherit";
+
+  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
+    var _b = _a[_i],
+        hex = _b[0],
+        chars = _b[1];
+
+    if (chars.includes(normalizedFirstChar)) {
+      color = hex;
+      break;
+    }
+  }
+
+  return color;
+};
+
 function MessageContent(_a) {
-  var _b, _c;
+  var _b, _c, _d;
 
   var channel = _a.channel,
-      _d = _a.chainBottom,
-      chainBottom = _d === void 0 ? false : _d,
-      _e = _a.chainTop,
-      chainTop = _e === void 0 ? false : _e,
+      _e = _a.chainBottom,
+      chainBottom = _e === void 0 ? false : _e,
+      _f = _a.chainTop,
+      chainTop = _f === void 0 ? false : _f,
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
@@ -2375,8 +2407,11 @@ function MessageContent(_a) {
     className: "rogu-message-content__bubble__header"
   }, !isByMe && !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
     className: "rogu-message-content__sender-name",
-    type: LabelTypography.CAPTION_1,
-    color: LabelColors.ONBACKGROUND_2
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(((_d = message === null || message === void 0 ? void 0 : message.sender) === null || _d === void 0 ? void 0 : _d.nickname) || "")
+    },
+    type: LabelTypography.CAPTION_1
   }, index$1.getSenderName(message))), index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     message: message
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(Channel.OGMessageItemBody, {
