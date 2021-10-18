@@ -4,8 +4,8 @@ import ImageRenderer from '../ImageRenderer';
 import Icon, { IconTypes, IconColors } from '../Icon';
 
 import './index.scss';
-import { uuidv4 } from '../../utils/uuid';
-import pxToNumber from '../../utils/pxToNumber';
+import { uuidv4 } from '../../../utils/uuid';
+import pxToNumber from '../../../utils/pxToNumber';
 
 const imageRendererClassName = 'sendbird-avatar-img';
 
