@@ -52,7 +52,7 @@ export const FileViewerComponent = ({
                 className="sendbird-fileviewer__header__right__actions__download"
                 rel="noopener noreferrer"
                 href={url}
-                target="_blank"
+                // target="_blank"
               >
                 <Icon
                   type={IconTypes.ROGU_DOWNLOAD}
@@ -105,7 +105,7 @@ export const FileViewerComponent = ({
         !isSupportedFileView(type) && (
           <div className="sendbird-fileviewer__content__unsupported">
             <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
-              Unsupoprted message
+              Unsupported message
             </Label>
           </div>
         )
