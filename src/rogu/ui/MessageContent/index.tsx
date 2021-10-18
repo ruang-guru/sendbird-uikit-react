@@ -4,7 +4,6 @@ import { GroupChannel, AdminMessage, UserMessage, FileMessage, User } from "send
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";
 import TextMessageItemBody from "../TextMessageItemBody";
-import "./index.scss";
 
 import Avatar from "../../../ui/Avatar";
 import ClientAdminMessage from "../../../ui/AdminMessage";
@@ -31,6 +30,9 @@ import {
 import {isAssignmentMessage, isMaterialMessage} from '../../utils';
 import AssignmentMessageItemBody from "../AssignmentMessageItemBody";
 import MaterialMessageItemBody from "../MaterialMessageItemBody";
+import { generateColorFromString } from "./utils";
+
+import "./index.scss";
 
 interface Props {
   chainBottom?: boolean;
@@ -118,8 +120,13 @@ Props): ReactElement {
             {!isByMe && !chainTop && (
               <Label
                 className="rogu-message-content__sender-name"
-                type={LabelTypography.CAPTION_1}
                 color={LabelColors.ONBACKGROUND_2}
+                style={{
+                  color: generateColorFromString(
+                    message?.sender?.nickname || ""
+                  ),
+                }}
+                type={LabelTypography.CAPTION_1}
               >
                 {getSenderName(message)}
               </Label>
@@ -128,7 +135,10 @@ Props): ReactElement {
 
           {/* Message content */}
           {isTextMessage(message as UserMessage) && (
-            <TextMessageItemBody message={message as UserMessage} />
+            <TextMessageItemBody
+              isByMe={isByMe}
+              message={message as UserMessage}
+            />
           )}
           {isOGMessage(message as UserMessage) && (
             <OGMessageItemBody

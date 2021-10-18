@@ -9,4 +9,31 @@
     white-space: pre-wrap;
     word-break: break-all;
   }
+
+  .rogu-text-message-item-body__read-more {
+    font-weight: semi-bold;
+  }
+
+  .rogu-text-message-item-body__inner {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+  }
+
+  &.rogu-text-message-item-body--incoming {
+    .rogu-text-message-item-body__read-more {
+      @include themed() {
+        color: t(secondary-3);
+      }
+    }
+  }
+
+  &.rogu-text-message-item-body--expanded {
+    .rogu-text-message-item-body__inner {
+      display: block;
+      overflow: visible;
+    }
+  }
 }
