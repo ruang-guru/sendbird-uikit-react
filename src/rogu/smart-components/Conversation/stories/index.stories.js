@@ -6,6 +6,7 @@ import Channel from "../index";
 import { getSdk, getSendUserMessage } from "../../../../lib/selectors";
 import withSendBird from "../../../../lib/SendbirdSdkContext";
 import COLOR_SET from "../../../../../__mocks__/themeMock";
+import { STRING_SET } from "../../../../../__mocks__/localizationMock";
 import Notification from "../components/Notification";
 
 export default { title: "ruangkelas/Smart Components/Channel" };
@@ -233,6 +234,7 @@ export const QueryParamsForChannel = () => {
 export const UnreadNotification = () => (
   <Sendbird
     colorSet={COLOR_SET}
+    stringSet={STRING_SET}
   >
     <div style={{ height: "100vh" }}>
       <Notification count={5} time="16.42 24 October 2021" onClick={() => { }} />
