@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
+import { format } from 'date-fns';
 
 import './index.scss';
 import Avatar from '../Avatar/index';
@@ -13,43 +14,50 @@ import { isImage, isVideo, isSupportedFileView } from '../../../utils';
 export const FileViewerComponent = ({
   // sender
   profileUrl,
-  nickname,
+  userName,
   // file
-  name,
+  fileName,
   type,
   url,
   // others
   isByMe,
   onClose,
   onDelete,
+  createdAt,
 }) => (
-  <div className="sendbird-fileviewer">
-    <div className="sendbird-fileviewer__header">
-      <div className="sendbird-fileviewer__header__left">
-        <div className="sendbird-fileviewer__header__left__avatar">
+  <div className="rogu-fileviewer">
+    <div className="rogu-fileviewer__header">
+      <div className="rogu-fileviewer__header__left">
+        <div className="rogu-fileviewer__header__left__avatar">
           <Avatar height="32px" width="32px" src={profileUrl} />
         </div>
-        <Label
-          className="sendbird-fileviewer__header__left__filename"
-          type={LabelTypography.H_2}
-          color={LabelColors.ONBACKGROUND_1}
-        >
-          {name}
-        </Label>
-        <Label
-          className="sendbird-fileviewer__header__left__sender-name"
-          type={LabelTypography.BODY_1}
-          color={LabelColors.ONBACKGROUND_2}
-        >
-          {nickname}
-        </Label>
+        <div className="rogu-fileviewer__header__left__metadata">
+          <div>
+            <Label
+              className="rogu-fileviewer__header__left__sender-name"
+              type={LabelTypography.H_2}
+              color={LabelColors.ONBACKGROUND_1}
+            >
+              {userName}
+            </Label>
+          </div>
+          <div>
+            <Label
+              className="rogu-fileviewer__header__left__createdat"
+              type={LabelTypography.BODY_1}
+              color={LabelColors.ONBACKGROUND_2}
+            >
+              {format(createdAt, 'dd/MM/yyyy HH.mm')}
+            </Label>
+          </div>
+        </div>
       </div>
-      <div className="sendbird-fileviewer__header__right">
+      <div className="rogu-fileviewer__header__right">
         {
           isSupportedFileView(type) && (
-            <div className="sendbird-fileviewer__header__right__actions">
+            <div className="rogu-fileviewer__header__right__actions">
               <a
-                className="sendbird-fileviewer__header__right__actions__download"
+                className="rogu-fileviewer__header__right__actions__download"
                 rel="noopener noreferrer"
                 href={url}
                 // target="_blank"
@@ -62,7 +70,7 @@ export const FileViewerComponent = ({
               </a>
               {
                 onDelete && isByMe && (
-                  <div className="sendbird-fileviewer__header__right__actions__delete">
+                  <div className="rogu-fileviewer__header__right__actions__delete">
                     <Icon
                       type={IconTypes.ROGU_DELETE}
                       height="24px"
@@ -75,7 +83,7 @@ export const FileViewerComponent = ({
             </div>
           )
         }
-        <div className="sendbird-fileviewer__header__right__actions__close">
+        <div className="rogu-fileviewer__header__right__actions__close">
           <Icon
             type={IconTypes.ROGU_CLOSE}
             height="24px"
@@ -85,10 +93,10 @@ export const FileViewerComponent = ({
         </div>
       </div>
     </div>
-    <div className="sendbird-fileviewer__content">
+    <div className="rogu-fileviewer__content">
       {isVideo(type) && (
         // eslint-disable-next-line jsx-a11y/media-has-caption
-        <video controls className="sendbird-fileviewer__content__video">
+        <video controls className="rogu-fileviewer__content__video">
           <source src={url} type={type} />
         </video>
       )}
@@ -96,14 +104,14 @@ export const FileViewerComponent = ({
         isImage(type) && (
           <img
             src={url}
-            alt={name}
-            className="sendbird-fileviewer__content__img"
+            alt={fileName}
+            className="rogu-fileviewer__content__img"
           />
         )
       }
       {
         !isSupportedFileView(type) && (
-          <div className="sendbird-fileviewer__content__unsupported">
+          <div className="rogu-fileviewer__content__unsupported">
             <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
               Unsupported message
             </Label>
@@ -116,13 +124,14 @@ export const FileViewerComponent = ({
 
 FileViewerComponent.propTypes = {
   profileUrl: PropTypes.string.isRequired,
-  nickname: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
+  fileName: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   isByMe: PropTypes.bool,
+  createdAt: PropTypes.number.isRequired,
 };
 
 FileViewerComponent.defaultProps = {
@@ -140,20 +149,22 @@ export default function FileViewer(props) {
     sender,
     type,
     url,
-    name = '',
+    name: fileName = '',
+    createdAt = 0,
   } = message;
-  const { profileUrl, nickname = '' } = sender;
+  const { profileUrl, nickname: userName = '' } = sender;
   return createPortal(
     (
       <FileViewerComponent
         profileUrl={profileUrl}
-        nickname={nickname}
+        userName={userName}
         type={type}
         url={url}
-        name={name}
+        fileName={fileName}
         onClose={onClose}
         onDelete={onDelete}
         isByMe={isByMe}
+        createdAt={createdAt}
       />
     ),
     document.getElementById(MODAL_ROOT),
@@ -164,11 +175,11 @@ FileViewer.propTypes = {
   message: PropTypes.shape({
     sender: PropTypes.shape({
       profileUrl: PropTypes.string,
-      nickname: PropTypes.string,
+      userName: PropTypes.string,
     }),
     type: PropTypes.string,
     url: PropTypes.string,
-    name: PropTypes.string,
+    fileName: PropTypes.string,
   }).isRequired,
   isByMe: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
