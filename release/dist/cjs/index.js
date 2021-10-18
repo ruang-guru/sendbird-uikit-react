@@ -4,25 +4,25 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-1585bc33.js');
-var index$1 = require('./index-68326723.js');
+var LocalizationContext = require('./LocalizationContext-67ceafad.js');
+var index$1 = require('./index-1414211d.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-c1a503ec.js');
-var index$3 = require('./index-9199fe0a.js');
-var Channel = require('./index-92f6a1ed.js');
-var index$4 = require('./index-b1c6a14b.js');
+var index$2 = require('./index-3846c19c.js');
+var index$3 = require('./index-a0928db3.js');
+var Channel = require('./index-337a593c.js');
+var index$4 = require('./index-4cf8d237.js');
 require('sendbird');
-require('./actionTypes-c25cf316.js');
+require('./actionTypes-7e6cc864.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-0ff2d784.js');
-require('./utils-84e53c4c.js');
-require('./LeaveChannel-9f886976.js');
-require('./index-5bd2c36c.js');
-require('./index-a4c82b50.js');
+require('./index-860d0656.js');
+require('./utils-4c06429a.js');
+require('./LeaveChannel-99b6a8c0.js');
+require('./index-9f5a0eba.js');
+require('./index-41bc5444.js');
 require('./ChannelSettings.js');
-require('./index-eeaad3bb.js');
+require('./index-5122377c.js');
 require('./MessageSearch.js');
 require('react-dom');
 
@@ -1800,25 +1800,29 @@ function changeColorToClassName$1(color) {
 }
 
 function Label(_ref) {
-  var className = _ref.className,
-      type = _ref.type,
+  var children = _ref.children,
+      className = _ref.className,
       color = _ref.color,
-      children = _ref.children;
+      style = _ref.style,
+      type = _ref.type;
   return /*#__PURE__*/React__default["default"].createElement("span", {
-    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-label', type ? changeTypographyToClassName(type) : '', color ? changeColorToClassName$1(color) : '']).join(' ')
+    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-label', type ? changeTypographyToClassName(type) : '', color ? changeColorToClassName$1(color) : '']).join(' '),
+    style: style
   }, children);
 }
 Label.propTypes = {
   className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
   type: PropTypes__default["default"].oneOf([].concat(LocalizationContext._toConsumableArray(Object.keys(Typography)), [''])),
   color: PropTypes__default["default"].oneOf([].concat(LocalizationContext._toConsumableArray(Object.keys(Colors$1)), [''])),
-  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number, PropTypes__default["default"].element, PropTypes__default["default"].any])
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number, PropTypes__default["default"].element, PropTypes__default["default"].any]),
+  style: PropTypes__default["default"].object
 };
 Label.defaultProps = {
   className: [],
   type: '',
   color: '',
-  children: null
+  children: null,
+  style: undefined
 };
 var LabelTypography = Typography;
 var LabelColors = Colors$1;
@@ -2311,11 +2315,64 @@ MessageStatus.defaultProps = {
   status: ''
 };
 
+function TextButton(_ref) {
+  var className = _ref.className,
+      color = _ref.color,
+      disabled = _ref.disabled,
+      underline = _ref.underline,
+      onClick = _ref.onClick,
+      children = _ref.children;
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), [index$1.changeColorToClassName(color), 'rogu-text-button', underline ? 'rogu-text-button--no-underline' : '', disabled ? 'rogu-text-button--disabled' : '']).join(' '),
+    role: "button",
+    tabIndex: 0,
+    onClick: onClick,
+    onKeyPress: onClick
+  }, children);
+}
+TextButton.propTypes = {
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
+  color: PropTypes__default["default"].string,
+  disabled: PropTypes__default["default"].bool,
+  underline: PropTypes__default["default"].bool,
+  onClick: PropTypes__default["default"].func,
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].element]).isRequired
+};
+TextButton.defaultProps = {
+  className: '',
+  color: index$1.Colors.ONBACKGROUND_1,
+  disabled: false,
+  underline: false,
+  onClick: function onClick() {}
+};
+
 function TextMessageItemBody(_a) {
   var className = _a.className,
+      _b = _a.isByMe,
+      isByMe = _b === void 0 ? false : _b,
       message = _a.message;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+
+  var _c = React.useState("init"),
+      clampState = _c[0],
+      setClampState = _c[1];
+
+  var textRef = React.useRef(null);
+  React.useEffect(function () {
+    if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
+      setClampState("clamped");
+    }
+  }, [textRef.current]);
+
+  function handleExpand() {
+    setClampState("expanded");
+  }
+
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: index$1.getClassName([className, "rogu-text-message-item-body"])
+    className: index$1.getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : ""])
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    ref: textRef,
+    className: "rogu-text-message-item-body__inner"
   }, message === null || message === void 0 ? void 0 : message.message.split(/\r/).map(function (word, i) {
     return word === "" ? /*#__PURE__*/React__default["default"].createElement("br", {
       key: i
@@ -2325,17 +2382,48 @@ function TextMessageItemBody(_a) {
       key: i,
       type: LabelTypography.BODY_1
     }, word);
-  }));
+  })), clampState === "clamped" && /*#__PURE__*/React__default["default"].createElement(TextButton, {
+    className: "rogu-text-message-item-body__read-more",
+    onClick: handleExpand
+  }, stringSet.BUTTON__READ_MORE));
 }
 
+var colorSet = {
+  "#DF4141": ["A", "B", "C", "D"],
+  "#61CE5E": ["E", "F", "G", "H"],
+  "#6073E2": ["I", "J", "K", "L"],
+  "#F89825": ["M", "N", "O", "P"],
+  "#2EB5C0": ["Q", "R", "S", "T"],
+  "#BB58D0": ["U", "V", "W", "X"],
+  "#00A5FF": ["Y", "Z"]
+};
+var generateColorFromString = function generateColorFromString(str) {
+  var firstChar = str[0] || "";
+  var normalizedFirstChar = firstChar.toUpperCase();
+  var color = "inherit";
+
+  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
+    var _b = _a[_i],
+        hex = _b[0],
+        chars = _b[1];
+
+    if (chars.includes(normalizedFirstChar)) {
+      color = hex;
+      break;
+    }
+  }
+
+  return color;
+};
+
 function MessageContent(_a) {
-  var _b, _c;
+  var _b, _c, _d;
 
   var channel = _a.channel,
-      _d = _a.chainBottom,
-      chainBottom = _d === void 0 ? false : _d,
-      _e = _a.chainTop,
-      chainTop = _e === void 0 ? false : _e,
+      _e = _a.chainBottom,
+      chainBottom = _e === void 0 ? false : _e,
+      _f = _a.chainTop,
+      chainTop = _f === void 0 ? false : _f,
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
@@ -2375,9 +2463,13 @@ function MessageContent(_a) {
     className: "rogu-message-content__bubble__header"
   }, !isByMe && !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
     className: "rogu-message-content__sender-name",
-    type: LabelTypography.CAPTION_1,
-    color: LabelColors.ONBACKGROUND_2
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(((_d = message === null || message === void 0 ? void 0 : message.sender) === null || _d === void 0 ? void 0 : _d.nickname) || "")
+    },
+    type: LabelTypography.CAPTION_1
   }, index$1.getSenderName(message))), index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+    isByMe: isByMe,
     message: message
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(Channel.OGMessageItemBody, {
     message: message,

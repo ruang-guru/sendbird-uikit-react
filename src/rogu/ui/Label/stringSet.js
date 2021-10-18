@@ -24,8 +24,10 @@ const getStringSet = (lang = 'en') => {
       EDIT_PROFILE__USERID_LABEL: 'User ID',
       EDIT_PROFILE__THEME_LABEL: 'Dark theme',
       CHANNEL__MESSAGE_INPUT__PLACE_HOLDER: 'Enter message',
-      CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__DISABLED: 'Chat is unavailable in this channel',
-      CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__MUTED: 'Chat is unavailable because you are being muted',
+      CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__DISABLED:
+        'Chat is unavailable in this channel',
+      CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__MUTED:
+        'Chat is unavailable because you are being muted',
       CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE: 'new message(s) since',
       CHANNEL__MESSAGE_LIST__NOTIFICATION__ON: 'on',
       CHANNEL_SETTING__HEADER__TITLE: 'Channel information',
@@ -90,6 +92,8 @@ const getStringSet = (lang = 'en') => {
       REPLYING_ATTACHMENT__FILE_TYPE__GIF: 'GIF',
       REPLYING_ATTACHMENT__FILE_TYPE__VIDEO: 'Video',
       REPLIED_TO: 'replied to',
+      /* ----- ADDITIONAL ------ */
+      BUTTON__READ_MORE: 'Read more',
     },
   };
   return stringSet[lang];

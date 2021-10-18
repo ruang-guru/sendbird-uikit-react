@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import getStringSet from '../ui/Label/stringSet';
+import getStringSet from "../rogu/ui/Label/stringSet";
 
 const LocalizationContext = React.createContext({
-  stringSet: getStringSet('en'),
+  stringSet: getStringSet("en"),
 });
 
 interface LocalizationProviderProps {
@@ -11,7 +11,9 @@ interface LocalizationProviderProps {
   children: React.Component;
 }
 
-const LocalizationProvider = (props: LocalizationProviderProps): React.ReactNode => {
+const LocalizationProvider = (
+  props: LocalizationProviderProps
+): React.ReactNode => {
   const { children } = props;
   return (
     <LocalizationContext.Provider value={props}>
