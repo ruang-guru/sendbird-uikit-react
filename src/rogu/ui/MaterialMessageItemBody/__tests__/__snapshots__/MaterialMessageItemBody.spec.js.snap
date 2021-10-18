@@ -2,6 +2,45 @@
 
 exports[`MaterialMessageItemBody should do a snapshot test of the MaterialMessageItemBody DOM 1`] = `
 <div
-  className=" rogu-material-message-item-body"
-/>
+  className=" rogu-material-message-item-body incoming "
+>
+  <div
+    className="rogu-material-message-item-body__container"
+    onClick={[Function]}
+  >
+    <div
+      className="rogu-material-message-item-body__icon sendbird-icon "
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "height": "30",
+          "minHeight": "30",
+          "minWidth": "30",
+          "width": "30",
+        }
+      }
+      tabIndex="0"
+    >
+      <test-file-stub />
+    </div>
+    <div
+      className="rogu-material-message-item-body__text-container"
+    >
+      <span
+        className="rogu-material-message-item-body__text-title sendbird-label sendbird-label--subtitle-2 sendbird-label--color-onbackground-1"
+      >
+        Materi Google
+      </span>
+      <div>
+        <span
+          className="rogu-material-message-item-body__text-title sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-2"
+        >
+          Material
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 `;

@@ -1,5 +1,5 @@
 import React, { ReactElement, useRef } from "react";
-import { GroupChannel, AdminMessage, UserMessage, FileMessage, User } from "sendbird";
+import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
 
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";

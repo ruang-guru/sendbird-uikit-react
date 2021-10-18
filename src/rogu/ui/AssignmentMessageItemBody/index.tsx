@@ -1,21 +1,14 @@
 import React, { ReactElement, useContext } from 'react';
 import { UserMessage } from 'sendbird';
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-
-import './index.scss';
 
 import Label, { LabelTypography, LabelColors } from '../Label';
-import LinkLabel from '../../../ui/LinkLabel';
 import Icon, { IconTypes } from '../Icon';
-import ImageRenderer from '../../../ui/ImageRenderer';
 import {
   getClassName,
-  isEditedMessage,
-  isUrl,
 } from '../../../utils';
-import uuidv4 from '../../../utils/uuid';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import {convertCtaLinkToWebLink, convertAssignmentDueUTCtoLocale} from '../../utils';
+import './index.scss';
 
 interface Props {
   className?: string | Array<string>;
