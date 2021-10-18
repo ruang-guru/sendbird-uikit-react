@@ -6,18 +6,21 @@ import SendbirdProvider from "../../../../lib/Sendbird";
 import { MenuRoot } from "../../../../ui/ContextMenu";
 
 import COLOR_SET from "../../../../../__mocks__/themeMock";
+import { STRING_SET } from "../../../../../__mocks__/localizationMock";
 import {
   BASIC_MESSAGE,
   BASIC_MESSAGE_A_1,
   BASIC_MESSAGE_A_2,
   BASIC_MESSAGE_A_3,
+  LONG_MESSAGE,
+  LONG_MESSAGE_A_1,
   USER_ID_A,
 } from "../../../../../__mocks__/messagesMock";
 
 export default { title: "ruangkelas/UI Components/MessageContent" };
 
 export const Basic = () => (
-  <SendbirdProvider colorSet={COLOR_SET}>
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent
         userId={"random-user-id"}
@@ -45,7 +48,7 @@ export const Basic = () => (
 );
 
 export const Chaining = () => (
-  <SendbirdProvider colorSet={COLOR_SET}>
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent
         userId={"user-random-xxx"}
@@ -107,6 +110,32 @@ export const Chaining = () => (
         message={BASIC_MESSAGE_A_3}
         chainTop={true}
         chainBottom={false}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+      />
+      <MenuRoot />
+    </div>
+  </SendbirdProvider>
+);
+
+export const ClampedMessage = () => (
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
+    <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
+      <MessageContent
+        userId={USER_ID_A}
+        message={LONG_MESSAGE}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+      />
+      <MessageContent
+        userId={USER_ID_A}
+        message={LONG_MESSAGE_A_1}
         channel={{
           isGroupChannel: () => true,
           getUnreadMemberCount: (_) => 10,

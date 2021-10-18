@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+.rogu-text-button {
+  cursor: pointer;
+  display: inline-block;
+
+  &.rogu-text-button--underline {
+    text-decoration: underline;
+  }
+
+  &.rogu-text-button--disabled {
+    cursor: not-allowed;
+
+    @include themed() {
+      color: t(on-bg-3);
+    }
+  }
+}
