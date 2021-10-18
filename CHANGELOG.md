@@ -7,6 +7,7 @@
  * Add checking current channel condition before get channel
  * Add hasSeparator and menuDisabled props to renderChatItem
  * Fix alignment of pending message
+ * Fake commit
 
 ## [2.4.0]
 
