@@ -1,30 +1,3 @@
-.sendbird-openchannel-conversation {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%; }
-  .sendbird-theme--light .sendbird-openchannel-conversation {
-    background-color: var(--sendbird-light-background-50); }
-  .sendbird-theme--dark .sendbird-openchannel-conversation {
-    background-color: var(--sendbird-dark-background-600); }
-  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll {
-    overflow-y: auto;
-    flex: 1 1 0;
-    order: 2;
-    width: 100%; }
-  .sendbird-openchannel-conversation .sendbird-openchannel-footer {
-    order: 3;
-    padding: 12px 24px 24px 24px; }
-  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container {
-    display: flex;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    flex-direction: column; }
-    .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container .sendbird-openchannel-conversation-scroll-padding {
-      flex: 1 1 0; }
-
 .sendbird-openchannel-settings {
   height: 100%;
   width: 320px;
@@ -145,6 +118,33 @@
     left: 16px;
     top: 10px;
     cursor: pointer; }
+
+.sendbird-openchannel-conversation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+  .sendbird-theme--light .sendbird-openchannel-conversation {
+    background-color: var(--sendbird-light-background-50); }
+  .sendbird-theme--dark .sendbird-openchannel-conversation {
+    background-color: var(--sendbird-dark-background-600); }
+  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll {
+    overflow-y: auto;
+    flex: 1 1 0;
+    order: 2;
+    width: 100%; }
+  .sendbird-openchannel-conversation .sendbird-openchannel-footer {
+    order: 3;
+    padding: 12px 24px 24px 24px; }
+  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container {
+    display: flex;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column; }
+    .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container .sendbird-openchannel-conversation-scroll-padding {
+      flex: 1 1 0; }
 
 .sendbird-openchannel-conversation-header {
   position: relative;
@@ -4279,7 +4279,7 @@
     white-space: pre-wrap;
     word-break: break-all; }
   .rogu-text-message-item-body .rogu-text-message-item-body__read-more {
-    font-weight: semi-bold; }
+    font-weight: bolder; }
   .rogu-text-message-item-body .rogu-text-message-item-body__inner {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -4327,14 +4327,26 @@
       .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header {
         line-height: 0;
         display: flex;
-        flex-wrap: nowrap; }
+        flex-wrap: nowrap;
+        margin-bottom: 0.25rem; }
         .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header .rogu-message-content__sender-name {
-          margin-bottom: 4px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
+          word-break: break-all;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical; }
+        .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header .rogu-message-content__operator-label {
+          margin-left: 0.5rem;
+          padding: 0.25rem 0.75rem;
+          border-radius: 0.25rem;
+          white-space: nowrap; }
+          .sendbird-theme--light .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header .rogu-message-content__operator-label {
+            color: var(--sendbird-light-onlight-01);
+            background-color: var(--sendbird-light-background-100); }
+          .sendbird-theme--dark .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header .rogu-message-content__operator-label {
+            color: var(--sendbird-dark-ondark-01);
+            background-color: var(--sendbird-dark-background-500); }
         .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header .rogu-message-content__menu {
           flex-shrink: 0; }
       .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble::before {

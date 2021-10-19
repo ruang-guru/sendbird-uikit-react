@@ -1,27 +1,27 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { S as SendbirdSdkContext, _ as _toConsumableArray, a as _objectSpread2, u as uuidv4, b as _slicedToArray, c as _defineProperty, L as LocalizationContext, d as _inherits, e as _createSuper, f as _classCallCheck, g as _assertThisInitialized, h as _createClass, w as withSendbirdContext } from './LocalizationContext-f440a67c.js';
-export { w as withSendBird } from './LocalizationContext-f440a67c.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as getUIKitMessageTypes, k as isPendingMessage, l as isSentMessage, m as isMessageSentByMe, n as getSenderName, o as isTextMessage, p as isOGMessage, q as getUIKitMessageType, r as isThumbnailMessage, s as getOutgoingMessageState, I as IconButton, B as Button, t as ButtonTypes, u as ButtonSizes, M as Modal, v as UserProfileProvider } from './index-029ad814.js';
-export { w as sendBirdSelectors } from './index-029ad814.js';
+import { S as SendbirdSdkContext, _ as _toConsumableArray, a as _objectSpread2, u as uuidv4, b as _slicedToArray, c as _defineProperty, L as LocalizationContext, d as _inherits, e as _createSuper, f as _classCallCheck, g as _assertThisInitialized, h as _createClass, w as withSendbirdContext } from './LocalizationContext-f8d5fe0f.js';
+export { w as withSendBird } from './LocalizationContext-f8d5fe0f.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as getUIKitMessageTypes, k as isPendingMessage, l as isSentMessage, m as isMessageSentByMe, n as isMessageSentByOperator, o as getSenderName, p as isTextMessage, q as isOGMessage, r as getUIKitMessageType, s as isThumbnailMessage, t as getOutgoingMessageState, I as IconButton, B as Button, u as ButtonTypes, v as ButtonSizes, M as Modal, w as UserProfileProvider } from './index-667d6535.js';
+export { x as sendBirdSelectors } from './index-667d6535.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, useLayoutEffect, Component, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format, I as ImageRenderer, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-398a7fc0.js';
-import { c as compareIds, D as DateSeparator, F as FileViewer } from './index-c7032bb9.js';
-import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-75061ea5.js';
-import { i as isSameDay } from './index-d82ec0dc.js';
+import { f as format, I as ImageRenderer, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-67cd6945.js';
+import { c as compareIds, D as DateSeparator, F as FileViewer } from './index-8103e017.js';
+import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-a04fd801.js';
+import { i as isSameDay } from './index-1c2215d9.js';
 import 'sendbird';
-import './actionTypes-fb616e89.js';
+import './actionTypes-d90efbdb.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-650d5a59.js';
-import './utils-c887c90f.js';
-import './LeaveChannel-90c9bb6d.js';
-import './index-ccb9f88b.js';
-import './index-79ad7d38.js';
+import './index-8ffd35bf.js';
+import './utils-24936a33.js';
+import './LeaveChannel-2b34e3f8.js';
+import './index-fb13db61.js';
+import './index-dfcc5a89.js';
 import './ChannelSettings.js';
-import './index-5b35d767.js';
+import './index-d9abb890.js';
 import './MessageSearch.js';
 import 'react-dom';
 
@@ -2360,7 +2360,7 @@ function TextMessageItemBody(_a) {
   })), clampState === "clamped" && /*#__PURE__*/React__default.createElement(TextButton, {
     className: "rogu-text-message-item-body__read-more",
     onClick: handleExpand
-  }, stringSet.BUTTON__READ_MORE));
+  }, /*#__PURE__*/React__default.createElement(Label, null, stringSet.BUTTON__READ_MORE)));
 }
 
 var colorSet = {
@@ -2409,9 +2409,11 @@ function MessageContent(_a) {
   // scrollToMessage,
   // showEdit,
   showFileViewer = _a.showFileViewer;
+  var stringSet = useContext(LocalizationContext).stringSet;
   var messageTypes = getUIKitMessageTypes();
   var avatarRef = useRef(null);
   var isByMe = isPendingMessage(channel, message) || !isSentMessage(channel, message) || isMessageSentByMe(userId, message);
+  var isOperatorMessage = isMessageSentByOperator(message);
   var isByMeClassName = isByMe ? "rogu-message-content--outgoing" : "rogu-message-content--incoming";
   var chainBottomClassName = chainBottom ? "rogu-message-content--chain-bottom" : "";
   var chainTopClassName = chainTop ? "rogu-message-content--chain-top" : "";
@@ -2434,16 +2436,19 @@ function MessageContent(_a) {
     className: "rogu-message-content__content"
   }, /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-message-content__bubble"
-  }, /*#__PURE__*/React__default.createElement("div", {
+  }, !isByMe && /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-message-content__bubble__header"
-  }, !isByMe && !chainTop && /*#__PURE__*/React__default.createElement(Label, {
+  }, !chainTop && /*#__PURE__*/React__default.createElement(Label, {
     className: "rogu-message-content__sender-name",
     color: LabelColors.ONBACKGROUND_2,
     style: {
       color: generateColorFromString(((_d = message === null || message === void 0 ? void 0 : message.sender) === null || _d === void 0 ? void 0 : _d.nickname) || "")
     },
     type: LabelTypography.CAPTION_1
-  }, getSenderName(message))), isTextMessage(message) && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
+  }, getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-message-content__operator-label",
+    type: LabelTypography.CAPTION_3
+  }, stringSet.LABEL__OPERATOR)), isTextMessage(message) && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message
   }), isOGMessage(message) && /*#__PURE__*/React__default.createElement(OGMessageItemBody, {

@@ -4,25 +4,25 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-5093a199.js');
-var index$1 = require('./index-bbf9114c.js');
+var LocalizationContext = require('./LocalizationContext-b5070abc.js');
+var index$1 = require('./index-c99c7cea.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-d4ec14be.js');
-var index$3 = require('./index-2f6efc02.js');
-var Channel = require('./index-c26a2d1f.js');
-var index$4 = require('./index-057d8c2e.js');
+var index$2 = require('./index-f56d513f.js');
+var index$3 = require('./index-1713697f.js');
+var Channel = require('./index-6ccad28f.js');
+var index$4 = require('./index-ce67d3ec.js');
 require('sendbird');
-require('./actionTypes-8e17e157.js');
+require('./actionTypes-e308e333.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-b06b3da9.js');
-require('./utils-ddb2da4a.js');
-require('./LeaveChannel-6ce8357b.js');
-require('./index-0d2286d9.js');
-require('./index-4f3aea3e.js');
+require('./index-583fcca5.js');
+require('./utils-4b17c64d.js');
+require('./LeaveChannel-a17c309a.js');
+require('./index-39223cbb.js');
+require('./index-c34a0a82.js');
 require('./ChannelSettings.js');
-require('./index-da0bab86.js');
+require('./index-6d999e3e.js');
 require('./MessageSearch.js');
 require('react-dom');
 
@@ -2385,7 +2385,7 @@ function TextMessageItemBody(_a) {
   })), clampState === "clamped" && /*#__PURE__*/React__default["default"].createElement(TextButton, {
     className: "rogu-text-message-item-body__read-more",
     onClick: handleExpand
-  }, stringSet.BUTTON__READ_MORE));
+  }, /*#__PURE__*/React__default["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
 }
 
 var colorSet = {
@@ -2434,9 +2434,11 @@ function MessageContent(_a) {
   // scrollToMessage,
   // showEdit,
   showFileViewer = _a.showFileViewer;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
   var messageTypes = index$1.getUIKitMessageTypes();
   var avatarRef = React.useRef(null);
   var isByMe = index$1.isPendingMessage(channel, message) || !index$1.isSentMessage(channel, message) || index$1.isMessageSentByMe(userId, message);
+  var isOperatorMessage = index$1.isMessageSentByOperator(message);
   var isByMeClassName = isByMe ? "rogu-message-content--outgoing" : "rogu-message-content--incoming";
   var chainBottomClassName = chainBottom ? "rogu-message-content--chain-bottom" : "";
   var chainTopClassName = chainTop ? "rogu-message-content--chain-top" : "";
@@ -2459,16 +2461,19 @@ function MessageContent(_a) {
     className: "rogu-message-content__content"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-message-content__bubble"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, !isByMe && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-message-content__bubble__header"
-  }, !isByMe && !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
     className: "rogu-message-content__sender-name",
     color: LabelColors.ONBACKGROUND_2,
     style: {
       color: generateColorFromString(((_d = message === null || message === void 0 ? void 0 : message.sender) === null || _d === void 0 ? void 0 : _d.nickname) || "")
     },
     type: LabelTypography.CAPTION_1
-  }, index$1.getSenderName(message))), index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+  }, index$1.getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-message-content__operator-label",
+    type: LabelTypography.CAPTION_3
+  }, stringSet.LABEL__OPERATOR)), index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(Channel.OGMessageItemBody, {
