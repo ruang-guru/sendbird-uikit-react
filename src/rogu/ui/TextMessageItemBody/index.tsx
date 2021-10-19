@@ -75,7 +75,7 @@ export default function TextMessageItemBody({
           className="rogu-text-message-item-body__read-more"
           onClick={handleExpand}
         >
-          {stringSet.BUTTON__READ_MORE}
+          <Label>{stringSet.BUTTON__READ_MORE}</Label>
         </TextButton>
       )}
     </div>
