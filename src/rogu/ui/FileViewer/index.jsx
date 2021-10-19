@@ -72,7 +72,6 @@ export const FileViewerComponent = ({
                   rel="noopener noreferrer"
                   href={url}
                   onClick={onDownloadClick}
-                // target="_blank"
                 >
                   <Icon
                     type={IconTypes.ROGU_DOWNLOAD}
