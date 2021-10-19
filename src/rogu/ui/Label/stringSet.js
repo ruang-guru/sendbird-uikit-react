@@ -94,7 +94,7 @@ const getStringSet = (lang = 'en') => {
       REPLIED_TO: 'replied to',
       /* ----- ADDITIONAL ------ */
       BUTTON__READ_MORE: 'Read more',
-      LABEL__OPERATOR: 'Operator',
+      LABEL__OPERATOR: 'Teacher',
     },
   };
   return stringSet[lang];
