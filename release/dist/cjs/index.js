@@ -4,25 +4,25 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-67ceafad.js');
-var index$1 = require('./index-1414211d.js');
+var LocalizationContext = require('./LocalizationContext-5093a199.js');
+var index$1 = require('./index-bbf9114c.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-3846c19c.js');
-var index$3 = require('./index-a0928db3.js');
-var Channel = require('./index-337a593c.js');
-var index$4 = require('./index-4cf8d237.js');
+var index$2 = require('./index-d4ec14be.js');
+var index$3 = require('./index-2f6efc02.js');
+var Channel = require('./index-c26a2d1f.js');
+var index$4 = require('./index-057d8c2e.js');
 require('sendbird');
-require('./actionTypes-7e6cc864.js');
+require('./actionTypes-8e17e157.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-860d0656.js');
-require('./utils-4c06429a.js');
-require('./LeaveChannel-99b6a8c0.js');
-require('./index-9f5a0eba.js');
-require('./index-41bc5444.js');
+require('./index-b06b3da9.js');
+require('./utils-ddb2da4a.js');
+require('./LeaveChannel-6ce8357b.js');
+require('./index-0d2286d9.js');
+require('./index-4f3aea3e.js');
 require('./ChannelSettings.js');
-require('./index-5122377c.js');
+require('./index-da0bab86.js');
 require('./MessageSearch.js');
 require('react-dom');
 
@@ -3182,18 +3182,22 @@ function Notification(_ref) {
       onClick = _ref.onClick;
 
   var _useContext = React.useContext(LocalizationContext.LocalizationContext),
-      stringSet = _useContext.stringSet;
+      stringSet = _useContext.stringSet; // ex: time = '13.46 14 December 2021', then split into array
 
-  var timeArray = time.split(' ');
-  timeArray.splice(-2, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
+
+  var timeArray = time.split(' '); // add string 'on' after first element of timeArray
+  // before: timeArray = ['13.46', '14', 'December', '2021']
+
+  timeArray.splice(1, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON); // after: timeArray = ['13.46', 'on', '14', 'December', '2021']
+
   return (
     /*#__PURE__*/
     // eslint-disable-next-line
     React__default["default"].createElement("div", {
-      className: "sendbird-notification",
+      className: "rogu-notification",
       onClick: onClick
     }, /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
-      className: "sendbird-notification__text",
+      className: "rogu-notification__text",
       color: index$2.LabelColors.ONCONTENT_1,
       type: index$2.LabelTypography.CAPTION_2
     }, "".concat(count, " "), stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE, " ".concat(timeArray.join(' '))), /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {

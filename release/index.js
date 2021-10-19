@@ -1,27 +1,27 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { S as SendbirdSdkContext, _ as _toConsumableArray, a as _objectSpread2, u as uuidv4, b as _slicedToArray, c as _defineProperty, L as LocalizationContext, d as _inherits, e as _createSuper, f as _classCallCheck, g as _assertThisInitialized, h as _createClass, w as withSendbirdContext } from './LocalizationContext-071f0d05.js';
-export { w as withSendBird } from './LocalizationContext-071f0d05.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as getUIKitMessageTypes, k as isPendingMessage, l as isSentMessage, m as isMessageSentByMe, n as getSenderName, o as isTextMessage, p as isOGMessage, q as getUIKitMessageType, r as isThumbnailMessage, s as getOutgoingMessageState, I as IconButton, B as Button, t as ButtonTypes, u as ButtonSizes, M as Modal, v as UserProfileProvider } from './index-94abd695.js';
-export { w as sendBirdSelectors } from './index-94abd695.js';
+import { S as SendbirdSdkContext, _ as _toConsumableArray, a as _objectSpread2, u as uuidv4, b as _slicedToArray, c as _defineProperty, L as LocalizationContext, d as _inherits, e as _createSuper, f as _classCallCheck, g as _assertThisInitialized, h as _createClass, w as withSendbirdContext } from './LocalizationContext-f440a67c.js';
+export { w as withSendBird } from './LocalizationContext-f440a67c.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as getUIKitMessageTypes, k as isPendingMessage, l as isSentMessage, m as isMessageSentByMe, n as getSenderName, o as isTextMessage, p as isOGMessage, q as getUIKitMessageType, r as isThumbnailMessage, s as getOutgoingMessageState, I as IconButton, B as Button, t as ButtonTypes, u as ButtonSizes, M as Modal, v as UserProfileProvider } from './index-029ad814.js';
+export { w as sendBirdSelectors } from './index-029ad814.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, useLayoutEffect, Component, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format, I as ImageRenderer, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-78bfbe3a.js';
-import { c as compareIds, D as DateSeparator, F as FileViewer } from './index-606800fe.js';
-import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-dfd6f266.js';
-import { i as isSameDay } from './index-e12db5c0.js';
+import { f as format, I as ImageRenderer, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-398a7fc0.js';
+import { c as compareIds, D as DateSeparator, F as FileViewer } from './index-c7032bb9.js';
+import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-75061ea5.js';
+import { i as isSameDay } from './index-d82ec0dc.js';
 import 'sendbird';
-import './actionTypes-6a93fc49.js';
+import './actionTypes-fb616e89.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-d0783431.js';
-import './utils-cc70e4ae.js';
-import './LeaveChannel-e26d00db.js';
-import './index-13e3e693.js';
-import './index-4c265199.js';
+import './index-650d5a59.js';
+import './utils-c887c90f.js';
+import './LeaveChannel-90c9bb6d.js';
+import './index-ccb9f88b.js';
+import './index-79ad7d38.js';
 import './ChannelSettings.js';
-import './index-c895cddf.js';
+import './index-5b35d767.js';
 import './MessageSearch.js';
 import 'react-dom';
 
@@ -3157,18 +3157,22 @@ function Notification(_ref) {
       onClick = _ref.onClick;
 
   var _useContext = useContext(LocalizationContext),
-      stringSet = _useContext.stringSet;
+      stringSet = _useContext.stringSet; // ex: time = '13.46 14 December 2021', then split into array
 
-  var timeArray = time.split(' ');
-  timeArray.splice(-2, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
+
+  var timeArray = time.split(' '); // add string 'on' after first element of timeArray
+  // before: timeArray = ['13.46', '14', 'December', '2021']
+
+  timeArray.splice(1, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON); // after: timeArray = ['13.46', 'on', '14', 'December', '2021']
+
   return (
     /*#__PURE__*/
     // eslint-disable-next-line
     React__default.createElement("div", {
-      className: "sendbird-notification",
+      className: "rogu-notification",
       onClick: onClick
     }, /*#__PURE__*/React__default.createElement(Label$1, {
-      className: "sendbird-notification__text",
+      className: "rogu-notification__text",
       color: LabelColors$1.ONCONTENT_1,
       type: LabelTypography$1.CAPTION_2
     }, "".concat(count, " "), stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE, " ".concat(timeArray.join(' '))), /*#__PURE__*/React__default.createElement(Icon$1, {

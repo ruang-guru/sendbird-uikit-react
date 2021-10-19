@@ -282,22 +282,6 @@
         width: 100%;
         height: 100%; }
 
-.sendbird-openchannel-admin-message {
-  position: relative;
-  margin: 16px 24px;
-  padding: 12px 16px;
-  border-radius: 4px; }
-  .sendbird-theme--light .sendbird-openchannel-admin-message {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-openchannel-admin-message {
-    background-color: var(--sendbird-dark-background-500); }
-  .sendbird-theme--light .sendbird-openchannel-admin-message:hover {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-openchannel-admin-message:hover {
-    background-color: var(--sendbird-dark-background-400); }
-  .sendbird-openchannel-admin-message .sendbird-openchannel-admin-message__text {
-    word-wrap: break-word; }
-
 .sendbird-openchannel-user-message {
   position: relative;
   display: flex;
@@ -358,6 +342,22 @@
       background-color: var(--sendbird-light-primary-100); }
     .sendbird-theme--dark .sendbird-openchannel-user-message .sendbird-openchannel-user-message__context-menu .sendbird-openchannel-user-message__context-menu--icon:hover {
       background-color: var(--sendbird-dark-background-700); }
+
+.sendbird-openchannel-admin-message {
+  position: relative;
+  margin: 16px 24px;
+  padding: 12px 16px;
+  border-radius: 4px; }
+  .sendbird-theme--light .sendbird-openchannel-admin-message {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .sendbird-openchannel-admin-message {
+    background-color: var(--sendbird-dark-background-500); }
+  .sendbird-theme--light .sendbird-openchannel-admin-message:hover {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .sendbird-openchannel-admin-message:hover {
+    background-color: var(--sendbird-dark-background-400); }
+  .sendbird-openchannel-admin-message .sendbird-openchannel-admin-message__text {
+    word-wrap: break-word; }
 
 .sendbird-openchannel-og-message {
   position: relative;
@@ -4520,38 +4520,34 @@
   .sendbird-theme--dark .sendbird-message-input.sendbird-message-input__disabled svg {
     fill: var(--sendbird-dark-ondark-03); }
 
-.sendbird-notification {
+.rogu-notification {
   margin-top: 8px;
   margin-left: 24px;
   margin-right: 24px;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 0 2px;
   height: 32px;
   display: flex;
   align-items: center;
   justify-content: center; }
-  .sendbird-theme--light .sendbird-notification {
-    background-color: var(--sendbird-light-primary-300); }
-  .sendbird-theme--dark .sendbird-notification {
-    background-color: var(--sendbird-dark-primary-200); }
-  .sendbird-notification .sendbird-notification__text {
+  .sendbird-theme--light .rogu-notification {
+    background-color: var(--sendbird-light-secondary-300); }
+  .sendbird-theme--dark .rogu-notification {
+    background-color: var(--sendbird-dark-secondary-200); }
+  .rogu-notification .rogu-notification__text {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 8px; }
-  .sendbird-notification:hover {
+  .rogu-notification:hover {
     cursor: pointer; }
-    .sendbird-theme--light .sendbird-notification:hover {
-      background-color: var(--sendbird-light-primary-400); }
-    .sendbird-theme--dark .sendbird-notification:hover {
-      background-color: var(--sendbird-dark-primary-300); }
-  .sendbird-theme--light .sendbird-notification.sendbird-notification--frozen {
+  .sendbird-theme--light .rogu-notification.rogu-notification--frozen {
     background-color: var(--sendbird-light-information-100); }
-  .sendbird-theme--dark .sendbird-notification.sendbird-notification--frozen {
+  .sendbird-theme--dark .rogu-notification.rogu-notification--frozen {
     background-color: var(--sendbird-dark-information-100); }
-  .sendbird-theme--light .sendbird-notification.sendbird-notification--frozen .sendbird-notification__text {
+  .sendbird-theme--light .rogu-notification.rogu-notification--frozen .rogu-notification__text {
     color: var(--sendbird-light-onlight-01); }
-  .sendbird-theme--dark .sendbird-notification.sendbird-notification--frozen .sendbird-notification__text {
+  .sendbird-theme--dark .rogu-notification.rogu-notification--frozen .rogu-notification__text {
     color: var(--sendbird-dark-onlight-01); }
 
 /*# sourceMappingURL=index.css.map */
