@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { format } from 'date-fns';
@@ -24,103 +24,121 @@ export const FileViewerComponent = ({
   onClose,
   onDelete,
   createdAt,
-}) => (
-  <div className="rogu-fileviewer">
-    <div className="rogu-fileviewer__header">
-      <div className="rogu-fileviewer__header__left">
-        <div className="rogu-fileviewer__header__left__avatar">
-          <Avatar height="32px" width="32px" src={profileUrl} />
-        </div>
-        <div className="rogu-fileviewer__header__left__metadata">
-          <div>
-            <Label
-              className="rogu-fileviewer__header__left__sender-name"
-              type={LabelTypography.H_2}
-              color={LabelColors.ONBACKGROUND_1}
-            >
-              {userName}
-            </Label>
+}) => {
+  const [showToast, setShowToast] = useState(false);
+  const onDownloadClick = () => {
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+  return (
+    <div className="rogu-fileviewer">
+      <div className="rogu-fileviewer__header">
+        <div className="rogu-fileviewer__header__left">
+          <div className="rogu-fileviewer__header__left__avatar">
+            <Avatar height="32px" width="32px" src={profileUrl} />
           </div>
-          <div>
-            <Label
-              className="rogu-fileviewer__header__left__createdat"
-              type={LabelTypography.BODY_1}
-              color={LabelColors.ONBACKGROUND_2}
-            >
-              {format(createdAt, 'dd/MM/yyyy HH.mm')}
-            </Label>
+          <div className="rogu-fileviewer__header__left__metadata">
+            <div>
+              <Label
+                className="rogu-fileviewer__header__left__sender-name"
+                type={LabelTypography.H_3}
+                color={LabelColors.ONBACKGROUND_1}
+              >
+                {userName}
+              </Label>
+            </div>
+            <div>
+              <Label
+                className="rogu-fileviewer__header__left__createdat"
+                type={LabelTypography.BODY_1}
+                color={LabelColors.ONBACKGROUND_2}
+              >
+                {format(createdAt, 'dd/MM/yyyy HH.mm')}
+              </Label>
+            </div>
+          </div>
+        </div>
+        <div className="rogu-fileviewer__header__right">
+          {
+            isSupportedFileView(type) && (
+              <div className="rogu-fileviewer__header__right__actions">
+                <a
+                  className="rogu-fileviewer__header__right__actions__download"
+                  rel="noopener noreferrer"
+                  href={url}
+                  onClick={onDownloadClick}
+                // target="_blank"
+                >
+                  <Icon
+                    type={IconTypes.ROGU_DOWNLOAD}
+                    height="24px"
+                    width="24px"
+                  />
+                </a>
+                {
+                  onDelete && isByMe && (
+                    <div className="rogu-fileviewer__header__right__actions__delete">
+                      <Icon
+                        type={IconTypes.ROGU_DELETE}
+                        height="24px"
+                        width="24px"
+                        onClick={onDelete}
+                      />
+                    </div>
+                  )
+                }
+              </div>
+            )
+          }
+          <div className="rogu-fileviewer__header__right__actions__close">
+            <Icon
+              type={IconTypes.ROGU_CLOSE}
+              height="24px"
+              width="24px"
+              onClick={onClose}
+            />
           </div>
         </div>
       </div>
-      <div className="rogu-fileviewer__header__right">
+      <div className="rogu-fileviewer__content">
+        {isVideo(type) && (
+          // eslint-disable-next-line jsx-a11y/media-has-caption
+          <video controls className="rogu-fileviewer__content__video">
+            <source src={url} type={type} />
+          </video>
+        )}
         {
-          isSupportedFileView(type) && (
-            <div className="rogu-fileviewer__header__right__actions">
-              <a
-                className="rogu-fileviewer__header__right__actions__download"
-                rel="noopener noreferrer"
-                href={url}
-                // target="_blank"
-              >
-                <Icon
-                  type={IconTypes.ROGU_DOWNLOAD}
-                  height="24px"
-                  width="24px"
-                />
-              </a>
-              {
-                onDelete && isByMe && (
-                  <div className="rogu-fileviewer__header__right__actions__delete">
-                    <Icon
-                      type={IconTypes.ROGU_DELETE}
-                      height="24px"
-                      width="24px"
-                      onClick={onDelete}
-                    />
-                  </div>
-                )
-              }
+          isImage(type) && (
+            <img
+              src={url}
+              alt={fileName}
+              className="rogu-fileviewer__content__img"
+            />
+          )
+        }
+        {
+          !isSupportedFileView(type) && (
+            <div className="rogu-fileviewer__content__unsupported">
+              <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
+                Unsupported message
+              </Label>
             </div>
           )
         }
-        <div className="rogu-fileviewer__header__right__actions__close">
-          <Icon
-            type={IconTypes.ROGU_CLOSE}
-            height="24px"
-            width="24px"
-            onClick={onClose}
-          />
-        </div>
+      </div>
+      <div className={`rogu-fileviewer__download__toast ${showToast && 'show'}`}>
+        <Label
+          type={LabelTypography.BODY_3}
+          color={LabelColors.ONBACKGROUND_5}
+        >
+          Berhasil diunduh
+        </Label>
       </div>
     </div>
-    <div className="rogu-fileviewer__content">
-      {isVideo(type) && (
-        // eslint-disable-next-line jsx-a11y/media-has-caption
-        <video controls className="rogu-fileviewer__content__video">
-          <source src={url} type={type} />
-        </video>
-      )}
-      {
-        isImage(type) && (
-          <img
-            src={url}
-            alt={fileName}
-            className="rogu-fileviewer__content__img"
-          />
-        )
-      }
-      {
-        !isSupportedFileView(type) && (
-          <div className="rogu-fileviewer__content__unsupported">
-            <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
-              Unsupported message
-            </Label>
-          </div>
-        )
-      }
-    </div>
-  </div>
-);
+  );
+};
 
 FileViewerComponent.propTypes = {
   profileUrl: PropTypes.string.isRequired,
