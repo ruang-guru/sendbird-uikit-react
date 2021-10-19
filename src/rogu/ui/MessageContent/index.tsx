@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef } from "react";
+import React, { ReactElement, useRef, useState } from "react";
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
 
 import Label, { LabelTypography, LabelColors } from "../Label";
@@ -30,6 +30,7 @@ import {
 import { generateColorFromString } from "./utils";
 
 import "./index.scss";
+import MessageItemMenu from "../MessageItemMenu";
 
 interface Props {
   chainBottom?: boolean;
@@ -50,6 +51,7 @@ interface Props {
     reactionKey: string,
     isReacted: boolean
   ) => void;
+  disabled?: boolean;
 }
 export default function MessageContent({
   channel,
@@ -63,13 +65,18 @@ export default function MessageContent({
   // useReplying,
   // resendMessage,
   // scrollToMessage,
-  // showEdit,
+  showEdit,
   showFileViewer,
+  showRemove,
+  resendMessage,
+  disabled=false,
 }: // showRemove,
 // toggleReaction,
 Props): ReactElement {
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
+
+  const [supposedHover, setSupposedHover] = useState(false);
 
   const isByMe: boolean =
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
@@ -115,6 +122,7 @@ Props): ReactElement {
           <div className="rogu-message-content__bubble__header">
             {/* Sender's name */}
             {!isByMe && !chainTop && (
+            <>
               <Label
                 className="rogu-message-content__sender-name"
                 color={LabelColors.ONBACKGROUND_2}
@@ -125,42 +133,77 @@ Props): ReactElement {
                 }}
                 type={LabelTypography.CAPTION_1}
               >
-                {getSenderName(message)}
+                {getSenderName(message)}                
               </Label>
+
+              <MessageItemMenu
+              className="rogu-message-content-menu__normal-menu"
+              channel={channel}
+              message={message as UserMessage | FileMessage}
+              isByMe={isByMe}
+              disabled={disabled}
+              showEdit={showEdit}
+              showRemove={showRemove}
+              resendMessage={resendMessage}
+              setSupposedHover={setSupposedHover}/>
+            </>
             )}
           </div>
 
-          {/* Message content */}
-          {isTextMessage(message as UserMessage) && (
-            <TextMessageItemBody
-              isByMe={isByMe}
-              message={message as UserMessage}
-            />
-          )}
-          {isOGMessage(message as UserMessage) && (
-            <OGMessageItemBody
-              message={message as UserMessage}
-              isByMe={isByMe}
-            />
-          )}
-          {getUIKitMessageType(message as FileMessage) ===
-            messageTypes.FILE && (
-            <FileMessageItemBody
-              message={message as FileMessage}
-              isByMe={isByMe}
-            />
-          )}
-          {isThumbnailMessage(message as FileMessage) && (
-            <ThumbnailMessageItemBody
-              message={message as FileMessage}
-              isByMe={isByMe}
-              showFileViewer={showFileViewer}
-            />
-          )}
-          {getUIKitMessageType(message as FileMessage) ===
-            messageTypes.UNKNOWN && (
-            <UnknownMessageItemBody message={message} isByMe={isByMe} />
-          )}
+          <div className="rogu-message-content__bubble__body">
+            <div>
+            {/* Message content */}
+            {isTextMessage(message as UserMessage) && (
+              <TextMessageItemBody
+                isByMe={isByMe}
+                message={message as UserMessage}
+              />
+            )}
+            {isOGMessage(message as UserMessage) && (
+              <OGMessageItemBody
+                message={message as UserMessage}
+                isByMe={isByMe}
+              />
+            )}
+            {getUIKitMessageType(message as FileMessage) ===
+              messageTypes.FILE && (
+              <FileMessageItemBody
+                message={message as FileMessage}
+                isByMe={isByMe}
+              />
+            )}
+            {isThumbnailMessage(message as FileMessage) && (
+              <ThumbnailMessageItemBody
+                message={message as FileMessage}
+                isByMe={isByMe}
+                showFileViewer={showFileViewer}
+              />
+            )}
+            {getUIKitMessageType(message as FileMessage) ===
+              messageTypes.UNKNOWN && (
+              <UnknownMessageItemBody message={message} isByMe={isByMe} />
+            )}
+            </div>
+            {
+              isByMe && (
+                <MessageItemMenu
+                  className="rogu-message-content-menu__normal-menu"
+                  channel={channel}
+                  message={message as UserMessage | FileMessage}
+                  isByMe={isByMe}
+                  disabled={disabled}
+                  showEdit={showEdit}
+                  showRemove={showRemove}
+                  resendMessage={resendMessage}
+                  setSupposedHover={setSupposedHover}/>
+
+              )
+            }
+            
+
+          </div>
+          
+          
         </div>
 
         {/* Message status */}

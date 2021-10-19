@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+
+.rogu-message-item-menu {
+  .rogu-message-item-menu__trigger {
+    background-color: pink;
+    padding-top: 4px;
+    .rogu-message-item-menu__trigger__icon {
+      //margin-top: 4px;
+      background-color: pink;
+    }
+  }
+}
+
+.rogu-message-item-menu__list {
+  .rogu-message-item-menu__list__menu-item {
+    background-color: plum;
+  }
+}

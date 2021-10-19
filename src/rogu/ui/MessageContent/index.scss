@@ -44,6 +44,7 @@ $avatarSize: 2rem;
         line-height: 0;
         display: flex;
         flex-wrap: nowrap;
+        justify-content: space-between;
 
         .rogu-message-content__sender-name {
           margin-bottom: 4px;
@@ -66,6 +67,10 @@ $avatarSize: 2rem;
         border-style: solid;
         position: absolute;
         top: 0;
+      }
+
+      .rogu-message-content__bubble__body {
+        display: flex;
       }
     }
 
@@ -156,6 +161,12 @@ $avatarSize: 2rem;
           border-top-right-radius: 0;
         }
       }
+    }
+  }
+
+  &:hover {
+    .rogu-message-content-menu__normal-menu {
+      display: flex;
     }
   }
 }
