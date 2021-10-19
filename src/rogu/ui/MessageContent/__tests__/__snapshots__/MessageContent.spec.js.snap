@@ -63,18 +63,27 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
       >
         <span
           className="rogu-message-content__sender-name sendbird-label sendbird-label--caption-1 sendbird-label--color-onbackground-2"
+          style={
+            Object {
+              "color": "#6073E2",
+            }
+          }
         >
           Kukuh Aji Sulistyo Bangun Jaya Abadi Mangkubumi
         </span>
       </div>
       <div
-        className=" rogu-text-message-item-body"
+        className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming"
       >
-        <span
-          className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
+        <div
+          className="rogu-text-message-item-body__inner"
         >
-          Welcome to the classroom!
-        </span>
+          <span
+            className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
+          >
+            Welcome to the classroom!
+          </span>
+        </div>
       </div>
     </div>
     <div

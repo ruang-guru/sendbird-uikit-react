@@ -1,25 +1,25 @@
-import { L as LocalizationContext, b as _slicedToArray } from './LocalizationContext-f19c9dd2.js';
+import { L as LocalizationContext, b as _slicedToArray } from './LocalizationContext-f8d5fe0f.js';
 import React__default, { useState, useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Sendbird from './SendbirdProvider.js';
 import ChannelList from './ChannelList.js';
-import { b as Conversation } from './index-75b350c6.js';
+import { b as Conversation } from './index-a04fd801.js';
 import ChannelSettings from './ChannelSettings.js';
 import MessageSearch from './MessageSearch.js';
-import { a6 as Label, a7 as LabelTypography, a8 as LabelColors, a as Icon, b as IconTypes, a9 as IconColors, ac as Loader } from './index-be4a86ff.js';
-import { I as IconButton } from './index-9c9f8926.js';
+import { a6 as Label, a7 as LabelTypography, a8 as LabelColors, a as Icon, b as IconTypes, a9 as IconColors, ac as Loader } from './index-67cd6945.js';
+import { I as IconButton } from './index-667d6535.js';
 import 'sendbird';
-import './actionTypes-298e07c1.js';
+import './actionTypes-d90efbdb.js';
 import 'css-vars-ponyfill';
-import './index-926cbb20.js';
-import './utils-f90a7ccf.js';
-import './LeaveChannel-b5288d63.js';
-import './index-3a7119b2.js';
-import './index-576fb3dc.js';
-import './index-2e2fa02b.js';
-import './index-430089cb.js';
+import './index-8ffd35bf.js';
+import './utils-24936a33.js';
+import './LeaveChannel-2b34e3f8.js';
+import './index-fb13db61.js';
+import './index-dfcc5a89.js';
+import './index-1c2215d9.js';
+import './index-8103e017.js';
 import 'react-dom';
-import './index-f51e34e2.js';
+import './index-d9abb890.js';
 
 var COMPONENT_CLASS_NAME = 'sendbird-message-search-pannel';
 

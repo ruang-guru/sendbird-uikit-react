@@ -208,7 +208,7 @@ export default function reducer(state, action) {
         ...state,
         unreadCount,
         unreadSince: (unreadCount === 1)
-          ? format(new Date(), 'p MMM dd')
+          ? format(new Date(), 'HH.mm dd MMMM yyyy')
           : unreadSince,
         allMessages: passUnsuccessfullMessages(state.allMessages, message),
       };

@@ -44,14 +44,27 @@ $avatarSize: 2rem;
         line-height: 0;
         display: flex;
         flex-wrap: nowrap;
+        margin-bottom: 0.25rem;
 
         .rogu-message-content__sender-name {
-          margin-bottom: 4px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
+          word-break: break-all;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
+        }
+
+        .rogu-message-content__operator-label {
+          margin-left: 0.5rem;
+          padding: 0.25rem 0.75rem;
+          border-radius: 0.25rem;
+          white-space: nowrap;
+
+          @include themed() {
+            color: t(on-bg-1);
+            background-color: t(bg-1);
+          }
         }
 
         .rogu-message-content__menu {
@@ -159,147 +172,3 @@ $avatarSize: 2rem;
     }
   }
 }
-
-// // incoming
-// .rogu-message-content.incoming {
-//   .rogu-message-content__left {
-//     position: relative;
-//     display: inline-flex;
-//     min-width: 40px;
-
-//     .rogu-message-content__left__avatar {
-//       position: absolute;
-//       left: 0px;
-//       bottom: 2px;
-//     }
-//   }
-
-//   .rogu-message-content__middle {
-//     position: relative;
-//     display: inline-flex;
-//     flex-direction: column;
-//     max-width: 400px;
-
-//     .rogu-message-content__middle__sender-name {
-//       position: relative;
-//       margin-left: 12px;
-//       margin-bottom: 4px;
-//     }
-//   }
-
-//   .rogu-message-content__right {
-//     position: relative;
-//     display: inline-flex;
-//     width: 50px;
-//     &.use-reactions { width: 70px; }
-//     margin-left: 4px;
-//     padding-top: 18px;
-//     &.chain-top { padding-top: 2px; }
-
-//     .rogu-message-content__right__created-at {
-//       position: absolute;
-//       bottom: 2px;
-//       white-space: nowrap;
-//       display: inline-flex;
-//       &.supposed-hover {
-//         display: none;
-//       }
-//     }
-
-//     .rogu-message-content-menu {
-//       position: relative;
-//       flex-direction: row;
-//       height: 32px;
-//       display: none;
-//       &.supposed-hover {
-//         display: inline-flex;
-//       }
-//     }
-//   }
-
-//   &:hover {
-//     .rogu-message-content__right {
-//       .rogu-message-content__right__created-at {
-//         display: none;
-//       }
-//       .rogu-message-content-menu {
-//         display: inline-flex;
-//       }
-//     }
-//   }
-// }
-
-// // outgoing
-// .rogu-message-content.outgoing {
-//   .rogu-message-content__left {
-//     position: relative;
-//     box-sizing: border-box;
-//     display: inline-flex;
-//     justify-content: end;
-//     width: 50px;
-//     &.use-reactions { width: 70px }
-
-//     .rogu-message-content__left__created-at {
-//       position: absolute;
-//       bottom: 2px;
-//       right: 4px;
-//       white-space: nowrap;
-//       display: flex;
-//       box-sizing: content-box;
-//       min-width: 16px;
-//       min-height: 16px;
-//       &.supposed-hover {
-//         display: none;
-//       }
-//     }
-
-//     .rogu-message-content-menu {
-//       position: absolute;
-//       top: 2px;
-//       right: 4px;
-//       flex-direction: row;
-//       display: none;
-//       &.supposed-hover {
-//         display: inline-flex;
-//       }
-//     }
-//   }
-
-//   .rogu-message-content__middle {
-//     position: relative;
-//     display: inline-flex;
-//     flex-direction: column;
-//     max-width: 400px;
-//   }
-
-//   .rogu-message-content__right {
-//     display: none;
-//   }
-
-//   &:hover {
-//     .rogu-message-content__left {
-//       .rogu-message-content__left__created-at {
-//         display: none;
-//       }
-//       .rogu-message-content-menu {
-//         display: inline-flex;
-//       }
-//     }
-//   }
-// }
-
-// .rogu-message-content-reactions {
-//   position: relative;
-//   width: 100%;
-//   border-radius: 0px 0px 16px 16px;
-//   @include themed() { background-color: t(bg-1) }
-//   &.primary {
-//     @include themed() { background-color: t(primary-3) }
-//   }
-//   &.mouse-hover, &:hover {
-//     @include themed() { background-color: t(bg-2) }
-//     &.primary {
-//       @include themed() { background-color: t(primary-4) }
-//     }
-//   }
-// }

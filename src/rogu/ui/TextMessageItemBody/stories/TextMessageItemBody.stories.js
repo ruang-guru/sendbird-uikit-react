@@ -1,56 +1,50 @@
-import React from 'react';
-import TextMessageItemBody from '../index.tsx';
+import React from "react";
 
-export default { title: 'UI Components/TextMessageItemBody' };
+import TextMessageItemBody from "../index.tsx";
+
+import { LONG_MESSAGE } from "../../../../../__mocks__/messagesMock";
+
+export default { title: "ruangkelas/UI Components/TextMessageItemBody" };
+
 export const withText = () => (
-  <div>
+  <div style={{ maxWidth: "35rem" }}>
     <TextMessageItemBody
       message={{
-        message: 'dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk',
+        message:
+          "This is an outgoing message. Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         sender: {
-          userId: 'hoon-army-001',
+          userId: "hoon-army-001",
         },
-        messageType: 'user',
+        messageType: "user",
         updatedAt: 0,
       }}
       isByMe
     />
     <br />
     <br />
+
     <TextMessageItemBody
       message={{
-        message: 'dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk',
+        message: "This is a long outgoing message. " + LONG_MESSAGE.message,
         sender: {
-          userId: 'hoon-army-002',
+          userId: "hoon-army-002",
         },
-        messageType: 'user',
+        messageType: "user",
         updatedAt: 0,
-      }}
-      isByMe={false}
-    />
-    <br />
-    <br />
-    <TextMessageItemBody
-      message={{
-        message: 'dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk',
-        sender: {
-          userId: 'hoon-army-001',
-        },
-        messageType: 'user',
-        updatedAt: 10,
       }}
       isByMe
     />
+
     <br />
     <br />
     <TextMessageItemBody
       message={{
-        message: 'dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk dhjfkldjfklasklfjdlskfjldksfjkldsjfkljdslk',
+        message: "This is a long incoming message. " + LONG_MESSAGE.message,
         sender: {
-          userId: 'hoon-army-002',
+          userId: "hoon-army-002",
         },
-        messageType: 'user',
-        updatedAt: 10,
+        messageType: "user",
+        updatedAt: 0,
       }}
       isByMe={false}
     />

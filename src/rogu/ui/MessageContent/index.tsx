@@ -1,10 +1,9 @@
-import React, { ReactElement, useRef } from "react";
+import React, { useContext, useRef, ReactElement } from "react";
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
 
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";
 import TextMessageItemBody from "../TextMessageItemBody";
-import "./index.scss";
 
 import Avatar from "../../../ui/Avatar";
 import ClientAdminMessage from "../../../ui/AdminMessage";
@@ -12,6 +11,8 @@ import FileMessageItemBody from "../../../ui/FileMessageItemBody";
 import ThumbnailMessageItemBody from "../../../ui/ThumbnailMessageItemBody";
 import OGMessageItemBody from "../../../ui/OGMessageItemBody";
 import UnknownMessageItemBody from "../../../ui/UnknownMessageItemBody";
+
+import { LocalizationContext } from "../../../lib/LocalizationContext";
 
 import {
   getClassName,
@@ -21,12 +22,18 @@ import {
   isOGMessage,
   isThumbnailMessage,
   isMessageSentByMe,
+  isMessageSentByOperator,
   getOutgoingMessageState,
   getSenderName,
   getMessageCreatedAt,
   isSentMessage,
   isPendingMessage,
+  CoreMessageType,
 } from "../../../utils";
+
+import { generateColorFromString } from "./utils";
+
+import "./index.scss";
 
 interface Props {
   chainBottom?: boolean;
@@ -48,6 +55,7 @@ interface Props {
     isReacted: boolean
   ) => void;
 }
+
 export default function MessageContent({
   channel,
   chainBottom = false,
@@ -65,6 +73,7 @@ export default function MessageContent({
 }: // showRemove,
 // toggleReaction,
 Props): ReactElement {
+  const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
 
@@ -72,6 +81,9 @@ Props): ReactElement {
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
     !isSentMessage(channel, message as UserMessage | FileMessage) ||
     isMessageSentByMe(userId, message as UserMessage | FileMessage);
+  const isOperatorMessage: boolean = isMessageSentByOperator(
+    message as CoreMessageType
+  );
 
   const isByMeClassName = isByMe
     ? "rogu-message-content--outgoing"
@@ -109,22 +121,42 @@ Props): ReactElement {
       <div className="rogu-message-content__content">
         {/* Bubble wrapper */}
         <div className="rogu-message-content__bubble">
-          <div className="rogu-message-content__bubble__header">
-            {/* Sender's name */}
-            {!isByMe && !chainTop && (
-              <Label
-                className="rogu-message-content__sender-name"
-                type={LabelTypography.CAPTION_1}
-                color={LabelColors.ONBACKGROUND_2}
-              >
-                {getSenderName(message)}
-              </Label>
-            )}
-          </div>
+          {!isByMe && (
+            <div className="rogu-message-content__bubble__header">
+              {/* Sender's name */}
+              {!chainTop && (
+                <Label
+                  className="rogu-message-content__sender-name"
+                  color={LabelColors.ONBACKGROUND_2}
+                  style={{
+                    color: generateColorFromString(
+                      message?.sender?.nickname || ""
+                    ),
+                  }}
+                  type={LabelTypography.CAPTION_1}
+                >
+                  {getSenderName(message)}
+                </Label>
+              )}
+
+              {/* Teacher label */}
+              {isOperatorMessage && !chainTop && (
+                <Label
+                  className="rogu-message-content__operator-label"
+                  type={LabelTypography.CAPTION_3}
+                >
+                  {stringSet.LABEL__OPERATOR}
+                </Label>
+              )}
+            </div>
+          )}
 
           {/* Message content */}
           {isTextMessage(message as UserMessage) && (
-            <TextMessageItemBody message={message as UserMessage} />
+            <TextMessageItemBody
+              isByMe={isByMe}
+              message={message as UserMessage}
+            />
           )}
           {isOGMessage(message as UserMessage) && (
             <OGMessageItemBody
