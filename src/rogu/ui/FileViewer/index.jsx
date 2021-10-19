@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { format } from 'date-fns';
@@ -10,6 +10,7 @@ import Icon, { IconTypes } from '../Icon';
 import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
 
 import { isImage, isVideo, isSupportedFileView } from '../../../utils';
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 export const FileViewerComponent = ({
   // sender
@@ -25,6 +26,8 @@ export const FileViewerComponent = ({
   onDelete,
   createdAt,
 }) => {
+  const { stringSet } = useContext(LocalizationContext);
+
   const [showToast, setShowToast] = useState(false);
   const onDownloadClick = () => {
     setShowToast(true);
@@ -133,7 +136,7 @@ export const FileViewerComponent = ({
           type={LabelTypography.BODY_3}
           color={LabelColors.ONBACKGROUND_5}
         >
-          Berhasil diunduh
+          {stringSet.TOAST__DOWNLOAD}
         </Label>
       </div>
     </div>

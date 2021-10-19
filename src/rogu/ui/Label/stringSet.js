@@ -95,6 +95,7 @@ const getStringSet = (lang = 'en') => {
       /* ----- ADDITIONAL ------ */
       BUTTON__READ_MORE: 'Read more',
       LABEL__OPERATOR: 'Teacher',
+      TOAST__DOWNLOAD: 'Download successful',
     },
   };
   return stringSet[lang];
