@@ -132,7 +132,6 @@ export default function MessageItemMenu({
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
-                    //copyToClipboard((message as UserMessage)?.message);
                     showFileViewer(true);
                     closeDropdown();
                     

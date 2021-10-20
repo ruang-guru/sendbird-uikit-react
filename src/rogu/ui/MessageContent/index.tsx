@@ -171,7 +171,7 @@ Props): ReactElement {
           </div>
 
           <div className="rogu-message-content__bubble__body">
-            <div>
+            <div className="rogu-message-content__buble__body-text">
             {/* Message content */}
             {isTextMessage(message as UserMessage) && (
               <TextMessageItemBody

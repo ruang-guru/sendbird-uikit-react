@@ -85,6 +85,10 @@ $avatarSize: 2rem;
 
       .rogu-message-content__bubble__body {
         display: flex;
+
+        .rogu-message-content__buble__body-text {
+          margin-right: 0.25rem;
+        }
       }
     }
 
