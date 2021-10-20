@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef, useState } from "react";
+import React, { ReactElement, useRef, useState, useContext } from "react";
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
 
 import Label, { LabelTypography, LabelColors } from "../Label";
@@ -12,6 +12,8 @@ import ThumbnailMessageItemBody from "../../../ui/ThumbnailMessageItemBody";
 import OGMessageItemBody from "../../../ui/OGMessageItemBody";
 import UnknownMessageItemBody from "../../../ui/UnknownMessageItemBody";
 
+import { LocalizationContext } from "../../../lib/LocalizationContext";
+
 import {
   getClassName,
   getUIKitMessageTypes,
@@ -20,11 +22,13 @@ import {
   isOGMessage,
   isThumbnailMessage,
   isMessageSentByMe,
+  isMessageSentByOperator,
   getOutgoingMessageState,
   getSenderName,
   getMessageCreatedAt,
   isSentMessage,
   isPendingMessage,
+  CoreMessageType,
 } from "../../../utils";
 
 import { generateColorFromString } from "./utils";
@@ -53,6 +57,7 @@ interface Props {
   ) => void;
   disabled?: boolean;
 }
+
 export default function MessageContent({
   channel,
   chainBottom = false,
@@ -73,6 +78,7 @@ export default function MessageContent({
 }: // showRemove,
 // toggleReaction,
 Props): ReactElement {
+  const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
 
@@ -82,6 +88,9 @@ Props): ReactElement {
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
     !isSentMessage(channel, message as UserMessage | FileMessage) ||
     isMessageSentByMe(userId, message as UserMessage | FileMessage);
+  const isOperatorMessage: boolean = isMessageSentByOperator(
+    message as CoreMessageType
+  );
 
   const isByMeClassName = isByMe
     ? "rogu-message-content--outgoing"
@@ -135,6 +144,15 @@ Props): ReactElement {
               >
                 {getSenderName(message)}                
               </Label>
+              {/* Teacher label */}
+              {isOperatorMessage && !chainTop && (
+                <Label
+                  className="rogu-message-content__operator-label"
+                  type={LabelTypography.CAPTION_3}
+                >
+                  {stringSet.LABEL__OPERATOR}
+                </Label>
+              )}
 
               <MessageItemMenu
               className="rogu-message-content-menu__normal-menu"

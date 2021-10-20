@@ -45,14 +45,27 @@ $avatarSize: 2rem;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
+        margin-bottom: 0.25rem;
 
         .rogu-message-content__sender-name {
-          margin-bottom: 4px;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
+          word-break: break-all;
           -webkit-line-clamp: 1;
           -webkit-box-orient: vertical;
+        }
+
+        .rogu-message-content__operator-label {
+          margin-left: 0.5rem;
+          padding: 0.25rem 0.75rem;
+          border-radius: 0.25rem;
+          white-space: nowrap;
+
+          @include themed() {
+            color: t(on-bg-1);
+            background-color: t(bg-1);
+          }
         }
 
         .rogu-message-content__menu {
