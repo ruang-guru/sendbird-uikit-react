@@ -29,6 +29,7 @@ interface Props {
   showRemove?: (bool: boolean) => void;
   resendMessage?: (message: UserMessage | FileMessage) => void;
   setSupposedHover?: (bool: boolean) => void;
+  showFileViewer?: (bool: boolean) => void;
 }
 
 export default function MessageItemMenu({
@@ -41,6 +42,7 @@ export default function MessageItemMenu({
   showRemove,
   resendMessage,
   setSupposedHover,
+  showFileViewer,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const triggerRef = useRef(null);
@@ -131,7 +133,9 @@ export default function MessageItemMenu({
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
                     //copyToClipboard((message as UserMessage)?.message);
+                    showFileViewer(true);
                     closeDropdown();
+                    
                   }}
                   iconType={IconTypes.DOWNLOAD}
                 >

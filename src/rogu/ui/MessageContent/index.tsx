@@ -164,7 +164,8 @@ Props): ReactElement {
               showEdit={showEdit}
               showRemove={showRemove}
               resendMessage={resendMessage}
-              setSupposedHover={setSupposedHover}/>
+              setSupposedHover={setSupposedHover}
+              showFileViewer={showFileViewer}/>
             </>
             )}
           </div>
@@ -214,7 +215,8 @@ Props): ReactElement {
                   showEdit={showEdit}
                   showRemove={showRemove}
                   resendMessage={resendMessage}
-                  setSupposedHover={setSupposedHover}/>
+                  setSupposedHover={setSupposedHover}
+                  showFileViewer={showFileViewer}/>
 
               )
             }
