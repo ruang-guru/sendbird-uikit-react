@@ -1,6 +1,6 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 
-[class*=sendbird-label] {
+[class*="sendbird-label"] {
   font-family: var(--sendbird-font-family-default);
 }
 
@@ -98,6 +98,15 @@
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+}
+
+.sendbird-label--typing-indicator {
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: italic;
   line-height: 1;
   letter-spacing: normal;
 }

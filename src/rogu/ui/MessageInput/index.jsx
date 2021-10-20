@@ -3,16 +3,16 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-import './index.scss';
-
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 import IconButton from '../../../ui/IconButton';
 import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
+import {getClassName} from '../../../utils';
 
-import Icon, { IconTypes, IconColors } from '../../../ui/Icon';
-import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
-import { LocalizationContext } from '../../../lib/LocalizationContext';
-// import IconSend from '../../svgs/icon-send.svg';
-// import IconAttach from '../../svgs/icon-attach.svg';
+import Icon, { IconTypes, IconColors } from '../../ui/Icon';
+import Label, { LabelTypography, LabelColors } from '../../ui/Label';
+
+import './index.scss';
+
 
 const LINE_HEIGHT = 36;
 const noop = () => {};
@@ -91,18 +91,18 @@ const MessageInput = React.forwardRef((props, ref) => {
   return (
     <form
       className={[
-        isEdit ? 'sendbird-message-input__edit' : '',
-        disabled ? 'sendbird-message-input-form__disabled ' : '',
-      ].join(' sendbird-message-input__container ')}
+        isEdit ? 'rogu-message-input__edit' : '',
+        disabled ? 'rogu-message-input-form__disabled ' : '',
+      ].join(' rogu-message-input__container ')}
     >
       <div
         className={[
-          'sendbird-message-input',
-          disabled ? 'sendbird-message-input__disabled' : '',
+          'rogu-message-input',
+          disabled ? 'rogu-message-input__disabled' : '',
         ].join(' ')}
       >
         <textarea
-          className="sendbird-message-input--textarea"
+          className="rogu-message-input--textarea"
           disabled={disabled}
           ref={ref}
           name={name}
@@ -111,6 +111,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           onChange={(e) => {
             setInputValue(e.target.value);
             onStartTyping();
+            console.log(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.keyCode === KeyCode.SHIFT) {
@@ -130,7 +131,7 @@ const MessageInput = React.forwardRef((props, ref) => {
         {/* placeholder */}
         {!inputValue && (
           <Label
-            className="sendbird-message-input--placeholder"
+            className="rogu-message-input--placeholder"
             type={LabelTypography.BODY_1}
             color={LabelColors.ONBACKGROUND_3}
           >
@@ -141,7 +142,7 @@ const MessageInput = React.forwardRef((props, ref) => {
         {/* {
           (!isEdit && inputValue && inputValue.trim().length > 0) && (
             <IconButton
-              className="sendbird-message-input--send"
+              className="rogu-message-input--send"
               height="32px"
               width="32px"
               onClick={sendMessage}
@@ -158,7 +159,7 @@ const MessageInput = React.forwardRef((props, ref) => {
         {/* upload icon */}
         {!isEdit && (
           <IconButton
-            className="sendbird-message-input--attach"
+            className="rogu-message-input--attach"
             height="32px"
             width="32px"
             onClick={() => {
@@ -173,7 +174,7 @@ const MessageInput = React.forwardRef((props, ref) => {
               height="20px"
             />
             <input
-              className="sendbird-message-input--attach-input"
+              className="rogu-message-input--attach-input"
               type="file"
               ref={fileInputRef}
               onChange={handleUploadFile(onFileUpload)}
@@ -183,7 +184,7 @@ const MessageInput = React.forwardRef((props, ref) => {
 
         {!isEdit && (
           <IconButton
-            className="sendbird-message-input--send"
+            className={getClassName(["rogu-message-input--send", disabled ? "rogu-message-input--send-disabled" : ""])}
             height="36px"
             width="36px"
             onClick={sendMessage}
@@ -191,8 +192,8 @@ const MessageInput = React.forwardRef((props, ref) => {
             <Icon
               type={IconTypes.SEND}
               fillColor={IconColors.WHITE}
-              width="20px"
-              height="20px"
+              width="16px"
+              height="16px"
             />
           </IconButton>
         )}
@@ -200,9 +201,9 @@ const MessageInput = React.forwardRef((props, ref) => {
       {/* Edit */}
 
       {isEdit && (
-        <div className="sendbird-message-input--edit-action">
+        <div className="rogu-message-input--edit-action">
           <Button
-            className="sendbird-message-input--edit-action__cancel"
+            className="rogu-message-input--edit-action__cancel"
             type={ButtonTypes.SECONDARY}
             size={ButtonSizes.SMALL}
             onClick={onCancelEdit}
@@ -210,7 +211,7 @@ const MessageInput = React.forwardRef((props, ref) => {
             {stringSet.BUTTON__CANCEL}
           </Button>
           <Button
-            className="sendbird-message-input--edit-action__save"
+            className="rogu-message-input--edit-action__save"
             type={ButtonTypes.PRIMARY}
             size={ButtonSizes.SMALL}
             onClick={() => {
@@ -246,7 +247,7 @@ MessageInput.propTypes = {
 MessageInput.defaultProps = {
   value: '',
   onSendMessage: noop,
-  name: 'sendbird-message-input',
+  name: 'rogu-message-input',
   isEdit: false,
   disabled: false,
   placeholder: '',

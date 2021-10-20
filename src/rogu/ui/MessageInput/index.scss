@@ -1,15 +1,15 @@
 @import "../../../styles/variables";
 
-.sendbird-message-input__container {
+.rogu-message-input__container {
   padding: 12px 16px;
 }
 
-.sendbird-message-input {
+.rogu-message-input {
   display: flex;
   width: 100%;
   position: relative;
 
-  .sendbird-message-input--textarea {
+  .rogu-message-input--textarea {
     // width: 100%;
     width: calc(100% - 48px);
     border-radius: 42px;
@@ -46,13 +46,13 @@
 
     &:active {
       @include themed() {
-        border: solid 1px var(--sendbird-message-input-border-active);
+        border: solid 1px var(--rogu-message-input-border-active);
         color: t(on-bg-1);
       }
     }
   }
 
-  .sendbird-message-input--placeholder {
+  .rogu-message-input--placeholder {
     position: absolute;
     pointer-events: none;
     top: 9px;
@@ -66,38 +66,54 @@
     }
   }
 
-  .sendbird-message-input--attach {
+  .rogu-message-input--attach {
     position: absolute;
     right: 56px;
     bottom: 0;
     padding: 0;
+
+    &:hover {
+      background-color: transparent;
+      transform: scale(1.2);
+    }
   }
 
-  .sendbird-message-input--send-container {
+  .rogu-message-input--send-container {
     width: 36px;
     height: 36px;
   }
 
-  .sendbird-message-input--send {
+  .rogu-message-input--send {
     right: 0;
     bottom: 0;
     width: 36px;
     height: 36px;
     padding: 0;
     border-radius: 50%;
+    margin-left: 12px;
+
+    &:hover {
+      transform: scale(1.2);
+    }
 
     @include themed() {
       background-color: t(primary-4);
       box-shadow: 0 2px 12px t(overlay-2);
     }
+    .rogu-message-input--send-disabled {
+      @include themed() {
+        background-color: t(bg-4);
+        box-shadow: 0 2px 12px t(overlay-2);
+      }
+    }
   }
 
-  .sendbird-message-input--attach-input {
+  .rogu-message-input--attach-input {
     display: none;
   }
 }
 
-.sendbird-message-input__edit {
+.rogu-message-input__edit {
   padding: 16px;
   box-sizing: border-box;
 
@@ -106,7 +122,7 @@
   }
 }
 
-.sendbird-message-input--edit-action {
+.rogu-message-input--edit-action {
   text-align: right;
   margin-top: 4px;
 
@@ -114,7 +130,7 @@
     margin-left: 8px;
   }
 
-  .sendbird-message-input--edit-action__cancel {
+  .rogu-message-input--edit-action__cancel {
     width: 80px;
 
     @include themed() {
@@ -122,26 +138,26 @@
     }
   }
 
-  .sendbird-message-input--edit-action__save {
+  .rogu-message-input--edit-action__save {
     width: 80px;
   }
 }
 
-.sendbird-message-input-form__disabled {
+.rogu-message-input-form__disabled {
   cursor: not-allowed;
 }
 
-.sendbird-message-input.sendbird-message-input__disabled {
+.rogu-message-input.rogu-message-input__disabled {
   pointer-events: none;
   cursor: disabled;
 
-  .sendbird-message-input--textarea {
+  .rogu-message-input--textarea {
     @include themed() {
       background-color: t(bg-1);
     }
   }
 
-  .sendbird-message-input--send {
+  .rogu-message-input--send {
     @include themed() {
       background-color: t(bg-3);
     }
