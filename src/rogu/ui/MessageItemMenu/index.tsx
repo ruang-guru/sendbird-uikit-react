@@ -1,5 +1,5 @@
 import React, { ReactElement, useContext, useRef } from 'react';
-import { FileMessage, GroupChannel, OpenChannel, UserMessage } from 'sendbird';
+import { FileMessage, GroupChannel, OpenChannel, User, UserMessage } from 'sendbird';
 
 // import ContextMenu, { MenuItems, MenuItem } from '../../../ui/ContextMenu';
 import IconButton from '../../../ui/IconButton';
@@ -10,6 +10,7 @@ import {
   isSentMessage,
   isFailedMessage,
   isPendingMessage,
+  isThumbnailMessage
 } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 
@@ -46,12 +47,16 @@ export default function MessageItemMenu({
   const containerRef = useRef(null);
 
   const showMenuItemCopy: boolean = isUserMessage(message as UserMessage);
-  const showMenuItemReply: boolean = false && !isFailedMessage(channel, message) && !isPendingMessage(channel, message);
-  const showMenuItemEdit: boolean = (isUserMessage(message as UserMessage) && isSentMessage(channel, message) && isByMe);
+  const showMenuItemReply: boolean = isUserMessage(message as UserMessage);
   const showMenuItemResend: boolean = (isFailedMessage(channel, message) && message.isResendable() && isByMe);
   const showMenuItemDelete: boolean = (isSentMessage(channel, message) && isByMe);
+  {/* hide menu edit */}
+  const showMenuItemEdit: boolean =false && (isUserMessage(message as UserMessage) && isSentMessage(channel, message) && isByMe);
 
-  if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete)) {
+  {/* show menu view on image or video */}
+  const showMenuItemView:boolean = isThumbnailMessage(message as FileMessage);
+
+  if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
   }
   return (
@@ -96,17 +101,6 @@ export default function MessageItemMenu({
               closeDropdown={closeDropdown}
               openLeft={isByMe}
             >
-              {showMenuItemCopy && (
-                <MenuItem
-                  className="rogu-message-item-menu__list__menu-item"
-                  onClick={() => {
-                    copyToClipboard((message as UserMessage)?.message);
-                    closeDropdown();
-                  }}
-                >
-                  {stringSet.MESSAGE_MENU__COPY}
-                </MenuItem>
-              )}
               {showMenuItemReply && (
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
@@ -115,10 +109,36 @@ export default function MessageItemMenu({
                     closeDropdown();
                   }}
                   disable={message?.parentMessageId > 0}
+                  iconType={IconTypes.ROGU_REPLY}
                 >
                   {stringSet.MESSAGE_MENU__REPLY}
                 </MenuItem>
               )}
+              {showMenuItemCopy && (
+                <MenuItem
+                  className="rogu-message-item-menu__list__menu-item"
+                  onClick={() => {
+                    copyToClipboard((message as UserMessage)?.message);
+                    closeDropdown();
+                  }}
+                  iconType={IconTypes.ROGU_COPY}
+                >
+                  {stringSet.MESSAGE_MENU__COPY}
+                </MenuItem>
+              )}
+              {showMenuItemView && (
+                <MenuItem
+                  className="rogu-message-item-menu__list__menu-item"
+                  onClick={() => {
+                    //copyToClipboard((message as UserMessage)?.message);
+                    closeDropdown();
+                  }}
+                  iconType={IconTypes.DOWNLOAD}
+                >
+                  {stringSet.MESSAGE_MENU__VIEW}
+                </MenuItem>
+              )}
+              
               {showMenuItemEdit && (
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
@@ -141,6 +161,7 @@ export default function MessageItemMenu({
                       closeDropdown();
                     }
                   }}
+                  iconType={IconTypes.ROGU_RESEND}
                 >
                   {stringSet.MESSAGE_MENU__RESEND}
                 </MenuItem>
@@ -155,6 +176,7 @@ export default function MessageItemMenu({
                     }
                   }}
                   disable={message?.threadInfo?.replyCount > 0}
+                  iconType={IconTypes.ROGU_DELETE}
                 >
                   {stringSet.MESSAGE_MENU__DELETE}
                 </MenuItem>

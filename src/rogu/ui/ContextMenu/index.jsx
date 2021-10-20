@@ -8,15 +8,20 @@ import { getClassName } from '../../../utils';
 
 import MenuItems_ from './items/MenuItems';
 
+import Icon, { IconTypes, IconColors } from '../Icon';
+
+
 const ENTER = 13;
 
 export const MenuItems = MenuItems_;
+
 
 export const MenuItem = ({
   className,
   children,
   onClick,
   disable,
+  iconType,
 }) => {
   const handleClickEvent = (e) => { if (!disable) onClick(e); };
   return (
@@ -27,9 +32,16 @@ export const MenuItem = ({
       onKeyPress={(e) => { if (e.keyCode === ENTER) handleClickEvent(e); }}
       tabIndex={0}
     >
+      <Icon
+        className="rogu-dropdown__menu-item-icon"
+        type={iconType}
+        fillColor={disable ? IconColors.ON_BACKGROUND_3 :  IconColors.ON_BACKGROUND_1}
+        width="18px"
+        height="18px"
+      />
       <Label
         className="rogu-dropdown__menu-item__text"
-        type={LabelTypography.SUBTITLE_2}
+        type={LabelTypography.BUTTON_2}
         color={disable ? LabelColors.ONBACKGROUND_4 : LabelColors.ONBACKGROUND_1}
       >
         {children}
@@ -49,11 +61,13 @@ MenuItem.propTypes = {
   ]).isRequired,
   onClick: PropTypes.func.isRequired,
   disable: PropTypes.func,
+  iconType: PropTypes.IconTypes
 };
 
 MenuItem.defaultProps = {
   className: '',
   disable: false,
+  iconType: IconTypes.ADD
 };
 
 // Root components should be appended before ContextMenu is rendered

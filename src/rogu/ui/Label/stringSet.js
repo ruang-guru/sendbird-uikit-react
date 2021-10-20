@@ -93,6 +93,7 @@ const getStringSet = (lang = 'en') => {
       REPLYING_ATTACHMENT__FILE_TYPE__VIDEO: 'Video',
       REPLIED_TO: 'replied to',
       /* ----- ADDITIONAL ------ */
+      MESSAGE_MENU__VIEW: 'View',
       BUTTON__READ_MORE: 'Read more',
       LABEL__OPERATOR: 'Teacher',
     },

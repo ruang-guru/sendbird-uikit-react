@@ -1,6 +1,5 @@
 import React, { ReactElement, useRef, useState, useContext } from "react";
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
-
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";
 import TextMessageItemBody from "../TextMessageItemBody";
@@ -32,9 +31,10 @@ import {
 } from "../../../utils";
 
 import { generateColorFromString } from "./utils";
-
 import "./index.scss";
+
 import MessageItemMenu from "../MessageItemMenu";
+import ContextMenu from "../ContextMenu";
 
 interface Props {
   chainBottom?: boolean;
@@ -104,6 +104,7 @@ Props): ReactElement {
     return <ClientAdminMessage message={message} />;
   }
 
+
   return (
     <div
       className={getClassName([
@@ -113,7 +114,7 @@ Props): ReactElement {
         chainBottomClassName,
         chainTopClassName,
       ])}
-    >
+    >      
       {/* Profile picture */}
       {!isByMe && !chainTop && (
         <Avatar
