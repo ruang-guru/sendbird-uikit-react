@@ -36,16 +36,20 @@ export default function AssignmentMessageItemBody({
  
 
   return (
-    <div className={getClassName([
+    <div 
+    className={getClassName([
       className,
       'rogu-assignment-message-item-body',
-      isByMe ? 'outgoing' : 'incoming',
+      isByMe ? 'rogu-assignment-message-item-body--outgoing' : 'rogu-assignment-message-item-body--incoming',
       mouseHover ? 'mouse-hover' : '',
       message?.reactions?.length > 0 ? 'reactions' : '',
     ])}>
       <div
+        role="button"
+        tabIndex={0}
         className="rogu-assignment-message-item-body__container"
-        onClick={openAssignment}>
+        onClick={openAssignment}
+        onKeyPress={openAssignment}>
         <Icon
             className="rogu-assignment-message-item-body__icon"
             type={IconTypes.ROGU_ASSIGNMENT}
@@ -57,7 +61,7 @@ export default function AssignmentMessageItemBody({
             {assignmentData?.title}
           </Label>
           <div>
-            <Label className="rogu-assignment-message-item-body__text-title" color={LabelColors.ONBACKGROUND_2} type={LabelTypography.BODY_2}>
+            <Label color={LabelColors.ONBACKGROUND_2} type={LabelTypography.BODY_2}>
               {stringSet.ASSIGNMENT}
             </Label>
             

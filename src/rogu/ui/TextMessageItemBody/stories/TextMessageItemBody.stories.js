@@ -6,10 +6,6 @@ import { LONG_MESSAGE } from "../../../../../__mocks__/messagesMock";
 
 export default { title: "ruangkelas/UI Components/TextMessageItemBody" };
 
-<<<<<<< HEAD
-export default { title: 'ruangkelas / UI Components/TextMessageItemBody' };
-=======
->>>>>>> fbdca565aeea1c632edba0c306b283be8cdcb179
 export const withText = () => (
   <div style={{ maxWidth: "35rem" }}>
     <TextMessageItemBody

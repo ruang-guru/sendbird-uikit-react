@@ -39,21 +39,28 @@
 
     .rogu-material-message-item-body__text-container {
       margin-left: 6px;
+      max-width: 100%;
     }
 
     .rogu-material-message-item-body__text-title {
       margin: 0;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
   }
 
-  &.outgoing {
+  &.rogu-material-message-item-body--outgoing {
     .rogu-material-message-item-body__container {
       @include themed() {
         background-color: t(primary-2);
       }
     }
   }
-  &.incoming {
+  &.rogu-material-message-item-body--incoming {
     .rogu-material-message-item-body__container {
       @include themed() {
         background-color: t(bg-1);

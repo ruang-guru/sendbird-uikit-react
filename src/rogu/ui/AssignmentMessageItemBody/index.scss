@@ -34,10 +34,17 @@
 
     .rogu-assignment-message-item-body__text-container {
       margin-left: 6px;
+      //max-width: 100%;
     }
 
     .rogu-assignment-message-item-body__text-title {
       margin: 0;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
     .rogu-assignment-message-item-body__text-deadline {
       margin: 0 0 0 3px;
@@ -48,14 +55,14 @@
     }
   }
 
-  &.outgoing {
+  &.rogu-assignment-message-item-body--outgoing {
     .rogu-assignment-message-item-body__container {
       @include themed() {
         background-color: t(primary-2);
       }
     }
   }
-  &.incoming {
+  &.rogu-assignment-message-item-body--incoming {
     .rogu-assignment-message-item-body__container {
       @include themed() {
         background-color: t(bg-1);

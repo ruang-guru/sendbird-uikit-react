@@ -33,7 +33,7 @@ export default function MaterialMessageItemBody({
     <div className={getClassName([
       className, 
       "rogu-material-message-item-body", 
-      isByMe ? 'outgoing' : 'incoming', 
+      isByMe ? 'rogu-material-message-item-body--outgoing' : 'rogu-material-message-item-body--incoming', 
       message?.reactions?.length > 0 ? 'reactions' : '',
       ])}>
       <div
@@ -49,11 +49,9 @@ export default function MaterialMessageItemBody({
           <Label className="rogu-material-message-item-body__text-title" color={LabelColors.ONBACKGROUND_1} type={LabelTypography.SUBTITLE_2}>
             {materialData?.title}
           </Label>
-          <div>
-            <Label className="rogu-material-message-item-body__text-title" color={LabelColors.ONBACKGROUND_2} type={LabelTypography.BODY_2}>
-              {stringSet.MATERIAL}
-            </Label>            
-          </div>
+          <Label color={LabelColors.ONBACKGROUND_2} type={LabelTypography.BODY_2}>
+            {stringSet.MATERIAL}
+          </Label>  
         </div>
       </div>
     </div>
