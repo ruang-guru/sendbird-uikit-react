@@ -14,6 +14,7 @@ import {
   BASIC_MESSAGE_A_3,
   LONG_MESSAGE,
   LONG_MESSAGE_A_1,
+  OPERATOR_MESSAGE,
   USER_ID_A,
   ASSIGNMENT_MESSAGE_A_1,
   ASSIGNMENT_MESSAGE_A_2,
@@ -301,3 +302,20 @@ export const Material = () => (
   </SendbirdProvider>
 );
 
+export const OperatorMessage = () => (
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
+    <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={OPERATOR_MESSAGE}
+      />
+
+      <MenuRoot />
+    </div>
+  </SendbirdProvider>
+);

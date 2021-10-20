@@ -1,11 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import { shallow } from "enzyme";
+import { render, shallow } from "enzyme";
 
 import MessageContent from "../index";
 
 import {
   BASIC_MESSAGE_A_1,
+  OPERATOR_MESSAGE,
   USER_ID_A,
 } from "../../../../../__mocks__/messagesMock";
 
@@ -101,5 +102,23 @@ describe("MessageContent", () => {
       />
     );
     expect(component.hasClass("rogu-message-content--chain-top")).toBe(true);
+  });
+
+  it("should contains operator label if the message comes from operator", () => {
+    const component = render(
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={OPERATOR_MESSAGE}
+      />
+    );
+
+    expect(
+      component.find(".rogu-message-content__operator-label").length
+    ).toBe(1);
   });
 });

@@ -97,6 +97,7 @@ const getStringSet = (lang = 'en') => {
       ASSIGNMENT_DEADLINE: 'Submit',
       MATERIAL: 'Material',
       BUTTON__READ_MORE: 'Read more',
+      LABEL__OPERATOR: 'Teacher',
     },
   };
   return stringSet[lang];

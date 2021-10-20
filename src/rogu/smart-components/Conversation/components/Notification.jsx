@@ -12,12 +12,16 @@ export default function Notification({
   onClick,
 }) {
   const { stringSet } = useContext(LocalizationContext);
+  // ex: time = '13.46 14 December 2021', then split into array
   const timeArray = time.split(' ');
-  timeArray.splice(-2, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
+  // add string 'on' after first element of timeArray
+  // before: timeArray = ['13.46', '14', 'December', '2021']
+  timeArray.splice(1, 0, stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__ON);
+  // after: timeArray = ['13.46', 'on', '14', 'December', '2021']
   return (
     // eslint-disable-next-line
-    <div className="sendbird-notification" onClick={onClick}>
-      <Label className="sendbird-notification__text" color={LabelColors.ONCONTENT_1} type={LabelTypography.CAPTION_2}>
+    <div className="rogu-notification" onClick={onClick}>
+      <Label className="rogu-notification__text" color={LabelColors.ONCONTENT_1} type={LabelTypography.CAPTION_2}>
         {`${count} `}
         {stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE}
         {` ${timeArray.join(' ')}`}
