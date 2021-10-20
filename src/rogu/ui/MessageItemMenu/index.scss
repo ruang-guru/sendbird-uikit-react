@@ -1,18 +1,18 @@
 @import "../../../styles/variables";
 
 .rogu-message-item-menu {
+  margin-left: 0.25rem;
+  min-width: 20px;
+  min-height: 26px;
   .rogu-message-item-menu__trigger {
-    background-color: pink;
-    padding-top: 4px;
-    .rogu-message-item-menu__trigger__icon {
-      //margin-top: 4px;
-      background-color: pink;
+    display: none;
+    &.sendbird-iconbutton--pressed {
+      display: flex;
+      @include themed() {
+        background-color: t(bg-1);
+      }
     }
-  }
-}
-
-.rogu-message-item-menu__list {
-  .rogu-message-item-menu__list__menu-item {
-    background-color: plum;
+    .rogu-message-item-menu__trigger__icon {
+    }
   }
 }

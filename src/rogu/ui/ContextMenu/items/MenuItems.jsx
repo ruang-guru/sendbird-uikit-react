@@ -109,9 +109,9 @@ export default class MenuItems extends Component {
       createPortal(
         (
           <>
-            <div className="sendbird-dropdown__menu-backdrop" />
+            <div className="rogu-dropdown__menu-backdrop" />
             <ul
-              className="sendbird-dropdown__menu"
+              className="rogu-dropdown__menu"
               ref={this.menuRef}
               style={{
                 display: 'inline-block',

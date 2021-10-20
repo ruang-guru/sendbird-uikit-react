@@ -203,7 +203,7 @@ Props): ReactElement {
             )}
             </div>
             {
-              isByMe && (
+              ((!isByMe && chainTop) || isByMe) && (
                 <MessageItemMenu
                   className="rogu-message-content-menu__normal-menu"
                   channel={channel}

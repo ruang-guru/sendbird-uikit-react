@@ -21,14 +21,14 @@ export const MenuItem = ({
   const handleClickEvent = (e) => { if (!disable) onClick(e); };
   return (
     <li
-      className={getClassName([className, 'sendbird-dropdown__menu-item', disable ? 'disable' : ''])}
+      className={getClassName([className, 'rogu-dropdown__menu-item', disable ? 'disable' : ''])}
       role="menuitem"
       onClick={handleClickEvent}
       onKeyPress={(e) => { if (e.keyCode === ENTER) handleClickEvent(e); }}
       tabIndex={0}
     >
       <Label
-        className="sendbird-dropdown__menu-item__text"
+        className="rogu-dropdown__menu-item__text"
         type={LabelTypography.SUBTITLE_2}
         color={disable ? LabelColors.ONBACKGROUND_4 : LabelColors.ONBACKGROUND_1}
       >

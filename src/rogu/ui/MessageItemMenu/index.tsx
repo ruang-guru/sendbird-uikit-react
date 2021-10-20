@@ -16,6 +16,8 @@ import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Icon, { IconTypes, IconColors } from '../Icon';
 import ContextMenu, {MenuItems, MenuItem} from '../ContextMenu';
 
+import "./index.scss";
+
 interface Props {
   className?: string | Array<string>;
   message: UserMessage | FileMessage;
@@ -76,8 +78,8 @@ export default function MessageItemMenu({
               className="rogu-message-item-menu__trigger__icon"
               type={IconTypes.CHEVRON_DOWN}
               fillColor={IconColors.ON_BACKGROUND_3}
-              width="12px"
-              height="12px"
+              width="18px"
+              height="18px"
             />
           </IconButton>
         )}

@@ -34,7 +34,7 @@ $avatarSize: 2rem;
     .rogu-message-content__bubble {
       display: flex;
       flex-direction: column;
-      padding: 0.75rem;
+      padding: 0.75rem 0.5rem 0.75rem 0.75rem;
       border-top-left-radius: $borderRadius;
       border-top-right-radius: $borderRadius;
       border-bottom-left-radius: $borderRadius;
@@ -46,6 +46,7 @@ $avatarSize: 2rem;
         flex-wrap: nowrap;
         justify-content: space-between;
         margin-bottom: 0.25rem;
+        align-items: center;
 
         .rogu-message-content__sender-name {
           overflow: hidden;
@@ -178,7 +179,7 @@ $avatarSize: 2rem;
   }
 
   &:hover {
-    .rogu-message-content-menu__normal-menu {
+    .rogu-message-item-menu__trigger {
       display: flex;
     }
   }
