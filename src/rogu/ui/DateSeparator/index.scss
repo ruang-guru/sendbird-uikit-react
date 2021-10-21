@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+
+.rogu-date-separator {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: sticky;
+  top: 1rem;
+  bottom: 1rem;
+
+  .rogu-date-separator__content {
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+
+    @include themed() {
+      color: t(on-bg-1);
+      background-color: t(bg-1);
+    }
+  }
+}
