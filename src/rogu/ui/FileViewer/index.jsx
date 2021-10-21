@@ -11,6 +11,7 @@ import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
 
 import { isImage, isVideo, isSupportedFileView } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
+import Toast from '../Toast';
 
 export const FileViewerComponent = ({
   // sender
@@ -130,14 +131,9 @@ export const FileViewerComponent = ({
           )
         }
       </div>
-      <div className={`rogu-fileviewer__download__toast ${showToast && 'show'}`}>
-        <Label
-          type={LabelTypography.BODY_3}
-          color={LabelColors.ONBACKGROUND_5}
-        >
-          {stringSet.TOAST__DOWNLOAD}
-        </Label>
-      </div>
+      {showToast && (
+        <Toast message={stringSet.TOAST__DOWNLOAD} />
+      )}
     </div>
   );
 };
