@@ -2,22 +2,12 @@
 
 exports[`DateSeparator should do a snapshot test of the DateSeparator DOM 1`] = `
 <div
-  className="example-classname sendbird-separator"
+  className="ß-classname rogu-date-separator"
 >
-  <div
-    className="sendbird-separator__left sendbird-color--onbackground-4--background-color"
-  />
-  <div
-    className="sendbird-separator__text"
+  <span
+    className="rogu-date-separator__content sendbird-label sendbird-label--caption-1 "
   >
-    <span
-      className="sendbird-label sendbird-label--caption-2 sendbird-label--color-onbackground-2"
-    >
-      Date Separator
-    </span>
-  </div>
-  <div
-    className="sendbird-separator__right sendbird-color--onbackground-4--background-color"
-  />
+    Today
+  </span>
 </div>
 `;
