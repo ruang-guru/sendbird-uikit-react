@@ -12,7 +12,7 @@ import RemoveMessageModal from './RemoveMessage';
 
 // Sendbird original components
 import DateSeparator from '../../../../ui/DateSeparator';
-import FileViewer from '../../../../ui/FileViewer';
+import FileViewer from '../../../ui/FileViewer';
 
 export default function MessageHoc({
   message,
@@ -239,7 +239,7 @@ MessageHoc.defaultProps = {
   hasSeparator: false,
   disabled: false,
   highLightedMessageId: null,
-  toggleReaction: () => {},
-  scrollToMessage: () => {},
+  toggleReaction: () => { },
+  scrollToMessage: () => { },
   emojiContainer: {},
 };
