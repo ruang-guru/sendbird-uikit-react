@@ -6,13 +6,12 @@ import PropTypes from 'prop-types';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import IconButton from '../../../ui/IconButton';
 import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
-import {getClassName} from '../../../utils';
+import { getClassName } from '../../../utils';
 
-import Icon, { IconTypes, IconColors } from '../../ui/Icon';
-import Label, { LabelTypography, LabelColors } from '../../ui/Label';
+import Icon, { IconTypes, IconColors } from '../Icon';
+import Label, { LabelTypography, LabelColors } from '../Label';
 
 import './index.scss';
-
 
 const LINE_HEIGHT = 36;
 const noop = () => {};
@@ -111,7 +110,6 @@ const MessageInput = React.forwardRef((props, ref) => {
           onChange={(e) => {
             setInputValue(e.target.value);
             onStartTyping();
-            console.log(e.target.value);
           }}
           onKeyDown={(e) => {
             if (e.keyCode === KeyCode.SHIFT) {
@@ -184,7 +182,7 @@ const MessageInput = React.forwardRef((props, ref) => {
 
         {!isEdit && (
           <IconButton
-            className={getClassName(["rogu-message-input--send", disabled ? "rogu-message-input--send-disabled" : ""])}
+            className={getClassName(['rogu-message-input--send', disabled ? 'rogu-message-input--send-disabled' : ''])}
             height="36px"
             width="36px"
             onClick={sendMessage}

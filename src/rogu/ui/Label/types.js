@@ -10,7 +10,7 @@ export const Typography = {
   CAPTION_1: 'CAPTION_1',
   CAPTION_2: 'CAPTION_2',
   CAPTION_3: 'CAPTION_3',
-  TYPING_INDICATOR: 'TYPING_INDICATOR'
+  TYPING_INDICATOR: 'TYPING_INDICATOR',
 };
 
 export const Colors = {

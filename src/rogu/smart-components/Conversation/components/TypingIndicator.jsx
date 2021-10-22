@@ -5,7 +5,6 @@ import { LocalizationContext } from '../../../../lib/LocalizationContext';
 import { uuidv4 } from '../../../../utils/uuid';
 import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
 
-
 const TypingIndicatorText = ({ members }) => {
   const { stringSet } = useContext(LocalizationContext);
   if (!members || members.length === 0) {

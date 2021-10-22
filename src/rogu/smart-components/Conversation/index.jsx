@@ -388,7 +388,7 @@ export const ConversationPanel = (props) => {
           isOnline={isOnline}
           initialized={initialized}
         />
-        
+
         {
           !isOnline && (
             <ConnectionStatus sdkInit={sdkInit} sb={sdk} logger={logger} />
