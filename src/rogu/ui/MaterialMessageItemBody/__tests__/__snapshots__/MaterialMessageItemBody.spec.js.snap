@@ -2,7 +2,7 @@
 
 exports[`MaterialMessageItemBody should do a snapshot test of the MaterialMessageItemBody DOM 1`] = `
 <div
-  className=" rogu-material-message-item-body incoming "
+  className=" rogu-material-message-item-body rogu-material-message-item-body--incoming "
 >
   <div
     className="rogu-material-message-item-body__container"
@@ -33,13 +33,11 @@ exports[`MaterialMessageItemBody should do a snapshot test of the MaterialMessag
       >
         Materi Google
       </span>
-      <div>
-        <span
-          className="rogu-material-message-item-body__text-title sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-2"
-        >
-          Material
-        </span>
-      </div>
+      <span
+        className="sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-2"
+      >
+        Material
+      </span>
     </div>
   </div>
 </div>
