@@ -59,7 +59,7 @@ export default function TextMessageItemBody({
       ])}
     >
       <div ref={textRef} className="rogu-text-message-item-body__inner">
-        {message.split(/\r/).map((word, i) =>
+        {message?.split(/\r/).map((word, i) =>
           word === "" ? (
             <br key={i} />
           ) : (

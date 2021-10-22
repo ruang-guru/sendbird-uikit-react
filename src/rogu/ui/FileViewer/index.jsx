@@ -1,5 +1,5 @@
 import React, {
-  useContext, useEffect, useRef, useState,
+  useContext, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
@@ -10,11 +10,10 @@ import Avatar from '../Avatar/index';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import Icon, { IconTypes } from '../Icon';
 import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
-import TextButton from '../TextButton';
 import TextMessageItemBody from '../TextMessageItemBody';
 
 import {
-  isImage, isVideo, isSupportedFileView, getClassName,
+  isImage, isVideo, isSupportedFileView,
 } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Toast from '../Toast';

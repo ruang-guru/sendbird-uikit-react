@@ -11,17 +11,17 @@ describe('FileViewer', () => {
       sender,
       type,
       url,
-      name = '',
+      name: captionMsg = '',
       createdAt
     } = msg0;
-    const { profileUrl, nickname = '' } = sender;
+    const { profileUrl, nickname: userName = '' } = sender;
     const component = shallow(
       <FileViewer
         profileUrl={profileUrl}
-        nickname={nickname}
+        userName={userName}
         type={type}
         url={url}
-        name={name}
+        captionMsg={captionMsg}
         onClose={() => { }}
         onDelete={() => { }}
         createdAt={createdAt}
@@ -37,17 +37,17 @@ describe('FileViewer', () => {
       sender,
       type,
       url,
-      name = '',
+      name: captionMsg = '',
       createdAt
     } = msg1;
-    const { profileUrl, nickname = '' } = sender;
+    const { profileUrl, nickname: userName = '' } = sender;
     const component = shallow(
       <FileViewer
         profileUrl={profileUrl}
-        nickname={nickname}
+        userName={userName}
         type={type}
         url={url}
-        name={name}
+        captionMsg={captionMsg}
         onClose={() => { }}
         onDelete={() => { }}
         createdAt={createdAt}
@@ -61,21 +61,21 @@ describe('FileViewer', () => {
   it('should handle unsupported msg', function () {
     const unsupportedMsg = { sender: {} };
     const profileUrl = '';
-    const nickname = '';
+    const userName = '';
     const {
       sender,
       type = '',
       url = '',
-      name = '',
+      name: captionMsg = '',
       createdAt = 0
     } = unsupportedMsg;
     const component = shallow(
       <FileViewer
         profileUrl={profileUrl}
-        nickname={nickname}
+        userName={userName}
         type={type}
         url={url}
-        name={name}
+        captionMsg={captionMsg}
         onClose={() => { }}
         onDelete={() => { }}
         createdAt={createdAt}
@@ -92,20 +92,19 @@ describe('FileViewer', () => {
       sender,
       type,
       url,
-      name = '',
+      name: captionMsg = '',
       createdAt
     } = msg0;
-    const { profileUrl, nickname = '' } = sender;
+    const { profileUrl, nickname: userName = '' } = sender;
     const component = renderer.create(
       <FileViewer
         profileUrl={profileUrl}
-        nickname={nickname}
+        userName={userName}
         type={type}
         url={url}
-        name={name}
+        captionMsg={captionMsg}
         onClose={() => { }}
         onDelete={() => { }}
-        message={msg0}
         createdAt={createdAt}
       />,
     );
