@@ -26,7 +26,7 @@
     "predeploy": "cd example && npm install && npm run build",
     "storybook": "NODE_ENV=.env start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "eslint": "eslint --fix --no-eslintrc  -c .eslintrc.js 'src/**'",
+    "eslint": "eslint --fix --no-eslintrc  -c .eslintrc.js 'src/**/*.js*'",
     "eslint-ts": "eslint --fix --no-eslintrc -c .eslintrc.json './src/**/*.ts*'",
     "stylelint": "stylelint --fix 'src/rogu/**/*.{scss,css}'",
     "lint": "npm run eslint; npm run eslint-ts; npm run stylelint",
