@@ -1,14 +1,15 @@
 'use strict';
 
 var React = require('react');
-var index$1 = require('./index-6b90ace0.js');
-var LocalizationContext = require('./LocalizationContext-9e7e2f14.js');
-var index = require('./index-e736fae8.js');
-var utils = require('./utils-f1556101.js');
-var index$2 = require('./index-2ad947df.js');
-var index$3 = require('./index-d3e4032e.js');
+var index$1 = require('./index-333138cb.js');
+var LocalizationContext = require('./LocalizationContext-a2c19b4f.js');
+var index = require('./index-c60cbb09.js');
+var utils = require('./utils-17abfeeb.js');
+var index$2 = require('./index-fca3cbf3.js');
+var index$3 = require('./index-5c1dd990.js');
 require('prop-types');
 require('react-dom');
+require('date-fns');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateSeparator should do a snapshot test of the DateSeparator DOM 1`] = `
+<div
+  className="ß-classname rogu-date-separator"
+>
+  <span
+    className="rogu-date-separator__content sendbird-label sendbird-label--caption-1 "
+  >
+    Today
+  </span>
+</div>
+`;

@@ -2,16 +2,16 @@ import React, {
   useState, useRef, useMemo, useLayoutEffect,
 } from 'react';
 import PropTypes from 'prop-types';
-import format from 'date-fns/format';
+// import format from 'date-fns/format';
 
 // Rogu components
 import MessageContent from '../../../ui/MessageContent';
-import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
+// import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
 import MessageInput from '../../../ui/MessageInput';
 import RemoveMessageModal from './RemoveMessage';
 
 // Sendbird original components
-import DateSeparator from '../../../../ui/DateSeparator';
+// import DateSeparator from '../../../ui/DateSeparator';
 import FileViewer from '../../../ui/FileViewer';
 
 export default function MessageHoc({
@@ -19,7 +19,7 @@ export default function MessageHoc({
   userId,
   disabled,
   editDisabled,
-  hasSeparator,
+  // hasSeparator,
   deleteMessage,
   updateMessage,
   scrollToMessage,
@@ -85,16 +85,17 @@ export default function MessageHoc({
         `}
       >
         {/* date-separator */}
-        {hasSeparator && (
-          <DateSeparator>
-            <Label
-              type={LabelTypography.CAPTION_2}
-              color={LabelColors.ONBACKGROUND_2}
-            >
-              {format(message.createdAt, 'MMMM dd, yyyy')}
-            </Label>
-          </DateSeparator>
-        )}
+        {
+          // hasSeparator && null
+          // <DateSeparator>
+          //   <Label
+          //     type={LabelTypography.CAPTION_2}
+          //     color={LabelColors.ONBACKGROUND_2}
+          //   >
+          //     {format(message.createdAt, 'MMMM dd, yyyy')}
+          //   </Label>
+          // </DateSeparator>
+        }
         <RenderedMessage message={message} />
       </div>
     );
@@ -126,16 +127,7 @@ export default function MessageHoc({
       style={{ marginBottom: '2px' }}
     >
       {/* date-separator */}
-      {hasSeparator && (
-        <DateSeparator>
-          <Label
-            type={LabelTypography.CAPTION_2}
-            color={LabelColors.ONBACKGROUND_2}
-          >
-            {format(message.createdAt, 'MMMM dd, yyyy')}
-          </Label>
-        </DateSeparator>
-      )}
+      {/* {hasSeparator && <DateSeparator createdAt={message.createdAt} />} */}
       {/* Message */}
       <MessageContent
         className="sendbird-message-hoc__message-content"
@@ -204,7 +196,7 @@ MessageHoc.propTypes = {
   ]),
   renderCustomMessage: PropTypes.func,
   currentGroupChannel: PropTypes.shape({}),
-  hasSeparator: PropTypes.bool,
+  // hasSeparator: PropTypes.bool,
   disabled: PropTypes.bool,
   editDisabled: PropTypes.bool,
   deleteMessage: PropTypes.func.isRequired,
@@ -236,7 +228,7 @@ MessageHoc.defaultProps = {
   renderCustomMessage: null,
   currentGroupChannel: {},
   message: {},
-  hasSeparator: false,
+  // hasSeparator: false,
   disabled: false,
   highLightedMessageId: null,
   toggleReaction: () => { },

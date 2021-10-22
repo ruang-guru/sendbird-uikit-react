@@ -4,25 +4,26 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-9e7e2f14.js');
-var index$1 = require('./index-6b90ace0.js');
+var LocalizationContext = require('./LocalizationContext-a2c19b4f.js');
+var index$1 = require('./index-333138cb.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-e736fae8.js');
-var index$3 = require('./index-31cd964f.js');
-var Channel = require('./index-95eaea8a.js');
-var index$4 = require('./index-505f8b0d.js');
+var index$2 = require('./index-c60cbb09.js');
+var index$3 = require('./index-f8fb6f63.js');
+var Channel = require('./index-e774f28c.js');
+var dateFns = require('date-fns');
 require('sendbird');
-require('./actionTypes-26aa3fb1.js');
+require('./actionTypes-8c394c02.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-de4a84a8.js');
-require('./utils-f1556101.js');
-require('./LeaveChannel-5a5bff45.js');
-require('./index-2ad947df.js');
-require('./index-d0a87b7b.js');
+require('./index-98cb6d10.js');
+require('./utils-17abfeeb.js');
+require('./LeaveChannel-79ff861d.js');
+require('./index-fca3cbf3.js');
+require('./index-187c9ab9.js');
+require('./index-4c4eb985.js');
 require('./ChannelSettings.js');
-require('./index-d3e4032e.js');
+require('./index-5c1dd990.js');
 require('./MessageSearch.js');
 require('react-dom');
 
@@ -49,6 +50,25 @@ function _interopNamespace(e) {
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var React__namespace = /*#__PURE__*/_interopNamespace(React);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
+
+var getDayString = function getDayString(dayNumber, strings) {
+  return strings[dayNumber];
+};
+
+var groupMessagesByDate = function groupMessagesByDate(messages) {
+  return messages.reduce(function (groupedMessagesByDate, currMessage) {
+    var messageDate = dateFns.format(currMessage.createdAt, "dd/MM/yyyy");
+    var currentGroup = groupedMessagesByDate.get(messageDate);
+
+    if (currentGroup) {
+      groupedMessagesByDate.set(messageDate, LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], currentGroup, true), [currMessage], false));
+    } else {
+      groupedMessagesByDate.set(messageDate, [currMessage]);
+    }
+
+    return groupedMessagesByDate;
+  }, new Map());
+};
 
 /**
  * Example:
@@ -3034,7 +3054,6 @@ function MessageHoc(_ref) {
       userId = _ref.userId,
       disabled = _ref.disabled,
       editDisabled = _ref.editDisabled,
-      hasSeparator = _ref.hasSeparator,
       deleteMessage = _ref.deleteMessage,
       updateMessage = _ref.updateMessage,
       scrollToMessage = _ref.scrollToMessage,
@@ -3102,10 +3121,7 @@ function MessageHoc(_ref) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
       ref: useMessageScrollRef,
       className: "\n          sendbird-msg-hoc sendbird-msg--scroll-ref\n          ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n        ")
-    }, hasSeparator && /*#__PURE__*/React__default["default"].createElement(index$3.DateSeparator, null, /*#__PURE__*/React__default["default"].createElement(Label, {
-      type: LabelTypography.CAPTION_2,
-      color: LabelColors.ONBACKGROUND_2
-    }, index$2.format(message.createdAt, 'MMMM dd, yyyy'))), /*#__PURE__*/React__default["default"].createElement(RenderedMessage, {
+    }, /*#__PURE__*/React__default["default"].createElement(RenderedMessage, {
       message: message
     }));
   }
@@ -3130,10 +3146,7 @@ function MessageHoc(_ref) {
     style: {
       marginBottom: '2px'
     }
-  }, hasSeparator && /*#__PURE__*/React__default["default"].createElement(index$3.DateSeparator, null, /*#__PURE__*/React__default["default"].createElement(Label, {
-    type: LabelTypography.CAPTION_2,
-    color: LabelColors.ONBACKGROUND_2
-  }, index$2.format(message.createdAt, 'MMMM dd, yyyy'))), /*#__PURE__*/React__default["default"].createElement(MessageContent, {
+  }, /*#__PURE__*/React__default["default"].createElement(MessageContent, {
     className: "sendbird-message-hoc__message-content",
     userId: userId,
     scrollToMessage: scrollToMessage,
@@ -3193,7 +3206,7 @@ MessageHoc.propTypes = {
   highLightedMessageId: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number]),
   renderCustomMessage: PropTypes__default["default"].func,
   currentGroupChannel: PropTypes__default["default"].shape({}),
-  hasSeparator: PropTypes__default["default"].bool,
+  // hasSeparator: PropTypes.bool,
   disabled: PropTypes__default["default"].bool,
   editDisabled: PropTypes__default["default"].bool,
   deleteMessage: PropTypes__default["default"].func.isRequired,
@@ -3220,13 +3233,51 @@ MessageHoc.defaultProps = {
   renderCustomMessage: null,
   currentGroupChannel: {},
   message: {},
-  hasSeparator: false,
+  // hasSeparator: false,
   disabled: false,
   highLightedMessageId: null,
   toggleReaction: function toggleReaction() {},
   scrollToMessage: function scrollToMessage() {},
   emojiContainer: {}
 };
+
+var getDateSeparatorDifference = function getDateSeparatorDifference(createdAt, strings) {
+  var diffWithToday = dateFns.differenceInCalendarDays(new Date(), createdAt);
+
+  if (diffWithToday === 0) {
+    return strings.today;
+  } else if (diffWithToday === 1) {
+    return strings.yesterday;
+  } else if (diffWithToday <= 7) {
+    return getDayString(dateFns.getDay(createdAt), strings.days);
+  } else {
+    return dateFns.format(createdAt, "dd/MM/yyyy");
+  }
+};
+
+function DateSeparator(_a) {
+  var className = _a.className,
+      createdAt = _a.createdAt;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: index$1.getClassName([className, "rogu-date-separator"])
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-date-separator__content",
+    type: LabelTypography.CAPTION_1
+  }, getDateSeparatorDifference(createdAt, {
+    today: stringSet.LABEL__DATE_TODAY,
+    yesterday: stringSet.LABEL__DATE_YESTERDAY,
+    days: {
+      0: stringSet.LABEL__DAY_SUNDAY,
+      1: stringSet.LABEL__DAY_MONDAY,
+      2: stringSet.LABEL__DAY_TUESDAY,
+      3: stringSet.LABEL__DAY_WEDNESDAY,
+      4: stringSet.LABEL__DAY_THURSDAY,
+      5: stringSet.LABEL__DAY_FRIDAY,
+      6: stringSet.LABEL__DAY_SATURDAY
+    }
+  })));
+}
 
 var ConversationScroll = /*#__PURE__*/function (_Component) {
   LocalizationContext._inherits(ConversationScroll, _Component);
@@ -3355,64 +3406,66 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
         className: "sendbird-conversation__padding"
       }), /*#__PURE__*/React__default["default"].createElement("div", {
         className: "sendbird-conversation__messages-padding"
-      }, allMessages.map(function (m, idx) {
-        var previousMessage = allMessages[idx - 1];
-        var nextMessage = allMessages[idx + 1];
+      }, Array.from(groupMessagesByDate(allMessages).values()).map(function (messages) {
+        var _messages$;
 
-        var _ref5 = useMessageGrouping ? compareMessagesForGrouping(previousMessage, m, nextMessage) : [false, false],
-            _ref6 = LocalizationContext._slicedToArray(_ref5, 2),
-            chainTop = _ref6[0],
-            chainBottom = _ref6[1];
+        var currentCreatedAt = (_messages$ = messages[0]) === null || _messages$ === void 0 ? void 0 : _messages$.createdAt;
+        return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(DateSeparator, {
+          createdAt: currentCreatedAt
+        }), messages.map(function (m, idx) {
+          var previousMessage = messages[idx - 1];
+          var nextMessage = messages[idx + 1];
 
-        var previousMessageCreatedAt = previousMessage && previousMessage.createdAt;
-        var currentCreatedAt = m.createdAt; // https://stackoverflow.com/a/41855608
+          var _ref5 = useMessageGrouping ? compareMessagesForGrouping(previousMessage, m, nextMessage) : [false, false],
+              _ref6 = LocalizationContext._slicedToArray(_ref5, 2),
+              chainTop = _ref6[0],
+              chainBottom = _ref6[1];
 
-        var hasSeparator = !(previousMessageCreatedAt && index$4.isSameDay(currentCreatedAt, previousMessageCreatedAt));
+          if (renderChatItem) {
+            return /*#__PURE__*/React__default["default"].createElement("div", {
+              key: m.messageId || m.reqId,
+              className: "sendbird-msg--scroll-ref"
+            }, renderChatItem({
+              message: m,
+              highLightedMessageId: highLightedMessageId,
+              channel: currentGroupChannel,
+              // hasSeparator: hasSeparator,
+              onDeleteMessage: deleteMessage,
+              onUpdateMessage: updateMessage,
+              onResendMessage: resendMessage,
+              onScrollToMessage: scrollToMessage,
+              emojiContainer: emojiContainer,
+              chainTop: chainTop,
+              chainBottom: chainBottom,
+              menuDisabled: disabled
+            }));
+          }
 
-        if (renderChatItem) {
-          return /*#__PURE__*/React__default["default"].createElement("div", {
-            key: m.messageId || m.reqId,
-            className: "sendbird-msg--scroll-ref"
-          }, renderChatItem({
-            message: m,
+          return /*#__PURE__*/React__default["default"].createElement(MessageHoc, {
             highLightedMessageId: highLightedMessageId,
-            channel: currentGroupChannel,
-            onDeleteMessage: deleteMessage,
-            onUpdateMessage: updateMessage,
-            onResendMessage: resendMessage,
-            onScrollToMessage: scrollToMessage,
-            emojiContainer: emojiContainer,
+            renderCustomMessage: renderCustomMessage,
+            key: m.messageId || m.reqId,
+            userId: userId // show status for pending/failed messages
+            ,
+            message: m,
+            scrollToMessage: scrollToMessage,
+            currentGroupChannel: currentGroupChannel,
+            disabled: disabled,
+            membersMap: membersMap,
             chainTop: chainTop,
+            useReaction: useReaction,
+            emojiAllMap: emojiAllMap,
+            emojiContainer: emojiContainer,
+            editDisabled: editDisabled // hasSeparator={hasSeparator}
+            ,
             chainBottom: chainBottom,
-            hasSeparator: hasSeparator,
-            menuDisabled: disabled
-          }));
-        }
-
-        return /*#__PURE__*/React__default["default"].createElement(MessageHoc, {
-          highLightedMessageId: highLightedMessageId,
-          renderCustomMessage: renderCustomMessage,
-          key: m.messageId || m.reqId,
-          userId: userId // show status for pending/failed messages
-          ,
-          message: m,
-          scrollToMessage: scrollToMessage,
-          currentGroupChannel: currentGroupChannel,
-          disabled: disabled,
-          membersMap: membersMap,
-          chainTop: chainTop,
-          useReaction: useReaction,
-          emojiAllMap: emojiAllMap,
-          emojiContainer: emojiContainer,
-          editDisabled: editDisabled,
-          hasSeparator: hasSeparator,
-          chainBottom: chainBottom,
-          updateMessage: updateMessage,
-          deleteMessage: deleteMessage,
-          resendMessage: resendMessage,
-          toggleReaction: toggleReaction,
-          memoizedEmojiListItems: memoizedEmojiListItems
-        });
+            updateMessage: updateMessage,
+            deleteMessage: deleteMessage,
+            resendMessage: resendMessage,
+            toggleReaction: toggleReaction,
+            memoizedEmojiListItems: memoizedEmojiListItems
+          });
+        }));
       }))), showScrollBot && /*#__PURE__*/React__default["default"].createElement("div", {
         className: "sendbird-conversation__scroll-bottom-button",
         onClick: onClickScrollBot,
