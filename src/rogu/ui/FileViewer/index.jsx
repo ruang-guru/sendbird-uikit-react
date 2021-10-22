@@ -1,4 +1,6 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useContext, useEffect, useRef, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { format } from 'date-fns';
@@ -10,7 +12,9 @@ import Icon, { IconTypes } from '../Icon';
 import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
 import TextButton from '../TextButton';
 
-import { isImage, isVideo, isSupportedFileView, getClassName } from '../../../utils';
+import {
+  isImage, isVideo, isSupportedFileView, getClassName,
+} from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Toast from '../Toast';
 
@@ -255,8 +259,9 @@ export default function FileViewer(props) {
     type,
     url,
     name: captionMsg = '',
-    createdAt = 0,
+    createdAt,
   } = message;
+  console.log('message', message);
   const { profileUrl, nickname: userName = '' } = sender;
   return createPortal(
     (
@@ -285,6 +290,7 @@ FileViewer.propTypes = {
     type: PropTypes.string,
     url: PropTypes.string,
     fileName: PropTypes.string,
+    createdAt: PropTypes.number,
   }).isRequired,
   isByMe: PropTypes.bool,
   onClose: PropTypes.func.isRequired,

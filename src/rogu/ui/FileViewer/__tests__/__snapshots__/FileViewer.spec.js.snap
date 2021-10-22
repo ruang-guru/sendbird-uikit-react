@@ -2,16 +2,16 @@
 
 exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
 <div
-  className="sendbird-fileviewer"
+  className="rogu-fileviewer"
 >
   <div
-    className="sendbird-fileviewer__header"
+    className="rogu-fileviewer__header"
   >
     <div
-      className="sendbird-fileviewer__header__left"
+      className="rogu-fileviewer__header__left"
     >
       <div
-        className="sendbird-fileviewer__header__left__avatar"
+        className="rogu-fileviewer__header__left__avatar"
       >
         <div
           className=" sendbird-avatar"
@@ -62,28 +62,34 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
           </div>
         </div>
       </div>
-      <span
-        className="sendbird-fileviewer__header__left__filename sendbird-label sendbird-label--h-2 sendbird-label--color-onbackground-1"
+      <div
+        className="rogu-fileviewer__header__left__metadata"
       >
-        sent-mail (1).png
-      </span>
-      <span
-        className="sendbird-fileviewer__header__left__sender-name sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-2"
-      >
-        hoon102
-      </span>
+        <div>
+          <span
+            className="rogu-fileviewer__header__left__sender-name sendbird-label rogu-label--h-3 sendbird-label--color-onbackground-1"
+          />
+        </div>
+        <div>
+          <span
+            className="rogu-fileviewer__header__left__createdat sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-2"
+          >
+            05/03/2020 20.43
+          </span>
+        </div>
+      </div>
     </div>
     <div
-      className="sendbird-fileviewer__header__right"
+      className="rogu-fileviewer__header__right"
     >
       <div
-        className="sendbird-fileviewer__header__right__actions"
+        className="rogu-fileviewer__header__right__actions"
       >
         <a
-          className="sendbird-fileviewer__header__right__actions__download"
+          className="rogu-fileviewer__header__right__actions__download"
           href="https://sendbird-staging.s3.amazonaws.com/26FA710D-A7F6-4483-ABEA-1F07A07A112E/upload/n/e49e0a4111d4445a8840bd51f3c9d933.png"
+          onClick={[Function]}
           rel="noopener noreferrer"
-          target="_blank"
         >
           <div
             className=" sendbird-icon "
@@ -104,7 +110,7 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
           </div>
         </a>
         <div
-          className="sendbird-fileviewer__header__right__actions__delete"
+          className="rogu-fileviewer__header__right__actions__delete"
         >
           <div
             className=" sendbird-icon "
@@ -126,7 +132,7 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
         </div>
       </div>
       <div
-        className="sendbird-fileviewer__header__right__actions__close"
+        className="rogu-fileviewer__header__right__actions__close"
       >
         <div
           className=" sendbird-icon "
@@ -149,12 +155,15 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
     </div>
   </div>
   <div
-    className="sendbird-fileviewer__content"
+    className="rogu-fileviewer__content"
   >
     <img
-      alt="sent-mail (1).png"
-      className="sendbird-fileviewer__content__img"
+      alt="Uploaded by undefined"
+      className="rogu-fileviewer__content__img"
+      onBlur={[Function]}
+      onFocus={[Function]}
       src="https://sendbird-staging.s3.amazonaws.com/26FA710D-A7F6-4483-ABEA-1F07A07A112E/upload/n/e49e0a4111d4445a8840bd51f3c9d933.png"
+      tabIndex="0"
     />
   </div>
 </div>

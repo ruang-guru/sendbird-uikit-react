@@ -1,17 +1,18 @@
 import React from 'react';
-import {shallow} from 'enzyme';
+import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 
 import { FileViewerComponent as FileViewer } from "../index";
 import { msg0, msg1 } from '../data.mock';
 
 describe('FileViewer', () => {
-  it('should display image', function() {
+  it('should display image', function () {
     const {
       sender,
       type,
       url,
       name = '',
+      createdAt
     } = msg0;
     const { profileUrl, nickname = '' } = sender;
     const component = shallow(
@@ -21,21 +22,23 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         name={name}
-        onClose={() => {}}
-        onDelete={() => {}}
-        />
+        onClose={() => { }}
+        onDelete={() => { }}
+        createdAt={createdAt}
+      />
     );
-    const img = component.find('.sendbird-fileviewer__content__img');
+    const img = component.find('.rogu-fileviewer__content__img');
     expect(img.length).toEqual(1);
     expect(img.prop('src')).toEqual(msg0.url);
   });
 
-  it('should display video', function() {
+  it('should display video', function () {
     const {
       sender,
       type,
       url,
       name = '',
+      createdAt
     } = msg1;
     const { profileUrl, nickname = '' } = sender;
     const component = shallow(
@@ -45,16 +48,17 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         name={name}
-        onClose={() => {}}
-        onDelete={() => {}}
+        onClose={() => { }}
+        onDelete={() => { }}
+        createdAt={createdAt}
       />
     );
-    const video = component.find('.sendbird-fileviewer__content__video source');
+    const video = component.find('.rogu-fileviewer__content__video source');
     expect(video.length).toEqual(1);
     expect(video.prop('src')).toEqual(msg1.url);
   });
 
-  it('should handle unsupported msg', function() {
+  it('should handle unsupported msg', function () {
     const unsupportedMsg = { sender: {} };
     const profileUrl = '';
     const nickname = '';
@@ -63,6 +67,7 @@ describe('FileViewer', () => {
       type = '',
       url = '',
       name = '',
+      createdAt = 0
     } = unsupportedMsg;
     const component = shallow(
       <FileViewer
@@ -71,22 +76,24 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         name={name}
-        onClose={() => {}}
-        onDelete={() => {}}
+        onClose={() => { }}
+        onDelete={() => { }}
+        createdAt={createdAt}
       />
     );
-    const fallback = component.find('.sendbird-fileviewer__content__unsupported');
+    const fallback = component.find('.rogu-fileviewer__content__unsupported');
     expect(fallback.length).toEqual(1);
-    const headerActions = component.find('.sendbird-fileviewer__header__right__actions');
+    const headerActions = component.find('.rogu-fileviewer__header__right__actions');
     expect(headerActions.length).toEqual(0);
   });
 
-  it('should do a snapshot test of the FileViewer DOM', function() {
+  it('should do a snapshot test of the FileViewer DOM', function () {
     const {
       sender,
       type,
       url,
       name = '',
+      createdAt
     } = msg0;
     const { profileUrl, nickname = '' } = sender;
     const component = renderer.create(
@@ -96,9 +103,10 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         name={name}
-        onClose={() => {}}
-        onDelete={() => {}}
+        onClose={() => { }}
+        onDelete={() => { }}
         message={msg0}
+        createdAt={createdAt}
       />,
     );
     let tree = component.toJSON();
