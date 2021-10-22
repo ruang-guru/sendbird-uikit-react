@@ -16,6 +16,10 @@ import {
   LONG_MESSAGE_A_1,
   OPERATOR_MESSAGE,
   USER_ID_A,
+  ASSIGNMENT_MESSAGE_A_1,
+  ASSIGNMENT_MESSAGE_A_2,
+  MATERIAL_MESSAGE_A_1,
+  MATERIAL_MESSAGE_A_2
 } from "../../../../../__mocks__/messagesMock";
 
 export default { title: "ruangkelas/UI Components/MessageContent" };
@@ -241,6 +245,59 @@ export const NicknameColoring = () => (
         }}
       />
       <MenuRoot />
+    </div>
+  </SendbirdProvider>
+);
+
+
+export const Assignment = () => (
+  <SendbirdProvider colorSet={COLOR_SET}>
+    <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
+    <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={ASSIGNMENT_MESSAGE_A_1}
+      />
+      <MessageContent
+        userId={USER_ID_A}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={ASSIGNMENT_MESSAGE_A_2}
+      />
+
+    </div>
+  </SendbirdProvider>
+);
+
+export const Material = () => (
+  <SendbirdProvider colorSet={COLOR_SET}>
+    <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
+    <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={MATERIAL_MESSAGE_A_1}
+      />
+      <MessageContent
+        userId={USER_ID_A}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={MATERIAL_MESSAGE_A_2}
+      />
+
     </div>
   </SendbirdProvider>
 );

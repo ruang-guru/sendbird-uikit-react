@@ -15,6 +15,7 @@ import {
   User,
   UserMessage,
 } from "sendbird";
+import { isAssignmentMessage, isMaterialMessage } from '../rogu/utils';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
 const SUPPORTED_MIMES = {
@@ -205,7 +206,10 @@ export const isOGMessage = (message: UserMessage): boolean =>
     message?.ogMetaData?.url
   );
 export const isTextMessage = (message: UserMessage): boolean =>
-  isUserMessage(message) && !isOGMessage(message);
+  isUserMessage(message) && 
+  !isOGMessage(message) && 
+  !isAssignmentMessage(message.customType) && 
+  !isMaterialMessage(message.customType);
 export const isThumbnailMessage = (message: FileMessage): boolean =>
   message && isFileMessage(message) && isSupportedFileView(message.type);
 export const isImageMessage = (message: FileMessage): boolean =>
