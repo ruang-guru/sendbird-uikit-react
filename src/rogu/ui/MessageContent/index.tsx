@@ -31,6 +31,9 @@ import {
   CoreMessageType,
 } from "../../../utils";
 
+import {isAssignmentMessage, isMaterialMessage} from '../../utils';
+import AssignmentMessageItemBody from "../AssignmentMessageItemBody";
+import MaterialMessageItemBody from "../MaterialMessageItemBody";
 import { generateColorFromString } from "./utils";
 
 import "./index.scss";
@@ -164,6 +167,16 @@ Props): ReactElement {
               isByMe={isByMe}
             />
           )}
+          {
+           isAssignmentMessage(message.customType) && (
+             <AssignmentMessageItemBody message={message as UserMessage} isByMe={isByMe} />
+           )
+          }
+          {
+            isMaterialMessage(message.customType) && (
+              <MaterialMessageItemBody message={message as UserMessage} isByMe={isByMe} />
+            )
+          }
           {getUIKitMessageType(message as FileMessage) ===
             messageTypes.FILE && (
             <FileMessageItemBody
