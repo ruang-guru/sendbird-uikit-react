@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef, useState, useContext } from "react";
+import React, { ReactElement, useRef, useContext } from "react";
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";
@@ -34,7 +34,6 @@ import { generateColorFromString } from "./utils";
 import "./index.scss";
 
 import MessageItemMenu from "../MessageItemMenu";
-import ContextMenu from "../ContextMenu";
 
 interface Props {
   chainBottom?: boolean;
@@ -81,8 +80,6 @@ Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
-
-  const [supposedHover, setSupposedHover] = useState(false);
 
   const isByMe: boolean =
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
@@ -164,7 +161,6 @@ Props): ReactElement {
               showEdit={showEdit}
               showRemove={showRemove}
               resendMessage={resendMessage}
-              setSupposedHover={setSupposedHover}
               showFileViewer={showFileViewer}/>
             </>
             )}
@@ -215,7 +211,6 @@ Props): ReactElement {
                   showEdit={showEdit}
                   showRemove={showRemove}
                   resendMessage={resendMessage}
-                  setSupposedHover={setSupposedHover}
                   showFileViewer={showFileViewer}/>
 
               )

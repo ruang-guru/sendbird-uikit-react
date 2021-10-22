@@ -3,14 +3,18 @@
 .rogu-message-item-menu {
   min-width: 20px;
   min-height: 26px;
+
   .rogu-message-item-menu__trigger {
     display: none;
+
     &.sendbird-iconbutton--pressed {
       display: flex;
+
       @include themed() {
         background-color: t(bg-1);
       }
     }
+
     .rogu-message-item-menu__trigger__icon {
     }
   }

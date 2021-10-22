@@ -10,11 +10,9 @@ import MenuItems_ from './items/MenuItems';
 
 import Icon, { IconTypes, IconColors } from '../Icon';
 
-
 const ENTER = 13;
 
 export const MenuItems = MenuItems_;
-
 
 export const MenuItem = ({
   className,
@@ -35,7 +33,7 @@ export const MenuItem = ({
       <Icon
         className="rogu-dropdown__menu-item-icon"
         type={iconType}
-        fillColor={disable ? IconColors.ON_BACKGROUND_3 :  IconColors.ON_BACKGROUND_1}
+        fillColor={disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1}
         width="18px"
         height="18px"
       />
@@ -61,13 +59,13 @@ MenuItem.propTypes = {
   ]).isRequired,
   onClick: PropTypes.func.isRequired,
   disable: PropTypes.func,
-  iconType: PropTypes.IconTypes
+  iconType: IconTypes,
 };
 
 MenuItem.defaultProps = {
   className: '',
   disable: false,
-  iconType: IconTypes.ADD
+  iconType: IconTypes.ADD,
 };
 
 // Root components should be appended before ContextMenu is rendered

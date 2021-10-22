@@ -165,7 +165,7 @@ function changeTypeToIconComponent(type) {
     case Type.ROGU_ERROR: return <RoguIconMsgFailed />;
     case Type.ROGU_COPY: return <RoguIconMsgCopy />;
     case Type.ROGU_REPLY: return <RoguIconMsgReply />;
-    case Type.ROGU_DELETE: return <RoguIconMsgDelete/>;
+    case Type.ROGU_DELETE: return <RoguIconMsgDelete />;
     case Type.ROGU_RESEND: return <RoguIconMsgResend />;
 
     default: return 'icon'; // If you see this text 'icon' replace icon for it

@@ -12,10 +12,11 @@
   top: 100%;
   left: 0;
   min-width: 180px;
-  margin: 0px;
-  padding: 8px 0px;
+  margin: 0;
+  padding: 8px 0;
   border-radius: 4px;
   list-style: none;
+
   @include themed() {
     box-shadow: t(shadow-gradient-2);
     background-color: t(bg--0-5);
@@ -27,8 +28,10 @@
     padding: 16px;
     display: flex;
     align-items: center;
+
     &.disable {
       cursor: not-allowed;
+
       &:hover {
         @include themed() {
           background-color: t(bg--0-5);
@@ -41,6 +44,7 @@
         background-color: t(bg--1-4);
       }
     }
+
     .rogu-dropdown__menu-item-icon {
       margin-right: 12px;
     }
@@ -55,7 +59,7 @@
   max-width: 352px;
   max-height: 208px;
   overflow-y: scroll;
-  margin: 0px;
+  margin: 0;
   padding: 8px;
   border-radius: 8px;
   list-style: none;
@@ -85,6 +89,7 @@
 .sendbird-reactions--pressed {
   display: block !important;
 }
+
 .sendbird-icon--pressed {
   display: block !important;
 }

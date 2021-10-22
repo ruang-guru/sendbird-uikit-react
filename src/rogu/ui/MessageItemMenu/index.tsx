@@ -1,7 +1,6 @@
 import React, { ReactElement, useContext, useRef } from 'react';
-import { FileMessage, GroupChannel, OpenChannel, User, UserMessage } from 'sendbird';
+import { FileMessage, GroupChannel, OpenChannel, UserMessage } from 'sendbird';
 
-// import ContextMenu, { MenuItems, MenuItem } from '../../../ui/ContextMenu';
 import IconButton from '../../../ui/IconButton';
 import {
   getClassName,
@@ -9,7 +8,6 @@ import {
   isUserMessage,
   isSentMessage,
   isFailedMessage,
-  isPendingMessage,
   isThumbnailMessage
 } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
