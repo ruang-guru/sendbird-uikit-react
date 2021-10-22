@@ -20,7 +20,12 @@ const frozenUserId = process.env.STORYBOOK_FROZEN_USER_ID;
 const frozenChannelUrl = process.env.STORYBOOK_FROZEN_GROUP_ID;
 
 export const IndependantChannel = () => (
-  <Sendbird appId={appId} userId={userId}>
+  <Sendbird
+    appId={appId}
+    userId={userId}
+    colorSet={COLOR_SET}
+    stringSet={STRING_SET}
+  >
     <div style={{ height: "100vh" }}>
       <Channel channelUrl={channelUrl} />
     </div>
@@ -28,10 +33,7 @@ export const IndependantChannel = () => (
 );
 
 export const RenderMessageByType = () => (
-  <Sendbird
-    appId={appId}
-    userId={userId}
-  >
+  <Sendbird appId={appId} userId={userId}>
     <div style={{ height: "100vh" }}>
       <Channel
         channelUrl={channelUrl}
@@ -46,10 +48,7 @@ export const RenderMessageByType = () => (
 );
 
 export const FrozenChannel = () => (
-  <Sendbird
-    appId={frozenAppId}
-    userId={frozenUserId}
-  >
+  <Sendbird appId={frozenAppId} userId={frozenUserId}>
     <div style={{ height: "100vh" }}>
       <Channel channelUrl={frozenChannelUrl} />
     </div>
@@ -232,12 +231,9 @@ export const QueryParamsForChannel = () => {
 };
 
 export const UnreadNotification = () => (
-  <Sendbird
-    colorSet={COLOR_SET}
-    stringSet={STRING_SET}
-  >
+  <Sendbird colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ height: "100vh" }}>
-      <Notification count={5} time="16.42 24 October 2021" onClick={() => { }} />
+      <Notification count={5} time="16.42 24 October 2021" onClick={() => {}} />
     </div>
   </Sendbird>
 );
