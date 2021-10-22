@@ -94,6 +94,9 @@ const getStringSet = (lang = 'en') => {
       REPLIED_TO: 'replied to',
       /* ----- ADDITIONAL ------ */
       MESSAGE_MENU__VIEW: 'View',
+      ASSIGNMENT: 'Assignment',
+      ASSIGNMENT_DEADLINE: 'Submit',
+      MATERIAL: 'Material',
       BUTTON__READ_MORE: 'Read more',
       LABEL__OPERATOR: 'Teacher',
     },

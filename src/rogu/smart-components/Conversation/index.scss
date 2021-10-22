@@ -16,6 +16,10 @@
   overflow-y: auto;
   flex: 1 1 0;
   order: 2;
+  background-color: #f1f7ff;
+  background-image: url("../../assets/bg-pattern.png");
+  background-size: 400px auto;
+  background-repeat: repeat;
 }
 
 .sendbird-conversation__messages-list {

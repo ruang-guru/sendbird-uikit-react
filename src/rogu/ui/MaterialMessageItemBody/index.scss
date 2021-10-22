@@ -1,0 +1,70 @@
+@import "../../../styles/variables";
+
+.rogu-material-message-item-body {
+  position: relative;
+  display: inline-block;
+  box-sizing: content-box;
+  width: 100%;
+  min-width: 200px;
+  max-width: 400px;
+
+  .rogu-material-message-text {
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  .rogu-material-message-item-body__text-bubble {
+    position: relative;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border-radius: 16px 16px 0px 0px;
+    word-break: break-all;
+  }
+
+  .rogu-material-message-item-body__container {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+
+    .rogu-material-message-item-body__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rogu-material-message-item-body__text-container {
+      margin-left: 6px;
+      max-width: 100%;
+    }
+
+    .rogu-material-message-item-body__text-title {
+      margin: 0;
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  &.rogu-material-message-item-body--outgoing {
+    .rogu-material-message-item-body__container {
+      @include themed() {
+        background-color: t(primary-2);
+      }
+    }
+  }
+  &.rogu-material-message-item-body--incoming {
+    .rogu-material-message-item-body__container {
+      @include themed() {
+        background-color: t(bg-1);
+      }
+    }
+  }
+}
