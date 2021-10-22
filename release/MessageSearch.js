@@ -1,9 +1,9 @@
 import React__default, { useEffect, useCallback, useContext, useState, useReducer, useRef } from 'react';
-import { i as __assign, l as __spreadArray, L as LocalizationContext, w as withSendbirdContext } from './LocalizationContext-5c78c456.js';
-import { f as format, a5 as Avatar, a6 as Label, a7 as LabelTypography, a8 as LabelColors, b as IconTypes, a as Icon, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-d2acabd9.js';
-import { i as isToday, a as isYesterday } from './index-01803eb8.js';
+import { i as __assign, l as __spreadArray, L as LocalizationContext, w as withSendbirdContext } from './LocalizationContext-261482a1.js';
+import { f as format, a5 as Avatar, a6 as Label, a7 as LabelTypography, a8 as LabelColors, b as IconTypes, a as Icon, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-25b2b868.js';
+import { i as isToday, a as isYesterday } from './index-5e4b84e4.js';
 import 'prop-types';
-import './index-e5487383.js';
+import './index-bde64ae8.js';
 
 var GET_SEARCHED_MESSAGES = 'GET_SEARCHED_MESSAGES';
 var GET_NEXT_SEARCHED_MESSAGES = 'GET_NEXT_SEARCHED_MESSAGES';

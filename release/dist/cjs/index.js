@@ -4,25 +4,25 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-02176588.js');
-var index$1 = require('./index-fd3d0b23.js');
+var LocalizationContext = require('./LocalizationContext-9e7e2f14.js');
+var index$1 = require('./index-6b90ace0.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-1880cc0a.js');
-var index$3 = require('./index-0854db3a.js');
-var Channel = require('./index-b20bf0fb.js');
-var index$4 = require('./index-c32276ea.js');
+var index$2 = require('./index-e736fae8.js');
+var index$3 = require('./index-31cd964f.js');
+var Channel = require('./index-95eaea8a.js');
+var index$4 = require('./index-505f8b0d.js');
 require('sendbird');
-require('./actionTypes-d61a123f.js');
+require('./actionTypes-26aa3fb1.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-c1dbd347.js');
-require('./utils-45e9058e.js');
-require('./LeaveChannel-3f42c846.js');
-require('./index-118793e8.js');
-require('./index-d1995caf.js');
+require('./index-de4a84a8.js');
+require('./utils-f1556101.js');
+require('./LeaveChannel-5a5bff45.js');
+require('./index-2ad947df.js');
+require('./index-d0a87b7b.js');
 require('./ChannelSettings.js');
-require('./index-232e4477.js');
+require('./index-d3e4032e.js');
 require('./MessageSearch.js');
 require('react-dom');
 
@@ -1886,20 +1886,22 @@ var Type = {
   ROGU_PENDING: 'ROGU_PENDING',
   ROGU_SENT: 'ROGU_SENT',
   ROGU_READ_ALL: 'ROGU_READ_ALL',
-  ROGU_ERROR: 'ROGU_ERROR'
+  ROGU_ERROR: 'ROGU_ERROR',
+  ROGU_ASSIGNMENT: 'ROGU_ASSIGNMENT',
+  ROGU_MATERIAL: 'ROGU_MATERIAL'
 };
 
-var _path$2;
+var _path$4;
 
-function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
+function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 
 function SvgRoguIconMsgFailed(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$3({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$5({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$2 || (_path$2 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$4 || (_path$4 = /*#__PURE__*/React__namespace.createElement("path", {
     className: "rogu-icon-msg-failed_svg__fill",
     d: "M8.25 11.25h1.5v1.5h-1.5v-1.5zm0-6h1.5v4.5h-1.5v-4.5zm.742-3.75C4.853 1.5 1.5 4.86 1.5 9c0 4.14 3.353 7.5 7.492 7.5 4.148 0 7.508-3.36 7.508-7.5 0-4.14-3.36-7.5-7.508-7.5zM9 15c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z",
     fill: "currentColor"
@@ -1908,10 +1910,10 @@ function SvgRoguIconMsgFailed(props) {
 
 var _circle, _circle2, _circle3, _circle4;
 
-function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
+function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
 
 function SvgRoguIconMsgPending(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$2({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$4({
     width: 18,
     height: 18,
     fill: "none",
@@ -1939,36 +1941,245 @@ function SvgRoguIconMsgPending(props) {
   })));
 }
 
-var _path$1;
+var _path$3;
 
-function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
+function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
 function SvgRoguIconMsgSent(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$1({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$3({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$1 || (_path$1 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$3 || (_path$3 = /*#__PURE__*/React__namespace.createElement("path", {
     d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
     fill: "#BEC8D0"
   })));
 }
 
-var _path;
+var _path$2;
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
 function SvgRoguIconMsgReadAll(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$2({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path || (_path = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$2 || (_path$2 = /*#__PURE__*/React__namespace.createElement("path", {
     d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
     fill: "#2EB5C0"
   })));
+}
+
+var _path$1, _path2$1, _path3$1, _path4$1, _path5, _defs$1;
+
+function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
+
+function SvgRoguIconAssignment(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$1({
+    width: 32,
+    height: 32,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$1 || (_path$1 = /*#__PURE__*/React__namespace.createElement("path", {
+    opacity: 0.25,
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M30.765 15.122v.072c-.025 2.284-.115 3.577-.33 4.882-.698 4.105-2.627 6.799-5.887 8.224-1.582.685-3.25 1.052-5.522 1.199-1.157.073-5.197.04-6.352-.052-2.268-.184-3.93-.578-5.496-1.289-3.23-1.479-5.103-4.203-5.715-8.319-.188-1.308-.251-2.603-.228-4.887l.001-.071c.025-2.239.115-3.52.328-4.811C2.574 4.115 6.185 1.093 12.841.653c1.032-.068 5.447-.038 6.484.046 2.269.184 3.93.578 5.496 1.289 3.23 1.48 5.103 4.203 5.715 8.32.187 1.294.25 2.576.229 4.814z",
+    fill: "#D4DBFF"
+  })), _path2$1 || (_path2$1 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M10.598 5.21c1.495-.191 3.296-.287 5.403-.287 2.106 0 3.907.096 5.402.287a5.223 5.223 0 014.486 4.27c.382 2.174.573 4.347.573 6.52 0 2.173-.191 4.346-.573 6.52a5.223 5.223 0 01-4.485 4.27c-1.496.191-3.297.287-5.403.287-2.107 0-3.908-.096-5.403-.287a5.223 5.223 0 01-4.486-4.27A37.57 37.57 0 015.54 16c0-2.173.191-4.346.573-6.52a5.223 5.223 0 014.486-4.27z",
+    fill: "#FDF7E0"
+  })), _path3$1 || (_path3$1 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M10.598 5.21c1.495-.191 3.296-.287 5.403-.287 2.106 0 3.907.096 5.402.287a5.223 5.223 0 014.486 4.27c.382 2.174.573 4.347.573 6.52 0 2.173-.191 4.346-.573 6.52a5.223 5.223 0 01-4.485 4.27c-1.496.191-3.297.287-5.403.287-2.107 0-3.908-.096-5.403-.287a5.223 5.223 0 01-4.486-4.27A37.57 37.57 0 015.54 16c0-2.173.191-4.346.573-6.52a5.223 5.223 0 014.486-4.27zM7.325 9.694A36.34 36.34 0 006.77 16c0 2.101.185 4.203.555 6.306a3.992 3.992 0 003.43 3.263c1.438.184 3.188.277 5.246.277 2.057 0 3.807-.093 5.246-.277a3.992 3.992 0 003.43-3.263c.37-2.103.554-4.205.554-6.306s-.184-4.203-.554-6.306a3.992 3.992 0 00-3.43-3.263c-1.439-.184-3.189-.277-5.246-.277-2.058 0-3.808.093-5.247.277a3.992 3.992 0 00-3.43 3.263z",
+    fill: "url(#rogu-icon-assignment_svg__paint0_linear_2150:4656)"
+  })), _path4$1 || (_path4$1 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M10.495 11.903c1.528-.14 3.363-.21 5.505-.21 2.156 0 4.001.087 5.535.26.352.04.618.339.618.693a.682.682 0 01-.618.68c-1.52.141-3.365.213-5.536.213-2.155 0-3.99-.07-5.503-.21a.716.716 0 010-1.426zm0 3.692c1.528-.14 3.363-.21 5.505-.21 2.156 0 4.001.087 5.535.26.352.04.618.339.618.694a.682.682 0 01-.618.679c-1.52.142-3.365.213-5.536.213-2.155 0-3.99-.07-5.503-.21a.716.716 0 010-1.426zm2.735 3.482c-1.04 0-1.948.055-2.725.164a.766.766 0 000 1.519c.772.109 1.68.163 2.725.163 1.06 0 1.98-.056 2.758-.168a.732.732 0 00.627-.724.759.759 0 00-.628-.748c-.783-.137-1.702-.206-2.757-.206z",
+    fill: "#E9DAB1"
+  })), _path5 || (_path5 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M13.817 3.782a2.461 2.461 0 014.364 0c.52.047 1.002.112 1.447.196.75.14 1.294.796 1.294 1.56 0 .762-.541 1.415-1.29 1.556-1.027.194-2.238.29-3.633.29s-2.606-.096-3.633-.29a1.583 1.583 0 01-1.29-1.556c0-.764.544-1.42 1.295-1.56.444-.084.927-.149 1.446-.196z",
+    fill: "#DF4141"
+  })), _defs$1 || (_defs$1 = /*#__PURE__*/React__namespace.createElement("defs", null, /*#__PURE__*/React__namespace.createElement("linearGradient", {
+    id: "rogu-icon-assignment_svg__paint0_linear_2150:4656",
+    x1: 3.113,
+    y1: 15.021,
+    x2: 17.111,
+    y2: 30.612,
+    gradientUnits: "userSpaceOnUse"
+  }, /*#__PURE__*/React__namespace.createElement("stop", {
+    stopColor: "#FFE641"
+  }), /*#__PURE__*/React__namespace.createElement("stop", {
+    offset: 1,
+    stopColor: "#FFC918"
+  })))));
+}
+
+var _path, _g, _g2, _g3, _path2, _path3, _path4, _defs;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function SvgRoguIconMaterial(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends({
+    width: 32,
+    height: 35,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path || (_path = /*#__PURE__*/React__namespace.createElement("path", {
+    opacity: 0.25,
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M30.765 16.353v.072c-.025 2.283-.115 3.577-.33 4.882-.698 4.105-2.627 6.798-5.887 8.224-1.582.685-3.25 1.052-5.522 1.198-1.157.073-5.197.04-6.352-.052-2.268-.183-3.93-.577-5.496-1.288-3.23-1.48-5.103-4.203-5.715-8.32-.188-1.308-.251-2.602-.228-4.886l.001-.072c.025-2.238.115-3.52.328-4.81 1.01-5.955 4.621-8.977 11.277-9.418 1.032-.067 5.447-.037 6.484.047 2.269.184 3.93.578 5.496 1.289 3.23 1.479 5.103 4.203 5.715 8.319.187 1.294.25 2.577.229 4.815z",
+    fill: "#D4DBFF"
+  })), _g || (_g = /*#__PURE__*/React__namespace.createElement("g", {
+    filter: "url(#rogu-icon-material_svg__filter0_d_2150:4687)"
+  }, /*#__PURE__*/React__namespace.createElement("path", {
+    d: "M23.385 2.461H8.615a2.46 2.46 0 00-2.46 2.462v19.692a2.46 2.46 0 002.46 2.462h14.77a2.46 2.46 0 002.462-2.462V4.923a2.46 2.46 0 00-2.462-2.462z",
+    fill: "url(#rogu-icon-material_svg__paint0_linear_2150:4687)"
+  }))), _g2 || (_g2 = /*#__PURE__*/React__namespace.createElement("g", {
+    filter: "url(#rogu-icon-material_svg__filter1_d_2150:4687)"
+  }, /*#__PURE__*/React__namespace.createElement("path", {
+    d: "M14.77 14.769l-3.078-1.846-3.077 1.846V6.154c0-.68.552-1.231 1.231-1.231h3.692c.68 0 1.231.551 1.231 1.23v8.616z",
+    fill: "#FFFAE6"
+  }))), _g3 || (_g3 = /*#__PURE__*/React__namespace.createElement("g", {
+    filter: "url(#rogu-icon-material_svg__filter2_d_2150:4687)"
+  }, /*#__PURE__*/React__namespace.createElement("path", {
+    transform: "rotate(50 22.758 15.472)",
+    fill: "url(#rogu-icon-material_svg__paint1_linear_2150:4687)",
+    d: "M22.758 15.472h6.154v13.539h-6.154z"
+  }))), _path2 || (_path2 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M16.342 28.889l-3.955-4.714-.943.79a1.234 1.234 0 00-.152 1.735l2.374 2.828a1.234 1.234 0 001.733.152l.943-.791z",
+    fill: "#E57373"
+  })), _path3 || (_path3 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M26.715 20.186l.896-2.76-1.978-2.358-2.874.404 3.956 4.714z",
+    fill: "#FFF1C4"
+  })), _path4 || (_path4 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M28.012 16.186a1 1 0 00-1.09-1.299l-1.29.181 1.978 2.357.402-1.239z",
+    fill: "#37474F"
+  })), _defs || (_defs = /*#__PURE__*/React__namespace.createElement("defs", null, /*#__PURE__*/React__namespace.createElement("filter", {
+    id: "rogu-icon-material_svg__filter0_d_2150:4687",
+    x: 2.154,
+    y: 0.461,
+    width: 27.691,
+    height: 32.615,
+    filterUnits: "userSpaceOnUse",
+    colorInterpolationFilters: "sRGB"
+  }, /*#__PURE__*/React__namespace.createElement("feFlood", {
+    floodOpacity: 0,
+    result: "BackgroundImageFix"
+  }), /*#__PURE__*/React__namespace.createElement("feColorMatrix", {
+    in: "SourceAlpha",
+    values: "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0",
+    result: "hardAlpha"
+  }), /*#__PURE__*/React__namespace.createElement("feOffset", {
+    dy: 2
+  }), /*#__PURE__*/React__namespace.createElement("feGaussianBlur", {
+    stdDeviation: 2
+  }), /*#__PURE__*/React__namespace.createElement("feColorMatrix", {
+    values: "0 0 0 0 0.470588 0 0 0 0 0.835294 0 0 0 0 0.996078 0 0 0 0.5 0"
+  }), /*#__PURE__*/React__namespace.createElement("feBlend", {
+    in2: "BackgroundImageFix",
+    result: "effect1_dropShadow_2150:4687"
+  }), /*#__PURE__*/React__namespace.createElement("feBlend", {
+    in: "SourceGraphic",
+    in2: "effect1_dropShadow_2150:4687",
+    result: "shape"
+  })), /*#__PURE__*/React__namespace.createElement("filter", {
+    id: "rogu-icon-material_svg__filter1_d_2150:4687",
+    x: 4.615,
+    y: 2.923,
+    width: 14.154,
+    height: 17.846,
+    filterUnits: "userSpaceOnUse",
+    colorInterpolationFilters: "sRGB"
+  }, /*#__PURE__*/React__namespace.createElement("feFlood", {
+    floodOpacity: 0,
+    result: "BackgroundImageFix"
+  }), /*#__PURE__*/React__namespace.createElement("feColorMatrix", {
+    in: "SourceAlpha",
+    values: "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0",
+    result: "hardAlpha"
+  }), /*#__PURE__*/React__namespace.createElement("feOffset", {
+    dy: 2
+  }), /*#__PURE__*/React__namespace.createElement("feGaussianBlur", {
+    stdDeviation: 2
+  }), /*#__PURE__*/React__namespace.createElement("feColorMatrix", {
+    values: "0 0 0 0 0.629143 0 0 0 0 0.851657 0 0 0 0 1 0 0 0 1 0"
+  }), /*#__PURE__*/React__namespace.createElement("feBlend", {
+    in2: "BackgroundImageFix",
+    result: "effect1_dropShadow_2150:4687"
+  }), /*#__PURE__*/React__namespace.createElement("feBlend", {
+    in: "SourceGraphic",
+    in2: "effect1_dropShadow_2150:4687",
+    result: "shape"
+  })), /*#__PURE__*/React__namespace.createElement("filter", {
+    id: "rogu-icon-material_svg__filter2_d_2150:4687",
+    x: 8.387,
+    y: 13.472,
+    width: 22.326,
+    height: 21.416,
+    filterUnits: "userSpaceOnUse",
+    colorInterpolationFilters: "sRGB"
+  }, /*#__PURE__*/React__namespace.createElement("feFlood", {
+    floodOpacity: 0,
+    result: "BackgroundImageFix"
+  }), /*#__PURE__*/React__namespace.createElement("feColorMatrix", {
+    in: "SourceAlpha",
+    values: "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0",
+    result: "hardAlpha"
+  }), /*#__PURE__*/React__namespace.createElement("feOffset", {
+    dy: 2
+  }), /*#__PURE__*/React__namespace.createElement("feGaussianBlur", {
+    stdDeviation: 2
+  }), /*#__PURE__*/React__namespace.createElement("feColorMatrix", {
+    values: "0 0 0 0 0.972549 0 0 0 0 0.596078 0 0 0 0 0.145098 0 0 0 0.5 0"
+  }), /*#__PURE__*/React__namespace.createElement("feBlend", {
+    in2: "BackgroundImageFix",
+    result: "effect1_dropShadow_2150:4687"
+  }), /*#__PURE__*/React__namespace.createElement("feBlend", {
+    in: "SourceGraphic",
+    in2: "effect1_dropShadow_2150:4687",
+    result: "shape"
+  })), /*#__PURE__*/React__namespace.createElement("linearGradient", {
+    id: "rogu-icon-material_svg__paint0_linear_2150:4687",
+    x1: 1.89,
+    y1: 22.179,
+    x2: 19.887,
+    y2: 29.553,
+    gradientUnits: "userSpaceOnUse"
+  }, /*#__PURE__*/React__namespace.createElement("stop", {
+    stopColor: "#0CB2FA"
+  }), /*#__PURE__*/React__namespace.createElement("stop", {
+    offset: 1,
+    stopColor: "#057FF2"
+  })), /*#__PURE__*/React__namespace.createElement("linearGradient", {
+    id: "rogu-icon-material_svg__paint1_linear_2150:4687",
+    x1: 22.758,
+    y1: 15.472,
+    x2: 22.758,
+    y2: 29.011,
+    gradientUnits: "userSpaceOnUse"
+  }, /*#__PURE__*/React__namespace.createElement("stop", {
+    stopColor: "#FFD34E"
+  }), /*#__PURE__*/React__namespace.createElement("stop", {
+    offset: 1,
+    stopColor: "#FFA726"
+  })))));
 }
 
 var Colors = {
@@ -2209,6 +2420,12 @@ function changeTypeToIconComponent(type) {
     case Type.ROGU_ERROR:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgFailed, null);
 
+    case Type.ROGU_ASSIGNMENT:
+      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconAssignment, null);
+
+    case Type.ROGU_MATERIAL:
+      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMaterial, null);
+
     default:
       return 'icon';
     // If you see this text 'icon' replace icon for it
@@ -2388,6 +2605,93 @@ function TextMessageItemBody(_a) {
   }, /*#__PURE__*/React__default["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
 }
 
+function AssignmentMessageItemBody(_a) {
+  var _b;
+
+  var className = _a.className,
+      message = _a.message,
+      isByMe = _a.isByMe,
+      _c = _a.mouseHover,
+      mouseHover = _c === void 0 ? false : _c;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var assignmentData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
+
+  var openAssignment = function openAssignment() {
+    if ((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) && (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb.length) > 0) {
+      window.open(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb);
+    } else {
+      window.open(index$1.convertCtaLinkToWebLink(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.cta, "assignment"));
+    }
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: index$1.getClassName([className, 'rogu-assignment-message-item-body', isByMe ? 'rogu-assignment-message-item-body--outgoing' : 'rogu-assignment-message-item-body--incoming', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    role: "button",
+    tabIndex: 0,
+    className: "rogu-assignment-message-item-body__container",
+    onClick: openAssignment,
+    onKeyPress: openAssignment
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    className: "rogu-assignment-message-item-body__icon",
+    type: IconTypes.ROGU_ASSIGNMENT,
+    width: "30",
+    height: "30"
+  }), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-assignment-message-item-body__text-container"
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-assignment-message-item-body__text-title",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.SUBTITLE_2
+  }, assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.title), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Label, {
+    color: LabelColors.ONBACKGROUND_2,
+    type: LabelTypography.BODY_2
+  }, stringSet.ASSIGNMENT), (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt) && (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt.length) > 0 && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-assignment-message-item-body__text-deadline",
+    color: LabelColors.ONBACKGROUND_2,
+    type: LabelTypography.BODY_2
+  }, stringSet.ASSIGNMENT_DEADLINE + " " + index$1.convertAssignmentDueUTCtoLocale(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt))))));
+}
+
+function MaterialMessageItemBody(_a) {
+  var _b;
+
+  var className = _a.className,
+      message = _a.message,
+      isByMe = _a.isByMe;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var materialData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
+
+  var openMaterial = function openMaterial() {
+    if ((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) && (materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb.length) > 0) {
+      window.open(materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb);
+    } else {
+      window.open(index$1.convertCtaLinkToWebLink(materialData === null || materialData === void 0 ? void 0 : materialData.cta, "material"));
+    }
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: index$1.getClassName([className, "rogu-material-message-item-body", isByMe ? 'rogu-material-message-item-body--outgoing' : 'rogu-material-message-item-body--incoming', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-material-message-item-body__container",
+    onClick: openMaterial
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    className: "rogu-material-message-item-body__icon",
+    type: IconTypes.ROGU_MATERIAL,
+    width: "30",
+    height: "30"
+  }), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-material-message-item-body__text-container"
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-material-message-item-body__text-title",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.SUBTITLE_2
+  }, materialData === null || materialData === void 0 ? void 0 : materialData.title), /*#__PURE__*/React__default["default"].createElement(Label, {
+    color: LabelColors.ONBACKGROUND_2,
+    type: LabelTypography.BODY_2
+  }, stringSet.MATERIAL))));
+}
+
 var colorSet = {
   "#DF4141": ["A", "B", "C", "D"],
   "#61CE5E": ["E", "F", "G", "H"],
@@ -2477,6 +2781,12 @@ function MessageContent(_a) {
     isByMe: isByMe,
     message: message
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(Channel.OGMessageItemBody, {
+    message: message,
+    isByMe: isByMe
+  }), index$1.isAssignmentMessage(message.customType) && /*#__PURE__*/React__default["default"].createElement(AssignmentMessageItemBody, {
+    message: message,
+    isByMe: isByMe
+  }), index$1.isMaterialMessage(message.customType) && /*#__PURE__*/React__default["default"].createElement(MaterialMessageItemBody, {
     message: message,
     isByMe: isByMe
   }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default["default"].createElement(Channel.FileMessageItemBody, {
