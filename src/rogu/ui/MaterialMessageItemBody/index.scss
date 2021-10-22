@@ -17,7 +17,7 @@
     position: relative;
     padding: 8px 12px;
     box-sizing: border-box;
-    border-radius: 16px 16px 0px 0px;
+    border-radius: 16px 16px 0 0;
     word-break: break-all;
   }
 
@@ -44,7 +44,6 @@
 
     .rogu-material-message-item-body__text-title {
       margin: 0;
-      display: inline-block;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -60,6 +59,7 @@
       }
     }
   }
+
   &.rogu-material-message-item-body--incoming {
     .rogu-material-message-item-body__container {
       @include themed() {

@@ -261,7 +261,6 @@ export default function FileViewer(props) {
     name: captionMsg = '',
     createdAt,
   } = message;
-  console.log('message', message);
   const { profileUrl, nickname: userName = '' } = sender;
   return createPortal(
     (
