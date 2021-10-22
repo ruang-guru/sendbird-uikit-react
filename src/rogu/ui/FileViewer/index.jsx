@@ -11,6 +11,7 @@ import Label, { LabelTypography, LabelColors } from '../Label';
 import Icon, { IconTypes } from '../Icon';
 import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
 import TextButton from '../TextButton';
+import TextMessageItemBody from '../TextMessageItemBody';
 
 import {
   isImage, isVideo, isSupportedFileView, getClassName,
@@ -18,70 +19,70 @@ import {
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Toast from '../Toast';
 
-const ContentCaption = ({ captionMsg, isHidden }) => {
-  const { stringSet } = useContext(LocalizationContext);
-  const [clampState, setClampState] = useState('init');
-  const textRef = useRef();
+// const ContentCaption = ({ captionMsg, isHidden }) => {
+//   const { stringSet } = useContext(LocalizationContext);
+//   const [clampState, setClampState] = useState('init');
+//   const textRef = useRef();
 
-  useEffect(() => {
-    if (
-      textRef.current
-      && textRef.current.scrollHeight > textRef.current.clientHeight
-    ) {
-      setClampState('clamped');
-    }
-  }, [textRef.current]);
+//   useEffect(() => {
+//     if (
+//       textRef.current
+//       && textRef.current.scrollHeight > textRef.current.clientHeight
+//     ) {
+//       setClampState('clamped');
+//     }
+//   }, [textRef.current]);
 
-  function handleExpand() {
-    setClampState('expanded');
-  }
+//   function handleExpand() {
+//     setClampState('expanded');
+//   }
 
-  return (
-    <div
-      className={getClassName([
-        'rogu-text-message-item-body',
-        clampState === 'expanded' ? 'rogu-text-message-item-body--expanded' : '',
-        isHidden ? 'hidden' : '',
-      ])}
-    >
-      <div ref={textRef} className="rogu-text-message-item-body__inner">
-        {captionMsg.split(/\r/).map((word, i) => (word === '' ? (
-          // eslint-disable-next-line react/no-array-index-key
-          <br key={i} />
-        ) : (
-          <Label
-            className="rogu-text-message-item-body__message"
-            color={LabelColors.ONBACKGROUND_1}
-            // eslint-disable-next-line react/no-array-index-key
-            key={i}
-            type={LabelTypography.BODY_1}
-          >
-            {word}
-          </Label>
-        )))}
-      </div>
+//   return (
+//     <div
+//       className={getClassName([
+//         'rogu-text-message-item-body',
+//         clampState === 'expanded' ? 'rogu-text-message-item-body--expanded' : '',
+//         isHidden ? 'hidden' : '',
+//       ])}
+//     >
+//       <div ref={textRef} className="rogu-text-message-item-body__inner">
+//         {captionMsg.split(/\r/).map((word, i) => (word === '' ? (
+//           // eslint-disable-next-line react/no-array-index-key
+//           <br key={i} />
+//         ) : (
+//           <Label
+//             className="rogu-text-message-item-body__message"
+//             color={LabelColors.ONBACKGROUND_1}
+//             // eslint-disable-next-line react/no-array-index-key
+//             key={i}
+//             type={LabelTypography.BODY_1}
+//           >
+//             {word}
+//           </Label>
+//         )))}
+//       </div>
 
-      {clampState === 'clamped' && (
-        <TextButton
-          className="rogu-text-message-item-body__read-more"
-          // eslint-disable-next-line react/jsx-no-bind
-          onClick={handleExpand}
-        >
-          <Label>{stringSet.BUTTON__READ_MORE}</Label>
-        </TextButton>
-      )}
-    </div>
-  );
-};
+//       {clampState === 'clamped' && (
+//         <TextButton
+//           className="rogu-text-message-item-body__read-more"
+//           // eslint-disable-next-line react/jsx-no-bind
+//           onClick={handleExpand}
+//         >
+//           <Label>{stringSet.BUTTON__READ_MORE}</Label>
+//         </TextButton>
+//       )}
+//     </div>
+//   );
+// };
 
-ContentCaption.propTypes = {
-  captionMsg: PropTypes.string.isRequired,
-  isHidden: PropTypes.bool,
-};
+// ContentCaption.propTypes = {
+//   captionMsg: PropTypes.string.isRequired,
+//   isHidden: PropTypes.bool,
+// };
 
-ContentCaption.defaultProps = {
-  isHidden: false,
-};
+// ContentCaption.defaultProps = {
+//   isHidden: false,
+// };
 
 export const FileViewerComponent = ({
   // sender
@@ -213,7 +214,8 @@ export const FileViewerComponent = ({
             />
           )
         }
-        {captionMsg && <ContentCaption captionMsg={captionMsg} isHidden={isCaptionHidden} />}
+        {/* {captionMsg && <ContentCaption captionMsg={captionMsg} isHidden={isCaptionHidden} />} */}
+        {captionMsg && <TextMessageItemBody message={captionMsg} viewerCaptionMode isHidden={isCaptionHidden} />}
         {
           !isSupportedFileView(type) && (
             <div className="rogu-fileviewer__content__unsupported">

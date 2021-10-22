@@ -121,56 +121,5 @@
       justify-content: center;
       align-items: center;
     }
-
-    .rogu-text-message-item-body {
-      position: absolute;
-      bottom: 5%;
-      display: inline-block;
-      box-sizing: content-box;
-      max-height: 40%;
-      max-width: 95%;
-      background: #f1f4f9;
-      backdrop-filter: blur(16px);
-      padding: 24px;
-      overflow: auto;
-      transition: all 0.2s;
-
-      @include sm {
-        max-width: 70%;
-      }
-
-      .rogu-text-message-item-body__message {
-        white-space: pre-wrap;
-        word-break: break-all;
-      }
-
-      .rogu-text-message-item-body__read-more {
-        font-weight: bolder;
-
-        @include themed() {
-          color: t(secondary-3);
-        }
-      }
-
-      .rogu-text-message-item-body__inner {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-      }
-
-      &.rogu-text-message-item-body--expanded {
-        .rogu-text-message-item-body__inner {
-          display: block;
-          overflow: visible;
-        }
-      }
-
-      &.hidden {
-        max-height: 0;
-        padding: 0;
-      }
-    }
   }
 }
