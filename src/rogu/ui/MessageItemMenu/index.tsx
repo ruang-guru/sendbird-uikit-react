@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext, useRef } from 'react';
+import React, { ReactElement, useContext, useRef, useState } from 'react';
 import { FileMessage, GroupChannel, OpenChannel, UserMessage } from 'sendbird';
 
 import IconButton from '../../../ui/IconButton';
@@ -14,6 +14,7 @@ import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 import Icon, { IconTypes, IconColors } from '../Icon';
 import ContextMenu, {MenuItems, MenuItem} from '../ContextMenu';
+import Toast from '../Toast';
 
 import "./index.scss";
 
@@ -43,6 +44,8 @@ export default function MessageItemMenu({
   showFileViewer,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
+  const [showToast, setShowToast] = useState(false);
+
   const triggerRef = useRef(null);
   const containerRef = useRef(null);
 
@@ -59,6 +62,15 @@ export default function MessageItemMenu({
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
   }
+
+  const onCopyClick = (message:string) => {
+    copyToClipboard(message);
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 3000);
+  };
+
   return (
     <div
       className={getClassName([className, 'rogu-message-item-menu'])}
@@ -118,7 +130,7 @@ export default function MessageItemMenu({
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
-                    copyToClipboard((message as UserMessage)?.message);
+                    onCopyClick((message as UserMessage)?.message);                    
                     closeDropdown();
                   }}
                   iconType={IconTypes.ROGU_COPY}
@@ -186,6 +198,9 @@ export default function MessageItemMenu({
           );
         }}
       />
+      {showToast && (
+        <Toast message={stringSet.TOAST__COPY} />
+      )}
     </div>
   );
 }
