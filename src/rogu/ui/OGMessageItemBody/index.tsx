@@ -124,7 +124,7 @@ export default function OGMessageItemBody({
                   type={LabelTypography.BODY_1}
                   color={LabelColors.ONBACKGROUND_1}
                 >
-                  {word}
+                  {word + ' '}
                 </Label>
               )
           ))
