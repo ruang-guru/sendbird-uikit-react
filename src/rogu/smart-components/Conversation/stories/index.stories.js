@@ -11,8 +11,6 @@ import Notification from "../components/Notification";
 
 export default { title: "ruangkelas/Smart Components/Channel" };
 
-console.log(process.env);
-
 const appId = process.env.STORYBOOK_APP_ID;
 const userId = process.env.STORYBOOK_USER_ID;
 const channelUrl = process.env.STORYBOOK_GROUP_ID;
