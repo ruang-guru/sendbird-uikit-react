@@ -108,6 +108,8 @@ const getStringSet = (lang = 'en') => {
       LABEL__DAY_SATURDAY: 'Saturday',
       LABEL__OPERATOR: 'Teacher',
       TOAST__DOWNLOAD: 'Download successful',
+      ROGU__MODAL__DELETE_MESSAGE__TITLE: 'Are you sure you want to delete the chat?',
+      ROGU__MODAL__DELETE_MESSAGE__SUBTITLE: 'Chats that you have deleted cannot be seen and accessed again',
     },
   };
   return stringSet[lang];

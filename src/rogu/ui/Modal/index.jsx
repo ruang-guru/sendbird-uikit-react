@@ -12,8 +12,8 @@ import Button, { ButtonTypes } from '../Button';
 import Label, { LabelTypography, LabelColors } from '../Label';
 
 export const ModalHeader = ({ titleText }) => (
-  <div className="sendbird-modal__header">
-    <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
+  <div className="rogu-modal__header">
+    <Label className="rogu-modal__title" type={LabelTypography.H_3} color={LabelColors.ONBACKGROUND_1}>
       {titleText}
     </Label>
   </div>
@@ -23,7 +23,7 @@ ModalHeader.propTypes = {
 };
 
 export const ModalBody = ({ children }) => (
-  <div className="sendbird-modal__body">{children}</div>
+  <div className="rogu-modal__body">{children}</div>
 );
 ModalBody.propTypes = {
   children: PropTypes.oneOfType([
@@ -40,18 +40,15 @@ export const ModalFooter = ({
   onCancel,
   disabled = false,
   submitText,
-  type,
 }) => {
   const { stringSet } = useContext(LocalizationContext);
   return (
-    <div className="sendbird-modal__footer">
-      <Button type={ButtonTypes.SECONDARY} onClick={onCancel}>
-        <Label type={LabelTypography.BUTTON_1} color={LabelColors.ONBACKGROUND_1}>
-          {stringSet.BUTTON__CANCEL}
-        </Label>
-      </Button>
-      <Button type={type} disabled={disabled} onClick={onSubmit}>
+    <div className="rogu-modal__footer">
+      <Button type={ButtonTypes.SECONDARY} disabled={disabled} onClick={onSubmit}>
         {submitText}
+      </Button>
+      <Button type={ButtonTypes.PRIMARY} onClick={onCancel}>
+        {stringSet.BUTTON__CANCEL}
       </Button>
     </div>
   );
@@ -62,11 +59,9 @@ ModalFooter.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   submitText: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
-  type: PropTypes.string,
 };
 ModalFooter.defaultProps = {
   disabled: false,
-  type: ButtonTypes.DANGER,
 };
 
 function Modal(props) {
@@ -78,11 +73,11 @@ function Modal(props) {
     submitText,
     titleText,
     hideFooter,
-    type,
+    isWithClose,
   } = props;
   return createPortal((
-    <div className="sendbird-modal">
-      <div className="sendbird-modal__content">
+    <div className="rogu-modal">
+      <div className="rogu-modal__content">
         <ModalHeader titleText={titleText} />
         <ModalBody>{children}</ModalBody>
         {
@@ -92,26 +87,27 @@ function Modal(props) {
               onCancel={onCancel}
               onSubmit={onSubmit}
               submitText={submitText}
-              type={type}
             />
           )
         }
-        <div className="sendbird-modal__close">
-          <IconButton
-            width="32px"
-            height="32px"
-            onClick={onCancel}
-          >
-            <Icon
-              type={IconTypes.CLOSE}
-              fillColor={IconColors.DEFAULT}
-              width="24px"
-              height="24px"
-            />
-          </IconButton>
-        </div>
+        {isWithClose && (
+          <div className="rogu-modal__close">
+            <IconButton
+              width="32px"
+              height="32px"
+              onClick={onCancel}
+            >
+              <Icon
+                type={IconTypes.ROGU_CLOSE}
+                fillColor={IconColors.DEFAULT}
+                width="24px"
+                height="24px"
+              />
+            </IconButton>
+          </div>
+        )}
       </div>
-      <div className="sendbird-modal__backdrop" />
+      <div className="rogu-modal__backdrop" />
     </div>
   ), document.getElementById(MODAL_ROOT));
 }
@@ -126,12 +122,14 @@ Modal.propTypes = {
   hideFooter: PropTypes.bool,
   disabled: PropTypes.bool,
   type: PropTypes.string,
+  isWithClose: PropTypes.bool,
 };
 Modal.defaultProps = {
   children: null,
   hideFooter: false,
   disabled: false,
   type: ButtonTypes.DANGER,
+  isWithClose: true,
 };
 
 export default Modal;

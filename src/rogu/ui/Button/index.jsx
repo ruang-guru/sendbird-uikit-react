@@ -16,8 +16,8 @@ export default function Button({
 }) {
   const injectingClassNames = [
     ...((Array.isArray(className)) ? className : [className]),
-    'sendbird-button',
-    (disabled ? 'sendbird-button__disabled' : ''),
+    'rogu-button',
+    (disabled ? 'rogu-button__disabled' : ''),
     changeTypeToClassName(type),
     changeSizeToClassName(size),
   ].join(' ');
@@ -30,8 +30,8 @@ export default function Button({
       disabled={disabled}
     >
       <Label
-        className="sendbird-button__text"
-        type={LabelTypography.BUTTON_1}
+        className="rogu-button__text"
+        type={LabelTypography.BODY_3}
         color={LabelColors.ONCONTENT_1}
       >
         {children}

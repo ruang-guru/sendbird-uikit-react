@@ -1,6 +1,6 @@
 @import '../../../styles/variables';
 
-.sendbird-modal {
+.rogu-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,20 +11,21 @@
   justify-content: center;
 }
 
-.sendbird-modal__content {
-  width: 480px;
-  border-radius: 4px;
+.rogu-modal__content {
+  max-width: 380px;
+  border-radius: 12px;
   z-index: 10001;
-  padding: 18px 24px 24px 24px;
+  padding: 16px;
   position: relative;
   box-sizing: border-box;
+  box-shadow: 0px 10px 20px rgba(60, 71, 103, 0.06);
 
   @include themed() {
     background-color: t(bg--0-5);
     box-shadow: t(shadow-gradient-4);
   }
 
-  .sendbird-modal__close {
+  .rogu-modal__close {
     position: absolute;
     top: 16px;
     right: 16px;
@@ -37,24 +38,39 @@
     }
   }
 
-  .sendbird-modal__header {
-    margin-bottom: 16px;
+  .rogu-modal__header {
+    margin-bottom: 8px;
+    width: 100%;
+    text-align: center;
+
+    .rogu-modal__title {
+      line-height: 22px;
+      font-weight: 800;
+    }
   }
 
-  // .sendbird-modal__body {}
-  .sendbird-modal__footer {
-    margin-top: 32px;
+  // .rogu-modal__body {}
+  .rogu-modal__footer {
+    margin-top: 16px;
     text-align: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-    .sendbird-button:last-child {
-      margin-left: 8px;
-      width: 80px;
-      height: 40px;
+    .rogu-button_text-option {
+      font-weight: 600;
+      line-height: 18px;
+    }
+
+    .rogu-button:last-child {
+      margin-left: 12px;
+      // width: 80px;
+      // height: 40px;
     }
   }
 }
 
-.sendbird-modal__backdrop {
+.rogu-modal__backdrop {
   position: fixed;
   z-index: 10000;
   height: 100%;
