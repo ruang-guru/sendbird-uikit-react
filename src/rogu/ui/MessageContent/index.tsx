@@ -104,10 +104,6 @@ Props): ReactElement {
     return <ClientAdminMessage message={message} />;
   };
 
-  if(isOGMessage(message as UserMessage)){
-    console.log(message.ogMetaData);
-  }
-
 
   return (
     <div
