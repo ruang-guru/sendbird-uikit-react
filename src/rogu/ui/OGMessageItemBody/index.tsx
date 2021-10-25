@@ -39,7 +39,7 @@ export default function OGMessageItemBody({
     <div className={getClassName([
       className,
       'rogu-og-message-item-body',
-      isByMe ? 'rogu-og-message-outgoing' : 'rogu-og-message-incoming',
+      isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming',
       mouseHover ? 'mouse-hover' : '',
       message?.reactions?.length > 0 ? 'rogu-og-message-reactions' : '',
     ])}>
