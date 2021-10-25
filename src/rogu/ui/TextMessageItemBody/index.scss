@@ -20,6 +20,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
+    align-self: center;
   }
 
   &.rogu-text-message-item-body--incoming {
@@ -34,6 +35,30 @@
     .rogu-text-message-item-body__inner {
       display: block;
       overflow: visible;
+    }
+  }
+
+  &.viewer-mode {
+    position: absolute;
+    bottom: 5%;
+    max-height: 40%;
+    min-width: 60%;
+    max-width: 95%;
+    background: #f1f4f9;
+    backdrop-filter: blur(16px);
+    padding: 24px;
+    overflow: auto;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+
+    @include sm {
+      max-width: 70%;
+    }
+
+    &.hidden {
+      max-height: 0;
+      padding: 0;
     }
   }
 }

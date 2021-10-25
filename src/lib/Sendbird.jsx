@@ -80,6 +80,7 @@ export default function Sendbird(props) {
   }, [logLevel]);
 
   useAppendDomNode([
+    'rogu-toast-root',
     'sendbird-modal-root',
     'sendbird-dropdown-portal',
     'sendbird-emoji-list-portal',

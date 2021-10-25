@@ -5,7 +5,6 @@ import React, {
   useState,
   ReactElement,
 } from "react";
-import { UserMessage } from "sendbird";
 
 import TextButton from "../TextButton";
 import Label, { LabelTypography, LabelColors } from "../Label";
@@ -17,7 +16,9 @@ import "./index.scss";
 interface Props {
   className?: string | Array<string>;
   isByMe?: boolean;
-  message: UserMessage;
+  message: string;
+  viewerCaptionMode?: boolean;
+  isHidden?: boolean;
 }
 
 type ClampType = "init" | "clamped" | "expanded";
@@ -26,6 +27,8 @@ export default function TextMessageItemBody({
   className,
   isByMe = false,
   message,
+  viewerCaptionMode = false,
+  isHidden = false,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const [clampState, setClampState] = useState<ClampType>("init");
@@ -51,10 +54,12 @@ export default function TextMessageItemBody({
         "rogu-text-message-item-body",
         clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "",
         !isByMe ? "rogu-text-message-item-body--incoming" : "",
+        viewerCaptionMode ? "viewer-mode" : "",
+        viewerCaptionMode && isHidden ? 'hidden' : '',
       ])}
     >
       <div ref={textRef} className="rogu-text-message-item-body__inner">
-        {message?.message.split(/\r/).map((word, i) =>
+        {message?.split(/\r/).map((word, i) =>
           word === "" ? (
             <br key={i} />
           ) : (
