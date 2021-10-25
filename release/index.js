@@ -1,29 +1,49 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { S as SendbirdSdkContext, _ as _toConsumableArray, a as _objectSpread2, u as uuidv4, b as _slicedToArray, c as _defineProperty, L as LocalizationContext, d as _inherits, e as _createSuper, f as _classCallCheck, g as _assertThisInitialized, h as _createClass, w as withSendbirdContext } from './LocalizationContext-261482a1.js';
-export { w as withSendBird } from './LocalizationContext-261482a1.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as convertAssignmentDueUTCtoLocale, k as convertCtaLinkToWebLink, l as getUIKitMessageTypes, m as isPendingMessage, n as isSentMessage, o as isMessageSentByMe, p as isMessageSentByOperator, q as getSenderName, r as isTextMessage, s as isOGMessage, t as isAssignmentMessage, u as isMaterialMessage, v as getUIKitMessageType, w as isThumbnailMessage, x as getOutgoingMessageState, I as IconButton, B as Button, y as ButtonTypes, z as ButtonSizes, M as Modal, A as UserProfileProvider } from './index-59b8b06a.js';
-export { F as sendBirdSelectors } from './index-59b8b06a.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-09d54103.js';
+export { w as withSendBird } from './LocalizationContext-09d54103.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as convertAssignmentDueUTCtoLocale, k as convertCtaLinkToWebLink, l as getUIKitMessageTypes, m as isPendingMessage, n as isSentMessage, o as isMessageSentByMe, p as isMessageSentByOperator, q as getSenderName, r as isTextMessage, s as isOGMessage, t as isAssignmentMessage, u as isMaterialMessage, v as getUIKitMessageType, w as isThumbnailMessage, x as getOutgoingMessageState, I as IconButton, B as Button, y as ButtonTypes, z as ButtonSizes, M as Modal, A as MODAL_ROOT, F as isSupportedFileView, G as isVideo, H as isImage, J as UserProfileProvider } from './index-e30c37a4.js';
+export { K as sendBirdSelectors } from './index-e30c37a4.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, useLayoutEffect, Component, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format, I as ImageRenderer, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors, aa as PlaceHolder, ab as PlaceHolderTypes } from './index-25b2b868.js';
-import { c as compareIds, D as DateSeparator, F as FileViewer } from './index-b243a59b.js';
-import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-d89c9f3f.js';
-import { i as isSameDay } from './index-bde64ae8.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors$1, aa as pxToNumber$1, ab as PlaceHolder, ac as PlaceHolderTypes } from './index-00f78cdb.js';
+import { c as compareIds } from './index-bf2fbf90.js';
+import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-24be68c9.js';
+import { format, differenceInCalendarDays, getDay } from 'date-fns';
+import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-fbd1b050.js';
+import './actionTypes-a1046462.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-6d8f0717.js';
-import './utils-07071863.js';
-import './LeaveChannel-642ad1a1.js';
-import './index-8eae11dd.js';
-import './index-5e4b84e4.js';
+import './index-04f4e919.js';
+import './utils-b5b73359.js';
+import './LeaveChannel-2fd5699b.js';
+import './index-ab6c6f90.js';
+import './index-96541062.js';
+import './index-f6f3bf71.js';
 import './ChannelSettings.js';
-import './index-c414aa97.js';
+import './index-fed4bf8d.js';
 import './MessageSearch.js';
-import 'react-dom';
+
+var getDayString = function getDayString(dayNumber, strings) {
+  return strings[dayNumber];
+};
+
+var groupMessagesByDate = function groupMessagesByDate(messages) {
+  return messages.reduce(function (groupedMessagesByDate, currMessage) {
+    var messageDate = format(currMessage.createdAt, "dd/MM/yyyy");
+    var currentGroup = groupedMessagesByDate.get(messageDate);
+
+    if (currentGroup) {
+      groupedMessagesByDate.set(messageDate, __spreadArray(__spreadArray([], currentGroup, true), [currMessage], false));
+    } else {
+      groupedMessagesByDate.set(messageDate, [currMessage]);
+    }
+
+    return groupedMessagesByDate;
+  }, new Map());
+};
 
 /**
  * Example:
@@ -227,7 +247,7 @@ var getNicknamesMapFromMembers = function getNicknamesMapFromMembers() {
   return nicknamesMap;
 };
 var getMessageCreatedAt = function getMessageCreatedAt(message) {
-  return format(message.createdAt, 'p');
+  return format$1(message.createdAt, 'p');
 };
 var isSameGroup = function isSameGroup(message, comparingMessage) {
   if (!message || !comparingMessage || !message.sender || !comparingMessage.sender || !message.createdAt || !comparingMessage.createdAt || !message.sender.userId || !comparingMessage.sender.userId) {
@@ -522,7 +542,7 @@ function reducer(state, action) {
 
         return _objectSpread2(_objectSpread2({}, state), {}, {
           unreadCount: _unreadCount,
-          unreadSince: _unreadCount === 1 ? format(new Date(), 'p MMM dd') : unreadSince,
+          unreadSince: _unreadCount === 1 ? format$1(new Date(), 'p MMM dd') : unreadSince,
           allMessages: passUnsuccessfullMessages(state.allMessages, message)
         });
       }
@@ -1615,7 +1635,7 @@ function useMemoizedEmojiListItems(_ref, _ref2) {
             closeDropdown();
             toggleReaction(message, emoji.key, isReacted);
           }
-        }, /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        }, /*#__PURE__*/React__default.createElement(ImageRenderer$1, {
           url: emoji.url,
           width: "28px",
           height: "28px",
@@ -1678,10 +1698,12 @@ function useScrollToMessage(_a, _b) {
 var Typography = {
   H_1: 'H_1',
   H_2: 'H_2',
+  H_3: 'H_3',
   SUBTITLE_1: 'SUBTITLE_1',
   SUBTITLE_2: 'SUBTITLE_2',
   BODY_1: 'BODY_1',
   BODY_2: 'BODY_2',
+  BODY_3: 'BODY_3',
   BUTTON_1: 'BUTTON_1',
   BUTTON_2: 'BUTTON_2',
   CAPTION_1: 'CAPTION_1',
@@ -1693,6 +1715,7 @@ var Colors$1 = {
   ONBACKGROUND_2: 'ONBACKGROUND_2',
   ONBACKGROUND_3: 'ONBACKGROUND_3',
   ONBACKGROUND_4: 'ONBACKGROUND_4',
+  ONBACKGROUND_5: 'ONBACKGROUND_5',
   ONCONTENT_1: 'ONCONTENT_1',
   ONCONTENT_2: 'ONCONTENT_2',
   PRIMARY: 'PRIMARY',
@@ -1708,6 +1731,9 @@ function changeTypographyToClassName(type) {
     case Typography.H_2:
       return 'sendbird-label--h-2';
 
+    case Typography.H_3:
+      return 'rogu-label--h-3';
+
     case Typography.SUBTITLE_1:
       return 'sendbird-label--subtitle-1';
 
@@ -1719,6 +1745,9 @@ function changeTypographyToClassName(type) {
 
     case Typography.BODY_2:
       return 'sendbird-label--body-2';
+
+    case Typography.BODY_3:
+      return 'rogu-label--body-3';
 
     case Typography.BUTTON_1:
       return 'sendbird-label--button-1';
@@ -1752,6 +1781,9 @@ function changeColorToClassName$1(color) {
 
     case Colors$1.ONBACKGROUND_4:
       return 'sendbird-label--color-onbackground-4';
+
+    case Colors$1.ONBACKGROUND_5:
+      return 'rogu-label--color-onbackground-5';
 
     case Colors$1.ONCONTENT_1:
       return 'sendbird-label--color-oncontent-1';
@@ -1862,21 +1894,24 @@ var Type = {
   ROGU_SENT: 'ROGU_SENT',
   ROGU_READ_ALL: 'ROGU_READ_ALL',
   ROGU_ERROR: 'ROGU_ERROR',
+  ROGU_CLOSE: 'ROGU_CLOSE',
+  ROGU_DOWNLOAD: 'ROGU_DOWNLOAD',
+  ROGU_DELETE: 'ROGU_DELETE',
   ROGU_ASSIGNMENT: 'ROGU_ASSIGNMENT',
   ROGU_MATERIAL: 'ROGU_MATERIAL'
 };
 
-var _path$4;
+var _path$7;
 
-function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
+function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
 
 function SvgRoguIconMsgFailed(props) {
-  return /*#__PURE__*/React.createElement("svg", _extends$5({
+  return /*#__PURE__*/React.createElement("svg", _extends$8({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$4 || (_path$4 = /*#__PURE__*/React.createElement("path", {
+  }, props), _path$7 || (_path$7 = /*#__PURE__*/React.createElement("path", {
     className: "rogu-icon-msg-failed_svg__fill",
     d: "M8.25 11.25h1.5v1.5h-1.5v-1.5zm0-6h1.5v4.5h-1.5v-4.5zm.742-3.75C4.853 1.5 1.5 4.86 1.5 9c0 4.14 3.353 7.5 7.492 7.5 4.148 0 7.508-3.36 7.508-7.5 0-4.14-3.36-7.5-7.508-7.5zM9 15c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z",
     fill: "currentColor"
@@ -1885,10 +1920,10 @@ function SvgRoguIconMsgFailed(props) {
 
 var _circle, _circle2, _circle3, _circle4;
 
-function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
+function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
 
 function SvgRoguIconMsgPending(props) {
-  return /*#__PURE__*/React.createElement("svg", _extends$4({
+  return /*#__PURE__*/React.createElement("svg", _extends$7({
     width: 18,
     height: 18,
     fill: "none",
@@ -1916,19 +1951,71 @@ function SvgRoguIconMsgPending(props) {
   })));
 }
 
-var _path$3;
+var _path$6;
 
-function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
+function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
 
 function SvgRoguIconMsgSent(props) {
-  return /*#__PURE__*/React.createElement("svg", _extends$3({
+  return /*#__PURE__*/React.createElement("svg", _extends$6({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$3 || (_path$3 = /*#__PURE__*/React.createElement("path", {
+  }, props), _path$6 || (_path$6 = /*#__PURE__*/React.createElement("path", {
     d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
     fill: "#BEC8D0"
+  })));
+}
+
+var _path$5;
+
+function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
+
+function SvgRoguIconMsgReadAll(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends$5({
+    width: 18,
+    height: 18,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$5 || (_path$5 = /*#__PURE__*/React.createElement("path", {
+    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
+    fill: "#2EB5C0"
+  })));
+}
+
+var _path$4;
+
+function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
+
+function SvgRoguIconClose(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends$4({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$4 || (_path$4 = /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M12 10.586l4.95-4.95a1 1 0 111.415 1.414L13.415 12l4.95 4.95a1 1 0 01-1.414 1.414L12 13.414l-4.95 4.95a1 1 0 01-1.414-1.414l4.95-4.95-4.95-4.95A1 1 0 017.05 5.636l4.95 4.95z",
+    fill: "#434856"
+  })));
+}
+
+var _path$3;
+
+function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
+
+function SvgRoguIconDownload(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends$3({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$3 || (_path$3 = /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M13 5a1 1 0 10-2 0v7.586l-2.293-2.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L13 12.586V5zM8 19a1 1 0 011-1h6a1 1 0 110 2H9a1 1 0 01-1-1z",
+    fill: "#434856"
   })));
 }
 
@@ -1936,15 +2023,17 @@ var _path$2;
 
 function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
-function SvgRoguIconMsgReadAll(props) {
+function SvgRoguIconDelete(props) {
   return /*#__PURE__*/React.createElement("svg", _extends$2({
-    width: 18,
-    height: 18,
+    width: 24,
+    height: 24,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
   }, props), _path$2 || (_path$2 = /*#__PURE__*/React.createElement("path", {
-    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
-    fill: "#2EB5C0"
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M9 5a1 1 0 011-1h4a1 1 0 011 1v1H9V5zM7 6H5a2 2 0 00-2 2h18a2 2 0 00-2-2h-2V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1zM5 9h14l-.858 11.153A2 2 0 0116.148 22H7.852a2 2 0 01-1.994-1.847L5 9zm4 3a1 1 0 112 0v6a1 1 0 11-2 0v-6zm5-1a1 1 0 00-1 1v6a1 1 0 102 0v-6a1 1 0 00-1-1z",
+    fill: "#434856"
   })));
 }
 
@@ -2395,6 +2484,15 @@ function changeTypeToIconComponent(type) {
     case Type.ROGU_ERROR:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconMsgFailed, null);
 
+    case Type.ROGU_CLOSE:
+      return /*#__PURE__*/React__default.createElement(SvgRoguIconClose, null);
+
+    case Type.ROGU_DOWNLOAD:
+      return /*#__PURE__*/React__default.createElement(SvgRoguIconDownload, null);
+
+    case Type.ROGU_DELETE:
+      return /*#__PURE__*/React__default.createElement(SvgRoguIconDelete, null);
+
     case Type.ROGU_ASSIGNMENT:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconAssignment, null);
 
@@ -2448,6 +2546,7 @@ Icon.defaultProps = {
   children: null
 };
 var IconTypes = Type;
+var IconColors = Colors;
 
 var MessageStatusTypes = getOutgoingMessageStates();
 function MessageStatus(_ref) {
@@ -2542,12 +2641,16 @@ function TextMessageItemBody(_a) {
   var className = _a.className,
       _b = _a.isByMe,
       isByMe = _b === void 0 ? false : _b,
-      message = _a.message;
+      message = _a.message,
+      _c = _a.viewerCaptionMode,
+      viewerCaptionMode = _c === void 0 ? false : _c,
+      _d = _a.isHidden,
+      isHidden = _d === void 0 ? false : _d;
   var stringSet = useContext(LocalizationContext).stringSet;
 
-  var _c = useState("init"),
-      clampState = _c[0],
-      setClampState = _c[1];
+  var _e = useState("init"),
+      clampState = _e[0],
+      setClampState = _e[1];
 
   var textRef = useRef(null);
   useEffect(function () {
@@ -2561,11 +2664,11 @@ function TextMessageItemBody(_a) {
   }
 
   return /*#__PURE__*/React__default.createElement("div", {
-    className: getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : ""])
+    className: getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", viewerCaptionMode ? "viewer-mode" : "", viewerCaptionMode && isHidden ? 'hidden' : ''])
   }, /*#__PURE__*/React__default.createElement("div", {
     ref: textRef,
     className: "rogu-text-message-item-body__inner"
-  }, message === null || message === void 0 ? void 0 : message.message.split(/\r/).map(function (word, i) {
+  }, message === null || message === void 0 ? void 0 : message.split(/\r/).map(function (word, i) {
     return word === "" ? /*#__PURE__*/React__default.createElement("br", {
       key: i
     }) : /*#__PURE__*/React__default.createElement(Label, {
@@ -2730,7 +2833,7 @@ function MessageContent(_a) {
 
   return /*#__PURE__*/React__default.createElement("div", {
     className: getClassName([className, "rogu-message-content", isByMeClassName, chainBottomClassName, chainTopClassName])
-  }, !isByMe && !chainTop && /*#__PURE__*/React__default.createElement(Avatar, {
+  }, !isByMe && !chainTop && /*#__PURE__*/React__default.createElement(Avatar$2, {
     className: "rogu-message-content__avatar",
     src: ((_c = message === null || message === void 0 ? void 0 : message.sender) === null || _c === void 0 ? void 0 : _c.profileUrl) || "",
     ref: avatarRef,
@@ -2754,7 +2857,7 @@ function MessageContent(_a) {
     type: LabelTypography.CAPTION_3
   }, stringSet.LABEL__OPERATOR)), isTextMessage(message) && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
     isByMe: isByMe,
-    message: message
+    message: message === null || message === void 0 ? void 0 : message.message
   }), isOGMessage(message) && /*#__PURE__*/React__default.createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -2920,7 +3023,7 @@ var MessageInput = /*#__PURE__*/React__default.forwardRef(function (props, ref) 
     }
   }, /*#__PURE__*/React__default.createElement(Icon$1, {
     type: IconTypes$1.ATTACH,
-    fillColor: IconColors.CONTENT_INVERSE,
+    fillColor: IconColors$1.CONTENT_INVERSE,
     width: "20px",
     height: "20px"
   }), /*#__PURE__*/React__default.createElement("input", {
@@ -2935,7 +3038,7 @@ var MessageInput = /*#__PURE__*/React__default.forwardRef(function (props, ref) 
     onClick: sendMessage
   }, /*#__PURE__*/React__default.createElement(Icon$1, {
     type: IconTypes$1.SEND,
-    fillColor: IconColors.WHITE,
+    fillColor: IconColors$1.WHITE,
     width: "20px",
     height: "20px"
   }))), isEdit && /*#__PURE__*/React__default.createElement("div", {
@@ -3004,12 +3107,512 @@ RemoveMessage.propTypes = {
   onDeleteMessage: PropTypes.func.isRequired
 };
 
+/*
+  ImageRenderer displays image with url or source
+  it checks if the source exist with img tag first
+  if it exists onLoad is called, if not onError is called
+  and those properties switch img tag to real purposing element
+*/
+// TODO: Set up the official constant of width and height with DesignTeam
+
+function ImageRenderer(_ref) {
+  var className = _ref.className,
+      url = _ref.url,
+      alt = _ref.alt,
+      width = _ref.width,
+      height = _ref.height,
+      defaultComponent = _ref.defaultComponent,
+      circle = _ref.circle,
+      placeHolder = _ref.placeHolder;
+
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showDefaultComponent = _useState2[0],
+      setShowDefaultComponent = _useState2[1];
+
+  var _useState3 = useState(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showPlaceHolder = _useState4[0],
+      setShowPlaceHolder = _useState4[1];
+
+  var DefaultComponent = useMemo(function () {
+    if (typeof defaultComponent === 'function') {
+      return defaultComponent();
+    }
+
+    return defaultComponent;
+  }, [defaultComponent]);
+  var PlaceHolder = useMemo(function () {
+    if (placeHolder && typeof placeHolder === 'function') {
+      return placeHolder({
+        style: {
+          width: '100%',
+          minWidth: width,
+          maxWidth: '400px',
+          height: height,
+          position: 'absolute',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }
+      });
+    }
+
+    return null;
+  }, [placeHolder]);
+  var HiddenImageLoader = useMemo(function () {
+    setShowDefaultComponent(false); // reset the state when url is changed
+
+    return /*#__PURE__*/React__default.createElement("img", {
+      className: "sendbird-image-renderer__hidden-image-loader",
+      src: url,
+      alt: alt,
+      onLoad: function onLoad() {
+        return setShowPlaceHolder(false);
+      },
+      onError: function onError() {
+        return setShowDefaultComponent(true);
+      }
+    });
+  }, [url]);
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-image-renderer']).join(' '),
+    style: {
+      width: '100%',
+      minWidth: width,
+      maxWidth: '400px',
+      height: height
+    }
+  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default.createElement("div", {
+    className: "sendbird-image-renderer__image",
+    style: {
+      width: '100%',
+      minWidth: width,
+      maxWidth: '400px',
+      height: height,
+      position: 'absolute',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundImage: "url(".concat(url, ")"),
+      borderRadius: circle ? '50%' : null
+    }
+  }), HiddenImageLoader);
+}
+ImageRenderer.propTypes = {
+  className: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
+  url: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  placeHolder: PropTypes.func,
+  circle: PropTypes.bool
+};
+ImageRenderer.defaultProps = {
+  className: '',
+  defaultComponent: null,
+  placeHolder: null,
+  alt: '',
+  width: null,
+  height: null,
+  circle: false
+};
+
+var imageRendererClassName = 'sendbird-avatar-img';
+
+var DefaultComponent = function DefaultComponent(_a) {
+  var width = _a.width,
+      height = _a.height;
+  var iconWidth = pxToNumber$1(width);
+  var iconHeight = pxToNumber$1(height);
+
+  if (typeof iconWidth === 'number') {
+    iconWidth *= 0.575;
+  }
+
+  if (typeof iconHeight === 'number') {
+    iconHeight *= 0.575;
+  }
+
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: "sendbird-avatar-img--default",
+    style: {
+      width: width,
+      height: height
+    }
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: IconTypes.USER,
+    fillColor: IconColors.CONTENT,
+    width: iconWidth,
+    height: iconHeight
+  }));
+};
+
+var _defaultComponent = function _defaultComponent(_a) {
+  var width = _a.width,
+      height = _a.height;
+  return /*#__PURE__*/React__default.createElement(DefaultComponent, {
+    width: width,
+    height: height
+  });
+};
+
+var AvatarInner = function AvatarInner(_a) {
+  var _b = _a.src,
+      src = _b === void 0 ? '' : _b,
+      _c = _a.alt,
+      alt = _c === void 0 ? '' : _c,
+      height = _a.height,
+      width = _a.width,
+      customDefaultComponent = _a.customDefaultComponent;
+
+  var defaultComponent = function defaultComponent() {
+    return customDefaultComponent ? customDefaultComponent({
+      width: width,
+      height: height
+    }) : _defaultComponent({
+      width: width,
+      height: height
+    });
+  };
+
+  if (typeof src === 'string') {
+    return /*#__PURE__*/React__default.createElement(ImageRenderer, {
+      className: imageRendererClassName,
+      url: src,
+      height: height,
+      width: width,
+      alt: alt,
+      defaultComponent: defaultComponent
+    });
+  }
+
+  if (src && src.length) {
+    if (src.length === 1) {
+      return /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[0],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      });
+    }
+
+    if (src.length === 2) {
+      return /*#__PURE__*/React__default.createElement("div", {
+        className: "sendbird-avatar--inner__two-child"
+      }, /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[0],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      }), /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[1],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      }));
+    }
+
+    if (src.length === 3) {
+      return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
+        className: "sendbird-avatar--inner__three-child--upper"
+      }, /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[0],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      })), /*#__PURE__*/React__default.createElement("div", {
+        className: "sendbird-avatar--inner__three-child--lower"
+      }, /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[1],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      }), /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[2],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      })));
+    }
+
+    return /*#__PURE__*/React__default.createElement("div", {
+      className: "sendbird-avatar--inner__four-child"
+    }, src.slice(0, 4).map(function (i) {
+      return /*#__PURE__*/React__default.createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: i,
+        height: height,
+        width: width,
+        alt: alt,
+        key: uuidv4(),
+        defaultComponent: defaultComponent
+      });
+    }));
+  } // default img
+
+
+  return /*#__PURE__*/React__default.createElement(ImageRenderer, {
+    className: imageRendererClassName,
+    url: "",
+    height: height,
+    width: width,
+    alt: alt,
+    defaultComponent: defaultComponent
+  });
+};
+
+function Avatar(_a, ref) {
+  var _b = _a.className,
+      className = _b === void 0 ? '' : _b,
+      _c = _a.src,
+      src = _c === void 0 ? '' : _c,
+      _d = _a.alt,
+      alt = _d === void 0 ? '' : _d,
+      _e = _a.width,
+      width = _e === void 0 ? '56px' : _e,
+      _f = _a.height,
+      height = _f === void 0 ? '56px' : _f,
+      onClick = _a.onClick,
+      customDefaultComponent = _a.customDefaultComponent;
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: __spreadArray(__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-avatar'], false).join(' '),
+    role: "button",
+    ref: ref,
+    style: {
+      height: height,
+      width: width
+    },
+    onClick: onClick,
+    onKeyDown: onClick,
+    tabIndex: 0
+  }, /*#__PURE__*/React__default.createElement(AvatarInner, {
+    src: src,
+    width: width,
+    height: height,
+    alt: alt,
+    customDefaultComponent: customDefaultComponent
+  }));
+}
+
+var Avatar$1 = /*#__PURE__*/React__default.forwardRef(Avatar);
+
+function Toast(_ref) {
+  var message = _ref.message;
+  return /*#__PURE__*/createPortal( /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__toast__message show"
+  }, /*#__PURE__*/React__default.createElement(Label, {
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONBACKGROUND_5
+  }, message)), document.getElementById('rogu-toast-root'));
+}
+Toast.propTypes = {
+  message: PropTypes.string.isRequired
+};
+
+var FileViewerComponent = function FileViewerComponent(_ref) {
+  var profileUrl = _ref.profileUrl,
+      userName = _ref.userName,
+      captionMsg = _ref.captionMsg,
+      type = _ref.type,
+      url = _ref.url,
+      isByMe = _ref.isByMe,
+      onClose = _ref.onClose,
+      onDelete = _ref.onDelete,
+      createdAt = _ref.createdAt;
+
+  var _useContext = useContext(LocalizationContext),
+      stringSet = _useContext.stringSet;
+
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showToast = _useState2[0],
+      setShowToast = _useState2[1];
+
+  var _useState3 = useState(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isCaptionHidden = _useState4[0],
+      setIsCaptionHidden = _useState4[1];
+
+  var contentRef = useRef();
+
+  var onMediaFocus = function onMediaFocus() {
+    setIsCaptionHidden(true);
+  };
+
+  var onMediaBlur = function onMediaBlur() {
+    setIsCaptionHidden(false);
+  };
+
+  var onDownloadClick = function onDownloadClick() {
+    setShowToast(true);
+    setTimeout(function () {
+      setShowToast(false);
+    }, 3000);
+  };
+
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header__left"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header__left__avatar"
+  }, /*#__PURE__*/React__default.createElement(Avatar$1, {
+    height: "32px",
+    width: "32px",
+    src: profileUrl
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header__left__metadata"
+  }, /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-fileviewer__header__left__sender-name",
+    type: LabelTypography.H_3,
+    color: LabelColors.ONBACKGROUND_1
+  }, userName)), /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-fileviewer__header__left__createdat",
+    type: LabelTypography.BODY_1,
+    color: LabelColors.ONBACKGROUND_2
+  }, format(createdAt, 'dd/MM/yyyy HH.mm'))))), /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header__right"
+  }, isSupportedFileView(type) && /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header__right__actions"
+  }, /*#__PURE__*/React__default.createElement("a", {
+    className: "rogu-fileviewer__header__right__actions__download",
+    rel: "noopener noreferrer",
+    href: url,
+    onClick: onDownloadClick
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: IconTypes.ROGU_DOWNLOAD,
+    height: "24px",
+    width: "24px"
+  })), onDelete && isByMe && /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header__right__actions__delete"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: IconTypes.ROGU_DELETE,
+    height: "24px",
+    width: "24px",
+    onClick: onDelete
+  }))), /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__header__right__actions__close"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: IconTypes.ROGU_CLOSE,
+    height: "24px",
+    width: "24px",
+    onClick: onClose
+  })))), /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__content"
+  }, isVideo(type) &&
+  /*#__PURE__*/
+  // eslint-disable-next-line jsx-a11y/media-has-caption
+  React__default.createElement("video", {
+    onFocus: onMediaFocus,
+    onBlur: onMediaBlur,
+    controls: true,
+    className: "rogu-fileviewer__content__video",
+    ref: contentRef
+  }, /*#__PURE__*/React__default.createElement("source", {
+    src: url,
+    type: type
+  })), isImage(type) && /*#__PURE__*/React__default.createElement("img", {
+    onFocus: onMediaFocus,
+    onBlur: onMediaBlur // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    ,
+    tabIndex: "0",
+    ref: contentRef,
+    src: url,
+    alt: "Uploaded by ".concat(userName),
+    className: "rogu-fileviewer__content__img"
+  }), captionMsg && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
+    message: captionMsg,
+    viewerCaptionMode: true,
+    isHidden: isCaptionHidden
+  }), !isSupportedFileView(type) && /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__content__unsupported"
+  }, /*#__PURE__*/React__default.createElement(Label, {
+    type: LabelTypography.H_1,
+    color: LabelColors.ONBACKGROUND_1
+  }, "Unsupported message"))), showToast && /*#__PURE__*/React__default.createElement(Toast, {
+    message: stringSet.TOAST__DOWNLOAD
+  }));
+};
+FileViewerComponent.propTypes = {
+  profileUrl: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  captionMsg: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  isByMe: PropTypes.bool,
+  createdAt: PropTypes.number.isRequired
+};
+FileViewerComponent.defaultProps = {
+  isByMe: true
+};
+function FileViewer(props) {
+  var message = props.message,
+      isByMe = props.isByMe,
+      onClose = props.onClose,
+      onDelete = props.onDelete;
+  var sender = message.sender,
+      type = message.type,
+      url = message.url,
+      _message$name = message.name,
+      captionMsg = _message$name === void 0 ? '' : _message$name,
+      createdAt = message.createdAt;
+  var profileUrl = sender.profileUrl,
+      _sender$nickname = sender.nickname,
+      userName = _sender$nickname === void 0 ? '' : _sender$nickname;
+  return /*#__PURE__*/createPortal( /*#__PURE__*/React__default.createElement(FileViewerComponent, {
+    profileUrl: profileUrl,
+    userName: userName,
+    type: type,
+    url: url,
+    captionMsg: captionMsg,
+    onClose: onClose,
+    onDelete: onDelete,
+    isByMe: isByMe,
+    createdAt: createdAt
+  }), document.getElementById(MODAL_ROOT));
+}
+FileViewer.propTypes = {
+  message: PropTypes.shape({
+    sender: PropTypes.shape({
+      profileUrl: PropTypes.string,
+      userName: PropTypes.string
+    }),
+    type: PropTypes.string,
+    url: PropTypes.string,
+    fileName: PropTypes.string,
+    createdAt: PropTypes.number
+  }).isRequired,
+  isByMe: PropTypes.bool,
+  onClose: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
+};
+FileViewer.defaultProps = {
+  isByMe: true
+};
+
 function MessageHoc(_ref) {
   var message = _ref.message,
       userId = _ref.userId,
       disabled = _ref.disabled,
       editDisabled = _ref.editDisabled,
-      hasSeparator = _ref.hasSeparator,
       deleteMessage = _ref.deleteMessage,
       updateMessage = _ref.updateMessage,
       scrollToMessage = _ref.scrollToMessage,
@@ -3077,10 +3680,7 @@ function MessageHoc(_ref) {
     return /*#__PURE__*/React__default.createElement("div", {
       ref: useMessageScrollRef,
       className: "\n          sendbird-msg-hoc sendbird-msg--scroll-ref\n          ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n        ")
-    }, hasSeparator && /*#__PURE__*/React__default.createElement(DateSeparator, null, /*#__PURE__*/React__default.createElement(Label, {
-      type: LabelTypography.CAPTION_2,
-      color: LabelColors.ONBACKGROUND_2
-    }, format(message.createdAt, 'MMMM dd, yyyy'))), /*#__PURE__*/React__default.createElement(RenderedMessage, {
+    }, /*#__PURE__*/React__default.createElement(RenderedMessage, {
       message: message
     }));
   }
@@ -3105,10 +3705,7 @@ function MessageHoc(_ref) {
     style: {
       marginBottom: '2px'
     }
-  }, hasSeparator && /*#__PURE__*/React__default.createElement(DateSeparator, null, /*#__PURE__*/React__default.createElement(Label, {
-    type: LabelTypography.CAPTION_2,
-    color: LabelColors.ONBACKGROUND_2
-  }, format(message.createdAt, 'MMMM dd, yyyy'))), /*#__PURE__*/React__default.createElement(MessageContent, {
+  }, /*#__PURE__*/React__default.createElement(MessageContent, {
     className: "sendbird-message-hoc__message-content",
     userId: userId,
     scrollToMessage: scrollToMessage,
@@ -3168,7 +3765,7 @@ MessageHoc.propTypes = {
   highLightedMessageId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   renderCustomMessage: PropTypes.func,
   currentGroupChannel: PropTypes.shape({}),
-  hasSeparator: PropTypes.bool,
+  // hasSeparator: PropTypes.bool,
   disabled: PropTypes.bool,
   editDisabled: PropTypes.bool,
   deleteMessage: PropTypes.func.isRequired,
@@ -3195,13 +3792,51 @@ MessageHoc.defaultProps = {
   renderCustomMessage: null,
   currentGroupChannel: {},
   message: {},
-  hasSeparator: false,
+  // hasSeparator: false,
   disabled: false,
   highLightedMessageId: null,
   toggleReaction: function toggleReaction() {},
   scrollToMessage: function scrollToMessage() {},
   emojiContainer: {}
 };
+
+var getDateSeparatorDifference = function getDateSeparatorDifference(createdAt, strings) {
+  var diffWithToday = differenceInCalendarDays(new Date(), createdAt);
+
+  if (diffWithToday === 0) {
+    return strings.today;
+  } else if (diffWithToday === 1) {
+    return strings.yesterday;
+  } else if (diffWithToday <= 7) {
+    return getDayString(getDay(createdAt), strings.days);
+  } else {
+    return format(createdAt, "dd/MM/yyyy");
+  }
+};
+
+function DateSeparator(_a) {
+  var className = _a.className,
+      createdAt = _a.createdAt;
+  var stringSet = useContext(LocalizationContext).stringSet;
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: getClassName([className, "rogu-date-separator"])
+  }, /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-date-separator__content",
+    type: LabelTypography.CAPTION_1
+  }, getDateSeparatorDifference(createdAt, {
+    today: stringSet.LABEL__DATE_TODAY,
+    yesterday: stringSet.LABEL__DATE_YESTERDAY,
+    days: {
+      0: stringSet.LABEL__DAY_SUNDAY,
+      1: stringSet.LABEL__DAY_MONDAY,
+      2: stringSet.LABEL__DAY_TUESDAY,
+      3: stringSet.LABEL__DAY_WEDNESDAY,
+      4: stringSet.LABEL__DAY_THURSDAY,
+      5: stringSet.LABEL__DAY_FRIDAY,
+      6: stringSet.LABEL__DAY_SATURDAY
+    }
+  })));
+}
 
 var ConversationScroll = /*#__PURE__*/function (_Component) {
   _inherits(ConversationScroll, _Component);
@@ -3330,64 +3965,66 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
         className: "sendbird-conversation__padding"
       }), /*#__PURE__*/React__default.createElement("div", {
         className: "sendbird-conversation__messages-padding"
-      }, allMessages.map(function (m, idx) {
-        var previousMessage = allMessages[idx - 1];
-        var nextMessage = allMessages[idx + 1];
+      }, Array.from(groupMessagesByDate(allMessages).values()).map(function (messages) {
+        var _messages$;
 
-        var _ref5 = useMessageGrouping ? compareMessagesForGrouping(previousMessage, m, nextMessage) : [false, false],
-            _ref6 = _slicedToArray(_ref5, 2),
-            chainTop = _ref6[0],
-            chainBottom = _ref6[1];
+        var currentCreatedAt = (_messages$ = messages[0]) === null || _messages$ === void 0 ? void 0 : _messages$.createdAt;
+        return /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(DateSeparator, {
+          createdAt: currentCreatedAt
+        }), messages.map(function (m, idx) {
+          var previousMessage = messages[idx - 1];
+          var nextMessage = messages[idx + 1];
 
-        var previousMessageCreatedAt = previousMessage && previousMessage.createdAt;
-        var currentCreatedAt = m.createdAt; // https://stackoverflow.com/a/41855608
+          var _ref5 = useMessageGrouping ? compareMessagesForGrouping(previousMessage, m, nextMessage) : [false, false],
+              _ref6 = _slicedToArray(_ref5, 2),
+              chainTop = _ref6[0],
+              chainBottom = _ref6[1];
 
-        var hasSeparator = !(previousMessageCreatedAt && isSameDay(currentCreatedAt, previousMessageCreatedAt));
+          if (renderChatItem) {
+            return /*#__PURE__*/React__default.createElement("div", {
+              key: m.messageId || m.reqId,
+              className: "sendbird-msg--scroll-ref"
+            }, renderChatItem({
+              message: m,
+              highLightedMessageId: highLightedMessageId,
+              channel: currentGroupChannel,
+              // hasSeparator: hasSeparator,
+              onDeleteMessage: deleteMessage,
+              onUpdateMessage: updateMessage,
+              onResendMessage: resendMessage,
+              onScrollToMessage: scrollToMessage,
+              emojiContainer: emojiContainer,
+              chainTop: chainTop,
+              chainBottom: chainBottom,
+              menuDisabled: disabled
+            }));
+          }
 
-        if (renderChatItem) {
-          return /*#__PURE__*/React__default.createElement("div", {
-            key: m.messageId || m.reqId,
-            className: "sendbird-msg--scroll-ref"
-          }, renderChatItem({
-            message: m,
+          return /*#__PURE__*/React__default.createElement(MessageHoc, {
             highLightedMessageId: highLightedMessageId,
-            channel: currentGroupChannel,
-            onDeleteMessage: deleteMessage,
-            onUpdateMessage: updateMessage,
-            onResendMessage: resendMessage,
-            onScrollToMessage: scrollToMessage,
-            emojiContainer: emojiContainer,
+            renderCustomMessage: renderCustomMessage,
+            key: m.messageId || m.reqId,
+            userId: userId // show status for pending/failed messages
+            ,
+            message: m,
+            scrollToMessage: scrollToMessage,
+            currentGroupChannel: currentGroupChannel,
+            disabled: disabled,
+            membersMap: membersMap,
             chainTop: chainTop,
+            useReaction: useReaction,
+            emojiAllMap: emojiAllMap,
+            emojiContainer: emojiContainer,
+            editDisabled: editDisabled // hasSeparator={hasSeparator}
+            ,
             chainBottom: chainBottom,
-            hasSeparator: hasSeparator,
-            menuDisabled: disabled
-          }));
-        }
-
-        return /*#__PURE__*/React__default.createElement(MessageHoc, {
-          highLightedMessageId: highLightedMessageId,
-          renderCustomMessage: renderCustomMessage,
-          key: m.messageId || m.reqId,
-          userId: userId // show status for pending/failed messages
-          ,
-          message: m,
-          scrollToMessage: scrollToMessage,
-          currentGroupChannel: currentGroupChannel,
-          disabled: disabled,
-          membersMap: membersMap,
-          chainTop: chainTop,
-          useReaction: useReaction,
-          emojiAllMap: emojiAllMap,
-          emojiContainer: emojiContainer,
-          editDisabled: editDisabled,
-          hasSeparator: hasSeparator,
-          chainBottom: chainBottom,
-          updateMessage: updateMessage,
-          deleteMessage: deleteMessage,
-          resendMessage: resendMessage,
-          toggleReaction: toggleReaction,
-          memoizedEmojiListItems: memoizedEmojiListItems
-        });
+            updateMessage: updateMessage,
+            deleteMessage: deleteMessage,
+            resendMessage: resendMessage,
+            toggleReaction: toggleReaction,
+            memoizedEmojiListItems: memoizedEmojiListItems
+          });
+        }));
       }))), showScrollBot && /*#__PURE__*/React__default.createElement("div", {
         className: "sendbird-conversation__scroll-bottom-button",
         onClick: onClickScrollBot,
@@ -3398,7 +4035,7 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
         width: "24px",
         height: "24px",
         type: IconTypes$1.CHEVRON_DOWN,
-        fillColor: IconColors.PRIMARY
+        fillColor: IconColors$1.PRIMARY
       })));
     }
   }]);
@@ -3494,7 +4131,7 @@ function Notification(_ref) {
       width: "24px",
       height: "24px",
       type: IconTypes$1.CHEVRON_DOWN,
-      fillColor: IconColors.CONTENT
+      fillColor: IconColors$1.CONTENT
     }))
   );
 }

@@ -71,18 +71,74 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
         >
           Kukuh Aji Sulistyo Bangun Jaya Abadi Mangkubumi
         </span>
+        <div
+          className="rogu-message-content-menu__normal-menu rogu-message-item-menu"
+        >
+          <div
+            className="sendbird-context-menu"
+            style={
+              Object {
+                "display": "inline",
+              }
+            }
+          >
+            <button
+              className="rogu-message-item-menu__trigger sendbird-iconbutton "
+              disabled={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              style={
+                Object {
+                  "height": "16px",
+                  "width": "16px",
+                }
+              }
+              type="button"
+            >
+              <span
+                className="sendbird-iconbutton__inner"
+              >
+                <div
+                  className="rogu-message-item-menu__trigger__icon sendbird-icon sendbird-icon-color--on-background-3"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  role="button"
+                  style={
+                    Object {
+                      "height": "18px",
+                      "minHeight": "18px",
+                      "minWidth": "18px",
+                      "width": "18px",
+                    }
+                  }
+                  tabIndex="0"
+                >
+                  <test-file-stub />
+                </div>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
       <div
-        className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming"
+        className="rogu-message-content__bubble__body"
       >
         <div
-          className="rogu-text-message-item-body__inner"
+          className="rogu-message-content__buble__body-text"
         >
-          <span
-            className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
+          <div
+            className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming"
           >
-            Welcome to the classroom!
-          </span>
+            <div
+              className="rogu-text-message-item-body__inner"
+            >
+              <span
+                className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
+              >
+                Welcome to the classroom!
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

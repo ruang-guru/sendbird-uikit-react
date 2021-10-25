@@ -1,10 +1,10 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-9e7e2f14.js');
+var LocalizationContext = require('./LocalizationContext-4fe074d5.js');
 var React = require('react');
 var PropTypes = require('prop-types');
 var Sb = require('sendbird');
-var actionTypes = require('./actionTypes-26aa3fb1.js');
+var actionTypes = require('./actionTypes-6c6ab360.js');
 var cssVars = require('css-vars-ponyfill');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -600,7 +600,7 @@ function Sendbird(props) {
   React.useEffect(function () {
     setLogger(LoggerFactory(logLevel));
   }, [logLevel]);
-  useAppendDomNode(['sendbird-modal-root', 'sendbird-dropdown-portal', 'sendbird-emoji-list-portal'], 'body'); // should move to reducer
+  useAppendDomNode(['rogu-toast-root', 'sendbird-modal-root', 'sendbird-dropdown-portal', 'sendbird-emoji-list-portal'], 'body'); // should move to reducer
 
   var _useState5 = React.useState(theme),
       _useState6 = LocalizationContext._slicedToArray(_useState5, 2),
