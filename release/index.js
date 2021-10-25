@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-6c454ca9.js';
-export { w as withSendBird } from './LocalizationContext-6c454ca9.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as convertAssignmentDueUTCtoLocale, m as convertCtaLinkToWebLink, n as isUserMessage, o as isFailedMessage, p as isSentMessage, q as isThumbnailMessage, I as IconButton, r as copyToClipboard, s as getUIKitMessageTypes, t as isPendingMessage, u as isMessageSentByMe, v as isMessageSentByOperator, w as getSenderName, x as isTextMessage, y as isOGMessage, z as isAssignmentMessage, A as isMaterialMessage, B as getUIKitMessageType, F as getOutgoingMessageState, G as Button, H as ButtonTypes, J as ButtonSizes, M as Modal, K as MODAL_ROOT, L as isSupportedFileView, N as isVideo, O as isImage, P as UserProfileProvider } from './index-9a98c087.js';
-export { Q as sendBirdSelectors } from './index-9a98c087.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-a00d9a3f.js';
+export { w as withSendBird } from './LocalizationContext-a00d9a3f.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as convertAssignmentDueUTCtoLocale, m as convertCtaLinkToWebLink, n as isUserMessage, o as isFailedMessage, p as isSentMessage, q as isThumbnailMessage, I as IconButton, r as copyToClipboard, s as getUIKitMessageTypes, t as isPendingMessage, u as isMessageSentByMe, v as isMessageSentByOperator, w as getSenderName, x as isTextMessage, y as isOGMessage, z as isAssignmentMessage, A as isMaterialMessage, B as getUIKitMessageType, F as getOutgoingMessageState, G as Button, H as ButtonTypes, J as ButtonSizes, M as Modal, K as MODAL_ROOT, L as isSupportedFileView, N as isVideo, O as isImage, P as UserProfileProvider } from './index-b4b9f3a2.js';
+export { Q as sendBirdSelectors } from './index-b4b9f3a2.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-37818e5b.js';
-import { c as compareIds, L as LinkLabel } from './index-3267b178.js';
-import { R as ReactionButton, A as AdminMessage, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-9a145e14.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-350ec8d7.js';
+import { c as compareIds, L as LinkLabel } from './index-b07702a6.js';
+import { R as ReactionButton, A as AdminMessage, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-057c64a7.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-431f14c4.js';
+import './actionTypes-132013e2.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-e1a90737.js';
-import './utils-d6d60152.js';
-import './LeaveChannel-0ce119d3.js';
-import './index-e3243456.js';
-import './index-bb4936af.js';
-import './index-57d04e52.js';
+import './index-694785a5.js';
+import './utils-be0d2c65.js';
+import './LeaveChannel-2cfe44e3.js';
+import './index-12b31640.js';
+import './index-cc7426d8.js';
+import './index-e7e54bf0.js';
 import './ChannelSettings.js';
-import './index-0172b52b.js';
+import './index-fc86558e.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -3188,6 +3188,19 @@ ContextMenu.propTypes = {
   menuItems: PropTypes.func.isRequired
 };
 
+function Toast(_ref) {
+  var message = _ref.message;
+  return /*#__PURE__*/createPortal( /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-fileviewer__toast__message show"
+  }, /*#__PURE__*/React__default.createElement(Label, {
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONBACKGROUND_5
+  }, message)), document.getElementById('rogu-toast-root'));
+}
+Toast.propTypes = {
+  message: PropTypes.string.isRequired
+};
+
 function MessageItemMenu(_a) {
   var className = _a.className,
       message = _a.message,
@@ -3200,6 +3213,11 @@ function MessageItemMenu(_a) {
       setSupposedHover = _a.setSupposedHover,
       showFileViewer = _a.showFileViewer;
   var stringSet = useContext(LocalizationContext).stringSet;
+
+  var _b = useState(false),
+      showToast = _b[0],
+      setShowToast = _b[1];
+
   var triggerRef = useRef(null);
   var containerRef = useRef(null);
   var showMenuItemCopy = isUserMessage(message);
@@ -3212,6 +3230,14 @@ function MessageItemMenu(_a) {
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
   }
+
+  var onCopyClick = function onCopyClick(message) {
+    copyToClipboard(message);
+    setShowToast(true);
+    setTimeout(function () {
+      setShowToast(false);
+    }, 3000);
+  };
 
   return /*#__PURE__*/React__default.createElement("div", {
     className: getClassName([className, 'rogu-message-item-menu']),
@@ -3265,7 +3291,7 @@ function MessageItemMenu(_a) {
         onClick: function onClick() {
           var _a;
 
-          copyToClipboard((_a = message) === null || _a === void 0 ? void 0 : _a.message);
+          onCopyClick((_a = message) === null || _a === void 0 ? void 0 : _a.message);
           closeDropdown();
         },
         iconType: IconTypes.ROGU_COPY
@@ -3297,6 +3323,8 @@ function MessageItemMenu(_a) {
         iconType: IconTypes.ROGU_DELETE
       }, stringSet.MESSAGE_MENU__DELETE));
     }
+  }), showToast && /*#__PURE__*/React__default.createElement(Toast, {
+    message: stringSet.TOAST__COPY
   }));
 }
 
@@ -3936,19 +3964,6 @@ function Avatar(_a, ref) {
 }
 
 var Avatar$1 = /*#__PURE__*/React__default.forwardRef(Avatar);
-
-function Toast(_ref) {
-  var message = _ref.message;
-  return /*#__PURE__*/createPortal( /*#__PURE__*/React__default.createElement("div", {
-    className: "rogu-fileviewer__toast__message show"
-  }, /*#__PURE__*/React__default.createElement(Label, {
-    type: LabelTypography.BODY_3,
-    color: LabelColors.ONBACKGROUND_5
-  }, message)), document.getElementById('rogu-toast-root'));
-}
-Toast.propTypes = {
-  message: PropTypes.string.isRequired
-};
 
 var FileViewerComponent = function FileViewerComponent(_ref) {
   var profileUrl = _ref.profileUrl,

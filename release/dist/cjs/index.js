@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-340245bc.js');
-var index$1 = require('./index-d6a43397.js');
+var LocalizationContext = require('./LocalizationContext-9bbb95f9.js');
+var index$1 = require('./index-e37ead1e.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-e4079a54.js');
-var index$3 = require('./index-f31a0fbe.js');
-var Channel = require('./index-8ec84d50.js');
+var index$2 = require('./index-f7057575.js');
+var index$3 = require('./index-976c62bf.js');
+var Channel = require('./index-c9bd2574.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-dbb7cf35.js');
+require('./actionTypes-60913213.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-f30ef179.js');
-require('./utils-0b769b49.js');
-require('./LeaveChannel-43643dd6.js');
-require('./index-27c15b23.js');
-require('./index-c5ec7fdb.js');
-require('./index-ad13c3fa.js');
+require('./index-b6060293.js');
+require('./utils-23d3f91e.js');
+require('./LeaveChannel-41fc666a.js');
+require('./index-840d50b9.js');
+require('./index-ee746ee9.js');
+require('./index-3175def4.js');
 require('./ChannelSettings.js');
-require('./index-cabd7af4.js');
+require('./index-b6b624d7.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3213,6 +3213,19 @@ ContextMenu.propTypes = {
   menuItems: PropTypes__default["default"].func.isRequired
 };
 
+function Toast(_ref) {
+  var message = _ref.message;
+  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__toast__message show"
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONBACKGROUND_5
+  }, message)), document.getElementById('rogu-toast-root'));
+}
+Toast.propTypes = {
+  message: PropTypes__default["default"].string.isRequired
+};
+
 function MessageItemMenu(_a) {
   var className = _a.className,
       message = _a.message,
@@ -3225,6 +3238,11 @@ function MessageItemMenu(_a) {
       setSupposedHover = _a.setSupposedHover,
       showFileViewer = _a.showFileViewer;
   var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+
+  var _b = React.useState(false),
+      showToast = _b[0],
+      setShowToast = _b[1];
+
   var triggerRef = React.useRef(null);
   var containerRef = React.useRef(null);
   var showMenuItemCopy = index$1.isUserMessage(message);
@@ -3237,6 +3255,14 @@ function MessageItemMenu(_a) {
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
   }
+
+  var onCopyClick = function onCopyClick(message) {
+    index$1.copyToClipboard(message);
+    setShowToast(true);
+    setTimeout(function () {
+      setShowToast(false);
+    }, 3000);
+  };
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-message-item-menu']),
@@ -3290,7 +3316,7 @@ function MessageItemMenu(_a) {
         onClick: function onClick() {
           var _a;
 
-          index$1.copyToClipboard((_a = message) === null || _a === void 0 ? void 0 : _a.message);
+          onCopyClick((_a = message) === null || _a === void 0 ? void 0 : _a.message);
           closeDropdown();
         },
         iconType: IconTypes.ROGU_COPY
@@ -3322,6 +3348,8 @@ function MessageItemMenu(_a) {
         iconType: IconTypes.ROGU_DELETE
       }, stringSet.MESSAGE_MENU__DELETE));
     }
+  }), showToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+    message: stringSet.TOAST__COPY
   }));
 }
 
@@ -3961,19 +3989,6 @@ function Avatar(_a, ref) {
 }
 
 var Avatar$1 = /*#__PURE__*/React__default["default"].forwardRef(Avatar);
-
-function Toast(_ref) {
-  var message = _ref.message;
-  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__toast__message show"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
-    type: LabelTypography.BODY_3,
-    color: LabelColors.ONBACKGROUND_5
-  }, message)), document.getElementById('rogu-toast-root'));
-}
-Toast.propTypes = {
-  message: PropTypes__default["default"].string.isRequired
-};
 
 var FileViewerComponent = function FileViewerComponent(_ref) {
   var profileUrl = _ref.profileUrl,
