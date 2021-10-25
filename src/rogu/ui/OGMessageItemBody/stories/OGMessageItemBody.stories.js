@@ -1,7 +1,7 @@
 import React from 'react';
 import OGMessageItemBody from '../index.tsx';
 
-const mockMessage = (process) => {
+const mockMessage = () => {
   const obj = {
     message: 'go to this link sendbird.com it will be usefull to you!!',
     ogMetaData: {
@@ -19,9 +19,7 @@ const mockMessage = (process) => {
     },
     createdAt: 2000000,
   };
-  if (process && typeof process === 'function') {
-    return process(obj)
-  }
+  
   return obj;
 };
 

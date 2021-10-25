@@ -19,7 +19,7 @@ import {
   ASSIGNMENT_MESSAGE_A_1,
   ASSIGNMENT_MESSAGE_A_2,
   MATERIAL_MESSAGE_A_1,
-  MATERIAL_MESSAGE_A_2
+  MATERIAL_MESSAGE_A_2,
 } from "../../../../../__mocks__/messagesMock";
 
 export default { title: "ruangkelas/UI Components/MessageContent" };

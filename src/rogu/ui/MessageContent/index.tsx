@@ -70,7 +70,6 @@ export default function MessageContent({
   userId,
   // useReaction = false,
   // useReplying,
-  // resendMessage,
   // scrollToMessage,
   showEdit,
   showFileViewer,
@@ -83,6 +82,7 @@ Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
+
 
   const isByMe: boolean =
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
@@ -102,6 +102,10 @@ Props): ReactElement {
 
   if (message?.isAdminMessage?.() || message?.messageType === "admin") {
     return <ClientAdminMessage message={message} />;
+  };
+
+  if(isOGMessage(message as UserMessage)){
+    console.log(message.ogMetaData);
   }
 
 
