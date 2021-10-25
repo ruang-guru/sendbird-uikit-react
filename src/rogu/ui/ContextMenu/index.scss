@@ -1,11 +1,5 @@
 @import "../../../styles/variables";
 
-.sendbird__offline {
-  .rogu-dropdown__menu .rogu-dropdown__menu-item {
-    cursor: not-allowed;
-  }
-}
-
 .rogu-dropdown__menu {
   z-index: 99999;
   position: absolute;
@@ -92,4 +86,10 @@
 
 .sendbird-icon--pressed {
   display: block !important;
+}
+
+.sendbird__offline {
+  .rogu-dropdown__menu .rogu-dropdown__menu-item {
+    cursor: not-allowed;
+  }
 }

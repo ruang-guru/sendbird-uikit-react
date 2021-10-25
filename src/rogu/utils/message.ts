@@ -2,6 +2,7 @@ import { format } from 'date-fns'
 
 import { CoreMessageType } from "../../utils"
 
+// eslint-disable-next-line
 export const groupMessagesByDate = (messages: Array<CoreMessageType>) => {
     return messages.reduce(
         (groupedMessagesByDate, currMessage) => {
@@ -20,7 +21,8 @@ export const groupMessagesByDate = (messages: Array<CoreMessageType>) => {
           return groupedMessagesByDate
         },
         new Map(),
-      )
-}
+      );
+      
+};
 
 export default groupMessagesByDate;

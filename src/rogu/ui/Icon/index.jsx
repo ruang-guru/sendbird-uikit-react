@@ -65,7 +65,6 @@ import RoguIconMsgSent from '../../../svgs/rogu-icon-msg-sent.svg';
 import RoguIconMsgReadAll from '../../../svgs/rogu-icon-msg-read-all.svg';
 import RoguIconMsgCopy from '../../../svgs/rogu-icon-copy.svg';
 import RoguIconMsgReply from '../../../svgs/rogu-icon-reply.svg';
-import RoguIconMsgDelete from '../../../svgs/rogu-icon-delete.svg';
 import RoguIconMsgResend from '../../../svgs/rogu-icon-resend.svg';
 import RoguIconClose from '../../../svgs/rogu-icon-close.svg';
 import RoguIconDownload from '../../../svgs/rogu-icon-download.svg';
@@ -170,7 +169,6 @@ function changeTypeToIconComponent(type) {
     case Type.ROGU_ERROR: return <RoguIconMsgFailed />;
     case Type.ROGU_COPY: return <RoguIconMsgCopy />;
     case Type.ROGU_REPLY: return <RoguIconMsgReply />;
-    case Type.ROGU_DELETE: return <RoguIconMsgDelete />;
     case Type.ROGU_RESEND: return <RoguIconMsgResend />;
     case Type.ROGU_CLOSE: return <RoguIconClose />;
     case Type.ROGU_DOWNLOAD: return <RoguIconDownload />;
