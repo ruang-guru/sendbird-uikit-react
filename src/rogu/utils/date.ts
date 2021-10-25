@@ -2,5 +2,5 @@ import { Day } from "date-fns";
 
 export type DayStringType = { [key in Day]: string };
 
-export const getDayString = (dayNumber: Day, strings: DayStringType) =>
+export const getDayString = (dayNumber: Day, strings: DayStringType):string =>
   strings[dayNumber];

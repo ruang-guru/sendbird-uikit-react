@@ -195,6 +195,21 @@
   .sendbird-theme--dark .sendbird-openchannel-conversation-header__left__cover-image--icon {
     background-color: var(--sendbird-dark-background-300); }
 
+.sendbird-frozen-channel-notification {
+  position: relative;
+  margin-top: 8px;
+  margin-right: 24px;
+  margin-left: 24px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px; }
+  .sendbird-theme--light .sendbird-frozen-channel-notification {
+    background-color: var(--sendbird-light-information-100); }
+  .sendbird-theme--dark .sendbird-frozen-channel-notification {
+    background-color: var(--sendbird-dark-information-100); }
+
 .sendbird-openchannel-profile {
   position: relative;
   text-align: center;
@@ -220,21 +235,6 @@
     position: absolute;
     top: 10px;
     right: 16px; }
-
-.sendbird-frozen-channel-notification {
-  position: relative;
-  margin-top: 8px;
-  margin-right: 24px;
-  margin-left: 24px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px; }
-  .sendbird-theme--light .sendbird-frozen-channel-notification {
-    background-color: var(--sendbird-light-information-100); }
-  .sendbird-theme--dark .sendbird-frozen-channel-notification {
-    background-color: var(--sendbird-dark-information-100); }
 
 .sendbird-openchannel-conversation-scroll {
   position: relative;
@@ -281,6 +281,22 @@
       .sendbird-openchannel-conversation-scroll .sendbird-openchannel-conversation-scroll__container .sendbird-openchannel-conversation-scroll__container__item-container--no-messages .sendbird-openchannel-conversation-scroll__container__place-holder {
         width: 100%;
         height: 100%; }
+
+.sendbird-openchannel-admin-message {
+  position: relative;
+  margin: 16px 24px;
+  padding: 12px 16px;
+  border-radius: 4px; }
+  .sendbird-theme--light .sendbird-openchannel-admin-message {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .sendbird-openchannel-admin-message {
+    background-color: var(--sendbird-dark-background-500); }
+  .sendbird-theme--light .sendbird-openchannel-admin-message:hover {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .sendbird-openchannel-admin-message:hover {
+    background-color: var(--sendbird-dark-background-400); }
+  .sendbird-openchannel-admin-message .sendbird-openchannel-admin-message__text {
+    word-wrap: break-word; }
 
 .sendbird-openchannel-user-message {
   position: relative;
@@ -342,169 +358,6 @@
       background-color: var(--sendbird-light-primary-100); }
     .sendbird-theme--dark .sendbird-openchannel-user-message .sendbird-openchannel-user-message__context-menu .sendbird-openchannel-user-message__context-menu--icon:hover {
       background-color: var(--sendbird-dark-background-700); }
-
-.sendbird-openchannel-admin-message {
-  position: relative;
-  margin: 16px 24px;
-  padding: 12px 16px;
-  border-radius: 4px; }
-  .sendbird-theme--light .sendbird-openchannel-admin-message {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-openchannel-admin-message {
-    background-color: var(--sendbird-dark-background-500); }
-  .sendbird-theme--light .sendbird-openchannel-admin-message:hover {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-openchannel-admin-message:hover {
-    background-color: var(--sendbird-dark-background-400); }
-  .sendbird-openchannel-admin-message .sendbird-openchannel-admin-message__text {
-    word-wrap: break-word; }
-
-.sendbird-openchannel-og-message {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%; }
-  .sendbird-theme--light .sendbird-openchannel-og-message:hover {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-openchannel-og-message:hover {
-    background-color: var(--sendbird-dark-background-400); }
-  .sendbird-openchannel-og-message:hover .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu {
-    display: block; }
-  .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top {
-    box-sizing: border-box;
-    position: relative;
-    display: flex;
-    flex-direction: row; }
-    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__left {
-      position: relative;
-      display: flex;
-      width: 52px;
-      min-width: 52px; }
-      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__left .sendbird-openchannel-og-message__top__left__avatar {
-        position: absolute;
-        display: flex;
-        top: 8px;
-        left: 24px; }
-    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right {
-      position: relative;
-      display: flex;
-      box-sizing: border-box;
-      flex-direction: column;
-      margin: 8px 24px 8px 12px; }
-      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__title {
-        position: relative;
-        display: flex;
-        margin-bottom: 2px; }
-        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__title .sendbird-openchannel-og-message__top__right__title__sender-name {
-          position: relative;
-          display: flex; }
-        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__title .sendbird-openchannel-og-message__top__right__title__sent-at {
-          position: relative;
-          display: flex;
-          margin-left: 4px; }
-      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__description .sendbird-openchannel-og-message__top__right__description__message {
-        position: relative;
-        display: inline;
-        white-space: pre-wrap;
-        word-break: break-all; }
-    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu {
-      position: absolute;
-      right: 16px;
-      display: none; }
-      .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon {
-        background-color: var(--sendbird-light-background-200); }
-      .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon {
-        background-color: var(--sendbird-dark-background-500); }
-      .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon:hover {
-        background-color: var(--sendbird-light-primary-100); }
-      .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon:hover {
-        background-color: var(--sendbird-dark-background-700); }
-  .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom {
-    position: relative;
-    display: inline;
-    margin-bottom: 8px;
-    width: 100%; }
-    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag {
-      position: relative;
-      display: inline-block;
-      box-sizing: border-box;
-      width: calc(100% - 64px);
-      max-width: 360px;
-      left: 64px;
-      padding: 12px 12px 4px 12px;
-      border-radius: 8px; }
-      .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag {
-        border: solid 1px var(--sendbird-light-onlight-04);
-        background-color: var(--sendbird-light-background-100); }
-      .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag {
-        border: solid 1px var(--sendbird-dark-ondark-04);
-        background-color: var(--sendbird-dark-background-500); }
-      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__url {
-        position: relative;
-        display: block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin-bottom: 8px;
-        max-width: 336px; }
-      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title {
-        position: relative;
-        display: inline-block;
-        white-space: pre-wrap;
-        overflow-wrap: normal;
-        margin-bottom: 8px;
-        max-width: 336px; }
-        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title:hover {
-          cursor: pointer; }
-          .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title:hover {
-            color: var(--sendbird-light-primary-300); }
-          .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title:hover {
-            color: var(--sendbird-dark-primary-200); }
-      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__description {
-        position: relative;
-        display: block;
-        white-space: pre-wrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        word-break: break-all;
-        max-height: 32px;
-        margin-bottom: 8px;
-        width: 100%;
-        max-width: 336px; }
-      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail {
-        box-sizing: border-box;
-        position: relative;
-        display: block;
-        margin-top: 4px;
-        margin-bottom: 8px;
-        width: 100%; }
-        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail:hover {
-          cursor: pointer; }
-        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail .sendbird-openchannel-og-message__bottom__og-tag__thumbnail__image {
-          border-radius: 8px;
-          width: 100%;
-          min-width: 200px;
-          max-width: 336px; }
-        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail .sendbird-openchannel-og-message__bottom__og-tag__thumbnail__image--placeholder {
-          border-radius: 8px;
-          width: 100%;
-          min-width: 200px;
-          max-width: 336px; }
-  .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top__right__tail {
-    position: relative;
-    left: 64px;
-    top: 2px; }
-
-.sendbird-openchannel-og-message--word {
-  display: inline;
-  margin: 0px 2px;
-  word-break: break-all; }
-
-.sendbird-theme--light .sendbird-openchannel-og-message--word--link {
-  color: var(--sendbird-light-primary-300); }
-
-.sendbird-theme--dark .sendbird-openchannel-og-message--word--link {
-  color: var(--sendbird-dark-primary-200); }
 
 .sendbird-openchannel-file-message {
   position: relative;
@@ -702,6 +555,153 @@
     display: none;
     top: 8px;
     right: 16px; }
+
+.sendbird-openchannel-og-message {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+  .sendbird-theme--light .sendbird-openchannel-og-message:hover {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .sendbird-openchannel-og-message:hover {
+    background-color: var(--sendbird-dark-background-400); }
+  .sendbird-openchannel-og-message:hover .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu {
+    display: block; }
+  .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: row; }
+    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__left {
+      position: relative;
+      display: flex;
+      width: 52px;
+      min-width: 52px; }
+      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__left .sendbird-openchannel-og-message__top__left__avatar {
+        position: absolute;
+        display: flex;
+        top: 8px;
+        left: 24px; }
+    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right {
+      position: relative;
+      display: flex;
+      box-sizing: border-box;
+      flex-direction: column;
+      margin: 8px 24px 8px 12px; }
+      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__title {
+        position: relative;
+        display: flex;
+        margin-bottom: 2px; }
+        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__title .sendbird-openchannel-og-message__top__right__title__sender-name {
+          position: relative;
+          display: flex; }
+        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__title .sendbird-openchannel-og-message__top__right__title__sent-at {
+          position: relative;
+          display: flex;
+          margin-left: 4px; }
+      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__right .sendbird-openchannel-og-message__top__right__description .sendbird-openchannel-og-message__top__right__description__message {
+        position: relative;
+        display: inline;
+        white-space: pre-wrap;
+        word-break: break-all; }
+    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu {
+      position: absolute;
+      right: 16px;
+      display: none; }
+      .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon {
+        background-color: var(--sendbird-light-background-200); }
+      .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon {
+        background-color: var(--sendbird-dark-background-500); }
+      .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon:hover {
+        background-color: var(--sendbird-light-primary-100); }
+      .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top .sendbird-openchannel-og-message__top__context-menu .sendbird-openchannel-og-message__top__context-menu--icon:hover {
+        background-color: var(--sendbird-dark-background-700); }
+  .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom {
+    position: relative;
+    display: inline;
+    margin-bottom: 8px;
+    width: 100%; }
+    .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag {
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;
+      width: calc(100% - 64px);
+      max-width: 360px;
+      left: 64px;
+      padding: 12px 12px 4px 12px;
+      border-radius: 8px; }
+      .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag {
+        border: solid 1px var(--sendbird-light-onlight-04);
+        background-color: var(--sendbird-light-background-100); }
+      .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag {
+        border: solid 1px var(--sendbird-dark-ondark-04);
+        background-color: var(--sendbird-dark-background-500); }
+      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__url {
+        position: relative;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 8px;
+        max-width: 336px; }
+      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title {
+        position: relative;
+        display: inline-block;
+        white-space: pre-wrap;
+        overflow-wrap: normal;
+        margin-bottom: 8px;
+        max-width: 336px; }
+        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title:hover {
+          cursor: pointer; }
+          .sendbird-theme--light .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title:hover {
+            color: var(--sendbird-light-primary-300); }
+          .sendbird-theme--dark .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__title:hover {
+            color: var(--sendbird-dark-primary-200); }
+      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__description {
+        position: relative;
+        display: block;
+        white-space: pre-wrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        max-height: 32px;
+        margin-bottom: 8px;
+        width: 100%;
+        max-width: 336px; }
+      .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail {
+        box-sizing: border-box;
+        position: relative;
+        display: block;
+        margin-top: 4px;
+        margin-bottom: 8px;
+        width: 100%; }
+        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail:hover {
+          cursor: pointer; }
+        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail .sendbird-openchannel-og-message__bottom__og-tag__thumbnail__image {
+          border-radius: 8px;
+          width: 100%;
+          min-width: 200px;
+          max-width: 336px; }
+        .sendbird-openchannel-og-message .sendbird-openchannel-og-message__bottom .sendbird-openchannel-og-message__bottom__og-tag .sendbird-openchannel-og-message__bottom__og-tag__thumbnail .sendbird-openchannel-og-message__bottom__og-tag__thumbnail__image--placeholder {
+          border-radius: 8px;
+          width: 100%;
+          min-width: 200px;
+          max-width: 336px; }
+  .sendbird-openchannel-og-message .sendbird-openchannel-og-message__top__right__tail {
+    position: relative;
+    left: 64px;
+    top: 2px; }
+
+.sendbird-openchannel-og-message--word {
+  display: inline;
+  margin: 0px 2px;
+  word-break: break-all; }
+
+.sendbird-theme--light .sendbird-openchannel-og-message--word--link {
+  color: var(--sendbird-light-primary-300); }
+
+.sendbird-theme--dark .sendbird-openchannel-og-message--word--link {
+  color: var(--sendbird-dark-primary-200); }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap");
 :root {
@@ -4009,7 +4009,7 @@
   .sendbird-conversation__scroll-bottom-button:focus {
     outline: none; }
 
-[class*=sendbird-label] {
+[class*="sendbird-label"] {
   font-family: var(--sendbird-font-family-default); }
 
 .sendbird-label--h-1 {
@@ -4112,6 +4112,14 @@
   font-weight: normal;
   font-stretch: normal;
   font-style: normal;
+  line-height: 1;
+  letter-spacing: normal; }
+
+.sendbird-label--typing-indicator {
+  font-size: 13px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: italic;
   line-height: 1;
   letter-spacing: normal; }
 
@@ -4341,6 +4349,81 @@
       max-height: 0;
       padding: 0; }
 
+.rogu-og-message-item-body {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 320px;
+  max-width: 400px; }
+  .rogu-og-message-item-body .rogu-og-message-item-body__text-bubble {
+    position: relative;
+    word-break: break-all;
+    margin-top: 8px; }
+    .rogu-og-message-item-body .rogu-og-message-item-body__text-bubble .rogu-og-message-item-body__text-bubble__message {
+      display: inline; }
+  .rogu-og-message-item-body .rogu-og-message-item-body__og-container {
+    padding: 8px;
+    display: flex;
+    border-radius: 4px; }
+  .rogu-og-message-item-body .rogu-og-message-item-body__og-thumbnail {
+    position: relative;
+    width: 60px;
+    height: 60px; }
+    .rogu-og-message-item-body .rogu-og-message-item-body__og-thumbnail .rogu-og-message-item-body__og-thumbnail__image {
+      width: 100%; }
+  .rogu-og-message-item-body .rogu-og-message-item-body__description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 4px 8px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0; }
+    .rogu-og-message-item-body .rogu-og-message-item-body__description .rogu-og-message-item-body__description__title,
+    .rogu-og-message-item-body .rogu-og-message-item-body__description .rogu-og-message-item-body__description__description {
+      margin-bottom: 4px;
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: inline-block; }
+    .rogu-og-message-item-body .rogu-og-message-item-body__description .rogu-og-message-item-body__description__url {
+      width: 100%;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: inline-block;
+      margin: 0; }
+  .rogu-og-message-item-body.rogu-og-message-reactions .rogu-og-message-item-body__description {
+    border-radius: 0; }
+  .rogu-og-message-item-body .rogu-og-message-item-body__og-thumbnail:hover,
+  .rogu-og-message-item-body .rogu-og-message-item-body__description:hover {
+    cursor: pointer; }
+  .sendbird-theme--light .rogu-og-message-item-body.rogu-og-message--outgoing .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-light-primary-200); }
+  .sendbird-theme--dark .rogu-og-message-item-body.rogu-og-message--outgoing .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-dark-primary-400); }
+  .sendbird-theme--light .rogu-og-message-item-body.rogu-og-message--incoming .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .rogu-og-message-item-body.rogu-og-message--incoming .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-dark-background-500); }
+  .sendbird-theme--light .rogu-og-message-item-body.mouse-hover .rogu-og-message--outgoing .rogu-og-message-item-body__og-container, .sendbird-theme--light .rogu-og-message-item-body:hover .rogu-og-message--outgoing .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-light-primary-200); }
+  .sendbird-theme--dark .rogu-og-message-item-body.mouse-hover .rogu-og-message--outgoing .rogu-og-message-item-body__og-container, .sendbird-theme--dark .rogu-og-message-item-body:hover .rogu-og-message--outgoing .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-dark-primary-400); }
+  .sendbird-theme--light .rogu-og-message-item-body.mouse-hover .rogu-og-message--incoming .rogu-og-message-item-body__og-container, .sendbird-theme--light .rogu-og-message-item-body:hover .rogu-og-message--incoming .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .rogu-og-message-item-body.mouse-hover .rogu-og-message--incoming .rogu-og-message-item-body__og-container, .sendbird-theme--dark .rogu-og-message-item-body:hover .rogu-og-message--incoming .rogu-og-message-item-body__og-container {
+    background-color: var(--sendbird-dark-background-500); }
+  .rogu-og-message-item-body .rogu-og-message-item-body__cover {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px 16px 0 0; }
+
 .rogu-assignment-message-item-body {
   position: relative;
   display: inline-block;
@@ -4462,7 +4545,7 @@
     .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble {
       display: flex;
       flex-direction: column;
-      padding: 0.75rem;
+      padding: 0.75rem 0.5rem 0.75rem 0.75rem;
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
       border-bottom-left-radius: 0.5rem;
@@ -4471,7 +4554,9 @@
         line-height: 0;
         display: flex;
         flex-wrap: nowrap;
-        margin-bottom: 0.25rem; }
+        justify-content: space-between;
+        margin-bottom: 0.25rem;
+        align-items: center; }
         .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header .rogu-message-content__sender-name {
           overflow: hidden;
           text-overflow: ellipsis;
@@ -4499,6 +4584,10 @@
         border-style: solid;
         position: absolute;
         top: 0; }
+      .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__body {
+        display: flex; }
+        .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__body .rogu-message-content__buble__body-text {
+          margin-right: 0.25rem; }
     .rogu-message-content .rogu-message-content__content .rogu-message-content__misc {
       margin-top: 0.25rem; }
   .rogu-message-content.rogu-message-content--incoming {
@@ -4548,15 +4637,151 @@
     padding-right: 0.5rem; }
     .rogu-message-content.rogu-message-content--chain-top.rogu-message-content--outgoing .rogu-message-content__content .rogu-message-content__bubble {
       border-top-right-radius: 0; }
+  .rogu-message-content:hover .rogu-message-item-menu__trigger {
+    display: flex; }
 
-.sendbird-message-input__container {
+.rogu-dropdown__menu {
+  z-index: 1200;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  margin: 0;
+  padding: 8px 0;
+  border-radius: 4px;
+  list-style: none; }
+  .sendbird-theme--light .rogu-dropdown__menu {
+    box-shadow: var(--sendbird-light-shadow-02);
+    background-color: var(--sendbird-light-background-50); }
+  .sendbird-theme--dark .rogu-dropdown__menu {
+    box-shadow: var(--sendbird-dark-shadow-02);
+    background-color: var(--sendbird-dark-background-500); }
+  .rogu-dropdown__menu .rogu-dropdown__menu-item {
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 16px;
+    display: flex;
+    align-items: center; }
+    .rogu-dropdown__menu .rogu-dropdown__menu-item.disable {
+      cursor: not-allowed; }
+      .sendbird-theme--light .rogu-dropdown__menu .rogu-dropdown__menu-item.disable:hover {
+        background-color: var(--sendbird-light-background-50); }
+      .sendbird-theme--dark .rogu-dropdown__menu .rogu-dropdown__menu-item.disable:hover {
+        background-color: var(--sendbird-dark-background-500); }
+    .sendbird-theme--light .rogu-dropdown__menu .rogu-dropdown__menu-item:hover {
+      background-color: var(--sendbird-light-background-100); }
+    .sendbird-theme--dark .rogu-dropdown__menu .rogu-dropdown__menu-item:hover {
+      background-color: var(--sendbird-dark-background-400); }
+    .rogu-dropdown__menu .rogu-dropdown__menu-item .rogu-dropdown__menu-item-icon {
+      margin-right: 12px; }
+
+.rogu-dropdown__reaction-bar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 44px;
+  max-width: 352px;
+  max-height: 208px;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 8px;
+  border-radius: 8px;
+  list-style: none; }
+  .sendbird-theme--light .rogu-dropdown__reaction-bar {
+    box-shadow: var(--sendbird-light-shadow-02);
+    background-color: var(--sendbird-light-background-50); }
+  .sendbird-theme--dark .rogu-dropdown__reaction-bar {
+    box-shadow: var(--sendbird-dark-shadow-02);
+    background-color: var(--sendbird-dark-background-500); }
+  .rogu-dropdown__reaction-bar .rogu-dropdown__reaction-bar__row .sendbird-reaction-button,
+  .rogu-dropdown__reaction-bar .rogu-dropdown__reaction-bar__row .sendbird-reaction-button--selected {
+    margin: 4px; }
+
+.rogu-dropdown__menu-backdrop {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.sendbird-reactions--pressed {
+  display: block !important; }
+
+.sendbird-icon--pressed {
+  display: block !important; }
+
+.sendbird__offline .rogu-dropdown__menu .rogu-dropdown__menu-item {
+  cursor: not-allowed; }
+
+.rogu-fileviewer__toast__message {
+  z-index: 1400;
+  visibility: hidden;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 24px;
+  color: #fff;
+  transform: translateX(-50%);
+  padding: 10px 25px; }
+  .rogu-fileviewer__toast__message.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0; }
+  to {
+    bottom: 10%;
+    opacity: 1; } }
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0; }
+  to {
+    bottom: 10%;
+    opacity: 1; } }
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 10%;
+    opacity: 1; }
+  to {
+    bottom: 0;
+    opacity: 0; } }
+
+@keyframes fadeout {
+  from {
+    bottom: 10%;
+    opacity: 1; }
+  to {
+    bottom: 0;
+    opacity: 0; } }
+
+.rogu-message-item-menu {
+  min-width: 20px;
+  min-height: 26px; }
+  .rogu-message-item-menu .rogu-message-item-menu__trigger {
+    display: none; }
+    .rogu-message-item-menu .rogu-message-item-menu__trigger.sendbird-iconbutton--pressed {
+      display: flex; }
+      .sendbird-theme--light .rogu-message-item-menu .rogu-message-item-menu__trigger.sendbird-iconbutton--pressed {
+        background-color: var(--sendbird-light-background-100); }
+      .sendbird-theme--dark .rogu-message-item-menu .rogu-message-item-menu__trigger.sendbird-iconbutton--pressed {
+        background-color: var(--sendbird-dark-background-500); }
+
+.rogu-message-input__container {
   padding: 12px 16px; }
 
-.sendbird-message-input {
+.rogu-message-input {
   display: flex;
   width: 100%;
   position: relative; }
-  .sendbird-message-input .sendbird-message-input--textarea {
+  .rogu-message-input .rogu-message-input--textarea {
     width: calc(100% - 48px);
     border-radius: 42px;
     font-size: 14px;
@@ -4572,33 +4797,33 @@
     resize: none;
     font-family: var(--sendbird-font-family-default);
     background-color: inherit; }
-    .sendbird-theme--light .sendbird-message-input .sendbird-message-input--textarea {
+    .sendbird-theme--light .rogu-message-input .rogu-message-input--textarea {
       color: var(--sendbird-light-onlight-01);
       caret-color: var(--sendbird-light-primary-300);
       border: solid 1px var(--sendbird-light-onlight-03);
       background-color: var(--sendbird-light-background-50); }
-    .sendbird-theme--dark .sendbird-message-input .sendbird-message-input--textarea {
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input--textarea {
       color: var(--sendbird-dark-ondark-01);
       caret-color: var(--sendbird-dark-primary-200);
       border: solid 1px var(--sendbird-dark-ondark-03);
       background-color: var(--sendbird-dark-background-500); }
-    .sendbird-message-input .sendbird-message-input--textarea:focus {
+    .rogu-message-input .rogu-message-input--textarea:focus {
       outline: none; }
-      .sendbird-theme--light .sendbird-message-input .sendbird-message-input--textarea:focus {
+      .sendbird-theme--light .rogu-message-input .rogu-message-input--textarea:focus {
         color: var(--sendbird-light-onlight-01);
         border: solid 1px var(--sendbird-light-primary-300);
         box-shadow: var(--sendbird-light-shadow-message-input); }
-      .sendbird-theme--dark .sendbird-message-input .sendbird-message-input--textarea:focus {
+      .sendbird-theme--dark .rogu-message-input .rogu-message-input--textarea:focus {
         color: var(--sendbird-dark-ondark-01);
         border: solid 1px var(--sendbird-dark-primary-200);
         box-shadow: var(--sendbird-dark-shadow-message-input); }
-    .sendbird-theme--light .sendbird-message-input .sendbird-message-input--textarea:active {
-      border: solid 1px var(--sendbird-message-input-border-active);
+    .sendbird-theme--light .rogu-message-input .rogu-message-input--textarea:active {
+      border: solid 1px var(--rogu-message-input-border-active);
       color: var(--sendbird-light-onlight-01); }
-    .sendbird-theme--dark .sendbird-message-input .sendbird-message-input--textarea:active {
-      border: solid 1px var(--sendbird-message-input-border-active);
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input--textarea:active {
+      border: solid 1px var(--rogu-message-input-border-active);
       color: var(--sendbird-dark-ondark-01); }
-  .sendbird-message-input .sendbird-message-input--placeholder {
+  .rogu-message-input .rogu-message-input--placeholder {
     position: absolute;
     pointer-events: none;
     top: 9px;
@@ -4606,73 +4831,85 @@
     font-family: var(--sendbird-font-family-default);
     font-size: 14px;
     line-height: 1.43; }
-    .sendbird-theme--light .sendbird-message-input .sendbird-message-input--placeholder {
+    .sendbird-theme--light .rogu-message-input .rogu-message-input--placeholder {
       color: var(--sendbird-light-onlight-03); }
-    .sendbird-theme--dark .sendbird-message-input .sendbird-message-input--placeholder {
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input--placeholder {
       color: var(--sendbird-dark-ondark-03); }
-  .sendbird-message-input .sendbird-message-input--attach {
+  .rogu-message-input .rogu-message-input--attach {
     position: absolute;
     right: 56px;
     bottom: 0;
     padding: 0; }
-  .sendbird-message-input .sendbird-message-input--send-container {
+    .rogu-message-input .rogu-message-input--attach:hover {
+      background-color: transparent;
+      transform: scale(1.2); }
+  .rogu-message-input .rogu-message-input--send-container {
     width: 36px;
     height: 36px; }
-  .sendbird-message-input .sendbird-message-input--send {
+  .rogu-message-input .rogu-message-input--send {
     right: 0;
     bottom: 0;
     width: 36px;
     height: 36px;
     padding: 0;
-    border-radius: 50%; }
-    .sendbird-theme--light .sendbird-message-input .sendbird-message-input--send {
+    border-radius: 50%;
+    margin-left: 12px; }
+    .rogu-message-input .rogu-message-input--send:hover {
+      transform: scale(1.2); }
+    .sendbird-theme--light .rogu-message-input .rogu-message-input--send {
       background-color: var(--sendbird-light-primary-400);
       box-shadow: 0 2px 12px var(--sendbird-light-overlay-02); }
-    .sendbird-theme--dark .sendbird-message-input .sendbird-message-input--send {
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input--send {
       background-color: var(--sendbird-dark-primary-300);
       box-shadow: 0 2px 12px var(--sendbird-dark-overlay-02); }
-  .sendbird-message-input .sendbird-message-input--attach-input {
+    .sendbird-theme--light .rogu-message-input .rogu-message-input--send .rogu-message-input--send-disabled {
+      background-color: var(--sendbird-light-background-400);
+      box-shadow: 0 2px 12px var(--sendbird-light-overlay-02); }
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input--send .rogu-message-input--send-disabled {
+      background-color: var(--sendbird-dark-background-300);
+      box-shadow: 0 2px 12px var(--sendbird-dark-overlay-02); }
+  .rogu-message-input .rogu-message-input--attach-input {
     display: none; }
 
-.sendbird-message-input__edit {
+.rogu-message-input__edit {
   padding: 16px;
   box-sizing: border-box; }
-  .sendbird-theme--light .sendbird-message-input__edit {
+  .sendbird-theme--light .rogu-message-input__edit {
     background-color: var(--sendbird-light-primary-100); }
-  .sendbird-theme--dark .sendbird-message-input__edit {
+  .sendbird-theme--dark .rogu-message-input__edit {
     background-color: var(--sendbird-dark-background-700); }
 
-.sendbird-message-input--edit-action {
+.rogu-message-input--edit-action {
   text-align: right;
   margin-top: 4px; }
-  .sendbird-message-input--edit-action button:last-child {
+  .rogu-message-input--edit-action button:last-child {
     margin-left: 8px; }
-  .sendbird-message-input--edit-action .sendbird-message-input--edit-action__cancel {
+  .rogu-message-input--edit-action .rogu-message-input--edit-action__cancel {
     width: 80px; }
-    .sendbird-theme--light .sendbird-message-input--edit-action .sendbird-message-input--edit-action__cancel {
+    .sendbird-theme--light .rogu-message-input--edit-action .rogu-message-input--edit-action__cancel {
       border: solid 1px var(--sendbird-light-onlight-03); }
-    .sendbird-theme--dark .sendbird-message-input--edit-action .sendbird-message-input--edit-action__cancel {
+    .sendbird-theme--dark .rogu-message-input--edit-action .rogu-message-input--edit-action__cancel {
       border: solid 1px var(--sendbird-dark-ondark-03); }
-  .sendbird-message-input--edit-action .sendbird-message-input--edit-action__save {
+  .rogu-message-input--edit-action .rogu-message-input--edit-action__save {
     width: 80px; }
 
-.sendbird-message-input-form__disabled {
+.rogu-message-input-form__disabled {
   cursor: not-allowed; }
 
-.sendbird-message-input.sendbird-message-input__disabled {
+.rogu-message-input.rogu-message-input__disabled {
   pointer-events: none;
   cursor: disabled; }
-  .sendbird-theme--light .sendbird-message-input.sendbird-message-input__disabled .sendbird-message-input--textarea {
+  .sendbird-theme--light .rogu-message-input.rogu-message-input__disabled .rogu-message-input--textarea {
     background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-message-input.sendbird-message-input__disabled .sendbird-message-input--textarea {
+  .sendbird-theme--dark .rogu-message-input.rogu-message-input__disabled .rogu-message-input--textarea {
     background-color: var(--sendbird-dark-background-500); }
-  .sendbird-theme--light .sendbird-message-input.sendbird-message-input__disabled .sendbird-message-input--send {
+  .sendbird-theme--light .rogu-message-input.rogu-message-input__disabled .rogu-message-input--send {
     background-color: var(--sendbird-light-background-300); }
-  .sendbird-theme--dark .sendbird-message-input.sendbird-message-input__disabled .sendbird-message-input--send {
+  .sendbird-theme--dark .rogu-message-input.rogu-message-input__disabled .rogu-message-input--send {
     background-color: var(--sendbird-dark-background-400); }
-  .sendbird-theme--light .sendbird-message-input.sendbird-message-input__disabled svg {
+  .sendbird-theme--light .rogu-message-input.rogu-message-input__disabled svg {
     fill: var(--sendbird-light-onlight-03); }
-  .sendbird-theme--dark .sendbird-message-input.sendbird-message-input__disabled svg {
+  .sendbird-theme--dark .rogu-message-input.rogu-message-input__disabled svg {
     fill: var(--sendbird-dark-ondark-03); }
 
 .rogu-fileviewer__header__right__actions__download,
@@ -4824,54 +5061,6 @@
       background-color: var(--sendbird-light-background-300); }
     .sendbird-theme--dark .sendbird-avatar .sendbird-avatar-img--default {
       background-color: var(--sendbird-dark-background-300); }
-
-.rogu-fileviewer__toast__message {
-  z-index: 1400;
-  visibility: hidden;
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 24px;
-  color: #fff;
-  transform: translateX(-50%);
-  padding: 10px 25px; }
-  .rogu-fileviewer__toast__message.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-
-@-webkit-keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0; }
-  to {
-    bottom: 10%;
-    opacity: 1; } }
-
-@keyframes fadein {
-  from {
-    bottom: 0;
-    opacity: 0; }
-  to {
-    bottom: 10%;
-    opacity: 1; } }
-
-@-webkit-keyframes fadeout {
-  from {
-    bottom: 10%;
-    opacity: 1; }
-  to {
-    bottom: 0;
-    opacity: 0; } }
-
-@keyframes fadeout {
-  from {
-    bottom: 10%;
-    opacity: 1; }
-  to {
-    bottom: 0;
-    opacity: 0; } }
 
 .rogu-date-separator {
   width: 100%;

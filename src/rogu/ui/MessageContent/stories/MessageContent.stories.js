@@ -19,13 +19,14 @@ import {
   ASSIGNMENT_MESSAGE_A_1,
   ASSIGNMENT_MESSAGE_A_2,
   MATERIAL_MESSAGE_A_1,
-  MATERIAL_MESSAGE_A_2
+  MATERIAL_MESSAGE_A_2,
 } from "../../../../../__mocks__/messagesMock";
 
 export default { title: "ruangkelas/UI Components/MessageContent" };
 
 export const Basic = () => (
   <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
+    
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent
         userId={"random-user-id"}

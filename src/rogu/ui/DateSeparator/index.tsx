@@ -15,7 +15,7 @@ export type DateSeparatorProps = {
 export default function DateSeparator({
   className,
   createdAt,
-}: DateSeparatorProps) {
+}: DateSeparatorProps):JSX.Element {
   const { stringSet } = useContext(LocalizationContext);
 
   return (

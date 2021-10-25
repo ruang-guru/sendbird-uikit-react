@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-4fe074d5.js');
-var index$1 = require('./index-f1508642.js');
+var LocalizationContext = require('./LocalizationContext-9bbb95f9.js');
+var index$1 = require('./index-e37ead1e.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-d32404ea.js');
-var index$3 = require('./index-6d135493.js');
-var Channel = require('./index-16f0a831.js');
+var index$2 = require('./index-f7057575.js');
+var index$3 = require('./index-976c62bf.js');
+var Channel = require('./index-c9bd2574.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-6c6ab360.js');
+require('./actionTypes-60913213.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-ca93ff80.js');
-require('./utils-3c681951.js');
-require('./LeaveChannel-aa12bb69.js');
-require('./index-0f836ed2.js');
-require('./index-2db9b804.js');
-require('./index-9ee72994.js');
+require('./index-b6060293.js');
+require('./utils-23d3f91e.js');
+require('./LeaveChannel-41fc666a.js');
+require('./index-840d50b9.js');
+require('./index-ee746ee9.js');
+require('./index-3175def4.js');
 require('./ChannelSettings.js');
-require('./index-1fa6b37f.js');
+require('./index-b6b624d7.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -1733,7 +1733,8 @@ var Typography = {
   BUTTON_2: 'BUTTON_2',
   CAPTION_1: 'CAPTION_1',
   CAPTION_2: 'CAPTION_2',
-  CAPTION_3: 'CAPTION_3'
+  CAPTION_3: 'CAPTION_3',
+  TYPING_INDICATOR: 'TYPING_INDICATOR'
 };
 var Colors$1 = {
   ONBACKGROUND_1: 'ONBACKGROUND_1',
@@ -1788,6 +1789,9 @@ function changeTypographyToClassName(type) {
 
     case Typography.CAPTION_3:
       return 'sendbird-label--caption-3';
+
+    case Typography.TYPING_INDICATOR:
+      return 'sendbird-label--typing-indicator';
 
     default:
       return null;
@@ -1919,6 +1923,9 @@ var Type = {
   ROGU_SENT: 'ROGU_SENT',
   ROGU_READ_ALL: 'ROGU_READ_ALL',
   ROGU_ERROR: 'ROGU_ERROR',
+  ROGU_COPY: 'ROGU_COPY',
+  ROGU_REPLY: 'ROGU_REPLY',
+  ROGU_RESEND: 'ROGU_RESEND',
   ROGU_CLOSE: 'ROGU_CLOSE',
   ROGU_DOWNLOAD: 'ROGU_DOWNLOAD',
   ROGU_DELETE: 'ROGU_DELETE',
@@ -1926,17 +1933,17 @@ var Type = {
   ROGU_MATERIAL: 'ROGU_MATERIAL'
 };
 
-var _path$7;
+var _path$a;
 
-function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
+function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
 
 function SvgRoguIconMsgFailed(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$8({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$b({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$7 || (_path$7 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$a || (_path$a = /*#__PURE__*/React__namespace.createElement("path", {
     className: "rogu-icon-msg-failed_svg__fill",
     d: "M8.25 11.25h1.5v1.5h-1.5v-1.5zm0-6h1.5v4.5h-1.5v-4.5zm.742-3.75C4.853 1.5 1.5 4.86 1.5 9c0 4.14 3.353 7.5 7.492 7.5 4.148 0 7.508-3.36 7.508-7.5 0-4.14-3.36-7.5-7.508-7.5zM9 15c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z",
     fill: "currentColor"
@@ -1945,10 +1952,10 @@ function SvgRoguIconMsgFailed(props) {
 
 var _circle, _circle2, _circle3, _circle4;
 
-function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
+function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
 
 function SvgRoguIconMsgPending(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$7({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$a({
     width: 18,
     height: 18,
     fill: "none",
@@ -1976,19 +1983,81 @@ function SvgRoguIconMsgPending(props) {
   })));
 }
 
-var _path$6;
+var _path$9;
 
-function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
+function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
 
 function SvgRoguIconMsgSent(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$6({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$9({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$6 || (_path$6 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$9 || (_path$9 = /*#__PURE__*/React__namespace.createElement("path", {
     d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
     fill: "#BEC8D0"
+  })));
+}
+
+var _path$8;
+
+function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
+
+function SvgRoguIconMsgReadAll(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$8({
+    width: 18,
+    height: 18,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$8 || (_path$8 = /*#__PURE__*/React__namespace.createElement("path", {
+    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
+    fill: "#2EB5C0"
+  })));
+}
+
+var _rect, _path$7;
+
+function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
+
+function SvgRoguIconCopy(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$7({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _rect || (_rect = /*#__PURE__*/React__namespace.createElement("rect", {
+    x: 3,
+    y: 8,
+    width: 11,
+    height: 13,
+    rx: 2,
+    fill: "#434856"
+  })), _path$7 || (_path$7 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M11 3a2 2 0 00-2 2v2h4a2 2 0 012 2v8h4a2 2 0 002-2V5a2 2 0 00-2-2h-8z",
+    fill: "#434856"
+  })));
+}
+
+var _path$6, _path2$2;
+
+function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
+
+function SvgRoguIconReply(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$6({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$6 || (_path$6 = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M9 3L2.605 8.673c-.826.733-.826 1.921 0 2.654L8.999 17V3z",
+    fill: "#434856"
+  })), _path2$2 || (_path2$2 = /*#__PURE__*/React__namespace.createElement("path", {
+    d: "M22 20C22 9.5 12.762 6.359 9 6v8c7.035 0 11.746 3.846 13 6z",
+    fill: "#434856"
   })));
 }
 
@@ -1996,15 +2065,15 @@ var _path$5;
 
 function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 
-function SvgRoguIconMsgReadAll(props) {
+function SvgRoguIconResend(props) {
   return /*#__PURE__*/React__namespace.createElement("svg", _extends$5({
-    width: 18,
-    height: 18,
+    width: 24,
+    height: 24,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
   }, props), _path$5 || (_path$5 = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
-    fill: "#2EB5C0"
+    d: "M19.802 4.865a.641.641 0 00-.468-.198.641.641 0 00-.47.198l-1.353 1.344a8.07 8.07 0 00-2.552-1.63A7.862 7.862 0 0012 4c-1.91 0-3.576.578-5 1.735C5.576 6.89 4.64 8.399 4.187 10.26v.073c0 .09.033.168.1.234a.32.32 0 00.234.099h2.073c.153 0 .257-.08.312-.24.292-.694.476-1.1.552-1.218a5.251 5.251 0 011.938-1.865A5.242 5.242 0 0112 6.667c1.396 0 2.608.475 3.636 1.427L14.198 9.53a.642.642 0 00-.198.47c0 .18.066.336.198.468a.641.641 0 00.469.198h4.667a.64.64 0 00.468-.198A.64.64 0 0020 10V5.333a.64.64 0 00-.198-.468zM19.406 13.333h-2c-.153 0-.257.08-.312.24-.292.694-.476 1.1-.552 1.219a5.256 5.256 0 01-1.938 1.864 5.241 5.241 0 01-2.604.677 5.2 5.2 0 01-1.948-.374 5.379 5.379 0 01-1.677-1.063l1.427-1.427a.64.64 0 00.198-.47.64.64 0 00-.198-.468.64.64 0 00-.468-.198H4.667a.64.64 0 00-.47.198A.64.64 0 004 14v4.667c0 .18.066.336.198.468a.642.642 0 00.469.198c.18 0 .337-.066.469-.198l1.343-1.343a7.957 7.957 0 002.537 1.635 7.803 7.803 0 002.943.573c1.902 0 3.562-.578 4.979-1.735 1.416-1.156 2.347-2.665 2.792-4.526a.32.32 0 00-.089-.307.322.322 0 00-.235-.099z",
+    fill: "#434856"
   })));
 }
 
@@ -2509,6 +2578,15 @@ function changeTypeToIconComponent(type) {
     case Type.ROGU_ERROR:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgFailed, null);
 
+    case Type.ROGU_COPY:
+      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconCopy, null);
+
+    case Type.ROGU_REPLY:
+      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconReply, null);
+
+    case Type.ROGU_RESEND:
+      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconResend, null);
+
     case Type.ROGU_CLOSE:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconClose, null);
 
@@ -2708,6 +2786,82 @@ function TextMessageItemBody(_a) {
   }, /*#__PURE__*/React__default["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
 }
 
+function OGMessageItemBody(_a) {
+  var _b, _c, _d, _e, _f, _g, _h, _j;
+
+  var className = _a.className,
+      message = _a.message,
+      _k = _a.isByMe,
+      isByMe = _k === void 0 ? false : _k,
+      _l = _a.mouseHover,
+      mouseHover = _l === void 0 ? false : _l;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+
+  var openOGUrl = function openOGUrl() {
+    var _a, _b;
+
+    if ((_a = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _a === void 0 ? void 0 : _a.url) window.open((_b = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _b === void 0 ? void 0 : _b.url);
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: index$1.getClassName([className, 'rogu-og-message-item-body', isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'rogu-og-message-reactions' : ''])
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__og-container",
+    onClick: openOGUrl
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__og-thumbnail"
+  }, /*#__PURE__*/React__default["default"].createElement(index$2.ImageRenderer, {
+    className: "rogu-og-message-item-body__og-thumbnail__image",
+    url: ((_d = (_c = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _c === void 0 ? void 0 : _c.defaultImage) === null || _d === void 0 ? void 0 : _d.url) || '',
+    alt: (_f = (_e = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _e === void 0 ? void 0 : _e.defaultImage) === null || _f === void 0 ? void 0 : _f.alt,
+    width: "60px",
+    height: "60px",
+    defaultComponent: /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "rogu-og-message-item-body__og-thumbnail__place-holder"
+    }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+      className: "rogu-og-message-item-body__og-thumbnail__place-holder__icon",
+      type: IconTypes.THUMBNAIL_NONE,
+      width: "60px",
+      height: "60px"
+    }))
+  })), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__description"
+  }, ((_g = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _g === void 0 ? void 0 : _g.title) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__description__title",
+    type: LabelTypography.SUBTITLE_2,
+    color: LabelColors.ONBACKGROUND_1
+  }, message.ogMetaData.title), ((_h = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _h === void 0 ? void 0 : _h.description) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__description__description",
+    type: LabelTypography.BODY_2,
+    color: LabelColors.ONBACKGROUND_1
+  }, message.ogMetaData.description), ((_j = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _j === void 0 ? void 0 : _j.url) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__description__url",
+    type: LabelTypography.CAPTION_3,
+    color: LabelColors.ONBACKGROUND_2
+  }, message.ogMetaData.url))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__text-bubble"
+  }, message === null || message === void 0 ? void 0 : message.message.split(' ').map(function (word) {
+    return index$1.isUrl(word) ? /*#__PURE__*/React__default["default"].createElement(index$3.LinkLabel, {
+      className: "rogu-og-message-item-body__text-bubble__message",
+      key: LocalizationContext.uuidv4(),
+      src: word,
+      type: LabelTypography.BODY_1,
+      color: isByMe ? LabelColors.ONBACKGROUND_1 : LabelColors.SECONDARY_3
+    }, word) : /*#__PURE__*/React__default["default"].createElement(Label, {
+      className: "rogu-og-message-item-body__text-bubble__message",
+      key: LocalizationContext.uuidv4(),
+      type: LabelTypography.BODY_1,
+      color: LabelColors.ONBACKGROUND_1
+    }, word + ' ');
+  }), index$1.isEditedMessage(message) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__text-bubble__message",
+    type: LabelTypography.BODY_1,
+    color: isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2
+  }, " " + stringSet.MESSAGE_EDITED + " ")), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__cover"
+  }));
+}
+
 function AssignmentMessageItemBody(_a) {
   var _b;
 
@@ -2823,6 +2977,382 @@ var generateColorFromString = function generateColorFromString(str) {
   return color;
 };
 
+var MenuItems$1 = /*#__PURE__*/function (_Component) {
+  LocalizationContext._inherits(MenuItems, _Component);
+
+  var _super = LocalizationContext._createSuper(MenuItems);
+
+  function MenuItems(props) {
+    var _this;
+
+    LocalizationContext._classCallCheck(this, MenuItems);
+
+    _this = _super.call(this, props);
+
+    LocalizationContext._defineProperty(LocalizationContext._assertThisInitialized(_this), "showParent", function () {
+      var _this$props$parentCon = _this.props.parentContainRef,
+          parentContainRef = _this$props$parentCon === void 0 ? {} : _this$props$parentCon;
+      var current = parentContainRef.current;
+
+      if (parentContainRef && current) {
+        current.classList.add('sendbird-icon--pressed');
+      }
+    });
+
+    LocalizationContext._defineProperty(LocalizationContext._assertThisInitialized(_this), "hideParent", function () {
+      var _this$props$parentCon2 = _this.props.parentContainRef,
+          parentContainRef = _this$props$parentCon2 === void 0 ? {} : _this$props$parentCon2;
+      var current = parentContainRef.current;
+
+      if (parentContainRef && current) {
+        current.classList.remove('sendbird-icon--pressed');
+      }
+    });
+
+    LocalizationContext._defineProperty(LocalizationContext._assertThisInitialized(_this), "setupEvents", function () {
+      var closeDropdown = _this.props.closeDropdown;
+
+      var _assertThisInitialize = LocalizationContext._assertThisInitialized(_this),
+          menuRef = _assertThisInitialize.menuRef;
+
+      var handleClickOutside = function handleClickOutside(event) {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+          closeDropdown();
+        }
+      };
+
+      _this.setState({
+        handleClickOutside: handleClickOutside
+      });
+
+      document.addEventListener('mousedown', handleClickOutside);
+    });
+
+    LocalizationContext._defineProperty(LocalizationContext._assertThisInitialized(_this), "cleanUpEvents", function () {
+      var handleClickOutside = _this.state.handleClickOutside;
+      document.removeEventListener('mousedown', handleClickOutside);
+    });
+
+    LocalizationContext._defineProperty(LocalizationContext._assertThisInitialized(_this), "getMenuPosition", function () {
+      var _this$props = _this.props,
+          parentRef = _this$props.parentRef,
+          openLeft = _this$props.openLeft;
+      var parentRect = parentRef.current.getBoundingClientRect();
+      var x = parentRect.x || parentRect.left;
+      var y = parentRect.y || parentRect.top;
+      var menuStyle = {
+        top: y,
+        left: x
+      };
+      if (!_this.menuRef.current) return menuStyle;
+      var _window = window,
+          innerWidth = _window.innerWidth,
+          innerHeight = _window.innerHeight;
+
+      var rect = _this.menuRef.current.getBoundingClientRect();
+
+      if (y + rect.height > innerHeight) {
+        menuStyle.top -= rect.height;
+      }
+
+      if (x + rect.width > innerWidth && !openLeft) {
+        menuStyle.left -= rect.width;
+      }
+
+      if (menuStyle.top < 0) {
+        menuStyle.top = rect.height < innerHeight ? (innerHeight - rect.height) / 2 : 0;
+      }
+
+      if (menuStyle.left < 0) {
+        menuStyle.left = rect.width < innerWidth ? (innerWidth - rect.width) / 2 : 0;
+      }
+
+      menuStyle.top += 32;
+
+      if (openLeft) {
+        var padding = Number.isNaN(rect.width - 30) ? 108 // default
+        : rect.width - 30;
+        menuStyle.left -= padding;
+      }
+
+      return _this.setState({
+        menuStyle: menuStyle
+      });
+    });
+
+    _this.menuRef = /*#__PURE__*/React__default["default"].createRef();
+    _this.state = {
+      menuStyle: {},
+      handleClickOutside: function handleClickOutside() {}
+    };
+    return _this;
+  }
+
+  LocalizationContext._createClass(MenuItems, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setupEvents();
+      this.getMenuPosition();
+      this.showParent();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.cleanUpEvents();
+      this.hideParent();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var menuStyle = this.state.menuStyle;
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          style = _this$props2.style;
+      return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "rogu-dropdown__menu-backdrop"
+      }), /*#__PURE__*/React__default["default"].createElement("ul", {
+        className: "rogu-dropdown__menu",
+        ref: this.menuRef,
+        style: LocalizationContext._objectSpread2({
+          display: 'inline-block',
+          position: 'fixed',
+          left: "".concat(Math.round(menuStyle.left), "px"),
+          top: "".concat(Math.round(menuStyle.top), "px")
+        }, style)
+      }, children)), document.getElementById('sendbird-dropdown-portal'));
+    }
+  }]);
+
+  return MenuItems;
+}(React.Component);
+MenuItems$1.propTypes = {
+  closeDropdown: PropTypes__default["default"].func.isRequired,
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element)]).isRequired,
+  style: PropTypes__default["default"].shape({}),
+  // https://stackoverflow.com/a/51127130
+  parentRef: PropTypes__default["default"].oneOfType([PropTypes__default["default"].func, PropTypes__default["default"].shape({
+    current: PropTypes__default["default"].instanceOf(Element)
+  })]).isRequired,
+  parentContainRef: PropTypes__default["default"].oneOfType([PropTypes__default["default"].func, PropTypes__default["default"].shape({
+    current: PropTypes__default["default"].instanceOf(Element)
+  })]).isRequired,
+  openLeft: PropTypes__default["default"].bool
+};
+MenuItems$1.defaultProps = {
+  style: {},
+  openLeft: false
+};
+
+var ENTER = 13;
+var MenuItems = MenuItems$1;
+var MenuItem = function MenuItem(_ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      onClick = _ref.onClick,
+      disable = _ref.disable,
+      iconType = _ref.iconType;
+
+  var handleClickEvent = function handleClickEvent(e) {
+    if (!disable) onClick(e);
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("li", {
+    className: index$1.getClassName([className, 'rogu-dropdown__menu-item', disable ? 'disable' : '']),
+    role: "menuitem",
+    onClick: handleClickEvent,
+    onKeyPress: function onKeyPress(e) {
+      if (e.keyCode === ENTER) handleClickEvent(e);
+    },
+    tabIndex: 0
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    className: "rogu-dropdown__menu-item-icon",
+    type: iconType,
+    fillColor: disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1,
+    width: "18px",
+    height: "18px"
+  }), /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-dropdown__menu-item__text",
+    type: LabelTypography.BUTTON_2,
+    color: disable ? LabelColors.ONBACKGROUND_4 : LabelColors.ONBACKGROUND_1
+  }, children));
+};
+MenuItem.propTypes = {
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].element]).isRequired,
+  onClick: PropTypes__default["default"].func.isRequired,
+  disable: PropTypes__default["default"].func,
+  iconType: IconTypes
+};
+MenuItem.defaultProps = {
+  className: '',
+  disable: false,
+  iconType: IconTypes.ADD
+}; // Root components should be appended before ContextMenu is rendered
+function ContextMenu(_ref2) {
+  var menuTrigger = _ref2.menuTrigger,
+      menuItems = _ref2.menuItems;
+
+  var _useState = React.useState(false),
+      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
+      showMenu = _useState2[0],
+      setShowMenu = _useState2[1];
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "sendbird-context-menu",
+    style: {
+      display: 'inline'
+    }
+  }, menuTrigger(function () {
+    return setShowMenu(!showMenu);
+  }), showMenu && menuItems(function () {
+    return setShowMenu(false);
+  }));
+}
+ContextMenu.propTypes = {
+  menuTrigger: PropTypes__default["default"].func.isRequired,
+  menuItems: PropTypes__default["default"].func.isRequired
+};
+
+function Toast(_ref) {
+  var message = _ref.message;
+  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__toast__message show"
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONBACKGROUND_5
+  }, message)), document.getElementById('rogu-toast-root'));
+}
+Toast.propTypes = {
+  message: PropTypes__default["default"].string.isRequired
+};
+
+function MessageItemMenu(_a) {
+  var className = _a.className,
+      message = _a.message,
+      channel = _a.channel,
+      isByMe = _a.isByMe,
+      disabled = _a.disabled;
+      _a.showEdit;
+      var showRemove = _a.showRemove,
+      resendMessage = _a.resendMessage,
+      setSupposedHover = _a.setSupposedHover,
+      showFileViewer = _a.showFileViewer;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+
+  var _b = React.useState(false),
+      showToast = _b[0],
+      setShowToast = _b[1];
+
+  var triggerRef = React.useRef(null);
+  var containerRef = React.useRef(null);
+  var showMenuItemCopy = index$1.isUserMessage(message);
+  var showMenuItemReply = index$1.isUserMessage(message);
+  var showMenuItemResend = index$1.isFailedMessage(channel, message) && message.isResendable() && isByMe;
+  var showMenuItemDelete = index$1.isSentMessage(channel, message) && isByMe;
+  var showMenuItemEdit = false   ;
+  var showMenuItemView = index$1.isThumbnailMessage(message);
+
+  if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
+    return null;
+  }
+
+  var onCopyClick = function onCopyClick(message) {
+    index$1.copyToClipboard(message);
+    setShowToast(true);
+    setTimeout(function () {
+      setShowToast(false);
+    }, 3000);
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: index$1.getClassName([className, 'rogu-message-item-menu']),
+    ref: containerRef
+  }, /*#__PURE__*/React__default["default"].createElement(ContextMenu, {
+    menuTrigger: function menuTrigger(toggleDropdown) {
+      return /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
+        className: "rogu-message-item-menu__trigger",
+        ref: triggerRef,
+        width: "16px",
+        height: "16px",
+        onClick: function onClick() {
+          toggleDropdown();
+          setSupposedHover(true);
+        },
+        onBlur: function onBlur() {
+          setSupposedHover(false);
+        }
+      }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+        className: "rogu-message-item-menu__trigger__icon",
+        type: IconTypes.CHEVRON_DOWN,
+        fillColor: IconColors.ON_BACKGROUND_3,
+        width: "18px",
+        height: "18px"
+      }));
+    },
+    menuItems: function menuItems(close) {
+      var _a;
+
+      var closeDropdown = function closeDropdown() {
+        close();
+        setSupposedHover(false);
+      };
+
+      return /*#__PURE__*/React__default["default"].createElement(MenuItems, {
+        className: "rogu-message-item-menu__list",
+        parentRef: triggerRef,
+        parentContainRef: containerRef,
+        closeDropdown: closeDropdown,
+        openLeft: isByMe
+      }, showMenuItemReply && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          // TODO: Add replying message logic
+          closeDropdown();
+        },
+        disable: (message === null || message === void 0 ? void 0 : message.parentMessageId) > 0,
+        iconType: IconTypes.ROGU_REPLY
+      }, stringSet.MESSAGE_MENU__REPLY), showMenuItemCopy && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          var _a;
+
+          onCopyClick((_a = message) === null || _a === void 0 ? void 0 : _a.message);
+          closeDropdown();
+        },
+        iconType: IconTypes.ROGU_COPY
+      }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          showFileViewer(true);
+          closeDropdown();
+        },
+        iconType: IconTypes.DOWNLOAD
+      }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          if (!disabled) {
+            resendMessage(message);
+            closeDropdown();
+          }
+        },
+        iconType: IconTypes.ROGU_RESEND
+      }, stringSet.MESSAGE_MENU__RESEND), showMenuItemDelete && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          if (!disabled) {
+            showRemove(true);
+            closeDropdown();
+          }
+        },
+        disable: ((_a = message === null || message === void 0 ? void 0 : message.threadInfo) === null || _a === void 0 ? void 0 : _a.replyCount) > 0,
+        iconType: IconTypes.ROGU_DELETE
+      }, stringSet.MESSAGE_MENU__DELETE));
+    }
+  }), showToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+    message: stringSet.TOAST__COPY
+  }));
+}
+
 function MessageContent(_a) {
   var _b, _c, _d;
 
@@ -2837,10 +3367,13 @@ function MessageContent(_a) {
   userId = _a.userId,
       // useReaction = false,
   // useReplying,
-  // resendMessage,
   // scrollToMessage,
-  // showEdit,
-  showFileViewer = _a.showFileViewer;
+  showEdit = _a.showEdit,
+      showFileViewer = _a.showFileViewer,
+      showRemove = _a.showRemove,
+      resendMessage = _a.resendMessage,
+      _g = _a.disabled,
+      disabled = _g === void 0 ? false : _g;
   var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
   var messageTypes = index$1.getUIKitMessageTypes();
   var avatarRef = React.useRef(null);
@@ -2868,9 +3401,9 @@ function MessageContent(_a) {
     className: "rogu-message-content__content"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-message-content__bubble"
-  }, !isByMe && /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-message-content__bubble__header"
-  }, !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, !isByMe && !chainTop && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(Label, {
     className: "rogu-message-content__sender-name",
     color: LabelColors.ONBACKGROUND_2,
     style: {
@@ -2880,10 +3413,24 @@ function MessageContent(_a) {
   }, index$1.getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
     className: "rogu-message-content__operator-label",
     type: LabelTypography.CAPTION_3
-  }, stringSet.LABEL__OPERATOR)), index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+  }, stringSet.LABEL__OPERATOR), /*#__PURE__*/React__default["default"].createElement(MessageItemMenu, {
+    className: "rogu-message-content-menu__normal-menu",
+    channel: channel,
+    message: message,
+    isByMe: isByMe,
+    disabled: disabled,
+    showEdit: showEdit,
+    showRemove: showRemove,
+    resendMessage: resendMessage,
+    showFileViewer: showFileViewer
+  }))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-message-content__bubble__body"
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-message-content__buble__body-text"
+  }, index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message === null || message === void 0 ? void 0 : message.message
-  }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(Channel.OGMessageItemBody, {
+  }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
   }), index$1.isAssignmentMessage(message.customType) && /*#__PURE__*/React__default["default"].createElement(AssignmentMessageItemBody, {
@@ -2902,7 +3449,17 @@ function MessageContent(_a) {
   }), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
-  })), !chainBottom && /*#__PURE__*/React__default["default"].createElement("div", {
+  })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default["default"].createElement(MessageItemMenu, {
+    className: "rogu-message-content-menu__normal-menu",
+    channel: channel,
+    message: message,
+    isByMe: isByMe,
+    disabled: disabled,
+    showEdit: showEdit,
+    showRemove: showRemove,
+    resendMessage: resendMessage,
+    showFileViewer: showFileViewer
+  }))), !chainBottom && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-message-content__misc"
   }, isByMe ? /*#__PURE__*/React__default["default"].createElement(MessageStatus, {
     message: message,
@@ -2913,8 +3470,6 @@ function MessageContent(_a) {
     color: LabelColors.ONBACKGROUND_2
   }, index$1.getMessageCreatedAt(message)))));
 }
-
-// import IconAttach from '../../svgs/icon-attach.svg';
 
 var LINE_HEIGHT = 36;
 
@@ -3005,11 +3560,11 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
   };
 
   return /*#__PURE__*/React__default["default"].createElement("form", {
-    className: [isEdit ? 'sendbird-message-input__edit' : '', disabled ? 'sendbird-message-input-form__disabled ' : ''].join(' sendbird-message-input__container ')
+    className: [isEdit ? 'rogu-message-input__edit' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' rogu-message-input__container ')
   }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: ['sendbird-message-input', disabled ? 'sendbird-message-input__disabled' : ''].join(' ')
+    className: ['rogu-message-input', disabled ? 'rogu-message-input__disabled' : ''].join(' ')
   }, /*#__PURE__*/React__default["default"].createElement("textarea", {
-    className: "sendbird-message-input--textarea",
+    className: "rogu-message-input--textarea",
     disabled: disabled,
     ref: ref,
     name: name,
@@ -3034,47 +3589,47 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
         setIsShiftPressed(false);
       }
     }
-  }), !inputValue && /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
-    className: "sendbird-message-input--placeholder",
-    type: index$2.LabelTypography.BODY_1,
-    color: index$2.LabelColors.ONBACKGROUND_3
+  }), !inputValue && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-message-input--placeholder",
+    type: LabelTypography.BODY_1,
+    color: LabelColors.ONBACKGROUND_3
   }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
-    className: "sendbird-message-input--attach",
+    className: "rogu-message-input--attach",
     height: "32px",
     width: "32px",
     onClick: function onClick() {
       // todo: clear previous input
       fileInputRef.current.click();
     }
-  }, /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {
-    type: index$2.IconTypes.ATTACH,
-    fillColor: index$2.IconColors.CONTENT_INVERSE,
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.ATTACH,
+    fillColor: IconColors.CONTENT_INVERSE,
     width: "20px",
     height: "20px"
   }), /*#__PURE__*/React__default["default"].createElement("input", {
-    className: "sendbird-message-input--attach-input",
+    className: "rogu-message-input--attach-input",
     type: "file",
     ref: fileInputRef,
     onChange: handleUploadFile(onFileUpload)
   })), !isEdit && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
-    className: "sendbird-message-input--send",
+    className: index$1.getClassName(['rogu-message-input--send', disabled ? 'rogu-message-input--send-disabled' : '']),
     height: "36px",
     width: "36px",
     onClick: sendMessage
-  }, /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {
-    type: index$2.IconTypes.SEND,
-    fillColor: index$2.IconColors.WHITE,
-    width: "20px",
-    height: "20px"
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.SEND,
+    fillColor: IconColors.WHITE,
+    width: "16px",
+    height: "16px"
   }))), isEdit && /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-message-input--edit-action"
+    className: "rogu-message-input--edit-action"
   }, /*#__PURE__*/React__default["default"].createElement(index$1.Button, {
-    className: "sendbird-message-input--edit-action__cancel",
+    className: "rogu-message-input--edit-action__cancel",
     type: index$1.ButtonTypes.SECONDARY,
     size: index$1.ButtonSizes.SMALL,
     onClick: onCancelEdit
   }, stringSet.BUTTON__CANCEL), /*#__PURE__*/React__default["default"].createElement(index$1.Button, {
-    className: "sendbird-message-input--edit-action__save",
+    className: "rogu-message-input--edit-action__save",
     type: index$1.ButtonTypes.PRIMARY,
     size: index$1.ButtonSizes.SMALL,
     onClick: function onClick() {
@@ -3102,7 +3657,7 @@ MessageInput.propTypes = {
 MessageInput.defaultProps = {
   value: '',
   onSendMessage: noop$1,
-  name: 'sendbird-message-input',
+  name: 'rogu-message-input',
   isEdit: false,
   disabled: false,
   placeholder: '',
@@ -3434,19 +3989,6 @@ function Avatar(_a, ref) {
 }
 
 var Avatar$1 = /*#__PURE__*/React__default["default"].forwardRef(Avatar);
-
-function Toast(_ref) {
-  var message = _ref.message;
-  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__toast__message show"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
-    type: LabelTypography.BODY_3,
-    color: LabelColors.ONBACKGROUND_5
-  }, message)), document.getElementById('rogu-toast-root'));
-}
-Toast.propTypes = {
-  message: PropTypes__default["default"].string.isRequired
-};
 
 var FileViewerComponent = function FileViewerComponent(_ref) {
   var profileUrl = _ref.profileUrl,
@@ -4243,9 +4785,9 @@ function TypingIndicator(_ref2) {
       }
     };
   }, [channelUrl]);
-  return /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
-    type: index$2.LabelTypography.CAPTION_2,
-    color: index$2.LabelColors.ONBACKGROUND_2
+  return /*#__PURE__*/React__default["default"].createElement(Label, {
+    type: LabelTypography.TYPING_INDICATOR,
+    color: LabelColors.ONBACKGROUND_2
   }, /*#__PURE__*/React__default["default"].createElement(TypingIndicatorText, {
     members: typingMembers
   }));
@@ -4653,7 +5195,13 @@ var ConversationPanel = function ConversationPanel(props) {
     memoizedEmojiListItems: memoizedEmojiListItems
   }), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-conversation__footer"
-  }, /*#__PURE__*/React__default["default"].createElement(MessageInputWrapper$1, {
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "sendbird-conversation__typing-indicator"
+  }, /*#__PURE__*/React__default["default"].createElement(TypingIndicator, {
+    channelUrl: channelUrl,
+    sb: sdk,
+    logger: logger
+  })), /*#__PURE__*/React__default["default"].createElement(MessageInputWrapper$1, {
     channel: currentGroupChannel,
     user: user,
     ref: messageInputRef,
@@ -4662,13 +5210,7 @@ var ConversationPanel = function ConversationPanel(props) {
     renderMessageInput: renderMessageInput,
     isOnline: isOnline,
     initialized: initialized
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-conversation__typing-indicator"
-  }, /*#__PURE__*/React__default["default"].createElement(TypingIndicator, {
-    channelUrl: channelUrl,
-    sb: sdk,
-    logger: logger
-  })), !isOnline && /*#__PURE__*/React__default["default"].createElement(Channel.ConnectionStatus, {
+  }), !isOnline && /*#__PURE__*/React__default["default"].createElement(Channel.ConnectionStatus, {
     sdkInit: sdkInit,
     sb: sdk,
     logger: logger

@@ -1,8 +1,8 @@
-import { j as __assign, b as _objectSpread2, c as _slicedToArray, u as uuidv4, k as getStringSet, S as SendbirdSdkContext, l as LocalizationProvider } from './LocalizationContext-09d54103.js';
+import { j as __assign, b as _objectSpread2, c as _slicedToArray, u as uuidv4, k as getStringSet, S as SendbirdSdkContext, l as LocalizationProvider } from './LocalizationContext-a00d9a3f.js';
 import React__default, { useLayoutEffect, useState, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Sb from 'sendbird';
-import { R as RESET_USER, I as INIT_USER, U as UPDATE_USER_INFO } from './actionTypes-a1046462.js';
+import { R as RESET_USER, I as INIT_USER, U as UPDATE_USER_INFO } from './actionTypes-132013e2.js';
 import cssVars from 'css-vars-ponyfill';
 
 var INIT_SDK = 'INIT_SDK';

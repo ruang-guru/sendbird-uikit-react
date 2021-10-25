@@ -93,6 +93,7 @@ const getStringSet = (lang = 'en') => {
       REPLYING_ATTACHMENT__FILE_TYPE__VIDEO: 'Video',
       REPLIED_TO: 'replied to',
       /* ----- ADDITIONAL ------ */
+      MESSAGE_MENU__VIEW: 'View',
       ASSIGNMENT: 'Assignment',
       ASSIGNMENT_DEADLINE: 'Submit',
       MATERIAL: 'Material',
@@ -110,6 +111,7 @@ const getStringSet = (lang = 'en') => {
       TOAST__DOWNLOAD: 'Download successful',
       ROGU__MODAL__DELETE_MESSAGE__TITLE: 'Are you sure you want to delete the chat?',
       ROGU__MODAL__DELETE_MESSAGE__SUBTITLE: 'Chats that you have deleted cannot be seen and accessed again',
+      TOAST__COPY: 'Copied!',
     },
   };
   return stringSet[lang];

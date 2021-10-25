@@ -1,15 +1,14 @@
-import React, { useContext, useRef, ReactElement } from "react";
+import React, { ReactElement, useRef, useContext } from "react";
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
-
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";
 import TextMessageItemBody from "../TextMessageItemBody";
+import OGMessageItemBody from "../OGMessageItemBody";
 
 import Avatar from "../../../ui/Avatar";
 import ClientAdminMessage from "../../../ui/AdminMessage";
 import FileMessageItemBody from "../../../ui/FileMessageItemBody";
 import ThumbnailMessageItemBody from "../../../ui/ThumbnailMessageItemBody";
-import OGMessageItemBody from "../../../ui/OGMessageItemBody";
 import UnknownMessageItemBody from "../../../ui/UnknownMessageItemBody";
 
 import { LocalizationContext } from "../../../lib/LocalizationContext";
@@ -35,8 +34,9 @@ import {isAssignmentMessage, isMaterialMessage} from '../../utils';
 import AssignmentMessageItemBody from "../AssignmentMessageItemBody";
 import MaterialMessageItemBody from "../MaterialMessageItemBody";
 import { generateColorFromString } from "./utils";
-
 import "./index.scss";
+
+import MessageItemMenu from "../MessageItemMenu";
 
 interface Props {
   chainBottom?: boolean;
@@ -57,6 +57,7 @@ interface Props {
     reactionKey: string,
     isReacted: boolean
   ) => void;
+  disabled?: boolean;
 }
 
 export default function MessageContent({
@@ -69,16 +70,19 @@ export default function MessageContent({
   userId,
   // useReaction = false,
   // useReplying,
-  // resendMessage,
   // scrollToMessage,
-  // showEdit,
+  showEdit,
   showFileViewer,
+  showRemove,
+  resendMessage,
+  disabled=false,
 }: // showRemove,
 // toggleReaction,
 Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
+
 
   const isByMe: boolean =
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
@@ -100,6 +104,7 @@ Props): ReactElement {
     return <ClientAdminMessage message={message} />;
   }
 
+
   return (
     <div
       className={getClassName([
@@ -109,7 +114,7 @@ Props): ReactElement {
         chainBottomClassName,
         chainTopClassName,
       ])}
-    >
+    >      
       {/* Profile picture */}
       {!isByMe && !chainTop && (
         <Avatar
@@ -124,24 +129,22 @@ Props): ReactElement {
       <div className="rogu-message-content__content">
         {/* Bubble wrapper */}
         <div className="rogu-message-content__bubble">
-          {!isByMe && (
-            <div className="rogu-message-content__bubble__header">
-              {/* Sender's name */}
-              {!chainTop && (
-                <Label
-                  className="rogu-message-content__sender-name"
-                  color={LabelColors.ONBACKGROUND_2}
-                  style={{
-                    color: generateColorFromString(
-                      message?.sender?.nickname || ""
-                    ),
-                  }}
-                  type={LabelTypography.CAPTION_1}
-                >
-                  {getSenderName(message)}
-                </Label>
-              )}
-
+          <div className="rogu-message-content__bubble__header">
+            {/* Sender's name */}
+            {!isByMe && !chainTop && (
+            <>
+              <Label
+                className="rogu-message-content__sender-name"
+                color={LabelColors.ONBACKGROUND_2}
+                style={{
+                  color: generateColorFromString(
+                    message?.sender?.nickname || ""
+                  ),
+                }}
+                type={LabelTypography.CAPTION_1}
+              >
+                {getSenderName(message)}                
+              </Label>
               {/* Teacher label */}
               {isOperatorMessage && !chainTop && (
                 <Label
@@ -151,50 +154,85 @@ Props): ReactElement {
                   {stringSet.LABEL__OPERATOR}
                 </Label>
               )}
-            </div>
-          )}
 
-          {/* Message content */}
-          {isTextMessage(message as UserMessage) && (
-            <TextMessageItemBody
+              <MessageItemMenu
+              className="rogu-message-content-menu__normal-menu"
+              channel={channel}
+              message={message as UserMessage | FileMessage}
               isByMe={isByMe}
-              message={message?.message}
-            />
-          )}
-          {isOGMessage(message as UserMessage) && (
-            <OGMessageItemBody
-              message={message as UserMessage}
-              isByMe={isByMe}
-            />
-          )}
-          {
-           isAssignmentMessage(message.customType) && (
-             <AssignmentMessageItemBody message={message as UserMessage} isByMe={isByMe} />
-           )
-          }
-          {
-            isMaterialMessage(message.customType) && (
-              <MaterialMessageItemBody message={message as UserMessage} isByMe={isByMe} />
-            )
-          }
-          {getUIKitMessageType(message as FileMessage) ===
-            messageTypes.FILE && (
-            <FileMessageItemBody
-              message={message as FileMessage}
-              isByMe={isByMe}
-            />
-          )}
-          {isThumbnailMessage(message as FileMessage) && (
-            <ThumbnailMessageItemBody
-              message={message as FileMessage}
-              isByMe={isByMe}
-              showFileViewer={showFileViewer}
-            />
-          )}
-          {getUIKitMessageType(message as FileMessage) ===
-            messageTypes.UNKNOWN && (
-            <UnknownMessageItemBody message={message} isByMe={isByMe} />
-          )}
+              disabled={disabled}
+              showEdit={showEdit}
+              showRemove={showRemove}
+              resendMessage={resendMessage}
+              showFileViewer={showFileViewer}/>
+            </>
+            )}
+          </div>
+
+          <div className="rogu-message-content__bubble__body">
+            <div className="rogu-message-content__buble__body-text">
+            {/* Message content */}
+            {isTextMessage(message as UserMessage) && (
+              <TextMessageItemBody
+                isByMe={isByMe}
+                message={message?.message}
+              />
+            )}
+            {isOGMessage(message as UserMessage) && (
+              <OGMessageItemBody
+                message={message as UserMessage}
+                isByMe={isByMe}
+              />
+            )}
+            {
+              isAssignmentMessage(message.customType) && (
+                <AssignmentMessageItemBody message={message as UserMessage} isByMe={isByMe} />
+              )
+            }
+            {
+              isMaterialMessage(message.customType) && (
+                <MaterialMessageItemBody message={message as UserMessage} isByMe={isByMe} />
+              )
+            }
+            {getUIKitMessageType(message as FileMessage) ===
+              messageTypes.FILE && (
+              <FileMessageItemBody
+                message={message as FileMessage}
+                isByMe={isByMe}
+              />
+            )}
+            {isThumbnailMessage(message as FileMessage) && (
+              <ThumbnailMessageItemBody
+                message={message as FileMessage}
+                isByMe={isByMe}
+                showFileViewer={showFileViewer}
+              />
+            )}
+            {getUIKitMessageType(message as FileMessage) ===
+              messageTypes.UNKNOWN && (
+              <UnknownMessageItemBody message={message} isByMe={isByMe} />
+            )}
+            </div>
+            {
+              ((!isByMe && chainTop) || isByMe) && (
+                <MessageItemMenu
+                  className="rogu-message-content-menu__normal-menu"
+                  channel={channel}
+                  message={message as UserMessage | FileMessage}
+                  isByMe={isByMe}
+                  disabled={disabled}
+                  showEdit={showEdit}
+                  showRemove={showRemove}
+                  resendMessage={resendMessage}
+                  showFileViewer={showFileViewer}/>
+
+              )
+            }
+            
+
+          </div>
+          
+          
         </div>
 
         {/* Message status */}
