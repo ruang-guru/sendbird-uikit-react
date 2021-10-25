@@ -109,6 +109,7 @@ const getStringSet = (lang = 'en') => {
       LABEL__DAY_SATURDAY: 'Saturday',
       LABEL__OPERATOR: 'Teacher',
       TOAST__DOWNLOAD: 'Download successful',
+      TOAST__COPY: 'Copied!',
     },
   };
   return stringSet[lang];
