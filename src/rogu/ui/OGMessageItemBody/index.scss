@@ -84,9 +84,18 @@
   }
   &.mouse-hover,
   &:hover {
-    .rogu-og-message-item-body__og-container {
-      @include themed() {
-        background-color: t(primary-2);
+    .rogu-og-message-outgoing {
+      .rogu-og-message-item-body__og-container {
+        @include themed() {
+          background-color: t(primary-2);
+        }
+      }
+    }
+    .rogu-og-message-incoming {
+      .rogu-og-message-item-body__og-container {
+        @include themed() {
+          background-color: t(bg-1);
+        }
       }
     }
   }
