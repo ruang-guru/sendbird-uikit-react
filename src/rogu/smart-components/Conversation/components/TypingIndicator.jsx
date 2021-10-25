@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { LocalizationContext } from '../../../../lib/LocalizationContext';
 import { uuidv4 } from '../../../../utils/uuid';
-import Label, { LabelTypography, LabelColors } from '../../../../ui/Label';
+import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
 
 const TypingIndicatorText = ({ members }) => {
   const { stringSet } = useContext(LocalizationContext);
@@ -55,7 +55,7 @@ function TypingIndicator({ channelUrl, sb, logger }) {
   }, [channelUrl]);
 
   return (
-    <Label type={LabelTypography.CAPTION_2} color={LabelColors.ONBACKGROUND_2}>
+    <Label type={LabelTypography.TYPING_INDICATOR} color={LabelColors.ONBACKGROUND_2}>
       <TypingIndicatorText members={typingMembers} />
     </Label>
   );

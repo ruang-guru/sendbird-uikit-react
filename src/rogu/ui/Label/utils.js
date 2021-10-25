@@ -15,6 +15,7 @@ export function changeTypographyToClassName(type) {
     case Typography.CAPTION_1: return 'sendbird-label--caption-1';
     case Typography.CAPTION_2: return 'sendbird-label--caption-2';
     case Typography.CAPTION_3: return 'sendbird-label--caption-3';
+    case Typography.TYPING_INDICATOR: return 'sendbird-label--typing-indicator';
     default: return null;
   }
 }
