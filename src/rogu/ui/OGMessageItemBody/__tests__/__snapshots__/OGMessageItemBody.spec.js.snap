@@ -2,58 +2,61 @@
 
 exports[`OGMessageItemBody should do a snapshot test of the OGMessageItemBody DOM 1`] = `
 <div
-  className=" sendbird-og-message-item-body incoming  "
+  className=" rogu-og-message-item-body rogu-og-message-incoming  "
 >
   <div
-    className="sendbird-og-message-item-body__text-bubble"
-  />
-  <div
-    className="sendbird-og-message-item-body__og-thumbnail"
+    className="rogu-og-message-item-body__og-container"
     onClick={[Function]}
   >
     <div
-      className="sendbird-og-message-item-body__og-thumbnail__image sendbird-image-renderer"
-      style={
-        Object {
-          "height": "180px",
-          "maxWidth": "400px",
-          "minWidth": "320px",
-          "width": "100%",
-        }
-      }
+      className="rogu-og-message-item-body__og-thumbnail"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-og-message-item-body__og-thumbnail__image sendbird-image-renderer"
         style={
           Object {
-            "backgroundImage": "url()",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
-            "borderRadius": null,
-            "height": "180px",
+            "height": "60px",
             "maxWidth": "400px",
-            "minWidth": "320px",
-            "position": "absolute",
+            "minWidth": "60px",
             "width": "100%",
           }
         }
-      />
-      <img
-        alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
-        onError={[Function]}
-        onLoad={[Function]}
-        src=""
-      />
+      >
+        <div
+          className="sendbird-image-renderer__image"
+          style={
+            Object {
+              "backgroundImage": "url()",
+              "backgroundPosition": "center",
+              "backgroundRepeat": "no-repeat",
+              "backgroundSize": "cover",
+              "borderRadius": null,
+              "height": "60px",
+              "maxWidth": "400px",
+              "minWidth": "60px",
+              "position": "absolute",
+              "width": "100%",
+            }
+          }
+        />
+        <img
+          alt=""
+          className="sendbird-image-renderer__hidden-image-loader"
+          onError={[Function]}
+          onLoad={[Function]}
+          src=""
+        />
+      </div>
     </div>
+    <div
+      className="rogu-og-message-item-body__description"
+    />
   </div>
   <div
-    className="sendbird-og-message-item-body__description"
-    onClick={[Function]}
+    className="rogu-og-message-item-body__text-bubble"
   />
   <div
-    className="sendbird-og-message-item-body__cover"
+    className="rogu-og-message-item-body__cover"
   />
 </div>
 `;
