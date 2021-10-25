@@ -102,7 +102,7 @@ Props): ReactElement {
 
   if (message?.isAdminMessage?.() || message?.messageType === "admin") {
     return <ClientAdminMessage message={message} />;
-  };
+  }
 
 
   return (

@@ -41,7 +41,7 @@ export default function OGMessageItemBody({
       'rogu-og-message-item-body',
       isByMe ? 'rogu-og-message-outgoing' : 'rogu-og-message-incoming',
       mouseHover ? 'mouse-hover' : '',
-      message?.reactions?.length > 0 ? 'reactions' : '',
+      message?.reactions?.length > 0 ? 'rogu-og-message-reactions' : '',
     ])}>
 
       <div className="rogu-og-message-item-body__og-container" onClick={openOGUrl}>

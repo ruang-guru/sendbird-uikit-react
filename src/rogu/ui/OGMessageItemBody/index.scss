@@ -33,9 +33,6 @@
     }
   }
 
-  &.reactions .rogu-og-message-item-body__description {
-    border-radius: 0px;
-  }
   .rogu-og-message-item-body__description {
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -43,7 +40,8 @@
     padding: 4px 8px;
     display: flex;
     flex-direction: column;
-    border-radius: 0px;
+    border-radius: 0;
+
     .rogu-og-message-item-body__description__title,
     .rogu-og-message-item-body__description__description {
       margin-bottom: 4px;
@@ -53,6 +51,7 @@
       overflow: hidden;
       display: inline-block;
     }
+
     .rogu-og-message-item-body__description__url {
       width: 100%;
       white-space: nowrap;
@@ -61,6 +60,10 @@
       display: inline-block;
       margin: 0;
     }
+  }
+
+  &.rogu-og-message-reactions .rogu-og-message-item-body__description {
+    border-radius: 0;
   }
 
   .rogu-og-message-item-body__og-thumbnail:hover,
@@ -75,6 +78,7 @@
       }
     }
   }
+
   &.rogu-og-message-incoming {
     .rogu-og-message-item-body__og-container {
       @include themed() {
@@ -82,6 +86,7 @@
       }
     }
   }
+
   &.mouse-hover,
   &:hover {
     .rogu-og-message-outgoing {
@@ -91,6 +96,7 @@
         }
       }
     }
+
     .rogu-og-message-incoming {
       .rogu-og-message-item-body__og-container {
         @include themed() {
@@ -107,6 +113,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 16px 16px 0px 0px;
+    border-radius: 16px 16px 0 0;
   }
 }
