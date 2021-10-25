@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-09d54103.js';
-export { w as withSendBird } from './LocalizationContext-09d54103.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as convertAssignmentDueUTCtoLocale, k as convertCtaLinkToWebLink, l as getUIKitMessageTypes, m as isPendingMessage, n as isSentMessage, o as isMessageSentByMe, p as isMessageSentByOperator, q as getSenderName, r as isTextMessage, s as isOGMessage, t as isAssignmentMessage, u as isMaterialMessage, v as getUIKitMessageType, w as isThumbnailMessage, x as getOutgoingMessageState, I as IconButton, B as Button, y as ButtonTypes, z as ButtonSizes, M as Modal, A as MODAL_ROOT, F as isSupportedFileView, G as isVideo, H as isImage, J as UserProfileProvider } from './index-e30c37a4.js';
-export { K as sendBirdSelectors } from './index-e30c37a4.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-5181cc00.js';
+export { w as withSendBird } from './LocalizationContext-5181cc00.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as convertAssignmentDueUTCtoLocale, k as convertCtaLinkToWebLink, l as isUserMessage, m as isFailedMessage, n as isSentMessage, o as isThumbnailMessage, I as IconButton, p as copyToClipboard, q as getUIKitMessageTypes, r as isPendingMessage, s as isMessageSentByMe, t as isMessageSentByOperator, u as getSenderName, v as isTextMessage, w as isOGMessage, x as isAssignmentMessage, y as isMaterialMessage, z as getUIKitMessageType, A as getOutgoingMessageState, B as Button, F as ButtonTypes, G as ButtonSizes, M as Modal, H as MODAL_ROOT, J as isSupportedFileView, K as isVideo, L as isImage, N as UserProfileProvider } from './index-5dbaa881.js';
+export { O as sendBirdSelectors } from './index-5dbaa881.js';
 import * as React from 'react';
-import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, useLayoutEffect, Component, useReducer } from 'react';
+import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors$1, aa as pxToNumber$1, ab as PlaceHolder, ac as PlaceHolderTypes } from './index-00f78cdb.js';
-import { c as compareIds } from './index-bf2fbf90.js';
-import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-24be68c9.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors$1, aa as pxToNumber$1, ab as PlaceHolder, ac as PlaceHolderTypes } from './index-dd1349dc.js';
+import { c as compareIds } from './index-b234d93e.js';
+import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-c8558d8f.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-a1046462.js';
+import './actionTypes-54c78dcd.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-04f4e919.js';
-import './utils-b5b73359.js';
-import './LeaveChannel-2fd5699b.js';
-import './index-ab6c6f90.js';
-import './index-96541062.js';
-import './index-f6f3bf71.js';
+import './index-3eccc6f1.js';
+import './utils-18edc556.js';
+import './LeaveChannel-70f35c51.js';
+import './index-877855e7.js';
+import './index-5b21a0e7.js';
+import './index-b6b8f0a3.js';
 import './ChannelSettings.js';
-import './index-fed4bf8d.js';
+import './index-f32b5d4f.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -1894,6 +1894,9 @@ var Type = {
   ROGU_SENT: 'ROGU_SENT',
   ROGU_READ_ALL: 'ROGU_READ_ALL',
   ROGU_ERROR: 'ROGU_ERROR',
+  ROGU_COPY: 'ROGU_COPY',
+  ROGU_REPLY: 'ROGU_REPLY',
+  ROGU_RESEND: 'ROGU_RESEND',
   ROGU_CLOSE: 'ROGU_CLOSE',
   ROGU_DOWNLOAD: 'ROGU_DOWNLOAD',
   ROGU_DELETE: 'ROGU_DELETE',
@@ -1901,17 +1904,17 @@ var Type = {
   ROGU_MATERIAL: 'ROGU_MATERIAL'
 };
 
-var _path$7;
+var _path$a;
 
-function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
+function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
 
 function SvgRoguIconMsgFailed(props) {
-  return /*#__PURE__*/React.createElement("svg", _extends$8({
+  return /*#__PURE__*/React.createElement("svg", _extends$b({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$7 || (_path$7 = /*#__PURE__*/React.createElement("path", {
+  }, props), _path$a || (_path$a = /*#__PURE__*/React.createElement("path", {
     className: "rogu-icon-msg-failed_svg__fill",
     d: "M8.25 11.25h1.5v1.5h-1.5v-1.5zm0-6h1.5v4.5h-1.5v-4.5zm.742-3.75C4.853 1.5 1.5 4.86 1.5 9c0 4.14 3.353 7.5 7.492 7.5 4.148 0 7.508-3.36 7.508-7.5 0-4.14-3.36-7.5-7.508-7.5zM9 15c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z",
     fill: "currentColor"
@@ -1920,10 +1923,10 @@ function SvgRoguIconMsgFailed(props) {
 
 var _circle, _circle2, _circle3, _circle4;
 
-function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
+function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
 
 function SvgRoguIconMsgPending(props) {
-  return /*#__PURE__*/React.createElement("svg", _extends$7({
+  return /*#__PURE__*/React.createElement("svg", _extends$a({
     width: 18,
     height: 18,
     fill: "none",
@@ -1951,19 +1954,81 @@ function SvgRoguIconMsgPending(props) {
   })));
 }
 
-var _path$6;
+var _path$9;
 
-function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
+function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
 
 function SvgRoguIconMsgSent(props) {
-  return /*#__PURE__*/React.createElement("svg", _extends$6({
+  return /*#__PURE__*/React.createElement("svg", _extends$9({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$6 || (_path$6 = /*#__PURE__*/React.createElement("path", {
+  }, props), _path$9 || (_path$9 = /*#__PURE__*/React.createElement("path", {
     d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
     fill: "#BEC8D0"
+  })));
+}
+
+var _path$8;
+
+function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
+
+function SvgRoguIconMsgReadAll(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends$8({
+    width: 18,
+    height: 18,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$8 || (_path$8 = /*#__PURE__*/React.createElement("path", {
+    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
+    fill: "#2EB5C0"
+  })));
+}
+
+var _rect, _path$7;
+
+function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
+
+function SvgRoguIconCopy(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends$7({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _rect || (_rect = /*#__PURE__*/React.createElement("rect", {
+    x: 3,
+    y: 8,
+    width: 11,
+    height: 13,
+    rx: 2,
+    fill: "#434856"
+  })), _path$7 || (_path$7 = /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M11 3a2 2 0 00-2 2v2h4a2 2 0 012 2v8h4a2 2 0 002-2V5a2 2 0 00-2-2h-8z",
+    fill: "#434856"
+  })));
+}
+
+var _path$6, _path2$2;
+
+function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
+
+function SvgRoguIconReply(props) {
+  return /*#__PURE__*/React.createElement("svg", _extends$6({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$6 || (_path$6 = /*#__PURE__*/React.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M9 3L2.605 8.673c-.826.733-.826 1.921 0 2.654L8.999 17V3z",
+    fill: "#434856"
+  })), _path2$2 || (_path2$2 = /*#__PURE__*/React.createElement("path", {
+    d: "M22 20C22 9.5 12.762 6.359 9 6v8c7.035 0 11.746 3.846 13 6z",
+    fill: "#434856"
   })));
 }
 
@@ -1971,15 +2036,15 @@ var _path$5;
 
 function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 
-function SvgRoguIconMsgReadAll(props) {
+function SvgRoguIconResend(props) {
   return /*#__PURE__*/React.createElement("svg", _extends$5({
-    width: 18,
-    height: 18,
+    width: 24,
+    height: 24,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
   }, props), _path$5 || (_path$5 = /*#__PURE__*/React.createElement("path", {
-    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
-    fill: "#2EB5C0"
+    d: "M19.802 4.865a.641.641 0 00-.468-.198.641.641 0 00-.47.198l-1.353 1.344a8.07 8.07 0 00-2.552-1.63A7.862 7.862 0 0012 4c-1.91 0-3.576.578-5 1.735C5.576 6.89 4.64 8.399 4.187 10.26v.073c0 .09.033.168.1.234a.32.32 0 00.234.099h2.073c.153 0 .257-.08.312-.24.292-.694.476-1.1.552-1.218a5.251 5.251 0 011.938-1.865A5.242 5.242 0 0112 6.667c1.396 0 2.608.475 3.636 1.427L14.198 9.53a.642.642 0 00-.198.47c0 .18.066.336.198.468a.641.641 0 00.469.198h4.667a.64.64 0 00.468-.198A.64.64 0 0020 10V5.333a.64.64 0 00-.198-.468zM19.406 13.333h-2c-.153 0-.257.08-.312.24-.292.694-.476 1.1-.552 1.219a5.256 5.256 0 01-1.938 1.864 5.241 5.241 0 01-2.604.677 5.2 5.2 0 01-1.948-.374 5.379 5.379 0 01-1.677-1.063l1.427-1.427a.64.64 0 00.198-.47.64.64 0 00-.198-.468.64.64 0 00-.468-.198H4.667a.64.64 0 00-.47.198A.64.64 0 004 14v4.667c0 .18.066.336.198.468a.642.642 0 00.469.198c.18 0 .337-.066.469-.198l1.343-1.343a7.957 7.957 0 002.537 1.635 7.803 7.803 0 002.943.573c1.902 0 3.562-.578 4.979-1.735 1.416-1.156 2.347-2.665 2.792-4.526a.32.32 0 00-.089-.307.322.322 0 00-.235-.099z",
+    fill: "#434856"
   })));
 }
 
@@ -2484,6 +2549,15 @@ function changeTypeToIconComponent(type) {
     case Type.ROGU_ERROR:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconMsgFailed, null);
 
+    case Type.ROGU_COPY:
+      return /*#__PURE__*/React__default.createElement(SvgRoguIconCopy, null);
+
+    case Type.ROGU_REPLY:
+      return /*#__PURE__*/React__default.createElement(SvgRoguIconReply, null);
+
+    case Type.ROGU_RESEND:
+      return /*#__PURE__*/React__default.createElement(SvgRoguIconResend, null);
+
     case Type.ROGU_CLOSE:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconClose, null);
 
@@ -2798,6 +2872,354 @@ var generateColorFromString = function generateColorFromString(str) {
   return color;
 };
 
+var MenuItems$1 = /*#__PURE__*/function (_Component) {
+  _inherits(MenuItems, _Component);
+
+  var _super = _createSuper(MenuItems);
+
+  function MenuItems(props) {
+    var _this;
+
+    _classCallCheck(this, MenuItems);
+
+    _this = _super.call(this, props);
+
+    _defineProperty(_assertThisInitialized(_this), "showParent", function () {
+      var _this$props$parentCon = _this.props.parentContainRef,
+          parentContainRef = _this$props$parentCon === void 0 ? {} : _this$props$parentCon;
+      var current = parentContainRef.current;
+
+      if (parentContainRef && current) {
+        current.classList.add('sendbird-icon--pressed');
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "hideParent", function () {
+      var _this$props$parentCon2 = _this.props.parentContainRef,
+          parentContainRef = _this$props$parentCon2 === void 0 ? {} : _this$props$parentCon2;
+      var current = parentContainRef.current;
+
+      if (parentContainRef && current) {
+        current.classList.remove('sendbird-icon--pressed');
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setupEvents", function () {
+      var closeDropdown = _this.props.closeDropdown;
+
+      var _assertThisInitialize = _assertThisInitialized(_this),
+          menuRef = _assertThisInitialize.menuRef;
+
+      var handleClickOutside = function handleClickOutside(event) {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+          closeDropdown();
+        }
+      };
+
+      _this.setState({
+        handleClickOutside: handleClickOutside
+      });
+
+      document.addEventListener('mousedown', handleClickOutside);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "cleanUpEvents", function () {
+      var handleClickOutside = _this.state.handleClickOutside;
+      document.removeEventListener('mousedown', handleClickOutside);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getMenuPosition", function () {
+      var _this$props = _this.props,
+          parentRef = _this$props.parentRef,
+          openLeft = _this$props.openLeft;
+      var parentRect = parentRef.current.getBoundingClientRect();
+      var x = parentRect.x || parentRect.left;
+      var y = parentRect.y || parentRect.top;
+      var menuStyle = {
+        top: y,
+        left: x
+      };
+      if (!_this.menuRef.current) return menuStyle;
+      var _window = window,
+          innerWidth = _window.innerWidth,
+          innerHeight = _window.innerHeight;
+
+      var rect = _this.menuRef.current.getBoundingClientRect();
+
+      if (y + rect.height > innerHeight) {
+        menuStyle.top -= rect.height;
+      }
+
+      if (x + rect.width > innerWidth && !openLeft) {
+        menuStyle.left -= rect.width;
+      }
+
+      if (menuStyle.top < 0) {
+        menuStyle.top = rect.height < innerHeight ? (innerHeight - rect.height) / 2 : 0;
+      }
+
+      if (menuStyle.left < 0) {
+        menuStyle.left = rect.width < innerWidth ? (innerWidth - rect.width) / 2 : 0;
+      }
+
+      menuStyle.top += 32;
+
+      if (openLeft) {
+        var padding = Number.isNaN(rect.width - 30) ? 108 // default
+        : rect.width - 30;
+        menuStyle.left -= padding;
+      }
+
+      return _this.setState({
+        menuStyle: menuStyle
+      });
+    });
+
+    _this.menuRef = /*#__PURE__*/React__default.createRef();
+    _this.state = {
+      menuStyle: {},
+      handleClickOutside: function handleClickOutside() {}
+    };
+    return _this;
+  }
+
+  _createClass(MenuItems, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.setupEvents();
+      this.getMenuPosition();
+      this.showParent();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.cleanUpEvents();
+      this.hideParent();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var menuStyle = this.state.menuStyle;
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          style = _this$props2.style;
+      return /*#__PURE__*/createPortal( /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement("div", {
+        className: "rogu-dropdown__menu-backdrop"
+      }), /*#__PURE__*/React__default.createElement("ul", {
+        className: "rogu-dropdown__menu",
+        ref: this.menuRef,
+        style: _objectSpread2({
+          display: 'inline-block',
+          position: 'fixed',
+          left: "".concat(Math.round(menuStyle.left), "px"),
+          top: "".concat(Math.round(menuStyle.top), "px")
+        }, style)
+      }, children)), document.getElementById('sendbird-dropdown-portal'));
+    }
+  }]);
+
+  return MenuItems;
+}(Component);
+MenuItems$1.propTypes = {
+  closeDropdown: PropTypes.func.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]).isRequired,
+  style: PropTypes.shape({}),
+  // https://stackoverflow.com/a/51127130
+  parentRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({
+    current: PropTypes.instanceOf(Element)
+  })]).isRequired,
+  parentContainRef: PropTypes.oneOfType([PropTypes.func, PropTypes.shape({
+    current: PropTypes.instanceOf(Element)
+  })]).isRequired,
+  openLeft: PropTypes.bool
+};
+MenuItems$1.defaultProps = {
+  style: {},
+  openLeft: false
+};
+
+var ENTER = 13;
+var MenuItems = MenuItems$1;
+var MenuItem = function MenuItem(_ref) {
+  var className = _ref.className,
+      children = _ref.children,
+      onClick = _ref.onClick,
+      disable = _ref.disable,
+      iconType = _ref.iconType;
+
+  var handleClickEvent = function handleClickEvent(e) {
+    if (!disable) onClick(e);
+  };
+
+  return /*#__PURE__*/React__default.createElement("li", {
+    className: getClassName([className, 'rogu-dropdown__menu-item', disable ? 'disable' : '']),
+    role: "menuitem",
+    onClick: handleClickEvent,
+    onKeyPress: function onKeyPress(e) {
+      if (e.keyCode === ENTER) handleClickEvent(e);
+    },
+    tabIndex: 0
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    className: "rogu-dropdown__menu-item-icon",
+    type: iconType,
+    fillColor: disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1,
+    width: "18px",
+    height: "18px"
+  }), /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-dropdown__menu-item__text",
+    type: LabelTypography.BUTTON_2,
+    color: disable ? LabelColors.ONBACKGROUND_4 : LabelColors.ONBACKGROUND_1
+  }, children));
+};
+MenuItem.propTypes = {
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  onClick: PropTypes.func.isRequired,
+  disable: PropTypes.func,
+  iconType: IconTypes
+};
+MenuItem.defaultProps = {
+  className: '',
+  disable: false,
+  iconType: IconTypes.ADD
+}; // Root components should be appended before ContextMenu is rendered
+function ContextMenu(_ref2) {
+  var menuTrigger = _ref2.menuTrigger,
+      menuItems = _ref2.menuItems;
+
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showMenu = _useState2[0],
+      setShowMenu = _useState2[1];
+
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: "sendbird-context-menu",
+    style: {
+      display: 'inline'
+    }
+  }, menuTrigger(function () {
+    return setShowMenu(!showMenu);
+  }), showMenu && menuItems(function () {
+    return setShowMenu(false);
+  }));
+}
+ContextMenu.propTypes = {
+  menuTrigger: PropTypes.func.isRequired,
+  menuItems: PropTypes.func.isRequired
+};
+
+function MessageItemMenu(_a) {
+  var className = _a.className,
+      message = _a.message,
+      channel = _a.channel,
+      isByMe = _a.isByMe,
+      disabled = _a.disabled;
+      _a.showEdit;
+      var showRemove = _a.showRemove,
+      resendMessage = _a.resendMessage,
+      setSupposedHover = _a.setSupposedHover,
+      showFileViewer = _a.showFileViewer;
+  var stringSet = useContext(LocalizationContext).stringSet;
+  var triggerRef = useRef(null);
+  var containerRef = useRef(null);
+  var showMenuItemCopy = isUserMessage(message);
+  var showMenuItemReply = isUserMessage(message);
+  var showMenuItemResend = isFailedMessage(channel, message) && message.isResendable() && isByMe;
+  var showMenuItemDelete = isSentMessage(channel, message) && isByMe;
+  var showMenuItemEdit = false   ;
+  var showMenuItemView = isThumbnailMessage(message);
+
+  if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
+    return null;
+  }
+
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: getClassName([className, 'rogu-message-item-menu']),
+    ref: containerRef
+  }, /*#__PURE__*/React__default.createElement(ContextMenu, {
+    menuTrigger: function menuTrigger(toggleDropdown) {
+      return /*#__PURE__*/React__default.createElement(IconButton, {
+        className: "rogu-message-item-menu__trigger",
+        ref: triggerRef,
+        width: "16px",
+        height: "16px",
+        onClick: function onClick() {
+          toggleDropdown();
+          setSupposedHover(true);
+        },
+        onBlur: function onBlur() {
+          setSupposedHover(false);
+        }
+      }, /*#__PURE__*/React__default.createElement(Icon, {
+        className: "rogu-message-item-menu__trigger__icon",
+        type: IconTypes.CHEVRON_DOWN,
+        fillColor: IconColors.ON_BACKGROUND_3,
+        width: "18px",
+        height: "18px"
+      }));
+    },
+    menuItems: function menuItems(close) {
+      var _a;
+
+      var closeDropdown = function closeDropdown() {
+        close();
+        setSupposedHover(false);
+      };
+
+      return /*#__PURE__*/React__default.createElement(MenuItems, {
+        className: "rogu-message-item-menu__list",
+        parentRef: triggerRef,
+        parentContainRef: containerRef,
+        closeDropdown: closeDropdown,
+        openLeft: isByMe
+      }, showMenuItemReply && /*#__PURE__*/React__default.createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          // TODO: Add replying message logic
+          closeDropdown();
+        },
+        disable: (message === null || message === void 0 ? void 0 : message.parentMessageId) > 0,
+        iconType: IconTypes.ROGU_REPLY
+      }, stringSet.MESSAGE_MENU__REPLY), showMenuItemCopy && /*#__PURE__*/React__default.createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          var _a;
+
+          copyToClipboard((_a = message) === null || _a === void 0 ? void 0 : _a.message);
+          closeDropdown();
+        },
+        iconType: IconTypes.ROGU_COPY
+      }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default.createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          showFileViewer(true);
+          closeDropdown();
+        },
+        iconType: IconTypes.DOWNLOAD
+      }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default.createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          if (!disabled) {
+            resendMessage(message);
+            closeDropdown();
+          }
+        },
+        iconType: IconTypes.ROGU_RESEND
+      }, stringSet.MESSAGE_MENU__RESEND), showMenuItemDelete && /*#__PURE__*/React__default.createElement(MenuItem, {
+        className: "rogu-message-item-menu__list__menu-item",
+        onClick: function onClick() {
+          if (!disabled) {
+            showRemove(true);
+            closeDropdown();
+          }
+        },
+        disable: ((_a = message === null || message === void 0 ? void 0 : message.threadInfo) === null || _a === void 0 ? void 0 : _a.replyCount) > 0,
+        iconType: IconTypes.ROGU_DELETE
+      }, stringSet.MESSAGE_MENU__DELETE));
+    }
+  }));
+}
+
 function MessageContent(_a) {
   var _b, _c, _d;
 
@@ -2814,8 +3236,12 @@ function MessageContent(_a) {
   // useReplying,
   // resendMessage,
   // scrollToMessage,
-  // showEdit,
-  showFileViewer = _a.showFileViewer;
+  showEdit = _a.showEdit,
+      showFileViewer = _a.showFileViewer,
+      showRemove = _a.showRemove,
+      resendMessage = _a.resendMessage,
+      _g = _a.disabled,
+      disabled = _g === void 0 ? false : _g;
   var stringSet = useContext(LocalizationContext).stringSet;
   var messageTypes = getUIKitMessageTypes();
   var avatarRef = useRef(null);
@@ -2843,9 +3269,9 @@ function MessageContent(_a) {
     className: "rogu-message-content__content"
   }, /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-message-content__bubble"
-  }, !isByMe && /*#__PURE__*/React__default.createElement("div", {
+  }, /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-message-content__bubble__header"
-  }, !chainTop && /*#__PURE__*/React__default.createElement(Label, {
+  }, !isByMe && !chainTop && /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(Label, {
     className: "rogu-message-content__sender-name",
     color: LabelColors.ONBACKGROUND_2,
     style: {
@@ -2855,7 +3281,21 @@ function MessageContent(_a) {
   }, getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default.createElement(Label, {
     className: "rogu-message-content__operator-label",
     type: LabelTypography.CAPTION_3
-  }, stringSet.LABEL__OPERATOR)), isTextMessage(message) && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
+  }, stringSet.LABEL__OPERATOR), /*#__PURE__*/React__default.createElement(MessageItemMenu, {
+    className: "rogu-message-content-menu__normal-menu",
+    channel: channel,
+    message: message,
+    isByMe: isByMe,
+    disabled: disabled,
+    showEdit: showEdit,
+    showRemove: showRemove,
+    resendMessage: resendMessage,
+    showFileViewer: showFileViewer
+  }))), /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-message-content__bubble__body"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-message-content__buble__body-text"
+  }, isTextMessage(message) && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message === null || message === void 0 ? void 0 : message.message
   }), isOGMessage(message) && /*#__PURE__*/React__default.createElement(OGMessageItemBody, {
@@ -2877,7 +3317,17 @@ function MessageContent(_a) {
   }), getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default.createElement(UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
-  })), !chainBottom && /*#__PURE__*/React__default.createElement("div", {
+  })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default.createElement(MessageItemMenu, {
+    className: "rogu-message-content-menu__normal-menu",
+    channel: channel,
+    message: message,
+    isByMe: isByMe,
+    disabled: disabled,
+    showEdit: showEdit,
+    showRemove: showRemove,
+    resendMessage: resendMessage,
+    showFileViewer: showFileViewer
+  }))), !chainBottom && /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-message-content__misc"
   }, isByMe ? /*#__PURE__*/React__default.createElement(MessageStatus, {
     message: message,

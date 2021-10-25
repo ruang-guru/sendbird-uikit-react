@@ -3,6 +3,7 @@ export const generateMockMessage = (process) => {
   const message = {
     message: 'go to this link sendbird.com it will be usefull to you!!',
     ogMetaData: {
+      
       title: 'This is the TITLE',
       description: 'I\'m description I\'m description I\'m description I\'m description ',
       url: 'https://sendbird.com/',
