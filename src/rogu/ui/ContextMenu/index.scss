@@ -1,0 +1,95 @@
+@import "../../../styles/variables";
+
+.rogu-dropdown__menu {
+  z-index: $drawer;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 180px;
+  margin: 0;
+  padding: 8px 0;
+  border-radius: 4px;
+  list-style: none;
+
+  @include themed() {
+    box-shadow: t(shadow-gradient-2);
+    background-color: t(bg--0-5);
+  }
+
+  .rogu-dropdown__menu-item {
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+
+    &.disable {
+      cursor: not-allowed;
+
+      &:hover {
+        @include themed() {
+          background-color: t(bg--0-5);
+        }
+      }
+    }
+
+    &:hover {
+      @include themed() {
+        background-color: t(bg--1-4);
+      }
+    }
+
+    .rogu-dropdown__menu-item-icon {
+      margin-right: 12px;
+    }
+  }
+}
+
+.rogu-dropdown__reaction-bar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 44px;
+  max-width: 352px;
+  max-height: 208px;
+  overflow-y: scroll;
+  margin: 0;
+  padding: 8px;
+  border-radius: 8px;
+  list-style: none;
+
+  @include themed() {
+    box-shadow: t(shadow-gradient-2);
+    background-color: t(bg--0-5);
+  }
+
+  .rogu-dropdown__reaction-bar__row {
+    .sendbird-reaction-button,
+    .sendbird-reaction-button--selected {
+      margin: 4px;
+    }
+  }
+}
+
+.rogu-dropdown__menu-backdrop {
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sendbird-reactions--pressed {
+  display: block !important;
+}
+
+.sendbird-icon--pressed {
+  display: block !important;
+}
+
+.sendbird__offline {
+  .rogu-dropdown__menu .rogu-dropdown__menu-item {
+    cursor: not-allowed;
+  }
+}
