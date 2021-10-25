@@ -4,12 +4,12 @@ import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
 import Label, { LabelTypography, LabelColors } from "../Label";
 import MessageStatus from "../MessageStatus";
 import TextMessageItemBody from "../TextMessageItemBody";
+import OGMessageItemBody from "../OGMessageItemBody";
 
 import Avatar from "../../../ui/Avatar";
 import ClientAdminMessage from "../../../ui/AdminMessage";
 import FileMessageItemBody from "../../../ui/FileMessageItemBody";
 import ThumbnailMessageItemBody from "../../../ui/ThumbnailMessageItemBody";
-import OGMessageItemBody from "../../../ui/OGMessageItemBody";
 import UnknownMessageItemBody from "../../../ui/UnknownMessageItemBody";
 
 import { LocalizationContext } from "../../../lib/LocalizationContext";
