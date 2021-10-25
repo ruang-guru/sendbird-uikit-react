@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import Modal from '../../../../ui/Modal';
+import Modal from '../../../ui/Modal';
 import { LocalizationContext } from '../../../../lib/LocalizationContext';
 
 const RemoveMessage = (props) => {
