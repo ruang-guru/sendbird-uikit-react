@@ -12,13 +12,13 @@ describe('MessageInput', () => {
     );
     // TODO: complete the test case
     // expect(
-    //   component.find('.sendbird-message-input--send').exists()
+    //   component.find('.rogu-message-input--send').exists()
     // ).toBe(false);
     expect(
-      component.find('.sendbird-message-input--attach').exists()
+      component.find('.rogu-message-input--attach').exists()
     ).toBe(true);
     expect(
-      component.find('.sendbird-message-input--edit-action').exists()
+      component.find('.rogu-message-input--edit-action').exists()
     ).toBe(false);
   });
 
@@ -27,14 +27,14 @@ describe('MessageInput', () => {
       <MessageInput onSendMessage={noop} value="example" />
     );
     expect(
-      component.find('.sendbird-message-input--send').exists()
+      component.find('.rogu-message-input--send').exists()
     ).toBe(true);
     // TODO: complete the test case
     // expect(
-    //   component.find('.sendbird-message-input--attach').exists()
+    //   component.find('.rogu-message-input--attach').exists()
     // ).toBe(false);
     expect(
-      component.find('.sendbird-message-input--edit-action').exists()
+      component.find('.rogu-message-input--edit-action').exists()
     ).toBe(false);
   });
 
@@ -43,13 +43,13 @@ describe('MessageInput', () => {
       <MessageInput onSendMessage={noop} value="" isEdit />
     );
     expect(
-      component.find('.sendbird-message-input--send').exists()
+      component.find('.rogu-message-input--send').exists()
     ).toBe(false);
     expect(
-      component.find('.sendbird-message-input--attach').exists()
+      component.find('.rogu-message-input--attach').exists()
     ).toBe(false);
     expect(
-      component.find('.sendbird-message-input--edit-action').exists()
+      component.find('.rogu-message-input--edit-action').exists()
     ).toBe(true);
   });
 });

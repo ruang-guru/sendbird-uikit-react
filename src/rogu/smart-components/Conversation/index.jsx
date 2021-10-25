@@ -375,6 +375,9 @@ export const ConversationPanel = (props) => {
           )
       }
       <div className="sendbird-conversation__footer">
+        <div className="sendbird-conversation__typing-indicator">
+          <TypingIndicator channelUrl={channelUrl} sb={sdk} logger={logger} />
+        </div>
         <MessageInputWrapper
           channel={currentGroupChannel}
           user={user}
@@ -385,9 +388,7 @@ export const ConversationPanel = (props) => {
           isOnline={isOnline}
           initialized={initialized}
         />
-        <div className="sendbird-conversation__typing-indicator">
-          <TypingIndicator channelUrl={channelUrl} sb={sdk} logger={logger} />
-        </div>
+
         {
           !isOnline && (
             <ConnectionStatus sdkInit={sdkInit} sb={sdk} logger={logger} />
