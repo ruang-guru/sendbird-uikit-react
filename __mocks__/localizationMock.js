@@ -12,6 +12,8 @@ export const STRING_SET = {
   LABEL__DAY_THURSDAY: 'Kamis',
   LABEL__DAY_FRIDAY: 'Jumat',
   LABEL__DAY_SATURDAY: 'Sabtu',
+  ROGU__MODAL__DELETE_MESSAGE__TITLE: 'Yakin kamu mau menghapus chat?',
+  ROGU__MODAL__DELETE_MESSAGE__SUBTITLE: 'Chat yang telah kamu hapus tidak bisa dilihat dan diakses kembali',
 };
 
 export default STRING_SET;
