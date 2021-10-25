@@ -127,7 +127,7 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
           className="rogu-message-content__buble__body-text"
         >
           <div
-            className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming"
+            className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming  "
           >
             <div
               className="rogu-text-message-item-body__inner"

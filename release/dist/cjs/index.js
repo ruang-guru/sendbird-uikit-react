@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-d558202c.js');
-var index$1 = require('./index-7a50486f.js');
+var LocalizationContext = require('./LocalizationContext-340245bc.js');
+var index$1 = require('./index-d6a43397.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-63ef7151.js');
-var index$3 = require('./index-5855d4c6.js');
-var Channel = require('./index-619b8cb6.js');
+var index$2 = require('./index-e4079a54.js');
+var index$3 = require('./index-f31a0fbe.js');
+var Channel = require('./index-8ec84d50.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-83e9215e.js');
+require('./actionTypes-dbb7cf35.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-2b653dd9.js');
-require('./utils-ae2fd748.js');
-require('./LeaveChannel-20b7c9c9.js');
-require('./index-6cf918f7.js');
-require('./index-adfe19a4.js');
-require('./index-fcbc6ed4.js');
+require('./index-f30ef179.js');
+require('./utils-0b769b49.js');
+require('./LeaveChannel-43643dd6.js');
+require('./index-27c15b23.js');
+require('./index-c5ec7fdb.js');
+require('./index-ad13c3fa.js');
 require('./ChannelSettings.js');
-require('./index-9b99e3ff.js');
+require('./index-cabd7af4.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -2786,6 +2786,82 @@ function TextMessageItemBody(_a) {
   }, /*#__PURE__*/React__default["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
 }
 
+function OGMessageItemBody(_a) {
+  var _b, _c, _d, _e, _f, _g, _h, _j;
+
+  var className = _a.className,
+      message = _a.message,
+      _k = _a.isByMe,
+      isByMe = _k === void 0 ? false : _k,
+      _l = _a.mouseHover,
+      mouseHover = _l === void 0 ? false : _l;
+  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+
+  var openOGUrl = function openOGUrl() {
+    var _a, _b;
+
+    if ((_a = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _a === void 0 ? void 0 : _a.url) window.open((_b = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _b === void 0 ? void 0 : _b.url);
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: index$1.getClassName([className, 'rogu-og-message-item-body', isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'rogu-og-message-reactions' : ''])
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__og-container",
+    onClick: openOGUrl
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__og-thumbnail"
+  }, /*#__PURE__*/React__default["default"].createElement(index$2.ImageRenderer, {
+    className: "rogu-og-message-item-body__og-thumbnail__image",
+    url: ((_d = (_c = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _c === void 0 ? void 0 : _c.defaultImage) === null || _d === void 0 ? void 0 : _d.url) || '',
+    alt: (_f = (_e = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _e === void 0 ? void 0 : _e.defaultImage) === null || _f === void 0 ? void 0 : _f.alt,
+    width: "60px",
+    height: "60px",
+    defaultComponent: /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "rogu-og-message-item-body__og-thumbnail__place-holder"
+    }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+      className: "rogu-og-message-item-body__og-thumbnail__place-holder__icon",
+      type: IconTypes.THUMBNAIL_NONE,
+      width: "60px",
+      height: "60px"
+    }))
+  })), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__description"
+  }, ((_g = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _g === void 0 ? void 0 : _g.title) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__description__title",
+    type: LabelTypography.SUBTITLE_2,
+    color: LabelColors.ONBACKGROUND_1
+  }, message.ogMetaData.title), ((_h = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _h === void 0 ? void 0 : _h.description) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__description__description",
+    type: LabelTypography.BODY_2,
+    color: LabelColors.ONBACKGROUND_1
+  }, message.ogMetaData.description), ((_j = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _j === void 0 ? void 0 : _j.url) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__description__url",
+    type: LabelTypography.CAPTION_3,
+    color: LabelColors.ONBACKGROUND_2
+  }, message.ogMetaData.url))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__text-bubble"
+  }, message === null || message === void 0 ? void 0 : message.message.split(' ').map(function (word) {
+    return index$1.isUrl(word) ? /*#__PURE__*/React__default["default"].createElement(index$3.LinkLabel, {
+      className: "rogu-og-message-item-body__text-bubble__message",
+      key: LocalizationContext.uuidv4(),
+      src: word,
+      type: LabelTypography.BODY_1,
+      color: isByMe ? LabelColors.ONBACKGROUND_1 : LabelColors.SECONDARY_3
+    }, word) : /*#__PURE__*/React__default["default"].createElement(Label, {
+      className: "rogu-og-message-item-body__text-bubble__message",
+      key: LocalizationContext.uuidv4(),
+      type: LabelTypography.BODY_1,
+      color: LabelColors.ONBACKGROUND_1
+    }, word + ' ');
+  }), index$1.isEditedMessage(message) && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-og-message-item-body__text-bubble__message",
+    type: LabelTypography.BODY_1,
+    color: isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2
+  }, " " + stringSet.MESSAGE_EDITED + " ")), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-og-message-item-body__cover"
+  }));
+}
+
 function AssignmentMessageItemBody(_a) {
   var _b;
 
@@ -3263,7 +3339,6 @@ function MessageContent(_a) {
   userId = _a.userId,
       // useReaction = false,
   // useReplying,
-  // resendMessage,
   // scrollToMessage,
   showEdit = _a.showEdit,
       showFileViewer = _a.showFileViewer,
@@ -3327,7 +3402,7 @@ function MessageContent(_a) {
   }, index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message === null || message === void 0 ? void 0 : message.message
-  }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(Channel.OGMessageItemBody, {
+  }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
   }), index$1.isAssignmentMessage(message.customType) && /*#__PURE__*/React__default["default"].createElement(AssignmentMessageItemBody, {
