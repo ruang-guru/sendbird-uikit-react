@@ -10,7 +10,7 @@
   font-stretch: normal;
   font-style: normal;
   line-height: 1.4;
-  letter-spacing: -0.2px;
+  letter-spacing: normal;
 }
 
 .sendbird-label--h-2 {
@@ -19,7 +19,16 @@
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
-  letter-spacing: -0.2px;
+  letter-spacing: normal;
+}
+
+.rogu-label--h-3 {
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 20px;
+  letter-spacing: normal;
 }
 
 .sendbird-label--subtitle-1 {
@@ -28,7 +37,7 @@
   font-stretch: normal;
   font-style: normal;
   line-height: 1.38;
-  letter-spacing: -0.2px;
+  letter-spacing: normal;
 }
 
 .sendbird-label--subtitle-2 {
@@ -37,7 +46,7 @@
   font-stretch: normal;
   font-style: normal;
   line-height: 1.14;
-  letter-spacing: -0.2px;
+  letter-spacing: normal;
 }
 
 .sendbird-label--body-1 {
@@ -55,6 +64,15 @@
   font-stretch: normal;
   font-style: normal;
   line-height: 1.33;
+  letter-spacing: normal;
+}
+
+.rogu-label--body-3 {
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 18px;
   letter-spacing: normal;
 }
 
@@ -132,6 +150,12 @@
 .sendbird-label--color-onbackground-4 {
   @include themed() {
     color: t(on-bg-4);
+  }
+}
+
+.rogu-label--color-onbackground-5 {
+  @include themed() {
+    color: t(bg-0);
   }
 }
 

@@ -93,11 +93,22 @@ const getStringSet = (lang = 'en') => {
       REPLYING_ATTACHMENT__FILE_TYPE__VIDEO: 'Video',
       REPLIED_TO: 'replied to',
       /* ----- ADDITIONAL ------ */
+      MESSAGE_MENU__VIEW: 'View',
       ASSIGNMENT: 'Assignment',
       ASSIGNMENT_DEADLINE: 'Submit',
       MATERIAL: 'Material',
       BUTTON__READ_MORE: 'Read more',
+      LABEL__DATE_TODAY: 'Today',
+      LABEL__DATE_YESTERDAY: 'Yesterday',
+      LABEL__DAY_SUNDAY: 'Sunday',
+      LABEL__DAY_MONDAY: 'Monday',
+      LABEL__DAY_TUESDAY: 'Tuesday',
+      LABEL__DAY_WEDNESDAY: 'Wednesday',
+      LABEL__DAY_THURSDAY: 'Thursday',
+      LABEL__DAY_FRIDAY: 'Friday',
+      LABEL__DAY_SATURDAY: 'Saturday',
       LABEL__OPERATOR: 'Teacher',
+      TOAST__DOWNLOAD: 'Download successful',
     },
   };
   return stringSet[lang];
