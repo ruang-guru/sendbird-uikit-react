@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-723b267e.js');
-var index$1 = require('./index-39797374.js');
+var LocalizationContext = require('./LocalizationContext-d558202c.js');
+var index$1 = require('./index-7a50486f.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-a00f6c94.js');
-var index$3 = require('./index-5a18a3d3.js');
-var Channel = require('./index-f99b866a.js');
+var index$2 = require('./index-63ef7151.js');
+var index$3 = require('./index-5855d4c6.js');
+var Channel = require('./index-619b8cb6.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-cd464238.js');
+require('./actionTypes-83e9215e.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-34bb407d.js');
-require('./utils-34566fe8.js');
-require('./LeaveChannel-3e946e3f.js');
-require('./index-5c00e1da.js');
-require('./index-bfdb0dee.js');
-require('./index-b034a773.js');
+require('./index-2b653dd9.js');
+require('./utils-ae2fd748.js');
+require('./LeaveChannel-20b7c9c9.js');
+require('./index-6cf918f7.js');
+require('./index-adfe19a4.js');
+require('./index-fcbc6ed4.js');
 require('./ChannelSettings.js');
-require('./index-3a0af644.js');
+require('./index-9b99e3ff.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -1733,7 +1733,8 @@ var Typography = {
   BUTTON_2: 'BUTTON_2',
   CAPTION_1: 'CAPTION_1',
   CAPTION_2: 'CAPTION_2',
-  CAPTION_3: 'CAPTION_3'
+  CAPTION_3: 'CAPTION_3',
+  TYPING_INDICATOR: 'TYPING_INDICATOR'
 };
 var Colors$1 = {
   ONBACKGROUND_1: 'ONBACKGROUND_1',
@@ -1788,6 +1789,9 @@ function changeTypographyToClassName(type) {
 
     case Typography.CAPTION_3:
       return 'sendbird-label--caption-3';
+
+    case Typography.TYPING_INDICATOR:
+      return 'sendbird-label--typing-indicator';
 
     default:
       return null;
@@ -3364,8 +3368,6 @@ function MessageContent(_a) {
   }, index$1.getMessageCreatedAt(message)))));
 }
 
-// import IconAttach from '../../svgs/icon-attach.svg';
-
 var LINE_HEIGHT = 36;
 
 var noop$1 = function noop() {};
@@ -3455,11 +3457,11 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
   };
 
   return /*#__PURE__*/React__default["default"].createElement("form", {
-    className: [isEdit ? 'sendbird-message-input__edit' : '', disabled ? 'sendbird-message-input-form__disabled ' : ''].join(' sendbird-message-input__container ')
+    className: [isEdit ? 'rogu-message-input__edit' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' rogu-message-input__container ')
   }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: ['sendbird-message-input', disabled ? 'sendbird-message-input__disabled' : ''].join(' ')
+    className: ['rogu-message-input', disabled ? 'rogu-message-input__disabled' : ''].join(' ')
   }, /*#__PURE__*/React__default["default"].createElement("textarea", {
-    className: "sendbird-message-input--textarea",
+    className: "rogu-message-input--textarea",
     disabled: disabled,
     ref: ref,
     name: name,
@@ -3484,47 +3486,47 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
         setIsShiftPressed(false);
       }
     }
-  }), !inputValue && /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
-    className: "sendbird-message-input--placeholder",
-    type: index$2.LabelTypography.BODY_1,
-    color: index$2.LabelColors.ONBACKGROUND_3
+  }), !inputValue && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-message-input--placeholder",
+    type: LabelTypography.BODY_1,
+    color: LabelColors.ONBACKGROUND_3
   }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
-    className: "sendbird-message-input--attach",
+    className: "rogu-message-input--attach",
     height: "32px",
     width: "32px",
     onClick: function onClick() {
       // todo: clear previous input
       fileInputRef.current.click();
     }
-  }, /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {
-    type: index$2.IconTypes.ATTACH,
-    fillColor: index$2.IconColors.CONTENT_INVERSE,
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.ATTACH,
+    fillColor: IconColors.CONTENT_INVERSE,
     width: "20px",
     height: "20px"
   }), /*#__PURE__*/React__default["default"].createElement("input", {
-    className: "sendbird-message-input--attach-input",
+    className: "rogu-message-input--attach-input",
     type: "file",
     ref: fileInputRef,
     onChange: handleUploadFile(onFileUpload)
   })), !isEdit && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
-    className: "sendbird-message-input--send",
+    className: index$1.getClassName(['rogu-message-input--send', disabled ? 'rogu-message-input--send-disabled' : '']),
     height: "36px",
     width: "36px",
     onClick: sendMessage
-  }, /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {
-    type: index$2.IconTypes.SEND,
-    fillColor: index$2.IconColors.WHITE,
-    width: "20px",
-    height: "20px"
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.SEND,
+    fillColor: IconColors.WHITE,
+    width: "16px",
+    height: "16px"
   }))), isEdit && /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-message-input--edit-action"
+    className: "rogu-message-input--edit-action"
   }, /*#__PURE__*/React__default["default"].createElement(index$1.Button, {
-    className: "sendbird-message-input--edit-action__cancel",
+    className: "rogu-message-input--edit-action__cancel",
     type: index$1.ButtonTypes.SECONDARY,
     size: index$1.ButtonSizes.SMALL,
     onClick: onCancelEdit
   }, stringSet.BUTTON__CANCEL), /*#__PURE__*/React__default["default"].createElement(index$1.Button, {
-    className: "sendbird-message-input--edit-action__save",
+    className: "rogu-message-input--edit-action__save",
     type: index$1.ButtonTypes.PRIMARY,
     size: index$1.ButtonSizes.SMALL,
     onClick: function onClick() {
@@ -3552,7 +3554,7 @@ MessageInput.propTypes = {
 MessageInput.defaultProps = {
   value: '',
   onSendMessage: noop$1,
-  name: 'sendbird-message-input',
+  name: 'rogu-message-input',
   isEdit: false,
   disabled: false,
   placeholder: '',
@@ -4693,9 +4695,9 @@ function TypingIndicator(_ref2) {
       }
     };
   }, [channelUrl]);
-  return /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
-    type: index$2.LabelTypography.CAPTION_2,
-    color: index$2.LabelColors.ONBACKGROUND_2
+  return /*#__PURE__*/React__default["default"].createElement(Label, {
+    type: LabelTypography.TYPING_INDICATOR,
+    color: LabelColors.ONBACKGROUND_2
   }, /*#__PURE__*/React__default["default"].createElement(TypingIndicatorText, {
     members: typingMembers
   }));
@@ -5103,7 +5105,13 @@ var ConversationPanel = function ConversationPanel(props) {
     memoizedEmojiListItems: memoizedEmojiListItems
   }), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-conversation__footer"
-  }, /*#__PURE__*/React__default["default"].createElement(MessageInputWrapper$1, {
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "sendbird-conversation__typing-indicator"
+  }, /*#__PURE__*/React__default["default"].createElement(TypingIndicator, {
+    channelUrl: channelUrl,
+    sb: sdk,
+    logger: logger
+  })), /*#__PURE__*/React__default["default"].createElement(MessageInputWrapper$1, {
     channel: currentGroupChannel,
     user: user,
     ref: messageInputRef,
@@ -5112,13 +5120,7 @@ var ConversationPanel = function ConversationPanel(props) {
     renderMessageInput: renderMessageInput,
     isOnline: isOnline,
     initialized: initialized
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-conversation__typing-indicator"
-  }, /*#__PURE__*/React__default["default"].createElement(TypingIndicator, {
-    channelUrl: channelUrl,
-    sb: sdk,
-    logger: logger
-  })), !isOnline && /*#__PURE__*/React__default["default"].createElement(Channel.ConnectionStatus, {
+  }), !isOnline && /*#__PURE__*/React__default["default"].createElement(Channel.ConnectionStatus, {
     sdkInit: sdkInit,
     sb: sdk,
     logger: logger

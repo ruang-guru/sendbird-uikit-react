@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-5181cc00.js';
-export { w as withSendBird } from './LocalizationContext-5181cc00.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as convertAssignmentDueUTCtoLocale, k as convertCtaLinkToWebLink, l as isUserMessage, m as isFailedMessage, n as isSentMessage, o as isThumbnailMessage, I as IconButton, p as copyToClipboard, q as getUIKitMessageTypes, r as isPendingMessage, s as isMessageSentByMe, t as isMessageSentByOperator, u as getSenderName, v as isTextMessage, w as isOGMessage, x as isAssignmentMessage, y as isMaterialMessage, z as getUIKitMessageType, A as getOutgoingMessageState, B as Button, F as ButtonTypes, G as ButtonSizes, M as Modal, H as MODAL_ROOT, J as isSupportedFileView, K as isVideo, L as isImage, N as UserProfileProvider } from './index-5dbaa881.js';
-export { O as sendBirdSelectors } from './index-5dbaa881.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-9ea28a43.js';
+export { w as withSendBird } from './LocalizationContext-9ea28a43.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as convertAssignmentDueUTCtoLocale, k as convertCtaLinkToWebLink, l as isUserMessage, m as isFailedMessage, n as isSentMessage, o as isThumbnailMessage, I as IconButton, p as copyToClipboard, q as getUIKitMessageTypes, r as isPendingMessage, s as isMessageSentByMe, t as isMessageSentByOperator, u as getSenderName, v as isTextMessage, w as isOGMessage, x as isAssignmentMessage, y as isMaterialMessage, z as getUIKitMessageType, A as getOutgoingMessageState, B as Button, F as ButtonTypes, G as ButtonSizes, M as Modal, H as MODAL_ROOT, J as isSupportedFileView, K as isVideo, L as isImage, N as UserProfileProvider } from './index-fb1f80d6.js';
+export { O as sendBirdSelectors } from './index-fb1f80d6.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as Label$1, a7 as LabelTypography$1, a8 as LabelColors$1, a9 as IconColors$1, aa as pxToNumber$1, ab as PlaceHolder, ac as PlaceHolderTypes } from './index-dd1349dc.js';
-import { c as compareIds } from './index-b234d93e.js';
-import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-c8558d8f.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-c7cf4fe2.js';
+import { c as compareIds } from './index-f00cf952.js';
+import { R as ReactionButton, A as AdminMessage, O as OGMessageItemBody, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-b65f0b27.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-54c78dcd.js';
+import './actionTypes-3852601f.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-3eccc6f1.js';
-import './utils-18edc556.js';
-import './LeaveChannel-70f35c51.js';
-import './index-877855e7.js';
-import './index-5b21a0e7.js';
-import './index-b6b8f0a3.js';
+import './index-c4f6e711.js';
+import './utils-32f9b18b.js';
+import './LeaveChannel-ca1f4f43.js';
+import './index-15f96754.js';
+import './index-69d89d85.js';
+import './index-9e1297cb.js';
 import './ChannelSettings.js';
-import './index-f32b5d4f.js';
+import './index-1a91fe43.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -1708,7 +1708,8 @@ var Typography = {
   BUTTON_2: 'BUTTON_2',
   CAPTION_1: 'CAPTION_1',
   CAPTION_2: 'CAPTION_2',
-  CAPTION_3: 'CAPTION_3'
+  CAPTION_3: 'CAPTION_3',
+  TYPING_INDICATOR: 'TYPING_INDICATOR'
 };
 var Colors$1 = {
   ONBACKGROUND_1: 'ONBACKGROUND_1',
@@ -1763,6 +1764,9 @@ function changeTypographyToClassName(type) {
 
     case Typography.CAPTION_3:
       return 'sendbird-label--caption-3';
+
+    case Typography.TYPING_INDICATOR:
+      return 'sendbird-label--typing-indicator';
 
     default:
       return null;
@@ -3339,8 +3343,6 @@ function MessageContent(_a) {
   }, getMessageCreatedAt$1(message)))));
 }
 
-// import IconAttach from '../../svgs/icon-attach.svg';
-
 var LINE_HEIGHT = 36;
 
 var noop$1 = function noop() {};
@@ -3430,11 +3432,11 @@ var MessageInput = /*#__PURE__*/React__default.forwardRef(function (props, ref) 
   };
 
   return /*#__PURE__*/React__default.createElement("form", {
-    className: [isEdit ? 'sendbird-message-input__edit' : '', disabled ? 'sendbird-message-input-form__disabled ' : ''].join(' sendbird-message-input__container ')
+    className: [isEdit ? 'rogu-message-input__edit' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' rogu-message-input__container ')
   }, /*#__PURE__*/React__default.createElement("div", {
-    className: ['sendbird-message-input', disabled ? 'sendbird-message-input__disabled' : ''].join(' ')
+    className: ['rogu-message-input', disabled ? 'rogu-message-input__disabled' : ''].join(' ')
   }, /*#__PURE__*/React__default.createElement("textarea", {
-    className: "sendbird-message-input--textarea",
+    className: "rogu-message-input--textarea",
     disabled: disabled,
     ref: ref,
     name: name,
@@ -3459,47 +3461,47 @@ var MessageInput = /*#__PURE__*/React__default.forwardRef(function (props, ref) 
         setIsShiftPressed(false);
       }
     }
-  }), !inputValue && /*#__PURE__*/React__default.createElement(Label$1, {
-    className: "sendbird-message-input--placeholder",
-    type: LabelTypography$1.BODY_1,
-    color: LabelColors$1.ONBACKGROUND_3
+  }), !inputValue && /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-message-input--placeholder",
+    type: LabelTypography.BODY_1,
+    color: LabelColors.ONBACKGROUND_3
   }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && /*#__PURE__*/React__default.createElement(IconButton, {
-    className: "sendbird-message-input--attach",
+    className: "rogu-message-input--attach",
     height: "32px",
     width: "32px",
     onClick: function onClick() {
       // todo: clear previous input
       fileInputRef.current.click();
     }
-  }, /*#__PURE__*/React__default.createElement(Icon$1, {
-    type: IconTypes$1.ATTACH,
-    fillColor: IconColors$1.CONTENT_INVERSE,
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: IconTypes.ATTACH,
+    fillColor: IconColors.CONTENT_INVERSE,
     width: "20px",
     height: "20px"
   }), /*#__PURE__*/React__default.createElement("input", {
-    className: "sendbird-message-input--attach-input",
+    className: "rogu-message-input--attach-input",
     type: "file",
     ref: fileInputRef,
     onChange: handleUploadFile(onFileUpload)
   })), !isEdit && /*#__PURE__*/React__default.createElement(IconButton, {
-    className: "sendbird-message-input--send",
+    className: getClassName(['rogu-message-input--send', disabled ? 'rogu-message-input--send-disabled' : '']),
     height: "36px",
     width: "36px",
     onClick: sendMessage
-  }, /*#__PURE__*/React__default.createElement(Icon$1, {
-    type: IconTypes$1.SEND,
-    fillColor: IconColors$1.WHITE,
-    width: "20px",
-    height: "20px"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: IconTypes.SEND,
+    fillColor: IconColors.WHITE,
+    width: "16px",
+    height: "16px"
   }))), isEdit && /*#__PURE__*/React__default.createElement("div", {
-    className: "sendbird-message-input--edit-action"
+    className: "rogu-message-input--edit-action"
   }, /*#__PURE__*/React__default.createElement(Button, {
-    className: "sendbird-message-input--edit-action__cancel",
+    className: "rogu-message-input--edit-action__cancel",
     type: ButtonTypes.SECONDARY,
     size: ButtonSizes.SMALL,
     onClick: onCancelEdit
   }, stringSet.BUTTON__CANCEL), /*#__PURE__*/React__default.createElement(Button, {
-    className: "sendbird-message-input--edit-action__save",
+    className: "rogu-message-input--edit-action__save",
     type: ButtonTypes.PRIMARY,
     size: ButtonSizes.SMALL,
     onClick: function onClick() {
@@ -3527,7 +3529,7 @@ MessageInput.propTypes = {
 MessageInput.defaultProps = {
   value: '',
   onSendMessage: noop$1,
-  name: 'sendbird-message-input',
+  name: 'rogu-message-input',
   isEdit: false,
   disabled: false,
   placeholder: '',
@@ -4668,9 +4670,9 @@ function TypingIndicator(_ref2) {
       }
     };
   }, [channelUrl]);
-  return /*#__PURE__*/React__default.createElement(Label$1, {
-    type: LabelTypography$1.CAPTION_2,
-    color: LabelColors$1.ONBACKGROUND_2
+  return /*#__PURE__*/React__default.createElement(Label, {
+    type: LabelTypography.TYPING_INDICATOR,
+    color: LabelColors.ONBACKGROUND_2
   }, /*#__PURE__*/React__default.createElement(TypingIndicatorText, {
     members: typingMembers
   }));
@@ -5078,7 +5080,13 @@ var ConversationPanel = function ConversationPanel(props) {
     memoizedEmojiListItems: memoizedEmojiListItems
   }), /*#__PURE__*/React__default.createElement("div", {
     className: "sendbird-conversation__footer"
-  }, /*#__PURE__*/React__default.createElement(MessageInputWrapper$1, {
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "sendbird-conversation__typing-indicator"
+  }, /*#__PURE__*/React__default.createElement(TypingIndicator, {
+    channelUrl: channelUrl,
+    sb: sdk,
+    logger: logger
+  })), /*#__PURE__*/React__default.createElement(MessageInputWrapper$1, {
     channel: currentGroupChannel,
     user: user,
     ref: messageInputRef,
@@ -5087,13 +5095,7 @@ var ConversationPanel = function ConversationPanel(props) {
     renderMessageInput: renderMessageInput,
     isOnline: isOnline,
     initialized: initialized
-  }), /*#__PURE__*/React__default.createElement("div", {
-    className: "sendbird-conversation__typing-indicator"
-  }, /*#__PURE__*/React__default.createElement(TypingIndicator, {
-    channelUrl: channelUrl,
-    sb: sdk,
-    logger: logger
-  })), !isOnline && /*#__PURE__*/React__default.createElement(ConnectionStatus, {
+  }), !isOnline && /*#__PURE__*/React__default.createElement(ConnectionStatus, {
     sdkInit: sdkInit,
     sb: sdk,
     logger: logger
