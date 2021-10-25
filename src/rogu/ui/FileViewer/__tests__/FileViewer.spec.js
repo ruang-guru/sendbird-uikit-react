@@ -2,18 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 
-import { FileViewerComponent as FileViewer } from "../index";
+import { FileViewerComponent as FileViewer } from '../index';
 import { msg0, msg1 } from '../data.mock';
 
 describe('FileViewer', () => {
   it('should display image', function () {
-    const {
-      sender,
-      type,
-      url,
-      name: captionMsg = '',
-      createdAt
-    } = msg0;
+    const { sender, type, url, name: captionMsg = '', createdAt } = msg0;
     const { profileUrl, nickname: userName = '' } = sender;
     const component = shallow(
       <FileViewer
@@ -22,8 +16,8 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         captionMsg={captionMsg}
-        onClose={() => { }}
-        onDelete={() => { }}
+        onClose={() => {}}
+        onDelete={() => {}}
         createdAt={createdAt}
       />
     );
@@ -33,13 +27,7 @@ describe('FileViewer', () => {
   });
 
   it('should display video', function () {
-    const {
-      sender,
-      type,
-      url,
-      name: captionMsg = '',
-      createdAt
-    } = msg1;
+    const { sender, type, url, name: captionMsg = '', createdAt } = msg1;
     const { profileUrl, nickname: userName = '' } = sender;
     const component = shallow(
       <FileViewer
@@ -48,8 +36,8 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         captionMsg={captionMsg}
-        onClose={() => { }}
-        onDelete={() => { }}
+        onClose={() => {}}
+        onDelete={() => {}}
         createdAt={createdAt}
       />
     );
@@ -67,7 +55,7 @@ describe('FileViewer', () => {
       type = '',
       url = '',
       name: captionMsg = '',
-      createdAt = 0
+      createdAt = 0,
     } = unsupportedMsg;
     const component = shallow(
       <FileViewer
@@ -76,25 +64,21 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         captionMsg={captionMsg}
-        onClose={() => { }}
-        onDelete={() => { }}
+        onClose={() => {}}
+        onDelete={() => {}}
         createdAt={createdAt}
       />
     );
     const fallback = component.find('.rogu-fileviewer__content__unsupported');
     expect(fallback.length).toEqual(1);
-    const headerActions = component.find('.rogu-fileviewer__header__right__actions');
+    const headerActions = component.find(
+      '.rogu-fileviewer__header__right__actions'
+    );
     expect(headerActions.length).toEqual(0);
   });
 
   it('should do a snapshot test of the FileViewer DOM', function () {
-    const {
-      sender,
-      type,
-      url,
-      name: captionMsg = '',
-      createdAt
-    } = msg0;
+    const { sender, type, url, name: captionMsg = '', createdAt } = msg0;
     const { profileUrl, nickname: userName = '' } = sender;
     const component = renderer.create(
       <FileViewer
@@ -103,10 +87,10 @@ describe('FileViewer', () => {
         type={type}
         url={url}
         captionMsg={captionMsg}
-        onClose={() => { }}
-        onDelete={() => { }}
+        onClose={() => {}}
+        onDelete={() => {}}
         createdAt={createdAt}
-      />,
+      />
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();

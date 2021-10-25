@@ -8,12 +8,7 @@ const SUPPORTED_MIMES = {
     'image/svg+xml',
     'image/webp', // not supported in IE
   ],
-  VIDEO: [
-    'video/mpeg',
-    'video/ogg',
-    'video/webm',
-    'video/mp4',
-  ],
+  VIDEO: ['video/mpeg', 'video/ogg', 'video/webm', 'video/mp4'],
 };
 
 export const isImage = (type) => SUPPORTED_MIMES.IMAGE.indexOf(type) >= 0;

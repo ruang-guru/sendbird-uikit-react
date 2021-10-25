@@ -5,13 +5,12 @@ import initialState from './initialState';
 
 import compareIds from '../../../../utils/compareIds';
 import { passUnsuccessfullMessages, hasOwnProperty } from '../utils';
-import { filterMessageListParams, getSendingMessageStatus } from '../../../../utils';
+import {
+  filterMessageListParams,
+  getSendingMessageStatus,
+} from '../../../../utils';
 
-const {
-  SUCCEEDED,
-  FAILED,
-  PENDING,
-} = getSendingMessageStatus();
+const { SUCCEEDED, FAILED, PENDING } = getSendingMessageStatus();
 
 export default function reducer(state, action) {
   switch (action.type) {
@@ -34,9 +33,7 @@ export default function reducer(state, action) {
       return {
         ...state,
         allMessages: [
-          ...state.allMessages.filter((m) => (
-            m.sendingStatus !== SUCCEEDED
-          )),
+          ...state.allMessages.filter((m) => m.sendingStatus !== SUCCEEDED),
         ],
       };
     case actionTypes.GET_PREV_MESSAGES_SUCESS: {
@@ -51,12 +48,19 @@ export default function reducer(state, action) {
       }
 
       // remove duplicate messages
-      const filteredAllMessages = state.allMessages.filter((msg) => (
-        !(receivedMessages.find(({ messageId }) => compareIds(messageId, msg.messageId)))
-      ));
+      const filteredAllMessages = state.allMessages.filter(
+        (msg) =>
+          !receivedMessages.find(({ messageId }) =>
+            compareIds(messageId, msg.messageId)
+          )
+      );
 
-      const hasHasMoreToBottom = hasOwnProperty('hasMoreToBottom')(action.payload);
-      const hasLatestFetchedMessageTimeStamp = hasOwnProperty('latestFetchedMessageTimeStamp')(action.payload);
+      const hasHasMoreToBottom = hasOwnProperty('hasMoreToBottom')(
+        action.payload
+      );
+      const hasLatestFetchedMessageTimeStamp = hasOwnProperty(
+        'latestFetchedMessageTimeStamp'
+      )(action.payload);
       return {
         ...state,
         loading: false,
@@ -68,12 +72,10 @@ export default function reducer(state, action) {
           hasMoreToBottom: action.payload.hasMoreToBottom,
         }),
         ...(hasLatestFetchedMessageTimeStamp && {
-          latestFetchedMessageTimeStamp: action.payload.latestFetchedMessageTimeStamp,
+          latestFetchedMessageTimeStamp:
+            action.payload.latestFetchedMessageTimeStamp,
         }),
-        allMessages: [
-          ...receivedMessages,
-          ...filteredAllMessages,
-        ],
+        allMessages: [...receivedMessages, ...filteredAllMessages],
       };
     }
     case actionTypes.GET_NEXT_MESSAGES_SUCESS: {
@@ -88,9 +90,12 @@ export default function reducer(state, action) {
       }
 
       // remove duplicate messages
-      const filteredAllMessages = state.allMessages.filter((msg) => (
-        !(receivedMessages.find(({ messageId }) => compareIds(messageId, msg.messageId)))
-      ));
+      const filteredAllMessages = state.allMessages.filter(
+        (msg) =>
+          !receivedMessages.find(({ messageId }) =>
+            compareIds(messageId, msg.messageId)
+          )
+      );
 
       return {
         ...state,
@@ -99,11 +104,9 @@ export default function reducer(state, action) {
         hasMore: action.payload.hasMore,
         lastMessageTimeStamp: action.payload.lastMessageTimeStamp,
         hasMoreToBottom: action.payload.hasMoreToBottom,
-        latestFetchedMessageTimeStamp: action.payload.latestFetchedMessageTimeStamp,
-        allMessages: [
-          ...filteredAllMessages,
-          ...receivedMessages,
-        ],
+        latestFetchedMessageTimeStamp:
+          action.payload.latestFetchedMessageTimeStamp,
+        allMessages: [...filteredAllMessages, ...receivedMessages],
       };
     }
     case actionTypes.GET_NEXT_MESSAGES_FAILURE: {
@@ -112,26 +115,20 @@ export default function reducer(state, action) {
     case actionTypes.SEND_MESSAGEGE_START:
       return {
         ...state,
-        allMessages: [
-          ...state.allMessages,
-          { ...action.payload },
-        ],
+        allMessages: [...state.allMessages, { ...action.payload }],
       };
     case actionTypes.SEND_MESSAGEGE_SUCESS: {
-      const newMessages = state.allMessages.map((m) => (
+      const newMessages = state.allMessages.map((m) =>
         compareIds(m.reqId, action.payload.reqId) ? action.payload : m
-      ));
-      [...newMessages].sort((a, b) => (
-        (
-          a.sendingStatus
-          && b.sendingStatus
-          && a.sendingStatus === SUCCEEDED
-          && (
-            b.sendingStatus === PENDING
-            || b.sendingStatus === FAILED
-          )
-        ) ? -1 : 1
-      ));
+      );
+      [...newMessages].sort((a, b) =>
+        a.sendingStatus &&
+        b.sendingStatus &&
+        a.sendingStatus === SUCCEEDED &&
+        (b.sendingStatus === PENDING || b.sendingStatus === FAILED)
+          ? -1
+          : 1
+      );
       return {
         ...state,
         allMessages: newMessages,
@@ -142,11 +139,9 @@ export default function reducer(state, action) {
       action.payload.failed = true;
       return {
         ...state,
-        allMessages: state.allMessages.map((m) => (
-          compareIds(m.reqId, action.payload.reqId)
-            ? action.payload
-            : m
-        )),
+        allMessages: state.allMessages.map((m) =>
+          compareIds(m.reqId, action.payload.reqId) ? action.payload : m
+        ),
       };
     }
     case actionTypes.SET_CURRENT_CHANNEL: {
@@ -184,11 +179,16 @@ export default function reducer(state, action) {
         return state;
       }
       // Excluded overlapping messages
-      if (state.allMessages.some((msg) => msg.messageId === message.messageId)) {
+      if (
+        state.allMessages.some((msg) => msg.messageId === message.messageId)
+      ) {
         return state;
       }
       // Filter by userFilledQuery
-      if (state.messageListParams && !filterMessageListParams(state.messageListParams, message)) {
+      if (
+        state.messageListParams &&
+        !filterMessageListParams(state.messageListParams, message)
+      ) {
         return state;
       }
 
@@ -207,40 +207,40 @@ export default function reducer(state, action) {
       return {
         ...state,
         unreadCount,
-        unreadSince: (unreadCount === 1)
-          ? format(new Date(), 'p MMM dd')
-          : unreadSince,
+        unreadSince:
+          unreadCount === 1 ? format(new Date(), 'p MMM dd') : unreadSince,
         allMessages: passUnsuccessfullMessages(state.allMessages, message),
       };
     }
     case actionTypes.ON_MESSAGE_UPDATED: {
       const { message } = action.payload;
-      if (state.messageListParams && !filterMessageListParams(state.messageListParams, message)) {
+      if (
+        state.messageListParams &&
+        !filterMessageListParams(state.messageListParams, message)
+      ) {
         // Delete the message if it doesn't match to the params anymore
         return {
           ...state,
-          allMessages: state.allMessages.filter((m) => (
-            !compareIds(m.messageId, message?.messageId)
-          )),
+          allMessages: state.allMessages.filter(
+            (m) => !compareIds(m.messageId, message?.messageId)
+          ),
         };
       }
       return {
         ...state,
-        allMessages: state.allMessages.map((m) => (
+        allMessages: state.allMessages.map((m) =>
           compareIds(m.messageId, action.payload.message.messageId)
             ? action.payload.message
             : m
-        )),
+        ),
       };
     }
     case actionTypes.RESEND_MESSAGEGE_START:
       return {
         ...state,
-        allMessages: state.allMessages.map((m) => (
-          compareIds(m.reqId, action.payload.reqId)
-            ? action.payload
-            : m
-        )),
+        allMessages: state.allMessages.map((m) =>
+          compareIds(m.reqId, action.payload.reqId) ? action.payload : m
+        ),
       };
     case actionTypes.MARK_AS_READ:
       return {
@@ -251,16 +251,16 @@ export default function reducer(state, action) {
     case actionTypes.ON_MESSAGE_DELETED:
       return {
         ...state,
-        allMessages: state.allMessages.filter((m) => (
-          !compareIds(m.messageId, action.payload)
-        )),
+        allMessages: state.allMessages.filter(
+          (m) => !compareIds(m.messageId, action.payload)
+        ),
       };
     case actionTypes.ON_MESSAGE_DELETED_BY_REQ_ID:
       return {
         ...state,
-        allMessages: state.allMessages.filter((m) => (
-          !compareIds(m.reqId, action.payload)
-        )),
+        allMessages: state.allMessages.filter(
+          (m) => !compareIds(m.reqId, action.payload)
+        ),
       };
     case actionTypes.SET_EMOJI_CONTAINER: {
       return {
@@ -273,7 +273,10 @@ export default function reducer(state, action) {
         ...state,
         allMessages: state.allMessages.map((m) => {
           if (compareIds(m.messageId, action.payload.messageId)) {
-            if (m.applyReactionEvent && typeof m.applyReactionEvent === 'function') {
+            if (
+              m.applyReactionEvent &&
+              typeof m.applyReactionEvent === 'function'
+            ) {
               m.applyReactionEvent(action.payload);
             }
             return m;

@@ -1,8 +1,8 @@
-import React from "react";
-import TextButton from "../index.jsx";
-import Label, { LabelTypography, LabelColors } from "../../Label";
+import React from 'react';
+import TextButton from '../index.jsx';
+import Label, { LabelTypography, LabelColors } from '../../Label';
 
-export default { title: "ruangkelas/UI Components/TextButton" };
+export default { title: 'ruangkelas/UI Components/TextButton' };
 
 export const defaultTextButton = () => <TextButton>Textbutton</TextButton>;
 

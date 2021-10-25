@@ -1,6 +1,6 @@
-import { differenceInCalendarDays, format, getDay } from "date-fns";
+import { differenceInCalendarDays, format, getDay } from 'date-fns';
 
-import { getDayString, DayStringType } from "../../utils";
+import { getDayString, DayStringType } from '../../utils';
 
 export type DateSeparatorStringsType = {
   today: string;
@@ -21,7 +21,7 @@ export const getDateSeparatorDifference = (
   } else if (diffWithToday <= 7) {
     return getDayString(getDay(createdAt), strings.days);
   } else {
-    return format(createdAt, "dd/MM/yyyy");
+    return format(createdAt, 'dd/MM/yyyy');
   }
 };
 

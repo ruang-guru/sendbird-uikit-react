@@ -27,7 +27,11 @@ describe('PubSub', () => {
     const pubsub = pubsubFactory();
     const mockChannelListDispatcher = () => {};
     const mockChannelUrl = 'xxx';
-    const handler = pubSubHandler(mockChannelUrl, pubsub, mockChannelListDispatcher);
+    const handler = pubSubHandler(
+      mockChannelUrl,
+      pubsub,
+      mockChannelListDispatcher
+    );
     subscribedTopics.forEach((t) => {
       expect(typeof handler.get(topics[t]).remove).toEqual('function');
     });
@@ -37,7 +41,11 @@ describe('PubSub', () => {
     const pubsub = pubsubFactory();
     const mockChannelListDispatcher = () => {};
     const mockChannelUrl = 'xxx';
-    const handler = pubSubHandler(mockChannelUrl, pubsub, mockChannelListDispatcher);
+    const handler = pubSubHandler(
+      mockChannelUrl,
+      pubsub,
+      mockChannelListDispatcher
+    );
     pubSubHandleRemover(handler);
     subscribedTopics.forEach((t) => {
       expect(pubsub.__getTopics()[t]).toEqual([undefined]);
@@ -47,7 +55,7 @@ describe('PubSub', () => {
 
 describe('isDisabledBecauseFrozen', () => {
   it('should return true for non-frozen channel', () => {
-    const normalChannel = {...frozenChannel, isFrozen: false };
+    const normalChannel = { ...frozenChannel, isFrozen: false };
     const isDisabled = isDisabledBecauseFrozen(normalChannel);
     expect(isDisabled).toEqual(false);
   });
@@ -58,7 +66,7 @@ describe('isDisabledBecauseFrozen', () => {
   });
 
   it('should return true for non-operator of frozen channel', () => {
-    const nonOperatorChannel = {...frozenChannel, myRole: 'user' };
+    const nonOperatorChannel = { ...frozenChannel, myRole: 'user' };
     const isDisabled = isDisabledBecauseFrozen(nonOperatorChannel);
     expect(isDisabled).toEqual(true);
   });
@@ -69,25 +77,25 @@ const emojiContainer = {
     {
       id: 'category-id-1',
       emojis: [
-        { key: 'emoji-key-00-00', url: '...', },
-        { key: 'emoji-key-00-01', url: '...', },
-        { key: 'emoji-key-00-02', url: '...', },
+        { key: 'emoji-key-00-00', url: '...' },
+        { key: 'emoji-key-00-01', url: '...' },
+        { key: 'emoji-key-00-02', url: '...' },
       ],
     },
     {
       id: 'category-id-2',
       emojis: [
-        { key: 'emoji-key-01-00', url: '...', },
-        { key: 'emoji-key-01-01', url: '...', },
-        { key: 'emoji-key-01-02', url: '...', },
+        { key: 'emoji-key-01-00', url: '...' },
+        { key: 'emoji-key-01-01', url: '...' },
+        { key: 'emoji-key-01-02', url: '...' },
       ],
     },
     {
       id: 'category-id-3',
       emojis: [
-        { key: 'emoji-key-02-00', url: '...', },
-        { key: 'emoji-key-02-01', url: '...', },
-        { key: 'emoji-key-02-02', url: '...', },
+        { key: 'emoji-key-02-00', url: '...' },
+        { key: 'emoji-key-02-01', url: '...' },
+        { key: 'emoji-key-02-02', url: '...' },
       ],
     },
   ],
@@ -95,64 +103,52 @@ const emojiContainer = {
 
 describe('emojiContainer', () => {
   it('should return emojiCategories from emojiContainer', () => {
-    expect(
-      getEmojiCategoriesFromEmojiContainer(emojiContainer)
-    ).toEqual(
+    expect(getEmojiCategoriesFromEmojiContainer(emojiContainer)).toEqual(
       emojiContainer.emojiCategories
     );
   });
 
   it('should return allEmojis from emojiContainer', () => {
     const allEmojis = [
-      { key: 'emoji-key-00-00', url: '...', },
-      { key: 'emoji-key-00-01', url: '...', },
-      { key: 'emoji-key-00-02', url: '...', },
-      { key: 'emoji-key-01-00', url: '...', },
-      { key: 'emoji-key-01-01', url: '...', },
-      { key: 'emoji-key-01-02', url: '...', },
-      { key: 'emoji-key-02-00', url: '...', },
-      { key: 'emoji-key-02-01', url: '...', },
-      { key: 'emoji-key-02-02', url: '...', },
+      { key: 'emoji-key-00-00', url: '...' },
+      { key: 'emoji-key-00-01', url: '...' },
+      { key: 'emoji-key-00-02', url: '...' },
+      { key: 'emoji-key-01-00', url: '...' },
+      { key: 'emoji-key-01-01', url: '...' },
+      { key: 'emoji-key-01-02', url: '...' },
+      { key: 'emoji-key-02-00', url: '...' },
+      { key: 'emoji-key-02-01', url: '...' },
+      { key: 'emoji-key-02-02', url: '...' },
     ];
-    expect(
-      getAllEmojisFromEmojiContainer(emojiContainer)
-    ).toEqual(
-      allEmojis
-    );
+    expect(getAllEmojisFromEmojiContainer(emojiContainer)).toEqual(allEmojis);
   });
 
   it('should return emojis from emojiContainer', () => {
     const firstEmojis = [
-      { key: 'emoji-key-00-00', url: '...', },
-      { key: 'emoji-key-00-01', url: '...', },
-      { key: 'emoji-key-00-02', url: '...', },
+      { key: 'emoji-key-00-00', url: '...' },
+      { key: 'emoji-key-00-01', url: '...' },
+      { key: 'emoji-key-00-02', url: '...' },
     ];
     const secondEmojis = [
-      { key: 'emoji-key-01-00', url: '...', },
-      { key: 'emoji-key-01-01', url: '...', },
-      { key: 'emoji-key-01-02', url: '...', },
+      { key: 'emoji-key-01-00', url: '...' },
+      { key: 'emoji-key-01-01', url: '...' },
+      { key: 'emoji-key-01-02', url: '...' },
     ];
-    const thirdEmojis  = [
-      { key: 'emoji-key-02-00', url: '...', },
-      { key: 'emoji-key-02-01', url: '...', },
-      { key: 'emoji-key-02-02', url: '...', },
+    const thirdEmojis = [
+      { key: 'emoji-key-02-00', url: '...' },
+      { key: 'emoji-key-02-01', url: '...' },
+      { key: 'emoji-key-02-02', url: '...' },
     ];
 
     expect(
       getEmojisFromEmojiContainer(emojiContainer, 'category-id-1')
-    ).toEqual(
-      firstEmojis
-    );
+    ).toEqual(firstEmojis);
     expect(
       getEmojisFromEmojiContainer(emojiContainer, 'category-id-2')
-    ).toEqual(
-      secondEmojis
-    );
+    ).toEqual(secondEmojis);
     expect(
       getEmojisFromEmojiContainer(emojiContainer, 'category-id-3')
-    ).toEqual(
-      thirdEmojis
-    );
+    ).toEqual(thirdEmojis);
   });
 
   it('should return allEmojisMap from emojiContainer', () => {
@@ -168,9 +164,7 @@ describe('emojiContainer', () => {
       ['emoji-key-02-02', '...'],
     ]);
 
-    expect(
-      getAllEmojisMapFromEmojiContainer(emojiContainer)
-    ).toEqual(
+    expect(getAllEmojisMapFromEmojiContainer(emojiContainer)).toEqual(
       allEmojisMap
     );
   });
@@ -183,9 +177,7 @@ describe('emojiContainer', () => {
       { userId: 'userid-03', nickname: 'User3' },
     ];
 
-    expect(
-      getNicknamesMapFromMembers(members)
-    ).toEqual(
+    expect(getNicknamesMapFromMembers(members)).toEqual(
       new Map([
         ['userid-00', 'User0'],
         ['userid-01', 'User1'],
@@ -298,7 +290,7 @@ describe('MessageGrouping', () => {
         },
         createdAt: zero,
         sendingStatus: 'succeeded',
-      },
+      }
     );
     expect(betweenPrevious1).toEqual(true);
     expect(betweenNext1).toEqual(true);
@@ -321,7 +313,7 @@ describe('MessageGrouping', () => {
           userId: 'hoon123',
         },
         createdAt: zero,
-      },
+      }
     );
     expect(betweenPrevious2).toEqual(true);
     expect(betweenNext2).toEqual(true);
@@ -349,7 +341,7 @@ describe('MessageGrouping', () => {
           userId: 'hoon123',
         },
         createdAt: zero,
-      },
+      }
     );
     expect(betweenPrevious1).toEqual(true);
     expect(betweenNext1).toEqual(false);
@@ -374,7 +366,7 @@ describe('MessageGrouping', () => {
         },
         createdAt: zero,
         sendingStatus: 'succeeded',
-      },
+      }
     );
     expect(betweenPrevious2).toEqual(true);
     expect(betweenNext2).toEqual(false);
@@ -401,7 +393,7 @@ describe('MessageGrouping', () => {
         },
         createdAt: zero,
         sendingStatus: 'failed',
-      },
+      }
     );
     expect(betweenPrevious3).toEqual(true);
     expect(betweenNext3).toEqual(false);
@@ -425,7 +417,7 @@ describe('MessageGrouping', () => {
           userId: 'sravan123',
         },
         createdAt: zero,
-      },
+      }
     );
     expect(betweenPrevious4).toEqual(true);
     expect(betweenNext4).toEqual(false);
@@ -446,7 +438,7 @@ describe('MessageGrouping', () => {
       },
       {
         createdAt: zero,
-      },
+      }
     );
     expect(betweenPrevious5).toEqual(true);
     expect(betweenNext5).toEqual(false);
@@ -464,7 +456,7 @@ describe('MessageGrouping', () => {
           userId: 'sravan123',
         },
         createdAt: zero,
-      },
+      }
     );
     expect(betweenPrevious6).toEqual(false); // when sender doesn't exist it is false
     expect(betweenNext6).toEqual(false);
@@ -488,7 +480,7 @@ describe('MessageGrouping', () => {
           userId: 'hoon123',
         },
         createdAt: one,
-      },
+      }
     );
     expect(betweenPrevious7).toEqual(true);
     expect(betweenNext7).toEqual(false);
@@ -514,7 +506,7 @@ describe('MessageGrouping', () => {
           userId: 'chris123',
         },
         createdAt: zero,
-      },
+      }
     );
     expect(bP1).toEqual(false);
     expect(bN1).toEqual(false);
@@ -535,7 +527,7 @@ describe('MessageGrouping', () => {
           userId: 'chris123',
         },
         createdAt: zero,
-      },
+      }
     );
     expect(bP2).toEqual(false);
     expect(bN2).toEqual(false);
@@ -562,7 +554,7 @@ describe('MessageGrouping', () => {
         },
         createdAt: zero,
         sendingStatus: 'pending',
-      },
+      }
     );
     expect(bP3).toEqual(false);
     expect(bN3).toEqual(false);
@@ -588,7 +580,7 @@ describe('MessageGrouping', () => {
         },
         createdAt: zero,
         sendingStatus: 'succeeded',
-      },
+      }
     );
     expect(bP4).toEqual(false);
     expect(bN4).toEqual(false);
@@ -612,7 +604,7 @@ describe('MessageGrouping', () => {
           userId: 'hoon123',
         },
         createdAt: two,
-      },
+      }
     );
     expect(bP5).toEqual(false);
     expect(bN5).toEqual(false);

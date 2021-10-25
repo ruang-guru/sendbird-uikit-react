@@ -1,10 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  useReducer,
-  useMemo,
-  useState,
-} from 'react';
+import React, { useEffect, useRef, useReducer, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
@@ -40,23 +34,14 @@ import ConnectionStatus from '../../../ui/ConnectionStatus';
 import ChatHeader from '../../../ui/ChatHeader';
 import PlaceHolder, { PlaceHolderTypes } from '../../../ui/PlaceHolder';
 
-const noop = () => { };
+const noop = () => {};
 
 export const ConversationPanel = (props) => {
   const {
     channelUrl,
     stores: { sdkStore, userStore },
-    config: {
-      userId,
-      logger,
-      pubSub,
-      isOnline,
-      theme,
-      imageCompression,
-    },
-    dispatchers: {
-      reconnect,
-    },
+    config: { userId, logger, pubSub, isOnline, theme, imageCompression },
+    dispatchers: { reconnect },
     queries = {},
     startingPoint,
     highlightedMessage,
@@ -83,20 +68,27 @@ export const ConversationPanel = (props) => {
   const { user } = userStore;
   if (queries.messageListQuery) {
     // eslint-disable-next-line no-console
-    console.warn('messageListQuery has been deprecated, please use messageListParams instead');
+    console.warn(
+      'messageListQuery has been deprecated, please use messageListParams instead'
+    );
   }
 
   const [intialTimeStamp, setIntialTimeStamp] = useState(startingPoint);
   useEffect(() => {
     setIntialTimeStamp(startingPoint);
   }, [startingPoint, channelUrl]);
-  const [highLightedMessageId, setHighLightedMessageId] = useState(highlightedMessage);
+  const [highLightedMessageId, setHighLightedMessageId] = useState(
+    highlightedMessage
+  );
   useEffect(() => {
     setHighLightedMessageId(highlightedMessage);
   }, [highlightedMessage]);
   const userFilledMessageListQuery = queries.messageListParams;
 
-  const [messagesStore, messagesDispatcher] = useReducer(messagesReducer, messagesInitialState);
+  const [messagesStore, messagesDispatcher] = useReducer(
+    messagesReducer,
+    messagesInitialState
+  );
   const scrollRef = useRef(null);
 
   const {
@@ -116,78 +108,98 @@ export const ConversationPanel = (props) => {
   } = messagesStore;
   const { isFrozen, isBroadcast, isSuper } = currentGroupChannel;
   const { appInfo = {} } = sdk;
-  const usingReaction = (
-    appInfo.isUsingReaction && !isBroadcast && !isSuper && useReaction
-  );
+  const usingReaction =
+    appInfo.isUsingReaction && !isBroadcast && !isSuper && useReaction;
 
-  const userDefinedDisableUserProfile = disableUserProfile || config.disableUserProfile;
-  const userDefinedRenderProfile = renderUserProfile || config.renderUserProfile;
+  const userDefinedDisableUserProfile =
+    disableUserProfile || config.disableUserProfile;
+  const userDefinedRenderProfile =
+    renderUserProfile || config.renderUserProfile;
   const showScrollBot = hasMoreToBottom;
 
   // TODO: emojiAllMap, emoijAllList, nicknamesMap => should be moved to messagesStore
-  const emojiAllMap = useMemo(() => (
-    usingReaction
-      ? utils.getAllEmojisMapFromEmojiContainer(emojiContainer)
-      : new Map()
-  ), [emojiContainer]);
-  const emojiAllList = useMemo(() => (
-    usingReaction
-      ? utils.getAllEmojisFromEmojiContainer(emojiContainer)
-      : []
-  ), [emojiContainer]);
-  const nicknamesMap = useMemo(() => (
-    usingReaction
-      ? utils.getNicknamesMapFromMembers(currentGroupChannel.members)
-      : new Map()
-  ), [currentGroupChannel.members]);
+  const emojiAllMap = useMemo(
+    () =>
+      usingReaction
+        ? utils.getAllEmojisMapFromEmojiContainer(emojiContainer)
+        : new Map(),
+    [emojiContainer]
+  );
+  const emojiAllList = useMemo(
+    () =>
+      usingReaction ? utils.getAllEmojisFromEmojiContainer(emojiContainer) : [],
+    [emojiContainer]
+  );
+  const nicknamesMap = useMemo(
+    () =>
+      usingReaction
+        ? utils.getNicknamesMapFromMembers(currentGroupChannel.members)
+        : new Map(),
+    [currentGroupChannel.members]
+  );
 
   // Scrollup is default scroll for channel
-  const onScrollCallback = useScrollCallback({
-    currentGroupChannel, lastMessageTimeStamp, userFilledMessageListQuery,
-  }, {
-    hasMore,
-    logger,
-    messagesDispatcher,
-    sdk,
-  });
+  const onScrollCallback = useScrollCallback(
+    {
+      currentGroupChannel,
+      lastMessageTimeStamp,
+      userFilledMessageListQuery,
+    },
+    {
+      hasMore,
+      logger,
+      messagesDispatcher,
+      sdk,
+    }
+  );
 
-  const scrollToMessage = useScrollToMessage({
-    setIntialTimeStamp,
-    setHighLightedMessageId,
-    allMessages,
-  }, { logger });
+  const scrollToMessage = useScrollToMessage(
+    {
+      setIntialTimeStamp,
+      setHighLightedMessageId,
+      allMessages,
+    },
+    { logger }
+  );
 
   // onScrollDownCallback is added for navigation to different timestamps on messageSearch
   // hasMoreToBottom, onScrollDownCallback -> scroll down
   // hasMore, onScrollCallback -> scroll up(default behavior)
-  const onScrollDownCallback = useScrollDownCallback({
-    currentGroupChannel,
-    latestFetchedMessageTimeStamp,
-    userFilledMessageListQuery,
-    hasMoreToBottom,
-  }, {
-    logger,
-    messagesDispatcher,
-    sdk,
-  });
+  const onScrollDownCallback = useScrollDownCallback(
+    {
+      currentGroupChannel,
+      latestFetchedMessageTimeStamp,
+      userFilledMessageListQuery,
+      hasMoreToBottom,
+    },
+    {
+      logger,
+      messagesDispatcher,
+      sdk,
+    }
+  );
 
-  const toggleReaction = useToggleReactionCallback({ currentGroupChannel }, { logger });
+  const toggleReaction = useToggleReactionCallback(
+    { currentGroupChannel },
+    { logger }
+  );
 
-  const memoizedEmojiListItems = useMemoizedEmojiListItems({
-    emojiContainer, toggleReaction,
-  }, {
-    useReaction: usingReaction,
-    logger,
-    userId,
-    emojiAllList,
-  });
+  const memoizedEmojiListItems = useMemoizedEmojiListItems(
+    {
+      emojiContainer,
+      toggleReaction,
+    },
+    {
+      useReaction: usingReaction,
+      logger,
+      userId,
+      emojiAllList,
+    }
+  );
 
   // to create message-datasource
   // this hook sets currentGroupChannel asynchronously
-  useGetChannel(
-    { channelUrl, sdkInit },
-    { messagesDispatcher, sdk, logger },
-  );
+  useGetChannel({ channelUrl, sdkInit }, { messagesDispatcher, sdk, logger });
 
   // Hook to handle ChannelEvents and send values to useReducer using messagesDispatcher
   useHandleChannelEvents(
@@ -197,50 +209,62 @@ export const ConversationPanel = (props) => {
       sdk,
       logger,
       scrollRef,
-    },
+    }
   );
 
   // hook that fetches messages when channel changes
   // to be clear here useGetChannel sets currentGroupChannel
   // and useInitialMessagesFetch executes when currentGroupChannel changes
   // p.s This one executes on intialTimeStamp change too
-  useInitialMessagesFetch({
-    currentGroupChannel,
-    userFilledMessageListQuery,
-    intialTimeStamp,
-  }, {
-    sdk,
-    logger,
-    messagesDispatcher,
-  });
+  useInitialMessagesFetch(
+    {
+      currentGroupChannel,
+      userFilledMessageListQuery,
+      intialTimeStamp,
+    },
+    {
+      sdk,
+      logger,
+      messagesDispatcher,
+    }
+  );
 
   // handles API calls from withSendbird
   useEffect(() => {
-    const subScriber = utils.pubSubHandler(channelUrl, pubSub, messagesDispatcher);
+    const subScriber = utils.pubSubHandler(
+      channelUrl,
+      pubSub,
+      messagesDispatcher
+    );
     return () => {
       utils.pubSubHandleRemover(subScriber);
     };
   }, [channelUrl, sdkInit]);
 
   // handling connection breaks
-  useHandleReconnect({ isOnline }, {
-    logger,
-    sdk,
-    currentGroupChannel,
-    messagesDispatcher,
-    userFilledMessageListQuery,
-  });
+  useHandleReconnect(
+    { isOnline },
+    {
+      logger,
+      sdk,
+      currentGroupChannel,
+      messagesDispatcher,
+      userFilledMessageListQuery,
+    }
+  );
 
   // callbacks for Message CURD actions
-  const deleteMessage = useDeleteMessageCallback({ currentGroupChannel, messagesDispatcher },
-    { logger });
+  const deleteMessage = useDeleteMessageCallback(
+    { currentGroupChannel, messagesDispatcher },
+    { logger }
+  );
   const updateMessage = useUpdateMessageCallback(
     { currentGroupChannel, messagesDispatcher, onBeforeUpdateUserMessage },
-    { logger, sdk, pubSub },
+    { logger, sdk, pubSub }
   );
   const resendMessage = useResendMessageCallback(
     { currentGroupChannel, messagesDispatcher },
-    { logger },
+    { logger }
   );
   const [messageInputRef, onSendMessage] = useSendMessageCallback(
     { currentGroupChannel, onBeforeSendUserMessage },
@@ -249,7 +273,7 @@ export const ConversationPanel = (props) => {
       logger,
       pubSub,
       messagesDispatcher,
-    },
+    }
   );
   const [onSendFileMessage] = useSendFileMessageCallback(
     { currentGroupChannel, onBeforeSendFileMessage, imageCompression },
@@ -258,14 +282,22 @@ export const ConversationPanel = (props) => {
       logger,
       pubSub,
       messagesDispatcher,
-    },
+    }
   );
 
   if (!channelUrl) {
-    return (<div className="sendbird-conversation"><PlaceHolder type={PlaceHolderTypes.NO_CHANNELS} /></div>);
+    return (
+      <div className="sendbird-conversation">
+        <PlaceHolder type={PlaceHolderTypes.NO_CHANNELS} />
+      </div>
+    );
   }
   if (isInvalid) {
-    return (<div className="sendbird-conversation"><PlaceHolder type={PlaceHolderTypes.WRONG} /></div>);
+    return (
+      <div className="sendbird-conversation">
+        <PlaceHolder type={PlaceHolderTypes.WRONG} />
+      </div>
+    );
   }
   if (sdkError) {
     return (
@@ -286,94 +318,86 @@ export const ConversationPanel = (props) => {
       disableUserProfile={userDefinedDisableUserProfile}
       renderUserProfile={userDefinedRenderProfile}
     >
-      {
-        renderChatHeader
-          ? renderChatHeader({ channel: currentGroupChannel, user })
-          : (
-            <ChatHeader
-              theme={theme}
-              currentGroupChannel={currentGroupChannel}
-              currentUser={user}
-              showSearchIcon={showSearchIcon}
-              onSearchClick={onSearchClick}
-              onActionClick={onChatHeaderActionClick}
-              subTitle={currentGroupChannel.members && currentGroupChannel.members.length !== 2}
-              isMuted={false}
-            />
-          )
-      }
-      {
-        isFrozen && (
-          <FrozenNotification />
-        )
-      }
-      {
-        unreadCount > 0 && (
-          <Notification
-            count={unreadCount}
-            onClick={() => {
-              if (intialTimeStamp) {
-                setIntialTimeStamp(null);
-                setHighLightedMessageId(null);
-              } else {
-                utils.scrollIntoLast();
-                // there is no scroll
-                if (scrollRef.current.scrollTop === 0) {
-                  currentGroupChannel.markAsRead();
-                  messagesDispatcher({
-                    type: messageActionTypes.MARK_AS_READ,
-                  });
-                }
+      {renderChatHeader ? (
+        renderChatHeader({ channel: currentGroupChannel, user })
+      ) : (
+        <ChatHeader
+          theme={theme}
+          currentGroupChannel={currentGroupChannel}
+          currentUser={user}
+          showSearchIcon={showSearchIcon}
+          onSearchClick={onSearchClick}
+          onActionClick={onChatHeaderActionClick}
+          subTitle={
+            currentGroupChannel.members &&
+            currentGroupChannel.members.length !== 2
+          }
+          isMuted={false}
+        />
+      )}
+      {isFrozen && <FrozenNotification />}
+      {unreadCount > 0 && (
+        <Notification
+          count={unreadCount}
+          onClick={() => {
+            if (intialTimeStamp) {
+              setIntialTimeStamp(null);
+              setHighLightedMessageId(null);
+            } else {
+              utils.scrollIntoLast();
+              // there is no scroll
+              if (scrollRef.current.scrollTop === 0) {
+                currentGroupChannel.markAsRead();
+                messagesDispatcher({
+                  type: messageActionTypes.MARK_AS_READ,
+                });
               }
-            }}
-            time={unreadSince}
-          />
-        )
-      }
-      {
-        loading
-          ? (
-            <div className="sendbird-conversation">
-              <PlaceHolder type={PlaceHolderTypes.LOADING} />
-            </div>
-          ) : (
-            <ConversationScroll
-              swapParams={
-                sdk && sdk.getErrorFirstCallback && sdk.getErrorFirstCallback()
-              }
-              highLightedMessageId={highLightedMessageId}
-              userId={userId}
-              hasMore={hasMore}
-              disabled={!isOnline}
-              onScroll={onScrollCallback}
-              onScrollDown={onScrollDownCallback}
-              scrollRef={scrollRef}
-              readStatus={readStatus}
-              useReaction={usingReaction}
-              allMessages={allMessages}
-              scrollToMessage={scrollToMessage}
-              emojiAllMap={emojiAllMap}
-              membersMap={nicknamesMap}
-              editDisabled={utils.isDisabledBecauseFrozen(currentGroupChannel)}
-              deleteMessage={deleteMessage}
-              updateMessage={updateMessage}
-              resendMessage={resendMessage}
-              toggleReaction={toggleReaction}
-              emojiContainer={emojiContainer}
-              renderChatItem={renderChatItem}
-              showScrollBot={showScrollBot}
-              onClickScrollBot={() => {
-                setIntialTimeStamp(null);
-                setHighLightedMessageId(null);
-              }}
-              renderCustomMessage={renderCustomMessage}
-              useMessageGrouping={useMessageGrouping}
-              messagesDispatcher={messagesDispatcher}
-              currentGroupChannel={currentGroupChannel}
-              memoizedEmojiListItems={memoizedEmojiListItems}
-            />
-          )
-      }
+            }
+          }}
+          time={unreadSince}
+        />
+      )}
+      {loading ? (
+        <div className="sendbird-conversation">
+          <PlaceHolder type={PlaceHolderTypes.LOADING} />
+        </div>
+      ) : (
+        <ConversationScroll
+          swapParams={
+            sdk && sdk.getErrorFirstCallback && sdk.getErrorFirstCallback()
+          }
+          highLightedMessageId={highLightedMessageId}
+          userId={userId}
+          hasMore={hasMore}
+          disabled={!isOnline}
+          onScroll={onScrollCallback}
+          onScrollDown={onScrollDownCallback}
+          scrollRef={scrollRef}
+          readStatus={readStatus}
+          useReaction={usingReaction}
+          allMessages={allMessages}
+          scrollToMessage={scrollToMessage}
+          emojiAllMap={emojiAllMap}
+          membersMap={nicknamesMap}
+          editDisabled={utils.isDisabledBecauseFrozen(currentGroupChannel)}
+          deleteMessage={deleteMessage}
+          updateMessage={updateMessage}
+          resendMessage={resendMessage}
+          toggleReaction={toggleReaction}
+          emojiContainer={emojiContainer}
+          renderChatItem={renderChatItem}
+          showScrollBot={showScrollBot}
+          onClickScrollBot={() => {
+            setIntialTimeStamp(null);
+            setHighLightedMessageId(null);
+          }}
+          renderCustomMessage={renderCustomMessage}
+          useMessageGrouping={useMessageGrouping}
+          messagesDispatcher={messagesDispatcher}
+          currentGroupChannel={currentGroupChannel}
+          memoizedEmojiListItems={memoizedEmojiListItems}
+        />
+      )}
       <div className="sendbird-conversation__footer">
         <MessageInputWrapper
           channel={currentGroupChannel}
@@ -388,11 +412,9 @@ export const ConversationPanel = (props) => {
         <div className="sendbird-conversation__typing-indicator">
           <TypingIndicator channelUrl={channelUrl} sb={sdk} logger={logger} />
         </div>
-        {
-          !isOnline && (
-            <ConnectionStatus sdkInit={sdkInit} sb={sdk} logger={logger} />
-          )
-        }
+        {!isOnline && (
+          <ConnectionStatus sdkInit={sdkInit} sb={sdk} logger={logger} />
+        )}
       </div>
     </UserProfileProvider>
   );
@@ -440,14 +462,8 @@ ConversationPanel.propTypes = {
     }),
     imageCompression: PropTypes.shape({
       compressionRate: PropTypes.number,
-      resizingWidth: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-      ]),
-      resizingHeight: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-      ]),
+      resizingWidth: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+      resizingHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     }),
   }).isRequired,
   queries: PropTypes.shape({
@@ -463,26 +479,14 @@ ConversationPanel.propTypes = {
     }),
   }),
   startingPoint: PropTypes.number,
-  highlightedMessage: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  highlightedMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onBeforeSendUserMessage: PropTypes.func, // onBeforeSendUserMessage(text)
   onBeforeSendFileMessage: PropTypes.func, // onBeforeSendFileMessage(File)
   onBeforeUpdateUserMessage: PropTypes.func,
-  renderChatItem: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]),
+  renderChatItem: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   renderCustomMessage: PropTypes.func,
-  renderMessageInput: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]),
-  renderChatHeader: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]),
+  renderMessageInput: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  renderChatHeader: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   showSearchIcon: PropTypes.bool,
   onSearchClick: PropTypes.func,
   onChatHeaderActionClick: PropTypes.func,

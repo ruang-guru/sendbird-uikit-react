@@ -2,7 +2,10 @@ import format from 'date-fns/format';
 import * as channelActions from './dux/actionTypes';
 import * as topics from '../../../lib/pubSub/topics';
 
-import { getSendingMessageStatus, getOutgoingMessageStates } from '../../../utils';
+import {
+  getSendingMessageStatus,
+  getOutgoingMessageStates,
+} from '../../../utils';
 
 const MessageStatusType = getOutgoingMessageStates();
 const UNDEFINED = 'undefined';
@@ -15,7 +18,9 @@ export const scrollIntoLast = (intialTry = 0) => {
     return;
   }
   try {
-    const scrollDOM = document.querySelector('.sendbird-conversation__scroll-container');
+    const scrollDOM = document.querySelector(
+      '.sendbird-conversation__scroll-container'
+    );
     // eslint-disable-next-line no-multi-assign
     scrollDOM.scrollTop = scrollDOM.scrollHeight;
   } catch (error) {
@@ -38,53 +43,68 @@ export const pubSubHandleRemover = (subscriber) => {
 export const pubSubHandler = (channelUrl, pubSub, dispatcher) => {
   const subscriber = new Map();
   if (!pubSub || !pubSub.subscribe) return subscriber;
-  subscriber.set(topics.SEND_USER_MESSAGE, pubSub.subscribe(topics.SEND_USER_MESSAGE, (msg) => {
-    const { channel, message } = msg;
-    scrollIntoLast();
-    if (channel && (channelUrl === channel.url)) {
-      dispatcher({
-        type: channelActions.SEND_MESSAGEGE_SUCESS,
-        payload: message,
-      });
-    }
-  }));
-  subscriber.set(topics.SEND_MESSAGE_START, pubSub.subscribe(topics.SEND_MESSAGE_START, (msg) => {
-    const { channel, message } = msg;
-    if (channel && (channelUrl === channel.url)) {
-      dispatcher({
-        type: channelActions.SEND_MESSAGEGE_START,
-        payload: message,
-      });
-    }
-  }));
-  subscriber.set(topics.SEND_FILE_MESSAGE, pubSub.subscribe(topics.SEND_FILE_MESSAGE, (msg) => {
-    const { channel, message } = msg;
-    scrollIntoLast();
-    if (channel && (channelUrl === channel.url)) {
-      dispatcher({
-        type: channelActions.SEND_MESSAGEGE_SUCESS,
-        payload: message,
-      });
-    }
-  }));
-  subscriber.set(topics.UPDATE_USER_MESSAGE, pubSub.subscribe(topics.UPDATE_USER_MESSAGE, (msg) => {
-    const { channel, message, fromSelector } = msg;
-    if (fromSelector && channel && (channelUrl === channel.url)) {
-      dispatcher({
-        type: channelActions.ON_MESSAGE_UPDATED,
-        payload: { channel, message },
-      });
-    }
-  }));
-  subscriber.set(topics.DELETE_MESSAGE, pubSub.subscribe(topics.DELETE_MESSAGE, (msg) => {
-    const { channel, messageId } = msg;
-    if (channel && (channelUrl === channel.url)) {
-      dispatcher({
-        type: channelActions.ON_MESSAGE_DELETED,
-        payload: messageId,
-      });
-    }
-  }));
+  subscriber.set(
+    topics.SEND_USER_MESSAGE,
+    pubSub.subscribe(topics.SEND_USER_MESSAGE, (msg) => {
+      const { channel, message } = msg;
+      scrollIntoLast();
+      if (channel && channelUrl === channel.url) {
+        dispatcher({
+          type: channelActions.SEND_MESSAGEGE_SUCESS,
+          payload: message,
+        });
+      }
+    })
+  );
+  subscriber.set(
+    topics.SEND_MESSAGE_START,
+    pubSub.subscribe(topics.SEND_MESSAGE_START, (msg) => {
+      const { channel, message } = msg;
+      if (channel && channelUrl === channel.url) {
+        dispatcher({
+          type: channelActions.SEND_MESSAGEGE_START,
+          payload: message,
+        });
+      }
+    })
+  );
+  subscriber.set(
+    topics.SEND_FILE_MESSAGE,
+    pubSub.subscribe(topics.SEND_FILE_MESSAGE, (msg) => {
+      const { channel, message } = msg;
+      scrollIntoLast();
+      if (channel && channelUrl === channel.url) {
+        dispatcher({
+          type: channelActions.SEND_MESSAGEGE_SUCESS,
+          payload: message,
+        });
+      }
+    })
+  );
+  subscriber.set(
+    topics.UPDATE_USER_MESSAGE,
+    pubSub.subscribe(topics.UPDATE_USER_MESSAGE, (msg) => {
+      const { channel, message, fromSelector } = msg;
+      if (fromSelector && channel && channelUrl === channel.url) {
+        dispatcher({
+          type: channelActions.ON_MESSAGE_UPDATED,
+          payload: { channel, message },
+        });
+      }
+    })
+  );
+  subscriber.set(
+    topics.DELETE_MESSAGE,
+    pubSub.subscribe(topics.DELETE_MESSAGE, (msg) => {
+      const { channel, messageId } = msg;
+      if (channel && channelUrl === channel.url) {
+        dispatcher({
+          type: channelActions.ON_MESSAGE_DELETED,
+          payload: messageId,
+        });
+      }
+    })
+  );
 
   return subscriber;
 };
@@ -134,15 +154,18 @@ export const isDisabledBecauseMuted = (groupChannel = {}) => {
   return myMutedState === 'muted';
 };
 
-export const getEmojiCategoriesFromEmojiContainer = (emojiContainer = {}) => (
-  emojiContainer.emojiCategories ? emojiContainer.emojiCategories : []
-);
+export const getEmojiCategoriesFromEmojiContainer = (emojiContainer = {}) =>
+  emojiContainer.emojiCategories ? emojiContainer.emojiCategories : [];
 
 export const getAllEmojisFromEmojiContainer = (emojiContainer = {}) => {
   const { emojiCategories = [] } = emojiContainer;
   const allEmojis = [];
 
-  for (let categoryIndex = 0; categoryIndex < emojiCategories.length; categoryIndex += 1) {
+  for (
+    let categoryIndex = 0;
+    categoryIndex < emojiCategories.length;
+    categoryIndex += 1
+  ) {
     const { emojis } = emojiCategories[categoryIndex];
     for (let emojiIndex = 0; emojiIndex < emojis.length; emojiIndex += 1) {
       allEmojis.push(emojis[emojiIndex]);
@@ -151,18 +174,25 @@ export const getAllEmojisFromEmojiContainer = (emojiContainer = {}) => {
   return allEmojis;
 };
 
-export const getEmojisFromEmojiContainer = (emojiContainer = {}, emojiCategoryId = '') => (
+export const getEmojisFromEmojiContainer = (
+  emojiContainer = {},
+  emojiCategoryId = ''
+) =>
   emojiContainer.emojiCategories
-    ? emojiContainer.emojiCategories
-      .filter((emojiCategory) => emojiCategory.id === emojiCategoryId)[0].emojis
-    : []
-);
+    ? emojiContainer.emojiCategories.filter(
+        (emojiCategory) => emojiCategory.id === emojiCategoryId
+      )[0].emojis
+    : [];
 
 export const getAllEmojisMapFromEmojiContainer = (emojiContainer = {}) => {
   const { emojiCategories = [] } = emojiContainer;
   const allEmojisMap = new Map();
 
-  for (let categoryIndex = 0; categoryIndex < emojiCategories.length; categoryIndex += 1) {
+  for (
+    let categoryIndex = 0;
+    categoryIndex < emojiCategories.length;
+    categoryIndex += 1
+  ) {
     const { emojis } = emojiCategories[categoryIndex];
     for (let emojiIndex = 0; emojiIndex < emojis.length; emojiIndex += 1) {
       const { key, url } = emojis[emojiIndex];
@@ -185,34 +215,32 @@ export const getMessageCreatedAt = (message) => format(message.createdAt, 'p');
 
 export const isSameGroup = (message, comparingMessage) => {
   if (
-    !message
-    || !comparingMessage
-    || !message.sender
-    || !comparingMessage.sender
-    || !message.createdAt
-    || !comparingMessage.createdAt
-    || !message.sender.userId
-    || !comparingMessage.sender.userId
+    !message ||
+    !comparingMessage ||
+    !message.sender ||
+    !comparingMessage.sender ||
+    !message.createdAt ||
+    !comparingMessage.createdAt ||
+    !message.sender.userId ||
+    !comparingMessage.sender.userId
   ) {
     return false;
   }
   return (
-    message.sendingStatus === comparingMessage.sendingStatus
-    && message.sender.userId === comparingMessage.sender.userId
-    && getMessageCreatedAt(message) === getMessageCreatedAt(comparingMessage)
+    message.sendingStatus === comparingMessage.sendingStatus &&
+    message.sender.userId === comparingMessage.sender.userId &&
+    getMessageCreatedAt(message) === getMessageCreatedAt(comparingMessage)
   );
 };
 
 export const compareMessagesForGrouping = (
   prevMessage,
   currMessage,
-  nextMessage,
-) => (
-  [
-    isSameGroup(prevMessage, currMessage),
-    isSameGroup(currMessage, nextMessage),
-  ]
-);
+  nextMessage
+) => [
+  isSameGroup(prevMessage, currMessage),
+  isSameGroup(currMessage, nextMessage),
+];
 
 export const hasOwnProperty = (property) => (payload) => {
   // eslint-disable-next-line no-prototype-builtins
@@ -226,10 +254,13 @@ export const passUnsuccessfullMessages = (allMessages, newMessage) => {
   const { sendingStatus = UNDEFINED } = newMessage;
   if (sendingStatus === SUCCEEDED || sendingStatus === PENDING) {
     const lastIndexOfSucceededMessage = allMessages
-      .map((message) => (
-        message.sendingStatus
-        || ((message.isAdminMessage && message.isAdminMessage()) ? SUCCEEDED : UNDEFINED)
-      ))
+      .map(
+        (message) =>
+          message.sendingStatus ||
+          (message.isAdminMessage && message.isAdminMessage()
+            ? SUCCEEDED
+            : UNDEFINED)
+      )
       .lastIndexOf(SUCCEEDED);
     if (lastIndexOfSucceededMessage + 1 < allMessages.length) {
       const messages = [...allMessages];
@@ -237,10 +268,7 @@ export const passUnsuccessfullMessages = (allMessages, newMessage) => {
       return messages;
     }
   }
-  return [
-    ...allMessages,
-    newMessage,
-  ];
+  return [...allMessages, newMessage];
 };
 
 export const pxToNumber = (px) => {

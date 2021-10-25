@@ -1,15 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState } from 'react';
 
-import Sendbird from "../../../../lib/Sendbird";
+import Sendbird from '../../../../lib/Sendbird';
 
-import Channel from "../index";
-import { getSdk, getSendUserMessage } from "../../../../lib/selectors";
-import withSendBird from "../../../../lib/SendbirdSdkContext";
-import COLOR_SET from "../../../../../__mocks__/themeMock";
-import { STRING_SET } from "../../../../../__mocks__/localizationMock";
-import Notification from "../components/Notification";
+import Channel from '../index';
+import { getSdk, getSendUserMessage } from '../../../../lib/selectors';
+import withSendBird from '../../../../lib/SendbirdSdkContext';
+import COLOR_SET from '../../../../../__mocks__/themeMock';
+import { STRING_SET } from '../../../../../__mocks__/localizationMock';
+import Notification from '../components/Notification';
 
-export default { title: "ruangkelas/Smart Components/Channel" };
+export default { title: 'ruangkelas/Smart Components/Channel' };
 
 const appId = process.env.STORYBOOK_APP_ID;
 const userId = process.env.STORYBOOK_USER_ID;
@@ -26,7 +26,7 @@ export const IndependantChannel = () => (
     colorSet={COLOR_SET}
     stringSet={STRING_SET}
   >
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: '100vh' }}>
       <Channel channelUrl={channelUrl} />
     </div>
   </Sendbird>
@@ -34,12 +34,12 @@ export const IndependantChannel = () => (
 
 export const RenderMessageByType = () => (
   <Sendbird appId={appId} userId={userId}>
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: '100vh' }}>
       <Channel
         channelUrl={channelUrl}
         renderCustomMessage={(message, channel) => {
-          if (message.messageType === "user") {
-            return () => <div style={{ color: "red" }}>{message.message}</div>;
+          if (message.messageType === 'user') {
+            return () => <div style={{ color: 'red' }}>{message.message}</div>;
           }
         }}
       />
@@ -49,7 +49,7 @@ export const RenderMessageByType = () => (
 
 export const FrozenChannel = () => (
   <Sendbird appId={frozenAppId} userId={frozenUserId}>
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: '100vh' }}>
       <Channel channelUrl={frozenChannelUrl} />
     </div>
   </Sendbird>
@@ -67,7 +67,7 @@ const MyCustomChatMessage = ({
     <button
       onClick={() => {
         const onDeleteCb = () => {
-          console.warn("message deleted");
+          console.warn('message deleted');
         };
         onDeleteMessage(message, onDeleteCb);
       }}
@@ -77,7 +77,7 @@ const MyCustomChatMessage = ({
     <button
       onClick={() => {
         const onUpdateCb = () => {
-          console.warn("message updated");
+          console.warn('message updated');
         };
         onUpdateMessage(
           message.messageId,
@@ -92,14 +92,14 @@ const MyCustomChatMessage = ({
 );
 export const CustomChatItem = () => (
   <Sendbird appId={appId} userId={userId}>
-    <div style={{ height: "500px" }}>
+    <div style={{ height: '500px' }}>
       <Channel channelUrl={channelUrl} renderChatItem={MyCustomChatMessage} />
     </div>
   </Sendbird>
 );
 
 const CustomChatHeader = ({ channel, user }) => (
-  <div style={{ border: "1px solid red" }}>
+  <div style={{ border: '1px solid red' }}>
     {channel.name} / {user.nickname}
   </div>
 );
@@ -121,7 +121,7 @@ const CustomInput = ({ channel, user, sendMessage, sdk, disabled }) => {
           const params = new sdk.UserMessageParams();
           params.message = value;
           sendMessage(channel.url, params);
-          ref.current.value = "";
+          ref.current.value = '';
         }}
       >
         send
@@ -141,7 +141,7 @@ const CustomInputWithSendbird = withSendBird(CustomInput, (state) => {
 
 export const CustomHeaderAndInput = () => (
   <Sendbird appId={appId} userId={userId}>
-    <div style={{ height: "500px" }}>
+    <div style={{ height: '500px' }}>
       <Channel
         channelUrl={channelUrl}
         renderChatHeader={CustomChatHeader}
@@ -152,25 +152,25 @@ export const CustomHeaderAndInput = () => (
 );
 
 const ChannelWithOnBeforeActions = ({ sdk }) => (
-  <div style={{ height: "520px" }}>
+  <div style={{ height: '520px' }}>
     <Channel
       channelUrl={channelUrl}
       onBeforeSendUserMessage={(text) => {
         const params = new sdk.UserMessageParams();
-        params.message = text + "extra message";
-        params.data = "DATA";
+        params.message = text + 'extra message';
+        params.data = 'DATA';
         return params;
       }}
       onBeforeSendFileMessage={(file) => {
         const params = new sdk.FileMessageParams();
         params.file = file;
-        params.data = "DATA";
+        params.data = 'DATA';
         return params;
       }}
       onBeforeUpdateUserMessage={(text) => {
         const params = new sdk.UserMessageParams();
-        params.message = text + "upadte";
-        params.data = "DATA";
+        params.message = text + 'upadte';
+        params.data = 'DATA';
         return params;
       }}
     />
@@ -189,7 +189,7 @@ export const OnBeforeActionsChannel = () => (
 
 export const DeprecatedQueryParamsForChannel = () => (
   <Sendbird appId={appId} userId={userId}>
-    <div style={{ height: "520px" }}>
+    <div style={{ height: '520px' }}>
       <Channel
         channelUrl={channelUrl}
         queries={{
@@ -211,7 +211,7 @@ export const QueryParamsForChannel = () => {
       prevResultSize: 10,
       includeParentMessageText: true,
       includeReaction: false,
-      senderUserIds: ["hoon302"],
+      senderUserIds: ['hoon302'],
     },
   };
   return (
@@ -223,7 +223,7 @@ export const QueryParamsForChannel = () => {
       >
         Click to change query
       </button>
-      <div style={{ height: "520px" }}>
+      <div style={{ height: '520px' }}>
         <Channel channelUrl={channelUrl} queries={customQuery ? query : {}} />
       </div>
     </Sendbird>
@@ -232,7 +232,7 @@ export const QueryParamsForChannel = () => {
 
 export const UnreadNotification = () => (
   <Sendbird colorSet={COLOR_SET} stringSet={STRING_SET}>
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: '100vh' }}>
       <Notification count={5} time="16.42 24 October 2021" onClick={() => {}} />
     </div>
   </Sendbird>

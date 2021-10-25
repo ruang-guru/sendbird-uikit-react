@@ -6,9 +6,7 @@ import { Typography, Colors } from './types';
 import { changeTypographyToClassName, changeColorToClassName } from './utils';
 import getStringSet from './stringSet';
 
-export default function Label({
-  children, className, color, style, type,
-}) {
+export default function Label({ children, className, color, style, type }) {
   return (
     <span
       className={[

@@ -19,7 +19,10 @@ const failedMessage = generateNormalMessage((message) => {
 });
 
 export const messageStatus = () => [
-  <MessageStatus status={MessageStatusTypes.PENDING} message={pendingMessage} />,
+  <MessageStatus
+    status={MessageStatusTypes.PENDING}
+    message={pendingMessage}
+  />,
   <p />,
   <MessageStatus status={MessageStatusTypes.SENT} message={sentMessage} />,
   <p />,

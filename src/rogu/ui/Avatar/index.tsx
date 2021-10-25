@@ -10,11 +10,14 @@ import pxToNumber from '../../../utils/pxToNumber';
 const imageRendererClassName = 'sendbird-avatar-img';
 
 interface DefaultComponentProps {
-  width: string | number,
-  height: string | number,
+  width: string | number;
+  height: string | number;
 }
 
-const DefaultComponent = ({ width, height }: DefaultComponentProps): ReactElement => {
+const DefaultComponent = ({
+  width,
+  height,
+}: DefaultComponentProps): ReactElement => {
   let iconWidth = pxToNumber(width);
   let iconHeight = pxToNumber(height);
   if (typeof iconWidth === 'number') {
@@ -36,19 +39,22 @@ const DefaultComponent = ({ width, height }: DefaultComponentProps): ReactElemen
   );
 };
 
-const _defaultComponent = ({
-  width,
-  height,
-}: DefaultComponentProps) => (
+const _defaultComponent = ({ width, height }: DefaultComponentProps) => (
   <DefaultComponent width={width} height={height} />
 );
 
 interface AvatarInnerProps {
-  height: string | number,
-  width: string | number,
-  src?: string | Array<string>,
-  alt?: string,
-  customDefaultComponent?({ width, height }: { width: number | string, height: number | string }): ReactElement;
+  height: string | number;
+  width: string | number;
+  src?: string | Array<string>;
+  alt?: string;
+  customDefaultComponent?({
+    width,
+    height,
+  }: {
+    width: number | string;
+    height: number | string;
+  }): ReactElement;
 }
 
 export const AvatarInner = ({
@@ -58,7 +64,10 @@ export const AvatarInner = ({
   width,
   customDefaultComponent,
 }: AvatarInnerProps): ReactElement => {
-  const defaultComponent = () => customDefaultComponent ? customDefaultComponent({ width, height }) : _defaultComponent({ width, height });
+  const defaultComponent = () =>
+    customDefaultComponent
+      ? customDefaultComponent({ width, height })
+      : _defaultComponent({ width, height });
 
   if (typeof src === 'string') {
     return (
@@ -147,20 +156,17 @@ export const AvatarInner = ({
 
     return (
       <div className="sendbird-avatar--inner__four-child">
-        {
-          src.slice(0, 4)
-            .map((i) => (
-              <ImageRenderer
-                className={imageRendererClassName}
-                url={i}
-                height={height}
-                width={width}
-                alt={alt}
-                key={uuidv4()}
-                defaultComponent={defaultComponent}
-              />
-            ))
-        }
+        {src.slice(0, 4).map((i) => (
+          <ImageRenderer
+            className={imageRendererClassName}
+            url={i}
+            height={height}
+            width={width}
+            alt={alt}
+            key={uuidv4()}
+            defaultComponent={defaultComponent}
+          />
+        ))}
       </div>
     );
   }
@@ -178,13 +184,19 @@ export const AvatarInner = ({
 };
 
 interface AvatarProps {
-  className?: string | Array<string>,
-  height?: string | number,
-  width?: string | number,
-  src?: string | Array<string>,
-  alt?: string,
-  onClick?(): void,
-  customDefaultComponent?({ width, height }: { width: number | string, height: number | string }): ReactElement;
+  className?: string | Array<string>;
+  height?: string | number;
+  width?: string | number;
+  src?: string | Array<string>;
+  alt?: string;
+  onClick?(): void;
+  customDefaultComponent?({
+    width,
+    height,
+  }: {
+    width: number | string;
+    height: number | string;
+  }): ReactElement;
 }
 
 function Avatar(
@@ -197,7 +209,7 @@ function Avatar(
     onClick,
     customDefaultComponent,
   }: AvatarProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLDivElement>
 ): ReactElement {
   return (
     <div

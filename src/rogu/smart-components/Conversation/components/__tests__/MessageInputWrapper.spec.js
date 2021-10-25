@@ -1,10 +1,10 @@
-import React from "react";
-import { shallow } from "enzyme";
-import MessageInputWrapper from "../MessageInputWrapper";
-import MessageInput from "../../../../ui/MessageInput";
+import React from 'react';
+import { shallow } from 'enzyme';
+import MessageInputWrapper from '../MessageInputWrapper';
+import MessageInput from '../../../../ui/MessageInput';
 
-describe("MessageInputWrapper", () => {
-  it("should render renderMessageInput if present", () => {
+describe('MessageInputWrapper', () => {
+  it('should render renderMessageInput if present', () => {
     const component = shallow(
       <MessageInputWrapper
         channel={{}}
@@ -12,10 +12,10 @@ describe("MessageInputWrapper", () => {
       />
     );
 
-    expect(component.find("#renderMessageInput").length).toEqual(1);
+    expect(component.find('#renderMessageInput').length).toEqual(1);
   });
 
-  it("should render nothing if broadcast channel and not operator", () => {
+  it('should render nothing if broadcast channel and not operator', () => {
     const component = shallow(
       <MessageInputWrapper
         channel={{
@@ -28,7 +28,7 @@ describe("MessageInputWrapper", () => {
     expect(component.html()).toEqual(null);
   });
 
-  it("should be disabled for normal user when frozen", () => {
+  it('should be disabled for normal user when frozen', () => {
     const component = shallow(
       <MessageInputWrapper
         channel={{
@@ -43,12 +43,12 @@ describe("MessageInputWrapper", () => {
     expect(component.find(MessageInput).props().disabled).toEqual(true);
   });
 
-  it("should be enabled for operator even when frozen", () => {
+  it('should be enabled for operator even when frozen', () => {
     const component = shallow(
       <MessageInputWrapper
         channel={{
           isFrozen: true,
-          myRole: "operator",
+          myRole: 'operator',
         }}
         isOnline={true}
         initialized={true}
@@ -58,7 +58,7 @@ describe("MessageInputWrapper", () => {
     expect(component.find(MessageInput).props().disabled).toEqual(false);
   });
 
-  it("should be disabled if offline", () => {
+  it('should be disabled if offline', () => {
     const component = shallow(
       <MessageInputWrapper channel={{}} isOnline={false} initialized={true} />
     );
@@ -66,7 +66,7 @@ describe("MessageInputWrapper", () => {
     expect(component.find(MessageInput).props().disabled).toEqual(true);
   });
 
-  it("should be disabled if uninitialized", () => {
+  it('should be disabled if uninitialized', () => {
     const component = shallow(
       <MessageInputWrapper channel={{}} isOnline={true} initialized={false} />
     );

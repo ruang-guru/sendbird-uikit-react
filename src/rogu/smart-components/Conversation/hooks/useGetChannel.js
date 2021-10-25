@@ -2,11 +2,10 @@ import { useEffect } from 'react';
 
 import * as messageActionTypes from '../dux/actionTypes';
 
-function useSetChannel({ channelUrl, sdkInit }, {
-  messagesDispatcher,
-  sdk,
-  logger,
-}) {
+function useSetChannel(
+  { channelUrl, sdkInit },
+  { messagesDispatcher, sdk, logger }
+) {
   useEffect(() => {
     if (channelUrl && sdkInit && sdk && sdk.GroupChannel) {
       logger.info('Channel | useSetChannel fetching channel', channelUrl);
@@ -23,7 +22,10 @@ function useSetChannel({ channelUrl, sdkInit }, {
           groupChannel.markAsRead();
         })
         .catch((e) => {
-          logger.warning('Channel | useSetChannel fetch channel failed', { channelUrl, e });
+          logger.warning('Channel | useSetChannel fetch channel failed', {
+            channelUrl,
+            e,
+          });
           messagesDispatcher({
             type: messageActionTypes.SET_CHANNEL_INVALID,
           });

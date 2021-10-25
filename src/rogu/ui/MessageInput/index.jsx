@@ -1,6 +1,4 @@
-import React, {
-  useState, useRef, useEffect, useContext,
-} from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import './index.scss';

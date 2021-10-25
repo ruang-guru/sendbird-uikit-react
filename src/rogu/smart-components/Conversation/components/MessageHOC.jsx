@@ -1,6 +1,4 @@
-import React, {
-  useState, useRef, useMemo, useLayoutEffect,
-} from 'react';
+import React, { useState, useRef, useMemo, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 // import format from 'date-fns/format';
 
@@ -63,7 +61,7 @@ export default function MessageHoc({
         message,
         currentGroupChannel,
         chainTop,
-        chainBottom,
+        chainBottom
       );
       // TODO: Let's change this to object type on next major version up
       // and add params 'hasSeparator' and 'menuDisabled', scrollToMessage
@@ -71,9 +69,10 @@ export default function MessageHoc({
     return null;
   }, [message, message.message, renderCustomMessage]);
 
-  const isByMe = userId === sender.userId
-    || message.requestState === 'pending'
-    || message.requestState === 'failed';
+  const isByMe =
+    userId === sender.userId ||
+    message.requestState === 'pending' ||
+    message.requestState === 'failed';
 
   if (RenderedMessage) {
     return (
@@ -214,9 +213,9 @@ MessageHoc.propTypes = {
           PropTypes.shape({
             key: PropTypes.string,
             url: PropTypes.string,
-          }),
+          })
         ),
-      }),
+      })
     ),
   }),
   toggleReaction: PropTypes.func,
@@ -231,7 +230,7 @@ MessageHoc.defaultProps = {
   // hasSeparator: false,
   disabled: false,
   highLightedMessageId: null,
-  toggleReaction: () => { },
-  scrollToMessage: () => { },
+  toggleReaction: () => {},
+  scrollToMessage: () => {},
   emojiContainer: {},
 };

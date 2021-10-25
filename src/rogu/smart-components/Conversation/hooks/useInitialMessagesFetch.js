@@ -11,24 +11,26 @@ const getLatestMessageTimeStamp = (messages = []) => {
   return (latestMessage && latestMessage.createdAt) || null;
 };
 
-function useInitialMessagesFetch({
-  currentGroupChannel,
-  userFilledMessageListQuery,
-  intialTimeStamp,
-}, {
-  sdk,
-  logger,
-  messagesDispatcher,
-}) {
+function useInitialMessagesFetch(
+  { currentGroupChannel, userFilledMessageListQuery, intialTimeStamp },
+  { sdk, logger, messagesDispatcher }
+) {
   const channelUrl = currentGroupChannel && currentGroupChannel.url;
   useEffect(() => {
-    logger.info('Channel useInitialMessagesFetch: Setup started', currentGroupChannel);
+    logger.info(
+      'Channel useInitialMessagesFetch: Setup started',
+      currentGroupChannel
+    );
     messagesDispatcher({
       type: messageActionTypes.RESET_MESSAGES,
     });
 
-    if (sdk && sdk.MessageListParams
-      && currentGroupChannel && currentGroupChannel.getMessagesByTimestamp) {
+    if (
+      sdk &&
+      sdk.MessageListParams &&
+      currentGroupChannel &&
+      currentGroupChannel.getMessagesByTimestamp
+    ) {
       const messageListParams = new sdk.MessageListParams();
       messageListParams.prevResultSize = PREV_RESULT_SIZE;
       messageListParams.isInclusive = true;
@@ -38,49 +40,55 @@ function useInitialMessagesFetch({
         Object.keys(userFilledMessageListQuery).forEach((key) => {
           messageListParams[key] = userFilledMessageListQuery[key];
         });
-        logger.info('Channel useInitialMessagesFetch: Setup messageListParams', messageListParams);
+        logger.info(
+          'Channel useInitialMessagesFetch: Setup messageListParams',
+          messageListParams
+        );
         messagesDispatcher({
           type: messageActionTypes.MESSAGE_LIST_PARAMS_CHANGED,
           payload: messageListParams,
         });
       }
 
-      logger.info('Channel: Fetching messages', { currentGroupChannel, userFilledMessageListQuery });
+      logger.info('Channel: Fetching messages', {
+        currentGroupChannel,
+        userFilledMessageListQuery,
+      });
       messagesDispatcher({
         type: messageActionTypes.GET_PREV_MESSAGES_START,
       });
 
       if (intialTimeStamp) {
         messageListParams.nextResultSize = NEXT_RESULT_SIZE;
-        currentGroupChannel.getMessagesByTimestamp(
-          intialTimeStamp,
-          messageListParams,
-        )
+        currentGroupChannel
+          .getMessagesByTimestamp(intialTimeStamp, messageListParams)
           .then((messages) => {
-            const hasMore = (messages && messages.length > 0);
-            const lastMessageTimeStamp = hasMore
-              ? messages[0].createdAt
-              : null;
-            const latestFetchedMessageTimeStamp = getLatestMessageTimeStamp(messages);
+            const hasMore = messages && messages.length > 0;
+            const lastMessageTimeStamp = hasMore ? messages[0].createdAt : null;
+            const latestFetchedMessageTimeStamp = getLatestMessageTimeStamp(
+              messages
+            );
             // to make sure there are no more messages below
             const nextMessageListParams = new sdk.MessageListParams();
             nextMessageListParams.nextResultSize = NEXT_RESULT_SIZE;
-            currentGroupChannel.getMessagesByTimestamp(
-              latestFetchedMessageTimeStamp || new Date().getTime(),
-              nextMessageListParams,
-            ).then((nextMessages) => {
-              messagesDispatcher({
-                type: messageActionTypes.GET_PREV_MESSAGES_SUCESS,
-                payload: {
-                  messages,
-                  hasMore,
-                  lastMessageTimeStamp,
-                  currentGroupChannel,
-                  latestFetchedMessageTimeStamp,
-                  hasMoreToBottom: nextMessages && nextMessages.length > 0,
-                },
+            currentGroupChannel
+              .getMessagesByTimestamp(
+                latestFetchedMessageTimeStamp || new Date().getTime(),
+                nextMessageListParams
+              )
+              .then((nextMessages) => {
+                messagesDispatcher({
+                  type: messageActionTypes.GET_PREV_MESSAGES_SUCESS,
+                  payload: {
+                    messages,
+                    hasMore,
+                    lastMessageTimeStamp,
+                    currentGroupChannel,
+                    latestFetchedMessageTimeStamp,
+                    hasMoreToBottom: nextMessages && nextMessages.length > 0,
+                  },
+                });
               });
-            });
           })
           .catch((error) => {
             logger.error('Channel: Fetching messages failed', error);
@@ -101,16 +109,14 @@ function useInitialMessagesFetch({
             currentGroupChannel.markAsRead();
           });
       } else {
-        currentGroupChannel.getMessagesByTimestamp(
-          new Date().getTime(),
-          messageListParams,
-        )
+        currentGroupChannel
+          .getMessagesByTimestamp(new Date().getTime(), messageListParams)
           .then((messages) => {
-            const hasMore = (messages && messages.length > 0);
-            const lastMessageTimeStamp = hasMore
-              ? messages[0].createdAt
-              : null;
-            const latestFetchedMessageTimeStamp = getLatestMessageTimeStamp(messages);
+            const hasMore = messages && messages.length > 0;
+            const lastMessageTimeStamp = hasMore ? messages[0].createdAt : null;
+            const latestFetchedMessageTimeStamp = getLatestMessageTimeStamp(
+              messages
+            );
             messagesDispatcher({
               type: messageActionTypes.GET_PREV_MESSAGES_SUCESS,
               payload: {

@@ -15,7 +15,7 @@ export const setDefaultComponent = () => (
     }
   />
 );
-export const appliedSource = () => ([
+export const appliedSource = () => [
   <ImageRenderer
     url="https://static.sendbird.com/sample/profiles/profile_12_512px.png"
     width="36px"
@@ -40,4 +40,4 @@ export const appliedSource = () => ([
       <Icon type={IconTypes.ADD} fillColor={IconColors.PRIMARY} />
     }
   />,
-]);
+];

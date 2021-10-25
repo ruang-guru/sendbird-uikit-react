@@ -6,11 +6,7 @@ import { LocalizationContext } from '../../../../lib/LocalizationContext';
 import Label, { LabelTypography, LabelColors } from '../../../../ui/Label';
 import Icon, { IconTypes, IconColors } from '../../../../ui/Icon';
 
-export default function Notification({
-  count,
-  time,
-  onClick,
-}) {
+export default function Notification({ count, time, onClick }) {
   const { stringSet } = useContext(LocalizationContext);
   // ex: time = '13.46 14 December 2021', then split into array
   const timeArray = time.split(' ');
@@ -21,7 +17,11 @@ export default function Notification({
   return (
     // eslint-disable-next-line
     <div className="rogu-notification" onClick={onClick}>
-      <Label className="rogu-notification__text" color={LabelColors.ONCONTENT_1} type={LabelTypography.CAPTION_2}>
+      <Label
+        className="rogu-notification__text"
+        color={LabelColors.ONCONTENT_1}
+        type={LabelTypography.CAPTION_2}
+      >
         {`${count} `}
         {stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE}
         {` ${timeArray.join(' ')}`}
@@ -37,10 +37,7 @@ export default function Notification({
 }
 
 Notification.propTypes = {
-  count: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  count: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   time: PropTypes.string,
   onClick: PropTypes.func.isRequired,
 };

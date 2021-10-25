@@ -78,27 +78,25 @@ export default function ImageRenderer({
       }}
     >
       {showPlaceHolder && PlaceHolder}
-      {
-        showDefaultComponent
-          ? DefaultComponent
-          : (
-            <div
-              className="sendbird-image-renderer__image"
-              style={{
-                width: '100%',
-                minWidth: width,
-                maxWidth: '400px',
-                height,
-                position: 'absolute',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(${url})`,
-                borderRadius: circle ? '50%' : null,
-              }}
-            />
-          )
-      }
+      {showDefaultComponent ? (
+        DefaultComponent
+      ) : (
+        <div
+          className="sendbird-image-renderer__image"
+          style={{
+            width: '100%',
+            minWidth: width,
+            maxWidth: '400px',
+            height,
+            position: 'absolute',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundImage: `url(${url})`,
+            borderRadius: circle ? '50%' : null,
+          }}
+        />
+      )}
       {HiddenImageLoader}
     </div>
   );
@@ -111,18 +109,9 @@ ImageRenderer.propTypes = {
   ]),
   url: PropTypes.string.isRequired,
   alt: PropTypes.string,
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  height: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  defaultComponent: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   placeHolder: PropTypes.func,
   circle: PropTypes.bool,
 };

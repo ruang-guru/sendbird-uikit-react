@@ -12,18 +12,17 @@ interface useScrollToMessageStaticParams {
   logger: Logger;
 }
 
-function useScrollToMessage({
-  setIntialTimeStamp,
-  setHighLightedMessageId,
-  allMessages,
-}: useScrollToMessageDynamicParams, {
-  logger,
-}: useScrollToMessageStaticParams): (createdAt: number, messageId: number) => void {
+function useScrollToMessage(
+  {
+    setIntialTimeStamp,
+    setHighLightedMessageId,
+    allMessages,
+  }: useScrollToMessageDynamicParams,
+  { logger }: useScrollToMessageStaticParams
+): (createdAt: number, messageId: number) => void {
   return useCallback(
     (createdAt: number, messageId: number) => {
-      const isPresent = allMessages.find((m) => (
-        m.messageId === messageId
-      ));
+      const isPresent = allMessages.find((m) => m.messageId === messageId);
       setHighLightedMessageId(null);
       setTimeout(() => {
         if (isPresent) {
@@ -36,11 +35,8 @@ function useScrollToMessage({
           setHighLightedMessageId(messageId);
         }
       });
-    }, [
-      setIntialTimeStamp,
-      setHighLightedMessageId,
-      allMessages,
-    ],
+    },
+    [setIntialTimeStamp, setHighLightedMessageId, allMessages]
   );
 }
 

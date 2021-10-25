@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import "./index.scss";
-import Label, { LabelTypography } from "../Label";
+import './index.scss';
+import Label, { LabelTypography } from '../Label';
 
-import { getClassName } from "../../../utils";
-import { getDateSeparatorDifference } from "./utils";
-import { LocalizationContext } from "../../../lib/LocalizationContext";
+import { getClassName } from '../../../utils';
+import { getDateSeparatorDifference } from './utils';
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 export type DateSeparatorProps = {
   className?: string;
@@ -19,7 +19,7 @@ export default function DateSeparator({
   const { stringSet } = useContext(LocalizationContext);
 
   return (
-    <div className={getClassName([className, "rogu-date-separator"])}>
+    <div className={getClassName([className, 'rogu-date-separator'])}>
       <Label
         className="rogu-date-separator__content"
         type={LabelTypography.CAPTION_1}

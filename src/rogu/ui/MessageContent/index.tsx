@@ -1,18 +1,18 @@
-import React, { useContext, useRef, ReactElement } from "react";
-import { GroupChannel, AdminMessage, UserMessage, FileMessage } from "sendbird";
+import React, { useContext, useRef, ReactElement } from 'react';
+import { GroupChannel, AdminMessage, UserMessage, FileMessage } from 'sendbird';
 
-import Label, { LabelTypography, LabelColors } from "../Label";
-import MessageStatus from "../MessageStatus";
-import TextMessageItemBody from "../TextMessageItemBody";
+import Label, { LabelTypography, LabelColors } from '../Label';
+import MessageStatus from '../MessageStatus';
+import TextMessageItemBody from '../TextMessageItemBody';
 
-import Avatar from "../../../ui/Avatar";
-import ClientAdminMessage from "../../../ui/AdminMessage";
-import FileMessageItemBody from "../../../ui/FileMessageItemBody";
-import ThumbnailMessageItemBody from "../../../ui/ThumbnailMessageItemBody";
-import OGMessageItemBody from "../../../ui/OGMessageItemBody";
-import UnknownMessageItemBody from "../../../ui/UnknownMessageItemBody";
+import Avatar from '../../../ui/Avatar';
+import ClientAdminMessage from '../../../ui/AdminMessage';
+import FileMessageItemBody from '../../../ui/FileMessageItemBody';
+import ThumbnailMessageItemBody from '../../../ui/ThumbnailMessageItemBody';
+import OGMessageItemBody from '../../../ui/OGMessageItemBody';
+import UnknownMessageItemBody from '../../../ui/UnknownMessageItemBody';
 
-import { LocalizationContext } from "../../../lib/LocalizationContext";
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 import {
   getClassName,
@@ -29,14 +29,14 @@ import {
   isSentMessage,
   isPendingMessage,
   CoreMessageType,
-} from "../../../utils";
+} from '../../../utils';
 
-import {isAssignmentMessage, isMaterialMessage} from '../../utils';
-import AssignmentMessageItemBody from "../AssignmentMessageItemBody";
-import MaterialMessageItemBody from "../MaterialMessageItemBody";
-import { generateColorFromString } from "./utils";
+import { isAssignmentMessage, isMaterialMessage } from '../../utils';
+import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
+import MaterialMessageItemBody from '../MaterialMessageItemBody';
+import { generateColorFromString } from './utils';
 
-import "./index.scss";
+import './index.scss';
 
 interface Props {
   chainBottom?: boolean;
@@ -89,14 +89,14 @@ Props): ReactElement {
   );
 
   const isByMeClassName = isByMe
-    ? "rogu-message-content--outgoing"
-    : "rogu-message-content--incoming";
+    ? 'rogu-message-content--outgoing'
+    : 'rogu-message-content--incoming';
   const chainBottomClassName = chainBottom
-    ? "rogu-message-content--chain-bottom"
-    : "";
-  const chainTopClassName = chainTop ? "rogu-message-content--chain-top" : "";
+    ? 'rogu-message-content--chain-bottom'
+    : '';
+  const chainTopClassName = chainTop ? 'rogu-message-content--chain-top' : '';
 
-  if (message?.isAdminMessage?.() || message?.messageType === "admin") {
+  if (message?.isAdminMessage?.() || message?.messageType === 'admin') {
     return <ClientAdminMessage message={message} />;
   }
 
@@ -104,7 +104,7 @@ Props): ReactElement {
     <div
       className={getClassName([
         className,
-        "rogu-message-content",
+        'rogu-message-content',
         isByMeClassName,
         chainBottomClassName,
         chainTopClassName,
@@ -114,7 +114,7 @@ Props): ReactElement {
       {!isByMe && !chainTop && (
         <Avatar
           className="rogu-message-content__avatar"
-          src={message?.sender?.profileUrl || ""}
+          src={message?.sender?.profileUrl || ''}
           ref={avatarRef}
           height="2rem"
           width="2rem"
@@ -133,7 +133,7 @@ Props): ReactElement {
                   color={LabelColors.ONBACKGROUND_2}
                   style={{
                     color: generateColorFromString(
-                      message?.sender?.nickname || ""
+                      message?.sender?.nickname || ''
                     ),
                   }}
                   type={LabelTypography.CAPTION_1}
@@ -156,10 +156,7 @@ Props): ReactElement {
 
           {/* Message content */}
           {isTextMessage(message as UserMessage) && (
-            <TextMessageItemBody
-              isByMe={isByMe}
-              message={message?.message}
-            />
+            <TextMessageItemBody isByMe={isByMe} message={message?.message} />
           )}
           {isOGMessage(message as UserMessage) && (
             <OGMessageItemBody
@@ -167,16 +164,18 @@ Props): ReactElement {
               isByMe={isByMe}
             />
           )}
-          {
-           isAssignmentMessage(message.customType) && (
-             <AssignmentMessageItemBody message={message as UserMessage} isByMe={isByMe} />
-           )
-          }
-          {
-            isMaterialMessage(message.customType) && (
-              <MaterialMessageItemBody message={message as UserMessage} isByMe={isByMe} />
-            )
-          }
+          {isAssignmentMessage(message.customType) && (
+            <AssignmentMessageItemBody
+              message={message as UserMessage}
+              isByMe={isByMe}
+            />
+          )}
+          {isMaterialMessage(message.customType) && (
+            <MaterialMessageItemBody
+              message={message as UserMessage}
+              isByMe={isByMe}
+            />
+          )}
           {getUIKitMessageType(message as FileMessage) ===
             messageTypes.FILE && (
             <FileMessageItemBody
@@ -199,7 +198,7 @@ Props): ReactElement {
 
         {/* Message status */}
         {!chainBottom && (
-          <div className={"rogu-message-content__misc"}>
+          <div className={'rogu-message-content__misc'}>
             {isByMe ? (
               <MessageStatus
                 message={message}
@@ -207,7 +206,7 @@ Props): ReactElement {
               />
             ) : (
               <Label
-                className={"rogu-message-content__created-at"}
+                className={'rogu-message-content__created-at'}
                 type={LabelTypography.CAPTION_3}
                 color={LabelColors.ONBACKGROUND_2}
               >

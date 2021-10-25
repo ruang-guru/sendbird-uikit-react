@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 .rogu-assignment-message-item-body {
   position: relative;
@@ -50,7 +50,7 @@
       margin: 0 0 0 3px;
 
       &::before {
-        content: ".";
+        content: '.';
         margin-right: 3px;
       }
     }

@@ -35,7 +35,7 @@ function TypingIndicator({ channelUrl, sb, logger }) {
       handler.onTypingStatusUpdated = (groupChannel) => {
         logger.info(
           'Channel > Typing Indicator: onTypingStatusUpdated',
-          groupChannel,
+          groupChannel
         );
         const members = groupChannel.getTypingMembers();
         if (groupChannel.url === channelUrl) {

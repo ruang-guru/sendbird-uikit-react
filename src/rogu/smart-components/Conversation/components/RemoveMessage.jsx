@@ -5,10 +5,7 @@ import Modal from '../../../../ui/Modal';
 import { LocalizationContext } from '../../../../lib/LocalizationContext';
 
 const RemoveMessage = (props) => {
-  const {
-    onCloseModal,
-    onDeleteMessage,
-  } = props;
+  const { onCloseModal, onDeleteMessage } = props;
   const { stringSet } = useContext(LocalizationContext);
   return (
     <Modal

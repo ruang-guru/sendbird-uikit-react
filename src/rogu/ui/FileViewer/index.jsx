@@ -1,6 +1,4 @@
-import React, {
-  useContext, useRef, useState,
-} from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { format } from 'date-fns';
@@ -12,9 +10,7 @@ import Icon, { IconTypes } from '../Icon';
 import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
 import TextMessageItemBody from '../TextMessageItemBody';
 
-import {
-  isImage, isVideo, isSupportedFileView,
-} from '../../../utils';
+import { isImage, isVideo, isSupportedFileView } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Toast from '../Toast';
 
@@ -81,36 +77,32 @@ export const FileViewerComponent = ({
           </div>
         </div>
         <div className="rogu-fileviewer__header__right">
-          {
-            isSupportedFileView(type) && (
-              <div className="rogu-fileviewer__header__right__actions">
-                <a
-                  className="rogu-fileviewer__header__right__actions__download"
-                  rel="noopener noreferrer"
-                  href={url}
-                  onClick={onDownloadClick}
-                >
+          {isSupportedFileView(type) && (
+            <div className="rogu-fileviewer__header__right__actions">
+              <a
+                className="rogu-fileviewer__header__right__actions__download"
+                rel="noopener noreferrer"
+                href={url}
+                onClick={onDownloadClick}
+              >
+                <Icon
+                  type={IconTypes.ROGU_DOWNLOAD}
+                  height="24px"
+                  width="24px"
+                />
+              </a>
+              {onDelete && isByMe && (
+                <div className="rogu-fileviewer__header__right__actions__delete">
                   <Icon
-                    type={IconTypes.ROGU_DOWNLOAD}
+                    type={IconTypes.ROGU_DELETE}
                     height="24px"
                     width="24px"
+                    onClick={onDelete}
                   />
-                </a>
-                {
-                  onDelete && isByMe && (
-                    <div className="rogu-fileviewer__header__right__actions__delete">
-                      <Icon
-                        type={IconTypes.ROGU_DELETE}
-                        height="24px"
-                        width="24px"
-                        onClick={onDelete}
-                      />
-                    </div>
-                  )
-                }
-              </div>
-            )
-          }
+                </div>
+              )}
+            </div>
+          )}
           <div className="rogu-fileviewer__header__right__actions__close">
             <Icon
               type={IconTypes.ROGU_CLOSE}
@@ -134,41 +126,37 @@ export const FileViewerComponent = ({
             <source src={url} type={type} />
           </video>
         )}
-        {
-          isImage(type) && (
-            <img
-              onFocus={onMediaFocus}
-              onBlur={onMediaBlur}
-              // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-              tabIndex="0"
-              ref={contentRef}
-              src={url}
-              alt={`Uploaded by ${userName}`}
-              className="rogu-fileviewer__content__img"
-            />
-          )
-        }
-        {captionMsg
-          && (
-            <TextMessageItemBody
-              message={captionMsg}
-              viewerCaptionMode
-              isHidden={isCaptionHidden}
-            />
-          )}
-        {
-          !isSupportedFileView(type) && (
-            <div className="rogu-fileviewer__content__unsupported">
-              <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
-                Unsupported message
-              </Label>
-            </div>
-          )
-        }
+        {isImage(type) && (
+          <img
+            onFocus={onMediaFocus}
+            onBlur={onMediaBlur}
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            tabIndex="0"
+            ref={contentRef}
+            src={url}
+            alt={`Uploaded by ${userName}`}
+            className="rogu-fileviewer__content__img"
+          />
+        )}
+        {captionMsg && (
+          <TextMessageItemBody
+            message={captionMsg}
+            viewerCaptionMode
+            isHidden={isCaptionHidden}
+          />
+        )}
+        {!isSupportedFileView(type) && (
+          <div className="rogu-fileviewer__content__unsupported">
+            <Label
+              type={LabelTypography.H_1}
+              color={LabelColors.ONBACKGROUND_1}
+            >
+              Unsupported message
+            </Label>
+          </div>
+        )}
       </div>
-      {showToast && (
-        <Toast message={stringSet.TOAST__DOWNLOAD} />
-      )}
+      {showToast && <Toast message={stringSet.TOAST__DOWNLOAD} />}
     </div>
   );
 };
@@ -190,35 +178,22 @@ FileViewerComponent.defaultProps = {
 };
 
 export default function FileViewer(props) {
-  const {
-    message,
-    isByMe,
-    onClose,
-    onDelete,
-  } = props;
-  const {
-    sender,
-    type,
-    url,
-    name: captionMsg = '',
-    createdAt,
-  } = message;
+  const { message, isByMe, onClose, onDelete } = props;
+  const { sender, type, url, name: captionMsg = '', createdAt } = message;
   const { profileUrl, nickname: userName = '' } = sender;
   return createPortal(
-    (
-      <FileViewerComponent
-        profileUrl={profileUrl}
-        userName={userName}
-        type={type}
-        url={url}
-        captionMsg={captionMsg}
-        onClose={onClose}
-        onDelete={onDelete}
-        isByMe={isByMe}
-        createdAt={createdAt}
-      />
-    ),
-    document.getElementById(MODAL_ROOT),
+    <FileViewerComponent
+      profileUrl={profileUrl}
+      userName={userName}
+      type={type}
+      url={url}
+      captionMsg={captionMsg}
+      onClose={onClose}
+      onDelete={onDelete}
+      isByMe={isByMe}
+      createdAt={createdAt}
+    />,
+    document.getElementById(MODAL_ROOT)
   );
 }
 

@@ -12,11 +12,7 @@ import {
 } from '../../../utils';
 
 export const MessageStatusTypes = getOutgoingMessageStates();
-export default function MessageStatus({
-  className,
-  message,
-  status,
-}) {
+export default function MessageStatus({ className, message, status }) {
   const iconType = {
     [MessageStatusTypes.SENT]: IconTypes.ROGU_SENT,
     [MessageStatusTypes.DELIVERED]: IconTypes.ROGU_SENT,
@@ -40,44 +36,41 @@ export default function MessageStatus({
           {getMessageCreatedAt(message)}
         </Label>
       )}
-      {(status === MessageStatusTypes.PENDING)
-        ? (
-          <div className="rogu-flex">
+      {status === MessageStatusTypes.PENDING ? (
+        <div className="rogu-flex">
+          <Label
+            className="rogu-message-status__text"
+            type={LabelTypography.CAPTION_3}
+            color={LabelColors.ONBACKGROUND_2}
+          >
+            Mengirim
+          </Label>
+          <Icon
+            className="rogu-message-status__icon"
+            type={IconTypes.ROGU_PENDING}
+            width="18px"
+            height="18px"
+          />
+        </div>
+      ) : (
+        <div className="rogu-flex">
+          {status === MessageStatusTypes.FAILED && (
             <Label
               className="rogu-message-status__text"
               type={LabelTypography.CAPTION_3}
               color={LabelColors.ONBACKGROUND_2}
             >
-              Mengirim
+              Gagal terkirim
             </Label>
-            <Icon
-              className="rogu-message-status__icon"
-              type={IconTypes.ROGU_PENDING}
-              width="18px"
-              height="18px"
-            />
-          </div>
-        )
-        : (
-          <div className="rogu-flex">
-            {status === MessageStatusTypes.FAILED
-              && (
-              <Label
-                className="rogu-message-status__text"
-                type={LabelTypography.CAPTION_3}
-                color={LabelColors.ONBACKGROUND_2}
-              >
-                Gagal terkirim
-              </Label>
-              )}
-            <Icon
-              className="rogu-message-status__icon"
-              type={iconType[status] || IconTypes.ERROR}
-              width="18px"
-              height="18px"
-            />
-          </div>
-        )}
+          )}
+          <Icon
+            className="rogu-message-status__icon"
+            type={iconType[status] || IconTypes.ERROR}
+            width="18px"
+            height="18px"
+          />
+        </div>
+      )}
     </div>
   );
 }

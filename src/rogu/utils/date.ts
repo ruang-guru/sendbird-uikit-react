@@ -1,4 +1,4 @@
-import { Day } from "date-fns";
+import { Day } from 'date-fns';
 
 export type DayStringType = { [key in Day]: string };
 

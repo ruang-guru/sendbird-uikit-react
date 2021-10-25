@@ -4,14 +4,14 @@ import React, {
   useRef,
   useState,
   ReactElement,
-} from "react";
+} from 'react';
 
-import TextButton from "../TextButton";
-import Label, { LabelTypography, LabelColors } from "../Label";
-import { getClassName } from "../../../utils";
-import { LocalizationContext } from "../../../lib/LocalizationContext";
+import TextButton from '../TextButton';
+import Label, { LabelTypography, LabelColors } from '../Label';
+import { getClassName } from '../../../utils';
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 
-import "./index.scss";
+import './index.scss';
 
 interface Props {
   className?: string | Array<string>;
@@ -21,7 +21,7 @@ interface Props {
   isHidden?: boolean;
 }
 
-type ClampType = "init" | "clamped" | "expanded";
+type ClampType = 'init' | 'clamped' | 'expanded';
 
 export default function TextMessageItemBody({
   className,
@@ -31,7 +31,7 @@ export default function TextMessageItemBody({
   isHidden = false,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
-  const [clampState, setClampState] = useState<ClampType>("init");
+  const [clampState, setClampState] = useState<ClampType>('init');
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,28 +39,28 @@ export default function TextMessageItemBody({
       textRef.current &&
       textRef.current.scrollHeight > textRef.current.clientHeight
     ) {
-      setClampState("clamped");
+      setClampState('clamped');
     }
   }, [textRef.current]);
 
   function handleExpand() {
-    setClampState("expanded");
+    setClampState('expanded');
   }
 
   return (
     <div
       className={getClassName([
         className,
-        "rogu-text-message-item-body",
-        clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "",
-        !isByMe ? "rogu-text-message-item-body--incoming" : "",
-        viewerCaptionMode ? "viewer-mode" : "",
+        'rogu-text-message-item-body',
+        clampState == 'expanded' ? 'rogu-text-message-item-body--expanded' : '',
+        !isByMe ? 'rogu-text-message-item-body--incoming' : '',
+        viewerCaptionMode ? 'viewer-mode' : '',
         viewerCaptionMode && isHidden ? 'hidden' : '',
       ])}
     >
       <div ref={textRef} className="rogu-text-message-item-body__inner">
         {message?.split(/\r/).map((word, i) =>
-          word === "" ? (
+          word === '' ? (
             <br key={i} />
           ) : (
             <Label
@@ -75,7 +75,7 @@ export default function TextMessageItemBody({
         )}
       </div>
 
-      {clampState === "clamped" && (
+      {clampState === 'clamped' && (
         <TextButton
           className="rogu-text-message-item-body__read-more"
           onClick={handleExpand}

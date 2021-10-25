@@ -29,7 +29,7 @@ export default class ConversationScroll extends Component {
         return;
       }
       const nodes = scrollRef.current.querySelectorAll(
-        '.sendbird-msg--scroll-ref',
+        '.sendbird-msg--scroll-ref'
       );
       const first = nodes && nodes[0];
       onScroll(([messages]) => {
@@ -46,7 +46,7 @@ export default class ConversationScroll extends Component {
 
     if (clientHeight + scrollTop === scrollHeight) {
       const nodes = scrollRef.current.querySelectorAll(
-        '.sendbird-msg--scroll-ref',
+        '.sendbird-msg--scroll-ref'
       );
       const last = nodes && nodes[nodes.length - 1];
       onScrollDown(([messages]) => {
@@ -136,10 +136,10 @@ export default class ConversationScroll extends Component {
                       const nextMessage = messages[idx + 1];
                       const [chainTop, chainBottom] = useMessageGrouping
                         ? compareMessagesForGrouping(
-                          previousMessage,
-                          m,
-                          nextMessage,
-                        )
+                            previousMessage,
+                            m,
+                            nextMessage
+                          )
                         : [false, false];
 
                       if (renderChatItem) {
@@ -195,7 +195,7 @@ export default class ConversationScroll extends Component {
                     })}
                   </>
                 );
-              },
+              }
             )}
             {/* {allMessages.map((m, idx) => {
               const previousMessage = allMessages[idx - 1];
@@ -299,7 +299,7 @@ ConversationScroll.propTypes = {
   allMessages: PropTypes.arrayOf(
     PropTypes.shape({
       createdAt: PropTypes.number,
-    }),
+    })
   ).isRequired,
   deleteMessage: PropTypes.func.isRequired,
   resendMessage: PropTypes.func.isRequired,

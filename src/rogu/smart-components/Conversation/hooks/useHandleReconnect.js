@@ -3,13 +3,16 @@ import { useEffect } from 'react';
 import * as utils from '../utils';
 import * as messageActionTypes from '../dux/actionTypes';
 
-function useHandleReconnect({ isOnline }, {
-  logger,
-  sdk,
-  currentGroupChannel,
-  messagesDispatcher,
-  userFilledMessageListQuery,
-}) {
+function useHandleReconnect(
+  { isOnline },
+  {
+    logger,
+    sdk,
+    currentGroupChannel,
+    messagesDispatcher,
+    userFilledMessageListQuery,
+  }
+) {
   useEffect(() => {
     const wasOffline = !isOnline;
     return () => {
@@ -29,25 +32,26 @@ function useHandleReconnect({ isOnline }, {
             messageListParams[key] = userFilledMessageListQuery[key];
           });
         }
-        logger.info('Channel: Fetching messages', { currentGroupChannel, userFilledMessageListQuery });
+        logger.info('Channel: Fetching messages', {
+          currentGroupChannel,
+          userFilledMessageListQuery,
+        });
         messagesDispatcher({
           type: messageActionTypes.GET_PREV_MESSAGES_START,
         });
 
-        sdk.GroupChannel.getChannel(currentGroupChannel.url)
-          .then((groupChannel) => {
+        sdk.GroupChannel.getChannel(currentGroupChannel.url).then(
+          (groupChannel) => {
             const lastMessageTime = new Date().getTime();
 
-            groupChannel.getMessagesByTimestamp(
-              lastMessageTime,
-              messageListParams,
-            )
+            groupChannel
+              .getMessagesByTimestamp(lastMessageTime, messageListParams)
               .then((messages) => {
                 messagesDispatcher({
                   type: messageActionTypes.CLEAR_SENT_MESSAGES,
                 });
 
-                const hasMore = (messages && messages.length > 0);
+                const hasMore = messages && messages.length > 0;
                 const lastMessageTimeStamp = hasMore
                   ? messages[0].createdAt
                   : null;
@@ -68,7 +72,8 @@ function useHandleReconnect({ isOnline }, {
               .finally(() => {
                 currentGroupChannel.markAsRead();
               });
-          });
+          }
+        );
       }
     };
   }, [isOnline]);
