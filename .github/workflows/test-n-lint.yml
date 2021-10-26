@@ -26,4 +26,4 @@ jobs:
 
     - run: npm install
     - run: npm run lint
-    - run: npm run test-update-snapshot
+    - run: npm run test
