@@ -14,6 +14,7 @@ export const STRING_SET = {
   LABEL__DAY_SATURDAY: 'Sabtu',
   ROGU__MODAL__DELETE_MESSAGE__TITLE: 'Yakin kamu mau menghapus chat?',
   ROGU__MODAL__DELETE_MESSAGE__SUBTITLE: 'Chat yang telah kamu hapus tidak bisa dilihat dan diakses kembali',
+  TOAST__MAX_FILE_SIZE_ERROR: 'Gagal terkirim, ukuran melebihi 10MB',
 };
 
 export default STRING_SET;

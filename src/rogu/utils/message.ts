@@ -1,28 +1,22 @@
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 
-import { CoreMessageType } from "../../utils"
+import { CoreMessageType } from '../../utils';
 
-// eslint-disable-next-line
-export const groupMessagesByDate = (messages: Array<CoreMessageType>) => {
-    return messages.reduce(
-        (groupedMessagesByDate, currMessage) => {
-          const messageDate = format(currMessage.createdAt, "dd/MM/yyyy");
-          const currentGroup = groupedMessagesByDate.get(messageDate);
+export const groupMessagesByDate = (
+  messages: Array<CoreMessageType>
+): Map<string, CoreMessageType> => {
+  return messages.reduce((groupedMessagesByDate, currMessage) => {
+    const messageDate = format(currMessage.createdAt, 'dd/MM/yyyy');
+    const currentGroup = groupedMessagesByDate.get(messageDate);
 
-          if (currentGroup) {
-            groupedMessagesByDate.set(messageDate, [
-              ...currentGroup,
-              currMessage,
-            ]);
-          } else {
-            groupedMessagesByDate.set(messageDate, [currMessage]);
-          }
+    if (currentGroup) {
+      groupedMessagesByDate.set(messageDate, [...currentGroup, currMessage]);
+    } else {
+      groupedMessagesByDate.set(messageDate, [currMessage]);
+    }
 
-          return groupedMessagesByDate
-        },
-        new Map(),
-      );
-      
+    return groupedMessagesByDate;
+  }, new Map());
 };
 
 export default groupMessagesByDate;
