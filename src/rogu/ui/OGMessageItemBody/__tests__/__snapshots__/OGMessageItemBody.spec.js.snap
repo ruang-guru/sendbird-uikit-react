@@ -2,7 +2,7 @@
 
 exports[`OGMessageItemBody should do a snapshot test of the OGMessageItemBody DOM 1`] = `
 <div
-  className=" rogu-og-message-item-body rogu-og-message-incoming  "
+  className=" rogu-og-message-item-body rogu-og-message--incoming  "
 >
   <div
     className="rogu-og-message-item-body__og-container"
