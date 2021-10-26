@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-9006a930.js');
-var index$1 = require('./index-8a966d14.js');
+var LocalizationContext = require('./LocalizationContext-61863b7a.js');
+var index$1 = require('./index-adf06a7a.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-59b02106.js');
-var index$3 = require('./index-d25d24e8.js');
-var Channel = require('./index-3f7e7fe6.js');
+var index$2 = require('./index-2503aa8c.js');
+var index$3 = require('./index-6909f2d9.js');
+var Channel = require('./index-15d2e1cc.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-1922f704.js');
+require('./actionTypes-824fd333.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-0ceded22.js');
-require('./utils-e0c8d893.js');
-require('./LeaveChannel-741f99a1.js');
-require('./index-8ae5d9ac.js');
-require('./index-15637446.js');
-require('./index-c3181efe.js');
+require('./index-58306185.js');
+require('./utils-1e130e9d.js');
+require('./LeaveChannel-f0395ade.js');
+require('./index-2d79b719.js');
+require('./index-f634b468.js');
+require('./index-ba938b9d.js');
 require('./ChannelSettings.js');
-require('./index-7f36548e.js');
+require('./index-ffc8e71c.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -1863,7 +1863,7 @@ Label.defaultProps = {
 var LabelTypography = Typography;
 var LabelColors = Colors$1;
 
-var Type = {
+var Type$1 = {
   ADD: 'ADD',
   ARROW_LEFT: 'ARROW_LEFT',
   ATTACH: 'ATTACH',
@@ -2401,205 +2401,205 @@ function changeColorToClassName(color) {
 
 function changeTypeToIconComponent(type) {
   switch (type) {
-    case Type.ADD:
+    case Type$1.ADD:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconAdd, null);
 
-    case Type.ARROW_LEFT:
+    case Type$1.ARROW_LEFT:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconArrowLeft, null);
 
-    case Type.ATTACH:
+    case Type$1.ATTACH:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconAttach, null);
 
-    case Type.BAN:
+    case Type$1.BAN:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconBan, null);
 
-    case Type.BROADCAST:
+    case Type$1.BROADCAST:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconBroadcast, null);
 
-    case Type.CAMERA:
+    case Type$1.CAMERA:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCamera, null);
 
-    case Type.CHANNELS:
+    case Type$1.CHANNELS:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChannels, null);
 
-    case Type.CHAT:
+    case Type$1.CHAT:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChat, null);
 
-    case Type.CHAT_FILLED:
+    case Type$1.CHAT_FILLED:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChatFilled, null);
 
-    case Type.CHEVRON_DOWN:
+    case Type$1.CHEVRON_DOWN:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChevronDown, null);
 
-    case Type.CHEVRON_RIGHT:
+    case Type$1.CHEVRON_RIGHT:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChevronRight, null);
 
-    case Type.CLOSE:
+    case Type$1.CLOSE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconClose, null);
 
-    case Type.COLLAPSE:
+    case Type$1.COLLAPSE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCollapse, null);
 
-    case Type.COPY:
+    case Type$1.COPY:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCopy, null);
 
-    case Type.CREATE:
+    case Type$1.CREATE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCreate, null);
 
-    case Type.DELETE:
+    case Type$1.DELETE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDelete, null);
 
-    case Type.DISCONNECTED:
+    case Type$1.DISCONNECTED:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDisconnected, null);
 
-    case Type.DOCUMENT:
+    case Type$1.DOCUMENT:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDocument, null);
 
-    case Type.DONE:
+    case Type$1.DONE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDone, null);
 
-    case Type.DONE_ALL:
+    case Type$1.DONE_ALL:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDoneAll, null);
 
-    case Type.DOWNLOAD:
+    case Type$1.DOWNLOAD:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDownload, null);
 
-    case Type.EDIT:
+    case Type$1.EDIT:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconEdit, null);
 
-    case Type.EMOJI_MORE:
+    case Type$1.EMOJI_MORE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconEmojiMore, null);
 
-    case Type.ERROR:
+    case Type$1.ERROR:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconError, null);
 
-    case Type.EXPAND:
+    case Type$1.EXPAND:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconExpand, null);
 
-    case Type.FILE_AUDIO:
+    case Type$1.FILE_AUDIO:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconFileAudio, null);
 
-    case Type.FILE_DOCUMENT:
+    case Type$1.FILE_DOCUMENT:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconFileDocument, null);
 
-    case Type.FREEZE:
+    case Type$1.FREEZE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconFreeze, null);
 
-    case Type.GIF:
+    case Type$1.GIF:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconGif, null);
 
-    case Type.INFO:
+    case Type$1.INFO:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconInfo, null);
 
-    case Type.LEAVE:
+    case Type$1.LEAVE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconLeave, null);
 
-    case Type.MEMBERS:
+    case Type$1.MEMBERS:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMembers, null);
 
-    case Type.MESSAGE:
+    case Type$1.MESSAGE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMessage, null);
 
-    case Type.MODERATIONS:
+    case Type$1.MODERATIONS:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconModerations, null);
 
-    case Type.MORE:
+    case Type$1.MORE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMore, null);
 
-    case Type.MUTE:
+    case Type$1.MUTE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMute, null);
 
-    case Type.NOTIFICATIONS:
+    case Type$1.NOTIFICATIONS:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconNotifications, null);
 
-    case Type.NOTIFICATIONS_OFF_FILLED:
+    case Type$1.NOTIFICATIONS_OFF_FILLED:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconNotificationsOffFilled, null);
 
-    case Type.OPERATOR:
+    case Type$1.OPERATOR:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconOperator, null);
 
-    case Type.PHOTO:
+    case Type$1.PHOTO:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconPhoto, null);
 
-    case Type.PLAY:
+    case Type$1.PLAY:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconPlay, null);
 
-    case Type.PLUS:
+    case Type$1.PLUS:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconPlus, null);
 
-    case Type.QUESTION:
+    case Type$1.QUESTION:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconQuestion, null);
 
-    case Type.REFRESH:
+    case Type$1.REFRESH:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconRefresh, null);
 
-    case Type.REMOVE:
+    case Type$1.REMOVE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconRemove, null);
 
-    case Type.REPLY:
+    case Type$1.REPLY:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconReplyFilled, null);
 
-    case Type.SEARCH:
+    case Type$1.SEARCH:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSearch, null);
 
-    case Type.SEND:
+    case Type$1.SEND:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSend, null);
 
-    case Type.SETTINGS_FILLED:
+    case Type$1.SETTINGS_FILLED:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSettingsFilled, null);
 
-    case Type.SPINNER:
+    case Type$1.SPINNER:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSpinner, null);
 
-    case Type.SUPERGROUP:
+    case Type$1.SUPERGROUP:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSupergroup, null);
 
-    case Type.THUMBNAIL_NONE:
+    case Type$1.THUMBNAIL_NONE:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconThumbnailNone, null);
 
-    case Type.TOGGLE_OFF:
+    case Type$1.TOGGLE_OFF:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconToggleoff, null);
 
-    case Type.TOGGLE_ON:
+    case Type$1.TOGGLE_ON:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconToggleon, null);
 
-    case Type.USER:
+    case Type$1.USER:
       return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconUser, null);
 
-    case Type.ROGU_PENDING:
+    case Type$1.ROGU_PENDING:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgPending, null);
 
-    case Type.ROGU_SENT:
+    case Type$1.ROGU_SENT:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgSent, null);
 
-    case Type.ROGU_READ_ALL:
+    case Type$1.ROGU_READ_ALL:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgReadAll, null);
 
-    case Type.ROGU_ERROR:
+    case Type$1.ROGU_ERROR:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgFailed, null);
 
-    case Type.ROGU_COPY:
+    case Type$1.ROGU_COPY:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconCopy, null);
 
-    case Type.ROGU_REPLY:
+    case Type$1.ROGU_REPLY:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconReply, null);
 
-    case Type.ROGU_RESEND:
+    case Type$1.ROGU_RESEND:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconResend, null);
 
-    case Type.ROGU_CLOSE:
+    case Type$1.ROGU_CLOSE:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconClose, null);
 
-    case Type.ROGU_DOWNLOAD:
+    case Type$1.ROGU_DOWNLOAD:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconDownload, null);
 
-    case Type.ROGU_DELETE:
+    case Type$1.ROGU_DELETE:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconDelete, null);
 
-    case Type.ROGU_ASSIGNMENT:
+    case Type$1.ROGU_ASSIGNMENT:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconAssignment, null);
 
-    case Type.ROGU_MATERIAL:
+    case Type$1.ROGU_MATERIAL:
       return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMaterial, null);
 
     default:
@@ -2633,7 +2633,7 @@ function Icon(_ref) {
 }
 Icon.propTypes = {
   className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
-  type: PropTypes__default["default"].oneOfType([PropTypes__default["default"].oneOf(Object.keys(Type)), PropTypes__default["default"].string]).isRequired,
+  type: PropTypes__default["default"].oneOfType([PropTypes__default["default"].oneOf(Object.keys(Type$1)), PropTypes__default["default"].string]).isRequired,
   fillColor: PropTypes__default["default"].oneOf(Object.keys(Colors)),
   width: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number]),
   height: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number]),
@@ -2648,7 +2648,7 @@ Icon.defaultProps = {
   onClick: function onClick() {},
   children: null
 };
-var IconTypes = Type;
+var IconTypes = Type$1;
 var IconColors = Colors;
 
 var MessageStatusTypes = index$1.getOutgoingMessageStates();
@@ -3700,6 +3700,266 @@ MessageInput.defaultProps = {
   onStartTyping: noop$1
 };
 
+var IconButton = /*#__PURE__*/React__default["default"].forwardRef(function (props, ref) {
+  var className = props.className,
+      children = props.children,
+      disabled = props.disabled,
+      width = props.width,
+      height = props.height,
+      type = props.type,
+      _onClick = props.onClick,
+      _onBlur = props.onBlur,
+      style = props.style;
+
+  var _useState = React.useState(''),
+      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
+      pressed = _useState2[0],
+      setPressed = _useState2[1];
+
+  return (
+    /*#__PURE__*/
+    // eslint-disable-next-line react/button-has-type
+    React__default["default"].createElement("button", {
+      className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-iconbutton', pressed]).join(' '),
+      disabled: disabled,
+      ref: ref,
+      type: type // eslint-disable-line react/button-has-type
+      ,
+      style: LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, style), {}, {
+        height: height,
+        width: width
+      }),
+      onClick: function onClick(e) {
+        if (disabled) {
+          return;
+        }
+
+        setPressed('sendbird-iconbutton--pressed');
+
+        _onClick(e);
+      },
+      onBlur: function onBlur(e) {
+        setPressed('');
+
+        _onBlur(e);
+      }
+    }, /*#__PURE__*/React__default["default"].createElement("span", {
+      className: "sendbird-iconbutton__inner"
+    }, children))
+  );
+});
+IconButton.propTypes = {
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element), PropTypes__default["default"].any]).isRequired,
+  disabled: PropTypes__default["default"].bool,
+  width: PropTypes__default["default"].string,
+  height: PropTypes__default["default"].string,
+  type: PropTypes__default["default"].string,
+  onClick: PropTypes__default["default"].func,
+  onBlur: PropTypes__default["default"].func,
+  style: PropTypes__default["default"].shape({})
+};
+IconButton.defaultProps = {
+  className: '',
+  disabled: false,
+  width: '56px',
+  height: '56px',
+  type: 'button',
+  onClick: function onClick() {},
+  onBlur: function onBlur() {},
+  style: {}
+};
+
+var Type = {
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+  DANGER: 'DANGER',
+  DISABLED: 'DISABLED'
+};
+var Size = {
+  BIG: 'BIG',
+  SMALL: 'SMALL'
+};
+
+function changeTypeToClassName(type) {
+  switch (type) {
+    case Type.PRIMARY:
+      return 'rogu-button--primary';
+
+    case Type.SECONDARY:
+      return 'rogu-button--secondary';
+
+    case Type.DANGER:
+      return 'rogu-button--danger';
+
+    case Type.DISABLED:
+      return 'rogu-button--disabled';
+
+    default:
+      return null;
+  }
+}
+function changeSizeToClassName(size) {
+  switch (size) {
+    case Size.BIG:
+      return 'rogu-button--big';
+
+    case Size.SMALL:
+      return 'rogu-button--small';
+
+    default:
+      return null;
+  }
+}
+
+function Button(_ref) {
+  var className = _ref.className,
+      type = _ref.type,
+      size = _ref.size,
+      children = _ref.children,
+      disabled = _ref.disabled,
+      onClick = _ref.onClick;
+  var injectingClassNames = [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-button', disabled ? 'rogu-button__disabled' : '', changeTypeToClassName(type), changeSizeToClassName(size)]).join(' ');
+  return /*#__PURE__*/React__default["default"].createElement("button", {
+    className: injectingClassNames,
+    type: "button",
+    onClick: onClick,
+    disabled: disabled
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-button__text",
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONCONTENT_1
+  }, children));
+}
+var ButtonTypes = Type;
+Button.propTypes = {
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
+  type: PropTypes__default["default"].oneOf(Object.keys(Type)),
+  size: PropTypes__default["default"].oneOf(Object.keys(Size)),
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element)]),
+  disabled: PropTypes__default["default"].bool,
+  onClick: PropTypes__default["default"].func
+};
+Button.defaultProps = {
+  className: '',
+  type: Type.PRIMARY,
+  size: Size.BIG,
+  children: 'Button',
+  disabled: false,
+  onClick: function onClick() {}
+};
+
+var ModalHeader = function ModalHeader(_ref) {
+  var titleText = _ref.titleText;
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-modal__header"
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-modal__title",
+    type: LabelTypography.H_3,
+    color: LabelColors.ONBACKGROUND_1
+  }, titleText));
+};
+ModalHeader.propTypes = {
+  titleText: PropTypes__default["default"].string.isRequired
+};
+var ModalBody = function ModalBody(_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-modal__body"
+  }, children);
+};
+ModalBody.propTypes = {
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element.isRequired, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element.isRequired)])
+};
+ModalBody.defaultProps = {
+  children: null
+};
+var ModalFooter = function ModalFooter(_ref3) {
+  var onSubmit = _ref3.onSubmit,
+      onCancel = _ref3.onCancel,
+      _ref3$disabled = _ref3.disabled,
+      disabled = _ref3$disabled === void 0 ? false : _ref3$disabled,
+      submitText = _ref3.submitText;
+
+  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+      stringSet = _useContext.stringSet;
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-modal__footer"
+  }, /*#__PURE__*/React__default["default"].createElement(Button, {
+    className: "rogu-modal-button",
+    type: ButtonTypes.SECONDARY,
+    disabled: disabled,
+    onClick: onSubmit
+  }, submitText), /*#__PURE__*/React__default["default"].createElement(Button, {
+    className: "rogu-modal-button",
+    type: ButtonTypes.PRIMARY,
+    onClick: onCancel
+  }, stringSet.BUTTON__CANCEL));
+};
+ModalFooter.propTypes = {
+  onCancel: PropTypes__default["default"].func.isRequired,
+  onSubmit: PropTypes__default["default"].func.isRequired,
+  submitText: PropTypes__default["default"].string.isRequired,
+  disabled: PropTypes__default["default"].bool
+};
+ModalFooter.defaultProps = {
+  disabled: false
+};
+
+function Modal(props) {
+  var children = props.children,
+      onCancel = props.onCancel,
+      onSubmit = props.onSubmit,
+      disabled = props.disabled,
+      submitText = props.submitText,
+      titleText = props.titleText,
+      hideFooter = props.hideFooter,
+      isWithClose = props.isWithClose;
+  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-modal"
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-modal__content"
+  }, /*#__PURE__*/React__default["default"].createElement(ModalHeader, {
+    titleText: titleText
+  }), /*#__PURE__*/React__default["default"].createElement(ModalBody, null, children), !hideFooter && /*#__PURE__*/React__default["default"].createElement(ModalFooter, {
+    disabled: disabled,
+    onCancel: onCancel,
+    onSubmit: onSubmit,
+    submitText: submitText
+  }), isWithClose && /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-modal__close"
+  }, /*#__PURE__*/React__default["default"].createElement(IconButton, {
+    width: "32px",
+    height: "32px",
+    onClick: onCancel
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.ROGU_CLOSE,
+    fillColor: IconColors.DEFAULT,
+    width: "24px",
+    height: "24px"
+  })))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-modal__backdrop"
+  })), document.getElementById(index$1.MODAL_ROOT));
+}
+
+Modal.propTypes = {
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element)]),
+  onCancel: PropTypes__default["default"].func.isRequired,
+  onSubmit: PropTypes__default["default"].func.isRequired,
+  hideFooter: PropTypes__default["default"].bool,
+  disabled: PropTypes__default["default"].bool,
+  type: PropTypes__default["default"].string,
+  isWithClose: PropTypes__default["default"].bool
+};
+Modal.defaultProps = {
+  children: null,
+  hideFooter: false,
+  disabled: false,
+  type: ButtonTypes.DANGER,
+  isWithClose: true
+};
+
 var RemoveMessage = function RemoveMessage(props) {
   var onCloseModal = props.onCloseModal,
       onDeleteMessage = props.onDeleteMessage;
@@ -3707,12 +3967,17 @@ var RemoveMessage = function RemoveMessage(props) {
   var _useContext = React.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet;
 
-  return /*#__PURE__*/React__default["default"].createElement(index$1.Modal, {
+  return /*#__PURE__*/React__default["default"].createElement(Modal, {
     onCancel: onCloseModal,
     onSubmit: onDeleteMessage,
     submitText: "Delete",
-    titleText: stringSet.MODAL__DELETE_MESSAGE__TITLE
-  });
+    titleText: stringSet.ROGU__MODAL__DELETE_MESSAGE__TITLE,
+    isWithClose: false
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-delete-message__subtitle",
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONBACKGROUND_1
+  }, stringSet.ROGU__MODAL__DELETE_MESSAGE__SUBTITLE));
 };
 
 RemoveMessage.propTypes = {
