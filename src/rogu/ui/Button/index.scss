@@ -1,0 +1,167 @@
+/* stylelint-disable no-descending-specificity -- False negative */
+@import '../../../styles/variables';
+
+.rogu-button {
+  display: inline-block;
+  box-shadow: none;
+  border-radius: 26px;
+  padding: 0;
+  font-family: var(--sendbird-font-family-default);
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &.rogu-button__disabled {
+    cursor: not-allowed;
+
+    @include themed() {
+      background-color: t(bg-2);
+    }
+
+    &:hover {
+      @include themed() {
+        background-color: t(bg-2);
+      }
+    }
+  }
+
+  &.rogu-button--big {
+    height: 40px;
+
+    .rogu-button__text {
+      margin: 10px 16px;
+    }
+  }
+
+  &.rogu-button--small {
+    height: 32px;
+
+    .rogu-button__text {
+      margin: 6px 16px;
+    }
+  }
+
+  &.rogu-button--primary {
+    @include themed() {
+      border: 1px solid t(primary-5);
+      background-color: t(primary-5);
+    }
+
+    .rogu-button__text {
+      font-weight: 600;
+
+      @include themed() {
+        color: t(bg-0);
+      }
+    }
+  }
+
+  &.rogu-button--secondary {
+    @include themed() {
+      border: 1px solid t(primary-5);
+      background-color: t(bg-0);
+    }
+
+    .rogu-button__text {
+      @include themed() {
+        color: t(primary-5);
+      }
+    }
+
+    &.rogu-button__disabled {
+      cursor: not-allowed;
+      border: none;
+
+      @include themed() {
+        background-color: t(bg-2);
+      }
+
+      .rogu-button__text {
+        @include themed() {
+          color: t(on-bg-2);
+        }
+      }
+
+      &:hover {
+        border: none;
+
+        @include themed() {
+          background-color: t(bg-2);
+        }
+
+        .rogu-button__text {
+          @include themed() {
+            color: t(on-bg-2);
+          }
+        }
+      }
+    }
+  }
+
+  &.rogu-button--danger {
+    @include themed() {
+      border: 1px solid t(error--3-2);
+      background-color: t(error--3-2);
+    }
+
+    .rogu-button__text {
+      @include themed() {
+        color: t(on-content-1);
+      }
+    }
+
+    &:hover {
+      @include themed() {
+        background-color: t(error-4);
+        border-color: t(error-4);
+      }
+    }
+
+    &:focus {
+      @include themed() {
+        box-shadow: 0 0 0 2px t(error-3);
+        border-color: var(--sendbird-button-border-focus);
+      }
+    }
+
+    &:active {
+      box-shadow: none;
+
+      @include themed() {
+        background-color: t(error-5);
+      }
+    }
+
+    &:hover &:focus {
+      @include themed() {
+        box-shadow: 0 0 0 2px t(error-4);
+      }
+    }
+
+    &:active &:focus {
+      @include themed() {
+        box-shadow: 0 0 0 2px t(error-5);
+      }
+    }
+  }
+
+  &.rogu-button--disabled {
+    border: 1px solid transparent;
+    cursor: not-allowed;
+
+    @include themed() {
+      background-color: t(bg-2);
+      color: t(on-content-1);
+    }
+  }
+}
