@@ -8,7 +8,9 @@ import {
   isUserMessage,
   isSentMessage,
   isFailedMessage,
-  isThumbnailMessage
+  isThumbnailMessage,
+  isFileMessage,
+  isPdf
 } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 
@@ -50,14 +52,14 @@ export default function MessageItemMenu({
   const containerRef = useRef(null);
 
   const showMenuItemCopy: boolean = isUserMessage(message as UserMessage);
-  const showMenuItemReply: boolean = isUserMessage(message as UserMessage);
+  const showMenuItemReply: boolean = isUserMessage(message as UserMessage) || isFileMessage(message as FileMessage);
   const showMenuItemResend: boolean = (isFailedMessage(channel, message) && message.isResendable() && isByMe);
   const showMenuItemDelete: boolean = (isSentMessage(channel, message) && isByMe);
   {/* hide menu edit */}
   const showMenuItemEdit: boolean =false && (isUserMessage(message as UserMessage) && isSentMessage(channel, message) && isByMe);
 
   {/* show menu view on image or video */}
-  const showMenuItemView:boolean = isThumbnailMessage(message as FileMessage);
+  const showMenuItemView:boolean = isFileMessage(message as FileMessage);
 
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
@@ -69,6 +71,13 @@ export default function MessageItemMenu({
     setTimeout(() => {
       setShowToast(false);
     }, 3000);
+  };
+
+  const onOpenFile = (message: FileMessage):void => {
+    if(isPdf(message?.type)){
+      window.open(`https://docs.google.com/viewer?url=${message.url}`);
+    }
+
   };
 
   return (
@@ -142,7 +151,11 @@ export default function MessageItemMenu({
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
-                    showFileViewer(true);
+                    if(isThumbnailMessage(message as FileMessage)){
+                      showFileViewer(true);
+                    } else{
+                      onOpenFile(message as FileMessage)
+                    }    
                     closeDropdown();
                     
                   }}
