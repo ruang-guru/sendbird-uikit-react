@@ -12,6 +12,7 @@ export const STRING_SET = {
   LABEL__DAY_THURSDAY: 'Kamis',
   LABEL__DAY_FRIDAY: 'Jumat',
   LABEL__DAY_SATURDAY: 'Sabtu',
+  TOAST__MAX_FILE_SIZE_ERROR: 'Gagal terkirim, ukuran melebihi 10MB',
 };
 
 export default STRING_SET;

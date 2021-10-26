@@ -110,6 +110,7 @@ const getStringSet = (lang = 'en') => {
       LABEL__OPERATOR: 'Teacher',
       TOAST__DOWNLOAD: 'Download successful',
       TOAST__COPY: 'Copied!',
+      TOAST__MAX_FILE_SIZE_ERROR: 'Failed to upload! The file size is more than 10MB',
     },
   };
   return stringSet[lang];
