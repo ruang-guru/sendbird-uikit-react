@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-9bbb95f9.js');
-var index$1 = require('./index-e37ead1e.js');
+var LocalizationContext = require('./LocalizationContext-9006a930.js');
+var index$1 = require('./index-8a966d14.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-f7057575.js');
-var index$3 = require('./index-976c62bf.js');
-var Channel = require('./index-c9bd2574.js');
+var index$2 = require('./index-59b02106.js');
+var index$3 = require('./index-d25d24e8.js');
+var Channel = require('./index-3f7e7fe6.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-60913213.js');
+require('./actionTypes-1922f704.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-b6060293.js');
-require('./utils-23d3f91e.js');
-require('./LeaveChannel-41fc666a.js');
-require('./index-840d50b9.js');
-require('./index-ee746ee9.js');
-require('./index-3175def4.js');
+require('./index-0ceded22.js');
+require('./utils-e0c8d893.js');
+require('./LeaveChannel-741f99a1.js');
+require('./index-8ae5d9ac.js');
+require('./index-15637446.js');
+require('./index-c3181efe.js');
 require('./ChannelSettings.js');
-require('./index-b6b624d7.js');
+require('./index-7f36548e.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -57,7 +57,7 @@ var getDayString = function getDayString(dayNumber, strings) {
 
 var groupMessagesByDate = function groupMessagesByDate(messages) {
   return messages.reduce(function (groupedMessagesByDate, currMessage) {
-    var messageDate = dateFns.format(currMessage.createdAt, "dd/MM/yyyy");
+    var messageDate = dateFns.format(currMessage.createdAt, 'dd/MM/yyyy');
     var currentGroup = groupedMessagesByDate.get(messageDate);
 
     if (currentGroup) {
@@ -3471,6 +3471,9 @@ function MessageContent(_a) {
   }, index$1.getMessageCreatedAt(message)))));
 }
 
+var MAX_FILE_SIZE = 10000000; // 10MB;
+
+var TOAST_AUTO_HIDE_DURATION = 3000;
 var LINE_HEIGHT = 36;
 
 var noop$1 = function noop() {};
@@ -3479,18 +3482,6 @@ var KeyCode = {
   SHIFT: 16,
   ENTER: 13
 };
-
-var handleUploadFile = function handleUploadFile(callback) {
-  return function (event) {
-    if (event.target.files && event.target.files[0]) {
-      callback(event.target.files[0]);
-    } // eslint-disable-next-line no-param-reassign
-
-
-    event.target.value = '';
-  };
-};
-
 var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (props, ref) {
   var isEdit = props.isEdit,
       disabled = props.disabled,
@@ -3516,7 +3507,46 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
   var _useState3 = React.useState(false),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
       isShiftPressed = _useState4[0],
-      setIsShiftPressed = _useState4[1];
+      setIsShiftPressed = _useState4[1]; // TODO: abstract the auto hide mechanism to the Toast component
+
+
+  var _useState5 = React.useState(false),
+      _useState6 = LocalizationContext._slicedToArray(_useState5, 2),
+      showUploadErrorToast = _useState6[0],
+      setShowUploadErrorToast = _useState6[1];
+
+  var autoHideTimer = React.useRef(null);
+  React.useEffect(function () {
+    if (showUploadErrorToast) {
+      clearTimeout(autoHideTimer.current);
+      autoHideTimer.current = setTimeout(function () {
+        setShowUploadErrorToast(false);
+      }, TOAST_AUTO_HIDE_DURATION);
+    }
+
+    return function () {
+      return clearTimeout(autoHideTimer.current);
+    };
+  }, [showUploadErrorToast]);
+
+  var handleUploadFile = function handleUploadFile(callback) {
+    return function (event) {
+      var _event$target;
+
+      var file = (_event$target = event.target) === null || _event$target === void 0 ? void 0 : _event$target.files[0];
+
+      if (file) {
+        if (file.size > MAX_FILE_SIZE) {
+          setShowUploadErrorToast(true);
+        } else {
+          callback(file);
+        }
+      } // eslint-disable-next-line no-param-reassign
+
+
+      event.target.value = '';
+    };
+  };
 
   var setHeight = function setHeight() {
     try {
@@ -3559,7 +3589,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
     }
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("form", {
+  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("form", {
     className: [isEdit ? 'rogu-message-input__edit' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' rogu-message-input__container ')
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: ['rogu-message-input', disabled ? 'rogu-message-input__disabled' : ''].join(' ')
@@ -3607,6 +3637,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
     width: "20px",
     height: "20px"
   }), /*#__PURE__*/React__default["default"].createElement("input", {
+    accept: ".doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,image/*,.mov,.mp4",
     className: "rogu-message-input--attach-input",
     type: "file",
     ref: fileInputRef,
@@ -3640,7 +3671,9 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
         });
       }
     }
-  }, stringSet.BUTTON__SAVE)));
+  }, stringSet.BUTTON__SAVE))), showUploadErrorToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+    message: stringSet.TOAST__MAX_FILE_SIZE_ERROR
+  }));
 });
 MessageInput.propTypes = {
   placeholder: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].bool]),
