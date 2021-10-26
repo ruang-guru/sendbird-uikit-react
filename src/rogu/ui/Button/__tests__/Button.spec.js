@@ -26,7 +26,7 @@ describe('Button', () => {
     const text = 'example-text';
     const component = shallow(<Button className={text} />);
     expect(
-      component.find(".sendbird-button").hasClass(text)
+      component.find(".rogu-button").hasClass(text)
     ).toBe(true);
   });
 });

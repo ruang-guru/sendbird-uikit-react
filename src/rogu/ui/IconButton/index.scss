@@ -11,7 +11,7 @@
   user-select: none;
   border: 1px solid transparent;
   border-radius: 4px;
-  outline: 0px;
+  outline: 0;
 
   .sendbird-iconbutton__inner {
     svg {
@@ -37,7 +37,6 @@
     cursor: not-allowed !important;
 
     .sendbird-iconbutton__inner {
-
       svg,
       path {
         @include themed() {

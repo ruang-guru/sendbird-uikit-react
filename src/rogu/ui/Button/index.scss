@@ -1,10 +1,11 @@
+/* stylelint-disable no-descending-specificity -- False negative */
 @import '../../../styles/variables';
 
 .rogu-button {
   display: inline-block;
   box-shadow: none;
   border-radius: 26px;
-  padding: 0px;
+  padding: 0;
   font-family: var(--sendbird-font-family-default);
   cursor: pointer;
   flex: 1 1 0;
@@ -73,7 +74,6 @@
     background-color: t(bg-0);
   }
 
-
   .rogu-button__text {
     @include themed() {
       color: t(primary-5);
@@ -131,7 +131,7 @@
 
   &:focus {
     @include themed() {
-      box-shadow: 0px 0px 0px 2px t(error-3);
+      box-shadow: 0 0 0 2px t(error-3);
       border-color: var(--sendbird-button-border-focus);
     }
   }
@@ -146,13 +146,13 @@
 
   &:hover &:focus {
     @include themed() {
-      box-shadow: 0px 0px 0px 2px t(error-4);
+      box-shadow: 0 0 0 2px t(error-4);
     }
   }
 
   &:active &:focus {
     @include themed() {
-      box-shadow: 0px 0px 0px 2px t(error-5);
+      box-shadow: 0 0 0 2px t(error-5);
     }
   }
 }

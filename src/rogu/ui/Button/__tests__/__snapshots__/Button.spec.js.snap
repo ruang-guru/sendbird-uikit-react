@@ -2,13 +2,13 @@
 
 exports[`Button should do a snapshot test of the default Button DOM 1`] = `
 <button
-  className=" sendbird-button  sendbird-button--primary sendbird-button--big"
+  className=" rogu-button  rogu-button--primary rogu-button--big"
   disabled={false}
   onClick={[Function]}
   type="button"
 >
   <span
-    className="sendbird-button__text sendbird-label sendbird-label--button-1 sendbird-label--color-oncontent-1"
+    className="rogu-button__text sendbird-label rogu-label--body-3 sendbird-label--color-oncontent-1"
   >
     Button
   </span>
@@ -17,13 +17,13 @@ exports[`Button should do a snapshot test of the default Button DOM 1`] = `
 
 exports[`Button should do a snapshot test of the small Button DOM 1`] = `
 <button
-  className=" sendbird-button  sendbird-button--primary sendbird-button--small"
+  className=" rogu-button  rogu-button--primary rogu-button--small"
   disabled={false}
   onClick={[Function]}
   type="button"
 >
   <span
-    className="sendbird-button__text sendbird-label sendbird-label--button-1 sendbird-label--color-oncontent-1"
+    className="rogu-button__text sendbird-label rogu-label--body-3 sendbird-label--color-oncontent-1"
   >
     Button
   </span>
