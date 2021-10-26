@@ -14,7 +14,7 @@
 .rogu-modal__content {
   max-width: 380px;
   border-radius: 12px;
-  z-index: 10001;
+  z-index: $modal+1;
   padding: 16px;
   position: relative;
   box-sizing: border-box;
@@ -57,6 +57,10 @@
     justify-content: space-between;
     align-items: center;
 
+    .rogu-modal-button {
+      flex: 1 1 0;
+    }
+
     .rogu-button_text-option {
       font-weight: 600;
       line-height: 18px;
@@ -72,7 +76,7 @@
 
 .rogu-modal__backdrop {
   position: fixed;
-  z-index: 10000;
+  z-index: $modal;
   height: 100%;
   width: 100%;
   top: 0;

@@ -44,10 +44,10 @@ export const ModalFooter = ({
   const { stringSet } = useContext(LocalizationContext);
   return (
     <div className="rogu-modal__footer">
-      <Button type={ButtonTypes.SECONDARY} disabled={disabled} onClick={onSubmit}>
+      <Button className="rogu-modal-button" type={ButtonTypes.SECONDARY} disabled={disabled} onClick={onSubmit}>
         {submitText}
       </Button>
-      <Button type={ButtonTypes.PRIMARY} onClick={onCancel}>
+      <Button className="rogu-modal-button" type={ButtonTypes.PRIMARY} onClick={onCancel}>
         {stringSet.BUTTON__CANCEL}
       </Button>
     </div>
