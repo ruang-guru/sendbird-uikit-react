@@ -127,3 +127,16 @@ misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pe
   errorCode: 0,
   messageSurvivalSeconds: -1,
 };
+
+export const IMAGE_MESSAGE_2 = {
+  ...IMAGE_MESSAGE,
+  sender: { ...IMAGE_MESSAGE.sender, userId: USER_ID_A },
+};
+
+export const VIDEO_MESSAGE = {
+  ...IMAGE_MESSAGE,
+  size: 771699,
+  type: 'video/mp4',
+  url: 'blob:http://localhost:6006/e4d08170-05b3-4c78-9b8e-96746770abad',
+  plainUrl: 'blob:http://localhost:6006/e4d08170-05b3-4c78-9b8e-96746770abad',
+};

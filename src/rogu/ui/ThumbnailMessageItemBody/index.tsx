@@ -29,7 +29,7 @@ export default function ThumbnailMessageItemBody({
     <div
       className={getClassName([
         className,
-        'sendbird-thumbnail-message-item-body',
+        'rogu-thumbnail-message-item-body',
         isByMe ? 'outgoing' : 'incoming',
         mouseHover ? 'mouse-hover' : '',
         message?.reactions?.length > 0 ? 'reactions' : '',
@@ -37,17 +37,17 @@ export default function ThumbnailMessageItemBody({
       onClick={() => showFileViewer(true)}
     >
       <ImageRenderer
-        className="sendbird-thumbnail-message-item-body__thumbnail"
+        className="rogu-thumbnail-message-item-body__thumbnail"
         url={thumbnailUrl || message?.url}
         alt={message?.type}
         width="360px"
         height="270px"
         placeHolder={(style) => (
           <div
-            className="sendbird-thumbnail-message-item-body__placeholder"
+            className="rogu-thumbnail-message-item-body__placeholder"
             style={style}
           >
-            <div className="sendbird-thumbnail-message-item-body__placeholder__icon">
+            <div className="rogu-thumbnail-message-item-body__placeholder__icon">
               <Icon
                 type={isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO}
                 fillColor={IconColors.ON_BACKGROUND_2}
@@ -58,28 +58,24 @@ export default function ThumbnailMessageItemBody({
           </div>
         )}
       />
-      {
-        (isVideoMessage(message) && !thumbnailUrl) && (
-          <video className="sendbird-thumbnail-message-item-body__video">
-            <source src={message?.url} type={message?.type} />
-          </video>
-        )
-      }
-      <div className="sendbird-thumbnail-message-item-body__image-cover" />
-      {
-        (isVideoMessage(message) || isGifMessage(message)) && (
-          <div className="sendbird-thumbnail-message-item-body__icon-wrapper">
-            <div className="sendbird-thumbnail-message-item-body__icon-wrapper__icon">
-              <Icon
-                type={isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF}
-                fillColor={IconColors.ON_BACKGROUND_2}
-                width="34px"
-                height="34px"
-              />
-            </div>
+      {(isVideoMessage(message) && !thumbnailUrl) && (
+        <video className="rogu-thumbnail-message-item-body__video">
+          <source src={message?.url} type={message?.type} />
+        </video>
+      )}
+      <div className="rogu-thumbnail-message-item-body__image-cover" />
+      {(isVideoMessage(message) || isGifMessage(message)) && (
+        <div className="rogu-thumbnail-message-item-body__icon-wrapper">
+          <div className="rogu-thumbnail-message-item-body__icon-wrapper__icon">
+            <Icon
+              type={isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF}
+              fillColor={IconColors.ON_BACKGROUND_2}
+              width="34px"
+              height="34px"
+            />
           </div>
-        )
-      }
+        </div>
+      )}
     </div>
   );
 }

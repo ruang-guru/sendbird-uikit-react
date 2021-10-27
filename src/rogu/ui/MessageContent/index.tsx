@@ -8,7 +8,7 @@ import OGMessageItemBody from "../OGMessageItemBody";
 import Avatar from "../../../ui/Avatar";
 import ClientAdminMessage from "../../../ui/AdminMessage";
 import FileMessageItemBody from "../../../ui/FileMessageItemBody";
-import ThumbnailMessageItemBody from "../../../rogu/ui/ThumbnailMessageItemBody";
+import ThumbnailMessageItemBody from "../ThumbnailMessageItemBody";
 import UnknownMessageItemBody from "../../../ui/UnknownMessageItemBody";
 
 import { LocalizationContext } from "../../../lib/LocalizationContext";
@@ -202,11 +202,18 @@ Props): ReactElement {
               />
             )}
             {isThumbnailMessage(message as FileMessage) && (
-              <ThumbnailMessageItemBody
-                message={message as FileMessage}
-                isByMe={isByMe}
-                showFileViewer={showFileViewer}
-              />
+              <>
+                <ThumbnailMessageItemBody
+                  message={message as FileMessage}
+                  isByMe={isByMe}
+                  showFileViewer={showFileViewer}
+                />
+                <TextMessageItemBody
+                  isByMe={isByMe}
+                  origin="previewCaption"
+                  message={message?.name}
+                />
+              </>
             )}
             {getUIKitMessageType(message as FileMessage) ===
               messageTypes.UNKNOWN && (

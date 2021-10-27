@@ -13,21 +13,24 @@ import { LocalizationContext } from "../../../lib/LocalizationContext";
 
 import "./index.scss";
 
+
+
+type ClampType = "init" | "clamped" | "expanded";
+type originUsage = "bubble" | "viewerCaption" | "previewCaption";
+
 interface Props {
   className?: string | Array<string>;
   isByMe?: boolean;
   message: string;
-  viewerCaptionMode?: boolean;
+  origin?: originUsage;
   isHidden?: boolean;
 }
-
-type ClampType = "init" | "clamped" | "expanded";
 
 export default function TextMessageItemBody({
   className,
   isByMe = false,
   message,
-  viewerCaptionMode = false,
+  origin = 'bubble',
   isHidden = false,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
@@ -54,8 +57,9 @@ export default function TextMessageItemBody({
         "rogu-text-message-item-body",
         clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "",
         !isByMe ? "rogu-text-message-item-body--incoming" : "",
-        viewerCaptionMode ? "viewer-mode" : "",
-        viewerCaptionMode && isHidden ? 'hidden' : '',
+        origin === "viewerCaption" ? "viewer-mode" : "",
+        origin === "viewerCaption" && isHidden ? "hidden" : "",
+        origin === "previewCaption" ? "preview-mode" : "",
       ])}
     >
       <div ref={textRef} className="rogu-text-message-item-body__inner">

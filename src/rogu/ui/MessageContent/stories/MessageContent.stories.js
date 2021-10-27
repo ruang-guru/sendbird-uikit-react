@@ -20,6 +20,9 @@ import {
   ASSIGNMENT_MESSAGE_A_2,
   MATERIAL_MESSAGE_A_1,
   MATERIAL_MESSAGE_A_2,
+  IMAGE_MESSAGE,
+  IMAGE_MESSAGE_2,
+  VIDEO_MESSAGE,
 } from "../../../../../__mocks__/messagesMock";
 
 export default { title: "ruangkelas/UI Components/MessageContent" };
@@ -331,7 +334,24 @@ export const MediaPreviewMessage = () => (
           getUnreadMemberCount: (_) => 10,
           getUndeliveredMemberCount: (_) => 0,
         }}
-        message={OPERATOR_MESSAGE}
+        message={IMAGE_MESSAGE}
+      />
+      <MessageContent
+        userId={USER_ID_A}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={IMAGE_MESSAGE_2}
+      />
+      <MessageContent
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={VIDEO_MESSAGE}
       />
 
       <MenuRoot />
