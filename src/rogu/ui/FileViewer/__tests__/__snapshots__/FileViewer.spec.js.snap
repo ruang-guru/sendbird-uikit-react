@@ -168,7 +168,7 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
       tabIndex="0"
     />
     <div
-      className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming viewer-mode "
+      className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming viewer-mode  "
     >
       <div
         className="rogu-text-message-item-body__inner"
