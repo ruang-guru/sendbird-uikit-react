@@ -26,7 +26,7 @@ export default { title: "ruangkelas/UI Components/MessageContent" };
 
 export const Basic = () => (
   <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
-    
+
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent
         userId={"random-user-id"}
@@ -254,7 +254,7 @@ export const NicknameColoring = () => (
 export const Assignment = () => (
   <SendbirdProvider colorSet={COLOR_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
-    <MessageContent
+      <MessageContent
         userId={"random-user-id"}
         channel={{
           isGroupChannel: () => true,
@@ -280,7 +280,7 @@ export const Assignment = () => (
 export const Material = () => (
   <SendbirdProvider colorSet={COLOR_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
-    <MessageContent
+      <MessageContent
         userId={"random-user-id"}
         channel={{
           isGroupChannel: () => true,
@@ -304,6 +304,24 @@ export const Material = () => (
 );
 
 export const OperatorMessage = () => (
+  <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
+    <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
+      <MessageContent
+        userId={"random-user-id"}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={OPERATOR_MESSAGE}
+      />
+
+      <MenuRoot />
+    </div>
+  </SendbirdProvider>
+);
+
+export const MediaPreviewMessage = () => (
   <SendbirdProvider colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ backgroundColor: "#F1F7FF", padding: "1rem" }}>
       <MessageContent

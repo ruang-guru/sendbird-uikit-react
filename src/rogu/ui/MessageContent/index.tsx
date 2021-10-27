@@ -8,7 +8,7 @@ import OGMessageItemBody from "../OGMessageItemBody";
 import Avatar from "../../../ui/Avatar";
 import ClientAdminMessage from "../../../ui/AdminMessage";
 import FileMessageItemBody from "../../../ui/FileMessageItemBody";
-import ThumbnailMessageItemBody from "../../../ui/ThumbnailMessageItemBody";
+import ThumbnailMessageItemBody from "../../../rogu/ui/ThumbnailMessageItemBody";
 import UnknownMessageItemBody from "../../../ui/UnknownMessageItemBody";
 
 import { LocalizationContext } from "../../../lib/LocalizationContext";
