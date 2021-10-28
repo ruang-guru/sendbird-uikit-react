@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-61863b7a.js');
-var index$1 = require('./index-adf06a7a.js');
+var LocalizationContext = require('./LocalizationContext-2e0c5a20.js');
+var index$1 = require('./index-4014c60c.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-2503aa8c.js');
-var index$3 = require('./index-6909f2d9.js');
-var Channel = require('./index-15d2e1cc.js');
+var index$2 = require('./index-8475ae2e.js');
+var index$3 = require('./index-7ea7b762.js');
+var Channel = require('./index-160c20b2.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-824fd333.js');
+require('./actionTypes-6fd10fbb.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-58306185.js');
-require('./utils-1e130e9d.js');
-require('./LeaveChannel-f0395ade.js');
-require('./index-2d79b719.js');
-require('./index-f634b468.js');
-require('./index-ba938b9d.js');
+require('./index-aa80260a.js');
+require('./utils-98cc6e3d.js');
+require('./LeaveChannel-6bda618d.js');
+require('./index-b320a7e9.js');
+require('./index-84f8ef0b.js');
+require('./index-c07edad4.js');
 require('./ChannelSettings.js');
-require('./index-ffc8e71c.js');
+require('./index-e8da74c9.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -2745,8 +2745,8 @@ function TextMessageItemBody(_a) {
       _b = _a.isByMe,
       isByMe = _b === void 0 ? false : _b,
       message = _a.message,
-      _c = _a.viewerCaptionMode,
-      viewerCaptionMode = _c === void 0 ? false : _c,
+      _c = _a.mode,
+      mode = _c === void 0 ? 'normal' : _c,
       _d = _a.isHidden,
       isHidden = _d === void 0 ? false : _d;
   var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
@@ -2767,7 +2767,7 @@ function TextMessageItemBody(_a) {
   }
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: index$1.getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", viewerCaptionMode ? "viewer-mode" : "", viewerCaptionMode && isHidden ? 'hidden' : ''])
+    className: index$1.getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", mode === "fileViewerCaption" ? "rogu-text-message-item-body--viewer-mode" : "", mode === "fileViewerCaption" && isHidden ? "rogu-text-message-item-body--viewer-mode__hidden" : "", mode === "thumbnailCaption" ? "rogu-text-message-item-body--preview-mode" : ""])
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     ref: textRef,
     className: "rogu-text-message-item-body__inner"
@@ -2860,6 +2860,175 @@ function OGMessageItemBody(_a) {
   }, " " + stringSet.MESSAGE_EDITED + " ")), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-og-message-item-body__cover"
   }));
+}
+
+/*
+  ImageRenderer displays image with url or source
+  it checks if the source exist with img tag first
+  if it exists onLoad is called, if not onError is called
+  and those properties switch img tag to real purposing element
+*/
+// TODO: Set up the official constant of width and height with DesignTeam
+
+function ImageRenderer(_ref) {
+  var className = _ref.className,
+      url = _ref.url,
+      alt = _ref.alt,
+      width = _ref.width,
+      height = _ref.height,
+      defaultComponent = _ref.defaultComponent,
+      circle = _ref.circle,
+      placeHolder = _ref.placeHolder;
+
+  var _useState = React.useState(false),
+      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
+      showDefaultComponent = _useState2[0],
+      setShowDefaultComponent = _useState2[1];
+
+  var _useState3 = React.useState(true),
+      _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
+      showPlaceHolder = _useState4[0],
+      setShowPlaceHolder = _useState4[1];
+
+  var DefaultComponent = React.useMemo(function () {
+    if (typeof defaultComponent === 'function') {
+      return defaultComponent();
+    }
+
+    return defaultComponent;
+  }, [defaultComponent]);
+  var PlaceHolder = React.useMemo(function () {
+    if (placeHolder && typeof placeHolder === 'function') {
+      return placeHolder({
+        style: {
+          width: '100%',
+          minWidth: width,
+          maxWidth: '400px',
+          height: height,
+          position: 'absolute',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }
+      });
+    }
+
+    return null;
+  }, [placeHolder]);
+  var HiddenImageLoader = React.useMemo(function () {
+    setShowDefaultComponent(false); // reset the state when url is changed
+
+    return /*#__PURE__*/React__default["default"].createElement("img", {
+      className: "sendbird-image-renderer__hidden-image-loader",
+      src: url,
+      alt: alt,
+      onLoad: function onLoad() {
+        return setShowPlaceHolder(false);
+      },
+      onError: function onError() {
+        return setShowDefaultComponent(true);
+      }
+    });
+  }, [url]);
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-image-renderer']).join(' '),
+    style: {
+      width: '100%',
+      minWidth: width,
+      maxWidth: '400px',
+      height: height
+    }
+  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "sendbird-image-renderer__image",
+    style: {
+      width: '100%',
+      minWidth: width,
+      maxWidth: '400px',
+      height: height,
+      position: 'absolute',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundImage: "url(".concat(url, ")"),
+      borderRadius: circle ? '50%' : null
+    }
+  }), HiddenImageLoader);
+}
+ImageRenderer.propTypes = {
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].arrayOf(PropTypes__default["default"].string), PropTypes__default["default"].string]),
+  url: PropTypes__default["default"].string.isRequired,
+  alt: PropTypes__default["default"].string,
+  width: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number]),
+  height: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number]),
+  defaultComponent: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].func]),
+  placeHolder: PropTypes__default["default"].func,
+  circle: PropTypes__default["default"].bool
+};
+ImageRenderer.defaultProps = {
+  className: '',
+  defaultComponent: null,
+  placeHolder: null,
+  alt: '',
+  width: null,
+  height: null,
+  circle: false
+};
+
+function ThumbnailMessageItemBody(_a) {
+  var _b, _c;
+
+  var className = _a.className,
+      message = _a.message,
+      _d = _a.isByMe,
+      isByMe = _d === void 0 ? false : _d,
+      _e = _a.mouseHover,
+      mouseHover = _e === void 0 ? false : _e,
+      showFileViewer = _a.showFileViewer;
+  console.log('message', message);
+  var _f = message.thumbnails,
+      thumbnails = _f === void 0 ? [] : _f;
+  var thumbnailUrl = thumbnails.length > 0 ? (_b = thumbnails[0]) === null || _b === void 0 ? void 0 : _b.url : '';
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: index$1.getClassName([className, 'rogu-thumbnail-message-item-body', isByMe ? 'outgoing' : 'incoming', mouseHover ? 'mouse-hover' : '', ((_c = message === null || message === void 0 ? void 0 : message.reactions) === null || _c === void 0 ? void 0 : _c.length) > 0 ? 'reactions' : '']),
+    onClick: function onClick() {
+      return showFileViewer(true);
+    }
+  }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+    className: "rogu-thumbnail-message-item-body__thumbnail",
+    url: thumbnailUrl || (message === null || message === void 0 ? void 0 : message.url),
+    alt: message === null || message === void 0 ? void 0 : message.type,
+    width: "360px",
+    height: "270px",
+    placeHolder: function placeHolder(style) {
+      return /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "rogu-thumbnail-message-item-body__placeholder",
+        style: style
+      }, /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "rogu-thumbnail-message-item-body__placeholder__icon"
+      }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+        type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO,
+        fillColor: IconColors.ON_BACKGROUND_2,
+        width: "34px",
+        height: "34px"
+      })));
+    }
+  }), index$1.isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default["default"].createElement("video", {
+    className: "rogu-thumbnail-message-item-body__video"
+  }, /*#__PURE__*/React__default["default"].createElement("source", {
+    src: message === null || message === void 0 ? void 0 : message.url,
+    type: message === null || message === void 0 ? void 0 : message.type
+  })), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-thumbnail-message-item-body__image-cover"
+  }), (index$1.isVideoMessage(message) || index$1.isGifMessage(message)) && /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-thumbnail-message-item-body__icon-wrapper"
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-thumbnail-message-item-body__icon-wrapper__icon"
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF,
+    fillColor: IconColors.ON_BACKGROUND_2,
+    width: "34px",
+    height: "34px"
+  }))));
 }
 
 function AssignmentMessageItemBody(_a) {
@@ -3442,11 +3611,15 @@ function MessageContent(_a) {
   }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default["default"].createElement(Channel.FileMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), index$1.isThumbnailMessage(message) && /*#__PURE__*/React__default["default"].createElement(Channel.ThumbnailMessageItemBody, {
+  }), index$1.isThumbnailMessage(message) && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer
-  }), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default["default"].createElement(Channel.UnknownMessageItemBody, {
+  }), /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+    isByMe: isByMe,
+    mode: "thumbnailCaption",
+    message: message === null || message === void 0 ? void 0 : message.name
+  })), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
   })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default["default"].createElement(MessageItemMenu, {
@@ -3985,118 +4158,6 @@ RemoveMessage.propTypes = {
   onDeleteMessage: PropTypes__default["default"].func.isRequired
 };
 
-/*
-  ImageRenderer displays image with url or source
-  it checks if the source exist with img tag first
-  if it exists onLoad is called, if not onError is called
-  and those properties switch img tag to real purposing element
-*/
-// TODO: Set up the official constant of width and height with DesignTeam
-
-function ImageRenderer(_ref) {
-  var className = _ref.className,
-      url = _ref.url,
-      alt = _ref.alt,
-      width = _ref.width,
-      height = _ref.height,
-      defaultComponent = _ref.defaultComponent,
-      circle = _ref.circle,
-      placeHolder = _ref.placeHolder;
-
-  var _useState = React.useState(false),
-      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
-      showDefaultComponent = _useState2[0],
-      setShowDefaultComponent = _useState2[1];
-
-  var _useState3 = React.useState(true),
-      _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
-      showPlaceHolder = _useState4[0],
-      setShowPlaceHolder = _useState4[1];
-
-  var DefaultComponent = React.useMemo(function () {
-    if (typeof defaultComponent === 'function') {
-      return defaultComponent();
-    }
-
-    return defaultComponent;
-  }, [defaultComponent]);
-  var PlaceHolder = React.useMemo(function () {
-    if (placeHolder && typeof placeHolder === 'function') {
-      return placeHolder({
-        style: {
-          width: '100%',
-          minWidth: width,
-          maxWidth: '400px',
-          height: height,
-          position: 'absolute',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }
-      });
-    }
-
-    return null;
-  }, [placeHolder]);
-  var HiddenImageLoader = React.useMemo(function () {
-    setShowDefaultComponent(false); // reset the state when url is changed
-
-    return /*#__PURE__*/React__default["default"].createElement("img", {
-      className: "sendbird-image-renderer__hidden-image-loader",
-      src: url,
-      alt: alt,
-      onLoad: function onLoad() {
-        return setShowPlaceHolder(false);
-      },
-      onError: function onError() {
-        return setShowDefaultComponent(true);
-      }
-    });
-  }, [url]);
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-image-renderer']).join(' '),
-    style: {
-      width: '100%',
-      minWidth: width,
-      maxWidth: '400px',
-      height: height
-    }
-  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-image-renderer__image",
-    style: {
-      width: '100%',
-      minWidth: width,
-      maxWidth: '400px',
-      height: height,
-      position: 'absolute',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundImage: "url(".concat(url, ")"),
-      borderRadius: circle ? '50%' : null
-    }
-  }), HiddenImageLoader);
-}
-ImageRenderer.propTypes = {
-  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].arrayOf(PropTypes__default["default"].string), PropTypes__default["default"].string]),
-  url: PropTypes__default["default"].string.isRequired,
-  alt: PropTypes__default["default"].string,
-  width: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number]),
-  height: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].number]),
-  defaultComponent: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].func]),
-  placeHolder: PropTypes__default["default"].func,
-  circle: PropTypes__default["default"].bool
-};
-ImageRenderer.defaultProps = {
-  className: '',
-  defaultComponent: null,
-  placeHolder: null,
-  alt: '',
-  width: null,
-  height: null,
-  circle: false
-};
-
 var imageRendererClassName = 'sendbird-avatar-img';
 
 var DefaultComponent = function DefaultComponent(_a) {
@@ -4403,7 +4464,7 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     className: "rogu-fileviewer__content__img"
   }), captionMsg && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     message: captionMsg,
-    viewerCaptionMode: true,
+    mode: "fileViewerCaption",
     isHidden: isCaptionHidden
   }), !index$1.isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-fileviewer__content__unsupported"

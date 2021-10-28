@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-e2a5046d.js';
-export { w as withSendBird } from './LocalizationContext-e2a5046d.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as convertAssignmentDueUTCtoLocale, m as convertCtaLinkToWebLink, n as isUserMessage, o as isFailedMessage, p as isSentMessage, q as isThumbnailMessage, I as IconButton$1, r as copyToClipboard, s as getUIKitMessageTypes, t as isPendingMessage, u as isMessageSentByMe, v as isMessageSentByOperator, w as getSenderName, x as isTextMessage, y as isOGMessage, z as isAssignmentMessage, A as isMaterialMessage, B as getUIKitMessageType, F as getOutgoingMessageState, G as Button$1, H as ButtonTypes$1, J as ButtonSizes, M as MODAL_ROOT, K as isSupportedFileView, L as isVideo, N as isImage, O as UserProfileProvider } from './index-a9bc6898.js';
-export { P as sendBirdSelectors } from './index-a9bc6898.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-5262b74a.js';
+export { w as withSendBird } from './LocalizationContext-5262b74a.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFailedMessage, r as isSentMessage, s as isThumbnailMessage, I as IconButton$1, t as copyToClipboard, u as getUIKitMessageTypes, v as isPendingMessage, w as isMessageSentByMe, x as isMessageSentByOperator, y as getSenderName, z as isTextMessage, A as isOGMessage, B as isAssignmentMessage, F as isMaterialMessage, G as getUIKitMessageType, H as getOutgoingMessageState, J as Button$1, K as ButtonTypes$1, L as ButtonSizes, M as MODAL_ROOT, N as isSupportedFileView, O as isVideo, P as isImage, Q as UserProfileProvider } from './index-fc48cb05.js';
+export { R as sendBirdSelectors } from './index-fc48cb05.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-5c8eeb62.js';
-import { c as compareIds, L as LinkLabel } from './index-dbdb5623.js';
-import { R as ReactionButton, A as AdminMessage, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-50e47c05.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-6e159cfb.js';
+import { c as compareIds, L as LinkLabel } from './index-a0fb7725.js';
+import { R as ReactionButton, A as AdminMessage, F as FileMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-6ec014e4.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-e0a3c8f3.js';
+import './actionTypes-a4cb0ded.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-ccf19002.js';
-import './utils-13f6a0aa.js';
-import './LeaveChannel-2708a085.js';
-import './index-e299bcef.js';
-import './index-8ad7ed5b.js';
-import './index-f20579a5.js';
+import './index-591c2ba1.js';
+import './utils-883eae8f.js';
+import './LeaveChannel-c141a08b.js';
+import './index-9689a47b.js';
+import './index-b54958f7.js';
+import './index-08c1d208.js';
 import './ChannelSettings.js';
-import './index-dec68164.js';
+import './index-1e7152cd.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -2720,8 +2720,8 @@ function TextMessageItemBody(_a) {
       _b = _a.isByMe,
       isByMe = _b === void 0 ? false : _b,
       message = _a.message,
-      _c = _a.viewerCaptionMode,
-      viewerCaptionMode = _c === void 0 ? false : _c,
+      _c = _a.mode,
+      mode = _c === void 0 ? 'normal' : _c,
       _d = _a.isHidden,
       isHidden = _d === void 0 ? false : _d;
   var stringSet = useContext(LocalizationContext).stringSet;
@@ -2742,7 +2742,7 @@ function TextMessageItemBody(_a) {
   }
 
   return /*#__PURE__*/React__default.createElement("div", {
-    className: getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", viewerCaptionMode ? "viewer-mode" : "", viewerCaptionMode && isHidden ? 'hidden' : ''])
+    className: getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", mode === "fileViewerCaption" ? "rogu-text-message-item-body--viewer-mode" : "", mode === "fileViewerCaption" && isHidden ? "rogu-text-message-item-body--viewer-mode__hidden" : "", mode === "thumbnailCaption" ? "rogu-text-message-item-body--preview-mode" : ""])
   }, /*#__PURE__*/React__default.createElement("div", {
     ref: textRef,
     className: "rogu-text-message-item-body__inner"
@@ -2835,6 +2835,175 @@ function OGMessageItemBody(_a) {
   }, " " + stringSet.MESSAGE_EDITED + " ")), /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-og-message-item-body__cover"
   }));
+}
+
+/*
+  ImageRenderer displays image with url or source
+  it checks if the source exist with img tag first
+  if it exists onLoad is called, if not onError is called
+  and those properties switch img tag to real purposing element
+*/
+// TODO: Set up the official constant of width and height with DesignTeam
+
+function ImageRenderer(_ref) {
+  var className = _ref.className,
+      url = _ref.url,
+      alt = _ref.alt,
+      width = _ref.width,
+      height = _ref.height,
+      defaultComponent = _ref.defaultComponent,
+      circle = _ref.circle,
+      placeHolder = _ref.placeHolder;
+
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showDefaultComponent = _useState2[0],
+      setShowDefaultComponent = _useState2[1];
+
+  var _useState3 = useState(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showPlaceHolder = _useState4[0],
+      setShowPlaceHolder = _useState4[1];
+
+  var DefaultComponent = useMemo(function () {
+    if (typeof defaultComponent === 'function') {
+      return defaultComponent();
+    }
+
+    return defaultComponent;
+  }, [defaultComponent]);
+  var PlaceHolder = useMemo(function () {
+    if (placeHolder && typeof placeHolder === 'function') {
+      return placeHolder({
+        style: {
+          width: '100%',
+          minWidth: width,
+          maxWidth: '400px',
+          height: height,
+          position: 'absolute',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }
+      });
+    }
+
+    return null;
+  }, [placeHolder]);
+  var HiddenImageLoader = useMemo(function () {
+    setShowDefaultComponent(false); // reset the state when url is changed
+
+    return /*#__PURE__*/React__default.createElement("img", {
+      className: "sendbird-image-renderer__hidden-image-loader",
+      src: url,
+      alt: alt,
+      onLoad: function onLoad() {
+        return setShowPlaceHolder(false);
+      },
+      onError: function onError() {
+        return setShowDefaultComponent(true);
+      }
+    });
+  }, [url]);
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-image-renderer']).join(' '),
+    style: {
+      width: '100%',
+      minWidth: width,
+      maxWidth: '400px',
+      height: height
+    }
+  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default.createElement("div", {
+    className: "sendbird-image-renderer__image",
+    style: {
+      width: '100%',
+      minWidth: width,
+      maxWidth: '400px',
+      height: height,
+      position: 'absolute',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      backgroundSize: 'cover',
+      backgroundImage: "url(".concat(url, ")"),
+      borderRadius: circle ? '50%' : null
+    }
+  }), HiddenImageLoader);
+}
+ImageRenderer.propTypes = {
+  className: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
+  url: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  defaultComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  placeHolder: PropTypes.func,
+  circle: PropTypes.bool
+};
+ImageRenderer.defaultProps = {
+  className: '',
+  defaultComponent: null,
+  placeHolder: null,
+  alt: '',
+  width: null,
+  height: null,
+  circle: false
+};
+
+function ThumbnailMessageItemBody(_a) {
+  var _b, _c;
+
+  var className = _a.className,
+      message = _a.message,
+      _d = _a.isByMe,
+      isByMe = _d === void 0 ? false : _d,
+      _e = _a.mouseHover,
+      mouseHover = _e === void 0 ? false : _e,
+      showFileViewer = _a.showFileViewer;
+  console.log('message', message);
+  var _f = message.thumbnails,
+      thumbnails = _f === void 0 ? [] : _f;
+  var thumbnailUrl = thumbnails.length > 0 ? (_b = thumbnails[0]) === null || _b === void 0 ? void 0 : _b.url : '';
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: getClassName([className, 'rogu-thumbnail-message-item-body', isByMe ? 'outgoing' : 'incoming', mouseHover ? 'mouse-hover' : '', ((_c = message === null || message === void 0 ? void 0 : message.reactions) === null || _c === void 0 ? void 0 : _c.length) > 0 ? 'reactions' : '']),
+    onClick: function onClick() {
+      return showFileViewer(true);
+    }
+  }, /*#__PURE__*/React__default.createElement(ImageRenderer, {
+    className: "rogu-thumbnail-message-item-body__thumbnail",
+    url: thumbnailUrl || (message === null || message === void 0 ? void 0 : message.url),
+    alt: message === null || message === void 0 ? void 0 : message.type,
+    width: "360px",
+    height: "270px",
+    placeHolder: function placeHolder(style) {
+      return /*#__PURE__*/React__default.createElement("div", {
+        className: "rogu-thumbnail-message-item-body__placeholder",
+        style: style
+      }, /*#__PURE__*/React__default.createElement("div", {
+        className: "rogu-thumbnail-message-item-body__placeholder__icon"
+      }, /*#__PURE__*/React__default.createElement(Icon, {
+        type: isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO,
+        fillColor: IconColors.ON_BACKGROUND_2,
+        width: "34px",
+        height: "34px"
+      })));
+    }
+  }), isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default.createElement("video", {
+    className: "rogu-thumbnail-message-item-body__video"
+  }, /*#__PURE__*/React__default.createElement("source", {
+    src: message === null || message === void 0 ? void 0 : message.url,
+    type: message === null || message === void 0 ? void 0 : message.type
+  })), /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-thumbnail-message-item-body__image-cover"
+  }), (isVideoMessage(message) || isGifMessage(message)) && /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-thumbnail-message-item-body__icon-wrapper"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-thumbnail-message-item-body__icon-wrapper__icon"
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF,
+    fillColor: IconColors.ON_BACKGROUND_2,
+    width: "34px",
+    height: "34px"
+  }))));
 }
 
 function AssignmentMessageItemBody(_a) {
@@ -3417,11 +3586,15 @@ function MessageContent(_a) {
   }), getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default.createElement(FileMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), isThumbnailMessage(message) && /*#__PURE__*/React__default.createElement(ThumbnailMessageItemBody, {
+  }), isThumbnailMessage(message) && /*#__PURE__*/React__default.createElement(React__default.Fragment, null, /*#__PURE__*/React__default.createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer
-  }), getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default.createElement(UnknownMessageItemBody, {
+  }), /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
+    isByMe: isByMe,
+    mode: "thumbnailCaption",
+    message: message === null || message === void 0 ? void 0 : message.name
+  })), getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default.createElement(UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
   })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default.createElement(MessageItemMenu, {
@@ -3960,118 +4133,6 @@ RemoveMessage.propTypes = {
   onDeleteMessage: PropTypes.func.isRequired
 };
 
-/*
-  ImageRenderer displays image with url or source
-  it checks if the source exist with img tag first
-  if it exists onLoad is called, if not onError is called
-  and those properties switch img tag to real purposing element
-*/
-// TODO: Set up the official constant of width and height with DesignTeam
-
-function ImageRenderer(_ref) {
-  var className = _ref.className,
-      url = _ref.url,
-      alt = _ref.alt,
-      width = _ref.width,
-      height = _ref.height,
-      defaultComponent = _ref.defaultComponent,
-      circle = _ref.circle,
-      placeHolder = _ref.placeHolder;
-
-  var _useState = useState(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      showDefaultComponent = _useState2[0],
-      setShowDefaultComponent = _useState2[1];
-
-  var _useState3 = useState(true),
-      _useState4 = _slicedToArray(_useState3, 2),
-      showPlaceHolder = _useState4[0],
-      setShowPlaceHolder = _useState4[1];
-
-  var DefaultComponent = useMemo(function () {
-    if (typeof defaultComponent === 'function') {
-      return defaultComponent();
-    }
-
-    return defaultComponent;
-  }, [defaultComponent]);
-  var PlaceHolder = useMemo(function () {
-    if (placeHolder && typeof placeHolder === 'function') {
-      return placeHolder({
-        style: {
-          width: '100%',
-          minWidth: width,
-          maxWidth: '400px',
-          height: height,
-          position: 'absolute',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }
-      });
-    }
-
-    return null;
-  }, [placeHolder]);
-  var HiddenImageLoader = useMemo(function () {
-    setShowDefaultComponent(false); // reset the state when url is changed
-
-    return /*#__PURE__*/React__default.createElement("img", {
-      className: "sendbird-image-renderer__hidden-image-loader",
-      src: url,
-      alt: alt,
-      onLoad: function onLoad() {
-        return setShowPlaceHolder(false);
-      },
-      onError: function onError() {
-        return setShowDefaultComponent(true);
-      }
-    });
-  }, [url]);
-  return /*#__PURE__*/React__default.createElement("div", {
-    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-image-renderer']).join(' '),
-    style: {
-      width: '100%',
-      minWidth: width,
-      maxWidth: '400px',
-      height: height
-    }
-  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default.createElement("div", {
-    className: "sendbird-image-renderer__image",
-    style: {
-      width: '100%',
-      minWidth: width,
-      maxWidth: '400px',
-      height: height,
-      position: 'absolute',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundImage: "url(".concat(url, ")"),
-      borderRadius: circle ? '50%' : null
-    }
-  }), HiddenImageLoader);
-}
-ImageRenderer.propTypes = {
-  className: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.string), PropTypes.string]),
-  url: PropTypes.string.isRequired,
-  alt: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  defaultComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  placeHolder: PropTypes.func,
-  circle: PropTypes.bool
-};
-ImageRenderer.defaultProps = {
-  className: '',
-  defaultComponent: null,
-  placeHolder: null,
-  alt: '',
-  width: null,
-  height: null,
-  circle: false
-};
-
 var imageRendererClassName = 'sendbird-avatar-img';
 
 var DefaultComponent = function DefaultComponent(_a) {
@@ -4378,7 +4439,7 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     className: "rogu-fileviewer__content__img"
   }), captionMsg && /*#__PURE__*/React__default.createElement(TextMessageItemBody, {
     message: captionMsg,
-    viewerCaptionMode: true,
+    mode: "fileViewerCaption",
     isHidden: isCaptionHidden
   }), !isSupportedFileView(type) && /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-fileviewer__content__unsupported"
