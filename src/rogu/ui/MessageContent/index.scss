@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 $borderRadius: 8px;
 $bubbleCaretSize: 8px;
@@ -33,6 +33,10 @@ $avatarSize: 32px;
 
     .rogu-message-content__menu {
       margin-left: 4px;
+    }
+
+    .rogu-message-content__menu {
+      margin-left: 0.25rem;
     }
 
     .rogu-message-content__bubble {
@@ -79,7 +83,7 @@ $avatarSize: 32px;
       }
 
       &::before {
-        content: "";
+        content: '';
         width: 0;
         height: 0;
         border-style: solid;

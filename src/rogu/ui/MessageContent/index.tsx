@@ -131,6 +131,7 @@ Props): ReactElement {
           <div className="rogu-message-content__bubble__header">
             {!isByMe && !chainTop && (
               <>
+                {/* Sender's name */}
                 <Label
                   className="rogu-message-content__sender-name"
                   color={LabelColors.ONBACKGROUND_2}
@@ -143,6 +144,7 @@ Props): ReactElement {
                 >
                   {getSenderName(message)}
                 </Label>
+
                 {/* Teacher label */}
                 {isOperatorMessage && !chainTop && (
                   <Label
@@ -154,7 +156,7 @@ Props): ReactElement {
                 )}
 
                 <MessageItemMenu
-                  className="rogu-message-content-menu__normal-menu"
+                  className="rogu-message-content__menu"
                   channel={channel}
                   message={message as UserMessage | FileMessage}
                   isByMe={isByMe}
