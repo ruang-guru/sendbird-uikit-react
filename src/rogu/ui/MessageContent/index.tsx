@@ -210,7 +210,7 @@ Props): ReactElement {
                 />
                 <TextMessageItemBody
                   isByMe={isByMe}
-                  origin="previewCaption"
+                  mode="thumbnailCaption"
                   message={message?.name}
                 />
               </>

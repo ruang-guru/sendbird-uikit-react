@@ -149,7 +149,7 @@ export const FileViewerComponent = ({
         {captionMsg && (
           <TextMessageItemBody
             message={captionMsg}
-            origin="viewerCaption"
+            mode="fileViewerCaption"
             isHidden={isCaptionHidden}
           />
         )}

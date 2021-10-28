@@ -38,7 +38,7 @@
     }
   }
 
-  &.viewer-mode {
+  &.rogu-text-message-item-body--viewer-mode {
     position: absolute;
     bottom: 5%;
     max-height: 40%;
@@ -56,13 +56,13 @@
       max-width: 70%;
     }
 
-    &.hidden {
+    &.rogu-text-message-item-body--viewer-mode__hidden {
       max-height: 0;
       padding: 0;
     }
   }
 
-  &.preview-mode {
+  &.rogu-text-message-item-body--preview-mode {
     display: block;
   }
 }

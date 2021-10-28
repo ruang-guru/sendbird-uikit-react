@@ -16,13 +16,13 @@ import "./index.scss";
 
 
 type ClampType = "init" | "clamped" | "expanded";
-type originUsage = "bubble" | "viewerCaption" | "previewCaption";
+type ModeType = "normal" | "fileViewerCaption" | "thumbnailCaption"
 
 interface Props {
   className?: string | Array<string>;
   isByMe?: boolean;
   message: string;
-  origin?: originUsage;
+  mode?: ModeType;
   isHidden?: boolean;
 }
 
@@ -30,7 +30,7 @@ export default function TextMessageItemBody({
   className,
   isByMe = false,
   message,
-  origin = 'bubble',
+  mode = 'normal',
   isHidden = false,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
@@ -57,9 +57,9 @@ export default function TextMessageItemBody({
         "rogu-text-message-item-body",
         clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "",
         !isByMe ? "rogu-text-message-item-body--incoming" : "",
-        origin === "viewerCaption" ? "viewer-mode" : "",
-        origin === "viewerCaption" && isHidden ? "hidden" : "",
-        origin === "previewCaption" ? "preview-mode" : "",
+        mode === "fileViewerCaption" ? "rogu-text-message-item-body--viewer-mode" : "",
+        mode === "fileViewerCaption" && isHidden ? "rogu-text-message-item-body--viewer-mode__hidden" : "",
+        mode === "thumbnailCaption" ? "rogu-text-message-item-body--preview-mode" : "",
       ])}
     >
       <div ref={textRef} className="rogu-text-message-item-body__inner">
