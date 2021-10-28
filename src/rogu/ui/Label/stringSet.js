@@ -109,6 +109,8 @@ const getStringSet = (lang = 'en') => {
       LABEL__DAY_SATURDAY: 'Saturday',
       LABEL__OPERATOR: 'Teacher',
       TOAST__DOWNLOAD: 'Download successful',
+      ROGU__MODAL__DELETE_MESSAGE__TITLE: 'Are you sure you want to delete the chat?',
+      ROGU__MODAL__DELETE_MESSAGE__SUBTITLE: 'Chats that you have deleted cannot be seen and accessed again',
       TOAST__COPY: 'Copied!',
       TOAST__MAX_FILE_SIZE_ERROR: 'Failed to upload! The file size is more than 10MB',
     },

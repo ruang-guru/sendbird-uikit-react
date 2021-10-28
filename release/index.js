@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-b0d36009.js';
-export { w as withSendBird } from './LocalizationContext-b0d36009.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as convertAssignmentDueUTCtoLocale, m as convertCtaLinkToWebLink, n as isUserMessage, o as isFailedMessage, p as isSentMessage, q as isThumbnailMessage, I as IconButton, r as copyToClipboard, s as getUIKitMessageTypes, t as isPendingMessage, u as isMessageSentByMe, v as isMessageSentByOperator, w as getSenderName, x as isTextMessage, y as isOGMessage, z as isAssignmentMessage, A as isMaterialMessage, B as getUIKitMessageType, F as getOutgoingMessageState, G as Button, H as ButtonTypes, J as ButtonSizes, M as Modal, K as MODAL_ROOT, L as isSupportedFileView, N as isVideo, O as isImage, P as UserProfileProvider } from './index-95d8cc01.js';
-export { Q as sendBirdSelectors } from './index-95d8cc01.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-e2a5046d.js';
+export { w as withSendBird } from './LocalizationContext-e2a5046d.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as convertAssignmentDueUTCtoLocale, m as convertCtaLinkToWebLink, n as isUserMessage, o as isFailedMessage, p as isSentMessage, q as isThumbnailMessage, I as IconButton$1, r as copyToClipboard, s as getUIKitMessageTypes, t as isPendingMessage, u as isMessageSentByMe, v as isMessageSentByOperator, w as getSenderName, x as isTextMessage, y as isOGMessage, z as isAssignmentMessage, A as isMaterialMessage, B as getUIKitMessageType, F as getOutgoingMessageState, G as Button$1, H as ButtonTypes$1, J as ButtonSizes, M as MODAL_ROOT, K as isSupportedFileView, L as isVideo, N as isImage, O as UserProfileProvider } from './index-a9bc6898.js';
+export { P as sendBirdSelectors } from './index-a9bc6898.js';
 import * as React from 'react';
 import React__default, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-4bc884e8.js';
-import { c as compareIds, L as LinkLabel } from './index-eb28d886.js';
-import { R as ReactionButton, A as AdminMessage, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-9ce11d60.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-5c8eeb62.js';
+import { c as compareIds, L as LinkLabel } from './index-dbdb5623.js';
+import { R as ReactionButton, A as AdminMessage, F as FileMessageItemBody, T as ThumbnailMessageItemBody, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-50e47c05.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-70559ef3.js';
+import './actionTypes-e0a3c8f3.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-964cc576.js';
-import './utils-4ccf5d5b.js';
-import './LeaveChannel-65479364.js';
-import './index-cf072a8c.js';
-import './index-64bec7c4.js';
-import './index-03a98a38.js';
+import './index-ccf19002.js';
+import './utils-13f6a0aa.js';
+import './LeaveChannel-2708a085.js';
+import './index-e299bcef.js';
+import './index-8ad7ed5b.js';
+import './index-f20579a5.js';
 import './ChannelSettings.js';
-import './index-a9150ba0.js';
+import './index-dec68164.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -1838,7 +1838,7 @@ Label.defaultProps = {
 var LabelTypography = Typography;
 var LabelColors = Colors$1;
 
-var Type = {
+var Type$1 = {
   ADD: 'ADD',
   ARROW_LEFT: 'ARROW_LEFT',
   ATTACH: 'ATTACH',
@@ -2376,205 +2376,205 @@ function changeColorToClassName(color) {
 
 function changeTypeToIconComponent(type) {
   switch (type) {
-    case Type.ADD:
+    case Type$1.ADD:
       return /*#__PURE__*/React__default.createElement(SvgIconAdd, null);
 
-    case Type.ARROW_LEFT:
+    case Type$1.ARROW_LEFT:
       return /*#__PURE__*/React__default.createElement(SvgIconArrowLeft, null);
 
-    case Type.ATTACH:
+    case Type$1.ATTACH:
       return /*#__PURE__*/React__default.createElement(SvgIconAttach, null);
 
-    case Type.BAN:
+    case Type$1.BAN:
       return /*#__PURE__*/React__default.createElement(SvgIconBan, null);
 
-    case Type.BROADCAST:
+    case Type$1.BROADCAST:
       return /*#__PURE__*/React__default.createElement(SvgIconBroadcast, null);
 
-    case Type.CAMERA:
+    case Type$1.CAMERA:
       return /*#__PURE__*/React__default.createElement(SvgIconCamera, null);
 
-    case Type.CHANNELS:
+    case Type$1.CHANNELS:
       return /*#__PURE__*/React__default.createElement(SvgIconChannels, null);
 
-    case Type.CHAT:
+    case Type$1.CHAT:
       return /*#__PURE__*/React__default.createElement(SvgIconChat, null);
 
-    case Type.CHAT_FILLED:
+    case Type$1.CHAT_FILLED:
       return /*#__PURE__*/React__default.createElement(SvgIconChatFilled, null);
 
-    case Type.CHEVRON_DOWN:
+    case Type$1.CHEVRON_DOWN:
       return /*#__PURE__*/React__default.createElement(SvgIconChevronDown, null);
 
-    case Type.CHEVRON_RIGHT:
+    case Type$1.CHEVRON_RIGHT:
       return /*#__PURE__*/React__default.createElement(SvgIconChevronRight, null);
 
-    case Type.CLOSE:
+    case Type$1.CLOSE:
       return /*#__PURE__*/React__default.createElement(SvgIconClose, null);
 
-    case Type.COLLAPSE:
+    case Type$1.COLLAPSE:
       return /*#__PURE__*/React__default.createElement(SvgIconCollapse, null);
 
-    case Type.COPY:
+    case Type$1.COPY:
       return /*#__PURE__*/React__default.createElement(SvgIconCopy, null);
 
-    case Type.CREATE:
+    case Type$1.CREATE:
       return /*#__PURE__*/React__default.createElement(SvgIconCreate, null);
 
-    case Type.DELETE:
+    case Type$1.DELETE:
       return /*#__PURE__*/React__default.createElement(SvgIconDelete, null);
 
-    case Type.DISCONNECTED:
+    case Type$1.DISCONNECTED:
       return /*#__PURE__*/React__default.createElement(SvgIconDisconnected, null);
 
-    case Type.DOCUMENT:
+    case Type$1.DOCUMENT:
       return /*#__PURE__*/React__default.createElement(SvgIconDocument, null);
 
-    case Type.DONE:
+    case Type$1.DONE:
       return /*#__PURE__*/React__default.createElement(SvgIconDone, null);
 
-    case Type.DONE_ALL:
+    case Type$1.DONE_ALL:
       return /*#__PURE__*/React__default.createElement(SvgIconDoneAll, null);
 
-    case Type.DOWNLOAD:
+    case Type$1.DOWNLOAD:
       return /*#__PURE__*/React__default.createElement(SvgIconDownload, null);
 
-    case Type.EDIT:
+    case Type$1.EDIT:
       return /*#__PURE__*/React__default.createElement(SvgIconEdit, null);
 
-    case Type.EMOJI_MORE:
+    case Type$1.EMOJI_MORE:
       return /*#__PURE__*/React__default.createElement(SvgIconEmojiMore, null);
 
-    case Type.ERROR:
+    case Type$1.ERROR:
       return /*#__PURE__*/React__default.createElement(SvgIconError, null);
 
-    case Type.EXPAND:
+    case Type$1.EXPAND:
       return /*#__PURE__*/React__default.createElement(SvgIconExpand, null);
 
-    case Type.FILE_AUDIO:
+    case Type$1.FILE_AUDIO:
       return /*#__PURE__*/React__default.createElement(SvgIconFileAudio, null);
 
-    case Type.FILE_DOCUMENT:
+    case Type$1.FILE_DOCUMENT:
       return /*#__PURE__*/React__default.createElement(SvgIconFileDocument, null);
 
-    case Type.FREEZE:
+    case Type$1.FREEZE:
       return /*#__PURE__*/React__default.createElement(SvgIconFreeze, null);
 
-    case Type.GIF:
+    case Type$1.GIF:
       return /*#__PURE__*/React__default.createElement(SvgIconGif, null);
 
-    case Type.INFO:
+    case Type$1.INFO:
       return /*#__PURE__*/React__default.createElement(SvgIconInfo, null);
 
-    case Type.LEAVE:
+    case Type$1.LEAVE:
       return /*#__PURE__*/React__default.createElement(SvgIconLeave, null);
 
-    case Type.MEMBERS:
+    case Type$1.MEMBERS:
       return /*#__PURE__*/React__default.createElement(SvgIconMembers, null);
 
-    case Type.MESSAGE:
+    case Type$1.MESSAGE:
       return /*#__PURE__*/React__default.createElement(SvgIconMessage, null);
 
-    case Type.MODERATIONS:
+    case Type$1.MODERATIONS:
       return /*#__PURE__*/React__default.createElement(SvgIconModerations, null);
 
-    case Type.MORE:
+    case Type$1.MORE:
       return /*#__PURE__*/React__default.createElement(SvgIconMore, null);
 
-    case Type.MUTE:
+    case Type$1.MUTE:
       return /*#__PURE__*/React__default.createElement(SvgIconMute, null);
 
-    case Type.NOTIFICATIONS:
+    case Type$1.NOTIFICATIONS:
       return /*#__PURE__*/React__default.createElement(SvgIconNotifications, null);
 
-    case Type.NOTIFICATIONS_OFF_FILLED:
+    case Type$1.NOTIFICATIONS_OFF_FILLED:
       return /*#__PURE__*/React__default.createElement(SvgIconNotificationsOffFilled, null);
 
-    case Type.OPERATOR:
+    case Type$1.OPERATOR:
       return /*#__PURE__*/React__default.createElement(SvgIconOperator, null);
 
-    case Type.PHOTO:
+    case Type$1.PHOTO:
       return /*#__PURE__*/React__default.createElement(SvgIconPhoto, null);
 
-    case Type.PLAY:
+    case Type$1.PLAY:
       return /*#__PURE__*/React__default.createElement(SvgIconPlay, null);
 
-    case Type.PLUS:
+    case Type$1.PLUS:
       return /*#__PURE__*/React__default.createElement(SvgIconPlus, null);
 
-    case Type.QUESTION:
+    case Type$1.QUESTION:
       return /*#__PURE__*/React__default.createElement(SvgIconQuestion, null);
 
-    case Type.REFRESH:
+    case Type$1.REFRESH:
       return /*#__PURE__*/React__default.createElement(SvgIconRefresh, null);
 
-    case Type.REMOVE:
+    case Type$1.REMOVE:
       return /*#__PURE__*/React__default.createElement(SvgIconRemove, null);
 
-    case Type.REPLY:
+    case Type$1.REPLY:
       return /*#__PURE__*/React__default.createElement(SvgIconReplyFilled, null);
 
-    case Type.SEARCH:
+    case Type$1.SEARCH:
       return /*#__PURE__*/React__default.createElement(SvgIconSearch, null);
 
-    case Type.SEND:
+    case Type$1.SEND:
       return /*#__PURE__*/React__default.createElement(SvgIconSend, null);
 
-    case Type.SETTINGS_FILLED:
+    case Type$1.SETTINGS_FILLED:
       return /*#__PURE__*/React__default.createElement(SvgIconSettingsFilled, null);
 
-    case Type.SPINNER:
+    case Type$1.SPINNER:
       return /*#__PURE__*/React__default.createElement(SvgIconSpinner, null);
 
-    case Type.SUPERGROUP:
+    case Type$1.SUPERGROUP:
       return /*#__PURE__*/React__default.createElement(SvgIconSupergroup, null);
 
-    case Type.THUMBNAIL_NONE:
+    case Type$1.THUMBNAIL_NONE:
       return /*#__PURE__*/React__default.createElement(SvgIconThumbnailNone, null);
 
-    case Type.TOGGLE_OFF:
+    case Type$1.TOGGLE_OFF:
       return /*#__PURE__*/React__default.createElement(SvgIconToggleoff, null);
 
-    case Type.TOGGLE_ON:
+    case Type$1.TOGGLE_ON:
       return /*#__PURE__*/React__default.createElement(SvgIconToggleon, null);
 
-    case Type.USER:
+    case Type$1.USER:
       return /*#__PURE__*/React__default.createElement(SvgIconUser, null);
 
-    case Type.ROGU_PENDING:
+    case Type$1.ROGU_PENDING:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconMsgPending, null);
 
-    case Type.ROGU_SENT:
+    case Type$1.ROGU_SENT:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconMsgSent, null);
 
-    case Type.ROGU_READ_ALL:
+    case Type$1.ROGU_READ_ALL:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconMsgReadAll, null);
 
-    case Type.ROGU_ERROR:
+    case Type$1.ROGU_ERROR:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconMsgFailed, null);
 
-    case Type.ROGU_COPY:
+    case Type$1.ROGU_COPY:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconCopy, null);
 
-    case Type.ROGU_REPLY:
+    case Type$1.ROGU_REPLY:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconReply, null);
 
-    case Type.ROGU_RESEND:
+    case Type$1.ROGU_RESEND:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconResend, null);
 
-    case Type.ROGU_CLOSE:
+    case Type$1.ROGU_CLOSE:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconClose, null);
 
-    case Type.ROGU_DOWNLOAD:
+    case Type$1.ROGU_DOWNLOAD:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconDownload, null);
 
-    case Type.ROGU_DELETE:
+    case Type$1.ROGU_DELETE:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconDelete, null);
 
-    case Type.ROGU_ASSIGNMENT:
+    case Type$1.ROGU_ASSIGNMENT:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconAssignment, null);
 
-    case Type.ROGU_MATERIAL:
+    case Type$1.ROGU_MATERIAL:
       return /*#__PURE__*/React__default.createElement(SvgRoguIconMaterial, null);
 
     default:
@@ -2608,7 +2608,7 @@ function Icon(_ref) {
 }
 Icon.propTypes = {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-  type: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(Type)), PropTypes.string]).isRequired,
+  type: PropTypes.oneOfType([PropTypes.oneOf(Object.keys(Type$1)), PropTypes.string]).isRequired,
   fillColor: PropTypes.oneOf(Object.keys(Colors)),
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -2623,7 +2623,7 @@ Icon.defaultProps = {
   onClick: function onClick() {},
   children: null
 };
-var IconTypes = Type;
+var IconTypes = Type$1;
 var IconColors = Colors;
 
 var MessageStatusTypes = getOutgoingMessageStates();
@@ -3244,7 +3244,7 @@ function MessageItemMenu(_a) {
     ref: containerRef
   }, /*#__PURE__*/React__default.createElement(ContextMenu, {
     menuTrigger: function menuTrigger(toggleDropdown) {
-      return /*#__PURE__*/React__default.createElement(IconButton, {
+      return /*#__PURE__*/React__default.createElement(IconButton$1, {
         className: "rogu-message-item-menu__trigger",
         ref: triggerRef,
         width: "16px",
@@ -3598,7 +3598,7 @@ var MessageInput = /*#__PURE__*/React__default.forwardRef(function (props, ref) 
     className: "rogu-message-input--placeholder",
     type: LabelTypography.BODY_1,
     color: LabelColors.ONBACKGROUND_3
-  }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && /*#__PURE__*/React__default.createElement(IconButton, {
+  }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && /*#__PURE__*/React__default.createElement(IconButton$1, {
     className: "rogu-message-input--attach",
     height: "32px",
     width: "32px",
@@ -3617,7 +3617,7 @@ var MessageInput = /*#__PURE__*/React__default.forwardRef(function (props, ref) 
     type: "file",
     ref: fileInputRef,
     onChange: handleUploadFile(onFileUpload)
-  })), !isEdit && /*#__PURE__*/React__default.createElement(IconButton, {
+  })), !isEdit && /*#__PURE__*/React__default.createElement(IconButton$1, {
     className: getClassName(['rogu-message-input--send', disabled ? 'rogu-message-input--send-disabled' : '']),
     height: "36px",
     width: "36px",
@@ -3629,14 +3629,14 @@ var MessageInput = /*#__PURE__*/React__default.forwardRef(function (props, ref) 
     height: "16px"
   }))), isEdit && /*#__PURE__*/React__default.createElement("div", {
     className: "rogu-message-input--edit-action"
-  }, /*#__PURE__*/React__default.createElement(Button, {
+  }, /*#__PURE__*/React__default.createElement(Button$1, {
     className: "rogu-message-input--edit-action__cancel",
-    type: ButtonTypes.SECONDARY,
+    type: ButtonTypes$1.SECONDARY,
     size: ButtonSizes.SMALL,
     onClick: onCancelEdit
-  }, stringSet.BUTTON__CANCEL), /*#__PURE__*/React__default.createElement(Button, {
+  }, stringSet.BUTTON__CANCEL), /*#__PURE__*/React__default.createElement(Button$1, {
     className: "rogu-message-input--edit-action__save",
-    type: ButtonTypes.PRIMARY,
+    type: ButtonTypes$1.PRIMARY,
     size: ButtonSizes.SMALL,
     onClick: function onClick() {
       if (inputValue) {
@@ -3675,6 +3675,266 @@ MessageInput.defaultProps = {
   onStartTyping: noop$1
 };
 
+var IconButton = /*#__PURE__*/React__default.forwardRef(function (props, ref) {
+  var className = props.className,
+      children = props.children,
+      disabled = props.disabled,
+      width = props.width,
+      height = props.height,
+      type = props.type,
+      _onClick = props.onClick,
+      _onBlur = props.onBlur,
+      style = props.style;
+
+  var _useState = useState(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      pressed = _useState2[0],
+      setPressed = _useState2[1];
+
+  return (
+    /*#__PURE__*/
+    // eslint-disable-next-line react/button-has-type
+    React__default.createElement("button", {
+      className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-iconbutton', pressed]).join(' '),
+      disabled: disabled,
+      ref: ref,
+      type: type // eslint-disable-line react/button-has-type
+      ,
+      style: _objectSpread2(_objectSpread2({}, style), {}, {
+        height: height,
+        width: width
+      }),
+      onClick: function onClick(e) {
+        if (disabled) {
+          return;
+        }
+
+        setPressed('sendbird-iconbutton--pressed');
+
+        _onClick(e);
+      },
+      onBlur: function onBlur(e) {
+        setPressed('');
+
+        _onBlur(e);
+      }
+    }, /*#__PURE__*/React__default.createElement("span", {
+      className: "sendbird-iconbutton__inner"
+    }, children))
+  );
+});
+IconButton.propTypes = {
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element), PropTypes.any]).isRequired,
+  disabled: PropTypes.bool,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  type: PropTypes.string,
+  onClick: PropTypes.func,
+  onBlur: PropTypes.func,
+  style: PropTypes.shape({})
+};
+IconButton.defaultProps = {
+  className: '',
+  disabled: false,
+  width: '56px',
+  height: '56px',
+  type: 'button',
+  onClick: function onClick() {},
+  onBlur: function onBlur() {},
+  style: {}
+};
+
+var Type = {
+  PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+  DANGER: 'DANGER',
+  DISABLED: 'DISABLED'
+};
+var Size = {
+  BIG: 'BIG',
+  SMALL: 'SMALL'
+};
+
+function changeTypeToClassName(type) {
+  switch (type) {
+    case Type.PRIMARY:
+      return 'rogu-button--primary';
+
+    case Type.SECONDARY:
+      return 'rogu-button--secondary';
+
+    case Type.DANGER:
+      return 'rogu-button--danger';
+
+    case Type.DISABLED:
+      return 'rogu-button--disabled';
+
+    default:
+      return null;
+  }
+}
+function changeSizeToClassName(size) {
+  switch (size) {
+    case Size.BIG:
+      return 'rogu-button--big';
+
+    case Size.SMALL:
+      return 'rogu-button--small';
+
+    default:
+      return null;
+  }
+}
+
+function Button(_ref) {
+  var className = _ref.className,
+      type = _ref.type,
+      size = _ref.size,
+      children = _ref.children,
+      disabled = _ref.disabled,
+      onClick = _ref.onClick;
+  var injectingClassNames = [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-button', disabled ? 'rogu-button__disabled' : '', changeTypeToClassName(type), changeSizeToClassName(size)]).join(' ');
+  return /*#__PURE__*/React__default.createElement("button", {
+    className: injectingClassNames,
+    type: "button",
+    onClick: onClick,
+    disabled: disabled
+  }, /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-button__text",
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONCONTENT_1
+  }, children));
+}
+var ButtonTypes = Type;
+Button.propTypes = {
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  type: PropTypes.oneOf(Object.keys(Type)),
+  size: PropTypes.oneOf(Object.keys(Size)),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func
+};
+Button.defaultProps = {
+  className: '',
+  type: Type.PRIMARY,
+  size: Size.BIG,
+  children: 'Button',
+  disabled: false,
+  onClick: function onClick() {}
+};
+
+var ModalHeader = function ModalHeader(_ref) {
+  var titleText = _ref.titleText;
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-modal__header"
+  }, /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-modal__title",
+    type: LabelTypography.H_3,
+    color: LabelColors.ONBACKGROUND_1
+  }, titleText));
+};
+ModalHeader.propTypes = {
+  titleText: PropTypes.string.isRequired
+};
+var ModalBody = function ModalBody(_ref2) {
+  var children = _ref2.children;
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-modal__body"
+  }, children);
+};
+ModalBody.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.element.isRequired, PropTypes.arrayOf(PropTypes.element.isRequired)])
+};
+ModalBody.defaultProps = {
+  children: null
+};
+var ModalFooter = function ModalFooter(_ref3) {
+  var onSubmit = _ref3.onSubmit,
+      onCancel = _ref3.onCancel,
+      _ref3$disabled = _ref3.disabled,
+      disabled = _ref3$disabled === void 0 ? false : _ref3$disabled,
+      submitText = _ref3.submitText;
+
+  var _useContext = useContext(LocalizationContext),
+      stringSet = _useContext.stringSet;
+
+  return /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-modal__footer"
+  }, /*#__PURE__*/React__default.createElement(Button, {
+    className: "rogu-modal-button",
+    type: ButtonTypes.SECONDARY,
+    disabled: disabled,
+    onClick: onSubmit
+  }, submitText), /*#__PURE__*/React__default.createElement(Button, {
+    className: "rogu-modal-button",
+    type: ButtonTypes.PRIMARY,
+    onClick: onCancel
+  }, stringSet.BUTTON__CANCEL));
+};
+ModalFooter.propTypes = {
+  onCancel: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  submitText: PropTypes.string.isRequired,
+  disabled: PropTypes.bool
+};
+ModalFooter.defaultProps = {
+  disabled: false
+};
+
+function Modal(props) {
+  var children = props.children,
+      onCancel = props.onCancel,
+      onSubmit = props.onSubmit,
+      disabled = props.disabled,
+      submitText = props.submitText,
+      titleText = props.titleText,
+      hideFooter = props.hideFooter,
+      isWithClose = props.isWithClose;
+  return /*#__PURE__*/createPortal( /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-modal"
+  }, /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-modal__content"
+  }, /*#__PURE__*/React__default.createElement(ModalHeader, {
+    titleText: titleText
+  }), /*#__PURE__*/React__default.createElement(ModalBody, null, children), !hideFooter && /*#__PURE__*/React__default.createElement(ModalFooter, {
+    disabled: disabled,
+    onCancel: onCancel,
+    onSubmit: onSubmit,
+    submitText: submitText
+  }), isWithClose && /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-modal__close"
+  }, /*#__PURE__*/React__default.createElement(IconButton, {
+    width: "32px",
+    height: "32px",
+    onClick: onCancel
+  }, /*#__PURE__*/React__default.createElement(Icon, {
+    type: IconTypes.ROGU_CLOSE,
+    fillColor: IconColors.DEFAULT,
+    width: "24px",
+    height: "24px"
+  })))), /*#__PURE__*/React__default.createElement("div", {
+    className: "rogu-modal__backdrop"
+  })), document.getElementById(MODAL_ROOT));
+}
+
+Modal.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)]),
+  onCancel: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  hideFooter: PropTypes.bool,
+  disabled: PropTypes.bool,
+  type: PropTypes.string,
+  isWithClose: PropTypes.bool
+};
+Modal.defaultProps = {
+  children: null,
+  hideFooter: false,
+  disabled: false,
+  type: ButtonTypes.DANGER,
+  isWithClose: true
+};
+
 var RemoveMessage = function RemoveMessage(props) {
   var onCloseModal = props.onCloseModal,
       onDeleteMessage = props.onDeleteMessage;
@@ -3686,8 +3946,13 @@ var RemoveMessage = function RemoveMessage(props) {
     onCancel: onCloseModal,
     onSubmit: onDeleteMessage,
     submitText: "Delete",
-    titleText: stringSet.MODAL__DELETE_MESSAGE__TITLE
-  });
+    titleText: stringSet.ROGU__MODAL__DELETE_MESSAGE__TITLE,
+    isWithClose: false
+  }, /*#__PURE__*/React__default.createElement(Label, {
+    className: "rogu-delete-message__subtitle",
+    type: LabelTypography.BODY_3,
+    color: LabelColors.ONBACKGROUND_1
+  }, stringSet.ROGU__MODAL__DELETE_MESSAGE__SUBTITLE));
 };
 
 RemoveMessage.propTypes = {

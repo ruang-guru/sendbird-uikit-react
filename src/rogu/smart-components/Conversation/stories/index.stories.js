@@ -8,6 +8,7 @@ import withSendBird from "../../../../lib/SendbirdSdkContext";
 import COLOR_SET from "../../../../../__mocks__/themeMock";
 import { STRING_SET } from "../../../../../__mocks__/localizationMock";
 import Notification from "../components/Notification";
+import RemoveMessageModal from "../components/RemoveMessage";
 
 export default { title: "ruangkelas/Smart Components/Channel" };
 
@@ -233,7 +234,18 @@ export const QueryParamsForChannel = () => {
 export const UnreadNotification = () => (
   <Sendbird colorSet={COLOR_SET} stringSet={STRING_SET}>
     <div style={{ height: "100vh" }}>
-      <Notification count={5} time="16.42 24 October 2021" onClick={() => {}} />
+      <Notification count={5} time="16.42 24 October 2021" onClick={() => { }} />
+    </div>
+  </Sendbird>
+);
+
+export const DeleteMessageModal = () => (
+  <Sendbird colorSet={COLOR_SET} stringSet={STRING_SET}>
+    <div style={{ height: "100vh" }}>
+      <RemoveMessageModal
+        onCloseModal={() => { }}
+        onDeleteMessage={() => { }}
+      />
     </div>
   </Sendbird>
 );
