@@ -209,7 +209,7 @@ export default function MessageContent({
                     message={message as FileMessage}
                     isByMe={isByMe}
                     showFileViewer={showFileViewer}
-                    isClickable={getOutgoingMessageState(channel, message) !== OutgoingMessageStates.PENDING}
+                    isClickable={getOutgoingMessageState(channel, message) === OutgoingMessageStates.SENT}
                   />
                   <TextMessageItemBody
                     isByMe={isByMe}

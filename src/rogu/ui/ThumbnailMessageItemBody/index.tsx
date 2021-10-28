@@ -23,7 +23,6 @@ export default function ThumbnailMessageItemBody({
   showFileViewer,
   isClickable = true,
 }: Props): ReactElement {
-  console.log('message', message);
   const { thumbnails = [] } = message;
   const thumbnailUrl: string = thumbnails.length > 0 ? thumbnails[0]?.url : '';
 
