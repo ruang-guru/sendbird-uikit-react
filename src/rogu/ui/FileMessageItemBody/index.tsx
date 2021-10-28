@@ -1,10 +1,11 @@
-import React, { ReactElement } from 'react';
+import React, { useContext, ReactElement } from 'react';
 import { FileMessage } from 'sendbird';
 import './index.scss';
 
 import Label, { LabelTypography, LabelColors } from '../Label';
 import Icon, { IconTypes, IconColors } from '../Icon';
 import { getClassName } from '../../../utils';
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 import { formatBytes, getFileType, getMimeExtension } from '../../utils';
 
 interface Props {
@@ -18,6 +19,8 @@ export default function FileMessageItemBody({
   message,
   isByMe = false,
 }: Props): ReactElement {
+  const { stringSet } = useContext(LocalizationContext);
+
   return (
     <a
       className={getClassName([
@@ -28,7 +31,8 @@ export default function FileMessageItemBody({
           : 'rogu-file-message-item-body--incoming',
       ])}
       href={message.plainUrl}
-      target="_blank" rel="noreferrer"
+      target="_blank"
+      rel="noreferrer"
     >
       <Icon
         className={'rogu-file-message-item-body__icon'}
@@ -69,7 +73,7 @@ export default function FileMessageItemBody({
             color={LabelColors.ONBACKGROUND_2}
             type={LabelTypography.BODY_2}
           >
-            {getMimeExtension(message.type) || 'Others'}
+            {getMimeExtension(message.type) || stringSet.LABEL__OTHER}
           </Label>
         </div>
       </div>

@@ -20,8 +20,6 @@ export default function FileMessageItemBody({
   isByMe = false,
   mouseHover = false,
 }: Props): ReactElement {
-  console.log(getUIKitFileType(message?.type));
-
   return (
     <div
       className={getClassName([
