@@ -3,10 +3,8 @@
 .rogu-material-message-item-body {
   position: relative;
   display: inline-block;
-  box-sizing: content-box;
   width: 100%;
   min-width: 200px;
-  max-width: 400px;
 
   .rogu-material-message-text {
     white-space: pre-wrap;
@@ -26,7 +24,7 @@
     overflow: hidden;
     display: flex;
     align-items: center;
-    padding: 12px;
+    padding: 8px;
     border-radius: 4px;
     cursor: pointer;
     z-index: 10;
