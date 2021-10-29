@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-2e0c5a20.js');
-var index$1 = require('./index-4014c60c.js');
+var LocalizationContext = require('./LocalizationContext-2ef0b478.js');
+var index$1 = require('./index-13aaf329.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-8475ae2e.js');
-var index$3 = require('./index-7ea7b762.js');
-var Channel = require('./index-160c20b2.js');
+var index$2 = require('./index-dcc4203e.js');
+var index$3 = require('./index-3b21abe9.js');
+var Channel = require('./index-fa627ded.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-6fd10fbb.js');
+require('./actionTypes-7060191a.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-aa80260a.js');
-require('./utils-98cc6e3d.js');
-require('./LeaveChannel-6bda618d.js');
-require('./index-b320a7e9.js');
-require('./index-84f8ef0b.js');
-require('./index-c07edad4.js');
+require('./index-8039a02f.js');
+require('./utils-d9fbdccd.js');
+require('./LeaveChannel-18e3e1fa.js');
+require('./index-14d47b4e.js');
+require('./index-d21390a0.js');
+require('./index-8d8366b1.js');
 require('./ChannelSettings.js');
-require('./index-e8da74c9.js');
+require('./index-fffd2fa4.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -2983,16 +2983,17 @@ function ThumbnailMessageItemBody(_a) {
       isByMe = _d === void 0 ? false : _d,
       _e = _a.mouseHover,
       mouseHover = _e === void 0 ? false : _e,
-      showFileViewer = _a.showFileViewer;
-  console.log('message', message);
-  var _f = message.thumbnails,
-      thumbnails = _f === void 0 ? [] : _f;
+      showFileViewer = _a.showFileViewer,
+      _f = _a.isClickable,
+      isClickable = _f === void 0 ? true : _f;
+  var _g = message.thumbnails,
+      thumbnails = _g === void 0 ? [] : _g;
   var thumbnailUrl = thumbnails.length > 0 ? (_b = thumbnails[0]) === null || _b === void 0 ? void 0 : _b.url : '';
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-thumbnail-message-item-body', isByMe ? 'outgoing' : 'incoming', mouseHover ? 'mouse-hover' : '', ((_c = message === null || message === void 0 ? void 0 : message.reactions) === null || _c === void 0 ? void 0 : _c.length) > 0 ? 'reactions' : '']),
-    onClick: function onClick() {
+    onClick: isClickable ? function () {
       return showFileViewer(true);
-    }
+    } : function () {}
   }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
     className: "rogu-thumbnail-message-item-body__thumbnail",
     url: thumbnailUrl || (message === null || message === void 0 ? void 0 : message.url),
@@ -3445,10 +3446,10 @@ function MessageItemMenu(_a) {
         height: "16px",
         onClick: function onClick() {
           toggleDropdown();
-          setSupposedHover(true);
+          if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(true);
         },
         onBlur: function onBlur() {
-          setSupposedHover(false);
+          if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
         }
       }, /*#__PURE__*/React__default["default"].createElement(Icon, {
         className: "rogu-message-item-menu__trigger__icon",
@@ -3463,7 +3464,7 @@ function MessageItemMenu(_a) {
 
       var closeDropdown = function closeDropdown() {
         close();
-        setSupposedHover(false);
+        if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
       };
 
       return /*#__PURE__*/React__default["default"].createElement(MenuItems, {
@@ -3614,7 +3615,8 @@ function MessageContent(_a) {
   }), index$1.isThumbnailMessage(message) && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
-    showFileViewer: showFileViewer
+    showFileViewer: showFileViewer,
+    isClickable: index$1.getOutgoingMessageState(channel, message) === index$1.OutgoingMessageStates.SENT
   }), /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     mode: "thumbnailCaption",
