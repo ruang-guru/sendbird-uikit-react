@@ -78,8 +78,8 @@ export default function MessageContent({
   resendMessage,
   disabled = false,
 }: // showRemove,
-// toggleReaction,
-Props): ReactElement {
+  // toggleReaction,
+  Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
@@ -152,7 +152,6 @@ Props): ReactElement {
                     {stringSet.LABEL__OPERATOR}
                   </Label>
                 )}
-
                 <MessageItemMenu
                   className="rogu-message-content-menu__normal-menu"
                   channel={channel}
@@ -167,7 +166,6 @@ Props): ReactElement {
               </>
             )}
           </div>
-
           <div className="rogu-message-content__bubble__body">
             <div className="rogu-message-content__bubble__body__inner">
               {/* Message content */}
@@ -197,11 +195,11 @@ Props): ReactElement {
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.FILE && (
-                <FileMessageItemBody
-                  message={message as FileMessage}
-                  isByMe={isByMe}
-                />
-              )}
+                  <FileMessageItemBody
+                    message={message as FileMessage}
+                    isByMe={isByMe}
+                  />
+                )}
               {isThumbnailMessage(message as FileMessage) && (
                 <>
                   <ThumbnailMessageItemBody
@@ -209,8 +207,8 @@ Props): ReactElement {
                     isByMe={isByMe}
                     showFileViewer={showFileViewer}
                     isClickable={
-                      getOutgoingMessageState(channel, message) ===
-                      OutgoingMessageStates.SENT
+                      getOutgoingMessageState(channel, message) !==
+                      OutgoingMessageStates.PENDING
                     }
                   />
                   <TextMessageItemBody
@@ -222,8 +220,8 @@ Props): ReactElement {
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
-                <UnknownMessageItemBody message={message} isByMe={isByMe} />
-              )}
+                  <UnknownMessageItemBody message={message} isByMe={isByMe} />
+                )}
             </div>
             {((!isByMe && chainTop) || isByMe) && (
               <MessageItemMenu
