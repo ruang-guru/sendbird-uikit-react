@@ -1,5 +1,5 @@
 import { FileMessage } from "sendbird";
-import { isSupportedFileView } from ".";
+import { isSupportedFileView } from "./fileType";
 
 export const isFileMessage = (message: FileMessage): boolean =>
   message &&
