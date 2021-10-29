@@ -103,3 +103,13 @@ export const getMimeExtension = (mimeType: string): string | undefined => {
     }
   }
 };
+
+export const getMimeTypesString = (): string => {
+  const mimeTypes = [];
+
+  for (const mimes of Object.values(SUPPORTED_MIMES)) {
+    mimes.forEach((mime) => mimeTypes.push(mime.mimeType));
+  }
+
+  return mimeTypes.join(',');
+};
