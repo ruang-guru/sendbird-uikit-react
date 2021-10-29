@@ -87,7 +87,7 @@ const SendingMessageStatus: SendingMessageStatus = {
   PENDING: "pending",
 };
 
-export interface OutgoingMessageStates {
+interface OutgoingMessageStates {
   NONE: "NONE";
   PENDING: "PENDING";
   SENT: "SENT";
