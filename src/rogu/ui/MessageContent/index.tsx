@@ -20,7 +20,6 @@ import {
   getUIKitMessageType,
   isTextMessage,
   isOGMessage,
-  isThumbnailMessage,
   isMessageSentByMe,
   isMessageSentByOperator,
   getOutgoingMessageState,
@@ -31,7 +30,7 @@ import {
   CoreMessageType,
 } from '../../../utils';
 
-import { isAssignmentMessage, isMaterialMessage } from '../../utils';
+import { isAssignmentMessage, isMaterialMessage, isThumbnailMessage } from '../../utils';
 import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
 import MaterialMessageItemBody from '../MaterialMessageItemBody';
 import { generateColorFromString } from './utils';
