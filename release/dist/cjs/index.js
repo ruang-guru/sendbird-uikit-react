@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-2ef0b478.js');
-var index$1 = require('./index-13aaf329.js');
+var LocalizationContext = require('./LocalizationContext-73161bfc.js');
+var index$1 = require('./index-89b4e49a.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-dcc4203e.js');
-var index$3 = require('./index-3b21abe9.js');
-var Channel = require('./index-fa627ded.js');
+var index$2 = require('./index-6510f4f1.js');
+var index$3 = require('./index-c13075f8.js');
+var Channel = require('./index-8795bf59.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-7060191a.js');
+require('./actionTypes-cfb88439.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-8039a02f.js');
-require('./utils-d9fbdccd.js');
-require('./LeaveChannel-18e3e1fa.js');
-require('./index-14d47b4e.js');
-require('./index-d21390a0.js');
-require('./index-8d8366b1.js');
+require('./index-0532bbac.js');
+require('./utils-17e348ed.js');
+require('./LeaveChannel-2b9fc48a.js');
+require('./index-cdc97a34.js');
+require('./index-ad7f09c4.js');
+require('./index-013ae723.js');
 require('./ChannelSettings.js');
-require('./index-fffd2fa4.js');
+require('./index-3ffdc63c.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -2988,12 +2988,12 @@ function ThumbnailMessageItemBody(_a) {
       isClickable = _f === void 0 ? true : _f;
   var _g = message.thumbnails,
       thumbnails = _g === void 0 ? [] : _g;
-  var thumbnailUrl = thumbnails.length > 0 ? (_b = thumbnails[0]) === null || _b === void 0 ? void 0 : _b.url : '';
+  var thumbnailUrl = thumbnails.length > 0 ? (_b = thumbnails[0]) === null || _b === void 0 ? void 0 : _b.url : "";
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: index$1.getClassName([className, 'rogu-thumbnail-message-item-body', isByMe ? 'outgoing' : 'incoming', mouseHover ? 'mouse-hover' : '', ((_c = message === null || message === void 0 ? void 0 : message.reactions) === null || _c === void 0 ? void 0 : _c.length) > 0 ? 'reactions' : '']),
-    onClick: isClickable ? function () {
-      return showFileViewer(true);
-    } : function () {}
+    className: index$1.getClassName([className, "rogu-thumbnail-message-item-body", isByMe ? "outgoing" : "incoming", mouseHover ? "mouse-hover" : "", ((_c = message === null || message === void 0 ? void 0 : message.reactions) === null || _c === void 0 ? void 0 : _c.length) > 0 ? "reactions" : ""]),
+    onClick: function onClick() {
+      if (isClickable) showFileViewer(true);
+    }
   }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
     className: "rogu-thumbnail-message-item-body__thumbnail",
     url: thumbnailUrl || (message === null || message === void 0 ? void 0 : message.url),
@@ -3524,13 +3524,13 @@ function MessageItemMenu(_a) {
 }
 
 function MessageContent(_a) {
-  var _b, _c, _d;
+  var _b, _c, _d, _e;
 
   var channel = _a.channel,
-      _e = _a.chainBottom,
-      chainBottom = _e === void 0 ? false : _e,
-      _f = _a.chainTop,
-      chainTop = _f === void 0 ? false : _f,
+      _f = _a.chainBottom,
+      chainBottom = _f === void 0 ? false : _f,
+      _g = _a.chainTop,
+      chainTop = _g === void 0 ? false : _g,
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
@@ -3542,8 +3542,8 @@ function MessageContent(_a) {
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
       resendMessage = _a.resendMessage,
-      _g = _a.disabled,
-      disabled = _g === void 0 ? false : _g;
+      _h = _a.disabled,
+      disabled = _h === void 0 ? false : _h;
   var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
   var messageTypes = index$1.getUIKitMessageTypes();
   var avatarRef = React.useRef(null);
@@ -3565,8 +3565,8 @@ function MessageContent(_a) {
     className: "rogu-message-content__avatar",
     src: ((_c = message === null || message === void 0 ? void 0 : message.sender) === null || _c === void 0 ? void 0 : _c.profileUrl) || "",
     ref: avatarRef,
-    height: "2rem",
-    width: "2rem"
+    height: "32px",
+    width: "32px"
   }), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-message-content__content"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
@@ -3596,10 +3596,10 @@ function MessageContent(_a) {
   }))), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-message-content__bubble__body"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-message-content__buble__body-text"
+    className: "rogu-message-content__bubble__body__inner"
   }, index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
-    message: message === null || message === void 0 ? void 0 : message.message
+    message: (_e = message) === null || _e === void 0 ? void 0 : _e.message
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -3616,16 +3616,16 @@ function MessageContent(_a) {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
-    isClickable: index$1.getOutgoingMessageState(channel, message) === index$1.OutgoingMessageStates.SENT
+    isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING
   }), /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     mode: "thumbnailCaption",
-    message: message === null || message === void 0 ? void 0 : message.name
+    message: message.name
   })), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
   })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default["default"].createElement(MessageItemMenu, {
-    className: "rogu-message-content-menu__normal-menu",
+    className: "rogu-message-content__menu",
     channel: channel,
     message: message,
     isByMe: isByMe,

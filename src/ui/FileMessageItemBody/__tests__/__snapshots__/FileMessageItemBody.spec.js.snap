@@ -22,7 +22,7 @@ exports[`FileMessageItemBody should do a snapshot test of the FileMessageItemBod
       }
       tabIndex="0"
     >
-      <test-file-stub />
+      icon
     </div>
   </div>
   <div

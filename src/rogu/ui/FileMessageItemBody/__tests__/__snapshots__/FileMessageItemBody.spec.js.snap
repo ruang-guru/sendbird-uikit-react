@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FileMessageItemBody should do a snapshot test of the FileMessageItemBody DOM 1`] = `
+<a
+  className=" rogu-file-message-item-body rogu-file-message-item-body--incoming"
+  href="https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/a08c8904a53b491da98093f7e502e51e.doc"
+  rel="noreferrer"
+  target="_blank"
+>
+  <div
+    className="rogu-file-message-item-body__icon sendbird-icon sendbird-icon-color--primary"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    style={
+      Object {
+        "height": "28px",
+        "minHeight": "28px",
+        "minWidth": "28px",
+        "width": "28px",
+      }
+    }
+    tabIndex="0"
+  >
+    <test-file-stub />
+  </div>
+  <div
+    className="rogu-file-message-item-body__content"
+  >
+    <span
+      className="rogu-file-message-item-body__name sendbird-label sendbird-label--subtitle-2 sendbird-label--color-onbackground-1"
+    >
+      Some Document.doc
+    </span>
+    <div
+      className="rogu-file-message-item-body__meta"
+    >
+      <span
+        className="sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-2"
+      >
+        100.9 KB · 
+      </span>
+      <span
+        className="sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-2"
+      >
+        DOC
+      </span>
+    </div>
+  </div>
+</a>
+`;
