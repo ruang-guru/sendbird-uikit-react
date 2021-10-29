@@ -31,11 +31,7 @@ import {
   CoreMessageType,
 } from "../../../utils";
 
-<<<<<<< HEAD
 import { isAssignmentMessage, isMaterialMessage } from '../../utils';
-=======
-import { isAssignmentMessage, isMaterialMessage } from "../../utils";
->>>>>>> 8e8ea34 (fix(component): omit max-width from the message item body)
 import AssignmentMessageItemBody from "../AssignmentMessageItemBody";
 import MaterialMessageItemBody from "../MaterialMessageItemBody";
 import { generateColorFromString } from "./utils";
@@ -135,10 +131,6 @@ export default function MessageContent({
           <div className="rogu-message-content__bubble__header">
             {!isByMe && !chainTop && (
               <>
-<<<<<<< HEAD
-=======
-                {/* Sender's name */}
->>>>>>> 8e8ea34 (fix(component): omit max-width from the message item body)
                 <Label
                   className="rogu-message-content__sender-name"
                   color={LabelColors.ONBACKGROUND_2}
@@ -151,7 +143,6 @@ export default function MessageContent({
                 >
                   {getSenderName(message)}
                 </Label>
-<<<<<<< HEAD
                 {/* Teacher label */}
                 {isOperatorMessage && !chainTop && (
                   <Label
@@ -231,19 +222,6 @@ export default function MessageContent({
             </div>
             {
               ((!isByMe && chainTop) || isByMe) && (
-=======
-
-                {/* Teacher label */}
-                {isOperatorMessage && !chainTop && (
-                  <Label
-                    className="rogu-message-content__operator-label"
-                    type={LabelTypography.CAPTION_3}
-                  >
-                    {stringSet.LABEL__OPERATOR}
-                  </Label>
-                )}
-
->>>>>>> 8e8ea34 (fix(component): omit max-width from the message item body)
                 <MessageItemMenu
                   className="rogu-message-content__menu"
                   channel={channel}
@@ -253,73 +231,11 @@ export default function MessageContent({
                   showEdit={showEdit}
                   showRemove={showRemove}
                   resendMessage={resendMessage}
-<<<<<<< HEAD
                   showFileViewer={showFileViewer} />
 
               )
             }
 
-=======
-                  showFileViewer={showFileViewer}
-                />
-              </>
-            )}
-          </div>
-
-          <div className="rogu-message-content__bubble__body">
-            <div className="rogu-message-content__bubble__body__inner">
-              {/* Message content */}
-              {isTextMessage(message as UserMessage) && (
-                <TextMessageItemBody
-                  isByMe={isByMe}
-                  message={(message as UserMessage).message}
-                />
-              )}
-              {isOGMessage(message as UserMessage) && (
-                <OGMessageItemBody
-                  message={message as UserMessage}
-                  isByMe={isByMe}
-                />
-              )}
-              {isAssignmentMessage(message.customType) && (
-                <AssignmentMessageItemBody
-                  message={message as UserMessage}
-                  isByMe={isByMe}
-                />
-              )}
-              {isMaterialMessage(message.customType) && (
-                <MaterialMessageItemBody
-                  message={message as UserMessage}
-                  isByMe={isByMe}
-                />
-              )}
-              {getUIKitMessageType(message as FileMessage) ===
-                messageTypes.FILE && (
-                <FileMessageItemBody
-                  message={message as FileMessage}
-                  isByMe={isByMe}
-                />
-              )}
-              {isThumbnailMessage(message as FileMessage) && (
-                <>
-                  <ThumbnailMessageItemBody
-                    message={message as FileMessage}
-                    isByMe={isByMe}
-                    showFileViewer={showFileViewer}
-                  />
-                  <TextMessageItemBody
-                    isByMe={isByMe}
-                    mode="thumbnailCaption"
-                    message={(message as FileMessage)?.name}
-                  />
-                </>
-              )}
-              {getUIKitMessageType(message as FileMessage) ===
-                messageTypes.UNKNOWN && (
-                <UnknownMessageItemBody message={message} isByMe={isByMe} />
-              )}
-            </div>
->>>>>>> 8e8ea34 (fix(component): omit max-width from the message item body)
 
             {((!isByMe && chainTop) || isByMe) && (
               <MessageItemMenu
@@ -335,11 +251,8 @@ export default function MessageContent({
               />
             )}
           </div>
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 8e8ea34 (fix(component): omit max-width from the message item body)
         </div>
 
         {/* Message status */}
