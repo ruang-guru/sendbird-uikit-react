@@ -12,6 +12,7 @@ interface Props {
   isByMe?: boolean;
   mouseHover?: boolean;
   showFileViewer?: (bool: boolean) => void;
+  isClickable: boolean,
 }
 
 export default function ThumbnailMessageItemBody({
@@ -20,8 +21,8 @@ export default function ThumbnailMessageItemBody({
   isByMe = false,
   mouseHover = false,
   showFileViewer,
+  isClickable = true,
 }: Props): ReactElement {
-  console.log('message', message);
   const { thumbnails = [] } = message;
   const thumbnailUrl: string = thumbnails.length > 0 ? thumbnails[0]?.url : '';
 
@@ -34,7 +35,7 @@ export default function ThumbnailMessageItemBody({
         mouseHover ? 'mouse-hover' : '',
         message?.reactions?.length > 0 ? 'reactions' : '',
       ])}
-      onClick={() => showFileViewer(true)}
+      onClick={isClickable ? () => showFileViewer(true) : () => { }}
     >
       <ImageRenderer
         className="rogu-thumbnail-message-item-body__thumbnail"
