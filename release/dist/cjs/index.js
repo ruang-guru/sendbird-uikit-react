@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-5fdd6e73.js');
-var index$1 = require('./index-374d628e.js');
+var LocalizationContext = require('./LocalizationContext-3fb82389.js');
+var index$1 = require('./index-7e0d4b0d.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-71ed6444.js');
-var index$3 = require('./index-c7245f64.js');
-var Channel = require('./index-82a9e24d.js');
+var index$2 = require('./index-ee41b40e.js');
+var index$3 = require('./index-f45c8ba2.js');
+var Channel = require('./index-aeca0c10.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-3fb14cb5.js');
+require('./actionTypes-ca2fe2f2.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-0e924ec4.js');
-require('./utils-62d9dbc8.js');
-require('./LeaveChannel-2d4a7f92.js');
-require('./index-4684e280.js');
-require('./index-0ef03992.js');
-require('./index-4835d1ce.js');
+require('./index-1aac48cd.js');
+require('./utils-1666668b.js');
+require('./LeaveChannel-b5c0d319.js');
+require('./index-db4c7bb3.js');
+require('./index-24bdec51.js');
+require('./index-3570f4f5.js');
 require('./ChannelSettings.js');
-require('./index-e1f12e15.js');
+require('./index-6548e8a4.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -184,6 +184,18 @@ var getMimeExtension = function getMimeExtension(mimeType) {
       return mimeFound.extension;
     }
   }
+};
+var getMimeTypesString = function getMimeTypesString() {
+  var mimeTypes = [];
+
+  for (var _i = 0, _a = Object.values(SUPPORTED_MIMES); _i < _a.length; _i++) {
+    var mimes = _a[_i];
+    mimes.forEach(function (mime) {
+      return mimeTypes.push(mime.mimeType);
+    });
+  }
+
+  return mimeTypes.join(',');
 };
 
 var groupMessagesByDate = function groupMessagesByDate(messages) {
@@ -4271,7 +4283,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
     width: "20px",
     height: "20px"
   }), /*#__PURE__*/React__default["default"].createElement("input", {
-    accept: ".doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,image/*,.mov,.mp4",
+    accept: getMimeTypesString(),
     className: "rogu-message-input--attach-input",
     type: "file",
     ref: fileInputRef,
