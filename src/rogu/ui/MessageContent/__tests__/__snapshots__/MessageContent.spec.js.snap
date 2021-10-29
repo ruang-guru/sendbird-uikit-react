@@ -9,8 +9,8 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
     role="button"
     style={
       Object {
-        "height": "2rem",
-        "width": "2rem",
+        "height": "32px",
+        "width": "32px",
       }
     }
     tabIndex={0}
@@ -19,9 +19,9 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
       className="sendbird-avatar-img sendbird-image-renderer"
       style={
         Object {
-          "height": "2rem",
+          "height": "32px",
           "maxWidth": "400px",
-          "minWidth": "2rem",
+          "minWidth": "32px",
           "width": "100%",
         }
       }
@@ -35,9 +35,9 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
             "backgroundRepeat": "no-repeat",
             "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "2rem",
+            "height": "32px",
             "maxWidth": "400px",
-            "minWidth": "2rem",
+            "minWidth": "32px",
             "position": "absolute",
             "width": "100%",
           }
@@ -72,7 +72,7 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
           Kukuh Aji Sulistyo Bangun Jaya Abadi Mangkubumi
         </span>
         <div
-          className="rogu-message-content__menu rogu-message-item-menu"
+          className="rogu-message-content-menu__normal-menu rogu-message-item-menu"
         >
           <div
             className="sendbird-context-menu"

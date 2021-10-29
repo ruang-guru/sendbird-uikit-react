@@ -120,8 +120,8 @@ Props): ReactElement {
           className="rogu-message-content__avatar"
           src={message?.sender?.profileUrl || ""}
           ref={avatarRef}
-          height="2rem"
-          width="2rem"
+          height="32px"
+          width="32px"
         />
       )}
 
@@ -225,20 +225,6 @@ Props): ReactElement {
                 <UnknownMessageItemBody message={message} isByMe={isByMe} />
               )}
             </div>
-            {((!isByMe && chainTop) || isByMe) && (
-              <MessageItemMenu
-                className="rogu-message-content__menu"
-                channel={channel}
-                message={message as UserMessage | FileMessage}
-                isByMe={isByMe}
-                disabled={disabled}
-                showEdit={showEdit}
-                showRemove={showRemove}
-                resendMessage={resendMessage}
-                showFileViewer={showFileViewer}
-              />
-            )}
-
             {((!isByMe && chainTop) || isByMe) && (
               <MessageItemMenu
                 className="rogu-message-content__menu"
