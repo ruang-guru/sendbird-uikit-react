@@ -59,6 +59,7 @@ import IconThumbnailNone from '../../../svgs/icon-thumbnail-none.svg';
 import IconToggleOff from '../../../svgs/icon-toggleoff.svg';
 import IconToggleOn from '../../../svgs/icon-toggleon.svg';
 import IconUser from '../../../svgs/icon-user.svg';
+
 import RoguIconMsgFailed from '../../../svgs/rogu-icon-msg-failed.svg';
 import RoguIconMsgPending from '../../../svgs/rogu-icon-msg-pending.svg';
 import RoguIconMsgSent from '../../../svgs/rogu-icon-msg-sent.svg';
@@ -71,6 +72,11 @@ import RoguIconDownload from '../../../svgs/rogu-icon-download.svg';
 import RoguIconDelete from '../../../svgs/rogu-icon-delete.svg';
 import RoguIconAssignment from '../../../svgs/rogu-icon-assignment.svg';
 import RoguIconMaterial from '../../../svgs/rogu-icon-material.svg';
+import RoguIconFileWord from '../../../svgs/rogu-icon-file-word.svg';
+import RoguIconFileExcel from '../../../svgs/rogu-icon-file-excel.svg';
+import RoguIconFileOthers from '../../../svgs/rogu-icon-file-others.svg';
+import RoguIconFilePowerpoint from '../../../svgs/rogu-icon-file-powerpoint.svg';
+import RoguIconFilePDF from '../../../svgs/rogu-icon-file-pdf.svg';
 
 const Colors = {
   DEFAULT: 'DEFAULT',
@@ -90,92 +96,183 @@ const Colors = {
 
 function changeColorToClassName(color) {
   switch (color) {
-    case Colors.PRIMARY: return 'sendbird-icon-color--primary';
-    case Colors.SECONDARY: return 'sendbird-icon-color--secondary';
-    case Colors.CONTENT: return 'sendbird-icon-color--content';
-    case Colors.CONTENT_INVERSE: return 'sendbird-icon-color--content-inverse';
-    case Colors.WHITE: return 'sendbird-icon-color--white';
-    case Colors.SENT: return 'sendbird-icon-color--sent';
-    case Colors.READ: return 'sendbird-icon-color--read';
-    case Colors.ON_BACKGROUND_1: return 'sendbird-icon-color--on-background-1';
-    case Colors.ON_BACKGROUND_2: return 'sendbird-icon-color--on-background-2';
-    case Colors.ON_BACKGROUND_3: return 'sendbird-icon-color--on-background-3';
-    case Colors.BACKGROUND_3: return 'sendbird-icon-color--background-3';
-    case Colors.ERROR: return 'sendbird-icon-color--error';
-    default: return '';
+    case Colors.PRIMARY:
+      return 'sendbird-icon-color--primary';
+    case Colors.SECONDARY:
+      return 'sendbird-icon-color--secondary';
+    case Colors.CONTENT:
+      return 'sendbird-icon-color--content';
+    case Colors.CONTENT_INVERSE:
+      return 'sendbird-icon-color--content-inverse';
+    case Colors.WHITE:
+      return 'sendbird-icon-color--white';
+    case Colors.SENT:
+      return 'sendbird-icon-color--sent';
+    case Colors.READ:
+      return 'sendbird-icon-color--read';
+    case Colors.ON_BACKGROUND_1:
+      return 'sendbird-icon-color--on-background-1';
+    case Colors.ON_BACKGROUND_2:
+      return 'sendbird-icon-color--on-background-2';
+    case Colors.ON_BACKGROUND_3:
+      return 'sendbird-icon-color--on-background-3';
+    case Colors.BACKGROUND_3:
+      return 'sendbird-icon-color--background-3';
+    case Colors.ERROR:
+      return 'sendbird-icon-color--error';
+    default:
+      return '';
   }
 }
 
 function changeTypeToIconComponent(type) {
   switch (type) {
-    case Type.ADD: return <IconAdd />;
-    case Type.ARROW_LEFT: return <IconArrowLeft />;
-    case Type.ATTACH: return <IconAttach />;
-    case Type.BAN: return <IconBan />;
-    case Type.BROADCAST: return <IconBroadcast />;
-    case Type.CAMERA: return <IconCamera />;
-    case Type.CHANNELS: return <IconChannels />;
-    case Type.CHAT: return <IconChat />;
-    case Type.CHAT_FILLED: return <IconChatFilled />;
-    case Type.CHEVRON_DOWN: return <IconChevronDown />;
-    case Type.CHEVRON_RIGHT: return <IconChevronRight />;
-    case Type.CLOSE: return <IconClose />;
-    case Type.COLLAPSE: return <IconCollapse />;
-    case Type.COPY: return <IconCopy />;
-    case Type.CREATE: return <IconCreate />;
-    case Type.DELETE: return <IconDelete />;
-    case Type.DISCONNECTED: return <IconDisconnected />;
-    case Type.DOCUMENT: return <IconDocument />;
-    case Type.DONE: return <IconDone />;
-    case Type.DONE_ALL: return <IconDoneAll />;
-    case Type.DOWNLOAD: return <IconDownload />;
-    case Type.EDIT: return <IconEdit />;
-    case Type.EMOJI_MORE: return <IconEmojiMore />;
-    case Type.ERROR: return <IconError />;
-    case Type.EXPAND: return <IconExpand />;
-    case Type.FILE_AUDIO: return <IconFileAudio />;
-    case Type.FILE_DOCUMENT: return <IconFileDocument />;
-    case Type.FREEZE: return <IconFreeze />;
-    case Type.GIF: return <IconGif />;
-    case Type.INFO: return <IconInfo />;
-    case Type.LEAVE: return <IconLeave />;
-    case Type.MEMBERS: return <IconMembers />;
-    case Type.MESSAGE: return <IconMessage />;
-    case Type.MODERATIONS: return <IconModerations />;
-    case Type.MORE: return <IconMore />;
-    case Type.MUTE: return <IconMute />;
-    case Type.NOTIFICATIONS: return <IconNotifications />;
-    case Type.NOTIFICATIONS_OFF_FILLED: return <IconNotificationsOffFilled />;
-    case Type.OPERATOR: return <IconOperator />;
-    case Type.PHOTO: return <IconPhoto />;
-    case Type.PLAY: return <IconPlay />;
-    case Type.PLUS: return <IconPlus />;
-    case Type.QUESTION: return <IconQuestion />;
-    case Type.REFRESH: return <IconRefresh />;
-    case Type.REMOVE: return <IconRemove />;
-    case Type.REPLY: return <IconReply />;
-    case Type.SEARCH: return <IconSearch />;
-    case Type.SEND: return <IconSend />;
-    case Type.SETTINGS_FILLED: return <IconSettingsFilled />;
-    case Type.SPINNER: return <IconSpinner />;
-    case Type.SUPERGROUP: return <IconSupergroup />;
-    case Type.THUMBNAIL_NONE: return <IconThumbnailNone />;
-    case Type.TOGGLE_OFF: return <IconToggleOff />;
-    case Type.TOGGLE_ON: return <IconToggleOn />;
-    case Type.USER: return <IconUser />;
-    case Type.ROGU_PENDING: return <RoguIconMsgPending />;
-    case Type.ROGU_SENT: return <RoguIconMsgSent />;
-    case Type.ROGU_READ_ALL: return <RoguIconMsgReadAll />;
-    case Type.ROGU_ERROR: return <RoguIconMsgFailed />;
-    case Type.ROGU_COPY: return <RoguIconMsgCopy />;
-    case Type.ROGU_REPLY: return <RoguIconMsgReply />;
-    case Type.ROGU_RESEND: return <RoguIconMsgResend />;
-    case Type.ROGU_CLOSE: return <RoguIconClose />;
-    case Type.ROGU_DOWNLOAD: return <RoguIconDownload />;
-    case Type.ROGU_DELETE: return <RoguIconDelete />;
-    case Type.ROGU_ASSIGNMENT: return <RoguIconAssignment />;
-    case Type.ROGU_MATERIAL: return <RoguIconMaterial />;
-    default: return 'icon'; // If you see this text 'icon' replace icon for it
+    case Type.ADD:
+      return <IconAdd />;
+    case Type.ARROW_LEFT:
+      return <IconArrowLeft />;
+    case Type.ATTACH:
+      return <IconAttach />;
+    case Type.BAN:
+      return <IconBan />;
+    case Type.BROADCAST:
+      return <IconBroadcast />;
+    case Type.CAMERA:
+      return <IconCamera />;
+    case Type.CHANNELS:
+      return <IconChannels />;
+    case Type.CHAT:
+      return <IconChat />;
+    case Type.CHAT_FILLED:
+      return <IconChatFilled />;
+    case Type.CHEVRON_DOWN:
+      return <IconChevronDown />;
+    case Type.CHEVRON_RIGHT:
+      return <IconChevronRight />;
+    case Type.CLOSE:
+      return <IconClose />;
+    case Type.COLLAPSE:
+      return <IconCollapse />;
+    case Type.COPY:
+      return <IconCopy />;
+    case Type.CREATE:
+      return <IconCreate />;
+    case Type.DELETE:
+      return <IconDelete />;
+    case Type.DISCONNECTED:
+      return <IconDisconnected />;
+    case Type.DOCUMENT:
+      return <IconDocument />;
+    case Type.DONE:
+      return <IconDone />;
+    case Type.DONE_ALL:
+      return <IconDoneAll />;
+    case Type.DOWNLOAD:
+      return <IconDownload />;
+    case Type.EDIT:
+      return <IconEdit />;
+    case Type.EMOJI_MORE:
+      return <IconEmojiMore />;
+    case Type.ERROR:
+      return <IconError />;
+    case Type.EXPAND:
+      return <IconExpand />;
+    case Type.FILE_AUDIO:
+      return <IconFileAudio />;
+    case Type.FILE_DOCUMENT:
+      return <IconFileDocument />;
+    case Type.FREEZE:
+      return <IconFreeze />;
+    case Type.GIF:
+      return <IconGif />;
+    case Type.INFO:
+      return <IconInfo />;
+    case Type.LEAVE:
+      return <IconLeave />;
+    case Type.MEMBERS:
+      return <IconMembers />;
+    case Type.MESSAGE:
+      return <IconMessage />;
+    case Type.MODERATIONS:
+      return <IconModerations />;
+    case Type.MORE:
+      return <IconMore />;
+    case Type.MUTE:
+      return <IconMute />;
+    case Type.NOTIFICATIONS:
+      return <IconNotifications />;
+    case Type.NOTIFICATIONS_OFF_FILLED:
+      return <IconNotificationsOffFilled />;
+    case Type.OPERATOR:
+      return <IconOperator />;
+    case Type.PHOTO:
+      return <IconPhoto />;
+    case Type.PLAY:
+      return <IconPlay />;
+    case Type.PLUS:
+      return <IconPlus />;
+    case Type.QUESTION:
+      return <IconQuestion />;
+    case Type.REFRESH:
+      return <IconRefresh />;
+    case Type.REMOVE:
+      return <IconRemove />;
+    case Type.REPLY:
+      return <IconReply />;
+    case Type.SEARCH:
+      return <IconSearch />;
+    case Type.SEND:
+      return <IconSend />;
+    case Type.SETTINGS_FILLED:
+      return <IconSettingsFilled />;
+    case Type.SPINNER:
+      return <IconSpinner />;
+    case Type.SUPERGROUP:
+      return <IconSupergroup />;
+    case Type.THUMBNAIL_NONE:
+      return <IconThumbnailNone />;
+    case Type.TOGGLE_OFF:
+      return <IconToggleOff />;
+    case Type.TOGGLE_ON:
+      return <IconToggleOn />;
+    case Type.USER:
+      return <IconUser />;
+    case Type.ROGU_PENDING:
+      return <RoguIconMsgPending />;
+    case Type.ROGU_SENT:
+      return <RoguIconMsgSent />;
+    case Type.ROGU_READ_ALL:
+      return <RoguIconMsgReadAll />;
+    case Type.ROGU_ERROR:
+      return <RoguIconMsgFailed />;
+    case Type.ROGU_COPY:
+      return <RoguIconMsgCopy />;
+    case Type.ROGU_REPLY:
+      return <RoguIconMsgReply />;
+    case Type.ROGU_RESEND:
+      return <RoguIconMsgResend />;
+    case Type.ROGU_CLOSE:
+      return <RoguIconClose />;
+    case Type.ROGU_DOWNLOAD:
+      return <RoguIconDownload />;
+    case Type.ROGU_DELETE:
+      return <RoguIconDelete />;
+    case Type.ROGU_ASSIGNMENT:
+      return <RoguIconAssignment />;
+    case Type.ROGU_MATERIAL:
+      return <RoguIconMaterial />;
+    case Type.ROGU_FILE_WORD:
+      return <RoguIconFileWord />;
+    case Type.ROGU_FILE_EXCEL:
+      return <RoguIconFileExcel />;
+    case Type.ROGU_FILE_POWERPOINT:
+      return <RoguIconFilePowerpoint />;
+    case Type.ROGU_FILE_PDF:
+      return <RoguIconFilePDF />;
+    case Type.ROGU_FILE_OTHERS:
+      return <RoguIconFileOthers />;
+    default:
+      return 'icon'; // If you see this text 'icon' replace icon for it
   }
 }
 
@@ -197,7 +294,7 @@ export default function Icon({
   return (
     <div
       className={[
-        ...Array.isArray(className) ? className : [className],
+        ...(Array.isArray(className) ? className : [className]),
         'sendbird-icon',
         changeColorToClassName(fillColor),
       ].join(' ')}
@@ -222,14 +319,8 @@ Icon.propTypes = {
     PropTypes.string,
   ]).isRequired,
   fillColor: PropTypes.oneOf(Object.keys(Colors)),
-  width: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  height: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onClick: PropTypes.func,
   children: PropTypes.element,
 };
@@ -239,7 +330,7 @@ Icon.defaultProps = {
   fillColor: Colors.DEFAULT,
   width: 26,
   height: 26,
-  onClick: () => { },
+  onClick: () => {},
   children: null,
 };
 

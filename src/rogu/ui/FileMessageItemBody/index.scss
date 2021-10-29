@@ -1,0 +1,39 @@
+@import '../../../styles/variables';
+
+.rogu-file-message-item-body {
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  min-width: 200px;
+  text-decoration: none;
+
+  &.rogu-file-message-item-body--outgoing {
+    @include themed() {
+      background-color: t(primary-2);
+    }
+  }
+
+  &.rogu-file-message-item-body--incoming {
+    @include themed() {
+      background-color: t(bg-1);
+    }
+  }
+
+  .rogu-file-message-item-body__icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    border-radius: 8px;
+    margin-right: 8px;
+  }
+
+  .rogu-file-message-item-body__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+}
