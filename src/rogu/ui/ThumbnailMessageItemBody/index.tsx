@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
-import { FileMessage } from 'sendbird';
-import './index.scss';
+import React, { ReactElement } from "react";
+import { FileMessage } from "sendbird";
+import "./index.scss";
 
-import Icon, { IconTypes, IconColors } from '../Icon';
-import ImageRenderer from '../ImageRenderer';
-import { getClassName, isGifMessage, isVideoMessage } from '../../../utils';
+import Icon, { IconTypes, IconColors } from "../Icon";
+import ImageRenderer from "../ImageRenderer";
+import { getClassName, isGifMessage, isVideoMessage } from "../../../utils";
 
 interface Props {
   className?: string | Array<string>;
@@ -12,7 +12,7 @@ interface Props {
   isByMe?: boolean;
   mouseHover?: boolean;
   showFileViewer?: (bool: boolean) => void;
-  isClickable: boolean,
+  isClickable: boolean;
 }
 
 export default function ThumbnailMessageItemBody({
@@ -24,18 +24,20 @@ export default function ThumbnailMessageItemBody({
   isClickable = true,
 }: Props): ReactElement {
   const { thumbnails = [] } = message;
-  const thumbnailUrl: string = thumbnails.length > 0 ? thumbnails[0]?.url : '';
+  const thumbnailUrl: string = thumbnails.length > 0 ? thumbnails[0]?.url : "";
 
   return (
     <div
       className={getClassName([
         className,
-        'rogu-thumbnail-message-item-body',
-        isByMe ? 'outgoing' : 'incoming',
-        mouseHover ? 'mouse-hover' : '',
-        message?.reactions?.length > 0 ? 'reactions' : '',
+        "rogu-thumbnail-message-item-body",
+        isByMe ? "outgoing" : "incoming",
+        mouseHover ? "mouse-hover" : "",
+        message?.reactions?.length > 0 ? "reactions" : "",
       ])}
-      onClick={isClickable ? () => showFileViewer(true) : () => { }}
+      onClick={() => {
+        if (isClickable) showFileViewer(true);
+      }}
     >
       <ImageRenderer
         className="rogu-thumbnail-message-item-body__thumbnail"
@@ -50,7 +52,9 @@ export default function ThumbnailMessageItemBody({
           >
             <div className="rogu-thumbnail-message-item-body__placeholder__icon">
               <Icon
-                type={isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO}
+                type={
+                  isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO
+                }
                 fillColor={IconColors.ON_BACKGROUND_2}
                 width="34px"
                 height="34px"
@@ -59,7 +63,7 @@ export default function ThumbnailMessageItemBody({
           </div>
         )}
       />
-      {(isVideoMessage(message) && !thumbnailUrl) && (
+      {isVideoMessage(message) && !thumbnailUrl && (
         <video className="rogu-thumbnail-message-item-body__video">
           <source src={message?.url} type={message?.type} />
         </video>

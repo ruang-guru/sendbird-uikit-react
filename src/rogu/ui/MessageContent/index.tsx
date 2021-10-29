@@ -31,7 +31,7 @@ import {
   CoreMessageType,
 } from "../../../utils";
 
-import { isAssignmentMessage, isMaterialMessage } from '../../utils';
+import { isAssignmentMessage, isMaterialMessage } from "../../utils";
 import AssignmentMessageItemBody from "../AssignmentMessageItemBody";
 import MaterialMessageItemBody from "../MaterialMessageItemBody";
 import { generateColorFromString } from "./utils";
@@ -78,12 +78,11 @@ export default function MessageContent({
   resendMessage,
   disabled = false,
 }: // showRemove,
-  // toggleReaction,
-  Props): ReactElement {
+// toggleReaction,
+Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
-
 
   const isByMe: boolean =
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
@@ -105,7 +104,6 @@ export default function MessageContent({
     return <ClientAdminMessage message={message} />;
   }
 
-
   return (
     <div
       className={getClassName([
@@ -122,8 +120,8 @@ export default function MessageContent({
           className="rogu-message-content__avatar"
           src={message?.sender?.profileUrl || ""}
           ref={avatarRef}
-          height="2rem"
-          width="2rem"
+          height="32px"
+          width="32px"
         />
       )}
 
@@ -131,7 +129,6 @@ export default function MessageContent({
         {/* Bubble wrapper */}
         <div className="rogu-message-content__bubble">
           <div className="rogu-message-content__bubble__header">
-            {/* Sender's name */}
             {!isByMe && !chainTop && (
               <>
                 <Label
@@ -172,12 +169,12 @@ export default function MessageContent({
           </div>
 
           <div className="rogu-message-content__bubble__body">
-            <div className="rogu-message-content__buble__body-text">
+            <div className="rogu-message-content__bubble__body__inner">
               {/* Message content */}
               {isTextMessage(message as UserMessage) && (
                 <TextMessageItemBody
                   isByMe={isByMe}
-                  message={message?.message}
+                  message={(message as UserMessage)?.message}
                 />
               )}
               {isOGMessage(message as UserMessage) && (
@@ -186,63 +183,62 @@ export default function MessageContent({
                   isByMe={isByMe}
                 />
               )}
-              {
-                isAssignmentMessage(message.customType) && (
-                  <AssignmentMessageItemBody message={message as UserMessage} isByMe={isByMe} />
-                )
-              }
-              {
-                isMaterialMessage(message.customType) && (
-                  <MaterialMessageItemBody message={message as UserMessage} isByMe={isByMe} />
-                )
-              }
+              {isAssignmentMessage(message.customType) && (
+                <AssignmentMessageItemBody
+                  message={message as UserMessage}
+                  isByMe={isByMe}
+                />
+              )}
+              {isMaterialMessage(message.customType) && (
+                <MaterialMessageItemBody
+                  message={message as UserMessage}
+                  isByMe={isByMe}
+                />
+              )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.FILE && (
-                  <FileMessageItemBody
-                    message={message as FileMessage}
-                    isByMe={isByMe}
-                  />
-                )}
+                <FileMessageItemBody
+                  message={message as FileMessage}
+                  isByMe={isByMe}
+                />
+              )}
               {isThumbnailMessage(message as FileMessage) && (
                 <>
                   <ThumbnailMessageItemBody
                     message={message as FileMessage}
                     isByMe={isByMe}
                     showFileViewer={showFileViewer}
-                    isClickable={getOutgoingMessageState(channel, message) === OutgoingMessageStates.SENT}
+                    isClickable={
+                      getOutgoingMessageState(channel, message) ===
+                      OutgoingMessageStates.SENT
+                    }
                   />
                   <TextMessageItemBody
                     isByMe={isByMe}
                     mode="thumbnailCaption"
-                    message={message?.name}
+                    message={(message as FileMessage).name}
                   />
                 </>
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
-                  <UnknownMessageItemBody message={message} isByMe={isByMe} />
-                )}
+                <UnknownMessageItemBody message={message} isByMe={isByMe} />
+              )}
             </div>
-            {
-              ((!isByMe && chainTop) || isByMe) && (
-                <MessageItemMenu
-                  className="rogu-message-content-menu__normal-menu"
-                  channel={channel}
-                  message={message as UserMessage | FileMessage}
-                  isByMe={isByMe}
-                  disabled={disabled}
-                  showEdit={showEdit}
-                  showRemove={showRemove}
-                  resendMessage={resendMessage}
-                  showFileViewer={showFileViewer} />
-
-              )
-            }
-
-
+            {((!isByMe && chainTop) || isByMe) && (
+              <MessageItemMenu
+                className="rogu-message-content__menu"
+                channel={channel}
+                message={message as UserMessage | FileMessage}
+                isByMe={isByMe}
+                disabled={disabled}
+                showEdit={showEdit}
+                showRemove={showRemove}
+                resendMessage={resendMessage}
+                showFileViewer={showFileViewer}
+              />
+            )}
           </div>
-
-
         </div>
 
         {/* Message status */}
