@@ -14,7 +14,7 @@ import TextMessageItemBody from '../TextMessageItemBody';
 
 import {
   isImage, isVideo, isSupportedFileView,
-} from '../../../utils';
+} from '../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Toast from '../Toast';
 

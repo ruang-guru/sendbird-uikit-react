@@ -20,7 +20,6 @@ import {
   getUIKitMessageType,
   isTextMessage,
   isOGMessage,
-  isThumbnailMessage,
   isMessageSentByMe,
   isMessageSentByOperator,
   getOutgoingMessageState,
@@ -31,7 +30,7 @@ import {
   CoreMessageType,
 } from '../../../utils';
 
-import { isAssignmentMessage, isMaterialMessage } from '../../utils';
+import { isAssignmentMessage, isMaterialMessage, isThumbnailMessage } from '../../utils';
 import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
 import MaterialMessageItemBody from '../MaterialMessageItemBody';
 import { generateColorFromString } from './utils';
@@ -78,8 +77,8 @@ export default function MessageContent({
   resendMessage,
   disabled = false,
 }: // showRemove,
-// toggleReaction,
-Props): ReactElement {
+  // toggleReaction,
+  Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
@@ -197,11 +196,11 @@ Props): ReactElement {
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.FILE && (
-                <FileMessageItemBody
-                  message={message as FileMessage}
-                  isByMe={isByMe}
-                />
-              )}
+                  <FileMessageItemBody
+                    message={message as FileMessage}
+                    isByMe={isByMe}
+                  />
+                )}
               {isThumbnailMessage(message as FileMessage) && (
                 <>
                   <ThumbnailMessageItemBody
@@ -222,8 +221,8 @@ Props): ReactElement {
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
-                <UnknownMessageItemBody message={message} isByMe={isByMe} />
-              )}
+                  <UnknownMessageItemBody message={message} isByMe={isByMe} />
+                )}
             </div>
             {((!isByMe && chainTop) || isByMe) && (
               <MessageItemMenu

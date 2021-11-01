@@ -27,19 +27,14 @@ export type MimeData = {
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
 export const SUPPORTED_MIMES: { [k: string]: Array<MimeData> } = {
   IMAGE: [
-    // TODO: update image types based on the PRD
     { mimeType: 'image/jpeg', extension: 'JPEG' },
     { mimeType: 'image/jpg', extension: 'JPG' },
     { mimeType: 'image/png', extension: 'PNG' },
-    { mimeType: 'image/svg+xml', extension: 'SVG' },
-    { mimeType: 'image/webp', extension: 'WEBP' },
+    { mimeType: 'image/gif', extension: 'GIF' },
   ],
   VIDEO: [
-    // TODO: update video types based on the PRD
-    { mimeType: 'video/mpeg', extension: 'MPEG' },
-    { mimeType: 'video/ogg', extension: 'OGV' },
-    { mimeType: 'video/webm', extension: 'WEBM' },
     { mimeType: 'video/mp4', extension: 'MP4' },
+    { mimeType: 'video/quicktime', extension: 'MOV' },
   ],
   PDF: [{ mimeType: 'application/pdf', extension: 'PDF' }],
   WORD: [
