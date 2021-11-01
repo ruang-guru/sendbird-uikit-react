@@ -119,9 +119,9 @@ export const IMAGE_MESSAGE = {
   size: 2062393,
   messageType: 'file',
   url:
-    'https://file-ap-5.sendbird.com/f525d50396b4485abaf7e010f1b262fa.png?auth=EP7zOWBjmnL_ztwRZOR0GiUt5EzgrhiBua78sqWGH62OBjSLcZdaGPADZomOy2a56YmkLk4EMUcVHI7YmYgVuA',
+    'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f332b95c14b240f181721ea695a9ca70.png',
   plainUrl:
-    'https://file-ap-5.sendbird.com/f525d50396b4485abaf7e010f1b262fa.png?auth=EP7zOWBjmnL_ztwRZOR0GiUt5EzgrhiBua78sqWGH62OBjSLcZdaGPADZomOy2a56YmkLk4EMUcVHI7YmYgVuA',
+    'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f332b95c14b240f181721ea695a9ca70.png',
   name: `misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya
 
 misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternyamisalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang misalkan pesan panjang trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya trus ada enternya
@@ -143,8 +143,8 @@ export const VIDEO_MESSAGE = {
   ...IMAGE_MESSAGE,
   size: 771699,
   type: 'video/mp4',
-  url: 'blob:http://localhost:6006/e4d08170-05b3-4c78-9b8e-96746770abad',
-  plainUrl: 'blob:http://localhost:6006/e4d08170-05b3-4c78-9b8e-96746770abad',
+  url: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/360a8dad320646298788f68a0d417c1c.mp4',
+  plainUrl: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/360a8dad320646298788f68a0d417c1c.mp4',
 };
 
 export const FILE_MESSAGE = {
