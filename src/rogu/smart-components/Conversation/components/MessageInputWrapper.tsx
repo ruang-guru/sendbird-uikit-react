@@ -1,13 +1,14 @@
 // Logic required to handle message input rendering
 
-import React, { useContext } from 'react';
-import Sendbird from 'sendbird';
+import React, { ReactElement, useContext, useEffect } from 'react';
+import Sendbird, { UserMessage } from 'sendbird';
 
 import { RenderGroupChannelMessageInputProps } from '../index';
 import * as utils from '../utils.js';
 
 import MessageInput from '../../../ui/MessageInput';
 import { LocalizationContext } from '../../../../lib/LocalizationContext';
+
 
 interface Props {
   channel: Sendbird.GroupChannel;
@@ -19,7 +20,9 @@ interface Props {
   renderMessageInput(
     renderProps: RenderGroupChannelMessageInputProps
   ): JSX.Element;
-}
+};
+
+
 
 const MessageInputWrapper = (
   {
@@ -52,6 +55,12 @@ const MessageInputWrapper = (
   if (isBroadcast && !isOperator) {
     return null;
   }
+
+  useEffect(() => {
+    if(ref.current){
+      console.log(ref.current.value);
+    }
+  }, [ref.current]);
 
   // other conditions
   return (
