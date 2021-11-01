@@ -102,20 +102,20 @@ export default class ConversationScroll extends Component {
     if (allMessages.length < 1) {
       return (
         <PlaceHolder
-          className="sendbird-conversation__no-messages"
+          className="rogu-conversation__no-messages"
           type={PlaceHolderTypes.NO_MESSAGES}
         />
       );
     }
 
     return (
-      <div className="sendbird-conversation__messages">
+      <div className="rogu-conversation__messages">
         <div
           ref={scrollRef}
-          className="sendbird-conversation__scroll-container"
+          className="rogu-conversation__scroll-container"
           onScroll={this.onScroll}
         >
-          <div className="sendbird-conversation__padding" />
+          <div className="rogu-conversation__padding" />
           {/*
             To do: Implement windowing
             Implement windowing if you are dealing with large number of messages/channels
@@ -123,13 +123,14 @@ export default class ConversationScroll extends Component {
             We hesitate to bring one more dependency to our library,
             we are planning to implement it inside the library
           */}
-          <div className="sendbird-conversation__messages-padding">
+          <div className="rogu-conversation__messages-padding">
             {Array.from(groupMessagesByDate(allMessages).values()).map(
-              (messages) => {
+              (messages, i) => {
                 const currentCreatedAt = messages[0]?.createdAt;
 
                 return (
-                  <>
+                  // eslint-disable-next-line react/no-array-index-key
+                  <React.Fragment key={i}>
                     <DateSeparator createdAt={currentCreatedAt} />
                     {messages.map((m, idx) => {
                       const previousMessage = messages[idx - 1];
@@ -193,7 +194,7 @@ export default class ConversationScroll extends Component {
                         />
                       );
                     })}
-                  </>
+                  </React.Fragment>
                 );
               },
             )}
@@ -265,7 +266,7 @@ export default class ConversationScroll extends Component {
         </div>
         {showScrollBot && (
           <div
-            className="sendbird-conversation__scroll-bottom-button"
+            className="rogu-conversation__scroll-bottom-button"
             onClick={onClickScrollBot}
             onKeyDown={onClickScrollBot}
             tabIndex={0}

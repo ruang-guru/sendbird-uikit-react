@@ -20,7 +20,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -36,7 +35,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -56,7 +54,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -72,7 +69,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -92,7 +88,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -108,7 +103,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -128,7 +122,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -144,7 +137,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -180,7 +172,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with single element 
     style={
       Object {
         "height": "56px",
-        "maxWidth": "400px",
         "minWidth": "56px",
         "width": "100%",
       }
@@ -196,7 +187,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with single element 
           "backgroundSize": "cover",
           "borderRadius": null,
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "position": "absolute",
           "width": "100%",
@@ -234,7 +224,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -250,7 +239,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -274,7 +262,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -290,7 +277,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -310,7 +296,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -326,7 +311,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -365,7 +349,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with two elements 1`
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -381,7 +364,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with two elements 1`
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -401,7 +383,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with two elements 1`
       style={
         Object {
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "width": "100%",
         }
@@ -417,7 +398,6 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with two elements 1`
             "backgroundSize": "cover",
             "borderRadius": null,
             "height": "56px",
-            "maxWidth": "400px",
             "minWidth": "56px",
             "position": "absolute",
             "width": "100%",
@@ -453,7 +433,6 @@ exports[`Avatar should render default image if src is empty 1`] = `
     style={
       Object {
         "height": "56px",
-        "maxWidth": "400px",
         "minWidth": "56px",
         "width": "100%",
       }
@@ -469,7 +448,6 @@ exports[`Avatar should render default image if src is empty 1`] = `
           "backgroundSize": "cover",
           "borderRadius": null,
           "height": "56px",
-          "maxWidth": "400px",
           "minWidth": "56px",
           "position": "absolute",
           "width": "100%",

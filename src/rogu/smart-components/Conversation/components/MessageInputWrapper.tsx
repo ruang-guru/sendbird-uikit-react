@@ -1,13 +1,13 @@
 // Logic required to handle message input rendering
 
-import React, { useContext } from "react";
-import Sendbird from "sendbird";
+import React, { useContext } from 'react';
+import Sendbird from 'sendbird';
 
-import { RenderGroupChannelMessageInputProps } from "../index";
-import * as utils from "../utils.js";
+import { RenderGroupChannelMessageInputProps } from '../index';
+import * as utils from '../utils.js';
 
-import MessageInput from "../../../ui/MessageInput";
-import { LocalizationContext } from "../../../../lib/LocalizationContext";
+import MessageInput from '../../../ui/MessageInput';
+import { LocalizationContext } from '../../../../lib/LocalizationContext';
 
 interface Props {
   channel: Sendbird.GroupChannel;
@@ -62,6 +62,8 @@ const MessageInputWrapper = (
         (utils.isDisabledBecauseMuted(channel) &&
           stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__MUTED)
       }
+      nickname={user.nickname || ''}
+      profileUrl={user.profileUrl || ''}
       ref={ref}
       disabled={disabled}
       onStartTyping={() => {

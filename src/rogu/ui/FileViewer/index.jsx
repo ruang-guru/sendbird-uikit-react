@@ -1,6 +1,4 @@
-import React, {
-  useContext, useRef, useState,
-} from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { format } from 'date-fns';
@@ -12,9 +10,7 @@ import Icon, { IconTypes } from '../Icon';
 import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
 import TextMessageItemBody from '../TextMessageItemBody';
 
-import {
-  isImage, isVideo, isSupportedFileView,
-} from '../../utils';
+import { isImage, isVideo, isSupportedFileView } from '../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Toast from '../Toast';
 
@@ -28,6 +24,7 @@ export const FileViewerComponent = ({
   url,
   // others
   isByMe,
+  isPreview,
   onClose,
   onDelete,
   createdAt,
@@ -60,16 +57,14 @@ export const FileViewerComponent = ({
             <Avatar height="32px" width="32px" src={profileUrl} />
           </div>
           <div className="rogu-fileviewer__header__left__metadata">
-            <div>
-              <Label
-                className="rogu-fileviewer__header__left__sender-name"
-                type={LabelTypography.H_3}
-                color={LabelColors.ONBACKGROUND_1}
-              >
-                {userName}
-              </Label>
-            </div>
-            <div>
+            <Label
+              className="rogu-fileviewer__header__left__sender-name"
+              type={LabelTypography.H_3}
+              color={LabelColors.ONBACKGROUND_1}
+            >
+              {userName}
+            </Label>
+            {!isPreview && (
               <Label
                 className="rogu-fileviewer__header__left__createdat"
                 type={LabelTypography.BODY_1}
@@ -77,40 +72,36 @@ export const FileViewerComponent = ({
               >
                 {format(createdAt, 'dd/MM/yyyy HH.mm')}
               </Label>
-            </div>
+            )}
           </div>
         </div>
         <div className="rogu-fileviewer__header__right">
-          {
-            isSupportedFileView(type) && (
-              <div className="rogu-fileviewer__header__right__actions">
-                <a
-                  className="rogu-fileviewer__header__right__actions__download"
-                  rel="noopener noreferrer"
-                  href={url}
-                  onClick={onDownloadClick}
-                >
+          {!isPreview && isSupportedFileView(type) && (
+            <div className="rogu-fileviewer__header__right__actions">
+              <a
+                className="rogu-fileviewer__header__right__actions__download"
+                rel="noopener noreferrer"
+                href={url}
+                onClick={onDownloadClick}
+              >
+                <Icon
+                  type={IconTypes.ROGU_DOWNLOAD}
+                  height="24px"
+                  width="24px"
+                />
+              </a>
+              {onDelete && isByMe && (
+                <div className="rogu-fileviewer__header__right__actions__delete">
                   <Icon
-                    type={IconTypes.ROGU_DOWNLOAD}
+                    type={IconTypes.ROGU_DELETE}
                     height="24px"
                     width="24px"
+                    onClick={onDelete}
                   />
-                </a>
-                {
-                  onDelete && isByMe && (
-                    <div className="rogu-fileviewer__header__right__actions__delete">
-                      <Icon
-                        type={IconTypes.ROGU_DELETE}
-                        height="24px"
-                        width="24px"
-                        onClick={onDelete}
-                      />
-                    </div>
-                  )
-                }
-              </div>
-            )
-          }
+                </div>
+              )}
+            </div>
+          )}
           <div className="rogu-fileviewer__header__right__actions__close">
             <Icon
               type={IconTypes.ROGU_CLOSE}
@@ -146,7 +137,7 @@ export const FileViewerComponent = ({
             className="rogu-fileviewer__content__img"
           />
         )}
-        {captionMsg && (
+        {!isPreview && captionMsg && (
           <TextMessageItemBody
             message={captionMsg}
             mode="fileViewerCaption"
@@ -155,15 +146,16 @@ export const FileViewerComponent = ({
         )}
         {!isSupportedFileView(type) && (
           <div className="rogu-fileviewer__content__unsupported">
-            <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
+            <Label
+              type={LabelTypography.H_1}
+              color={LabelColors.ONBACKGROUND_1}
+            >
               Unsupported message
             </Label>
           </div>
         )}
       </div>
-      {showToast && (
-        <Toast message={stringSet.TOAST__DOWNLOAD} />
-      )}
+      {showToast && <Toast message={stringSet.TOAST__DOWNLOAD} />}
     </div>
   );
 };
@@ -177,42 +169,37 @@ FileViewerComponent.propTypes = {
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   isByMe: PropTypes.bool,
-  createdAt: PropTypes.number.isRequired,
+  isPreview: PropTypes.bool,
+  createdAt: PropTypes.number,
 };
 
 FileViewerComponent.defaultProps = {
   isByMe: true,
+  isPreview: false,
+  createdAt: new Date().getTime(),
 };
 
 export default function FileViewer(props) {
   const {
-    message,
-    isByMe,
-    onClose,
-    onDelete,
+    message, isByMe, isPreview, onClose, onDelete,
   } = props;
   const {
-    sender,
-    type,
-    url,
-    name: captionMsg = '',
-    createdAt,
+    sender, type, url, name: captionMsg = '', createdAt,
   } = message;
   const { profileUrl, nickname: userName = '' } = sender;
   return createPortal(
-    (
-      <FileViewerComponent
-        profileUrl={profileUrl}
-        userName={userName}
-        type={type}
-        url={url}
-        captionMsg={captionMsg}
-        onClose={onClose}
-        onDelete={onDelete}
-        isByMe={isByMe}
-        createdAt={createdAt}
-      />
-    ),
+    <FileViewerComponent
+      profileUrl={profileUrl}
+      userName={userName}
+      type={type}
+      url={url}
+      captionMsg={captionMsg}
+      onClose={onClose}
+      onDelete={onDelete}
+      isByMe={isByMe}
+      isPreview={isPreview}
+      createdAt={createdAt}
+    />,
     document.getElementById(MODAL_ROOT),
   );
 }
@@ -229,10 +216,12 @@ FileViewer.propTypes = {
     createdAt: PropTypes.number,
   }).isRequired,
   isByMe: PropTypes.bool,
+  isPreview: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
 };
 
 FileViewer.defaultProps = {
   isByMe: true,
+  isPreview: false,
 };

@@ -1,6 +1,6 @@
 @import "../../../styles/variables";
 
-.sendbird-conversation {
+.rogu-conversation {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -12,7 +12,7 @@
   }
 }
 
-.sendbird-conversation__messages {
+.rogu-conversation__messages {
   overflow-y: auto;
   flex: 1 1 0;
   order: 2;
@@ -22,7 +22,7 @@
   background-repeat: repeat;
 }
 
-.sendbird-conversation__messages-list {
+.rogu-conversation__messages-list {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -91,24 +91,23 @@
   }
 }
 
-.sendbird-conversation__scroll-container {
+.rogu-conversation__scroll-container {
   display: flex;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   flex-direction: column;
 
-  .sendbird-conversation__padding {
+  .rogu-conversation__padding {
     flex: 1 1 0;
   }
 }
 
-.sendbird-conversation__footer {
+.rogu-conversation__footer {
   position: relative;
   order: 3;
-  padding: 0 24px 24px 24px;
 
-  .sendbird-conversation__typing-indicator {
+  .rogu-conversation__typing-indicator {
     position: absolute;
     bottom: 8px;
   }
