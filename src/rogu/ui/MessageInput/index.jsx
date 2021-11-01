@@ -2,22 +2,23 @@ import React, {
   useState, useRef, useEffect, useContext,
 } from 'react';
 import PropTypes from 'prop-types';
+import LinkPreview from '@ashwamegh/react-link-preview';
 
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import IconButton from '../../../ui/IconButton';
 import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
 import { getClassName, isUrl } from '../../../utils';
 
+import { getMimeTypesString, isImage } from '../../utils';
+
+import OGMessageItemBody from '../OGMessageItemBody';
 import Icon, { IconTypes, IconColors } from '../Icon';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import { FileViewerComponent } from '../FileViewer';
 import Toast from '../Toast';
-import { getMimeTypesString, isImage } from '../../utils';
-import LinkPreview from '@ashwamegh/react-link-preview';
-import OGMessageItemBody from '../OGMessageItemBody';
 
+import { getUrlFromWords, debounce } from './utils';
 import './index.scss';
-import {  getUrlFromLastWord, getUrlFromWords, debounce } from './utils';
 
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
@@ -26,12 +27,9 @@ const noop = () => {};
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
-  SPACE: 32,
   DELETE: 46,
   BACKSPACE: 8,
 };
-
-
 
 const MessageInput = React.forwardRef((props, ref) => {
   const {
@@ -54,7 +52,6 @@ const MessageInput = React.forwardRef((props, ref) => {
   const [imagePreviewFile, setImagePreviewFile] = useState(null);
   const [inputValue, setInputValue] = useState(value);
   const [isShiftPressed, setIsShiftPressed] = useState(false);
-  
 
   // TODO: abstract the auto hide mechanism to the Toast component
   const [showUploadErrorToast, setShowUploadErrorToast] = useState(false);
@@ -108,8 +105,8 @@ const MessageInput = React.forwardRef((props, ref) => {
     }
   };
 
-  const [url, setUrl] = useState({hasUrl: false, text: ''});
-  const renderPreviewUrl  = ({loading, preview}) => {
+  const [url, setUrl] = useState({ hasUrl: false, text: '' });
+  const renderPreviewUrl = ({ loading, preview }) => {
     const message = {
       sender: {
         profileUrl: '',
@@ -128,15 +125,12 @@ const MessageInput = React.forwardRef((props, ref) => {
       createdAt: 2000000,
     };
 
-    if(loading){
-      return <p>Loading</p>
+    if (loading) {
+      return <p>Loading</p>;
     }
-  
-    return <OGMessageItemBody message={message} isOnPreview={true} closePreview={() => setUrl({hasUrl: false, text: ''})} />;
-  
+
+    return <OGMessageItemBody message={message} isOnPreview closePreview={() => setUrl({ hasUrl: false, text: '' })} />;
   };
-
-
 
   // after setHeight called twice, the textarea goes to the initialized
   useEffect(() => {
@@ -145,11 +139,8 @@ const MessageInput = React.forwardRef((props, ref) => {
     return setHeight;
   }, [inputValue]);
 
-  
-
-
   const sendMessage = () => {
-    setUrl({hasUrl: false, text: ''});
+    setUrl({ hasUrl: false, text: '' });
     if (imagePreviewFile !== null) {
       // In order to change the file name, we need to create a copy of File object
       const modifiedFile = new Blob([imagePreviewFile], {
@@ -177,7 +168,7 @@ const MessageInput = React.forwardRef((props, ref) => {
   return (
     <div className="rogu-message-input--wrapper">
       {
-        url && url.hasUrl && isUrl(url.text) && <LinkPreview url={url.text} render={renderPreviewUrl}/>
+        url.hasUrl && isUrl(url.text) && <LinkPreview url={url.text} render={renderPreviewUrl} />
       }
       <form
         className={[
@@ -212,14 +203,13 @@ const MessageInput = React.forwardRef((props, ref) => {
                 e.preventDefault();
                 sendMessage();
               }
-              
             }}
             onKeyUp={(e) => {
               if (e.keyCode === KeyCode.SHIFT) {
                 setIsShiftPressed(false);
-              }   
-              if(e.keyCode === KeyCode.BACKSPACE || e.keyCode === KeyCode.DELETE){
-                setUrl({hasUrl: false, text: ''});
+              }
+              if (e.keyCode === KeyCode.BACKSPACE || e.keyCode === KeyCode.DELETE) {
+                setUrl({ hasUrl: false, text: '' });
               }
             }}
           />
@@ -346,7 +336,7 @@ const MessageInput = React.forwardRef((props, ref) => {
         <Toast message={stringSet.TOAST__MAX_FILE_SIZE_ERROR} />
       )}
     </div>
-    
+
   );
 });
 

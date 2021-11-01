@@ -1,7 +1,7 @@
 // Logic required to handle message input rendering
 
-import React, { ReactElement, useContext, useEffect } from 'react';
-import Sendbird, { UserMessage } from 'sendbird';
+import React, { useContext } from 'react';
+import Sendbird from 'sendbird';
 
 import { RenderGroupChannelMessageInputProps } from '../index';
 import * as utils from '../utils.js';
@@ -20,7 +20,7 @@ interface Props {
   renderMessageInput(
     renderProps: RenderGroupChannelMessageInputProps
   ): JSX.Element;
-};
+}
 
 
 
