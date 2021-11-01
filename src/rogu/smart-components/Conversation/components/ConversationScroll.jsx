@@ -125,11 +125,12 @@ export default class ConversationScroll extends Component {
           */}
           <div className="rogu-conversation__messages-padding">
             {Array.from(groupMessagesByDate(allMessages).values()).map(
-              (messages) => {
+              (messages, i) => {
                 const currentCreatedAt = messages[0]?.createdAt;
 
                 return (
-                  <>
+                  // eslint-disable-next-line react/no-array-index-key
+                  <React.Fragment key={i}>
                     <DateSeparator createdAt={currentCreatedAt} />
                     {messages.map((m, idx) => {
                       const previousMessage = messages[idx - 1];
@@ -193,7 +194,7 @@ export default class ConversationScroll extends Component {
                         />
                       );
                     })}
-                  </>
+                  </React.Fragment>
                 );
               },
             )}
