@@ -10,8 +10,9 @@ import { getClassName } from '../../../utils';
 
 import Icon, { IconTypes, IconColors } from '../Icon';
 import Label, { LabelTypography, LabelColors } from '../Label';
+import { FileViewerComponent } from '../FileViewer';
 import Toast from '../Toast';
-import { getMimeTypesString } from '../../utils';
+import { getMimeTypesString, isImage } from '../../utils';
 
 import './index.scss';
 
@@ -32,6 +33,8 @@ const MessageInput = React.forwardRef((props, ref) => {
     name,
     placeholder,
     maxLength,
+    nickname,
+    profileUrl,
     onFileUpload,
     onSendMessage,
     onCancelEdit,
@@ -40,6 +43,7 @@ const MessageInput = React.forwardRef((props, ref) => {
 
   const { stringSet } = useContext(LocalizationContext);
   const fileInputRef = useRef(null);
+  const [imagePreviewFile, setImagePreviewFile] = useState(null);
   const [inputValue, setInputValue] = useState(value);
   const [isShiftPressed, setIsShiftPressed] = useState(false);
 
@@ -57,14 +61,16 @@ const MessageInput = React.forwardRef((props, ref) => {
     return () => clearTimeout(autoHideTimer.current);
   }, [showUploadErrorToast]);
 
-  const handleUploadFile = (callback) => (event) => {
+  const handleUploadFile = (upload) => (event) => {
     const file = event.target?.files[0];
 
     if (file) {
       if (file.size > MAX_FILE_SIZE) {
         setShowUploadErrorToast(true);
+      } else if (isImage(file.type)) {
+        setImagePreviewFile(file);
       } else {
-        callback(file);
+        upload(file);
       }
     }
     // eslint-disable-next-line no-param-reassign
@@ -100,7 +106,18 @@ const MessageInput = React.forwardRef((props, ref) => {
   }, [inputValue]);
 
   const sendMessage = () => {
-    if (inputValue && inputValue.trim().length > 0) {
+    if (imagePreviewFile !== null) {
+      // In order to change the file name, we need to create a copy of File object
+      const modifiedFile = new Blob([imagePreviewFile], {
+        type: imagePreviewFile.type,
+        name: inputValue,
+      });
+      modifiedFile.name = inputValue;
+
+      onFileUpload(modifiedFile);
+      setImagePreviewFile(null);
+      setInputValue('');
+    } else if (inputValue && inputValue.trim().length > 0) {
       const trimmedInputValue = inputValue.trim();
       if (isEdit) {
         onSendMessage(name, trimmedInputValue, () => {
@@ -118,9 +135,11 @@ const MessageInput = React.forwardRef((props, ref) => {
     <>
       <form
         className={[
+          'rogu-message-input__container',
           isEdit ? 'rogu-message-input__edit' : '',
+          imagePreviewFile ? 'rogu-message-input--preview' : '',
           disabled ? 'rogu-message-input-form__disabled ' : '',
-        ].join(' rogu-message-input__container ')}
+        ].join(' ')}
       >
         <div
           className={[
@@ -183,7 +202,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           )
         } */}
           {/* upload icon */}
-          {!isEdit && (
+          {!isEdit && !imagePreviewFile && (
             <IconButton
               className="rogu-message-input--attach"
               height="32px"
@@ -259,6 +278,20 @@ const MessageInput = React.forwardRef((props, ref) => {
         )}
       </form>
 
+      {imagePreviewFile !== null && (
+        <FileViewerComponent
+          captionMsg="TODO: caption here"
+          isByMe
+          isPreview
+          profileUrl={profileUrl}
+          type={imagePreviewFile.type}
+          url={URL.createObjectURL(imagePreviewFile)}
+          userName={nickname}
+          onClose={() => setImagePreviewFile(null)}
+          onDelete={() => { }}
+        />
+      )}
+
       {showUploadErrorToast && (
         <Toast message={stringSet.TOAST__MAX_FILE_SIZE_ERROR} />
       )}
@@ -273,6 +306,8 @@ MessageInput.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   maxLength: PropTypes.number,
+  nickname: PropTypes.string.isRequired,
+  profileUrl: PropTypes.string.isRequired,
   onFileUpload: PropTypes.func,
   onSendMessage: PropTypes.func,
   onStartTyping: PropTypes.func,

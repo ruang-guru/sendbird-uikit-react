@@ -1,7 +1,7 @@
 @import '../../../../styles/variables';
 
-.sendbird-conversation__messages {
-  .sendbird-conversation__messages-padding {
+.rogu-conversation__messages {
+  .rogu-conversation__messages-padding {
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -13,7 +13,7 @@
   }
 }
 
-.sendbird-conversation__scroll-bottom-button {
+.rogu-conversation__scroll-bottom-button {
   position: sticky;
   display: flex;
   align-items: center;

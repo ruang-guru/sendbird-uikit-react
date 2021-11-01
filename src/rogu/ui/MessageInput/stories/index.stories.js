@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import MessageInput from "../index";
-import SendbirdProvider from "../../../../lib/Sendbird";
+import MessageInput from '../index';
+import SendbirdProvider from '../../../../lib/Sendbird';
 
-import COLOR_SET from "../../../../../__mocks__/themeMock";
-import { STRING_SET } from "../../../../../__mocks__/localizationMock";
+import COLOR_SET from '../../../../../__mocks__/themeMock';
+import { STRING_SET } from '../../../../../__mocks__/localizationMock';
 
-export default { title: "ruangkelas/ UI Components/MessageInput" };
+export default { title: 'ruangkelas/ UI Components/MessageInput' };
 
 export const basicMessageInput = () => {
   const ref = React.useRef();
@@ -18,7 +18,12 @@ export const basicMessageInput = () => {
       stringSet={STRING_SET}
     >
       <div>
-        <MessageInput name="example" ref={ref} />
+        <MessageInput
+          name="example"
+          nickname="Kukuh Sulistyo"
+          profileUrl="https://imgix3.ruangguru.com/assets/avatar/avatar|6371.png?w=360"
+          ref={ref}
+        />
       </div>
     </SendbirdProvider>
   );
