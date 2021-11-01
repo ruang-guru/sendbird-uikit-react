@@ -155,7 +155,7 @@ export default function MessageItemMenu({
                     closeDropdown();
 
                   }}
-                  iconType={IconTypes.ROGU_ICON_VIEW}
+                  iconType={IconTypes.ROGU_VIEW}
                 >
                   {stringSet.MESSAGE_MENU__VIEW}
                 </MenuItem>
