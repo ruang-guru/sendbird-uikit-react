@@ -71,7 +71,7 @@ const MessageInput = React.forwardRef((props, ref) => {
     event.target.value = '';
   };
 
-  const elem = ref.current;
+  const elem = ref && ref.current;
 
   const setHeight = () => {
     try {
@@ -85,9 +85,8 @@ const MessageInput = React.forwardRef((props, ref) => {
           elem.style.height = `${elem.scrollHeight}px`;
         }
       } else {
-        elem.style.height = ``;
-      }  
-      
+        elem.style.height = '';
+      }
     } catch (error) {
       // error
     }
