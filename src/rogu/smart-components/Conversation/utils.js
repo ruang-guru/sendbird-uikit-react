@@ -15,7 +15,7 @@ export const scrollIntoLast = (intialTry = 0) => {
     return;
   }
   try {
-    const scrollDOM = document.querySelector('.sendbird-conversation__scroll-container');
+    const scrollDOM = document.querySelector('.rogu-conversation__scroll-container');
     // eslint-disable-next-line no-multi-assign
     scrollDOM.scrollTop = scrollDOM.scrollHeight;
   } catch (error) {

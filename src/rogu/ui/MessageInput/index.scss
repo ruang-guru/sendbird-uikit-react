@@ -1,7 +1,13 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
+// TODO: fix naming to comply with BEM convention
 .rogu-message-input__container {
   padding: 12px 16px;
+
+  &.rogu-message-input--preview {
+    position: relative;
+    z-index: $modal + 1; // make sure the MessageInput shows on top of the FileViewer
+  }
 }
 
 .rogu-message-input {

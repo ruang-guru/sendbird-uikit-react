@@ -63,20 +63,16 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
       <div
         className="rogu-fileviewer__header__left__metadata"
       >
-        <div>
-          <span
-            className="rogu-fileviewer__header__left__sender-name sendbird-label rogu-label--h-3 sendbird-label--color-onbackground-1"
-          >
-            hoon102
-          </span>
-        </div>
-        <div>
-          <span
-            className="rogu-fileviewer__header__left__createdat sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-2"
-          >
-            05/03/2020 20.43
-          </span>
-        </div>
+        <span
+          className="rogu-fileviewer__header__left__sender-name sendbird-label rogu-label--h-3 sendbird-label--color-onbackground-1"
+        >
+          hoon102
+        </span>
+        <span
+          className="rogu-fileviewer__header__left__createdat sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-2"
+        >
+          05/03/2020 20.43
+        </span>
       </div>
     </div>
     <div
