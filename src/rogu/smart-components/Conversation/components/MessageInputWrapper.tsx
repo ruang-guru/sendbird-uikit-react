@@ -62,6 +62,8 @@ const MessageInputWrapper = (
         (utils.isDisabledBecauseMuted(channel) &&
           stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__MUTED)
       }
+      nickname={user.nickname}
+      profileUrl={user.profileUrl}
       ref={ref}
       disabled={disabled}
       onStartTyping={() => {
