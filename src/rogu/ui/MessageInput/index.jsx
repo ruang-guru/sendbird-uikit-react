@@ -116,7 +116,7 @@ const MessageInput = React.forwardRef((props, ref) => {
       ogMetaData: {
         title: preview.title,
         description: preview.description,
-        url: preview.domain,
+        url: url.text,
         defaultImage: {
           url: preview.img,
           alt: 'test',
