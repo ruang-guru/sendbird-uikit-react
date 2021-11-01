@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-3fb82389.js');
-var index$1 = require('./index-7e0d4b0d.js');
+var LocalizationContext = require('./LocalizationContext-35a12c6e.js');
+var index$1 = require('./index-6c798e37.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-ee41b40e.js');
-var index$3 = require('./index-f45c8ba2.js');
-var Channel = require('./index-aeca0c10.js');
+var index$2 = require('./index-8d078197.js');
+var index$3 = require('./index-01daf604.js');
+var Channel = require('./index-39b8650f.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-ca2fe2f2.js');
+require('./actionTypes-78e5ac6b.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-1aac48cd.js');
-require('./utils-1666668b.js');
-require('./LeaveChannel-b5c0d319.js');
-require('./index-db4c7bb3.js');
-require('./index-24bdec51.js');
-require('./index-3570f4f5.js');
+require('./index-82649642.js');
+require('./utils-b1cf78cd.js');
+require('./LeaveChannel-2b94fb79.js');
+require('./index-a2fa88ef.js');
+require('./index-bd9bcb2b.js');
+require('./index-82b64096.js');
 require('./ChannelSettings.js');
-require('./index-6548e8a4.js');
+require('./index-02544a6f.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -77,8 +77,7 @@ var RoguFileTypes = {
 }; // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
 
 var SUPPORTED_MIMES = {
-  IMAGE: [// TODO: update image types based on the PRD
-  {
+  IMAGE: [{
     mimeType: 'image/jpeg',
     extension: 'JPEG'
   }, {
@@ -88,25 +87,15 @@ var SUPPORTED_MIMES = {
     mimeType: 'image/png',
     extension: 'PNG'
   }, {
-    mimeType: 'image/svg+xml',
-    extension: 'SVG'
-  }, {
-    mimeType: 'image/webp',
-    extension: 'WEBP'
+    mimeType: 'image/gif',
+    extension: 'GIF'
   }],
-  VIDEO: [// TODO: update video types based on the PRD
-  {
-    mimeType: 'video/mpeg',
-    extension: 'MPEG'
-  }, {
-    mimeType: 'video/ogg',
-    extension: 'OGV'
-  }, {
-    mimeType: 'video/webm',
-    extension: 'WEBM'
-  }, {
+  VIDEO: [{
     mimeType: 'video/mp4',
     extension: 'MP4'
+  }, {
+    mimeType: 'video/quicktime',
+    extension: 'MOV'
   }],
   PDF: [{
     mimeType: 'application/pdf',
@@ -164,6 +153,9 @@ var isExcel = function isExcel(mimeType) {
     return mime.mimeType === mimeType;
   });
 };
+var isSupportedFileView = function isSupportedFileView(mimeType) {
+  return isImage(mimeType) || isVideo(mimeType);
+};
 var getFileType = function getFileType(mimeType) {
   if (isImage(mimeType)) return RoguFileTypes.IMAGE;
   if (isVideo(mimeType)) return RoguFileTypes.VIDEO;
@@ -211,6 +203,15 @@ var groupMessagesByDate = function groupMessagesByDate(messages) {
 
     return groupedMessagesByDate;
   }, new Map());
+};
+
+var isFileMessage = function isFileMessage(message) {
+  var _a;
+
+  return message && (((_a = message.isFileMessage) === null || _a === void 0 ? void 0 : _a.call(message)) || message["messageType"] && message.messageType === "file");
+};
+var isThumbnailMessage = function isThumbnailMessage(message) {
+  return message && isFileMessage(message) && isSupportedFileView(message.type);
 };
 
 /**
@@ -3374,7 +3375,6 @@ function ImageRenderer(_ref) {
         style: {
           width: '100%',
           minWidth: width,
-          maxWidth: '400px',
           height: height,
           position: 'absolute',
           display: 'flex',
@@ -3406,7 +3406,6 @@ function ImageRenderer(_ref) {
     style: {
       width: '100%',
       minWidth: width,
-      maxWidth: '400px',
       height: height
     }
   }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default["default"].createElement("div", {
@@ -3414,7 +3413,6 @@ function ImageRenderer(_ref) {
     style: {
       width: '100%',
       minWidth: width,
-      maxWidth: '400px',
       height: height,
       position: 'absolute',
       backgroundRepeat: 'no-repeat',
@@ -4083,7 +4081,7 @@ function MessageContent(_a) {
   }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default["default"].createElement(FileMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), index$1.isThumbnailMessage(message) && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(ThumbnailMessageItemBody, {
+  }), isThumbnailMessage(message) && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
@@ -4887,7 +4885,7 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     color: LabelColors.ONBACKGROUND_2
   }, dateFns.format(createdAt, 'dd/MM/yyyy HH.mm'))))), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-fileviewer__header__right"
-  }, index$1.isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
+  }, isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-fileviewer__header__right__actions"
   }, /*#__PURE__*/React__default["default"].createElement("a", {
     className: "rogu-fileviewer__header__right__actions__download",
@@ -4914,7 +4912,7 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     onClick: onClose
   })))), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-fileviewer__content"
-  }, index$1.isVideo(type) &&
+  }, isVideo(type) &&
   /*#__PURE__*/
   // eslint-disable-next-line jsx-a11y/media-has-caption
   React__default["default"].createElement("video", {
@@ -4926,7 +4924,7 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
   }, /*#__PURE__*/React__default["default"].createElement("source", {
     src: url,
     type: type
-  })), index$1.isImage(type) && /*#__PURE__*/React__default["default"].createElement("img", {
+  })), isImage(type) && /*#__PURE__*/React__default["default"].createElement("img", {
     onFocus: onMediaFocus,
     onBlur: onMediaBlur // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
     ,
@@ -4939,7 +4937,7 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     message: captionMsg,
     mode: "fileViewerCaption",
     isHidden: isCaptionHidden
-  }), !index$1.isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
+  }), !isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "rogu-fileviewer__content__unsupported"
   }, /*#__PURE__*/React__default["default"].createElement(Label, {
     type: LabelTypography.H_1,
