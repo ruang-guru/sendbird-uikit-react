@@ -27,7 +27,7 @@ export const FileViewerComponent = ({
     <div className="sendbird-fileviewer__header">
       <div className="sendbird-fileviewer__header__left">
         <div className="sendbird-fileviewer__header__left__avatar">
-          <Avatar height="32px" width="32px" src={profileUrl} />
+          {profileUrl && <Avatar height="32px" width="32px" src={profileUrl} />}
         </div>
         <Label
           className="sendbird-fileviewer__header__left__filename"

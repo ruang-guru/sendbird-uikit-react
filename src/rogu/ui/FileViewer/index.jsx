@@ -14,7 +14,7 @@ import TextMessageItemBody from '../TextMessageItemBody';
 
 import {
   isImage, isVideo, isSupportedFileView,
-} from '../../../utils';
+} from '../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Toast from '../Toast';
 
@@ -134,37 +134,32 @@ export const FileViewerComponent = ({
             <source src={url} type={type} />
           </video>
         )}
-        {
-          isImage(type) && (
-            <img
-              onFocus={onMediaFocus}
-              onBlur={onMediaBlur}
-              // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-              tabIndex="0"
-              ref={contentRef}
-              src={url}
-              alt={`Uploaded by ${userName}`}
-              className="rogu-fileviewer__content__img"
-            />
-          )
-        }
-        {captionMsg
-          && (
-            <TextMessageItemBody
-              message={captionMsg}
-              viewerCaptionMode
-              isHidden={isCaptionHidden}
-            />
-          )}
-        {
-          !isSupportedFileView(type) && (
-            <div className="rogu-fileviewer__content__unsupported">
-              <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
-                Unsupported message
-              </Label>
-            </div>
-          )
-        }
+        {isImage(type) && (
+          <img
+            onFocus={onMediaFocus}
+            onBlur={onMediaBlur}
+            // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+            tabIndex="0"
+            ref={contentRef}
+            src={url}
+            alt={`Uploaded by ${userName}`}
+            className="rogu-fileviewer__content__img"
+          />
+        )}
+        {captionMsg && (
+          <TextMessageItemBody
+            message={captionMsg}
+            mode="fileViewerCaption"
+            isHidden={isCaptionHidden}
+          />
+        )}
+        {!isSupportedFileView(type) && (
+          <div className="rogu-fileviewer__content__unsupported">
+            <Label type={LabelTypography.H_1} color={LabelColors.ONBACKGROUND_1}>
+              Unsupported message
+            </Label>
+          </div>
+        )}
       </div>
       {showToast && (
         <Toast message={stringSet.TOAST__DOWNLOAD} />

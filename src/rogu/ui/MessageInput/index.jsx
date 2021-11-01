@@ -11,6 +11,7 @@ import { getClassName } from '../../../utils';
 import Icon, { IconTypes, IconColors } from '../Icon';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import Toast from '../Toast';
+import { getMimeTypesString } from '../../utils';
 
 import './index.scss';
 
@@ -196,7 +197,7 @@ const MessageInput = React.forwardRef((props, ref) => {
                 height="20px"
               />
               <input
-                accept=".doc,.docx,.xls,.xlsx,.ppt,.pptx,.pdf,image/*,.mov,.mp4"
+                accept={getMimeTypesString()}
                 className="rogu-message-input--attach-input"
                 type="file"
                 ref={fileInputRef}

@@ -14,7 +14,7 @@ import {
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 import Icon, { IconTypes, IconColors } from '../Icon';
-import ContextMenu, {MenuItems, MenuItem} from '../ContextMenu';
+import ContextMenu, { MenuItems, MenuItem } from '../ContextMenu';
 import Toast from '../Toast';
 
 import "./index.scss";
@@ -54,8 +54,8 @@ export default function MessageItemMenu({
   const showMenuItemReply: boolean = isUserMessage(message as UserMessage) || isFileMessage(message as FileMessage);
   const showMenuItemResend: boolean = (isFailedMessage(channel, message) && message.isResendable() && isByMe);
   const showMenuItemDelete: boolean = (isSentMessage(channel, message) && isByMe);
-  {/* hide menu edit */}
-  const showMenuItemEdit: boolean =false && (isUserMessage(message as UserMessage) && isSentMessage(channel, message) && isByMe);
+  {/* hide menu edit */ }
+  const showMenuItemEdit: boolean = false && (isUserMessage(message as UserMessage) && isSentMessage(channel, message) && isByMe);
 
   {/* show menu view on image or video */}
   const showMenuItemView:boolean = isFileMessage(message as FileMessage);
@@ -64,7 +64,7 @@ export default function MessageItemMenu({
     return null;
   }
 
-  const onCopyClick = (message:string) => {
+  const onCopyClick = (message: string) => {
     copyToClipboard(message);
     setShowToast(true);
     setTimeout(() => {
@@ -90,10 +90,10 @@ export default function MessageItemMenu({
             height="16px"
             onClick={(): void => {
               toggleDropdown();
-              setSupposedHover(true);
+              if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(true);
             }}
             onBlur={(): void => {
-              setSupposedHover(false);
+              if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
             }}
           >
             <Icon
@@ -108,7 +108,7 @@ export default function MessageItemMenu({
         menuItems={(close: () => void): ReactElement => {
           const closeDropdown = (): void => {
             close();
-            setSupposedHover(false);
+            if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
           };
           return (
             <MenuItems
@@ -135,7 +135,7 @@ export default function MessageItemMenu({
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
-                    onCopyClick((message as UserMessage)?.message);                    
+                    onCopyClick((message as UserMessage)?.message);
                     closeDropdown();
                   }}
                   iconType={IconTypes.ROGU_COPY}
@@ -153,14 +153,14 @@ export default function MessageItemMenu({
                       onOpenFile(message as FileMessage)
                     }    
                     closeDropdown();
-                    
+
                   }}
                   iconType={IconTypes.DOWNLOAD}
                 >
                   {stringSet.MESSAGE_MENU__VIEW}
                 </MenuItem>
               )}
-              
+
               {showMenuItemEdit && (
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"

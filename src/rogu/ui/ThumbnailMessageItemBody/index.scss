@@ -1,0 +1,92 @@
+@import '../../../styles/variables';
+
+.rogu-thumbnail-message-item-body {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100%;
+  min-width: 360px;
+  height: 270px;
+  border-radius: 6px;
+
+  &.reactions {
+    border-radius: 6px 6px 0 0;
+  }
+
+  @include themed() {
+    background-color: t(bg-1);
+  }
+
+  &.mouse-hover,
+  &:hover {
+    @include themed() {
+      background-color: t(bg-2);
+    }
+  }
+
+  .rogu-thumbnail-message-item-body__thumbnail {
+    position: absolute;
+  }
+
+  .rogu-thumbnail-message-item-body__placeholder {
+    position: absolute;
+    width: 100%;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .rogu-thumbnail-message-item-body__placeholder__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: var(--sendbird-light-background-50);
+    }
+  }
+
+  .rogu-thumbnail-message-item-body__image-cover {
+    position: absolute;
+    top: 0;
+    display: none;
+    width: 100%;
+    height: 270px;
+    background-color: var(--sendbird-light-overlay-01);
+  }
+
+  .rogu-thumbnail-message-item-body__video {
+    position: absolute;
+    width: 100%;
+    height: 270px;
+  }
+
+  .rogu-thumbnail-message-item-body__icon-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .rogu-thumbnail-message-item-body__icon-wrapper__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: var(--sendbird-light-background-50);
+    }
+  }
+}
+
+.rogu-thumbnail-message-item-body:hover {
+  cursor: pointer;
+
+  .rogu-thumbnail-message-item-body__image-cover {
+    display: inline-flex;
+  }
+}

@@ -38,7 +38,6 @@ export default function ImageRenderer({
         style: {
           width: '100%',
           minWidth: width,
-          maxWidth: '400px',
           height,
           position: 'absolute',
           display: 'flex',
@@ -73,7 +72,6 @@ export default function ImageRenderer({
       style={{
         width: '100%',
         minWidth: width,
-        maxWidth: '400px',
         height,
       }}
     >
@@ -87,7 +85,6 @@ export default function ImageRenderer({
               style={{
                 width: '100%',
                 minWidth: width,
-                maxWidth: '400px',
                 height,
                 position: 'absolute',
                 backgroundRepeat: 'no-repeat',
