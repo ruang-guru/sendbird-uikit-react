@@ -120,8 +120,6 @@ export const isSupportedFileView = (type: string): boolean =>
 export const isAudio = (type: string): boolean =>
   SUPPORTED_MIMES.AUDIO.indexOf(type) >= 0;
 
-export const isPdf = (type: string):boolean => type === "application/pdf";
-
 export const getUIKitFileTypes = (): UIKitFileTypes => ({ ...UIKitFileTypes });
 export const getUIKitFileType = (type: string): string => {
   if (isImage(type)) return UIKitFileTypes.IMAGE;

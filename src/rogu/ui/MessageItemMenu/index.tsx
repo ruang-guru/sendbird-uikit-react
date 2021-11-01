@@ -10,7 +10,6 @@ import {
   isFailedMessage,
   isThumbnailMessage,
   isFileMessage,
-  isPdf
 } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 
@@ -74,10 +73,7 @@ export default function MessageItemMenu({
   };
 
   const onOpenFile = (message: FileMessage):void => {
-    if(isPdf(message?.type)){
-      window.open(`https://docs.google.com/viewer?url=${message.url}`);
-    }
-
+    window.open(message.url)
   };
 
   return (
