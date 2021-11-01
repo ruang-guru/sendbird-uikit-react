@@ -56,12 +56,6 @@ const MessageInputWrapper = (
     return null;
   }
 
-  useEffect(() => {
-    if(ref.current){
-      console.log(ref.current.value);
-    }
-  }, [ref.current]);
-
   // other conditions
   return (
     <MessageInput
