@@ -69,11 +69,6 @@ export default function ImageRenderer({
         ...(Array.isArray(className) ? className : [className]),
         'sendbird-image-renderer',
       ].join(' ')}
-      style={{
-        width: '100%',
-        minWidth: width,
-        height,
-      }}
     >
       {showPlaceHolder && PlaceHolder}
       {
@@ -83,13 +78,6 @@ export default function ImageRenderer({
             <div
               className="sendbird-image-renderer__image"
               style={{
-                width: '100%',
-                minWidth: width,
-                height,
-                position: 'absolute',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
                 backgroundImage: `url(${url})`,
                 borderRadius: circle ? '50%' : null,
               }}

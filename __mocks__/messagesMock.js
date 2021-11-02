@@ -147,6 +147,14 @@ export const VIDEO_MESSAGE = {
   plainUrl: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/360a8dad320646298788f68a0d417c1c.mp4',
 };
 
+export const GIF_MESSAGE = {
+  ...IMAGE_MESSAGE,
+  size: 2676798,
+  type: 'image/gif',
+  url: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/65bd937a3a4641bb98c0fe878eabafa3.gif',
+  plainUrl: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/65bd937a3a4641bb98c0fe878eabafa3.gif',
+};
+
 export const FILE_MESSAGE = {
   ...BASIC_MESSAGE_A_1,
   messageType: 'file',

@@ -1,6 +1,16 @@
 .sendbird-image-renderer {
   overflow: hidden;
-  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .sendbird-image-renderer__image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 }
 
 .sendbird-image-renderer__hidden-image-loader {
