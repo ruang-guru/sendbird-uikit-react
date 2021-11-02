@@ -12,7 +12,8 @@ import { getClassName } from "../../../utils";
 import { LocalizationContext } from "../../../lib/LocalizationContext";
 
 import "./index.scss";
-
+import { destructureRepliedMessage } from "../../utils";
+import generateColorFromString from "../MessageContent/utils";
 
 
 type ClampType = "init" | "clamped" | "expanded";
@@ -24,7 +25,12 @@ interface Props {
   message: string;
   mode?: ModeType;
   isHidden?: boolean;
+  isRepliedMessage?: boolean;
+  onScrollToMessage?: () => void;
 }
+
+const QUOTE_FORMAT = ">";
+
 
 export default function TextMessageItemBody({
   className,
@@ -32,10 +38,16 @@ export default function TextMessageItemBody({
   message,
   mode = 'normal',
   isHidden = false,
+  isRepliedMessage = false,
+  onScrollToMessage
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const [clampState, setClampState] = useState<ClampType>("init");
   const textRef = useRef<HTMLDivElement>(null);
+
+  let {sender, parentMessage, originalMessage} = isRepliedMessage && destructureRepliedMessage(message);
+  let msg = isRepliedMessage ? originalMessage : message;
+  
 
   useEffect(() => {
     if (
@@ -48,7 +60,45 @@ export default function TextMessageItemBody({
 
   function handleExpand() {
     setClampState("expanded");
-  }
+  };
+
+  let renderText = (i, word) => {
+    return <Label
+        className="rogu-text-message-item-body__message"
+        color={LabelColors.ONBACKGROUND_1}
+        key={i}
+        type={LabelTypography.BODY_1}
+      >
+        {word}
+      </Label>
+  };
+
+  let renderRepliedMessage = (sender, parentMessage) => {
+    return <div className="rogu-text-message-item-body__reply-container" onClick={onScrollToMessage} >
+      <Label
+        className="rogu-message-content__sender-name"
+        color={LabelColors.ONBACKGROUND_2}
+        style={{
+          color: generateColorFromString(
+            sender || ''
+          ),
+        }}
+        type={LabelTypography.CAPTION_1}
+      >
+        {sender}
+      </Label>
+      <br/>
+      <Label
+        className="rogu-text-message-item-body__message"
+        color={LabelColors.ONBACKGROUND_1}
+        type={LabelTypography.BODY_3}
+      >
+        {parentMessage}
+      </Label>
+    </div>
+  };
+
+  
 
   return (
     <div
@@ -63,7 +113,8 @@ export default function TextMessageItemBody({
       ])}
     >
       <div ref={textRef} className="rogu-text-message-item-body__inner">
-        {message?.split(/\r/).map((word, i) =>
+        {isRepliedMessage && renderRepliedMessage(sender, parentMessage)}
+        {msg?.split(/\r/).map((word, i) =>
           word === "" ? (
             <br key={i} />
           ) : (

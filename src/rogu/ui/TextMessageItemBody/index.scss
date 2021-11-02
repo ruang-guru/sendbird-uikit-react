@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 .rogu-text-message-item-body {
   position: relative;
@@ -8,6 +8,19 @@
   .rogu-text-message-item-body__message {
     white-space: pre-wrap;
     word-break: break-all;
+  }
+
+  .rogu-text-message-item-body__reply-container {
+    padding: 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border-left-width: 2px;
+    border-left-style: solid;
+    cursor: pointer;
+    @include themed() {
+      background-color: t(primary-2);
+      border-left-color: t(primary-5);
+    }
   }
 
   .rogu-text-message-item-body__read-more {
@@ -27,6 +40,11 @@
     .rogu-text-message-item-body__read-more {
       @include themed() {
         color: t(secondary-3);
+      }
+    }
+    .rogu-text-message-item-body__reply-container {
+      @include themed() {
+        background-color: t(bg-1);
       }
     }
   }
