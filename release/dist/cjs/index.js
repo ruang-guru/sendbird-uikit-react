@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-35a12c6e.js');
-var index$1 = require('./index-6c798e37.js');
+var LocalizationContext = require('./LocalizationContext-97fb23a4.js');
+var index$1 = require('./index-4b283962.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-8d078197.js');
-var index$3 = require('./index-01daf604.js');
-var Channel = require('./index-39b8650f.js');
+var index$2 = require('./index-260dd649.js');
+var index$3 = require('./index-4126015e.js');
+var Channel = require('./index-81311147.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-78e5ac6b.js');
+require('./actionTypes-0c3ab0de.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-82649642.js');
-require('./utils-b1cf78cd.js');
-require('./LeaveChannel-2b94fb79.js');
-require('./index-a2fa88ef.js');
-require('./index-bd9bcb2b.js');
-require('./index-82b64096.js');
+require('./index-8679f1bb.js');
+require('./utils-4bcfe3d3.js');
+require('./LeaveChannel-aeed98b4.js');
+require('./index-73ee811c.js');
+require('./index-9245d26f.js');
+require('./index-a240dbfa.js');
 require('./ChannelSettings.js');
-require('./index-02544a6f.js');
+require('./index-c50a516b.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -204,6 +204,30 @@ var groupMessagesByDate = function groupMessagesByDate(messages) {
     return groupedMessagesByDate;
   }, new Map());
 };
+var QUOTE_FORMAT = ">";
+
+var isQuoteFormat = function isQuoteFormat(word) {
+  return word.charAt(0) === QUOTE_FORMAT;
+};
+
+var destructureRepliedMessage = function destructureRepliedMessage(message) {
+  var repliedMessage = message.split("\n").filter(function (word) {
+    return isQuoteFormat(word);
+  }).map(function (word) {
+    return word.substr(1);
+  });
+  var sender = repliedMessage[0],
+      rest = repliedMessage.slice(1);
+  var parentMessage = rest.join("\n");
+  var originalMessage = message.split("\n").filter(function (word) {
+    return !isQuoteFormat(word);
+  }).join("\n");
+  return {
+    sender: sender,
+    parentMessage: parentMessage,
+    originalMessage: originalMessage
+  };
+};
 
 var isFileMessage = function isFileMessage(message) {
   var _a;
@@ -212,6 +236,11 @@ var isFileMessage = function isFileMessage(message) {
 };
 var isThumbnailMessage = function isThumbnailMessage(message) {
   return message && isFileMessage(message) && isSupportedFileView(message.type);
+};
+var isRepliedMessage = function isRepliedMessage(message) {
+  var _a, _b;
+
+  return ((_b = (_a = message === null || message === void 0 ? void 0 : message.metaArrays) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.key) === "parentMessageId";
 };
 
 /**
@@ -269,7 +298,7 @@ var scrollIntoLast = function scrollIntoLast() {
   }
 
   try {
-    var scrollDOM = document.querySelector('.sendbird-conversation__scroll-container'); // eslint-disable-next-line no-multi-assign
+    var scrollDOM = document.querySelector('.rogu-conversation__scroll-container'); // eslint-disable-next-line no-multi-assign
 
     scrollDOM.scrollTop = scrollDOM.scrollHeight;
   } catch (error) {
@@ -1049,6 +1078,7 @@ function useInitialMessagesFetch(_ref, _ref2) {
       messageListParams.isInclusive = true;
       messageListParams.includeReplies = false;
       messageListParams.includeReaction = true;
+      messageListParams.includeMetaArray = true;
 
       if (userFilledMessageListQuery) {
         Object.keys(userFilledMessageListQuery).forEach(function (key) {
@@ -3172,6 +3202,34 @@ TextButton.defaultProps = {
   onClick: function onClick() {}
 };
 
+var colorSet = {
+  "#DF4141": ["A", "B", "C", "D"],
+  "#61CE5E": ["E", "F", "G", "H"],
+  "#6073E2": ["I", "J", "K", "L"],
+  "#F89825": ["M", "N", "O", "P"],
+  "#2EB5C0": ["Q", "R", "S", "T"],
+  "#BB58D0": ["U", "V", "W", "X"],
+  "#00A5FF": ["Y", "Z"]
+};
+var generateColorFromString = function generateColorFromString(str) {
+  var firstChar = str[0] || "";
+  var normalizedFirstChar = firstChar.toUpperCase();
+  var color = "inherit";
+
+  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
+    var _b = _a[_i],
+        hex = _b[0],
+        chars = _b[1];
+
+    if (chars.includes(normalizedFirstChar)) {
+      color = hex;
+      break;
+    }
+  }
+
+  return color;
+};
+
 function TextMessageItemBody(_a) {
   var className = _a.className,
       _b = _a.isByMe,
@@ -3180,14 +3238,24 @@ function TextMessageItemBody(_a) {
       _c = _a.mode,
       mode = _c === void 0 ? 'normal' : _c,
       _d = _a.isHidden,
-      isHidden = _d === void 0 ? false : _d;
+      isHidden = _d === void 0 ? false : _d,
+      _e = _a.isRepliedMessage,
+      isRepliedMessage = _e === void 0 ? false : _e,
+      onScrollToMessage = _a.onScrollToMessage;
   var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
 
-  var _e = React.useState("init"),
-      clampState = _e[0],
-      setClampState = _e[1];
+  var _f = React.useState("init"),
+      clampState = _f[0],
+      setClampState = _f[1];
 
   var textRef = React.useRef(null);
+
+  var _g = isRepliedMessage && destructureRepliedMessage(message),
+      sender = _g.sender,
+      parentMessage = _g.parentMessage,
+      originalMessage = _g.originalMessage;
+
+  var msg = isRepliedMessage ? originalMessage : message;
   React.useEffect(function () {
     if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
       setClampState("clamped");
@@ -3198,12 +3266,30 @@ function TextMessageItemBody(_a) {
     setClampState("expanded");
   }
 
+  var renderRepliedMessage = function renderRepliedMessage(sender, parentMessage) {
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "rogu-text-message-item-body__reply-container",
+      onClick: onScrollToMessage
+    }, /*#__PURE__*/React__default["default"].createElement(Label, {
+      className: "rogu-message-content__sender-name",
+      color: LabelColors.ONBACKGROUND_2,
+      style: {
+        color: generateColorFromString(sender || '')
+      },
+      type: LabelTypography.CAPTION_1
+    }, sender), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(Label, {
+      className: "rogu-text-message-item-body__reply-message",
+      color: LabelColors.ONBACKGROUND_1,
+      type: LabelTypography.BODY_3
+    }, parentMessage));
+  };
+
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: index$1.getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", mode === "fileViewerCaption" ? "rogu-text-message-item-body--viewer-mode" : "", mode === "fileViewerCaption" && isHidden ? "rogu-text-message-item-body--viewer-mode__hidden" : "", mode === "thumbnailCaption" ? "rogu-text-message-item-body--preview-mode" : ""])
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     ref: textRef,
     className: "rogu-text-message-item-body__inner"
-  }, message === null || message === void 0 ? void 0 : message.split(/\r/).map(function (word, i) {
+  }, isRepliedMessage && renderRepliedMessage(sender, parentMessage), msg === null || msg === void 0 ? void 0 : msg.split(/\r/).map(function (word, i) {
     return word === "" ? /*#__PURE__*/React__default["default"].createElement("br", {
       key: i
     }) : /*#__PURE__*/React__default["default"].createElement(Label, {
@@ -3587,34 +3673,6 @@ function MaterialMessageItemBody(_a) {
     type: LabelTypography.BODY_2
   }, stringSet.MATERIAL))));
 }
-
-var colorSet = {
-  "#DF4141": ["A", "B", "C", "D"],
-  "#61CE5E": ["E", "F", "G", "H"],
-  "#6073E2": ["I", "J", "K", "L"],
-  "#F89825": ["M", "N", "O", "P"],
-  "#2EB5C0": ["Q", "R", "S", "T"],
-  "#BB58D0": ["U", "V", "W", "X"],
-  "#00A5FF": ["Y", "Z"]
-};
-var generateColorFromString = function generateColorFromString(str) {
-  var firstChar = str[0] || "";
-  var normalizedFirstChar = firstChar.toUpperCase();
-  var color = "inherit";
-
-  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
-    var _b = _a[_i],
-        hex = _b[0],
-        chars = _b[1];
-
-    if (chars.includes(normalizedFirstChar)) {
-      color = hex;
-      break;
-    }
-  }
-
-  return color;
-};
 
 var MenuItems$1 = /*#__PURE__*/function (_Component) {
   LocalizationContext._inherits(MenuItems, _Component);
@@ -4003,11 +4061,11 @@ function MessageContent(_a) {
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
-  userId = _a.userId,
+  userId = _a.userId;
       // useReaction = false,
   // useReplying,
-  // scrollToMessage,
-  showEdit = _a.showEdit,
+  _a.scrollToMessage;
+      var showEdit = _a.showEdit,
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
       resendMessage = _a.resendMessage,
@@ -4027,6 +4085,10 @@ function MessageContent(_a) {
       message: message
     });
   }
+
+  var onScrollToMessage = function onScrollToMessage() {//TODO: integrate onScrollToMessage
+    //scrollToMessage(message.createdAt, getParentMessageId(message));
+  };
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-message-content', isByMeClassName, chainBottomClassName, chainTopClassName])
@@ -4068,7 +4130,9 @@ function MessageContent(_a) {
     className: "rogu-message-content__bubble__body__inner"
   }, index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
-    message: (_e = message) === null || _e === void 0 ? void 0 : _e.message
+    message: (_e = message) === null || _e === void 0 ? void 0 : _e.message,
+    isRepliedMessage: isRepliedMessage(message),
+    onScrollToMessage: onScrollToMessage
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -4086,7 +4150,7 @@ function MessageContent(_a) {
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING
-  }), /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+  }), message.name && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     mode: "thumbnailCaption",
     message: message.name
@@ -4115,6 +4179,390 @@ function MessageContent(_a) {
   }, index$1.getMessageCreatedAt(message)))));
 }
 
+var imageRendererClassName = 'sendbird-avatar-img';
+
+var DefaultComponent = function DefaultComponent(_a) {
+  var width = _a.width,
+      height = _a.height;
+  var iconWidth = index$2.pxToNumber(width);
+  var iconHeight = index$2.pxToNumber(height);
+
+  if (typeof iconWidth === 'number') {
+    iconWidth *= 0.575;
+  }
+
+  if (typeof iconHeight === 'number') {
+    iconHeight *= 0.575;
+  }
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "sendbird-avatar-img--default",
+    style: {
+      width: width,
+      height: height
+    }
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.USER,
+    fillColor: IconColors.CONTENT,
+    width: iconWidth,
+    height: iconHeight
+  }));
+};
+
+var _defaultComponent = function _defaultComponent(_a) {
+  var width = _a.width,
+      height = _a.height;
+  return /*#__PURE__*/React__default["default"].createElement(DefaultComponent, {
+    width: width,
+    height: height
+  });
+};
+
+var AvatarInner = function AvatarInner(_a) {
+  var _b = _a.src,
+      src = _b === void 0 ? '' : _b,
+      _c = _a.alt,
+      alt = _c === void 0 ? '' : _c,
+      height = _a.height,
+      width = _a.width,
+      customDefaultComponent = _a.customDefaultComponent;
+
+  var defaultComponent = function defaultComponent() {
+    return customDefaultComponent ? customDefaultComponent({
+      width: width,
+      height: height
+    }) : _defaultComponent({
+      width: width,
+      height: height
+    });
+  };
+
+  if (typeof src === 'string') {
+    return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      className: imageRendererClassName,
+      url: src,
+      height: height,
+      width: width,
+      alt: alt,
+      defaultComponent: defaultComponent
+    });
+  }
+
+  if (src && src.length) {
+    if (src.length === 1) {
+      return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[0],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      });
+    }
+
+    if (src.length === 2) {
+      return /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "sendbird-avatar--inner__two-child"
+      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[0],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      }), /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[1],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      }));
+    }
+
+    if (src.length === 3) {
+      return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "sendbird-avatar--inner__three-child--upper"
+      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[0],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      })), /*#__PURE__*/React__default["default"].createElement("div", {
+        className: "sendbird-avatar--inner__three-child--lower"
+      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[1],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      }), /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: src[2],
+        height: height,
+        width: width,
+        alt: alt,
+        defaultComponent: defaultComponent
+      })));
+    }
+
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "sendbird-avatar--inner__four-child"
+    }, src.slice(0, 4).map(function (i) {
+      return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+        className: imageRendererClassName,
+        url: i,
+        height: height,
+        width: width,
+        alt: alt,
+        key: LocalizationContext.uuidv4(),
+        defaultComponent: defaultComponent
+      });
+    }));
+  } // default img
+
+
+  return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+    className: imageRendererClassName,
+    url: "",
+    height: height,
+    width: width,
+    alt: alt,
+    defaultComponent: defaultComponent
+  });
+};
+
+function Avatar(_a, ref) {
+  var _b = _a.className,
+      className = _b === void 0 ? '' : _b,
+      _c = _a.src,
+      src = _c === void 0 ? '' : _c,
+      _d = _a.alt,
+      alt = _d === void 0 ? '' : _d,
+      _e = _a.width,
+      width = _e === void 0 ? '56px' : _e,
+      _f = _a.height,
+      height = _f === void 0 ? '56px' : _f,
+      onClick = _a.onClick,
+      customDefaultComponent = _a.customDefaultComponent;
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-avatar'], false).join(' '),
+    role: "button",
+    ref: ref,
+    style: {
+      height: height,
+      width: width
+    },
+    onClick: onClick,
+    onKeyDown: onClick,
+    tabIndex: 0
+  }, /*#__PURE__*/React__default["default"].createElement(AvatarInner, {
+    src: src,
+    width: width,
+    height: height,
+    alt: alt,
+    customDefaultComponent: customDefaultComponent
+  }));
+}
+
+var Avatar$1 = /*#__PURE__*/React__default["default"].forwardRef(Avatar);
+
+var FileViewerComponent = function FileViewerComponent(_ref) {
+  var profileUrl = _ref.profileUrl,
+      userName = _ref.userName,
+      captionMsg = _ref.captionMsg,
+      type = _ref.type,
+      url = _ref.url,
+      isByMe = _ref.isByMe,
+      isPreview = _ref.isPreview,
+      onClose = _ref.onClose,
+      onDelete = _ref.onDelete,
+      createdAt = _ref.createdAt;
+
+  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+      stringSet = _useContext.stringSet;
+
+  var _useState = React.useState(false),
+      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
+      showToast = _useState2[0],
+      setShowToast = _useState2[1];
+
+  var _useState3 = React.useState(false),
+      _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
+      isCaptionHidden = _useState4[0],
+      setIsCaptionHidden = _useState4[1];
+
+  var contentRef = React.useRef();
+
+  var onMediaFocus = function onMediaFocus() {
+    setIsCaptionHidden(true);
+  };
+
+  var onMediaBlur = function onMediaBlur() {
+    setIsCaptionHidden(false);
+  };
+
+  var onDownloadClick = function onDownloadClick() {
+    setShowToast(true);
+    setTimeout(function () {
+      setShowToast(false);
+    }, 3000);
+  };
+
+  return /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer"
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header"
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header__left"
+  }, /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header__left__avatar"
+  }, /*#__PURE__*/React__default["default"].createElement(Avatar$1, {
+    height: "32px",
+    width: "32px",
+    src: profileUrl
+  })), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header__left__metadata"
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-fileviewer__header__left__sender-name",
+    type: LabelTypography.H_3,
+    color: LabelColors.ONBACKGROUND_1
+  }, userName), !isPreview && /*#__PURE__*/React__default["default"].createElement(Label, {
+    className: "rogu-fileviewer__header__left__createdat",
+    type: LabelTypography.BODY_1,
+    color: LabelColors.ONBACKGROUND_2
+  }, dateFns.format(createdAt, 'dd/MM/yyyy HH.mm')))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header__right"
+  }, !isPreview && isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header__right__actions"
+  }, /*#__PURE__*/React__default["default"].createElement("a", {
+    className: "rogu-fileviewer__header__right__actions__download",
+    rel: "noopener noreferrer",
+    href: url,
+    onClick: onDownloadClick
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.ROGU_DOWNLOAD,
+    height: "24px",
+    width: "24px"
+  })), onDelete && isByMe && /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header__right__actions__delete"
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.ROGU_DELETE,
+    height: "24px",
+    width: "24px",
+    onClick: onDelete
+  }))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__header__right__actions__close"
+  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    type: IconTypes.ROGU_CLOSE,
+    height: "24px",
+    width: "24px",
+    onClick: onClose
+  })))), /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__content"
+  }, isVideo(type) &&
+  /*#__PURE__*/
+  // eslint-disable-next-line jsx-a11y/media-has-caption
+  React__default["default"].createElement("video", {
+    onFocus: onMediaFocus,
+    onBlur: onMediaBlur,
+    controls: true,
+    className: "rogu-fileviewer__content__video",
+    ref: contentRef
+  }, /*#__PURE__*/React__default["default"].createElement("source", {
+    src: url,
+    type: type
+  })), isImage(type) && /*#__PURE__*/React__default["default"].createElement("img", {
+    onFocus: onMediaFocus,
+    onBlur: onMediaBlur // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+    ,
+    tabIndex: "0",
+    ref: contentRef,
+    src: url,
+    alt: "Uploaded by ".concat(userName),
+    className: "rogu-fileviewer__content__img"
+  }), !isPreview && captionMsg && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+    message: captionMsg,
+    mode: "fileViewerCaption",
+    isHidden: isCaptionHidden
+  }), !isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
+    className: "rogu-fileviewer__content__unsupported"
+  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    type: LabelTypography.H_1,
+    color: LabelColors.ONBACKGROUND_1
+  }, "Unsupported message"))), showToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+    message: stringSet.TOAST__DOWNLOAD
+  }));
+};
+FileViewerComponent.propTypes = {
+  profileUrl: PropTypes__default["default"].string.isRequired,
+  userName: PropTypes__default["default"].string.isRequired,
+  type: PropTypes__default["default"].string.isRequired,
+  url: PropTypes__default["default"].string.isRequired,
+  captionMsg: PropTypes__default["default"].string.isRequired,
+  onClose: PropTypes__default["default"].func.isRequired,
+  onDelete: PropTypes__default["default"].func.isRequired,
+  isByMe: PropTypes__default["default"].bool,
+  isPreview: PropTypes__default["default"].bool,
+  createdAt: PropTypes__default["default"].number
+};
+FileViewerComponent.defaultProps = {
+  isByMe: true,
+  isPreview: false,
+  createdAt: new Date().getTime()
+};
+function FileViewer(props) {
+  var message = props.message,
+      isByMe = props.isByMe,
+      isPreview = props.isPreview,
+      onClose = props.onClose,
+      onDelete = props.onDelete;
+  var sender = message.sender,
+      type = message.type,
+      url = message.url,
+      _message$name = message.name,
+      captionMsg = _message$name === void 0 ? '' : _message$name,
+      createdAt = message.createdAt;
+  var profileUrl = sender.profileUrl,
+      _sender$nickname = sender.nickname,
+      userName = _sender$nickname === void 0 ? '' : _sender$nickname;
+  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement(FileViewerComponent, {
+    profileUrl: profileUrl,
+    userName: userName,
+    type: type,
+    url: url,
+    captionMsg: captionMsg,
+    onClose: onClose,
+    onDelete: onDelete,
+    isByMe: isByMe,
+    isPreview: isPreview,
+    createdAt: createdAt
+  }), document.getElementById(index$1.MODAL_ROOT));
+}
+FileViewer.propTypes = {
+  message: PropTypes__default["default"].shape({
+    sender: PropTypes__default["default"].shape({
+      profileUrl: PropTypes__default["default"].string,
+      userName: PropTypes__default["default"].string
+    }),
+    type: PropTypes__default["default"].string,
+    url: PropTypes__default["default"].string,
+    fileName: PropTypes__default["default"].string,
+    createdAt: PropTypes__default["default"].number
+  }).isRequired,
+  isByMe: PropTypes__default["default"].bool,
+  isPreview: PropTypes__default["default"].bool,
+  onClose: PropTypes__default["default"].func.isRequired,
+  onDelete: PropTypes__default["default"].func.isRequired
+};
+FileViewer.defaultProps = {
+  isByMe: true,
+  isPreview: false
+};
+
 var MAX_FILE_SIZE = 10000000; // 10MB;
 
 var TOAST_AUTO_HIDE_DURATION = 3000;
@@ -4133,6 +4581,8 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
       name = props.name,
       placeholder = props.placeholder,
       maxLength = props.maxLength,
+      nickname = props.nickname,
+      profileUrl = props.profileUrl,
       onFileUpload = props.onFileUpload,
       onSendMessage = props.onSendMessage,
       onCancelEdit = props.onCancelEdit,
@@ -4143,21 +4593,26 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
 
   var fileInputRef = React.useRef(null);
 
-  var _useState = React.useState(value),
+  var _useState = React.useState(null),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
-      inputValue = _useState2[0],
-      setInputValue = _useState2[1];
+      imagePreviewFile = _useState2[0],
+      setImagePreviewFile = _useState2[1];
 
-  var _useState3 = React.useState(false),
+  var _useState3 = React.useState(value),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
-      isShiftPressed = _useState4[0],
-      setIsShiftPressed = _useState4[1]; // TODO: abstract the auto hide mechanism to the Toast component
-
+      inputValue = _useState4[0],
+      setInputValue = _useState4[1];
 
   var _useState5 = React.useState(false),
       _useState6 = LocalizationContext._slicedToArray(_useState5, 2),
-      showUploadErrorToast = _useState6[0],
-      setShowUploadErrorToast = _useState6[1];
+      isShiftPressed = _useState6[0],
+      setIsShiftPressed = _useState6[1]; // TODO: abstract the auto hide mechanism to the Toast component
+
+
+  var _useState7 = React.useState(false),
+      _useState8 = LocalizationContext._slicedToArray(_useState7, 2),
+      showUploadErrorToast = _useState8[0],
+      setShowUploadErrorToast = _useState8[1];
 
   var autoHideTimer = React.useRef(null);
   React.useEffect(function () {
@@ -4173,7 +4628,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
     };
   }, [showUploadErrorToast]);
 
-  var handleUploadFile = function handleUploadFile(callback) {
+  var handleUploadFile = function handleUploadFile(upload) {
     return function (event) {
       var _event$target;
 
@@ -4182,8 +4637,10 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
       if (file) {
         if (file.size > MAX_FILE_SIZE) {
           setShowUploadErrorToast(true);
+        } else if (isImage(file.type)) {
+          setImagePreviewFile(file);
         } else {
-          callback(file);
+          upload(file);
         }
       } // eslint-disable-next-line no-param-reassign
 
@@ -4219,7 +4676,17 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
   }, [inputValue]);
 
   var sendMessage = function sendMessage() {
-    if (inputValue && inputValue.trim().length > 0) {
+    if (imagePreviewFile !== null) {
+      // In order to change the file name, we need to create a copy of File object
+      var modifiedFile = new Blob([imagePreviewFile], {
+        type: imagePreviewFile.type,
+        name: inputValue
+      });
+      modifiedFile.name = inputValue;
+      onFileUpload(modifiedFile);
+      setImagePreviewFile(null);
+      setInputValue('');
+    } else if (inputValue && inputValue.trim().length > 0) {
       var trimmedInputValue = inputValue.trim();
 
       if (isEdit) {
@@ -4234,7 +4701,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
   };
 
   return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("form", {
-    className: [isEdit ? 'rogu-message-input__edit' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' rogu-message-input__container ')
+    className: ['rogu-message-input__container', isEdit ? 'rogu-message-input__edit' : '', imagePreviewFile ? 'rogu-message-input--preview' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' ')
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     className: ['rogu-message-input', disabled ? 'rogu-message-input__disabled' : ''].join(' ')
   }, /*#__PURE__*/React__default["default"].createElement("textarea", {
@@ -4267,7 +4734,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
     className: "rogu-message-input--placeholder",
     type: LabelTypography.BODY_1,
     color: LabelColors.ONBACKGROUND_3
-  }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
+  }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && !imagePreviewFile && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
     className: "rogu-message-input--attach",
     height: "32px",
     width: "32px",
@@ -4315,7 +4782,19 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
         });
       }
     }
-  }, stringSet.BUTTON__SAVE))), showUploadErrorToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+  }, stringSet.BUTTON__SAVE))), imagePreviewFile !== null && /*#__PURE__*/React__default["default"].createElement(FileViewerComponent, {
+    captionMsg: "TODO: caption here",
+    isByMe: true,
+    isPreview: true,
+    profileUrl: profileUrl,
+    type: imagePreviewFile.type,
+    url: URL.createObjectURL(imagePreviewFile),
+    userName: nickname,
+    onClose: function onClose() {
+      return setImagePreviewFile(null);
+    },
+    onDelete: function onDelete() {}
+  }), showUploadErrorToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
     message: stringSet.TOAST__MAX_FILE_SIZE_ERROR
   }));
 });
@@ -4326,6 +4805,8 @@ MessageInput.propTypes = {
   value: PropTypes__default["default"].string,
   disabled: PropTypes__default["default"].bool,
   maxLength: PropTypes__default["default"].number,
+  nickname: PropTypes__default["default"].string.isRequired,
+  profileUrl: PropTypes__default["default"].string.isRequired,
   onFileUpload: PropTypes__default["default"].func,
   onSendMessage: PropTypes__default["default"].func,
   onStartTyping: PropTypes__default["default"].func,
@@ -4627,382 +5108,6 @@ var RemoveMessage = function RemoveMessage(props) {
 RemoveMessage.propTypes = {
   onCloseModal: PropTypes__default["default"].func.isRequired,
   onDeleteMessage: PropTypes__default["default"].func.isRequired
-};
-
-var imageRendererClassName = 'sendbird-avatar-img';
-
-var DefaultComponent = function DefaultComponent(_a) {
-  var width = _a.width,
-      height = _a.height;
-  var iconWidth = index$2.pxToNumber(width);
-  var iconHeight = index$2.pxToNumber(height);
-
-  if (typeof iconWidth === 'number') {
-    iconWidth *= 0.575;
-  }
-
-  if (typeof iconHeight === 'number') {
-    iconHeight *= 0.575;
-  }
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-avatar-img--default",
-    style: {
-      width: width,
-      height: height
-    }
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
-    type: IconTypes.USER,
-    fillColor: IconColors.CONTENT,
-    width: iconWidth,
-    height: iconHeight
-  }));
-};
-
-var _defaultComponent = function _defaultComponent(_a) {
-  var width = _a.width,
-      height = _a.height;
-  return /*#__PURE__*/React__default["default"].createElement(DefaultComponent, {
-    width: width,
-    height: height
-  });
-};
-
-var AvatarInner = function AvatarInner(_a) {
-  var _b = _a.src,
-      src = _b === void 0 ? '' : _b,
-      _c = _a.alt,
-      alt = _c === void 0 ? '' : _c,
-      height = _a.height,
-      width = _a.width,
-      customDefaultComponent = _a.customDefaultComponent;
-
-  var defaultComponent = function defaultComponent() {
-    return customDefaultComponent ? customDefaultComponent({
-      width: width,
-      height: height
-    }) : _defaultComponent({
-      width: width,
-      height: height
-    });
-  };
-
-  if (typeof src === 'string') {
-    return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-      className: imageRendererClassName,
-      url: src,
-      height: height,
-      width: width,
-      alt: alt,
-      defaultComponent: defaultComponent
-    });
-  }
-
-  if (src && src.length) {
-    if (src.length === 1) {
-      return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-        className: imageRendererClassName,
-        url: src[0],
-        height: height,
-        width: width,
-        alt: alt,
-        defaultComponent: defaultComponent
-      });
-    }
-
-    if (src.length === 2) {
-      return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "sendbird-avatar--inner__two-child"
-      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-        className: imageRendererClassName,
-        url: src[0],
-        height: height,
-        width: width,
-        alt: alt,
-        defaultComponent: defaultComponent
-      }), /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-        className: imageRendererClassName,
-        url: src[1],
-        height: height,
-        width: width,
-        alt: alt,
-        defaultComponent: defaultComponent
-      }));
-    }
-
-    if (src.length === 3) {
-      return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "sendbird-avatar--inner__three-child--upper"
-      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-        className: imageRendererClassName,
-        url: src[0],
-        height: height,
-        width: width,
-        alt: alt,
-        defaultComponent: defaultComponent
-      })), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "sendbird-avatar--inner__three-child--lower"
-      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-        className: imageRendererClassName,
-        url: src[1],
-        height: height,
-        width: width,
-        alt: alt,
-        defaultComponent: defaultComponent
-      }), /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-        className: imageRendererClassName,
-        url: src[2],
-        height: height,
-        width: width,
-        alt: alt,
-        defaultComponent: defaultComponent
-      })));
-    }
-
-    return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "sendbird-avatar--inner__four-child"
-    }, src.slice(0, 4).map(function (i) {
-      return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-        className: imageRendererClassName,
-        url: i,
-        height: height,
-        width: width,
-        alt: alt,
-        key: LocalizationContext.uuidv4(),
-        defaultComponent: defaultComponent
-      });
-    }));
-  } // default img
-
-
-  return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
-    className: imageRendererClassName,
-    url: "",
-    height: height,
-    width: width,
-    alt: alt,
-    defaultComponent: defaultComponent
-  });
-};
-
-function Avatar(_a, ref) {
-  var _b = _a.className,
-      className = _b === void 0 ? '' : _b,
-      _c = _a.src,
-      src = _c === void 0 ? '' : _c,
-      _d = _a.alt,
-      alt = _d === void 0 ? '' : _d,
-      _e = _a.width,
-      width = _e === void 0 ? '56px' : _e,
-      _f = _a.height,
-      height = _f === void 0 ? '56px' : _f,
-      onClick = _a.onClick,
-      customDefaultComponent = _a.customDefaultComponent;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-avatar'], false).join(' '),
-    role: "button",
-    ref: ref,
-    style: {
-      height: height,
-      width: width
-    },
-    onClick: onClick,
-    onKeyDown: onClick,
-    tabIndex: 0
-  }, /*#__PURE__*/React__default["default"].createElement(AvatarInner, {
-    src: src,
-    width: width,
-    height: height,
-    alt: alt,
-    customDefaultComponent: customDefaultComponent
-  }));
-}
-
-var Avatar$1 = /*#__PURE__*/React__default["default"].forwardRef(Avatar);
-
-var FileViewerComponent = function FileViewerComponent(_ref) {
-  var profileUrl = _ref.profileUrl,
-      userName = _ref.userName,
-      captionMsg = _ref.captionMsg,
-      type = _ref.type,
-      url = _ref.url,
-      isByMe = _ref.isByMe,
-      onClose = _ref.onClose,
-      onDelete = _ref.onDelete,
-      createdAt = _ref.createdAt;
-
-  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
-      stringSet = _useContext.stringSet;
-
-  var _useState = React.useState(false),
-      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
-      showToast = _useState2[0],
-      setShowToast = _useState2[1];
-
-  var _useState3 = React.useState(false),
-      _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
-      isCaptionHidden = _useState4[0],
-      setIsCaptionHidden = _useState4[1];
-
-  var contentRef = React.useRef();
-
-  var onMediaFocus = function onMediaFocus() {
-    setIsCaptionHidden(true);
-  };
-
-  var onMediaBlur = function onMediaBlur() {
-    setIsCaptionHidden(false);
-  };
-
-  var onDownloadClick = function onDownloadClick() {
-    setShowToast(true);
-    setTimeout(function () {
-      setShowToast(false);
-    }, 3000);
-  };
-
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header__left"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header__left__avatar"
-  }, /*#__PURE__*/React__default["default"].createElement(Avatar$1, {
-    height: "32px",
-    width: "32px",
-    src: profileUrl
-  })), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header__left__metadata"
-  }, /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Label, {
-    className: "rogu-fileviewer__header__left__sender-name",
-    type: LabelTypography.H_3,
-    color: LabelColors.ONBACKGROUND_1
-  }, userName)), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Label, {
-    className: "rogu-fileviewer__header__left__createdat",
-    type: LabelTypography.BODY_1,
-    color: LabelColors.ONBACKGROUND_2
-  }, dateFns.format(createdAt, 'dd/MM/yyyy HH.mm'))))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header__right"
-  }, isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header__right__actions"
-  }, /*#__PURE__*/React__default["default"].createElement("a", {
-    className: "rogu-fileviewer__header__right__actions__download",
-    rel: "noopener noreferrer",
-    href: url,
-    onClick: onDownloadClick
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
-    type: IconTypes.ROGU_DOWNLOAD,
-    height: "24px",
-    width: "24px"
-  })), onDelete && isByMe && /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header__right__actions__delete"
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
-    type: IconTypes.ROGU_DELETE,
-    height: "24px",
-    width: "24px",
-    onClick: onDelete
-  }))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__header__right__actions__close"
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
-    type: IconTypes.ROGU_CLOSE,
-    height: "24px",
-    width: "24px",
-    onClick: onClose
-  })))), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__content"
-  }, isVideo(type) &&
-  /*#__PURE__*/
-  // eslint-disable-next-line jsx-a11y/media-has-caption
-  React__default["default"].createElement("video", {
-    onFocus: onMediaFocus,
-    onBlur: onMediaBlur,
-    controls: true,
-    className: "rogu-fileviewer__content__video",
-    ref: contentRef
-  }, /*#__PURE__*/React__default["default"].createElement("source", {
-    src: url,
-    type: type
-  })), isImage(type) && /*#__PURE__*/React__default["default"].createElement("img", {
-    onFocus: onMediaFocus,
-    onBlur: onMediaBlur // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-    ,
-    tabIndex: "0",
-    ref: contentRef,
-    src: url,
-    alt: "Uploaded by ".concat(userName),
-    className: "rogu-fileviewer__content__img"
-  }), captionMsg && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
-    message: captionMsg,
-    mode: "fileViewerCaption",
-    isHidden: isCaptionHidden
-  }), !isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "rogu-fileviewer__content__unsupported"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
-    type: LabelTypography.H_1,
-    color: LabelColors.ONBACKGROUND_1
-  }, "Unsupported message"))), showToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
-    message: stringSet.TOAST__DOWNLOAD
-  }));
-};
-FileViewerComponent.propTypes = {
-  profileUrl: PropTypes__default["default"].string.isRequired,
-  userName: PropTypes__default["default"].string.isRequired,
-  type: PropTypes__default["default"].string.isRequired,
-  url: PropTypes__default["default"].string.isRequired,
-  captionMsg: PropTypes__default["default"].string.isRequired,
-  onClose: PropTypes__default["default"].func.isRequired,
-  onDelete: PropTypes__default["default"].func.isRequired,
-  isByMe: PropTypes__default["default"].bool,
-  createdAt: PropTypes__default["default"].number.isRequired
-};
-FileViewerComponent.defaultProps = {
-  isByMe: true
-};
-function FileViewer(props) {
-  var message = props.message,
-      isByMe = props.isByMe,
-      onClose = props.onClose,
-      onDelete = props.onDelete;
-  var sender = message.sender,
-      type = message.type,
-      url = message.url,
-      _message$name = message.name,
-      captionMsg = _message$name === void 0 ? '' : _message$name,
-      createdAt = message.createdAt;
-  var profileUrl = sender.profileUrl,
-      _sender$nickname = sender.nickname,
-      userName = _sender$nickname === void 0 ? '' : _sender$nickname;
-  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement(FileViewerComponent, {
-    profileUrl: profileUrl,
-    userName: userName,
-    type: type,
-    url: url,
-    captionMsg: captionMsg,
-    onClose: onClose,
-    onDelete: onDelete,
-    isByMe: isByMe,
-    createdAt: createdAt
-  }), document.getElementById(index$1.MODAL_ROOT));
-}
-FileViewer.propTypes = {
-  message: PropTypes__default["default"].shape({
-    sender: PropTypes__default["default"].shape({
-      profileUrl: PropTypes__default["default"].string,
-      userName: PropTypes__default["default"].string
-    }),
-    type: PropTypes__default["default"].string,
-    url: PropTypes__default["default"].string,
-    fileName: PropTypes__default["default"].string,
-    createdAt: PropTypes__default["default"].number
-  }).isRequired,
-  isByMe: PropTypes__default["default"].bool,
-  onClose: PropTypes__default["default"].func.isRequired,
-  onDelete: PropTypes__default["default"].func.isRequired
-};
-FileViewer.defaultProps = {
-  isByMe: true
 };
 
 function MessageHoc(_ref) {
@@ -5347,83 +5452,89 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
 
       if (allMessages.length < 1) {
         return /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
-          className: "sendbird-conversation__no-messages",
+          className: "rogu-conversation__no-messages",
           type: index$2.PlaceHolderTypes.NO_MESSAGES
         });
       }
 
       return /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "sendbird-conversation__messages"
+        className: "rogu-conversation__messages"
       }, /*#__PURE__*/React__default["default"].createElement("div", {
         ref: scrollRef,
-        className: "sendbird-conversation__scroll-container",
+        className: "rogu-conversation__scroll-container",
         onScroll: this.onScroll
       }, /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "sendbird-conversation__padding"
+        className: "rogu-conversation__padding"
       }), /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "sendbird-conversation__messages-padding"
-      }, Array.from(groupMessagesByDate(allMessages).values()).map(function (messages) {
+        className: "rogu-conversation__messages-padding"
+      }, Array.from(groupMessagesByDate(allMessages).values()).map(function (messages, i) {
         var _messages$;
 
         var currentCreatedAt = (_messages$ = messages[0]) === null || _messages$ === void 0 ? void 0 : _messages$.createdAt;
-        return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(DateSeparator, {
-          createdAt: currentCreatedAt
-        }), messages.map(function (m, idx) {
-          var previousMessage = messages[idx - 1];
-          var nextMessage = messages[idx + 1];
+        return (
+          /*#__PURE__*/
+          // eslint-disable-next-line react/no-array-index-key
+          React__default["default"].createElement(React__default["default"].Fragment, {
+            key: i
+          }, /*#__PURE__*/React__default["default"].createElement(DateSeparator, {
+            createdAt: currentCreatedAt
+          }), messages.map(function (m, idx) {
+            var previousMessage = messages[idx - 1];
+            var nextMessage = messages[idx + 1];
 
-          var _ref5 = useMessageGrouping ? compareMessagesForGrouping(previousMessage, m, nextMessage) : [false, false],
-              _ref6 = LocalizationContext._slicedToArray(_ref5, 2),
-              chainTop = _ref6[0],
-              chainBottom = _ref6[1];
+            var _ref5 = useMessageGrouping ? compareMessagesForGrouping(previousMessage, m, nextMessage) : [false, false],
+                _ref6 = LocalizationContext._slicedToArray(_ref5, 2),
+                chainTop = _ref6[0],
+                chainBottom = _ref6[1];
 
-          if (renderChatItem) {
-            return /*#__PURE__*/React__default["default"].createElement("div", {
-              key: m.messageId || m.reqId,
-              className: "sendbird-msg--scroll-ref"
-            }, renderChatItem({
-              message: m,
+            if (renderChatItem) {
+              return /*#__PURE__*/React__default["default"].createElement("div", {
+                key: m.messageId || m.reqId,
+                className: "sendbird-msg--scroll-ref"
+              }, renderChatItem({
+                message: m,
+                highLightedMessageId: highLightedMessageId,
+                channel: currentGroupChannel,
+                // hasSeparator: hasSeparator,
+                onDeleteMessage: deleteMessage,
+                onUpdateMessage: updateMessage,
+                onResendMessage: resendMessage,
+                onScrollToMessage: scrollToMessage,
+                emojiContainer: emojiContainer,
+                chainTop: chainTop,
+                chainBottom: chainBottom,
+                menuDisabled: disabled
+              }));
+            }
+
+            return /*#__PURE__*/React__default["default"].createElement(MessageHoc, {
               highLightedMessageId: highLightedMessageId,
-              channel: currentGroupChannel,
-              // hasSeparator: hasSeparator,
-              onDeleteMessage: deleteMessage,
-              onUpdateMessage: updateMessage,
-              onResendMessage: resendMessage,
-              onScrollToMessage: scrollToMessage,
-              emojiContainer: emojiContainer,
+              renderCustomMessage: renderCustomMessage,
+              key: m.messageId || m.reqId,
+              userId: userId // show status for pending/failed messages
+              ,
+              message: m,
+              scrollToMessage: scrollToMessage,
+              currentGroupChannel: currentGroupChannel,
+              disabled: disabled,
+              membersMap: membersMap,
               chainTop: chainTop,
+              useReaction: useReaction,
+              emojiAllMap: emojiAllMap,
+              emojiContainer: emojiContainer,
+              editDisabled: editDisabled // hasSeparator={hasSeparator}
+              ,
               chainBottom: chainBottom,
-              menuDisabled: disabled
-            }));
-          }
-
-          return /*#__PURE__*/React__default["default"].createElement(MessageHoc, {
-            highLightedMessageId: highLightedMessageId,
-            renderCustomMessage: renderCustomMessage,
-            key: m.messageId || m.reqId,
-            userId: userId // show status for pending/failed messages
-            ,
-            message: m,
-            scrollToMessage: scrollToMessage,
-            currentGroupChannel: currentGroupChannel,
-            disabled: disabled,
-            membersMap: membersMap,
-            chainTop: chainTop,
-            useReaction: useReaction,
-            emojiAllMap: emojiAllMap,
-            emojiContainer: emojiContainer,
-            editDisabled: editDisabled // hasSeparator={hasSeparator}
-            ,
-            chainBottom: chainBottom,
-            updateMessage: updateMessage,
-            deleteMessage: deleteMessage,
-            resendMessage: resendMessage,
-            toggleReaction: toggleReaction,
-            memoizedEmojiListItems: memoizedEmojiListItems
-          });
-        }));
+              updateMessage: updateMessage,
+              deleteMessage: deleteMessage,
+              resendMessage: resendMessage,
+              toggleReaction: toggleReaction,
+              memoizedEmojiListItems: memoizedEmojiListItems
+            });
+          }))
+        );
       }))), showScrollBot && /*#__PURE__*/React__default["default"].createElement("div", {
-        className: "sendbird-conversation__scroll-bottom-button",
+        className: "rogu-conversation__scroll-bottom-button",
         onClick: onClickScrollBot,
         onKeyDown: onClickScrollBot,
         tabIndex: 0,
@@ -5666,6 +5777,8 @@ var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
 
   return /*#__PURE__*/React__default["default"].createElement(MessageInput, {
     placeholder: isDisabledBecauseFrozen(channel) && stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__DISABLED || isDisabledBecauseMuted(channel) && stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__MUTED,
+    nickname: user.nickname || '',
+    profileUrl: user.profileUrl || '',
     ref: ref,
     disabled: disabled,
     onStartTyping: function onStartTyping() {
@@ -5927,7 +6040,7 @@ var ConversationPanel = function ConversationPanel(props) {
 
   if (!channelUrl) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "sendbird-conversation"
+      className: "rogu-conversation"
     }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
       type: index$2.PlaceHolderTypes.NO_CHANNELS
     }));
@@ -5935,7 +6048,7 @@ var ConversationPanel = function ConversationPanel(props) {
 
   if (isInvalid) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "sendbird-conversation"
+      className: "rogu-conversation"
     }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
       type: index$2.PlaceHolderTypes.WRONG
     }));
@@ -5943,7 +6056,7 @@ var ConversationPanel = function ConversationPanel(props) {
 
   if (sdkError) {
     return /*#__PURE__*/React__default["default"].createElement("div", {
-      className: "sendbird-conversation"
+      className: "rogu-conversation"
     }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
       type: index$2.PlaceHolderTypes.WRONG,
       retryToConnect: function retryToConnect() {
@@ -5954,7 +6067,7 @@ var ConversationPanel = function ConversationPanel(props) {
   }
 
   return /*#__PURE__*/React__default["default"].createElement(index$1.UserProfileProvider, {
-    className: "sendbird-conversation",
+    className: "rogu-conversation",
     disableUserProfile: userDefinedDisableUserProfile,
     renderUserProfile: userDefinedRenderProfile
   }, renderChatHeader ? renderChatHeader({
@@ -5988,7 +6101,7 @@ var ConversationPanel = function ConversationPanel(props) {
     },
     time: unreadSince
   }), loading ? /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-conversation"
+    className: "rogu-conversation"
   }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
     type: index$2.PlaceHolderTypes.LOADING
   })) : /*#__PURE__*/React__default["default"].createElement(ConversationScroll, {
@@ -6024,9 +6137,9 @@ var ConversationPanel = function ConversationPanel(props) {
     currentGroupChannel: currentGroupChannel,
     memoizedEmojiListItems: memoizedEmojiListItems
   }), /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-conversation__footer"
+    className: "rogu-conversation__footer"
   }, /*#__PURE__*/React__default["default"].createElement("div", {
-    className: "sendbird-conversation__typing-indicator"
+    className: "rogu-conversation__typing-indicator"
   }, /*#__PURE__*/React__default["default"].createElement(TypingIndicator, {
     channelUrl: channelUrl,
     sb: sdk,

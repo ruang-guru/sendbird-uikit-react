@@ -262,14 +262,14 @@ export const ConversationPanel = (props) => {
   );
 
   if (!channelUrl) {
-    return (<div className="sendbird-conversation"><PlaceHolder type={PlaceHolderTypes.NO_CHANNELS} /></div>);
+    return (<div className="rogu-conversation"><PlaceHolder type={PlaceHolderTypes.NO_CHANNELS} /></div>);
   }
   if (isInvalid) {
-    return (<div className="sendbird-conversation"><PlaceHolder type={PlaceHolderTypes.WRONG} /></div>);
+    return (<div className="rogu-conversation"><PlaceHolder type={PlaceHolderTypes.WRONG} /></div>);
   }
   if (sdkError) {
     return (
-      <div className="sendbird-conversation">
+      <div className="rogu-conversation">
         <PlaceHolder
           type={PlaceHolderTypes.WRONG}
           retryToConnect={() => {
@@ -282,7 +282,7 @@ export const ConversationPanel = (props) => {
   }
   return (
     <UserProfileProvider
-      className="sendbird-conversation"
+      className="rogu-conversation"
       disableUserProfile={userDefinedDisableUserProfile}
       renderUserProfile={userDefinedRenderProfile}
     >
@@ -328,7 +328,7 @@ export const ConversationPanel = (props) => {
       {
         loading
           ? (
-            <div className="sendbird-conversation">
+            <div className="rogu-conversation">
               <PlaceHolder type={PlaceHolderTypes.LOADING} />
             </div>
           ) : (

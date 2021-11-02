@@ -11,8 +11,8 @@ import Avatar from '../../../ui/Avatar';
 import ClientAdminMessage from '../../../ui/AdminMessage';
 import UnknownMessageItemBody from '../../../ui/UnknownMessageItemBody'; // TODO: refine this component
 
-import { LocalizationContext } from "../../../lib/LocalizationContext";
-import { OutgoingMessageStates } from "../../../utils/index";
+import { LocalizationContext } from '../../../lib/LocalizationContext';
+import { OutgoingMessageStates } from '../../../utils/index';
 
 import {
   getClassName,
@@ -30,7 +30,13 @@ import {
   CoreMessageType,
 } from '../../../utils';
 
-import { isAssignmentMessage, isMaterialMessage, isThumbnailMessage } from '../../utils';
+import {
+  getParentMessageId,
+  isAssignmentMessage,
+  isMaterialMessage,
+  isRepliedMessage,
+  isThumbnailMessage,
+} from '../../utils';
 import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
 import MaterialMessageItemBody from '../MaterialMessageItemBody';
 import { generateColorFromString } from './utils';
@@ -70,15 +76,15 @@ export default function MessageContent({
   userId,
   // useReaction = false,
   // useReplying,
-  // scrollToMessage,
+  scrollToMessage,
   showEdit,
   showFileViewer,
   showRemove,
   resendMessage,
   disabled = false,
 }: // showRemove,
-  // toggleReaction,
-  Props): ReactElement {
+// toggleReaction,
+Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
@@ -87,9 +93,12 @@ export default function MessageContent({
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
     !isSentMessage(channel, message as UserMessage | FileMessage) ||
     isMessageSentByMe(userId, message as UserMessage | FileMessage);
-  const isOperatorMessage: boolean = isMessageSentByOperator(
+  
+    const isOperatorMessage: boolean = isMessageSentByOperator(
     message as CoreMessageType
   );
+
+
 
   const isByMeClassName = isByMe
     ? 'rogu-message-content--outgoing'
@@ -102,6 +111,12 @@ export default function MessageContent({
   if (message?.isAdminMessage?.() || message?.messageType === 'admin') {
     return <ClientAdminMessage message={message} />;
   }
+
+  
+  const onScrollToMessage = () => {
+    //TODO: integrate onScrollToMessage
+    //scrollToMessage(message.createdAt, getParentMessageId(message));
+  };
 
   return (
     <div
@@ -174,6 +189,8 @@ export default function MessageContent({
                 <TextMessageItemBody
                   isByMe={isByMe}
                   message={(message as UserMessage)?.message}
+                  isRepliedMessage={isRepliedMessage(message)}
+                  onScrollToMessage={onScrollToMessage}
                 />
               )}
               {isOGMessage(message as UserMessage) && (
@@ -196,11 +213,11 @@ export default function MessageContent({
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.FILE && (
-                  <FileMessageItemBody
-                    message={message as FileMessage}
-                    isByMe={isByMe}
-                  />
-                )}
+                <FileMessageItemBody
+                  message={message as FileMessage}
+                  isByMe={isByMe}
+                />
+              )}
               {isThumbnailMessage(message as FileMessage) && (
                 <>
                   <ThumbnailMessageItemBody
@@ -212,17 +229,19 @@ export default function MessageContent({
                       OutgoingMessageStates.PENDING
                     }
                   />
-                  <TextMessageItemBody
-                    isByMe={isByMe}
-                    mode="thumbnailCaption"
-                    message={(message as FileMessage).name}
-                  />
+                  {(message as FileMessage).name && (
+                    <TextMessageItemBody
+                      isByMe={isByMe}
+                      mode="thumbnailCaption"
+                      message={(message as FileMessage).name}
+                    />
+                  )}
                 </>
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
-                  <UnknownMessageItemBody message={message} isByMe={isByMe} />
-                )}
+                <UnknownMessageItemBody message={message} isByMe={isByMe} />
+              )}
             </div>
             {((!isByMe && chainTop) || isByMe) && (
               <MessageItemMenu
