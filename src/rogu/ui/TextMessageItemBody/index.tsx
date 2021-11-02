@@ -62,17 +62,6 @@ export default function TextMessageItemBody({
     setClampState("expanded");
   };
 
-  let renderText = (i, word) => {
-    return <Label
-        className="rogu-text-message-item-body__message"
-        color={LabelColors.ONBACKGROUND_1}
-        key={i}
-        type={LabelTypography.BODY_1}
-      >
-        {word}
-      </Label>
-  };
-
   let renderRepliedMessage = (sender, parentMessage) => {
     return <div className="rogu-text-message-item-body__reply-container" onClick={onScrollToMessage} >
       <Label
@@ -89,7 +78,7 @@ export default function TextMessageItemBody({
       </Label>
       <br/>
       <Label
-        className="rogu-text-message-item-body__message"
+        className="rogu-text-message-item-body__reply-message"
         color={LabelColors.ONBACKGROUND_1}
         type={LabelTypography.BODY_3}
       >

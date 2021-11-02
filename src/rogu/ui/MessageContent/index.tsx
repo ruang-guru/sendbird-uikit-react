@@ -114,7 +114,8 @@ Props): ReactElement {
 
   
   const onScrollToMessage = () => {
-    scrollToMessage(message.createdAt, getParentMessageId(message));
+    //TODO: integrate onScrollToMessage
+    //scrollToMessage(message.createdAt, getParentMessageId(message));
   };
 
   return (

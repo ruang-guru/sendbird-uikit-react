@@ -23,6 +23,16 @@
     }
   }
 
+  .rogu-text-message-item-body__reply-message {
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
   .rogu-text-message-item-body__read-more {
     font-weight: bolder;
   }
