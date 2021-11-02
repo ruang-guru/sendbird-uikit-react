@@ -1,0 +1,20 @@
+@import "../../../../styles/variables";
+
+.rogu-archived-banner__container {
+  position: relative;
+  order: 3;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include themed() {
+    background-color: t(bg-7);
+  }
+
+  .rogu-archived-banner__message {
+    text-align: center;
+    font-weight: 400;
+  }
+}

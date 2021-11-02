@@ -49,7 +49,12 @@ export const RenderMessageByType = () => (
 );
 
 export const FrozenChannel = () => (
-  <Sendbird appId={frozenAppId} userId={frozenUserId}>
+  <Sendbird
+    appId={appId}
+    userId="hoon003"
+    colorSet={COLOR_SET}
+    stringSet={STRING_SET}
+  >
     <div style={{ height: "100vh" }}>
       <Channel channelUrl={frozenChannelUrl} />
     </div>

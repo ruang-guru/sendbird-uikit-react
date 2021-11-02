@@ -33,12 +33,12 @@ import useScrollToMessage from './hooks/useScrollToMessage';
 
 import ConversationScroll from './components/ConversationScroll';
 import Notification from './components/Notification';
-import FrozenNotification from './components/FrozenNotification';
 import TypingIndicator from './components/TypingIndicator';
 import MessageInputWrapper from './components/MessageInputWrapper';
 import ConnectionStatus from '../../../ui/ConnectionStatus';
 import ChatHeader from '../../../ui/ChatHeader';
 import PlaceHolder, { PlaceHolderTypes } from '../../../ui/PlaceHolder';
+import ArchivedBanner from './components/ArchivedBanner';
 
 const noop = () => { };
 
@@ -303,11 +303,6 @@ export const ConversationPanel = (props) => {
           )
       }
       {
-        isFrozen && (
-          <FrozenNotification />
-        )
-      }
-      {
         unreadCount > 0 && (
           <Notification
             count={unreadCount}
@@ -374,27 +369,31 @@ export const ConversationPanel = (props) => {
             />
           )
       }
-      <div className="sendbird-conversation__footer">
-        <div className="sendbird-conversation__typing-indicator">
-          <TypingIndicator channelUrl={channelUrl} sb={sdk} logger={logger} />
-        </div>
-        <MessageInputWrapper
-          channel={currentGroupChannel}
-          user={user}
-          ref={messageInputRef}
-          onSendMessage={onSendMessage}
-          onFileUpload={onSendFileMessage}
-          renderMessageInput={renderMessageInput}
-          isOnline={isOnline}
-          initialized={initialized}
-        />
+      {isFrozen
+        ? <ArchivedBanner />
+        : (
+          <div className="sendbird-conversation__footer">
+            <div className="sendbird-conversation__typing-indicator">
+              <TypingIndicator channelUrl={channelUrl} sb={sdk} logger={logger} />
+            </div>
+            <MessageInputWrapper
+              channel={currentGroupChannel}
+              user={user}
+              ref={messageInputRef}
+              onSendMessage={onSendMessage}
+              onFileUpload={onSendFileMessage}
+              renderMessageInput={renderMessageInput}
+              isOnline={isOnline}
+              initialized={initialized}
+            />
 
-        {
-          !isOnline && (
-            <ConnectionStatus sdkInit={sdkInit} sb={sdk} logger={logger} />
-          )
-        }
-      </div>
+            {
+              !isOnline && (
+                <ConnectionStatus sdkInit={sdkInit} sb={sdk} logger={logger} />
+              )
+            }
+          </div>
+        )}
     </UserProfileProvider>
   );
 };
