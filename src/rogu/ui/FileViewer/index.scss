@@ -54,13 +54,18 @@
       box-sizing: border-box;
       display: flex;
       padding: 10px 16px;
+      min-width: 0;
+      overflow: hidden;
 
       .rogu-fileviewer__header__left__avatar {
         margin-right: 12px;
       }
 
       .rogu-fileviewer__header__left__metadata {
+        min-width: 0;
+
         .rogu-fileviewer__header__left__sender-name {
+          width: 100%;
           max-width: 500px;
           white-space: nowrap;
           overflow: hidden;
@@ -69,11 +74,12 @@
         }
 
         .rogu-fileviewer__header__left__createdat {
+          width: 100%;
           max-width: 200px;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          display: inline-flex;
+          display: inline-block;
         }
       }
     }
