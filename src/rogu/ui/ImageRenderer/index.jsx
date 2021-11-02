@@ -54,7 +54,7 @@ export default function ImageRenderer({
     // reset the state when url is changed
     return (
       <img
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         src={url}
         alt={alt}
         onLoad={() => setShowPlaceHolder(false)}
@@ -67,7 +67,7 @@ export default function ImageRenderer({
     <div
       className={[
         ...(Array.isArray(className) ? className : [className]),
-        'sendbird-image-renderer',
+        'rogu-image-renderer',
       ].join(' ')}
     >
       {showPlaceHolder && PlaceHolder}
@@ -76,7 +76,7 @@ export default function ImageRenderer({
           ? DefaultComponent
           : (
             <div
-              className="sendbird-image-renderer__image"
+              className="rogu-image-renderer__image"
               style={{
                 backgroundImage: `url(${url})`,
                 borderRadius: circle ? '50%' : null,
