@@ -31,8 +31,10 @@ import {
 } from '../../../utils';
 
 import {
+  getParentMessageId,
   isAssignmentMessage,
   isMaterialMessage,
+  isRepliedMessage,
   isThumbnailMessage,
 } from '../../utils';
 import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
@@ -74,7 +76,7 @@ export default function MessageContent({
   userId,
   // useReaction = false,
   // useReplying,
-  // scrollToMessage,
+  scrollToMessage,
   showEdit,
   showFileViewer,
   showRemove,
@@ -91,9 +93,12 @@ Props): ReactElement {
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
     !isSentMessage(channel, message as UserMessage | FileMessage) ||
     isMessageSentByMe(userId, message as UserMessage | FileMessage);
-  const isOperatorMessage: boolean = isMessageSentByOperator(
+  
+    const isOperatorMessage: boolean = isMessageSentByOperator(
     message as CoreMessageType
   );
+
+
 
   const isByMeClassName = isByMe
     ? 'rogu-message-content--outgoing'
@@ -106,6 +111,12 @@ Props): ReactElement {
   if (message?.isAdminMessage?.() || message?.messageType === 'admin') {
     return <ClientAdminMessage message={message} />;
   }
+
+  
+  const onScrollToMessage = () => {
+    //TODO: integrate onScrollToMessage
+    //scrollToMessage(message.createdAt, getParentMessageId(message));
+  };
 
   return (
     <div
@@ -178,6 +189,8 @@ Props): ReactElement {
                 <TextMessageItemBody
                   isByMe={isByMe}
                   message={(message as UserMessage)?.message}
+                  isRepliedMessage={isRepliedMessage(message)}
+                  onScrollToMessage={onScrollToMessage}
                 />
               )}
               {isOGMessage(message as UserMessage) && (
