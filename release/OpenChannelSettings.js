@@ -1,10 +1,10 @@
 import React__default, { useContext, useMemo, useRef, useState, useEffect } from 'react';
-import { V as Modal, W as Type, X as TextButton, J as Button, K as ButtonTypes, L as ButtonSizes, a6 as UserProfileContext, Y as ContextMenu, Z as MenuItems, a7 as ConnectedUserProfile, P as selectors, N as UserProfileProvider, t as copyToClipboard } from './index-bd777944.js';
-import { L as LocalizationContext, _ as __spreadArray, w as withSendbirdContext } from './LocalizationContext-cadaacd4.js';
-import { a5 as Avatar, aa as Label, ac as LabelTypography, ab as LabelColors, a as Icon, b as IconTypes, a9 as IconColors, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-7c76d30f.js';
-import { a as getOpenChannelAvatar } from './utils-ad144f0c.js';
-import { I as InputLabel, a as Input, n as noop, U as UserListItem$1 } from './index-006d4798.js';
-import { a as Accordion, A as AccordionGroup } from './index-aa2f75bb.js';
+import { V as Modal, W as Type, X as TextButton, J as Button, K as ButtonTypes, L as ButtonSizes, a6 as UserProfileContext, Y as ContextMenu, Z as MenuItems, a7 as ConnectedUserProfile, P as selectors, N as UserProfileProvider, t as copyToClipboard } from './index-9f4d3b8d.js';
+import { L as LocalizationContext, _ as __spreadArray, w as withSendbirdContext } from './LocalizationContext-528f8789.js';
+import { a5 as Avatar, aa as Label, ac as LabelTypography, ab as LabelColors, a as Icon, b as IconTypes, a9 as IconColors, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-e4338024.js';
+import { a as getOpenChannelAvatar } from './utils-cb429789.js';
+import { I as InputLabel, a as Input, n as noop, U as UserListItem$1 } from './index-b169a5c2.js';
+import { a as Accordion, A as AccordionGroup } from './index-c2b8eab7.js';
 import 'prop-types';
 import 'react-dom';
 import 'date-fns';

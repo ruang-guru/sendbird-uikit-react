@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-696f4313.js');
-var index$1 = require('./index-3c74392e.js');
+var LocalizationContext = require('./LocalizationContext-97fb23a4.js');
+var index$1 = require('./index-4b283962.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index$2 = require('./index-78b04339.js');
-var index$3 = require('./index-cc550d59.js');
-var Channel = require('./index-4e9d748b.js');
+var index$2 = require('./index-260dd649.js');
+var index$3 = require('./index-4126015e.js');
+var Channel = require('./index-81311147.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-701ba95b.js');
+require('./actionTypes-0c3ab0de.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-d884b889.js');
-require('./utils-84f3de10.js');
-require('./LeaveChannel-eeedc41d.js');
-require('./index-c4291796.js');
-require('./index-b6b7f780.js');
-require('./index-9dced7b2.js');
+require('./index-8679f1bb.js');
+require('./utils-4bcfe3d3.js');
+require('./LeaveChannel-aeed98b4.js');
+require('./index-73ee811c.js');
+require('./index-9245d26f.js');
+require('./index-a240dbfa.js');
 require('./ChannelSettings.js');
-require('./index-ce0a56be.js');
+require('./index-c50a516b.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -204,6 +204,30 @@ var groupMessagesByDate = function groupMessagesByDate(messages) {
     return groupedMessagesByDate;
   }, new Map());
 };
+var QUOTE_FORMAT = ">";
+
+var isQuoteFormat = function isQuoteFormat(word) {
+  return word.charAt(0) === QUOTE_FORMAT;
+};
+
+var destructureRepliedMessage = function destructureRepliedMessage(message) {
+  var repliedMessage = message.split("\n").filter(function (word) {
+    return isQuoteFormat(word);
+  }).map(function (word) {
+    return word.substr(1);
+  });
+  var sender = repliedMessage[0],
+      rest = repliedMessage.slice(1);
+  var parentMessage = rest.join("\n");
+  var originalMessage = message.split("\n").filter(function (word) {
+    return !isQuoteFormat(word);
+  }).join("\n");
+  return {
+    sender: sender,
+    parentMessage: parentMessage,
+    originalMessage: originalMessage
+  };
+};
 
 var isFileMessage = function isFileMessage(message) {
   var _a;
@@ -212,6 +236,11 @@ var isFileMessage = function isFileMessage(message) {
 };
 var isThumbnailMessage = function isThumbnailMessage(message) {
   return message && isFileMessage(message) && isSupportedFileView(message.type);
+};
+var isRepliedMessage = function isRepliedMessage(message) {
+  var _a, _b;
+
+  return ((_b = (_a = message === null || message === void 0 ? void 0 : message.metaArrays) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.key) === "parentMessageId";
 };
 
 /**
@@ -1049,6 +1078,7 @@ function useInitialMessagesFetch(_ref, _ref2) {
       messageListParams.isInclusive = true;
       messageListParams.includeReplies = false;
       messageListParams.includeReaction = true;
+      messageListParams.includeMetaArray = true;
 
       if (userFilledMessageListQuery) {
         Object.keys(userFilledMessageListQuery).forEach(function (key) {
@@ -3172,6 +3202,34 @@ TextButton.defaultProps = {
   onClick: function onClick() {}
 };
 
+var colorSet = {
+  "#DF4141": ["A", "B", "C", "D"],
+  "#61CE5E": ["E", "F", "G", "H"],
+  "#6073E2": ["I", "J", "K", "L"],
+  "#F89825": ["M", "N", "O", "P"],
+  "#2EB5C0": ["Q", "R", "S", "T"],
+  "#BB58D0": ["U", "V", "W", "X"],
+  "#00A5FF": ["Y", "Z"]
+};
+var generateColorFromString = function generateColorFromString(str) {
+  var firstChar = str[0] || "";
+  var normalizedFirstChar = firstChar.toUpperCase();
+  var color = "inherit";
+
+  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
+    var _b = _a[_i],
+        hex = _b[0],
+        chars = _b[1];
+
+    if (chars.includes(normalizedFirstChar)) {
+      color = hex;
+      break;
+    }
+  }
+
+  return color;
+};
+
 function TextMessageItemBody(_a) {
   var className = _a.className,
       _b = _a.isByMe,
@@ -3180,14 +3238,24 @@ function TextMessageItemBody(_a) {
       _c = _a.mode,
       mode = _c === void 0 ? 'normal' : _c,
       _d = _a.isHidden,
-      isHidden = _d === void 0 ? false : _d;
+      isHidden = _d === void 0 ? false : _d,
+      _e = _a.isRepliedMessage,
+      isRepliedMessage = _e === void 0 ? false : _e,
+      onScrollToMessage = _a.onScrollToMessage;
   var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
 
-  var _e = React.useState("init"),
-      clampState = _e[0],
-      setClampState = _e[1];
+  var _f = React.useState("init"),
+      clampState = _f[0],
+      setClampState = _f[1];
 
   var textRef = React.useRef(null);
+
+  var _g = isRepliedMessage && destructureRepliedMessage(message),
+      sender = _g.sender,
+      parentMessage = _g.parentMessage,
+      originalMessage = _g.originalMessage;
+
+  var msg = isRepliedMessage ? originalMessage : message;
   React.useEffect(function () {
     if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
       setClampState("clamped");
@@ -3198,12 +3266,30 @@ function TextMessageItemBody(_a) {
     setClampState("expanded");
   }
 
+  var renderRepliedMessage = function renderRepliedMessage(sender, parentMessage) {
+    return /*#__PURE__*/React__default["default"].createElement("div", {
+      className: "rogu-text-message-item-body__reply-container",
+      onClick: onScrollToMessage
+    }, /*#__PURE__*/React__default["default"].createElement(Label, {
+      className: "rogu-message-content__sender-name",
+      color: LabelColors.ONBACKGROUND_2,
+      style: {
+        color: generateColorFromString(sender || '')
+      },
+      type: LabelTypography.CAPTION_1
+    }, sender), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(Label, {
+      className: "rogu-text-message-item-body__reply-message",
+      color: LabelColors.ONBACKGROUND_1,
+      type: LabelTypography.BODY_3
+    }, parentMessage));
+  };
+
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: index$1.getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", mode === "fileViewerCaption" ? "rogu-text-message-item-body--viewer-mode" : "", mode === "fileViewerCaption" && isHidden ? "rogu-text-message-item-body--viewer-mode__hidden" : "", mode === "thumbnailCaption" ? "rogu-text-message-item-body--preview-mode" : ""])
   }, /*#__PURE__*/React__default["default"].createElement("div", {
     ref: textRef,
     className: "rogu-text-message-item-body__inner"
-  }, message === null || message === void 0 ? void 0 : message.split(/\r/).map(function (word, i) {
+  }, isRepliedMessage && renderRepliedMessage(sender, parentMessage), msg === null || msg === void 0 ? void 0 : msg.split(/\r/).map(function (word, i) {
     return word === "" ? /*#__PURE__*/React__default["default"].createElement("br", {
       key: i
     }) : /*#__PURE__*/React__default["default"].createElement(Label, {
@@ -3587,34 +3673,6 @@ function MaterialMessageItemBody(_a) {
     type: LabelTypography.BODY_2
   }, stringSet.MATERIAL))));
 }
-
-var colorSet = {
-  "#DF4141": ["A", "B", "C", "D"],
-  "#61CE5E": ["E", "F", "G", "H"],
-  "#6073E2": ["I", "J", "K", "L"],
-  "#F89825": ["M", "N", "O", "P"],
-  "#2EB5C0": ["Q", "R", "S", "T"],
-  "#BB58D0": ["U", "V", "W", "X"],
-  "#00A5FF": ["Y", "Z"]
-};
-var generateColorFromString = function generateColorFromString(str) {
-  var firstChar = str[0] || "";
-  var normalizedFirstChar = firstChar.toUpperCase();
-  var color = "inherit";
-
-  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
-    var _b = _a[_i],
-        hex = _b[0],
-        chars = _b[1];
-
-    if (chars.includes(normalizedFirstChar)) {
-      color = hex;
-      break;
-    }
-  }
-
-  return color;
-};
 
 var MenuItems$1 = /*#__PURE__*/function (_Component) {
   LocalizationContext._inherits(MenuItems, _Component);
@@ -4003,11 +4061,11 @@ function MessageContent(_a) {
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
-  userId = _a.userId,
+  userId = _a.userId;
       // useReaction = false,
   // useReplying,
-  // scrollToMessage,
-  showEdit = _a.showEdit,
+  _a.scrollToMessage;
+      var showEdit = _a.showEdit,
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
       resendMessage = _a.resendMessage,
@@ -4027,6 +4085,10 @@ function MessageContent(_a) {
       message: message
     });
   }
+
+  var onScrollToMessage = function onScrollToMessage() {//TODO: integrate onScrollToMessage
+    //scrollToMessage(message.createdAt, getParentMessageId(message));
+  };
 
   return /*#__PURE__*/React__default["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-message-content', isByMeClassName, chainBottomClassName, chainTopClassName])
@@ -4068,7 +4130,9 @@ function MessageContent(_a) {
     className: "rogu-message-content__bubble__body__inner"
   }, index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
-    message: (_e = message) === null || _e === void 0 ? void 0 : _e.message
+    message: (_e = message) === null || _e === void 0 ? void 0 : _e.message,
+    isRepliedMessage: isRepliedMessage(message),
+    onScrollToMessage: onScrollToMessage
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
