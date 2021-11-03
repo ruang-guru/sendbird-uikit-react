@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 .rogu-og-message-item-body {
   position: relative;
@@ -18,10 +18,16 @@
     }
   }
 
-  .rogu-og-message-item-body__og-container {
+  .rogu-og-message-item-body__og-wrapper {
     padding: 8px;
     display: flex;
     border-radius: 4px;
+  }
+
+  .rogu-og-message-item-body__og-container {
+    display: flex;
+    position: relative;
+    width: 100%;
   }
 
   .rogu-og-message-item-body__og-thumbnail {
@@ -63,6 +69,19 @@
     }
   }
 
+  &.rogu-og-message-item-body--preview {
+    max-width: 100%;
+
+    .rogu-og-message-item-body__og-wrapper {
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .rogu-og-message-item-body__og-container {
+      width: 90%;
+    }
+  }
+
   &.rogu-og-message-reactions .rogu-og-message-item-body__description {
     border-radius: 0;
   }
@@ -73,7 +92,7 @@
   }
 
   &.rogu-og-message--outgoing {
-    .rogu-og-message-item-body__og-container {
+    .rogu-og-message-item-body__og-wrapper {
       @include themed() {
         background-color: t(primary-2);
       }
@@ -81,7 +100,7 @@
   }
 
   &.rogu-og-message--incoming {
-    .rogu-og-message-item-body__og-container {
+    .rogu-og-message-item-body__og-wrapper {
       @include themed() {
         background-color: t(bg-1);
       }
@@ -91,7 +110,7 @@
   &.mouse-hover,
   &:hover {
     .rogu-og-message--outgoing {
-      .rogu-og-message-item-body__og-container {
+      .rogu-og-message-item-body__og-wrapper {
         @include themed() {
           background-color: t(primary-2);
         }
@@ -99,7 +118,7 @@
     }
 
     .rogu-og-message--incoming {
-      .rogu-og-message-item-body__og-container {
+      .rogu-og-message-item-body__og-wrapper {
         @include themed() {
           background-color: t(bg-1);
         }

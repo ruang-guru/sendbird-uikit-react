@@ -2,18 +2,23 @@ import React, {
   useState, useRef, useEffect, useContext,
 } from 'react';
 import PropTypes from 'prop-types';
+import LinkPreview from '@ashwamegh/react-link-preview';
 
 import { LocalizationContext } from '../../../lib/LocalizationContext';
+import { getClassName, isUrl } from '../../../utils';
 import IconButton from '../../../ui/IconButton';
 import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
-import { getClassName } from '../../../utils';
 
+
+import { getMimeTypesString, isImage } from '../../utils';
+
+import OGMessageItemBody from '../OGMessageItemBody';
 import Icon, { IconTypes, IconColors } from '../Icon';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import { FileViewerComponent } from '../FileViewer';
 import Toast from '../Toast';
-import { getMimeTypesString, isImage } from '../../utils';
 
+import { getUrlFromWords, debounce } from './utils';
 import './index.scss';
 
 const MAX_FILE_SIZE = 10000000; // 10MB;
@@ -23,6 +28,8 @@ const noop = () => {};
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
+  DELETE: 46,
+  BACKSPACE: 8,
 };
 
 const MessageInput = React.forwardRef((props, ref) => {
@@ -85,9 +92,11 @@ const MessageInput = React.forwardRef((props, ref) => {
         if (MAX_HEIGHT < elem.scrollHeight) {
           elem.style.height = 'auto';
           elem.style.height = `${MAX_HEIGHT}px`;
+          elem.style.borderRadius = '12px';
         } else {
           elem.style.height = 'auto';
           elem.style.height = `${elem.scrollHeight}px`;
+          elem.style.borderRadius = '12px';
         }
       } else {
         elem.style.height = '';
@@ -97,13 +106,48 @@ const MessageInput = React.forwardRef((props, ref) => {
     }
   };
 
+  const [url, setUrl] = useState({ hasUrl: false, text: '' });
+  const renderPreviewUrl = ({ loading, preview }) => {
+    const message = {
+      sender: {
+        profileUrl: '',
+        nickname: '',
+      },
+      message: '',
+      ogMetaData: {
+        title: preview.title,
+        description: preview.description,
+        url: url.text,
+        defaultImage: {
+          url: preview.img,
+          alt: 'test',
+        },
+      },
+      createdAt: 0, 
+    };
+
+    if (loading) {
+      return <Label
+      className="rogu-message-input__text-loading"
+      type={LabelTypography.BODY_1}
+      color={LabelColors.ONBACKGROUND_1}
+    >
+      {stringSet.LABEL_LOADING}
+    </Label>;
+    }
+
+    return <OGMessageItemBody message={message} isOnPreview onClosePreview={() => setUrl({ hasUrl: false, text: '' })} />;
+  };
+
   // after setHeight called twice, the textarea goes to the initialized
   useEffect(() => {
     setHeight();
+    debounce(getUrlFromWords(inputValue, setUrl), 1000);
     return setHeight;
   }, [inputValue]);
 
   const sendMessage = () => {
+    setUrl({ hasUrl: false, text: '' });
     if (imagePreviewFile !== null) {
       // In order to change the file name, we need to create a copy of File object
       const modifiedFile = new Blob([imagePreviewFile], {
@@ -129,10 +173,13 @@ const MessageInput = React.forwardRef((props, ref) => {
   };
 
   return (
-    <>
+    <div className="rogu-message-input--wrapper">
+      {
+        url.hasUrl && isUrl(url.text) && <LinkPreview url={url.text} render={renderPreviewUrl} />
+      }
       <form
         className={[
-          'rogu-message-input__container',
+          'rogu-message-input--container',
           isEdit ? 'rogu-message-input__edit' : '',
           imagePreviewFile ? 'rogu-message-input--preview' : '',
           disabled ? 'rogu-message-input-form__disabled ' : '',
@@ -167,6 +214,9 @@ const MessageInput = React.forwardRef((props, ref) => {
             onKeyUp={(e) => {
               if (e.keyCode === KeyCode.SHIFT) {
                 setIsShiftPressed(false);
+              }
+              if (e.keyCode === KeyCode.BACKSPACE || e.keyCode === KeyCode.DELETE) {
+                setUrl({ hasUrl: false, text: '' });
               }
             }}
           />
@@ -292,7 +342,8 @@ const MessageInput = React.forwardRef((props, ref) => {
       {showUploadErrorToast && (
         <Toast message={stringSet.TOAST__MAX_FILE_SIZE_ERROR} />
       )}
-    </>
+    </div>
+
   );
 });
 

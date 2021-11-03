@@ -14,14 +14,17 @@ import uuidv4 from '../../../utils/uuid';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 import Label, { LabelTypography, LabelColors } from '../Label';
-import Icon, { IconTypes } from '../Icon';
+import Icon, { IconTypes, IconColors } from '../Icon';
 
+import IconButton from '../IconButton';
 
 interface Props {
   className?: string | Array<string>;
   message: UserMessage;
   isByMe?: boolean;
   mouseHover?: boolean;
+  isOnPreview?: boolean;
+  onClosePreview?: () => void;
 }
 
 export default function OGMessageItemBody({
@@ -29,6 +32,8 @@ export default function OGMessageItemBody({
   message,
   isByMe = false,
   mouseHover = false,
+  isOnPreview = false,
+  onClosePreview,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const openOGUrl = (): void => {
@@ -40,11 +45,13 @@ export default function OGMessageItemBody({
       className,
       'rogu-og-message-item-body',
       isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming',
+      isOnPreview ? 'rogu-og-message-item-body--preview' : '',
       mouseHover ? 'mouse-hover' : '',
       message?.reactions?.length > 0 ? 'rogu-og-message-reactions' : '',
     ])}>
 
-      <div className="rogu-og-message-item-body__og-container" onClick={openOGUrl}>
+      <div className="rogu-og-message-item-body__og-wrapper" >
+        <div className="rogu-og-message-item-body__og-container" onClick={openOGUrl}>
         <div
           className="rogu-og-message-item-body__og-thumbnail"          
         >
@@ -97,6 +104,25 @@ export default function OGMessageItemBody({
             </Label>
           )}
         </div>
+        </div>
+
+        {
+          isOnPreview && <IconButton
+          className="sendbird-chat-header__right__search"
+          width="32px"
+          height="32px"
+          onClick={onClosePreview}
+        >
+          <Icon
+            type={IconTypes.CLOSE}
+            fillColor={IconColors.ON_BACKGROUND_1}
+            width="24px"
+            height="24px"
+          />
+        </IconButton>
+        }
+
+        
 
       </div>
       

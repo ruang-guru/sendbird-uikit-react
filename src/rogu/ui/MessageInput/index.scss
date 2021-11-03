@@ -1,9 +1,10 @@
 @import '../../../styles/variables';
 
-// TODO: fix naming to comply with BEM convention
-.rogu-message-input__container {
+.rogu-message-input--wrapper {
   padding: 12px 16px;
-
+}
+// TODO: fix naming to comply with BEM convention
+.rogu-message-input--container {
   &.rogu-message-input--preview {
     position: relative;
     z-index: $modal + 1; // make sure the MessageInput shows on top of the FileViewer
@@ -118,6 +119,10 @@
   .rogu-message-input--attach-input {
     display: none;
   }
+}
+
+.rogu-message-input__text-loading {
+  margin-bottom: 8px;
 }
 
 .rogu-message-input__edit {
