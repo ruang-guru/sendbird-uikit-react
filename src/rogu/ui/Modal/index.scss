@@ -9,12 +9,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: $modal;
 }
 
 .rogu-modal__content {
   max-width: 380px;
   border-radius: 12px;
-  z-index: $modal+1;
+  z-index: $modal + 1;
   padding: 16px;
   position: relative;
   box-sizing: border-box;
@@ -76,7 +77,6 @@
 
 .rogu-modal__backdrop {
   position: fixed;
-  z-index: $modal;
   height: 100%;
   width: 100%;
   top: 0;
