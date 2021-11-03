@@ -125,7 +125,9 @@ const MessageInput = React.forwardRef((props, ref) => {
       } else {
         onSendMessage(trimmedInputValue);
         setInputValue('');
-        elem.style.height = `${LINE_HEIGHT}px`;
+        if(elem){
+          elem.style.height = `${LINE_HEIGHT}px`;
+        }
       }
     }
   };
