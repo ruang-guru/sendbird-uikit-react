@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-b0e92b3d.js');
-var index$1 = require('./index-0d102970.js');
+var LocalizationContext = require('./LocalizationContext-ba882908.js');
+var index$1 = require('./index-e0505397.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-8915f732.js');
-var index$3 = require('./index-69c28d05.js');
-var Channel = require('./index-1395ddc2.js');
+var index$2 = require('./index-e71adc1b.js');
+var index$3 = require('./index-8ac140c5.js');
+var Channel = require('./index-1abf5142.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-888d77a0.js');
+require('./actionTypes-f599ba3c.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-6ee5d672.js');
-require('./utils-79297284.js');
-require('./LeaveChannel-70f374b3.js');
-require('./index-8bd738e2.js');
-require('./index-b26da3f9.js');
-require('./index-d0fe85f0.js');
+require('./index-d98c3437.js');
+require('./utils-4b517ec5.js');
+require('./LeaveChannel-02aeeeee.js');
+require('./index-d59a0741.js');
+require('./index-e110aebd.js');
+require('./index-0b8dfc17.js');
 require('./ChannelSettings.js');
-require('./index-40f38654.js');
+require('./index-d7761054.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -2109,20 +2109,21 @@ var Type$1 = {
   ROGU_FILE_WORD: 'ROGU_FILE_WORD',
   ROGU_FILE_EXCEL: 'ROGU_FILE_EXCEL',
   ROGU_FILE_PDF: 'ROGU_FILE_PDF',
-  ROGU_FILE_POWERPOINT: 'ROGU_FILE_POWERPOINT'
+  ROGU_FILE_POWERPOINT: 'ROGU_FILE_POWERPOINT',
+  ROGU_VIEW: 'ROGU_VIEW'
 };
 
-var _path$f;
+var _path$g;
 
-function _extends$g() { _extends$g = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$g.apply(this, arguments); }
+function _extends$h() { _extends$h = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$h.apply(this, arguments); }
 
 function SvgRoguIconMsgFailed(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$g({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$h({
     width: 18,
     height: 18,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$f || (_path$f = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$g || (_path$g = /*#__PURE__*/React__namespace.createElement("path", {
     className: "rogu-icon-msg-failed_svg__fill",
     d: "M8.25 11.25h1.5v1.5h-1.5v-1.5zm0-6h1.5v4.5h-1.5v-4.5zm.742-3.75C4.853 1.5 1.5 4.86 1.5 9c0 4.14 3.353 7.5 7.492 7.5 4.148 0 7.508-3.36 7.508-7.5 0-4.14-3.36-7.5-7.508-7.5zM9 15c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6z",
     fill: "currentColor"
@@ -2131,10 +2132,10 @@ function SvgRoguIconMsgFailed(props) {
 
 var _circle, _circle2, _circle3, _circle4;
 
-function _extends$f() { _extends$f = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$f.apply(this, arguments); }
+function _extends$g() { _extends$g = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$g.apply(this, arguments); }
 
 function SvgRoguIconMsgPending(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$f({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$g({
     width: 18,
     height: 18,
     fill: "none",
@@ -2162,11 +2163,27 @@ function SvgRoguIconMsgPending(props) {
   })));
 }
 
+var _path$f;
+
+function _extends$f() { _extends$f = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$f.apply(this, arguments); }
+
+function SvgRoguIconMsgSent(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$f({
+    width: 18,
+    height: 18,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$f || (_path$f = /*#__PURE__*/React__namespace.createElement("path", {
+    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
+    fill: "#BEC8D0"
+  })));
+}
+
 var _path$e;
 
 function _extends$e() { _extends$e = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e.apply(this, arguments); }
 
-function SvgRoguIconMsgSent(props) {
+function SvgRoguIconMsgReadAll(props) {
   return /*#__PURE__*/React__namespace.createElement("svg", _extends$e({
     width: 18,
     height: 18,
@@ -2174,32 +2191,16 @@ function SvgRoguIconMsgSent(props) {
     xmlns: "http://www.w3.org/2000/svg"
   }, props), _path$e || (_path$e = /*#__PURE__*/React__namespace.createElement("path", {
     d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
-    fill: "#BEC8D0"
-  })));
-}
-
-var _path$d;
-
-function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
-
-function SvgRoguIconMsgReadAll(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$d({
-    width: 18,
-    height: 18,
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$d || (_path$d = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M13.5 5.25l-1.058-1.058-4.755 4.755 1.057 1.058L13.5 5.25zm3.18-1.058l-7.936 7.935L5.61 9l-1.057 1.057 4.192 4.193 9-9-1.065-1.058zM.306 10.057l4.192 4.193 1.058-1.058L1.372 9 .307 10.057z",
     fill: "#2EB5C0"
   })));
 }
 
-var _rect, _path$c;
+var _rect, _path$d;
 
-function _extends$c() { _extends$c = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
+function _extends$d() { _extends$d = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
 
 function SvgRoguIconCopy(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$c({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$d({
     width: 24,
     height: 24,
     fill: "none",
@@ -2211,7 +2212,7 @@ function SvgRoguIconCopy(props) {
     height: 13,
     rx: 2,
     fill: "#434856"
-  })), _path$c || (_path$c = /*#__PURE__*/React__namespace.createElement("path", {
+  })), _path$d || (_path$d = /*#__PURE__*/React__namespace.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
     d: "M11 3a2 2 0 00-2 2v2h4a2 2 0 012 2v8h4a2 2 0 002-2V5a2 2 0 00-2-2h-8z",
@@ -2219,17 +2220,17 @@ function SvgRoguIconCopy(props) {
   })));
 }
 
-var _path$b, _path2$7;
+var _path$c, _path2$7;
 
-function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+function _extends$c() { _extends$c = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
 
 function SvgRoguIconReply(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$b({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$c({
     width: 24,
     height: 24,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$b || (_path$b = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$c || (_path$c = /*#__PURE__*/React__namespace.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
     d: "M9 3L2.605 8.673c-.826.733-.826 1.921 0 2.654L8.999 17V3z",
@@ -2240,18 +2241,36 @@ function SvgRoguIconReply(props) {
   })));
 }
 
+var _path$b;
+
+function _extends$b() { _extends$b = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+
+function SvgRoguIconResend(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$b({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path$b || (_path$b = /*#__PURE__*/React__namespace.createElement("path", {
+    d: "M19.802 4.865a.641.641 0 00-.468-.198.641.641 0 00-.47.198l-1.353 1.344a8.07 8.07 0 00-2.552-1.63A7.862 7.862 0 0012 4c-1.91 0-3.576.578-5 1.735C5.576 6.89 4.64 8.399 4.187 10.26v.073c0 .09.033.168.1.234a.32.32 0 00.234.099h2.073c.153 0 .257-.08.312-.24.292-.694.476-1.1.552-1.218a5.251 5.251 0 011.938-1.865A5.242 5.242 0 0112 6.667c1.396 0 2.608.475 3.636 1.427L14.198 9.53a.642.642 0 00-.198.47c0 .18.066.336.198.468a.641.641 0 00.469.198h4.667a.64.64 0 00.468-.198A.64.64 0 0020 10V5.333a.64.64 0 00-.198-.468zM19.406 13.333h-2c-.153 0-.257.08-.312.24-.292.694-.476 1.1-.552 1.219a5.256 5.256 0 01-1.938 1.864 5.241 5.241 0 01-2.604.677 5.2 5.2 0 01-1.948-.374 5.379 5.379 0 01-1.677-1.063l1.427-1.427a.64.64 0 00.198-.47.64.64 0 00-.198-.468.64.64 0 00-.468-.198H4.667a.64.64 0 00-.47.198A.64.64 0 004 14v4.667c0 .18.066.336.198.468a.642.642 0 00.469.198c.18 0 .337-.066.469-.198l1.343-1.343a7.957 7.957 0 002.537 1.635 7.803 7.803 0 002.943.573c1.902 0 3.562-.578 4.979-1.735 1.416-1.156 2.347-2.665 2.792-4.526a.32.32 0 00-.089-.307.322.322 0 00-.235-.099z",
+    fill: "#434856"
+  })));
+}
+
 var _path$a;
 
 function _extends$a() { _extends$a = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
 
-function SvgRoguIconResend(props) {
+function SvgRoguIconClose(props) {
   return /*#__PURE__*/React__namespace.createElement("svg", _extends$a({
     width: 24,
     height: 24,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
   }, props), _path$a || (_path$a = /*#__PURE__*/React__namespace.createElement("path", {
-    d: "M19.802 4.865a.641.641 0 00-.468-.198.641.641 0 00-.47.198l-1.353 1.344a8.07 8.07 0 00-2.552-1.63A7.862 7.862 0 0012 4c-1.91 0-3.576.578-5 1.735C5.576 6.89 4.64 8.399 4.187 10.26v.073c0 .09.033.168.1.234a.32.32 0 00.234.099h2.073c.153 0 .257-.08.312-.24.292-.694.476-1.1.552-1.218a5.251 5.251 0 011.938-1.865A5.242 5.242 0 0112 6.667c1.396 0 2.608.475 3.636 1.427L14.198 9.53a.642.642 0 00-.198.47c0 .18.066.336.198.468a.641.641 0 00.469.198h4.667a.64.64 0 00.468-.198A.64.64 0 0020 10V5.333a.64.64 0 00-.198-.468zM19.406 13.333h-2c-.153 0-.257.08-.312.24-.292.694-.476 1.1-.552 1.219a5.256 5.256 0 01-1.938 1.864 5.241 5.241 0 01-2.604.677 5.2 5.2 0 01-1.948-.374 5.379 5.379 0 01-1.677-1.063l1.427-1.427a.64.64 0 00.198-.47.64.64 0 00-.198-.468.64.64 0 00-.468-.198H4.667a.64.64 0 00-.47.198A.64.64 0 004 14v4.667c0 .18.066.336.198.468a.642.642 0 00.469.198c.18 0 .337-.066.469-.198l1.343-1.343a7.957 7.957 0 002.537 1.635 7.803 7.803 0 002.943.573c1.902 0 3.562-.578 4.979-1.735 1.416-1.156 2.347-2.665 2.792-4.526a.32.32 0 00-.089-.307.322.322 0 00-.235-.099z",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M12 10.586l4.95-4.95a1 1 0 111.415 1.414L13.415 12l4.95 4.95a1 1 0 01-1.414 1.414L12 13.414l-4.95 4.95a1 1 0 01-1.414-1.414l4.95-4.95-4.95-4.95A1 1 0 017.05 5.636l4.95 4.95z",
     fill: "#434856"
   })));
 }
@@ -2260,7 +2279,7 @@ var _path$9;
 
 function _extends$9() { _extends$9 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
 
-function SvgRoguIconClose(props) {
+function SvgRoguIconDownload(props) {
   return /*#__PURE__*/React__namespace.createElement("svg", _extends$9({
     width: 24,
     height: 24,
@@ -2269,7 +2288,7 @@ function SvgRoguIconClose(props) {
   }, props), _path$9 || (_path$9 = /*#__PURE__*/React__namespace.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
-    d: "M12 10.586l4.95-4.95a1 1 0 111.415 1.414L13.415 12l4.95 4.95a1 1 0 01-1.414 1.414L12 13.414l-4.95 4.95a1 1 0 01-1.414-1.414l4.95-4.95-4.95-4.95A1 1 0 017.05 5.636l4.95 4.95z",
+    d: "M13 5a1 1 0 10-2 0v7.586l-2.293-2.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L13 12.586V5zM8 19a1 1 0 011-1h6a1 1 0 110 2H9a1 1 0 01-1-1z",
     fill: "#434856"
   })));
 }
@@ -2278,7 +2297,7 @@ var _path$8;
 
 function _extends$8() { _extends$8 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
 
-function SvgRoguIconDownload(props) {
+function SvgRoguIconDelete(props) {
   return /*#__PURE__*/React__namespace.createElement("svg", _extends$8({
     width: 24,
     height: 24,
@@ -2287,40 +2306,22 @@ function SvgRoguIconDownload(props) {
   }, props), _path$8 || (_path$8 = /*#__PURE__*/React__namespace.createElement("path", {
     fillRule: "evenodd",
     clipRule: "evenodd",
-    d: "M13 5a1 1 0 10-2 0v7.586l-2.293-2.293a1 1 0 10-1.414 1.414l4 4a1 1 0 001.414 0l4-4a1 1 0 00-1.414-1.414L13 12.586V5zM8 19a1 1 0 011-1h6a1 1 0 110 2H9a1 1 0 01-1-1z",
-    fill: "#434856"
-  })));
-}
-
-var _path$7;
-
-function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
-
-function SvgRoguIconDelete(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$7({
-    width: 24,
-    height: 24,
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$7 || (_path$7 = /*#__PURE__*/React__namespace.createElement("path", {
-    fillRule: "evenodd",
-    clipRule: "evenodd",
     d: "M9 5a1 1 0 011-1h4a1 1 0 011 1v1H9V5zM7 6H5a2 2 0 00-2 2h18a2 2 0 00-2-2h-2V5a3 3 0 00-3-3h-4a3 3 0 00-3 3v1zM5 9h14l-.858 11.153A2 2 0 0116.148 22H7.852a2 2 0 01-1.994-1.847L5 9zm4 3a1 1 0 112 0v6a1 1 0 11-2 0v-6zm5-1a1 1 0 00-1 1v6a1 1 0 102 0v-6a1 1 0 00-1-1z",
     fill: "#434856"
   })));
 }
 
-var _path$6, _path2$6, _path3$6, _path4$1, _path5, _defs$5;
+var _path$7, _path2$6, _path3$6, _path4$1, _path5, _defs$5;
 
-function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
+function _extends$7() { _extends$7 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
 
 function SvgRoguIconAssignment(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$6({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$7({
     width: 32,
     height: 32,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$6 || (_path$6 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$7 || (_path$7 = /*#__PURE__*/React__namespace.createElement("path", {
     opacity: 0.25,
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -2361,17 +2362,17 @@ function SvgRoguIconAssignment(props) {
   })))));
 }
 
-var _path$5, _g$5, _g2, _g3, _path2$5, _path3$5, _path4, _defs$4;
+var _path$6, _g$5, _g2, _g3, _path2$5, _path3$5, _path4, _defs$4;
 
-function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
+function _extends$6() { _extends$6 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
 
 function SvgRoguIconMaterial(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$5({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$6({
     width: 32,
     height: 35,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$5 || (_path$5 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$6 || (_path$6 = /*#__PURE__*/React__namespace.createElement("path", {
     opacity: 0.25,
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -2519,17 +2520,17 @@ function SvgRoguIconMaterial(props) {
   })))));
 }
 
-var _path$4, _path2$4, _path3$4, _g$4, _defs$3;
+var _path$5, _path2$4, _path3$4, _g$4, _defs$3;
 
-function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
+function _extends$5() { _extends$5 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 
 function SvgRoguIconFileWord(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$4({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$5({
     width: 30,
     height: 31,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$4 || (_path$4 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$5 || (_path$5 = /*#__PURE__*/React__namespace.createElement("path", {
     opacity: 0.25,
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -2575,17 +2576,17 @@ function SvgRoguIconFileWord(props) {
   })))));
 }
 
-var _path$3, _path2$3, _path3$3, _g$3, _defs$2;
+var _path$4, _path2$3, _path3$3, _g$3, _defs$2;
 
-function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
+function _extends$4() { _extends$4 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
 
 function SvgRoguIconFileExcel(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$3({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$4({
     width: 30,
     height: 31,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$3 || (_path$3 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$4 || (_path$4 = /*#__PURE__*/React__namespace.createElement("path", {
     opacity: 0.25,
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -2631,17 +2632,17 @@ function SvgRoguIconFileExcel(props) {
   })))));
 }
 
-var _path$2, _path2$2, _path3$2, _g$2;
+var _path$3, _path2$2, _path3$2, _g$2;
 
-function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
+function _extends$3() { _extends$3 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3.apply(this, arguments); }
 
 function SvgRoguIconFileOthers(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$2({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$3({
     width: 30,
     height: 31,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$2 || (_path$2 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$3 || (_path$3 = /*#__PURE__*/React__namespace.createElement("path", {
     opacity: 0.25,
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -2675,17 +2676,17 @@ function SvgRoguIconFileOthers(props) {
   }))));
 }
 
-var _path$1, _path2$1, _path3$1, _g$1, _defs$1;
+var _path$2, _path2$1, _path3$1, _g$1, _defs$1;
 
-function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
+function _extends$2() { _extends$2 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2.apply(this, arguments); }
 
 function SvgRoguIconFilePowerpoint(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends$1({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$2({
     width: 30,
     height: 31,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path$1 || (_path$1 = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$2 || (_path$2 = /*#__PURE__*/React__namespace.createElement("path", {
     opacity: 0.25,
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -2731,17 +2732,17 @@ function SvgRoguIconFilePowerpoint(props) {
   })))));
 }
 
-var _path, _path2, _path3, _g, _defs;
+var _path$1, _path2, _path3, _g, _defs;
 
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _extends$1() { _extends$1 = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 
 function SvgRoguIconFilePdf(props) {
-  return /*#__PURE__*/React__namespace.createElement("svg", _extends({
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends$1({
     width: 30,
     height: 31,
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
-  }, props), _path || (_path = /*#__PURE__*/React__namespace.createElement("path", {
+  }, props), _path$1 || (_path$1 = /*#__PURE__*/React__namespace.createElement("path", {
     opacity: 0.25,
     fillRule: "evenodd",
     clipRule: "evenodd",
@@ -2785,6 +2786,24 @@ function SvgRoguIconFilePdf(props) {
     offset: 1,
     stopColor: "#DF4141"
   })))));
+}
+
+var _path;
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function SvgRoguIconView(props) {
+  return /*#__PURE__*/React__namespace.createElement("svg", _extends({
+    width: 24,
+    height: 24,
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, props), _path || (_path = /*#__PURE__*/React__namespace.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M21.85 11.546l.008.009c.19.254.19.636 0 .89a4.13 4.13 0 00-.047.056c-.512.608-4.628 5.499-9.803 5.499-5.353 0-9.572-5.211-9.843-5.546a.707.707 0 010-.908C2.436 11.21 6.655 6 12.008 6c5.352 0 9.572 5.211 9.843 5.546zM8.052 12c0 2.205 1.768 3.986 3.957 3.986s3.957-1.781 3.957-3.986-1.768-3.986-3.957-3.986S8.05 9.795 8.05 12zm6.356 0a2.408 2.408 0 01-2.4 2.417A2.408 2.408 0 019.61 12a2.408 2.408 0 012.399-2.417c1.325 0 2.4 1.082 2.4 2.417z",
+    fill: "#434856"
+  })));
 }
 
 var Colors = {
@@ -3063,6 +3082,9 @@ function changeTypeToIconComponent(type) {
 
     case Type$1.ROGU_FILE_OTHERS:
       return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconFileOthers, null);
+
+    case Type$1.ROGU_VIEW:
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconView, null);
 
     default:
       return 'icon';
@@ -3673,7 +3695,7 @@ function AssignmentMessageItemBody(_a) {
 
   var openAssignment = function openAssignment() {
     if ((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) && (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb.length) > 0) {
-      window.open(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb);
+      window.open((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) + "?from=chatroom");
     } else {
       window.open(index$1.convertCtaLinkToWebLink(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.cta, "assignment"));
     }
@@ -3719,7 +3741,7 @@ function MaterialMessageItemBody(_a) {
 
   var openMaterial = function openMaterial() {
     if ((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) && (materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb.length) > 0) {
-      window.open(materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb);
+      window.open((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) + "?from=chatroom");
     } else {
       window.open(index$1.convertCtaLinkToWebLink(materialData === null || materialData === void 0 ? void 0 : materialData.cta, "material"));
     }
@@ -4016,11 +4038,11 @@ function MessageItemMenu(_a) {
   var triggerRef = React$1.useRef(null);
   var containerRef = React$1.useRef(null);
   var showMenuItemCopy = index$1.isUserMessage(message);
-  var showMenuItemReply = index$1.isUserMessage(message);
+  var showMenuItemReply = index$1.isUserMessage(message) || index$1.isFileMessage(message);
   var showMenuItemResend = index$1.isFailedMessage(channel, message) && message.isResendable() && isByMe;
   var showMenuItemDelete = index$1.isSentMessage(channel, message) && isByMe;
   var showMenuItemEdit = false   ;
-  var showMenuItemView = index$1.isThumbnailMessage(message);
+  var showMenuItemView = index$1.isFileMessage(message);
 
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
@@ -4032,6 +4054,10 @@ function MessageItemMenu(_a) {
     setTimeout(function () {
       setShowToast(false);
     }, 3000);
+  };
+
+  var onOpenFile = function onOpenFile(message) {
+    window.open(message.url);
   };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
@@ -4093,10 +4119,15 @@ function MessageItemMenu(_a) {
       }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
-          showFileViewer(true);
+          if (index$1.isThumbnailMessage(message)) {
+            showFileViewer(true);
+          } else {
+            onOpenFile(message);
+          }
+
           closeDropdown();
         },
-        iconType: IconTypes.DOWNLOAD
+        iconType: IconTypes.ROGU_VIEW
       }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
@@ -4926,9 +4957,10 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
     };
   };
 
+  var elem = ref && ref.current;
+
   var setHeight = function setHeight() {
     try {
-      var elem = ref.current;
       var MAX_HEIGHT = window.document.body.offsetHeight * 0.6;
 
       if (elem && elem.scrollHeight >= LINE_HEIGHT) {
@@ -5030,6 +5062,10 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       } else {
         onSendMessage(trimmedInputValue);
         setInputValue('');
+
+        if (elem) {
+          elem.style.height = "".concat(LINE_HEIGHT, "px");
+        }
       }
     }
   };
