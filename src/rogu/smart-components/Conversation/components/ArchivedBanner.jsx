@@ -6,7 +6,7 @@ import './archived-banner.scss';
 function ArchivedBanner() {
   const { stringSet } = useContext(LocalizationContext);
   return (
-    <div className="rogu-archived-banner__container">
+    <div className="rogu-archived-banner">
       <Label className="rogu-archived-banner__message" type={LabelTypography.CAPTION_1} color={LabelColors.ONBACKGROUND_5}>
         {stringSet.CLASS_ARCHIVED_BANNER}
       </Label>

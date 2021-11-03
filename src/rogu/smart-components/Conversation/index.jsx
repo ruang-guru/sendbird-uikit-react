@@ -369,11 +369,10 @@ export const ConversationPanel = (props) => {
             />
           )
       }
-      {isFrozen
-        ? <ArchivedBanner />
-        : (
-          <div className="sendbird-conversation__footer">
-            <div className="sendbird-conversation__typing-indicator">
+      <div className="rogu-conversation__footer">
+        {isFrozen ? <ArchivedBanner /> : (
+          <>
+            <div className="rogu-conversation__typing-indicator">
               <TypingIndicator channelUrl={channelUrl} sb={sdk} logger={logger} />
             </div>
             <MessageInputWrapper
@@ -386,14 +385,14 @@ export const ConversationPanel = (props) => {
               isOnline={isOnline}
               initialized={initialized}
             />
-
             {
               !isOnline && (
                 <ConnectionStatus sdkInit={sdkInit} sb={sdk} logger={logger} />
               )
             }
-          </div>
+          </>
         )}
+      </div>
     </UserProfileProvider>
   );
 };
