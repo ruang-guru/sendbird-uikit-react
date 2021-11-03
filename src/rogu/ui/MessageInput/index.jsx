@@ -84,9 +84,10 @@ const MessageInput = React.forwardRef((props, ref) => {
     event.target.value = '';
   };
 
+  const elem = ref && ref.current;
+
   const setHeight = () => {
     try {
-      const elem = ref.current;
       const MAX_HEIGHT = window.document.body.offsetHeight * 0.6;
       if (elem && elem.scrollHeight >= LINE_HEIGHT) {
         if (MAX_HEIGHT < elem.scrollHeight) {
@@ -168,6 +169,9 @@ const MessageInput = React.forwardRef((props, ref) => {
       } else {
         onSendMessage(trimmedInputValue);
         setInputValue('');
+        if(elem){
+          elem.style.height = `${LINE_HEIGHT}px`;
+        }
       }
     }
   };

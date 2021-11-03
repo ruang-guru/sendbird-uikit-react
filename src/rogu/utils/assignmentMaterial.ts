@@ -13,7 +13,7 @@ export const convertCtaLinkToWebLink = (
   const classroomSerial = listOfSerials[2].split("=")[1];
   const serial = listOfSerials[3].split("=")[1];
   const type_ = customType === "assignment" ? "assignment" : "material";
-  const url = `https://kelas.ruangguru.com/workspace/${workspaceSerial}/classroom/${classroomSerial}/${type_}/detail/${serial}`;
+  const url = `https://kelas.ruangguru.com/workspace/${workspaceSerial}/classroom/${classroomSerial}/${type_}/detail/${serial}?from=chatroom`;
 
   return url;
 };
