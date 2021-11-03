@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import LinkPreview from '@ashwamegh/react-link-preview';
 
 import { LocalizationContext } from '../../../lib/LocalizationContext';
+import { getClassName, isUrl } from '../../../utils';
 import IconButton from '../../../ui/IconButton';
 import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
-import { getClassName, isUrl } from '../../../utils';
+
 
 import { getMimeTypesString, isImage } from '../../utils';
 
@@ -122,11 +123,17 @@ const MessageInput = React.forwardRef((props, ref) => {
           alt: 'test',
         },
       },
-      createdAt: 2000000,
+      createdAt: 0, 
     };
 
     if (loading) {
-      return <p>Loading</p>;
+      return <Label
+      className="rogu-message-input__text-loading"
+      type={LabelTypography.BODY_1}
+      color={LabelColors.ONBACKGROUND_1}
+    >
+      {stringSet.LABEL_LOADING}
+    </Label>;
     }
 
     return <OGMessageItemBody message={message} isOnPreview onClosePreview={() => setUrl({ hasUrl: false, text: '' })} />;
