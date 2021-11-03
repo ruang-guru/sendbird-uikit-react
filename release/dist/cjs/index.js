@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-2f04d54e.js');
-var index$1 = require('./index-1866e53d.js');
+var LocalizationContext = require('./LocalizationContext-b0e92b3d.js');
+var index$1 = require('./index-0d102970.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-a0d11911.js');
-var index$3 = require('./index-aea04acf.js');
-var Channel = require('./index-c4f33ea6.js');
+var index$2 = require('./index-8915f732.js');
+var index$3 = require('./index-69c28d05.js');
+var Channel = require('./index-1395ddc2.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-e4c64f0a.js');
+require('./actionTypes-888d77a0.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-e4806adb.js');
-require('./utils-627c3a34.js');
-require('./LeaveChannel-6ecef1bd.js');
-require('./index-37bcf0da.js');
-require('./index-3b858484.js');
-require('./index-f8be0ffc.js');
+require('./index-6ee5d672.js');
+require('./utils-79297284.js');
+require('./LeaveChannel-70f374b3.js');
+require('./index-8bd738e2.js');
+require('./index-b26da3f9.js');
+require('./index-d0fe85f0.js');
 require('./ChannelSettings.js');
-require('./index-78e794f3.js');
+require('./index-40f38654.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3561,7 +3561,7 @@ function ImageRenderer(_ref) {
     setShowDefaultComponent(false); // reset the state when url is changed
 
     return /*#__PURE__*/React__default$1["default"].createElement("img", {
-      className: "sendbird-image-renderer__hidden-image-loader",
+      className: "rogu-image-renderer__hidden-image-loader",
       src: url,
       alt: alt,
       onLoad: function onLoad() {
@@ -3573,22 +3573,10 @@ function ImageRenderer(_ref) {
     });
   }, [url]);
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-image-renderer']).join(' '),
-    style: {
-      width: '100%',
-      minWidth: width,
-      height: height
-    }
+    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-image-renderer']).join(' ')
   }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: "sendbird-image-renderer__image",
+    className: "rogu-image-renderer__image",
     style: {
-      width: '100%',
-      minWidth: width,
-      height: height,
-      position: 'absolute',
-      backgroundRepeat: 'no-repeat',
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
       backgroundImage: "url(".concat(url, ")"),
       borderRadius: circle ? '50%' : null
     }
@@ -3638,7 +3626,7 @@ function ThumbnailMessageItemBody(_a) {
     className: "rogu-thumbnail-message-item-body__thumbnail",
     url: thumbnailUrl || (message === null || message === void 0 ? void 0 : message.url),
     alt: message === null || message === void 0 ? void 0 : message.type,
-    width: "360px",
+    width: "100%",
     height: "270px",
     placeHolder: function placeHolder(style) {
       return /*#__PURE__*/React__default$1["default"].createElement("div", {
@@ -5941,16 +5929,6 @@ Notification.defaultProps = {
   time: ''
 };
 
-var FrozenNotification = function FrozenNotification() {
-  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
-  return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: "sendbird-notification sendbird-notification--frozen"
-  }, /*#__PURE__*/React__default$1["default"].createElement(index$2.Label, {
-    className: "sendbird-notification__text",
-    type: index$2.LabelTypography.CAPTION_2
-  }, stringSet.CHANNEL_FROZEN));
-};
-
 var TypingIndicatorText = function TypingIndicatorText(_ref) {
   var members = _ref.members;
 
@@ -6078,6 +6056,19 @@ var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
 };
 
 var MessageInputWrapper$1 = /*#__PURE__*/React__default$1["default"].forwardRef(MessageInputWrapper);
+
+function ArchivedBanner() {
+  var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
+      stringSet = _useContext.stringSet;
+
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-archived-banner"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-archived-banner__message",
+    type: LabelTypography.CAPTION_1,
+    color: LabelColors.ONBACKGROUND_5
+  }, stringSet.CLASS_ARCHIVED_BANNER));
+}
 
 var noop = function noop() {};
 
@@ -6370,7 +6361,7 @@ var ConversationPanel = function ConversationPanel(props) {
     onActionClick: onChatHeaderActionClick,
     subTitle: currentGroupChannel.members && currentGroupChannel.members.length !== 2,
     isMuted: false
-  }), isFrozen && /*#__PURE__*/React__default$1["default"].createElement(FrozenNotification, null), unreadCount > 0 && /*#__PURE__*/React__default$1["default"].createElement(Notification, {
+  }), unreadCount > 0 && /*#__PURE__*/React__default$1["default"].createElement(Notification, {
     count: unreadCount,
     onClick: function onClick() {
       if (intialTimeStamp) {
@@ -6426,7 +6417,7 @@ var ConversationPanel = function ConversationPanel(props) {
     memoizedEmojiListItems: memoizedEmojiListItems
   }), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-conversation__footer"
-  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+  }, isFrozen ? /*#__PURE__*/React__default$1["default"].createElement(ArchivedBanner, null) : /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-conversation__typing-indicator"
   }, /*#__PURE__*/React__default$1["default"].createElement(TypingIndicator, {
     channelUrl: channelUrl,
@@ -6445,7 +6436,7 @@ var ConversationPanel = function ConversationPanel(props) {
     sdkInit: sdkInit,
     sb: sdk,
     logger: logger
-  })));
+  }))));
 };
 ConversationPanel.propTypes = {
   channelUrl: PropTypes__default["default"].string,
