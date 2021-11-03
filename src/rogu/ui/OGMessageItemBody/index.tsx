@@ -24,7 +24,7 @@ interface Props {
   isByMe?: boolean;
   mouseHover?: boolean;
   isOnPreview?: boolean;
-  closePreview?: () => void;
+  onClosePreview?: () => void;
 }
 
 export default function OGMessageItemBody({
@@ -33,7 +33,7 @@ export default function OGMessageItemBody({
   isByMe = false,
   mouseHover = false,
   isOnPreview = false,
-  closePreview,
+  onClosePreview,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const openOGUrl = (): void => {
@@ -111,7 +111,7 @@ export default function OGMessageItemBody({
           className="sendbird-chat-header__right__search"
           width="32px"
           height="32px"
-          onClick={closePreview}
+          onClick={onClosePreview}
         >
           <Icon
             type={IconTypes.CLOSE}

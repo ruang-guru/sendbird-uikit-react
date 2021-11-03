@@ -129,7 +129,7 @@ const MessageInput = React.forwardRef((props, ref) => {
       return <p>Loading</p>;
     }
 
-    return <OGMessageItemBody message={message} isOnPreview closePreview={() => setUrl({ hasUrl: false, text: '' })} />;
+    return <OGMessageItemBody message={message} isOnPreview onClosePreview={() => setUrl({ hasUrl: false, text: '' })} />;
   };
 
   // after setHeight called twice, the textarea goes to the initialized
