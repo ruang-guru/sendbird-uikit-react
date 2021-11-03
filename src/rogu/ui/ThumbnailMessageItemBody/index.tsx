@@ -43,7 +43,7 @@ export default function ThumbnailMessageItemBody({
         className="rogu-thumbnail-message-item-body__thumbnail"
         url={thumbnailUrl || message?.url}
         alt={message?.type}
-        width="360px"
+        width="100%"
         height="270px"
         placeHolder={(style) => (
           <div

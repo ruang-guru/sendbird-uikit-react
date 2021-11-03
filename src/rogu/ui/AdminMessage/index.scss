@@ -1,0 +1,23 @@
+@import '../../../styles/variables';
+
+.rogu-admin-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .rogu-admin-message__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    padding: 6px 7px;
+
+    @include themed() {
+      background-color: t(bg-7);
+    }
+
+    .rogu-admin-message__text {
+      display: flex;
+    }
+  }
+}

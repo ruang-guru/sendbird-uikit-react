@@ -31,6 +31,7 @@ import {
   FILE_MESSAGE_PPT,
   FILE_MESSAGE_PPTX,
   FILE_MESSAGE_PDF,
+  GIF_MESSAGE,
 } from '../../../../../__mocks__/messagesMock';
 
 export default { title: 'ruangkelas/UI Components/MessageContent' };
@@ -340,7 +341,7 @@ export const MediaPreviewMessage = () => (
         }}
         message={IMAGE_MESSAGE}
       />
-       <MessageContent
+      <MessageContent
         userId={'random-user-id'}
         channel={{
           isGroupChannel: () => true,
@@ -348,6 +349,15 @@ export const MediaPreviewMessage = () => (
           getUndeliveredMemberCount: (_) => 0,
         }}
         message={VIDEO_MESSAGE}
+      />
+      <MessageContent
+        userId={'random-user-id'}
+        channel={{
+          isGroupChannel: () => true,
+          getUnreadMemberCount: (_) => 10,
+          getUndeliveredMemberCount: (_) => 0,
+        }}
+        message={GIF_MESSAGE}
       />
       <MenuRoot />
     </div>

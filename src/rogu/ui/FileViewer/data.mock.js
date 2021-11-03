@@ -13,7 +13,7 @@ export const msg0 = {
   size: 9250,
   type: "image/png",
   sender: {
-    nickname: "hoon102",
+    nickname: "namanya sangat panjang sampe sampe overflow",
     profileUrl: "https://static.sendbird.com/sample/profiles/profile_15_512px.png",
     userId: "hoon102",
     connectionStatus: "nonavailable",

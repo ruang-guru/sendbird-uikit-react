@@ -16,136 +16,80 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with four elements 1
     className="sendbird-avatar--inner__four-child"
   >
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars3.githubusercontent.com/u/46333979?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars3.githubusercontent.com/u/46333979?s=460&v=4"
       />
     </div>
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars1.githubusercontent.com/u/1384313?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars1.githubusercontent.com/u/1384313?s=460&v=4"
       />
     </div>
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars2.githubusercontent.com/u/11382805?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars2.githubusercontent.com/u/11382805?s=460&v=4"
       />
     </div>
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url()",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src=""
@@ -168,34 +112,20 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with single element 
   tabIndex={0}
 >
   <div
-    className="sendbird-avatar-img sendbird-image-renderer"
-    style={
-      Object {
-        "height": "56px",
-        "minWidth": "56px",
-        "width": "100%",
-      }
-    }
+    className="sendbird-avatar-img rogu-image-renderer"
   >
     <div
-      className="sendbird-image-renderer__image"
+      className="rogu-image-renderer__image"
       style={
         Object {
           "backgroundImage": "url(https://avatars3.githubusercontent.com/u/46333979?s=460&v=4)",
-          "backgroundPosition": "center",
-          "backgroundRepeat": "no-repeat",
-          "backgroundSize": "cover",
           "borderRadius": null,
-          "height": "56px",
-          "minWidth": "56px",
-          "position": "absolute",
-          "width": "100%",
         }
       }
     />
     <img
       alt=""
-      className="sendbird-image-renderer__hidden-image-loader"
+      className="rogu-image-renderer__hidden-image-loader"
       onError={[Function]}
       onLoad={[Function]}
       src="https://avatars3.githubusercontent.com/u/46333979?s=460&v=4"
@@ -220,34 +150,20 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
     className="sendbird-avatar--inner__three-child--upper"
   >
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars3.githubusercontent.com/u/46333979?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars3.githubusercontent.com/u/46333979?s=460&v=4"
@@ -258,68 +174,40 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with three elements 
     className="sendbird-avatar--inner__three-child--lower"
   >
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars1.githubusercontent.com/u/1384313?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars1.githubusercontent.com/u/1384313?s=460&v=4"
       />
     </div>
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars2.githubusercontent.com/u/11382805?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars2.githubusercontent.com/u/11382805?s=460&v=4"
@@ -345,68 +233,40 @@ exports[`Avatar should do a snapshot test of the Avatar DOM with two elements 1`
     className="sendbird-avatar--inner__two-child"
   >
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars3.githubusercontent.com/u/46333979?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars3.githubusercontent.com/u/46333979?s=460&v=4"
       />
     </div>
     <div
-      className="sendbird-avatar-img sendbird-image-renderer"
-      style={
-        Object {
-          "height": "56px",
-          "minWidth": "56px",
-          "width": "100%",
-        }
-      }
+      className="sendbird-avatar-img rogu-image-renderer"
     >
       <div
-        className="sendbird-image-renderer__image"
+        className="rogu-image-renderer__image"
         style={
           Object {
             "backgroundImage": "url(https://avatars1.githubusercontent.com/u/1384313?s=460&v=4)",
-            "backgroundPosition": "center",
-            "backgroundRepeat": "no-repeat",
-            "backgroundSize": "cover",
             "borderRadius": null,
-            "height": "56px",
-            "minWidth": "56px",
-            "position": "absolute",
-            "width": "100%",
           }
         }
       />
       <img
         alt=""
-        className="sendbird-image-renderer__hidden-image-loader"
+        className="rogu-image-renderer__hidden-image-loader"
         onError={[Function]}
         onLoad={[Function]}
         src="https://avatars1.githubusercontent.com/u/1384313?s=460&v=4"
@@ -429,34 +289,20 @@ exports[`Avatar should render default image if src is empty 1`] = `
   tabIndex={0}
 >
   <div
-    className="sendbird-avatar-img sendbird-image-renderer"
-    style={
-      Object {
-        "height": "56px",
-        "minWidth": "56px",
-        "width": "100%",
-      }
-    }
+    className="sendbird-avatar-img rogu-image-renderer"
   >
     <div
-      className="sendbird-image-renderer__image"
+      className="rogu-image-renderer__image"
       style={
         Object {
           "backgroundImage": "url()",
-          "backgroundPosition": "center",
-          "backgroundRepeat": "no-repeat",
-          "backgroundSize": "cover",
           "borderRadius": null,
-          "height": "56px",
-          "minWidth": "56px",
-          "position": "absolute",
-          "width": "100%",
         }
       }
     />
     <img
       alt=""
-      className="sendbird-image-renderer__hidden-image-loader"
+      className="rogu-image-renderer__hidden-image-loader"
       onError={[Function]}
       onLoad={[Function]}
       src=""
