@@ -77,6 +77,7 @@ import RoguIconFileExcel from '../../../svgs/rogu-icon-file-excel.svg';
 import RoguIconFileOthers from '../../../svgs/rogu-icon-file-others.svg';
 import RoguIconFilePowerpoint from '../../../svgs/rogu-icon-file-powerpoint.svg';
 import RoguIconFilePDF from '../../../svgs/rogu-icon-file-pdf.svg';
+import RoguIconView from '../../../svgs/rogu-icon-view.svg';
 
 const Colors = {
   DEFAULT: 'DEFAULT',
@@ -271,6 +272,8 @@ function changeTypeToIconComponent(type) {
       return <RoguIconFilePDF />;
     case Type.ROGU_FILE_OTHERS:
       return <RoguIconFileOthers />;
+    case Type.ROGU_VIEW:
+      return <RoguIconView />;
     default:
       return 'icon'; // If you see this text 'icon' replace icon for it
   }

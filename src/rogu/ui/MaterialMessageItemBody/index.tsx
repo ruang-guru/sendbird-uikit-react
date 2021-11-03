@@ -24,7 +24,7 @@ export default function MaterialMessageItemBody({
 
   const openMaterial = (): void => {
     if (materialData?.ctaWeb && materialData?.ctaWeb.length > 0){
-      window.open(materialData?.ctaWeb);
+      window.open(`${materialData?.ctaWeb}?from=chatroom`);
     } else{
       window.open(convertCtaLinkToWebLink(materialData?.cta, "material"));
     }

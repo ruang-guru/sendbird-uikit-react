@@ -28,7 +28,7 @@ export default function AssignmentMessageItemBody({
 
   const openAssignment = (): void => {
     if (assignmentData?.ctaWeb && assignmentData?.ctaWeb.length > 0){
-      window.open(assignmentData?.ctaWeb);
+      window.open(`${assignmentData?.ctaWeb}?from=chatroom`);
     } else{
       window.open(convertCtaLinkToWebLink(assignmentData?.cta, "assignment"));
     }
