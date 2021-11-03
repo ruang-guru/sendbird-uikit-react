@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdminMessage should do a snapshot test of the AdminMessage DOM 1`] = `
+<div
+  className="example-classname rogu-admin-message"
+>
+  <div
+    className="rogu-admin-message__container"
+  >
+    <span
+      className="rogu-admin-message__text sendbird-label sendbird-label--caption-2 sendbird-label--color-onbackground-1"
+    >
+      hoon1000, pp, Nico, aloompatest, 598, Kyle, 33333333, bennettl and tyson joined.
+    </span>
+  </div>
+</div>
+`;

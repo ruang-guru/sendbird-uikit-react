@@ -25,34 +25,20 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
           tabIndex={0}
         >
           <div
-            className="sendbird-avatar-img sendbird-image-renderer"
-            style={
-              Object {
-                "height": "32px",
-                "minWidth": "32px",
-                "width": "100%",
-              }
-            }
+            className="sendbird-avatar-img rogu-image-renderer"
           >
             <div
-              className="sendbird-image-renderer__image"
+              className="rogu-image-renderer__image"
               style={
                 Object {
                   "backgroundImage": "url(https://static.sendbird.com/sample/profiles/profile_15_512px.png)",
-                  "backgroundPosition": "center",
-                  "backgroundRepeat": "no-repeat",
-                  "backgroundSize": "cover",
                   "borderRadius": null,
-                  "height": "32px",
-                  "minWidth": "32px",
-                  "position": "absolute",
-                  "width": "100%",
                 }
               }
             />
             <img
               alt=""
-              className="sendbird-image-renderer__hidden-image-loader"
+              className="rogu-image-renderer__hidden-image-loader"
               onError={[Function]}
               onLoad={[Function]}
               src="https://static.sendbird.com/sample/profiles/profile_15_512px.png"
@@ -63,16 +49,20 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
       <div
         className="rogu-fileviewer__header__left__metadata"
       >
-        <span
-          className="rogu-fileviewer__header__left__sender-name sendbird-label rogu-label--h-3 sendbird-label--color-onbackground-1"
-        >
-          hoon102
-        </span>
-        <span
-          className="rogu-fileviewer__header__left__createdat sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-2"
-        >
-          05/03/2020 20.43
-        </span>
+        <div>
+          <span
+            className="rogu-fileviewer__header__left__sender-name sendbird-label rogu-label--h-3 sendbird-label--color-onbackground-1"
+          >
+            namanya sangat panjang sampe sampe overflow
+          </span>
+        </div>
+        <div>
+          <span
+            className="rogu-fileviewer__header__left__createdat sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-2"
+          >
+            05/03/2020 20.43
+          </span>
+        </div>
       </div>
     </div>
     <div
@@ -154,7 +144,7 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
     className="rogu-fileviewer__content"
   >
     <img
-      alt="Uploaded by hoon102"
+      alt="Uploaded by namanya sangat panjang sampe sampe overflow"
       className="rogu-fileviewer__content__img"
       onBlur={[Function]}
       onFocus={[Function]}

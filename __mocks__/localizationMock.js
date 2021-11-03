@@ -2,6 +2,7 @@ export const STRING_SET = {
   BUTTON__READ_MORE: 'Baca selengkapnya',
   CHANNEL__MESSAGE_LIST__NOTIFICATION__ON: 'pada',
   CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE: 'pesan baru',
+  CLASS_ARCHIVED_BANNER: 'Kamu tidak dapat mengirimkan pesan ke kelas ini, karena kelas telah diarsipkan',
   LABEL__OPERATOR: 'Guru',
   LABEL__DATE_TODAY: 'Hari ini',
   LABEL__DATE_YESTERDAY: 'Kemarin',
