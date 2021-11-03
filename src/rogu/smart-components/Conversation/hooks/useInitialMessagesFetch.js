@@ -34,6 +34,7 @@ function useInitialMessagesFetch({
       messageListParams.isInclusive = true;
       messageListParams.includeReplies = false;
       messageListParams.includeReaction = true;
+      messageListParams.includeMetaArray = true;
       if (userFilledMessageListQuery) {
         Object.keys(userFilledMessageListQuery).forEach((key) => {
           messageListParams[key] = userFilledMessageListQuery[key];
