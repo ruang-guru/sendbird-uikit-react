@@ -9,6 +9,7 @@ import * as utils from '../utils.js';
 import MessageInput from '../../../ui/MessageInput';
 import { LocalizationContext } from '../../../../lib/LocalizationContext';
 
+
 interface Props {
   channel: Sendbird.GroupChannel;
   user: Sendbird.User;
@@ -20,6 +21,8 @@ interface Props {
     renderProps: RenderGroupChannelMessageInputProps
   ): JSX.Element;
 }
+
+
 
 const MessageInputWrapper = (
   {

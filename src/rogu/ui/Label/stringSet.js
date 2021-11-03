@@ -118,6 +118,7 @@ const getStringSet = (lang = 'en') => {
       TOAST__MAX_FILE_SIZE_ERROR:
         'Failed to upload! The file size is more than 10MB',
       CLASS_ARCHIVED_BANNER: 'You cannot send messages to this class, because the class has been archived',
+      LABEL_LOADING: 'Loading...',
     },
   };
   return stringSet[lang];

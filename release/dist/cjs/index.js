@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-97fb23a4.js');
-var index$1 = require('./index-4b283962.js');
-var React = require('react');
-var PropTypes = require('prop-types');
-var index$2 = require('./index-260dd649.js');
-var index$3 = require('./index-4126015e.js');
-var Channel = require('./index-81311147.js');
+var LocalizationContext = require('./LocalizationContext-2f04d54e.js');
+var index$1 = require('./index-1866e53d.js');
+var React$1 = require('react');
+var PropTypes$1 = require('prop-types');
+var index$2 = require('./index-a0d11911.js');
+var index$3 = require('./index-aea04acf.js');
+var Channel = require('./index-c4f33ea6.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-0c3ab0de.js');
+require('./actionTypes-e4c64f0a.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-8679f1bb.js');
-require('./utils-4bcfe3d3.js');
-require('./LeaveChannel-aeed98b4.js');
-require('./index-73ee811c.js');
-require('./index-9245d26f.js');
-require('./index-a240dbfa.js');
+require('./index-e4806adb.js');
+require('./utils-627c3a34.js');
+require('./LeaveChannel-6ecef1bd.js');
+require('./index-37bcf0da.js');
+require('./index-3b858484.js');
+require('./index-f8be0ffc.js');
 require('./ChannelSettings.js');
-require('./index-c50a516b.js');
+require('./index-78e794f3.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -47,9 +47,9 @@ function _interopNamespace(e) {
     return Object.freeze(n);
 }
 
-var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
-var React__namespace = /*#__PURE__*/_interopNamespace(React);
-var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes);
+var React__default$1 = /*#__PURE__*/_interopDefaultLegacy(React$1);
+var React__namespace = /*#__PURE__*/_interopNamespace(React$1);
+var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes$1);
 
 var getDayString = function getDayString(dayNumber, strings) {
   return strings[dayNumber];
@@ -253,7 +253,7 @@ var isRepliedMessage = function isRepliedMessage(message) {
  */
 
 function useSendbirdStateContext() {
-  var context = React.useContext(LocalizationContext.SendbirdSdkContext);
+  var context = React$1.useContext(LocalizationContext.SendbirdSdkContext);
   return context;
 }
 
@@ -846,7 +846,7 @@ function useHandleChannelEvents(_ref, _ref2) {
       logger = _ref2.logger,
       scrollRef = _ref2.scrollRef;
   var channelUrl = currentGroupChannel && currentGroupChannel.url;
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     var messageReceiverId = LocalizationContext.uuidv4();
 
     if (channelUrl && sdk && sdk.ChannelHandler) {
@@ -1012,7 +1012,7 @@ function useSetChannel(_ref, _ref2) {
   var messagesDispatcher = _ref2.messagesDispatcher,
       sdk = _ref2.sdk,
       logger = _ref2.logger;
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     if (channelUrl && sdkInit && sdk && sdk.GroupChannel) {
       logger.info('Channel | useSetChannel fetching channel', channelUrl);
       sdk.GroupChannel.getChannel(channelUrl).then(function (groupChannel) {
@@ -1066,7 +1066,7 @@ function useInitialMessagesFetch(_ref, _ref2) {
       logger = _ref2.logger,
       messagesDispatcher = _ref2.messagesDispatcher;
   var channelUrl = currentGroupChannel && currentGroupChannel.url;
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     logger.info('Channel useInitialMessagesFetch: Setup started', currentGroupChannel);
     messagesDispatcher({
       type: RESET_MESSAGES
@@ -1197,7 +1197,7 @@ function useHandleReconnect(_ref, _ref2) {
       currentGroupChannel = _ref2.currentGroupChannel,
       messagesDispatcher = _ref2.messagesDispatcher,
       userFilledMessageListQuery = _ref2.userFilledMessageListQuery;
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     var wasOffline = !isOnline;
     return function () {
       // state changed from offline to online
@@ -1263,7 +1263,7 @@ function useScrollCallback(_ref, _ref2) {
       logger = _ref2.logger,
       messagesDispatcher = _ref2.messagesDispatcher,
       sdk = _ref2.sdk;
-  return React.useCallback(function (cb) {
+  return React$1.useCallback(function (cb) {
     if (!hasMore) {
       return;
     }
@@ -1324,7 +1324,7 @@ function useScrollDownCallback(_ref, _ref2) {
   var logger = _ref2.logger,
       messagesDispatcher = _ref2.messagesDispatcher,
       sdk = _ref2.sdk;
-  return React.useCallback(function (cb) {
+  return React$1.useCallback(function (cb) {
     if (!hasMoreToBottom) {
       return;
     }
@@ -1380,7 +1380,7 @@ function useDeleteMessageCallback(_ref, _ref2) {
   var currentGroupChannel = _ref.currentGroupChannel,
       messagesDispatcher = _ref.messagesDispatcher;
   var logger = _ref2.logger;
-  return React.useCallback(function (message, cb) {
+  return React$1.useCallback(function (message, cb) {
     logger.info('Channel | useDeleteMessageCallback: Deleting message', message);
     var requestState = message.requestState;
     logger.info('Channel | useDeleteMessageCallback: Deleting message requestState:', requestState); // Message is only on local
@@ -1427,7 +1427,7 @@ function useUpdateMessageCallback(_ref, _ref2) {
   var logger = _ref2.logger,
       pubSub = _ref2.pubSub,
       sdk = _ref2.sdk;
-  return React.useCallback(function (messageId, text, cb) {
+  return React$1.useCallback(function (messageId, text, cb) {
     var createParamsDefault = function createParamsDefault(txt) {
       var params = new sdk.UserMessageParams();
       params.message = txt;
@@ -1480,7 +1480,7 @@ function useResendMessageCallback(_ref, _ref2) {
   var currentGroupChannel = _ref.currentGroupChannel,
       messagesDispatcher = _ref.messagesDispatcher;
   var logger = _ref2.logger;
-  return React.useCallback(function (failedMessage) {
+  return React$1.useCallback(function (failedMessage) {
     logger.info('Channel: Resending message has started', failedMessage);
     var messageType = failedMessage.messageType,
         file = failedMessage.file;
@@ -1565,8 +1565,8 @@ function useSendMessageCallback(_ref, _ref2) {
       logger = _ref2.logger,
       pubSub = _ref2.pubSub,
       messagesDispatcher = _ref2.messagesDispatcher;
-  var messageInputRef = React.useRef(null);
-  var sendMessage = React.useCallback(function () {
+  var messageInputRef = React$1.useRef(null);
+  var sendMessage = React$1.useCallback(function () {
     var text = messageInputRef.current.value;
 
     var createParamsDefault = function createParamsDefault(txt) {
@@ -1635,7 +1635,7 @@ function useSendFileMessageCallback(_ref, _ref2) {
       logger = _ref2.logger,
       pubSub = _ref2.pubSub,
       messagesDispatcher = _ref2.messagesDispatcher;
-  var sendMessage = React.useCallback(function (file) {
+  var sendMessage = React$1.useCallback(function (file) {
     var compressionRate = imageCompression.compressionRate,
         resizingWidth = imageCompression.resizingWidth,
         resizingHeight = imageCompression.resizingHeight;
@@ -1801,7 +1801,7 @@ function useMemoizedEmojiListItems(_ref, _ref2) {
       emojiAllList = _ref2.emojiAllList;
 
   /* eslint-disable react/prop-types */
-  return React.useMemo(function () {
+  return React$1.useMemo(function () {
     return function (_ref3) {
       var parentRef = _ref3.parentRef,
           parentContainRef = _ref3.parentContainRef,
@@ -1815,7 +1815,7 @@ function useMemoizedEmojiListItems(_ref, _ref2) {
         return null;
       }
 
-      return /*#__PURE__*/React__default["default"].createElement(index$1.EmojiListItems, {
+      return /*#__PURE__*/React__default$1["default"].createElement(index$1.EmojiListItems, {
         parentRef: parentRef,
         parentContainRef: parentContainRef,
         closeDropdown: closeDropdown,
@@ -1825,7 +1825,7 @@ function useMemoizedEmojiListItems(_ref, _ref2) {
           return reaction.key === emoji.key;
         })[0];
         var isReacted = reactedReaction ? !(reactedReaction.userIds.indexOf(userId) < 0) : false;
-        return /*#__PURE__*/React__default["default"].createElement(Channel.ReactionButton, {
+        return /*#__PURE__*/React__default$1["default"].createElement(Channel.ReactionButton, {
           key: emoji.key,
           width: "36px",
           height: "36px",
@@ -1834,11 +1834,11 @@ function useMemoizedEmojiListItems(_ref, _ref2) {
             closeDropdown();
             toggleReaction(message, emoji.key, isReacted);
           }
-        }, /*#__PURE__*/React__default["default"].createElement(index$2.ImageRenderer, {
+        }, /*#__PURE__*/React__default$1["default"].createElement(index$2.ImageRenderer, {
           url: emoji.url,
           width: "28px",
           height: "28px",
-          defaultComponent: /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {
+          defaultComponent: /*#__PURE__*/React__default$1["default"].createElement(index$2.Icon, {
             width: "28px",
             height: "28px",
             type: index$2.IconTypes.QUESTION
@@ -1852,7 +1852,7 @@ function useMemoizedEmojiListItems(_ref, _ref2) {
 function useToggleReactionCallback(_ref, _ref2) {
   var currentGroupChannel = _ref.currentGroupChannel;
   var logger = _ref2.logger;
-  return React.useCallback(function (message, key, isReacted) {
+  return React$1.useCallback(function (message, key, isReacted) {
     if (isReacted) {
       currentGroupChannel.deleteReaction(message, key).then(function (res) {
         logger.info('Delete reaction success', res);
@@ -1875,7 +1875,7 @@ function useScrollToMessage(_a, _b) {
       setHighLightedMessageId = _a.setHighLightedMessageId,
       allMessages = _a.allMessages;
   var logger = _b.logger;
-  return React.useCallback(function (createdAt, messageId) {
+  return React$1.useCallback(function (createdAt, messageId) {
     var isPresent = allMessages.find(function (m) {
       return m.messageId === messageId;
     });
@@ -2015,7 +2015,7 @@ function Label(_ref) {
       color = _ref.color,
       style = _ref.style,
       type = _ref.type;
-  return /*#__PURE__*/React__default["default"].createElement("span", {
+  return /*#__PURE__*/React__default$1["default"].createElement("span", {
     className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-label', type ? changeTypographyToClassName(type) : '', color ? changeColorToClassName$1(color) : '']).join(' '),
     style: style
   }, children);
@@ -2849,220 +2849,220 @@ function changeColorToClassName(color) {
 function changeTypeToIconComponent(type) {
   switch (type) {
     case Type$1.ADD:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconAdd, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconAdd, null);
 
     case Type$1.ARROW_LEFT:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconArrowLeft, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconArrowLeft, null);
 
     case Type$1.ATTACH:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconAttach, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconAttach, null);
 
     case Type$1.BAN:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconBan, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconBan, null);
 
     case Type$1.BROADCAST:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconBroadcast, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconBroadcast, null);
 
     case Type$1.CAMERA:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCamera, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconCamera, null);
 
     case Type$1.CHANNELS:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChannels, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconChannels, null);
 
     case Type$1.CHAT:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChat, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconChat, null);
 
     case Type$1.CHAT_FILLED:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChatFilled, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconChatFilled, null);
 
     case Type$1.CHEVRON_DOWN:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChevronDown, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconChevronDown, null);
 
     case Type$1.CHEVRON_RIGHT:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconChevronRight, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconChevronRight, null);
 
     case Type$1.CLOSE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconClose, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconClose, null);
 
     case Type$1.COLLAPSE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCollapse, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconCollapse, null);
 
     case Type$1.COPY:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCopy, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconCopy, null);
 
     case Type$1.CREATE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconCreate, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconCreate, null);
 
     case Type$1.DELETE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDelete, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconDelete, null);
 
     case Type$1.DISCONNECTED:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDisconnected, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconDisconnected, null);
 
     case Type$1.DOCUMENT:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDocument, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconDocument, null);
 
     case Type$1.DONE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDone, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconDone, null);
 
     case Type$1.DONE_ALL:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDoneAll, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconDoneAll, null);
 
     case Type$1.DOWNLOAD:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconDownload, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconDownload, null);
 
     case Type$1.EDIT:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconEdit, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconEdit, null);
 
     case Type$1.EMOJI_MORE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconEmojiMore, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconEmojiMore, null);
 
     case Type$1.ERROR:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconError, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconError, null);
 
     case Type$1.EXPAND:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconExpand, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconExpand, null);
 
     case Type$1.FILE_AUDIO:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconFileAudio, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconFileAudio, null);
 
     case Type$1.FILE_DOCUMENT:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconFileDocument, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconFileDocument, null);
 
     case Type$1.FREEZE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconFreeze, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconFreeze, null);
 
     case Type$1.GIF:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconGif, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconGif, null);
 
     case Type$1.INFO:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconInfo, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconInfo, null);
 
     case Type$1.LEAVE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconLeave, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconLeave, null);
 
     case Type$1.MEMBERS:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMembers, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconMembers, null);
 
     case Type$1.MESSAGE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMessage, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconMessage, null);
 
     case Type$1.MODERATIONS:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconModerations, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconModerations, null);
 
     case Type$1.MORE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMore, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconMore, null);
 
     case Type$1.MUTE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconMute, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconMute, null);
 
     case Type$1.NOTIFICATIONS:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconNotifications, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconNotifications, null);
 
     case Type$1.NOTIFICATIONS_OFF_FILLED:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconNotificationsOffFilled, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconNotificationsOffFilled, null);
 
     case Type$1.OPERATOR:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconOperator, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconOperator, null);
 
     case Type$1.PHOTO:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconPhoto, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconPhoto, null);
 
     case Type$1.PLAY:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconPlay, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconPlay, null);
 
     case Type$1.PLUS:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconPlus, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconPlus, null);
 
     case Type$1.QUESTION:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconQuestion, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconQuestion, null);
 
     case Type$1.REFRESH:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconRefresh, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconRefresh, null);
 
     case Type$1.REMOVE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconRemove, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconRemove, null);
 
     case Type$1.REPLY:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconReplyFilled, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconReplyFilled, null);
 
     case Type$1.SEARCH:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSearch, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconSearch, null);
 
     case Type$1.SEND:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSend, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconSend, null);
 
     case Type$1.SETTINGS_FILLED:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSettingsFilled, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconSettingsFilled, null);
 
     case Type$1.SPINNER:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSpinner, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconSpinner, null);
 
     case Type$1.SUPERGROUP:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconSupergroup, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconSupergroup, null);
 
     case Type$1.THUMBNAIL_NONE:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconThumbnailNone, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconThumbnailNone, null);
 
     case Type$1.TOGGLE_OFF:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconToggleoff, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconToggleoff, null);
 
     case Type$1.TOGGLE_ON:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconToggleon, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconToggleon, null);
 
     case Type$1.USER:
-      return /*#__PURE__*/React__default["default"].createElement(index$2.SvgIconUser, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(index$2.SvgIconUser, null);
 
     case Type$1.ROGU_PENDING:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgPending, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconMsgPending, null);
 
     case Type$1.ROGU_SENT:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgSent, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconMsgSent, null);
 
     case Type$1.ROGU_READ_ALL:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgReadAll, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconMsgReadAll, null);
 
     case Type$1.ROGU_ERROR:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMsgFailed, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconMsgFailed, null);
 
     case Type$1.ROGU_COPY:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconCopy, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconCopy, null);
 
     case Type$1.ROGU_REPLY:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconReply, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconReply, null);
 
     case Type$1.ROGU_RESEND:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconResend, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconResend, null);
 
     case Type$1.ROGU_CLOSE:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconClose, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconClose, null);
 
     case Type$1.ROGU_DOWNLOAD:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconDownload, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconDownload, null);
 
     case Type$1.ROGU_DELETE:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconDelete, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconDelete, null);
 
     case Type$1.ROGU_ASSIGNMENT:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconAssignment, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconAssignment, null);
 
     case Type$1.ROGU_MATERIAL:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconMaterial, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconMaterial, null);
 
     case Type$1.ROGU_FILE_WORD:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconFileWord, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconFileWord, null);
 
     case Type$1.ROGU_FILE_EXCEL:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconFileExcel, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconFileExcel, null);
 
     case Type$1.ROGU_FILE_POWERPOINT:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconFilePowerpoint, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconFilePowerpoint, null);
 
     case Type$1.ROGU_FILE_PDF:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconFilePdf, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconFilePdf, null);
 
     case Type$1.ROGU_FILE_OTHERS:
-      return /*#__PURE__*/React__default["default"].createElement(SvgRoguIconFileOthers, null);
+      return /*#__PURE__*/React__default$1["default"].createElement(SvgRoguIconFileOthers, null);
 
     default:
       return 'icon';
@@ -3084,7 +3084,7 @@ function Icon(_ref) {
     height: typeof height === 'string' ? height : "".concat(height, "px"),
     minHeight: typeof height === 'string' ? height : "".concat(height, "px")
   };
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-icon', changeColorToClassName(fillColor)]).join(' '),
     role: "button",
     onClick: onClick,
@@ -3121,30 +3121,30 @@ function MessageStatus(_ref) {
       message = _ref.message,
       status = _ref.status;
   var iconType = (_iconType = {}, LocalizationContext._defineProperty(_iconType, MessageStatusTypes.SENT, IconTypes.ROGU_SENT), LocalizationContext._defineProperty(_iconType, MessageStatusTypes.DELIVERED, IconTypes.ROGU_SENT), LocalizationContext._defineProperty(_iconType, MessageStatusTypes.READ, IconTypes.ROGU_READ_ALL), LocalizationContext._defineProperty(_iconType, MessageStatusTypes.FAILED, IconTypes.ROGU_ERROR), _iconType);
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-message-status']).join(' ')
-  }, index$1.isSentStatus(status) && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, index$1.isSentStatus(status) && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-status__text",
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
-  }, index$1.getMessageCreatedAt(message)), status === MessageStatusTypes.PENDING ? /*#__PURE__*/React__default["default"].createElement("div", {
+  }, index$1.getMessageCreatedAt(message)), status === MessageStatusTypes.PENDING ? /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-flex"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-status__text",
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
-  }, "Mengirim"), /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, "Mengirim"), /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     className: "rogu-message-status__icon",
     type: IconTypes.ROGU_PENDING,
     width: "18px",
     height: "18px"
-  })) : /*#__PURE__*/React__default["default"].createElement("div", {
+  })) : /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-flex"
-  }, status === MessageStatusTypes.FAILED && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, status === MessageStatusTypes.FAILED && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-status__text",
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
-  }, "Gagal terkirim"), /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, "Gagal terkirim"), /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     className: "rogu-message-status__icon",
     type: iconType[status] || IconTypes.ERROR,
     width: "18px",
@@ -3178,7 +3178,7 @@ function TextButton(_ref) {
       underline = _ref.underline,
       onClick = _ref.onClick,
       children = _ref.children;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), [index$1.changeColorToClassName(color), 'rogu-text-button', underline ? 'rogu-text-button--no-underline' : '', disabled ? 'rogu-text-button--disabled' : '']).join(' '),
     role: "button",
     tabIndex: 0,
@@ -3242,13 +3242,13 @@ function TextMessageItemBody(_a) {
       _e = _a.isRepliedMessage,
       isRepliedMessage = _e === void 0 ? false : _e,
       onScrollToMessage = _a.onScrollToMessage;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
 
-  var _f = React.useState("init"),
+  var _f = React$1.useState("init"),
       clampState = _f[0],
       setClampState = _f[1];
 
-  var textRef = React.useRef(null);
+  var textRef = React$1.useRef(null);
 
   var _g = isRepliedMessage && destructureRepliedMessage(message),
       sender = _g.sender,
@@ -3256,7 +3256,7 @@ function TextMessageItemBody(_a) {
       originalMessage = _g.originalMessage;
 
   var msg = isRepliedMessage ? originalMessage : message;
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
       setClampState("clamped");
     }
@@ -3267,42 +3267,112 @@ function TextMessageItemBody(_a) {
   }
 
   var renderRepliedMessage = function renderRepliedMessage(sender, parentMessage) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
+    return /*#__PURE__*/React__default$1["default"].createElement("div", {
       className: "rogu-text-message-item-body__reply-container",
       onClick: onScrollToMessage
-    }, /*#__PURE__*/React__default["default"].createElement(Label, {
+    }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
       className: "rogu-message-content__sender-name",
       color: LabelColors.ONBACKGROUND_2,
       style: {
         color: generateColorFromString(sender || '')
       },
       type: LabelTypography.CAPTION_1
-    }, sender), /*#__PURE__*/React__default["default"].createElement("br", null), /*#__PURE__*/React__default["default"].createElement(Label, {
+    }, sender), /*#__PURE__*/React__default$1["default"].createElement("br", null), /*#__PURE__*/React__default$1["default"].createElement(Label, {
       className: "rogu-text-message-item-body__reply-message",
       color: LabelColors.ONBACKGROUND_1,
       type: LabelTypography.BODY_3
     }, parentMessage));
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", mode === "fileViewerCaption" ? "rogu-text-message-item-body--viewer-mode" : "", mode === "fileViewerCaption" && isHidden ? "rogu-text-message-item-body--viewer-mode__hidden" : "", mode === "thumbnailCaption" ? "rogu-text-message-item-body--preview-mode" : ""])
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     ref: textRef,
     className: "rogu-text-message-item-body__inner"
   }, isRepliedMessage && renderRepliedMessage(sender, parentMessage), msg === null || msg === void 0 ? void 0 : msg.split(/\r/).map(function (word, i) {
-    return word === "" ? /*#__PURE__*/React__default["default"].createElement("br", {
+    return word === "" ? /*#__PURE__*/React__default$1["default"].createElement("br", {
       key: i
-    }) : /*#__PURE__*/React__default["default"].createElement(Label, {
+    }) : /*#__PURE__*/React__default$1["default"].createElement(Label, {
       className: "rogu-text-message-item-body__message",
       color: LabelColors.ONBACKGROUND_1,
       key: i,
       type: LabelTypography.BODY_1
     }, word);
-  })), clampState === "clamped" && /*#__PURE__*/React__default["default"].createElement(TextButton, {
+  })), clampState === "clamped" && /*#__PURE__*/React__default$1["default"].createElement(TextButton, {
     className: "rogu-text-message-item-body__read-more",
     onClick: handleExpand
-  }, /*#__PURE__*/React__default["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
 }
+
+var IconButton = /*#__PURE__*/React__default$1["default"].forwardRef(function (props, ref) {
+  var className = props.className,
+      children = props.children,
+      disabled = props.disabled,
+      width = props.width,
+      height = props.height,
+      type = props.type,
+      _onClick = props.onClick,
+      _onBlur = props.onBlur,
+      style = props.style;
+
+  var _useState = React$1.useState(''),
+      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
+      pressed = _useState2[0],
+      setPressed = _useState2[1];
+
+  return (
+    /*#__PURE__*/
+    // eslint-disable-next-line react/button-has-type
+    React__default$1["default"].createElement("button", {
+      className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-iconbutton', pressed]).join(' '),
+      disabled: disabled,
+      ref: ref,
+      type: type // eslint-disable-line react/button-has-type
+      ,
+      style: LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, style), {}, {
+        height: height,
+        width: width
+      }),
+      onClick: function onClick(e) {
+        if (disabled) {
+          return;
+        }
+
+        setPressed('sendbird-iconbutton--pressed');
+
+        _onClick(e);
+      },
+      onBlur: function onBlur(e) {
+        setPressed('');
+
+        _onBlur(e);
+      }
+    }, /*#__PURE__*/React__default$1["default"].createElement("span", {
+      className: "sendbird-iconbutton__inner"
+    }, children))
+  );
+});
+IconButton.propTypes = {
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element), PropTypes__default["default"].any]).isRequired,
+  disabled: PropTypes__default["default"].bool,
+  width: PropTypes__default["default"].string,
+  height: PropTypes__default["default"].string,
+  type: PropTypes__default["default"].string,
+  onClick: PropTypes__default["default"].func,
+  onBlur: PropTypes__default["default"].func,
+  style: PropTypes__default["default"].shape({})
+};
+IconButton.defaultProps = {
+  className: '',
+  disabled: false,
+  width: '56px',
+  height: '56px',
+  type: 'button',
+  onClick: function onClick() {},
+  onBlur: function onBlur() {},
+  style: {}
+};
 
 function OGMessageItemBody(_a) {
   var _b, _c, _d, _e, _f, _g, _h, _j;
@@ -3312,8 +3382,11 @@ function OGMessageItemBody(_a) {
       _k = _a.isByMe,
       isByMe = _k === void 0 ? false : _k,
       _l = _a.mouseHover,
-      mouseHover = _l === void 0 ? false : _l;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+      mouseHover = _l === void 0 ? false : _l,
+      _m = _a.isOnPreview,
+      isOnPreview = _m === void 0 ? false : _m,
+      onClosePreview = _a.onClosePreview;
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
 
   var openOGUrl = function openOGUrl() {
     var _a, _b;
@@ -3321,61 +3394,73 @@ function OGMessageItemBody(_a) {
     if ((_a = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _a === void 0 ? void 0 : _a.url) window.open((_b = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _b === void 0 ? void 0 : _b.url);
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
-    className: index$1.getClassName([className, 'rogu-og-message-item-body', isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'rogu-og-message-reactions' : ''])
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: index$1.getClassName([className, 'rogu-og-message-item-body', isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming', isOnPreview ? 'rogu-og-message-item-body--preview' : '', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'rogu-og-message-reactions' : ''])
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-og-message-item-body__og-wrapper"
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-og-message-item-body__og-container",
     onClick: openOGUrl
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-og-message-item-body__og-thumbnail"
-  }, /*#__PURE__*/React__default["default"].createElement(index$2.ImageRenderer, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(index$2.ImageRenderer, {
     className: "rogu-og-message-item-body__og-thumbnail__image",
     url: ((_d = (_c = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _c === void 0 ? void 0 : _c.defaultImage) === null || _d === void 0 ? void 0 : _d.url) || '',
     alt: (_f = (_e = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _e === void 0 ? void 0 : _e.defaultImage) === null || _f === void 0 ? void 0 : _f.alt,
     width: "60px",
     height: "60px",
-    defaultComponent: /*#__PURE__*/React__default["default"].createElement("div", {
+    defaultComponent: /*#__PURE__*/React__default$1["default"].createElement("div", {
       className: "rogu-og-message-item-body__og-thumbnail__place-holder"
-    }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+    }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
       className: "rogu-og-message-item-body__og-thumbnail__place-holder__icon",
       type: IconTypes.THUMBNAIL_NONE,
       width: "60px",
       height: "60px"
     }))
-  })), /*#__PURE__*/React__default["default"].createElement("div", {
+  })), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-og-message-item-body__description"
-  }, ((_g = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _g === void 0 ? void 0 : _g.title) && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, ((_g = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _g === void 0 ? void 0 : _g.title) && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-og-message-item-body__description__title",
     type: LabelTypography.SUBTITLE_2,
     color: LabelColors.ONBACKGROUND_1
-  }, message.ogMetaData.title), ((_h = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _h === void 0 ? void 0 : _h.description) && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, message.ogMetaData.title), ((_h = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _h === void 0 ? void 0 : _h.description) && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-og-message-item-body__description__description",
     type: LabelTypography.BODY_2,
     color: LabelColors.ONBACKGROUND_1
-  }, message.ogMetaData.description), ((_j = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _j === void 0 ? void 0 : _j.url) && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, message.ogMetaData.description), ((_j = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _j === void 0 ? void 0 : _j.url) && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-og-message-item-body__description__url",
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
-  }, message.ogMetaData.url))), /*#__PURE__*/React__default["default"].createElement("div", {
+  }, message.ogMetaData.url))), isOnPreview && /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
+    className: "sendbird-chat-header__right__search",
+    width: "32px",
+    height: "32px",
+    onClick: onClosePreview
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  }))), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-og-message-item-body__text-bubble"
   }, message === null || message === void 0 ? void 0 : message.message.split(' ').map(function (word) {
-    return index$1.isUrl(word) ? /*#__PURE__*/React__default["default"].createElement(index$3.LinkLabel, {
+    return index$1.isUrl(word) ? /*#__PURE__*/React__default$1["default"].createElement(index$3.LinkLabel, {
       className: "rogu-og-message-item-body__text-bubble__message",
       key: LocalizationContext.uuidv4(),
       src: word,
       type: LabelTypography.BODY_1,
       color: isByMe ? LabelColors.ONBACKGROUND_1 : LabelColors.SECONDARY_3
-    }, word) : /*#__PURE__*/React__default["default"].createElement(Label, {
+    }, word) : /*#__PURE__*/React__default$1["default"].createElement(Label, {
       className: "rogu-og-message-item-body__text-bubble__message",
       key: LocalizationContext.uuidv4(),
       type: LabelTypography.BODY_1,
       color: LabelColors.ONBACKGROUND_1
     }, word + ' ');
-  }), index$1.isEditedMessage(message) && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }), index$1.isEditedMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-og-message-item-body__text-bubble__message",
     type: LabelTypography.BODY_1,
     color: isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2
-  }, " " + stringSet.MESSAGE_EDITED + " ")), /*#__PURE__*/React__default["default"].createElement("div", {
+  }, " " + stringSet.MESSAGE_EDITED + " ")), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-og-message-item-body__cover"
   }));
 }
@@ -3385,13 +3470,13 @@ function FileMessageItemBody(_a) {
       message = _a.message,
       _b = _a.isByMe,
       isByMe = _b === void 0 ? false : _b;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
-  return /*#__PURE__*/React__default["default"].createElement("a", {
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
+  return /*#__PURE__*/React__default$1["default"].createElement("a", {
     className: index$1.getClassName([className, 'rogu-file-message-item-body', isByMe ? 'rogu-file-message-item-body--outgoing' : 'rogu-file-message-item-body--incoming']),
     href: message.plainUrl,
     target: "_blank",
     rel: "noreferrer"
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     className: 'rogu-file-message-item-body__icon',
     type: {
       WORD: IconTypes.ROGU_FILE_WORD,
@@ -3403,18 +3488,18 @@ function FileMessageItemBody(_a) {
     fillColor: IconColors.PRIMARY,
     width: "28px",
     height: "28px"
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-file-message-item-body__content"
-  }, message.name && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, message.name && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-file-message-item-body__name",
     color: LabelColors.ONBACKGROUND_1,
     type: LabelTypography.SUBTITLE_2
-  }, message.name), /*#__PURE__*/React__default["default"].createElement("div", {
+  }, message.name), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-file-message-item-body__meta"
-  }, message.size && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, message.size && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     color: LabelColors.ONBACKGROUND_2,
     type: LabelTypography.BODY_2
-  }, formatBytes(message.size) + " \xB7 "), /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, formatBytes(message.size) + " \xB7 "), /*#__PURE__*/React__default$1["default"].createElement(Label, {
     color: LabelColors.ONBACKGROUND_2,
     type: LabelTypography.BODY_2
   }, getMimeExtension(message.type) || stringSet.LABEL__OTHER))));
@@ -3438,24 +3523,24 @@ function ImageRenderer(_ref) {
       circle = _ref.circle,
       placeHolder = _ref.placeHolder;
 
-  var _useState = React.useState(false),
+  var _useState = React$1.useState(false),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
       showDefaultComponent = _useState2[0],
       setShowDefaultComponent = _useState2[1];
 
-  var _useState3 = React.useState(true),
+  var _useState3 = React$1.useState(true),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
       showPlaceHolder = _useState4[0],
       setShowPlaceHolder = _useState4[1];
 
-  var DefaultComponent = React.useMemo(function () {
+  var DefaultComponent = React$1.useMemo(function () {
     if (typeof defaultComponent === 'function') {
       return defaultComponent();
     }
 
     return defaultComponent;
   }, [defaultComponent]);
-  var PlaceHolder = React.useMemo(function () {
+  var PlaceHolder = React$1.useMemo(function () {
     if (placeHolder && typeof placeHolder === 'function') {
       return placeHolder({
         style: {
@@ -3472,10 +3557,10 @@ function ImageRenderer(_ref) {
 
     return null;
   }, [placeHolder]);
-  var HiddenImageLoader = React.useMemo(function () {
+  var HiddenImageLoader = React$1.useMemo(function () {
     setShowDefaultComponent(false); // reset the state when url is changed
 
-    return /*#__PURE__*/React__default["default"].createElement("img", {
+    return /*#__PURE__*/React__default$1["default"].createElement("img", {
       className: "sendbird-image-renderer__hidden-image-loader",
       src: url,
       alt: alt,
@@ -3487,14 +3572,14 @@ function ImageRenderer(_ref) {
       }
     });
   }, [url]);
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-image-renderer']).join(' '),
     style: {
       width: '100%',
       minWidth: width,
       height: height
     }
-  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default["default"].createElement("div", {
+  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "sendbird-image-renderer__image",
     style: {
       width: '100%',
@@ -3544,42 +3629,42 @@ function ThumbnailMessageItemBody(_a) {
   var _g = message.thumbnails,
       thumbnails = _g === void 0 ? [] : _g;
   var thumbnailUrl = thumbnails.length > 0 ? (_b = thumbnails[0]) === null || _b === void 0 ? void 0 : _b.url : "";
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, "rogu-thumbnail-message-item-body", isByMe ? "outgoing" : "incoming", mouseHover ? "mouse-hover" : "", ((_c = message === null || message === void 0 ? void 0 : message.reactions) === null || _c === void 0 ? void 0 : _c.length) > 0 ? "reactions" : ""]),
     onClick: function onClick() {
       if (isClickable) showFileViewer(true);
     }
-  }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
     className: "rogu-thumbnail-message-item-body__thumbnail",
     url: thumbnailUrl || (message === null || message === void 0 ? void 0 : message.url),
     alt: message === null || message === void 0 ? void 0 : message.type,
     width: "360px",
     height: "270px",
     placeHolder: function placeHolder(style) {
-      return /*#__PURE__*/React__default["default"].createElement("div", {
+      return /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-thumbnail-message-item-body__placeholder",
         style: style
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
+      }, /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-thumbnail-message-item-body__placeholder__icon"
-      }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+      }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
         type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO,
         fillColor: IconColors.ON_BACKGROUND_2,
         width: "34px",
         height: "34px"
       })));
     }
-  }), index$1.isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default["default"].createElement("video", {
+  }), index$1.isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default$1["default"].createElement("video", {
     className: "rogu-thumbnail-message-item-body__video"
-  }, /*#__PURE__*/React__default["default"].createElement("source", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("source", {
     src: message === null || message === void 0 ? void 0 : message.url,
     type: message === null || message === void 0 ? void 0 : message.type
-  })), /*#__PURE__*/React__default["default"].createElement("div", {
+  })), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__image-cover"
-  }), (index$1.isVideoMessage(message) || index$1.isGifMessage(message)) && /*#__PURE__*/React__default["default"].createElement("div", {
+  }), (index$1.isVideoMessage(message) || index$1.isGifMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper__icon"
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF,
     fillColor: IconColors.ON_BACKGROUND_2,
     width: "34px",
@@ -3595,7 +3680,7 @@ function AssignmentMessageItemBody(_a) {
       isByMe = _a.isByMe,
       _c = _a.mouseHover,
       mouseHover = _c === void 0 ? false : _c;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
   var assignmentData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
 
   var openAssignment = function openAssignment() {
@@ -3606,29 +3691,29 @@ function AssignmentMessageItemBody(_a) {
     }
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-assignment-message-item-body', isByMe ? 'rogu-assignment-message-item-body--outgoing' : 'rogu-assignment-message-item-body--incoming', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     role: "button",
     tabIndex: 0,
     className: "rogu-assignment-message-item-body__container",
     onClick: openAssignment,
     onKeyPress: openAssignment
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     className: "rogu-assignment-message-item-body__icon",
     type: IconTypes.ROGU_ASSIGNMENT,
     width: "30",
     height: "30"
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-assignment-message-item-body__text-container"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-assignment-message-item-body__text-title",
     color: LabelColors.ONBACKGROUND_1,
     type: LabelTypography.SUBTITLE_2
-  }, assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.title), /*#__PURE__*/React__default["default"].createElement("div", null, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.title), /*#__PURE__*/React__default$1["default"].createElement("div", null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     color: LabelColors.ONBACKGROUND_2,
     type: LabelTypography.BODY_2
-  }, stringSet.ASSIGNMENT), (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt) && (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt.length) > 0 && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, stringSet.ASSIGNMENT), (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt) && (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt.length) > 0 && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-assignment-message-item-body__text-deadline",
     color: LabelColors.ONBACKGROUND_2,
     type: LabelTypography.BODY_2
@@ -3641,7 +3726,7 @@ function MaterialMessageItemBody(_a) {
   var className = _a.className,
       message = _a.message,
       isByMe = _a.isByMe;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
   var materialData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
 
   var openMaterial = function openMaterial() {
@@ -3652,23 +3737,23 @@ function MaterialMessageItemBody(_a) {
     }
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, "rogu-material-message-item-body", isByMe ? 'rogu-material-message-item-body--outgoing' : 'rogu-material-message-item-body--incoming', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-material-message-item-body__container",
     onClick: openMaterial
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     className: "rogu-material-message-item-body__icon",
     type: IconTypes.ROGU_MATERIAL,
     width: "30",
     height: "30"
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-material-message-item-body__text-container"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-material-message-item-body__text-title",
     color: LabelColors.ONBACKGROUND_1,
     type: LabelTypography.SUBTITLE_2
-  }, materialData === null || materialData === void 0 ? void 0 : materialData.title), /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, materialData === null || materialData === void 0 ? void 0 : materialData.title), /*#__PURE__*/React__default$1["default"].createElement(Label, {
     color: LabelColors.ONBACKGROUND_2,
     type: LabelTypography.BODY_2
   }, stringSet.MATERIAL))));
@@ -3777,7 +3862,7 @@ var MenuItems$1 = /*#__PURE__*/function (_Component) {
       });
     });
 
-    _this.menuRef = /*#__PURE__*/React__default["default"].createRef();
+    _this.menuRef = /*#__PURE__*/React__default$1["default"].createRef();
     _this.state = {
       menuStyle: {},
       handleClickOutside: function handleClickOutside() {}
@@ -3805,9 +3890,9 @@ var MenuItems$1 = /*#__PURE__*/function (_Component) {
       var _this$props2 = this.props,
           children = _this$props2.children,
           style = _this$props2.style;
-      return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
+      return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-dropdown__menu-backdrop"
-      }), /*#__PURE__*/React__default["default"].createElement("ul", {
+      }), /*#__PURE__*/React__default$1["default"].createElement("ul", {
         className: "rogu-dropdown__menu",
         ref: this.menuRef,
         style: LocalizationContext._objectSpread2({
@@ -3821,7 +3906,7 @@ var MenuItems$1 = /*#__PURE__*/function (_Component) {
   }]);
 
   return MenuItems;
-}(React.Component);
+}(React$1.Component);
 MenuItems$1.propTypes = {
   closeDropdown: PropTypes__default["default"].func.isRequired,
   children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element)]).isRequired,
@@ -3853,7 +3938,7 @@ var MenuItem = function MenuItem(_ref) {
     if (!disable) onClick(e);
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("li", {
+  return /*#__PURE__*/React__default$1["default"].createElement("li", {
     className: index$1.getClassName([className, 'rogu-dropdown__menu-item', disable ? 'disable' : '']),
     role: "menuitem",
     onClick: handleClickEvent,
@@ -3861,13 +3946,13 @@ var MenuItem = function MenuItem(_ref) {
       if (e.keyCode === ENTER) handleClickEvent(e);
     },
     tabIndex: 0
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     className: "rogu-dropdown__menu-item-icon",
     type: iconType,
     fillColor: disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1,
     width: "18px",
     height: "18px"
-  }), /*#__PURE__*/React__default["default"].createElement(Label, {
+  }), /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-dropdown__menu-item__text",
     type: LabelTypography.BUTTON_2,
     color: disable ? LabelColors.ONBACKGROUND_4 : LabelColors.ONBACKGROUND_1
@@ -3889,12 +3974,12 @@ function ContextMenu(_ref2) {
   var menuTrigger = _ref2.menuTrigger,
       menuItems = _ref2.menuItems;
 
-  var _useState = React.useState(false),
+  var _useState = React$1.useState(false),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
       showMenu = _useState2[0],
       setShowMenu = _useState2[1];
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "sendbird-context-menu",
     style: {
       display: 'inline'
@@ -3912,9 +3997,9 @@ ContextMenu.propTypes = {
 
 function Toast(_ref) {
   var message = _ref.message;
-  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__toast__message show"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     type: LabelTypography.BODY_3,
     color: LabelColors.ONBACKGROUND_5
   }, message)), document.getElementById('rogu-toast-root'));
@@ -3934,14 +4019,14 @@ function MessageItemMenu(_a) {
       resendMessage = _a.resendMessage,
       setSupposedHover = _a.setSupposedHover,
       showFileViewer = _a.showFileViewer;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
 
-  var _b = React.useState(false),
+  var _b = React$1.useState(false),
       showToast = _b[0],
       setShowToast = _b[1];
 
-  var triggerRef = React.useRef(null);
-  var containerRef = React.useRef(null);
+  var triggerRef = React$1.useRef(null);
+  var containerRef = React$1.useRef(null);
   var showMenuItemCopy = index$1.isUserMessage(message);
   var showMenuItemReply = index$1.isUserMessage(message);
   var showMenuItemResend = index$1.isFailedMessage(channel, message) && message.isResendable() && isByMe;
@@ -3961,12 +4046,12 @@ function MessageItemMenu(_a) {
     }, 3000);
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-message-item-menu']),
     ref: containerRef
-  }, /*#__PURE__*/React__default["default"].createElement(ContextMenu, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(ContextMenu, {
     menuTrigger: function menuTrigger(toggleDropdown) {
-      return /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
+      return /*#__PURE__*/React__default$1["default"].createElement(index$1.IconButton, {
         className: "rogu-message-item-menu__trigger",
         ref: triggerRef,
         width: "16px",
@@ -3978,7 +4063,7 @@ function MessageItemMenu(_a) {
         onBlur: function onBlur() {
           if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
         }
-      }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+      }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
         className: "rogu-message-item-menu__trigger__icon",
         type: IconTypes.CHEVRON_DOWN,
         fillColor: IconColors.ON_BACKGROUND_3,
@@ -3994,13 +4079,13 @@ function MessageItemMenu(_a) {
         if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
       };
 
-      return /*#__PURE__*/React__default["default"].createElement(MenuItems, {
+      return /*#__PURE__*/React__default$1["default"].createElement(MenuItems, {
         className: "rogu-message-item-menu__list",
         parentRef: triggerRef,
         parentContainRef: containerRef,
         closeDropdown: closeDropdown,
         openLeft: isByMe
-      }, showMenuItemReply && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+      }, showMenuItemReply && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           // TODO: Add replying message logic
@@ -4008,7 +4093,7 @@ function MessageItemMenu(_a) {
         },
         disable: (message === null || message === void 0 ? void 0 : message.parentMessageId) > 0,
         iconType: IconTypes.ROGU_REPLY
-      }, stringSet.MESSAGE_MENU__REPLY), showMenuItemCopy && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+      }, stringSet.MESSAGE_MENU__REPLY), showMenuItemCopy && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           var _a;
@@ -4017,14 +4102,14 @@ function MessageItemMenu(_a) {
           closeDropdown();
         },
         iconType: IconTypes.ROGU_COPY
-      }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+      }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           showFileViewer(true);
           closeDropdown();
         },
         iconType: IconTypes.DOWNLOAD
-      }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+      }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           if (!disabled) {
@@ -4033,7 +4118,7 @@ function MessageItemMenu(_a) {
           }
         },
         iconType: IconTypes.ROGU_RESEND
-      }, stringSet.MESSAGE_MENU__RESEND), showMenuItemDelete && /*#__PURE__*/React__default["default"].createElement(MenuItem, {
+      }, stringSet.MESSAGE_MENU__RESEND), showMenuItemDelete && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           if (!disabled) {
@@ -4045,7 +4130,7 @@ function MessageItemMenu(_a) {
         iconType: IconTypes.ROGU_DELETE
       }, stringSet.MESSAGE_MENU__DELETE));
     }
-  }), showToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+  }), showToast && /*#__PURE__*/React__default$1["default"].createElement(Toast, {
     message: stringSet.TOAST__COPY
   }));
 }
@@ -4071,9 +4156,9 @@ function MessageContent(_a) {
       resendMessage = _a.resendMessage,
       _h = _a.disabled,
       disabled = _h === void 0 ? false : _h;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
   var messageTypes = index$1.getUIKitMessageTypes();
-  var avatarRef = React.useRef(null);
+  var avatarRef = React$1.useRef(null);
   var isByMe = index$1.isPendingMessage(channel, message) || !index$1.isSentMessage(channel, message) || index$1.isMessageSentByMe(userId, message);
   var isOperatorMessage = index$1.isMessageSentByOperator(message);
   var isByMeClassName = isByMe ? 'rogu-message-content--outgoing' : 'rogu-message-content--incoming';
@@ -4081,7 +4166,7 @@ function MessageContent(_a) {
   var chainTopClassName = chainTop ? 'rogu-message-content--chain-top' : '';
 
   if (((_b = message === null || message === void 0 ? void 0 : message.isAdminMessage) === null || _b === void 0 ? void 0 : _b.call(message)) || (message === null || message === void 0 ? void 0 : message.messageType) === 'admin') {
-    return /*#__PURE__*/React__default["default"].createElement(Channel.AdminMessage, {
+    return /*#__PURE__*/React__default$1["default"].createElement(Channel.AdminMessage, {
       message: message
     });
   }
@@ -4090,31 +4175,31 @@ function MessageContent(_a) {
     //scrollToMessage(message.createdAt, getParentMessageId(message));
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-message-content', isByMeClassName, chainBottomClassName, chainTopClassName])
-  }, !isByMe && !chainTop && /*#__PURE__*/React__default["default"].createElement(index$2.Avatar, {
+  }, !isByMe && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(index$2.Avatar, {
     className: "rogu-message-content__avatar",
     src: ((_c = message === null || message === void 0 ? void 0 : message.sender) === null || _c === void 0 ? void 0 : _c.profileUrl) || '',
     ref: avatarRef,
     height: "32px",
     width: "32px"
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-message-content__content"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-message-content__bubble"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-message-content__bubble__header"
-  }, !isByMe && !chainTop && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, !isByMe && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-content__sender-name",
     color: LabelColors.ONBACKGROUND_2,
     style: {
       color: generateColorFromString(((_d = message === null || message === void 0 ? void 0 : message.sender) === null || _d === void 0 ? void 0 : _d.nickname) || '')
     },
     type: LabelTypography.CAPTION_1
-  }, index$1.getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, index$1.getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-content__operator-label",
     type: LabelTypography.CAPTION_3
-  }, stringSet.LABEL__OPERATOR), /*#__PURE__*/React__default["default"].createElement(MessageItemMenu, {
+  }, stringSet.LABEL__OPERATOR), /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
     className: "rogu-message-content__menu",
     channel: channel,
     message: message,
@@ -4124,40 +4209,40 @@ function MessageContent(_a) {
     showRemove: showRemove,
     resendMessage: resendMessage,
     showFileViewer: showFileViewer
-  }))), /*#__PURE__*/React__default["default"].createElement("div", {
+  }))), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-message-content__bubble__body"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-message-content__bubble__body__inner"
-  }, index$1.isTextMessage(message) && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+  }, index$1.isTextMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: (_e = message) === null || _e === void 0 ? void 0 : _e.message,
     isRepliedMessage: isRepliedMessage(message),
     onScrollToMessage: onScrollToMessage
-  }), index$1.isOGMessage(message) && /*#__PURE__*/React__default["default"].createElement(OGMessageItemBody, {
+  }), index$1.isOGMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), index$1.isAssignmentMessage(message.customType) && /*#__PURE__*/React__default["default"].createElement(AssignmentMessageItemBody, {
+  }), index$1.isAssignmentMessage(message.customType) && /*#__PURE__*/React__default$1["default"].createElement(AssignmentMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), index$1.isMaterialMessage(message.customType) && /*#__PURE__*/React__default["default"].createElement(MaterialMessageItemBody, {
+  }), index$1.isMaterialMessage(message.customType) && /*#__PURE__*/React__default$1["default"].createElement(MaterialMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default["default"].createElement(FileMessageItemBody, {
+  }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(FileMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), isThumbnailMessage(message) && /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement(ThumbnailMessageItemBody, {
+  }), isThumbnailMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING
-  }), message.name && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+  }), message.name && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     mode: "thumbnailCaption",
     message: message.name
-  })), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default["default"].createElement(Channel.UnknownMessageItemBody, {
+  })), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
-  })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default["default"].createElement(MessageItemMenu, {
+  })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
     className: "rogu-message-content__menu",
     channel: channel,
     message: message,
@@ -4167,17 +4252,187 @@ function MessageContent(_a) {
     showRemove: showRemove,
     resendMessage: resendMessage,
     showFileViewer: showFileViewer
-  }))), !chainBottom && /*#__PURE__*/React__default["default"].createElement("div", {
+  }))), !chainBottom && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: 'rogu-message-content__misc'
-  }, isByMe ? /*#__PURE__*/React__default["default"].createElement(MessageStatus, {
+  }, isByMe ? /*#__PURE__*/React__default$1["default"].createElement(MessageStatus, {
     message: message,
     status: index$1.getOutgoingMessageState(channel, message)
-  }) : /*#__PURE__*/React__default["default"].createElement(Label, {
+  }) : /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: 'rogu-message-content__created-at',
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
   }, index$1.getMessageCreatedAt(message)))));
 }
+
+function _interopDefault$1 (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var React = React__default$1["default"];
+var React__default = _interopDefault$1(React);
+var PropTypes = _interopDefault$1(PropTypes__default["default"]);
+
+var styles = {"link-preview-section":"_3elLK","animated-background":"_Z-Tng","link-image-loader":"_13bre","img":"_1Igjx","placeHolderShimmer":"_yKlsy","link-description":"_3IjjD","domain":"_3Y4Nu","link-url":"_CZu1J","link-url-loader":"_2immM","link-data":"_2bWne","link-title":"_35AKc","link-data-loader":"_322CG","p1":"_3rFBW","p2":"_L7vLm","link-image":"_3EjBn"};
+
+var isValidUrlProp = function isValidUrlProp(props, propName, componentName) {
+  if (!props) {
+    return new Error("Required parameter URL was not passed.");
+  }
+
+  if (!isValidUrl(props[propName])) {
+    return new Error("Invalid prop '" + propName + "' passed to '" + componentName + "'. Expected a valid url.");
+  }
+};
+
+var isValidUrl = function isValidUrl(url) {
+  var regex = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
+  var validUrl = regex.test(url);
+  return validUrl;
+};
+
+function LinkPreview(props) {
+  var _useState = React.useState(true),
+      loading = _useState[0],
+      setLoading = _useState[1];
+
+  var _useState2 = React.useState({}),
+      preview = _useState2[0],
+      setPreviewData = _useState2[1];
+
+  var _useState3 = React.useState(false),
+      isUrlValid = _useState3[0],
+      setUrlValidation = _useState3[1];
+
+  var url = props.url,
+      width = props.width,
+      maxWidth = props.maxWidth,
+      marginTop = props.marginTop,
+      marginBottom = props.marginBottom,
+      marginRight = props.marginRight,
+      marginLeft = props.marginLeft,
+      onClick = props.onClick,
+      render = props.render;
+  var api = 'https://lpdg.herokuapp.com/parse/link';
+  var style = {
+    width: width,
+    maxWidth: maxWidth,
+    marginTop: marginTop,
+    marginBottom: marginBottom,
+    marginRight: marginRight,
+    marginLeft: marginLeft
+  };
+  React.useEffect(function () {
+    var fetchData = function fetchData() {
+      try {
+        var fetch = window.fetch;
+
+        if (isValidUrl(url)) {
+          setUrlValidation(true);
+        } else {
+          return Promise.resolve({});
+        }
+
+        setLoading(true);
+        return Promise.resolve(fetch(api, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            url: url
+          })
+        })).then(function (response) {
+          return Promise.resolve(response.json()).then(function (data) {
+            setPreviewData(data);
+            setLoading(false);
+          });
+        });
+      } catch (e) {
+        return Promise.reject(e);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  if (!isUrlValid) {
+    console.error('LinkPreview Error: You need to provide url in props to render the component');
+    return null;
+  }
+
+  if (render) {
+    return render({
+      loading: loading,
+      preview: preview
+    });
+  } else if (loading) {
+    return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-preview-section'],
+      style: style
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-description']
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles.domain
+    }, /*#__PURE__*/React__default.createElement("span", {
+      className: (styles['animated-background'])
+    }, "facebook.com")), /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-data-loader']
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: (styles['animated-background'])
+    }, "Shashank Shekhar"), /*#__PURE__*/React__default.createElement("div", {
+      className: (styles['animated-background'])
+    }, "This is some description"))), /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-image-loader']
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles.img
+    }))));
+  } else {
+    return /*#__PURE__*/React__default.createElement("div", null, /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-preview-section'],
+      style: style,
+      onClick: onClick
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-description']
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles.domain
+    }, /*#__PURE__*/React__default.createElement("span", {
+      className: styles['link-url']
+    }, preview.domain)), /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-data']
+    }, /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-title']
+    }, preview.title), /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-description']
+    }, preview.description))), /*#__PURE__*/React__default.createElement("div", {
+      className: styles['link-image']
+    }, preview.img && /*#__PURE__*/React__default.createElement("img", {
+      src: preview.img,
+      alt: preview.description
+    }))));
+  }
+}
+
+LinkPreview.defaultProps = {
+  onClick: function onClick() {},
+  width: '90%',
+  maxWidth: '700px',
+  marginTop: '18px',
+  marginBottom: '18px',
+  marginRight: 'auto',
+  marginLeft: 'auto'
+};
+LinkPreview.propTyps = {
+  url: isValidUrlProp,
+  onClick: PropTypes.func,
+  render: PropTypes.func,
+  width: PropTypes.string,
+  maxWidth: PropTypes.string,
+  marginTop: PropTypes.string,
+  marginBottom: PropTypes.string,
+  marginRight: PropTypes.string,
+  marginLeft: PropTypes.string
+};
+
+var dist = LinkPreview;
 
 var imageRendererClassName = 'sendbird-avatar-img';
 
@@ -4195,13 +4450,13 @@ var DefaultComponent = function DefaultComponent(_a) {
     iconHeight *= 0.575;
   }
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "sendbird-avatar-img--default",
     style: {
       width: width,
       height: height
     }
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.USER,
     fillColor: IconColors.CONTENT,
     width: iconWidth,
@@ -4212,7 +4467,7 @@ var DefaultComponent = function DefaultComponent(_a) {
 var _defaultComponent = function _defaultComponent(_a) {
   var width = _a.width,
       height = _a.height;
-  return /*#__PURE__*/React__default["default"].createElement(DefaultComponent, {
+  return /*#__PURE__*/React__default$1["default"].createElement(DefaultComponent, {
     width: width,
     height: height
   });
@@ -4238,7 +4493,7 @@ var AvatarInner = function AvatarInner(_a) {
   };
 
   if (typeof src === 'string') {
-    return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+    return /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
       className: imageRendererClassName,
       url: src,
       height: height,
@@ -4250,7 +4505,7 @@ var AvatarInner = function AvatarInner(_a) {
 
   if (src && src.length) {
     if (src.length === 1) {
-      return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      return /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
         className: imageRendererClassName,
         url: src[0],
         height: height,
@@ -4261,16 +4516,16 @@ var AvatarInner = function AvatarInner(_a) {
     }
 
     if (src.length === 2) {
-      return /*#__PURE__*/React__default["default"].createElement("div", {
+      return /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "sendbird-avatar--inner__two-child"
-      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      }, /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
         className: imageRendererClassName,
         url: src[0],
         height: height,
         width: width,
         alt: alt,
         defaultComponent: defaultComponent
-      }), /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      }), /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
         className: imageRendererClassName,
         url: src[1],
         height: height,
@@ -4281,25 +4536,25 @@ var AvatarInner = function AvatarInner(_a) {
     }
 
     if (src.length === 3) {
-      return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("div", {
+      return /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "sendbird-avatar--inner__three-child--upper"
-      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      }, /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
         className: imageRendererClassName,
         url: src[0],
         height: height,
         width: width,
         alt: alt,
         defaultComponent: defaultComponent
-      })), /*#__PURE__*/React__default["default"].createElement("div", {
+      })), /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "sendbird-avatar--inner__three-child--lower"
-      }, /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      }, /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
         className: imageRendererClassName,
         url: src[1],
         height: height,
         width: width,
         alt: alt,
         defaultComponent: defaultComponent
-      }), /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      }), /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
         className: imageRendererClassName,
         url: src[2],
         height: height,
@@ -4309,10 +4564,10 @@ var AvatarInner = function AvatarInner(_a) {
       })));
     }
 
-    return /*#__PURE__*/React__default["default"].createElement("div", {
+    return /*#__PURE__*/React__default$1["default"].createElement("div", {
       className: "sendbird-avatar--inner__four-child"
     }, src.slice(0, 4).map(function (i) {
-      return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+      return /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
         className: imageRendererClassName,
         url: i,
         height: height,
@@ -4325,7 +4580,7 @@ var AvatarInner = function AvatarInner(_a) {
   } // default img
 
 
-  return /*#__PURE__*/React__default["default"].createElement(ImageRenderer, {
+  return /*#__PURE__*/React__default$1["default"].createElement(ImageRenderer, {
     className: imageRendererClassName,
     url: "",
     height: height,
@@ -4348,7 +4603,7 @@ function Avatar(_a, ref) {
       height = _f === void 0 ? '56px' : _f,
       onClick = _a.onClick,
       customDefaultComponent = _a.customDefaultComponent;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: LocalizationContext.__spreadArray(LocalizationContext.__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-avatar'], false).join(' '),
     role: "button",
     ref: ref,
@@ -4359,7 +4614,7 @@ function Avatar(_a, ref) {
     onClick: onClick,
     onKeyDown: onClick,
     tabIndex: 0
-  }, /*#__PURE__*/React__default["default"].createElement(AvatarInner, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(AvatarInner, {
     src: src,
     width: width,
     height: height,
@@ -4368,7 +4623,7 @@ function Avatar(_a, ref) {
   }));
 }
 
-var Avatar$1 = /*#__PURE__*/React__default["default"].forwardRef(Avatar);
+var Avatar$1 = /*#__PURE__*/React__default$1["default"].forwardRef(Avatar);
 
 var FileViewerComponent = function FileViewerComponent(_ref) {
   var profileUrl = _ref.profileUrl,
@@ -4382,20 +4637,20 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
       onDelete = _ref.onDelete,
       createdAt = _ref.createdAt;
 
-  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+  var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet;
 
-  var _useState = React.useState(false),
+  var _useState = React$1.useState(false),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
       showToast = _useState2[0],
       setShowToast = _useState2[1];
 
-  var _useState3 = React.useState(false),
+  var _useState3 = React$1.useState(false),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
       isCaptionHidden = _useState4[0],
       setIsCaptionHidden = _useState4[1];
 
-  var contentRef = React.useRef();
+  var contentRef = React$1.useRef();
 
   var onMediaFocus = function onMediaFocus() {
     setIsCaptionHidden(true);
@@ -4412,70 +4667,70 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     }, 3000);
   };
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header__left"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header__left__avatar"
-  }, /*#__PURE__*/React__default["default"].createElement(Avatar$1, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Avatar$1, {
     height: "32px",
     width: "32px",
     src: profileUrl
-  })), /*#__PURE__*/React__default["default"].createElement("div", {
+  })), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header__left__metadata"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-fileviewer__header__left__sender-name",
     type: LabelTypography.H_3,
     color: LabelColors.ONBACKGROUND_1
-  }, userName), !isPreview && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, userName), !isPreview && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-fileviewer__header__left__createdat",
     type: LabelTypography.BODY_1,
     color: LabelColors.ONBACKGROUND_2
-  }, dateFns.format(createdAt, 'dd/MM/yyyy HH.mm')))), /*#__PURE__*/React__default["default"].createElement("div", {
+  }, dateFns.format(createdAt, 'dd/MM/yyyy HH.mm')))), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header__right"
-  }, !isPreview && isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
+  }, !isPreview && isSupportedFileView(type) && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header__right__actions"
-  }, /*#__PURE__*/React__default["default"].createElement("a", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("a", {
     className: "rogu-fileviewer__header__right__actions__download",
     rel: "noopener noreferrer",
     href: url,
     onClick: onDownloadClick
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.ROGU_DOWNLOAD,
     height: "24px",
     width: "24px"
-  })), onDelete && isByMe && /*#__PURE__*/React__default["default"].createElement("div", {
+  })), onDelete && isByMe && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header__right__actions__delete"
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.ROGU_DELETE,
     height: "24px",
     width: "24px",
     onClick: onDelete
-  }))), /*#__PURE__*/React__default["default"].createElement("div", {
+  }))), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__header__right__actions__close"
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.ROGU_CLOSE,
     height: "24px",
     width: "24px",
     onClick: onClose
-  })))), /*#__PURE__*/React__default["default"].createElement("div", {
+  })))), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__content"
   }, isVideo(type) &&
   /*#__PURE__*/
   // eslint-disable-next-line jsx-a11y/media-has-caption
-  React__default["default"].createElement("video", {
+  React__default$1["default"].createElement("video", {
     onFocus: onMediaFocus,
     onBlur: onMediaBlur,
     controls: true,
     className: "rogu-fileviewer__content__video",
     ref: contentRef
-  }, /*#__PURE__*/React__default["default"].createElement("source", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("source", {
     src: url,
     type: type
-  })), isImage(type) && /*#__PURE__*/React__default["default"].createElement("img", {
+  })), isImage(type) && /*#__PURE__*/React__default$1["default"].createElement("img", {
     onFocus: onMediaFocus,
     onBlur: onMediaBlur // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
     ,
@@ -4484,16 +4739,16 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     src: url,
     alt: "Uploaded by ".concat(userName),
     className: "rogu-fileviewer__content__img"
-  }), !isPreview && captionMsg && /*#__PURE__*/React__default["default"].createElement(TextMessageItemBody, {
+  }), !isPreview && captionMsg && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
     message: captionMsg,
     mode: "fileViewerCaption",
     isHidden: isCaptionHidden
-  }), !isSupportedFileView(type) && /*#__PURE__*/React__default["default"].createElement("div", {
+  }), !isSupportedFileView(type) && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-fileviewer__content__unsupported"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     type: LabelTypography.H_1,
     color: LabelColors.ONBACKGROUND_1
-  }, "Unsupported message"))), showToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+  }, "Unsupported message"))), showToast && /*#__PURE__*/React__default$1["default"].createElement(Toast, {
     message: stringSet.TOAST__DOWNLOAD
   }));
 };
@@ -4529,7 +4784,7 @@ function FileViewer(props) {
   var profileUrl = sender.profileUrl,
       _sender$nickname = sender.nickname,
       userName = _sender$nickname === void 0 ? '' : _sender$nickname;
-  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement(FileViewerComponent, {
+  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default$1["default"].createElement(FileViewerComponent, {
     profileUrl: profileUrl,
     userName: userName,
     type: type,
@@ -4563,6 +4818,38 @@ FileViewer.defaultProps = {
   isPreview: false
 };
 
+// https://davidwalsh.name/javascript-debounce-function
+
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function _debounce() {
+    var context = this; // eslint-disable-next-line prefer-rest-params
+
+    var args = arguments;
+
+    var later = function later() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+function getUrlFromWords(inputValue, setUrl) {
+  var inputValueArray = inputValue.split(/\s+/);
+  var url = inputValueArray.find(function (word) {
+    return index$1.isUrl(word);
+  });
+  var hasUrl = !!url;
+  return hasUrl && setUrl({
+    hasUrl: true,
+    text: url
+  });
+}
+
 var MAX_FILE_SIZE = 10000000; // 10MB;
 
 var TOAST_AUTO_HIDE_DURATION = 3000;
@@ -4572,9 +4859,11 @@ var noop$1 = function noop() {};
 
 var KeyCode = {
   SHIFT: 16,
-  ENTER: 13
+  ENTER: 13,
+  DELETE: 46,
+  BACKSPACE: 8
 };
-var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (props, ref) {
+var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function (props, ref) {
   var isEdit = props.isEdit,
       disabled = props.disabled,
       value = props.value,
@@ -4588,34 +4877,34 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
       onCancelEdit = props.onCancelEdit,
       onStartTyping = props.onStartTyping;
 
-  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+  var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet;
 
-  var fileInputRef = React.useRef(null);
+  var fileInputRef = React$1.useRef(null);
 
-  var _useState = React.useState(null),
+  var _useState = React$1.useState(null),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
       imagePreviewFile = _useState2[0],
       setImagePreviewFile = _useState2[1];
 
-  var _useState3 = React.useState(value),
+  var _useState3 = React$1.useState(value),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
       inputValue = _useState4[0],
       setInputValue = _useState4[1];
 
-  var _useState5 = React.useState(false),
+  var _useState5 = React$1.useState(false),
       _useState6 = LocalizationContext._slicedToArray(_useState5, 2),
       isShiftPressed = _useState6[0],
       setIsShiftPressed = _useState6[1]; // TODO: abstract the auto hide mechanism to the Toast component
 
 
-  var _useState7 = React.useState(false),
+  var _useState7 = React$1.useState(false),
       _useState8 = LocalizationContext._slicedToArray(_useState7, 2),
       showUploadErrorToast = _useState8[0],
       setShowUploadErrorToast = _useState8[1];
 
-  var autoHideTimer = React.useRef(null);
-  React.useEffect(function () {
+  var autoHideTimer = React$1.useRef(null);
+  React$1.useEffect(function () {
     if (showUploadErrorToast) {
       clearTimeout(autoHideTimer.current);
       autoHideTimer.current = setTimeout(function () {
@@ -4658,24 +4947,81 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
         if (MAX_HEIGHT < elem.scrollHeight) {
           elem.style.height = 'auto';
           elem.style.height = "".concat(MAX_HEIGHT, "px");
+          elem.style.borderRadius = '12px';
         } else {
           elem.style.height = 'auto';
           elem.style.height = "".concat(elem.scrollHeight, "px");
+          elem.style.borderRadius = '12px';
         }
       } else {
         elem.style.height = '';
       }
     } catch (error) {// error
     }
+  };
+
+  var _useState9 = React$1.useState({
+    hasUrl: false,
+    text: ''
+  }),
+      _useState10 = LocalizationContext._slicedToArray(_useState9, 2),
+      url = _useState10[0],
+      setUrl = _useState10[1];
+
+  var renderPreviewUrl = function renderPreviewUrl(_ref) {
+    var loading = _ref.loading,
+        preview = _ref.preview;
+    var message = {
+      sender: {
+        profileUrl: '',
+        nickname: ''
+      },
+      message: '',
+      ogMetaData: {
+        title: preview.title,
+        description: preview.description,
+        url: url.text,
+        defaultImage: {
+          url: preview.img,
+          alt: 'test'
+        }
+      },
+      createdAt: 0
+    };
+
+    if (loading) {
+      return /*#__PURE__*/React__default$1["default"].createElement(Label, {
+        className: "rogu-message-input__text-loading",
+        type: LabelTypography.BODY_1,
+        color: LabelColors.ONBACKGROUND_1
+      }, stringSet.LABEL_LOADING);
+    }
+
+    return /*#__PURE__*/React__default$1["default"].createElement(OGMessageItemBody, {
+      message: message,
+      isOnPreview: true,
+      onClosePreview: function onClosePreview() {
+        return setUrl({
+          hasUrl: false,
+          text: ''
+        });
+      }
+    });
   }; // after setHeight called twice, the textarea goes to the initialized
 
 
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     setHeight();
+    debounce(getUrlFromWords(inputValue, setUrl), 1000);
     return setHeight;
   }, [inputValue]);
 
   var sendMessage = function sendMessage() {
+    setUrl({
+      hasUrl: false,
+      text: ''
+    });
+
     if (imagePreviewFile !== null) {
       // In order to change the file name, we need to create a copy of File object
       var modifiedFile = new Blob([imagePreviewFile], {
@@ -4700,11 +5046,16 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
     }
   };
 
-  return /*#__PURE__*/React__default["default"].createElement(React__default["default"].Fragment, null, /*#__PURE__*/React__default["default"].createElement("form", {
-    className: ['rogu-message-input__container', isEdit ? 'rogu-message-input__edit' : '', imagePreviewFile ? 'rogu-message-input--preview' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' ')
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-message-input--wrapper"
+  }, url.hasUrl && index$1.isUrl(url.text) && /*#__PURE__*/React__default$1["default"].createElement(dist, {
+    url: url.text,
+    render: renderPreviewUrl
+  }), /*#__PURE__*/React__default$1["default"].createElement("form", {
+    className: ['rogu-message-input--container', isEdit ? 'rogu-message-input__edit' : '', imagePreviewFile ? 'rogu-message-input--preview' : '', disabled ? 'rogu-message-input-form__disabled ' : ''].join(' ')
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: ['rogu-message-input', disabled ? 'rogu-message-input__disabled' : ''].join(' ')
-  }, /*#__PURE__*/React__default["default"].createElement("textarea", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("textarea", {
     className: "rogu-message-input--textarea",
     disabled: disabled,
     ref: ref,
@@ -4729,12 +5080,19 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
       if (e.keyCode === KeyCode.SHIFT) {
         setIsShiftPressed(false);
       }
+
+      if (e.keyCode === KeyCode.BACKSPACE || e.keyCode === KeyCode.DELETE) {
+        setUrl({
+          hasUrl: false,
+          text: ''
+        });
+      }
     }
-  }), !inputValue && /*#__PURE__*/React__default["default"].createElement(Label, {
+  }), !inputValue && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-input--placeholder",
     type: LabelTypography.BODY_1,
     color: LabelColors.ONBACKGROUND_3
-  }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && !imagePreviewFile && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
+  }, placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER), !isEdit && !imagePreviewFile && /*#__PURE__*/React__default$1["default"].createElement(index$1.IconButton, {
     className: "rogu-message-input--attach",
     height: "32px",
     width: "32px",
@@ -4742,35 +5100,35 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
       // todo: clear previous input
       fileInputRef.current.click();
     }
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.ATTACH,
     fillColor: IconColors.CONTENT_INVERSE,
     width: "20px",
     height: "20px"
-  }), /*#__PURE__*/React__default["default"].createElement("input", {
+  }), /*#__PURE__*/React__default$1["default"].createElement("input", {
     accept: getMimeTypesString(),
     className: "rogu-message-input--attach-input",
     type: "file",
     ref: fileInputRef,
     onChange: handleUploadFile(onFileUpload)
-  })), !isEdit && /*#__PURE__*/React__default["default"].createElement(index$1.IconButton, {
+  })), !isEdit && /*#__PURE__*/React__default$1["default"].createElement(index$1.IconButton, {
     className: index$1.getClassName(['rogu-message-input--send', disabled ? 'rogu-message-input--send-disabled' : '']),
     height: "36px",
     width: "36px",
     onClick: sendMessage
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.SEND,
     fillColor: IconColors.WHITE,
     width: "16px",
     height: "16px"
-  }))), isEdit && /*#__PURE__*/React__default["default"].createElement("div", {
+  }))), isEdit && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-message-input--edit-action"
-  }, /*#__PURE__*/React__default["default"].createElement(index$1.Button, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(index$1.Button, {
     className: "rogu-message-input--edit-action__cancel",
     type: index$1.ButtonTypes.SECONDARY,
     size: index$1.ButtonSizes.SMALL,
     onClick: onCancelEdit
-  }, stringSet.BUTTON__CANCEL), /*#__PURE__*/React__default["default"].createElement(index$1.Button, {
+  }, stringSet.BUTTON__CANCEL), /*#__PURE__*/React__default$1["default"].createElement(index$1.Button, {
     className: "rogu-message-input--edit-action__save",
     type: index$1.ButtonTypes.PRIMARY,
     size: index$1.ButtonSizes.SMALL,
@@ -4782,7 +5140,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
         });
       }
     }
-  }, stringSet.BUTTON__SAVE))), imagePreviewFile !== null && /*#__PURE__*/React__default["default"].createElement(FileViewerComponent, {
+  }, stringSet.BUTTON__SAVE))), imagePreviewFile !== null && /*#__PURE__*/React__default$1["default"].createElement(FileViewerComponent, {
     captionMsg: "TODO: caption here",
     isByMe: true,
     isPreview: true,
@@ -4794,7 +5152,7 @@ var MessageInput = /*#__PURE__*/React__default["default"].forwardRef(function (p
       return setImagePreviewFile(null);
     },
     onDelete: function onDelete() {}
-  }), showUploadErrorToast && /*#__PURE__*/React__default["default"].createElement(Toast, {
+  }), showUploadErrorToast && /*#__PURE__*/React__default$1["default"].createElement(Toast, {
     message: stringSet.TOAST__MAX_FILE_SIZE_ERROR
   }));
 });
@@ -4823,76 +5181,6 @@ MessageInput.defaultProps = {
   onFileUpload: noop$1,
   onCancelEdit: noop$1,
   onStartTyping: noop$1
-};
-
-var IconButton = /*#__PURE__*/React__default["default"].forwardRef(function (props, ref) {
-  var className = props.className,
-      children = props.children,
-      disabled = props.disabled,
-      width = props.width,
-      height = props.height,
-      type = props.type,
-      _onClick = props.onClick,
-      _onBlur = props.onBlur,
-      style = props.style;
-
-  var _useState = React.useState(''),
-      _useState2 = LocalizationContext._slicedToArray(_useState, 2),
-      pressed = _useState2[0],
-      setPressed = _useState2[1];
-
-  return (
-    /*#__PURE__*/
-    // eslint-disable-next-line react/button-has-type
-    React__default["default"].createElement("button", {
-      className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['sendbird-iconbutton', pressed]).join(' '),
-      disabled: disabled,
-      ref: ref,
-      type: type // eslint-disable-line react/button-has-type
-      ,
-      style: LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, style), {}, {
-        height: height,
-        width: width
-      }),
-      onClick: function onClick(e) {
-        if (disabled) {
-          return;
-        }
-
-        setPressed('sendbird-iconbutton--pressed');
-
-        _onClick(e);
-      },
-      onBlur: function onBlur(e) {
-        setPressed('');
-
-        _onBlur(e);
-      }
-    }, /*#__PURE__*/React__default["default"].createElement("span", {
-      className: "sendbird-iconbutton__inner"
-    }, children))
-  );
-});
-IconButton.propTypes = {
-  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
-  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].element), PropTypes__default["default"].any]).isRequired,
-  disabled: PropTypes__default["default"].bool,
-  width: PropTypes__default["default"].string,
-  height: PropTypes__default["default"].string,
-  type: PropTypes__default["default"].string,
-  onClick: PropTypes__default["default"].func,
-  onBlur: PropTypes__default["default"].func,
-  style: PropTypes__default["default"].shape({})
-};
-IconButton.defaultProps = {
-  className: '',
-  disabled: false,
-  width: '56px',
-  height: '56px',
-  type: 'button',
-  onClick: function onClick() {},
-  onBlur: function onBlur() {},
-  style: {}
 };
 
 var Type = {
@@ -4945,12 +5233,12 @@ function Button(_ref) {
       disabled = _ref.disabled,
       onClick = _ref.onClick;
   var injectingClassNames = [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-button', disabled ? 'rogu-button__disabled' : '', changeTypeToClassName(type), changeSizeToClassName(size)]).join(' ');
-  return /*#__PURE__*/React__default["default"].createElement("button", {
+  return /*#__PURE__*/React__default$1["default"].createElement("button", {
     className: injectingClassNames,
     type: "button",
     onClick: onClick,
     disabled: disabled
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-button__text",
     type: LabelTypography.BODY_3,
     color: LabelColors.ONCONTENT_1
@@ -4976,9 +5264,9 @@ Button.defaultProps = {
 
 var ModalHeader = function ModalHeader(_ref) {
   var titleText = _ref.titleText;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-modal__header"
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-modal__title",
     type: LabelTypography.H_3,
     color: LabelColors.ONBACKGROUND_1
@@ -4989,7 +5277,7 @@ ModalHeader.propTypes = {
 };
 var ModalBody = function ModalBody(_ref2) {
   var children = _ref2.children;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-modal__body"
   }, children);
 };
@@ -5006,17 +5294,17 @@ var ModalFooter = function ModalFooter(_ref3) {
       disabled = _ref3$disabled === void 0 ? false : _ref3$disabled,
       submitText = _ref3.submitText;
 
-  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+  var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet;
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-modal__footer"
-  }, /*#__PURE__*/React__default["default"].createElement(Button, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Button, {
     className: "rogu-modal-button",
     type: ButtonTypes.SECONDARY,
     disabled: disabled,
     onClick: onSubmit
-  }, submitText), /*#__PURE__*/React__default["default"].createElement(Button, {
+  }, submitText), /*#__PURE__*/React__default$1["default"].createElement(Button, {
     className: "rogu-modal-button",
     type: ButtonTypes.PRIMARY,
     onClick: onCancel
@@ -5041,29 +5329,29 @@ function Modal(props) {
       titleText = props.titleText,
       hideFooter = props.hideFooter,
       isWithClose = props.isWithClose;
-  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/reactDom.createPortal( /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-modal"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-modal__content"
-  }, /*#__PURE__*/React__default["default"].createElement(ModalHeader, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(ModalHeader, {
     titleText: titleText
-  }), /*#__PURE__*/React__default["default"].createElement(ModalBody, null, children), !hideFooter && /*#__PURE__*/React__default["default"].createElement(ModalFooter, {
+  }), /*#__PURE__*/React__default$1["default"].createElement(ModalBody, null, children), !hideFooter && /*#__PURE__*/React__default$1["default"].createElement(ModalFooter, {
     disabled: disabled,
     onCancel: onCancel,
     onSubmit: onSubmit,
     submitText: submitText
-  }), isWithClose && /*#__PURE__*/React__default["default"].createElement("div", {
+  }), isWithClose && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-modal__close"
-  }, /*#__PURE__*/React__default["default"].createElement(IconButton, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
     width: "32px",
     height: "32px",
     onClick: onCancel
-  }, /*#__PURE__*/React__default["default"].createElement(Icon, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.ROGU_CLOSE,
     fillColor: IconColors.DEFAULT,
     width: "24px",
     height: "24px"
-  })))), /*#__PURE__*/React__default["default"].createElement("div", {
+  })))), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-modal__backdrop"
   })), document.getElementById(index$1.MODAL_ROOT));
 }
@@ -5089,16 +5377,16 @@ var RemoveMessage = function RemoveMessage(props) {
   var onCloseModal = props.onCloseModal,
       onDeleteMessage = props.onDeleteMessage;
 
-  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+  var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet;
 
-  return /*#__PURE__*/React__default["default"].createElement(Modal, {
+  return /*#__PURE__*/React__default$1["default"].createElement(Modal, {
     onCancel: onCloseModal,
     onSubmit: onDeleteMessage,
     submitText: "Delete",
     titleText: stringSet.ROGU__MODAL__DELETE_MESSAGE__TITLE,
     isWithClose: false
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-delete-message__subtitle",
     type: LabelTypography.BODY_3,
     color: LabelColors.ONBACKGROUND_1
@@ -5131,29 +5419,29 @@ function MessageHoc(_ref) {
   var _message$sender = message.sender,
       sender = _message$sender === void 0 ? {} : _message$sender;
 
-  var _useState = React.useState(false),
+  var _useState = React$1.useState(false),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
       showEdit = _useState2[0],
       setShowEdit = _useState2[1];
 
-  var _useState3 = React.useState(false),
+  var _useState3 = React$1.useState(false),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
       showRemove = _useState4[0],
       setShowRemove = _useState4[1];
 
-  var _useState5 = React.useState(false),
+  var _useState5 = React$1.useState(false),
       _useState6 = LocalizationContext._slicedToArray(_useState5, 2),
       showFileViewer = _useState6[0],
       setShowFileViewer = _useState6[1];
 
-  var _useState7 = React.useState(false),
+  var _useState7 = React$1.useState(false),
       _useState8 = LocalizationContext._slicedToArray(_useState7, 2),
       isAnimated = _useState8[0],
       setIsAnimated = _useState8[1];
 
-  var editMessageInputRef = React.useRef(null);
-  var useMessageScrollRef = React.useRef(null);
-  React.useLayoutEffect(function () {
+  var editMessageInputRef = React$1.useRef(null);
+  var useMessageScrollRef = React$1.useRef(null);
+  React$1.useLayoutEffect(function () {
     if (highLightedMessageId === message.messageId) {
       if (useMessageScrollRef && useMessageScrollRef.current) {
         useMessageScrollRef.current.scrollIntoView({
@@ -5168,7 +5456,7 @@ function MessageHoc(_ref) {
       setIsAnimated(false);
     }
   }, [highLightedMessageId, useMessageScrollRef.current, message.messageId]);
-  var RenderedMessage = React.useMemo(function () {
+  var RenderedMessage = React$1.useMemo(function () {
     if (renderCustomMessage) {
       return renderCustomMessage(message, currentGroupChannel, chainTop, chainBottom); // TODO: Let's change this to object type on next major version up
       // and add params 'hasSeparator' and 'menuDisabled', scrollToMessage
@@ -5179,16 +5467,16 @@ function MessageHoc(_ref) {
   var isByMe = userId === sender.userId || message.requestState === 'pending' || message.requestState === 'failed';
 
   if (RenderedMessage) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
+    return /*#__PURE__*/React__default$1["default"].createElement("div", {
       ref: useMessageScrollRef,
       className: "\n          sendbird-msg-hoc sendbird-msg--scroll-ref\n          ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n        ")
-    }, /*#__PURE__*/React__default["default"].createElement(RenderedMessage, {
+    }, /*#__PURE__*/React__default$1["default"].createElement(RenderedMessage, {
       message: message
     }));
   }
 
   if (showEdit) {
-    return /*#__PURE__*/React__default["default"].createElement(MessageInput, {
+    return /*#__PURE__*/React__default$1["default"].createElement(MessageInput, {
       isEdit: true,
       disabled: editDisabled,
       ref: editMessageInputRef,
@@ -5201,13 +5489,13 @@ function MessageHoc(_ref) {
     });
   }
 
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     ref: useMessageScrollRef,
     className: "\n        sendbird-msg-hoc sendbird-msg--scroll-ref\n        ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n      "),
     style: {
       marginBottom: '2px'
     }
-  }, /*#__PURE__*/React__default["default"].createElement(MessageContent, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(MessageContent, {
     className: "sendbird-message-hoc__message-content",
     userId: userId,
     scrollToMessage: scrollToMessage,
@@ -5225,14 +5513,14 @@ function MessageHoc(_ref) {
     showFileViewer: setShowFileViewer,
     resendMessage: resendMessage,
     toggleReaction: toggleReaction
-  }), showRemove && /*#__PURE__*/React__default["default"].createElement(RemoveMessage, {
+  }), showRemove && /*#__PURE__*/React__default$1["default"].createElement(RemoveMessage, {
     onCloseModal: function onCloseModal() {
       return setShowRemove(false);
     },
     onDeleteMessage: function onDeleteMessage() {
       deleteMessage(message);
     }
-  }), showFileViewer && /*#__PURE__*/React__default["default"].createElement(FileViewer, {
+  }), showFileViewer && /*#__PURE__*/React__default$1["default"].createElement(FileViewer, {
     onClose: function onClose() {
       return setShowFileViewer(false);
     },
@@ -5319,10 +5607,10 @@ var getDateSeparatorDifference = function getDateSeparatorDifference(createdAt, 
 function DateSeparator(_a) {
   var className = _a.className,
       createdAt = _a.createdAt;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, "rogu-date-separator"])
-  }, /*#__PURE__*/React__default["default"].createElement(Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-date-separator__content",
     type: LabelTypography.CAPTION_1
   }, getDateSeparatorDifference(createdAt, {
@@ -5451,21 +5739,21 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
           onClickScrollBot = _this$props2.onClickScrollBot;
 
       if (allMessages.length < 1) {
-        return /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
+        return /*#__PURE__*/React__default$1["default"].createElement(index$2.PlaceHolder, {
           className: "rogu-conversation__no-messages",
           type: index$2.PlaceHolderTypes.NO_MESSAGES
         });
       }
 
-      return /*#__PURE__*/React__default["default"].createElement("div", {
+      return /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-conversation__messages"
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
+      }, /*#__PURE__*/React__default$1["default"].createElement("div", {
         ref: scrollRef,
         className: "rogu-conversation__scroll-container",
         onScroll: this.onScroll
-      }, /*#__PURE__*/React__default["default"].createElement("div", {
+      }, /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-conversation__padding"
-      }), /*#__PURE__*/React__default["default"].createElement("div", {
+      }), /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-conversation__messages-padding"
       }, Array.from(groupMessagesByDate(allMessages).values()).map(function (messages, i) {
         var _messages$;
@@ -5474,9 +5762,9 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
         return (
           /*#__PURE__*/
           // eslint-disable-next-line react/no-array-index-key
-          React__default["default"].createElement(React__default["default"].Fragment, {
+          React__default$1["default"].createElement(React__default$1["default"].Fragment, {
             key: i
-          }, /*#__PURE__*/React__default["default"].createElement(DateSeparator, {
+          }, /*#__PURE__*/React__default$1["default"].createElement(DateSeparator, {
             createdAt: currentCreatedAt
           }), messages.map(function (m, idx) {
             var previousMessage = messages[idx - 1];
@@ -5488,7 +5776,7 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
                 chainBottom = _ref6[1];
 
             if (renderChatItem) {
-              return /*#__PURE__*/React__default["default"].createElement("div", {
+              return /*#__PURE__*/React__default$1["default"].createElement("div", {
                 key: m.messageId || m.reqId,
                 className: "sendbird-msg--scroll-ref"
               }, renderChatItem({
@@ -5507,7 +5795,7 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
               }));
             }
 
-            return /*#__PURE__*/React__default["default"].createElement(MessageHoc, {
+            return /*#__PURE__*/React__default$1["default"].createElement(MessageHoc, {
               highLightedMessageId: highLightedMessageId,
               renderCustomMessage: renderCustomMessage,
               key: m.messageId || m.reqId,
@@ -5533,13 +5821,13 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
             });
           }))
         );
-      }))), showScrollBot && /*#__PURE__*/React__default["default"].createElement("div", {
+      }))), showScrollBot && /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-conversation__scroll-bottom-button",
         onClick: onClickScrollBot,
         onKeyDown: onClickScrollBot,
         tabIndex: 0,
         role: "button"
-      }, /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {
+      }, /*#__PURE__*/React__default$1["default"].createElement(index$2.Icon, {
         width: "24px",
         height: "24px",
         type: index$2.IconTypes.CHEVRON_DOWN,
@@ -5549,7 +5837,7 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
   }]);
 
   return ConversationScroll;
-}(React.Component);
+}(React$1.Component);
 ConversationScroll.propTypes = {
   // https://stackoverflow.com/a/52646941
   scrollRef: PropTypes__default["default"].shape({
@@ -5616,7 +5904,7 @@ function Notification(_ref) {
       time = _ref.time,
       onClick = _ref.onClick;
 
-  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+  var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet; // ex: time = '13.46 14 December 2021', then split into array
 
 
@@ -5628,14 +5916,14 @@ function Notification(_ref) {
   return (
     /*#__PURE__*/
     // eslint-disable-next-line
-    React__default["default"].createElement("div", {
+    React__default$1["default"].createElement("div", {
       className: "rogu-notification",
       onClick: onClick
-    }, /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
+    }, /*#__PURE__*/React__default$1["default"].createElement(index$2.Label, {
       className: "rogu-notification__text",
       color: index$2.LabelColors.ONCONTENT_1,
       type: index$2.LabelTypography.CAPTION_2
-    }, "".concat(count, " "), stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE, " ".concat(timeArray.join(' '))), /*#__PURE__*/React__default["default"].createElement(index$2.Icon, {
+    }, "".concat(count, " "), stringSet.CHANNEL__MESSAGE_LIST__NOTIFICATION__NEW_MESSAGE, " ".concat(timeArray.join(' '))), /*#__PURE__*/React__default$1["default"].createElement(index$2.Icon, {
       width: "24px",
       height: "24px",
       type: index$2.IconTypes.CHEVRON_DOWN,
@@ -5654,10 +5942,10 @@ Notification.defaultProps = {
 };
 
 var FrozenNotification = function FrozenNotification() {
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "sendbird-notification sendbird-notification--frozen"
-  }, /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(index$2.Label, {
     className: "sendbird-notification__text",
     type: index$2.LabelTypography.CAPTION_2
   }, stringSet.CHANNEL_FROZEN));
@@ -5666,7 +5954,7 @@ var FrozenNotification = function FrozenNotification() {
 var TypingIndicatorText = function TypingIndicatorText(_ref) {
   var members = _ref.members;
 
-  var _useContext = React.useContext(LocalizationContext.LocalizationContext),
+  var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet;
 
   if (!members || members.length === 0) {
@@ -5689,17 +5977,17 @@ function TypingIndicator(_ref2) {
       sb = _ref2.sb,
       logger = _ref2.logger;
 
-  var _useState = React.useState(LocalizationContext.uuidv4()),
+  var _useState = React$1.useState(LocalizationContext.uuidv4()),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
       handlerId = _useState2[0],
       setHandlerId = _useState2[1];
 
-  var _useState3 = React.useState([]),
+  var _useState3 = React$1.useState([]),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
       typingMembers = _useState4[0],
       setTypingMembers = _useState4[1];
 
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     if (sb && sb.ChannelHandler) {
       sb.removeChannelHandler(handlerId);
       var newHandlerId = LocalizationContext.uuidv4();
@@ -5726,10 +6014,10 @@ function TypingIndicator(_ref2) {
       }
     };
   }, [channelUrl]);
-  return /*#__PURE__*/React__default["default"].createElement(Label, {
+  return /*#__PURE__*/React__default$1["default"].createElement(Label, {
     type: LabelTypography.TYPING_INDICATOR,
     color: LabelColors.ONBACKGROUND_2
-  }, /*#__PURE__*/React__default["default"].createElement(TypingIndicatorText, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(TypingIndicatorText, {
     members: typingMembers
   }));
 }
@@ -5756,7 +6044,7 @@ var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
       renderMessageInput = _a.renderMessageInput,
       isOnline = _a.isOnline,
       initialized = _a.initialized;
-  var stringSet = React.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
   var disabled = !initialized || isDisabledBecauseFrozen(channel) || isDisabledBecauseMuted(channel) || !isOnline;
   var isOperator$1 = isOperator(channel);
   var isBroadcast = channel.isBroadcast; // custom message
@@ -5775,7 +6063,7 @@ var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
   } // other conditions
 
 
-  return /*#__PURE__*/React__default["default"].createElement(MessageInput, {
+  return /*#__PURE__*/React__default$1["default"].createElement(MessageInput, {
     placeholder: isDisabledBecauseFrozen(channel) && stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__DISABLED || isDisabledBecauseMuted(channel) && stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER__MUTED,
     nickname: user.nickname || '',
     profileUrl: user.profileUrl || '',
@@ -5789,7 +6077,7 @@ var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
   });
 };
 
-var MessageInputWrapper$1 = /*#__PURE__*/React__default["default"].forwardRef(MessageInputWrapper);
+var MessageInputWrapper$1 = /*#__PURE__*/React__default$1["default"].forwardRef(MessageInputWrapper);
 
 var noop = function noop() {};
 
@@ -5835,31 +6123,31 @@ var ConversationPanel = function ConversationPanel(props) {
     console.warn('messageListQuery has been deprecated, please use messageListParams instead');
   }
 
-  var _useState = React.useState(startingPoint),
+  var _useState = React$1.useState(startingPoint),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
       intialTimeStamp = _useState2[0],
       setIntialTimeStamp = _useState2[1];
 
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     setIntialTimeStamp(startingPoint);
   }, [startingPoint, channelUrl]);
 
-  var _useState3 = React.useState(highlightedMessage),
+  var _useState3 = React$1.useState(highlightedMessage),
       _useState4 = LocalizationContext._slicedToArray(_useState3, 2),
       highLightedMessageId = _useState4[0],
       setHighLightedMessageId = _useState4[1];
 
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     setHighLightedMessageId(highlightedMessage);
   }, [highlightedMessage]);
   var userFilledMessageListQuery = queries.messageListParams;
 
-  var _useReducer = React.useReducer(reducer, messagesInitialState),
+  var _useReducer = React$1.useReducer(reducer, messagesInitialState),
       _useReducer2 = LocalizationContext._slicedToArray(_useReducer, 2),
       messagesStore = _useReducer2[0],
       messagesDispatcher = _useReducer2[1];
 
-  var scrollRef = React.useRef(null);
+  var scrollRef = React$1.useRef(null);
   var allMessages = messagesStore.allMessages,
       loading = messagesStore.loading,
       initialized = messagesStore.initialized,
@@ -5884,13 +6172,13 @@ var ConversationPanel = function ConversationPanel(props) {
   var userDefinedRenderProfile = renderUserProfile || config.renderUserProfile;
   var showScrollBot = hasMoreToBottom; // TODO: emojiAllMap, emoijAllList, nicknamesMap => should be moved to messagesStore
 
-  var emojiAllMap = React.useMemo(function () {
+  var emojiAllMap = React$1.useMemo(function () {
     return usingReaction ? getAllEmojisMapFromEmojiContainer(emojiContainer) : new Map();
   }, [emojiContainer]);
-  var emojiAllList = React.useMemo(function () {
+  var emojiAllList = React$1.useMemo(function () {
     return usingReaction ? getAllEmojisFromEmojiContainer(emojiContainer) : [];
   }, [emojiContainer]);
-  var nicknamesMap = React.useMemo(function () {
+  var nicknamesMap = React$1.useMemo(function () {
     return usingReaction ? getNicknamesMapFromMembers(currentGroupChannel.members) : new Map();
   }, [currentGroupChannel.members]); // Scrollup is default scroll for channel
 
@@ -5973,7 +6261,7 @@ var ConversationPanel = function ConversationPanel(props) {
     messagesDispatcher: messagesDispatcher
   }); // handles API calls from withSendbird
 
-  React.useEffect(function () {
+  React$1.useEffect(function () {
     var subScriber = pubSubHandler(channelUrl, pubSub, messagesDispatcher);
     return function () {
       pubSubHandleRemover(subScriber);
@@ -6039,25 +6327,25 @@ var ConversationPanel = function ConversationPanel(props) {
       onSendFileMessage = _useSendFileMessageCa2[0];
 
   if (!channelUrl) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
+    return /*#__PURE__*/React__default$1["default"].createElement("div", {
       className: "rogu-conversation"
-    }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
+    }, /*#__PURE__*/React__default$1["default"].createElement(index$2.PlaceHolder, {
       type: index$2.PlaceHolderTypes.NO_CHANNELS
     }));
   }
 
   if (isInvalid) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
+    return /*#__PURE__*/React__default$1["default"].createElement("div", {
       className: "rogu-conversation"
-    }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
+    }, /*#__PURE__*/React__default$1["default"].createElement(index$2.PlaceHolder, {
       type: index$2.PlaceHolderTypes.WRONG
     }));
   }
 
   if (sdkError) {
-    return /*#__PURE__*/React__default["default"].createElement("div", {
+    return /*#__PURE__*/React__default$1["default"].createElement("div", {
       className: "rogu-conversation"
-    }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
+    }, /*#__PURE__*/React__default$1["default"].createElement(index$2.PlaceHolder, {
       type: index$2.PlaceHolderTypes.WRONG,
       retryToConnect: function retryToConnect() {
         logger.info('Channel: reconnecting');
@@ -6066,14 +6354,14 @@ var ConversationPanel = function ConversationPanel(props) {
     }));
   }
 
-  return /*#__PURE__*/React__default["default"].createElement(index$1.UserProfileProvider, {
+  return /*#__PURE__*/React__default$1["default"].createElement(index$1.UserProfileProvider, {
     className: "rogu-conversation",
     disableUserProfile: userDefinedDisableUserProfile,
     renderUserProfile: userDefinedRenderProfile
   }, renderChatHeader ? renderChatHeader({
     channel: currentGroupChannel,
     user: user
-  }) : /*#__PURE__*/React__default["default"].createElement(Channel.ChatHeader, {
+  }) : /*#__PURE__*/React__default$1["default"].createElement(Channel.ChatHeader, {
     theme: theme,
     currentGroupChannel: currentGroupChannel,
     currentUser: user,
@@ -6082,7 +6370,7 @@ var ConversationPanel = function ConversationPanel(props) {
     onActionClick: onChatHeaderActionClick,
     subTitle: currentGroupChannel.members && currentGroupChannel.members.length !== 2,
     isMuted: false
-  }), isFrozen && /*#__PURE__*/React__default["default"].createElement(FrozenNotification, null), unreadCount > 0 && /*#__PURE__*/React__default["default"].createElement(Notification, {
+  }), isFrozen && /*#__PURE__*/React__default$1["default"].createElement(FrozenNotification, null), unreadCount > 0 && /*#__PURE__*/React__default$1["default"].createElement(Notification, {
     count: unreadCount,
     onClick: function onClick() {
       if (intialTimeStamp) {
@@ -6100,11 +6388,11 @@ var ConversationPanel = function ConversationPanel(props) {
       }
     },
     time: unreadSince
-  }), loading ? /*#__PURE__*/React__default["default"].createElement("div", {
+  }), loading ? /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-conversation"
-  }, /*#__PURE__*/React__default["default"].createElement(index$2.PlaceHolder, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(index$2.PlaceHolder, {
     type: index$2.PlaceHolderTypes.LOADING
-  })) : /*#__PURE__*/React__default["default"].createElement(ConversationScroll, {
+  })) : /*#__PURE__*/React__default$1["default"].createElement(ConversationScroll, {
     swapParams: sdk && sdk.getErrorFirstCallback && sdk.getErrorFirstCallback(),
     highLightedMessageId: highLightedMessageId,
     userId: userId,
@@ -6136,15 +6424,15 @@ var ConversationPanel = function ConversationPanel(props) {
     messagesDispatcher: messagesDispatcher,
     currentGroupChannel: currentGroupChannel,
     memoizedEmojiListItems: memoizedEmojiListItems
-  }), /*#__PURE__*/React__default["default"].createElement("div", {
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-conversation__footer"
-  }, /*#__PURE__*/React__default["default"].createElement("div", {
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-conversation__typing-indicator"
-  }, /*#__PURE__*/React__default["default"].createElement(TypingIndicator, {
+  }, /*#__PURE__*/React__default$1["default"].createElement(TypingIndicator, {
     channelUrl: channelUrl,
     sb: sdk,
     logger: logger
-  })), /*#__PURE__*/React__default["default"].createElement(MessageInputWrapper$1, {
+  })), /*#__PURE__*/React__default$1["default"].createElement(MessageInputWrapper$1, {
     channel: currentGroupChannel,
     user: user,
     ref: messageInputRef,
@@ -6153,7 +6441,7 @@ var ConversationPanel = function ConversationPanel(props) {
     renderMessageInput: renderMessageInput,
     isOnline: isOnline,
     initialized: initialized
-  }), !isOnline && /*#__PURE__*/React__default["default"].createElement(Channel.ConnectionStatus, {
+  }), !isOnline && /*#__PURE__*/React__default$1["default"].createElement(Channel.ConnectionStatus, {
     sdkInit: sdkInit,
     sb: sdk,
     logger: logger
