@@ -1,27 +1,27 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-f4ed5c8e.js');
+var LocalizationContext = require('./LocalizationContext-aeb8330f.js');
 var React = require('react');
 var PropTypes = require('prop-types');
 var SendbirdProvider = require('./SendbirdProvider.js');
 var ChannelList = require('./ChannelList.js');
-var Channel = require('./index-5f0ae90a.js');
+var Channel = require('./index-77ce3e89.js');
 var ChannelSettings = require('./ChannelSettings.js');
 var MessageSearch = require('./MessageSearch.js');
-var index = require('./index-ecbd2010.js');
-var index$1 = require('./index-6843aded.js');
+var index = require('./index-399e777d.js');
+var index$1 = require('./index-86dae48a.js');
 require('sendbird');
-require('./actionTypes-604dc932.js');
+require('./actionTypes-040a9c86.js');
 require('css-vars-ponyfill');
-require('./index-2df8a2d4.js');
-require('./utils-7e77cde3.js');
-require('./LeaveChannel-2313bc18.js');
-require('./index-d30dfd58.js');
-require('./index-95a7a1b7.js');
-require('./index-435abe5e.js');
-require('./index-5e2f1c5c.js');
+require('./index-8c0a854b.js');
+require('./utils-1ee869fc.js');
+require('./LeaveChannel-817321f8.js');
+require('./index-ce91c7db.js');
+require('./index-fbb1f66e.js');
+require('./index-e9eef624.js');
+require('./index-cb9a1a10.js');
 require('react-dom');
-require('./index-fc02b124.js');
+require('./index-73c5dd42.js');
 require('date-fns');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
