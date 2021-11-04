@@ -45,8 +45,8 @@ export default function TextMessageItemBody({
   const [clampState, setClampState] = useState<ClampType>("init");
   const textRef = useRef<HTMLDivElement>(null);
 
-  let {sender, parentMessage, originalMessage} = isRepliedMessage && destructureRepliedMessage(message);
-  let msg = isRepliedMessage ? originalMessage : message;
+  const {sender, parentMessage, originalMessage} = isRepliedMessage && destructureRepliedMessage(message);
+  const msg = isRepliedMessage ? originalMessage : message;
   
 
   useEffect(() => {
@@ -60,9 +60,9 @@ export default function TextMessageItemBody({
 
   function handleExpand() {
     setClampState("expanded");
-  };
+  }
 
-  let renderRepliedMessage = (sender, parentMessage) => {
+  const renderRepliedMessage = (sender, parentMessage) => {
     return <div className="rogu-text-message-item-body__reply-container" onClick={onScrollToMessage} >
       <Label
         className="rogu-message-content__sender-name"
