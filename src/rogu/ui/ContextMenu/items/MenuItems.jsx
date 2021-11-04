@@ -27,7 +27,7 @@ export default class MenuItems extends Component {
     const { parentContainRef = {} } = this.props;
     const { current } = parentContainRef;
     if (parentContainRef && current) {
-      current.classList.add('sendbird-icon--pressed');
+      current.classList.add('rogu-icon--pressed');
     }
   }
 
@@ -35,7 +35,7 @@ export default class MenuItems extends Component {
     const { parentContainRef = {} } = this.props;
     const { current } = parentContainRef;
     if (parentContainRef && current) {
-      current.classList.remove('sendbird-icon--pressed');
+      current.classList.remove('rogu-icon--pressed');
     }
   }
 
