@@ -28,15 +28,15 @@ type structureRepliedMessage = {
 
 const QUOTE_FORMAT = ">";
 
-let isQuoteFormat = (word:string):boolean => {
+const isQuoteFormat = (word:string):boolean => {
   return word.charAt(0) === QUOTE_FORMAT    
 };
 
 export const destructureRepliedMessage = (message:string):structureRepliedMessage => {
-  let repliedMessage = message.split("\n").filter(word => isQuoteFormat(word)).map(word => word.substr(1));
-  let [sender, ...rest] = repliedMessage;
-  let parentMessage = rest.join("\n");
-  let originalMessage = message.split("\n").filter(word => !isQuoteFormat(word)).join("\n");
+  const repliedMessage = message.split("\n").filter(word => isQuoteFormat(word)).map(word => word.substr(1));
+  const [sender, ...rest] = repliedMessage;
+  const parentMessage = rest.join("\n");
+  const originalMessage = message.split("\n").filter(word => !isQuoteFormat(word)).join("\n");
   return {
     sender: sender,
     parentMessage,

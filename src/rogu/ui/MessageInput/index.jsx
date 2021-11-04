@@ -9,7 +9,6 @@ import { getClassName, isUrl } from '../../../utils';
 import IconButton from '../../../ui/IconButton';
 import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
 
-
 import { getMimeTypesString, isImage } from '../../utils';
 
 import OGMessageItemBody from '../OGMessageItemBody';
@@ -124,17 +123,19 @@ const MessageInput = React.forwardRef((props, ref) => {
           alt: 'test',
         },
       },
-      createdAt: 0, 
+      createdAt: 0,
     };
 
     if (loading) {
-      return <Label
-      className="rogu-message-input__text-loading"
-      type={LabelTypography.BODY_1}
-      color={LabelColors.ONBACKGROUND_1}
-    >
-      {stringSet.LABEL_LOADING}
-    </Label>;
+      return (
+        <Label
+          className="rogu-message-input__text-loading"
+          type={LabelTypography.BODY_1}
+          color={LabelColors.ONBACKGROUND_1}
+        >
+          {stringSet.LABEL_LOADING}
+        </Label>
+      );
     }
 
     return <OGMessageItemBody message={message} isOnPreview onClosePreview={() => setUrl({ hasUrl: false, text: '' })} />;
@@ -169,7 +170,7 @@ const MessageInput = React.forwardRef((props, ref) => {
       } else {
         onSendMessage(trimmedInputValue);
         setInputValue('');
-        if(elem){
+        if (elem) {
           elem.style.height = `${LINE_HEIGHT}px`;
         }
       }

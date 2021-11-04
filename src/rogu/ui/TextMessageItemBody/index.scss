@@ -17,6 +17,7 @@
     border-left-width: 2px;
     border-left-style: solid;
     cursor: pointer;
+
     @include themed() {
       background-color: t(primary-2);
       border-left-color: t(primary-5);
@@ -52,6 +53,7 @@
         color: t(secondary-3);
       }
     }
+
     .rogu-text-message-item-body__reply-container {
       @include themed() {
         background-color: t(bg-1);
