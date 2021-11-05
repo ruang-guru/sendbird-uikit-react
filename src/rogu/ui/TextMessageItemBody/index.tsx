@@ -114,7 +114,6 @@ export default function TextMessageItemBody({
             words === '' ? <br key={i} /> : replaceUrlsWithLink(words)
           )}
       </div>
-
       {clampState === 'clamped' && (
         <TextButton
           className="rogu-text-message-item-body__read-more"
@@ -150,7 +149,7 @@ function replaceUrlsWithLink(text: string): Array<JSX.Element> {
       elements.push(
         <LinkLabel
           className="rogu-text-message-item-body__message"
-          color={LabelColors.ONBACKGROUND_1}
+          color={LabelColors.SECONDARY_3}
           key={uuidv4()}
           src={currentUrl}
           type={LabelTypography.BODY_1}
