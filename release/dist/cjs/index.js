@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-dfa26fcb.js');
-var index$1 = require('./index-80515cfc.js');
+var LocalizationContext = require('./LocalizationContext-aeb8330f.js');
+var index$1 = require('./index-86dae48a.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-6d7d824d.js');
-var index$3 = require('./index-35477065.js');
-var Channel = require('./index-ab40983d.js');
+var index$2 = require('./index-399e777d.js');
+var index$3 = require('./index-cb9a1a10.js');
+var Channel = require('./index-77ce3e89.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-1c1ec2e3.js');
+require('./actionTypes-040a9c86.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-3c9688e7.js');
-require('./utils-a90f4452.js');
-require('./LeaveChannel-9eae6225.js');
-require('./index-ef1a6a89.js');
-require('./index-524cbee6.js');
-require('./index-104c6702.js');
+require('./index-8c0a854b.js');
+require('./utils-1ee869fc.js');
+require('./LeaveChannel-817321f8.js');
+require('./index-ce91c7db.js');
+require('./index-fbb1f66e.js');
+require('./index-e9eef624.js');
 require('./ChannelSettings.js');
-require('./index-21feac4b.js');
+require('./index-73c5dd42.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3787,7 +3787,7 @@ var MenuItems$1 = /*#__PURE__*/function (_Component) {
       var current = parentContainRef.current;
 
       if (parentContainRef && current) {
-        current.classList.add('sendbird-icon--pressed');
+        current.classList.add('rogu-icon--pressed');
       }
     });
 
@@ -3797,7 +3797,7 @@ var MenuItems$1 = /*#__PURE__*/function (_Component) {
       var current = parentContainRef.current;
 
       if (parentContainRef && current) {
-        current.classList.remove('sendbird-icon--pressed');
+        current.classList.remove('rogu-icon--pressed');
       }
     });
 
@@ -4218,7 +4218,7 @@ function MessageContent(_a) {
   }, index$1.getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-content__operator-label",
     type: LabelTypography.CAPTION_3
-  }, stringSet.LABEL__OPERATOR), /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
+  }, stringSet.LABEL__OPERATOR), !channel.isFrozen && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
     className: "rogu-message-content__menu",
     channel: channel,
     message: message,
@@ -5786,7 +5786,7 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
         return (
           /*#__PURE__*/
           // eslint-disable-next-line react/no-array-index-key
-          React__default$1["default"].createElement(React__default$1["default"].Fragment, {
+          React__default$1["default"].createElement("div", {
             key: i
           }, /*#__PURE__*/React__default$1["default"].createElement(DateSeparator, {
             createdAt: currentCreatedAt

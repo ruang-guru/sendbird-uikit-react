@@ -83,8 +83,8 @@ export default function MessageContent({
   resendMessage,
   disabled = false,
 }: // showRemove,
-// toggleReaction,
-Props): ReactElement {
+  // toggleReaction,
+  Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
@@ -93,8 +93,8 @@ Props): ReactElement {
     isPendingMessage(channel, message as UserMessage | FileMessage) ||
     !isSentMessage(channel, message as UserMessage | FileMessage) ||
     isMessageSentByMe(userId, message as UserMessage | FileMessage);
-  
-    const isOperatorMessage: boolean = isMessageSentByOperator(
+
+  const isOperatorMessage: boolean = isMessageSentByOperator(
     message as CoreMessageType
   );
 
@@ -112,7 +112,7 @@ Props): ReactElement {
     return <ClientAdminMessage message={message} />;
   }
 
-  
+
   const onScrollToMessage = () => {
     //TODO: integrate onScrollToMessage
     //scrollToMessage(message.createdAt, getParentMessageId(message));
@@ -168,17 +168,19 @@ Props): ReactElement {
                     {stringSet.LABEL__OPERATOR}
                   </Label>
                 )}
-                <MessageItemMenu
-                  className="rogu-message-content__menu"
-                  channel={channel}
-                  message={message as UserMessage | FileMessage}
-                  isByMe={isByMe}
-                  disabled={disabled}
-                  showEdit={showEdit}
-                  showRemove={showRemove}
-                  resendMessage={resendMessage}
-                  showFileViewer={showFileViewer}
-                />
+                {!channel.isFrozen &&
+                  <MessageItemMenu
+                    className="rogu-message-content__menu"
+                    channel={channel}
+                    message={message as UserMessage | FileMessage}
+                    isByMe={isByMe}
+                    disabled={disabled}
+                    showEdit={showEdit}
+                    showRemove={showRemove}
+                    resendMessage={resendMessage}
+                    showFileViewer={showFileViewer}
+                  />
+                }
               </>
             )}
           </div>
@@ -213,11 +215,11 @@ Props): ReactElement {
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.FILE && (
-                <FileMessageItemBody
-                  message={message as FileMessage}
-                  isByMe={isByMe}
-                />
-              )}
+                  <FileMessageItemBody
+                    message={message as FileMessage}
+                    isByMe={isByMe}
+                  />
+                )}
               {isThumbnailMessage(message as FileMessage) && (
                 <>
                   <ThumbnailMessageItemBody
@@ -240,8 +242,8 @@ Props): ReactElement {
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
-                <UnknownMessageItemBody message={message} isByMe={isByMe} />
-              )}
+                  <UnknownMessageItemBody message={message} isByMe={isByMe} />
+                )}
             </div>
             {((!isByMe && chainTop) || isByMe) && (
               <MessageItemMenu
