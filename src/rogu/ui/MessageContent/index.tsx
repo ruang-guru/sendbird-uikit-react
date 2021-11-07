@@ -31,7 +31,7 @@ import {
 } from '../../../utils';
 
 import {
-  getParentMessageId,
+  // getParentMessageId,
   isAssignmentMessage,
   isMaterialMessage,
   isRepliedMessage,
@@ -76,7 +76,7 @@ export default function MessageContent({
   userId,
   // useReaction = false,
   // useReplying,
-  scrollToMessage,
+  // scrollToMessage,
   showEdit,
   showFileViewer,
   showRemove,

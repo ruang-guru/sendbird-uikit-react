@@ -19,24 +19,31 @@ export const groupMessagesByDate = (
   }, new Map());
 };
 
-
 type structureRepliedMessage = {
   sender: string;
   parentMessage: string;
-  originalMessage:string;
+  originalMessage: string;
 };
 
-const QUOTE_FORMAT = ">";
+const QUOTE_FORMAT = '>';
 
-let isQuoteFormat = (word:string):boolean => {
-  return word.charAt(0) === QUOTE_FORMAT    
+const isQuoteFormat = (word: string): boolean => {
+  return word.charAt(0) === QUOTE_FORMAT;
 };
 
-export const destructureRepliedMessage = (message:string):structureRepliedMessage => {
-  let repliedMessage = message.split("\n").filter(word => isQuoteFormat(word)).map(word => word.substr(1));
-  let [sender, ...rest] = repliedMessage;
-  let parentMessage = rest.join("\n");
-  let originalMessage = message.split("\n").filter(word => !isQuoteFormat(word)).join("\n");
+export const destructureRepliedMessage = (
+  message: string
+): structureRepliedMessage => {
+  const repliedMessage = message
+    .split('\n')
+    .filter((word) => isQuoteFormat(word))
+    .map((word) => word.substr(1));
+  const [sender, ...rest] = repliedMessage;
+  const parentMessage = rest.join('\n');
+  const originalMessage = message
+    .split('\n')
+    .filter((word) => !isQuoteFormat(word))
+    .join('\n');
   return {
     sender: sender,
     parentMessage,
@@ -44,8 +51,8 @@ export const destructureRepliedMessage = (message:string):structureRepliedMessag
   };
 };
 
-export const getParentMessageId = (message) => {
-  return message?.metaArrays?.[0]?.value
-}
-
-export default groupMessagesByDate;
+export const getParentMessageId = (
+  message: CoreMessageType
+): string[] | undefined => {
+  return message?.metaArrays?.[0]?.value;
+};

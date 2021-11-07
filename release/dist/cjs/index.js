@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-dfa26fcb.js');
-var index$1 = require('./index-80515cfc.js');
+var LocalizationContext = require('./LocalizationContext-fbff22ca.js');
+var index$1 = require('./index-ac974ccd.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-6d7d824d.js');
-var index$3 = require('./index-35477065.js');
-var Channel = require('./index-ab40983d.js');
+var index$2 = require('./index-a054dfe0.js');
+var index$3 = require('./index-c608ce20.js');
+var Channel = require('./index-4de1d92c.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-1c1ec2e3.js');
+require('./actionTypes-dd1b2cba.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-3c9688e7.js');
-require('./utils-a90f4452.js');
-require('./LeaveChannel-9eae6225.js');
-require('./index-ef1a6a89.js');
-require('./index-524cbee6.js');
-require('./index-104c6702.js');
+require('./index-da0b1194.js');
+require('./utils-85ce5177.js');
+require('./LeaveChannel-f1a61ee9.js');
+require('./index-f30db6f6.js');
+require('./index-9e9f9b5a.js');
+require('./index-627aca7a.js');
 require('./ChannelSettings.js');
-require('./index-21feac4b.js');
+require('./index-1c654b48.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -204,24 +204,24 @@ var groupMessagesByDate = function groupMessagesByDate(messages) {
     return groupedMessagesByDate;
   }, new Map());
 };
-var QUOTE_FORMAT = ">";
+var QUOTE_FORMAT = '>';
 
 var isQuoteFormat = function isQuoteFormat(word) {
   return word.charAt(0) === QUOTE_FORMAT;
 };
 
 var destructureRepliedMessage = function destructureRepliedMessage(message) {
-  var repliedMessage = message.split("\n").filter(function (word) {
+  var repliedMessage = message.split('\n').filter(function (word) {
     return isQuoteFormat(word);
   }).map(function (word) {
     return word.substr(1);
   });
   var sender = repliedMessage[0],
       rest = repliedMessage.slice(1);
-  var parentMessage = rest.join("\n");
-  var originalMessage = message.split("\n").filter(function (word) {
+  var parentMessage = rest.join('\n');
+  var originalMessage = message.split('\n').filter(function (word) {
     return !isQuoteFormat(word);
-  }).join("\n");
+  }).join('\n');
   return {
     sender: sender,
     parentMessage: parentMessage,
@@ -232,7 +232,7 @@ var destructureRepliedMessage = function destructureRepliedMessage(message) {
 var isFileMessage = function isFileMessage(message) {
   var _a;
 
-  return message && (((_a = message.isFileMessage) === null || _a === void 0 ? void 0 : _a.call(message)) || message["messageType"] && message.messageType === "file");
+  return message && (((_a = message.isFileMessage) === null || _a === void 0 ? void 0 : _a.call(message)) || message['messageType'] && message.messageType === 'file');
 };
 var isThumbnailMessage = function isThumbnailMessage(message) {
   return message && isFileMessage(message) && isSupportedFileView(message.type);
@@ -240,7 +240,20 @@ var isThumbnailMessage = function isThumbnailMessage(message) {
 var isRepliedMessage = function isRepliedMessage(message) {
   var _a, _b;
 
-  return ((_b = (_a = message === null || message === void 0 ? void 0 : message.metaArrays) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.key) === "parentMessageId";
+  return ((_b = (_a = message === null || message === void 0 ? void 0 : message.metaArrays) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.key) === 'parentMessageId';
+};
+
+var REGEX_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*?)/g;
+var K = '[[SPLIT_KEYWORD]]';
+var extractUrls = function extractUrls(text) {
+  // Array of extracted urls
+  var urls = text.match(REGEX_URL) || []; // Array of splitted sentences without any url
+
+  var sentences = text.replace(REGEX_URL, K).split(K) || [];
+  return {
+    urls: urls,
+    sentences: sentences
+  };
 };
 
 /**
@@ -3224,6 +3237,36 @@ TextButton.defaultProps = {
   onClick: function onClick() {}
 };
 
+var http = /https?:\/\//;
+function LinkLabel(_ref) {
+  var className = _ref.className,
+      src = _ref.src,
+      type = _ref.type,
+      color = _ref.color,
+      children = _ref.children;
+  var url = http.test(src) ? src : "http://".concat(src);
+  return /*#__PURE__*/React__default$1["default"].createElement("a", {
+    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-link-label', color ? changeColorToClassName$1(color) : '']).join(' '),
+    href: url,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-link-label__label",
+    type: type,
+    color: color
+  }, children));
+}
+LinkLabel.propTypes = {
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)]),
+  src: PropTypes__default["default"].string.isRequired,
+  type: PropTypes__default["default"].oneOf(Object.keys(LabelTypography)).isRequired,
+  color: PropTypes__default["default"].oneOf(Object.keys(LabelColors)).isRequired,
+  children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].element, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string), PropTypes__default["default"].arrayOf(PropTypes__default["default"].element)]).isRequired
+};
+LinkLabel.defaultProps = {
+  className: ''
+};
+
 var colorSet = {
   "#DF4141": ["A", "B", "C", "D"],
   "#61CE5E": ["E", "F", "G", "H"],
@@ -3266,7 +3309,7 @@ function TextMessageItemBody(_a) {
       onScrollToMessage = _a.onScrollToMessage;
   var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
 
-  var _f = React$1.useState("init"),
+  var _f = React$1.useState('init'),
       clampState = _f[0],
       setClampState = _f[1];
 
@@ -3280,12 +3323,12 @@ function TextMessageItemBody(_a) {
   var msg = isRepliedMessage ? originalMessage : message;
   React$1.useEffect(function () {
     if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
-      setClampState("clamped");
+      setClampState('clamped');
     }
   }, [textRef.current]);
 
   function handleExpand() {
-    setClampState("expanded");
+    setClampState('expanded');
   }
 
   var renderRepliedMessage = function renderRepliedMessage(sender, parentMessage) {
@@ -3307,23 +3350,49 @@ function TextMessageItemBody(_a) {
   };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: index$1.getClassName([className, "rogu-text-message-item-body", clampState == "expanded" ? "rogu-text-message-item-body--expanded" : "", !isByMe ? "rogu-text-message-item-body--incoming" : "", mode === "fileViewerCaption" ? "rogu-text-message-item-body--viewer-mode" : "", mode === "fileViewerCaption" && isHidden ? "rogu-text-message-item-body--viewer-mode__hidden" : "", mode === "thumbnailCaption" ? "rogu-text-message-item-body--preview-mode" : ""])
+    className: index$1.getClassName([className, 'rogu-text-message-item-body', clampState == 'expanded' ? 'rogu-text-message-item-body--expanded' : '', !isByMe ? 'rogu-text-message-item-body--incoming' : '', mode === 'fileViewerCaption' ? 'rogu-text-message-item-body--viewer-mode' : '', mode === 'fileViewerCaption' && isHidden ? 'rogu-text-message-item-body--viewer-mode__hidden' : '', mode === 'thumbnailCaption' ? 'rogu-text-message-item-body--preview-mode' : ''])
   }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     ref: textRef,
     className: "rogu-text-message-item-body__inner"
-  }, isRepliedMessage && renderRepliedMessage(sender, parentMessage), msg === null || msg === void 0 ? void 0 : msg.split(/\r/).map(function (word, i) {
-    return word === "" ? /*#__PURE__*/React__default$1["default"].createElement("br", {
+  }, isRepliedMessage && renderRepliedMessage(sender, parentMessage), msg === null || msg === void 0 ? void 0 : msg.split(/\r/).map(function (words, i) {
+    return words === '' ? /*#__PURE__*/React__default$1["default"].createElement("br", {
       key: i
-    }) : /*#__PURE__*/React__default$1["default"].createElement(Label, {
-      className: "rogu-text-message-item-body__message",
-      color: LabelColors.ONBACKGROUND_1,
-      key: i,
-      type: LabelTypography.BODY_1
-    }, word);
-  })), clampState === "clamped" && /*#__PURE__*/React__default$1["default"].createElement(TextButton, {
+    }) : replaceUrlsWithLink(words);
+  })), clampState === 'clamped' && /*#__PURE__*/React__default$1["default"].createElement(TextButton, {
     className: "rogu-text-message-item-body__read-more",
     onClick: handleExpand
   }, /*#__PURE__*/React__default$1["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
+}
+
+function replaceUrlsWithLink(text) {
+  var _a = extractUrls(text),
+      urls = _a.urls,
+      sentences = _a.sentences;
+
+  var elements = [];
+  sentences.forEach(function (sentence, i) {
+    if (sentence !== '') {
+      elements.push( /*#__PURE__*/React__default$1["default"].createElement(Label, {
+        className: "rogu-text-message-item-body__message",
+        color: LabelColors.ONBACKGROUND_1,
+        key: LocalizationContext.uuidv4(),
+        type: LabelTypography.BODY_1
+      }, sentence));
+    }
+
+    var currentUrl = urls[i];
+
+    if (currentUrl) {
+      elements.push( /*#__PURE__*/React__default$1["default"].createElement(LinkLabel, {
+        className: "rogu-text-message-item-body__message",
+        color: LabelColors.SECONDARY_3,
+        key: LocalizationContext.uuidv4(),
+        src: currentUrl,
+        type: LabelTypography.BODY_1
+      }, currentUrl));
+    }
+  });
+  return elements;
 }
 
 var IconButton = /*#__PURE__*/React__default$1["default"].forwardRef(function (props, ref) {
@@ -3787,7 +3856,7 @@ var MenuItems$1 = /*#__PURE__*/function (_Component) {
       var current = parentContainRef.current;
 
       if (parentContainRef && current) {
-        current.classList.add('sendbird-icon--pressed');
+        current.classList.add('rogu-icon--pressed');
       }
     });
 
@@ -3797,7 +3866,7 @@ var MenuItems$1 = /*#__PURE__*/function (_Component) {
       var current = parentContainRef.current;
 
       if (parentContainRef && current) {
-        current.classList.remove('sendbird-icon--pressed');
+        current.classList.remove('rogu-icon--pressed');
       }
     });
 
@@ -4165,11 +4234,11 @@ function MessageContent(_a) {
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
-  userId = _a.userId;
+  userId = _a.userId,
       // useReaction = false,
   // useReplying,
-  _a.scrollToMessage;
-      var showEdit = _a.showEdit,
+  // scrollToMessage,
+  showEdit = _a.showEdit,
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
       resendMessage = _a.resendMessage,
@@ -4218,7 +4287,7 @@ function MessageContent(_a) {
   }, index$1.getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-content__operator-label",
     type: LabelTypography.CAPTION_3
-  }, stringSet.LABEL__OPERATOR), /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
+  }, stringSet.LABEL__OPERATOR), !channel.isFrozen && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
     className: "rogu-message-content__menu",
     channel: channel,
     message: message,
@@ -5786,7 +5855,7 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
         return (
           /*#__PURE__*/
           // eslint-disable-next-line react/no-array-index-key
-          React__default$1["default"].createElement(React__default$1["default"].Fragment, {
+          React__default$1["default"].createElement("div", {
             key: i
           }, /*#__PURE__*/React__default$1["default"].createElement(DateSeparator, {
             createdAt: currentCreatedAt
