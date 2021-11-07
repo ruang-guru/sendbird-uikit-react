@@ -23,7 +23,7 @@ import './index.scss';
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
 const LINE_HEIGHT = 36;
-const noop = () => {};
+const noop = () => { };
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
@@ -374,7 +374,7 @@ MessageInput.defaultProps = {
   isEdit: false,
   disabled: false,
   placeholder: '',
-  maxLength: 5000,
+  maxLength: 3000,
   onFileUpload: noop,
   onCancelEdit: noop,
   onStartTyping: noop,
