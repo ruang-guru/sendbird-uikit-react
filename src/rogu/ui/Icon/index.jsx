@@ -78,6 +78,7 @@ import RoguIconFileOthers from '../../../svgs/rogu-icon-file-others.svg';
 import RoguIconFilePowerpoint from '../../../svgs/rogu-icon-file-powerpoint.svg';
 import RoguIconFilePDF from '../../../svgs/rogu-icon-file-pdf.svg';
 import RoguIconView from '../../../svgs/rogu-icon-view.svg';
+import RoguIconSend from '../../../svgs/rogu-icon-send.svg';
 
 const Colors = {
   DEFAULT: 'DEFAULT',
@@ -274,6 +275,8 @@ function changeTypeToIconComponent(type) {
       return <RoguIconFileOthers />;
     case Type.ROGU_VIEW:
       return <RoguIconView />;
+    case Type.ROGU_SEND:
+      return <RoguIconSend />;
     default:
       return 'icon'; // If you see this text 'icon' replace icon for it
   }
@@ -333,7 +336,7 @@ Icon.defaultProps = {
   fillColor: Colors.DEFAULT,
   width: 26,
   height: 26,
-  onClick: () => {},
+  onClick: () => { },
   children: null,
 };
 
