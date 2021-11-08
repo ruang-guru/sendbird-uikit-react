@@ -8,15 +8,15 @@ import { getClassName } from '../../../utils';
 import './index.scss';
 
 export type RepliedTextMessageItemBodyProps = {
+  content: string;
   isByMe: boolean;
-  message: string;
   nickname: string;
-  onClick: () => void;
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 export default function RepliedTextMessageItemBody({
+  content,
   isByMe,
-  message,
   nickname,
   onClick,
 }: RepliedTextMessageItemBodyProps): JSX.Element {
@@ -30,7 +30,9 @@ export default function RepliedTextMessageItemBody({
       ])}
       role="button"
       tabIndex={0}
-      onClick={onClick}
+      onClick={(e) => {
+        if (onClick) onClick(e);
+      }}
     >
       <Label
         color={LabelColors.ONBACKGROUND_2}
@@ -46,7 +48,7 @@ export default function RepliedTextMessageItemBody({
         color={LabelColors.ONBACKGROUND_1}
         type={LabelTypography.BODY_3}
       >
-        {message}
+        {content}
       </Label>
     </div>
   );

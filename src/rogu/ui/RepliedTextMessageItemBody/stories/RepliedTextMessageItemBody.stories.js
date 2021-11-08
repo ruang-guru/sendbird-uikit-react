@@ -6,7 +6,7 @@ import SendbirdProvider from '../../../../lib/Sendbird';
 import COLOR_SET from '../../../../../__mocks__/themeMock';
 import { STRING_SET } from '../../../../../__mocks__/localizationMock';
 
-export default { title: 'ruangkelas/UI Components/RepliedTextmessageItemBody' };
+export default { title: 'ruangkelas/UI Components/RepliedTextMessageItemBody' };
 
 export const outgoing = () => (
   <SendbirdProvider
@@ -16,8 +16,8 @@ export const outgoing = () => (
     stringSet={STRING_SET}
   >
     <RepliedTextmessageItemBody
+      content="This is an outgoing message. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
       isByMe={true}
-      message="This is an outgoing message. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
       nickname="Fauzan"
       onClick={() => console.log('Scroll to the message')}
     />
@@ -32,8 +32,8 @@ export const incoming = () => (
     stringSet={STRING_SET}
   >
     <RepliedTextmessageItemBody
+      content="This is an incoming message. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
       isByMe={false}
-      message="This is an incoming message. Lorem Ipsum is simply dummy text of the printing and typesetting industry."
       nickname="Fauzan"
       onClick={() => console.log('Scroll to the message')}
     />

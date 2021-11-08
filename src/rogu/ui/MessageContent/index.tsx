@@ -34,7 +34,7 @@ import {
   // getParentMessageId,
   isAssignmentMessage,
   isMaterialMessage,
-  isRepliedMessage,
+  // isRepliedMessage,
   isThumbnailMessage,
 } from '../../utils';
 import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
@@ -110,10 +110,10 @@ Props): ReactElement {
     return <ClientAdminMessage message={message} />;
   }
 
-  const onScrollToMessage = () => {
-    //TODO: integrate onScrollToMessage
-    //scrollToMessage(message.createdAt, getParentMessageId(message));
-  };
+  //TODO: integrate onScrollToMessage
+  // const onScrollToMessage = () => {
+  //scrollToMessage(message.createdAt, getParentMessageId(message));
+  // };
 
   return (
     <div
