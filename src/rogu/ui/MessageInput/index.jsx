@@ -356,7 +356,7 @@ MessageInput.defaultProps = {
   isEdit: false,
   disabled: false,
   placeholder: '',
-  maxLength: 5000,
+  maxLength: 3000,
   onFileUpload: noop,
   onCancelEdit: noop,
   onStartTyping: noop,

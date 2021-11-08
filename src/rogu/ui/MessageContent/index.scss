@@ -52,24 +52,29 @@ $avatarSize: 32px;
         margin-bottom: 4px;
         align-items: center;
 
-        .rogu-message-content__sender-name {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          word-break: break-all;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-        }
+        .rogu-message-content__id-container {
+          display: flex;
+          align-items: center;
 
-        .rogu-message-content__operator-label {
-          margin-left: 8px;
-          padding: 4px 12px;
-          border-radius: 4px;
-          white-space: nowrap;
+          .rogu-message-content__sender-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            word-break: break-all;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+          }
 
-          @include themed() {
-            color: t(on-bg-1);
-            background-color: t(bg-1);
+          .rogu-message-content__operator-label {
+            margin-left: 8px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            white-space: nowrap;
+
+            @include themed() {
+              color: t(on-bg-1);
+              background-color: t(bg-1);
+            }
           }
         }
 
