@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-fbff22ca.js');
-var index$1 = require('./index-ac974ccd.js');
+var LocalizationContext = require('./LocalizationContext-63eb27d7.js');
+var index$1 = require('./index-cfea4bf8.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-a054dfe0.js');
-var index$3 = require('./index-c608ce20.js');
-var Channel = require('./index-4de1d92c.js');
+var index$2 = require('./index-01db94b8.js');
+var index$3 = require('./index-44277ded.js');
+var Channel = require('./index-dc6c947a.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-dd1b2cba.js');
+require('./actionTypes-45707c2e.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-da0b1194.js');
-require('./utils-85ce5177.js');
-require('./LeaveChannel-f1a61ee9.js');
-require('./index-f30db6f6.js');
-require('./index-9e9f9b5a.js');
-require('./index-627aca7a.js');
+require('./index-c619e467.js');
+require('./utils-560a92af.js');
+require('./LeaveChannel-4afa5023.js');
+require('./index-0efe2441.js');
+require('./index-2b83ba12.js');
+require('./index-bf47eae7.js');
 require('./ChannelSettings.js');
-require('./index-1c654b48.js');
+require('./index-ae4184f3.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -4277,7 +4277,9 @@ function MessageContent(_a) {
     className: "rogu-message-content__bubble"
   }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-message-content__bubble__header"
-  }, !isByMe && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+  }, !isByMe && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-message-content__id-container"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-content__sender-name",
     color: LabelColors.ONBACKGROUND_2,
     style: {
@@ -4287,7 +4289,7 @@ function MessageContent(_a) {
   }, index$1.getSenderName(message)), isOperatorMessage && !chainTop && /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-message-content__operator-label",
     type: LabelTypography.CAPTION_3
-  }, stringSet.LABEL__OPERATOR), !channel.isFrozen && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
+  }, stringSet.LABEL__OPERATOR)), !channel.isFrozen && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
     className: "rogu-message-content__menu",
     channel: channel,
     message: message,
