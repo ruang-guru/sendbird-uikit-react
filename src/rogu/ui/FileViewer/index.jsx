@@ -8,7 +8,7 @@ import Avatar from '../Avatar/index';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import Icon, { IconTypes } from '../Icon';
 import { MODAL_ROOT } from '../../../hooks/useModal/ModalRoot';
-import TextMessageItemBody from '../TextMessageItemBody';
+import ClampedMessageItemBody from '../ClampedMessageItemBody';
 
 import { isImage, isVideo, isSupportedFileView } from '../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
@@ -138,8 +138,8 @@ export const FileViewerComponent = ({
           />
         )}
         {!isPreview && captionMsg && (
-          <TextMessageItemBody
-            message={captionMsg}
+          <ClampedMessageItemBody
+            content={captionMsg}
             mode="fileViewerCaption"
             isHidden={isCaptionHidden}
           />
