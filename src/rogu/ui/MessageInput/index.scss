@@ -80,14 +80,9 @@
     padding: 0;
 
     &:hover {
-      background-color: transparent;
+      background-color: transparent !important;
       transform: scale(1.2);
     }
-  }
-
-  .rogu-message-input--send-container {
-    width: 36px;
-    height: 36px;
   }
 
   .rogu-message-input--send {
@@ -104,7 +99,7 @@
     }
 
     @include themed() {
-      background-color: t(primary-4);
+      background-color: t(primary-5);
       box-shadow: 0 2px 12px t(overlay-2);
     }
 
