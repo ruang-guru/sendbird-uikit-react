@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-6002553a.js');
-var index$1 = require('./index-2b6079aa.js');
+var LocalizationContext = require('./LocalizationContext-6f544a6a.js');
+var index$1 = require('./index-1a98c70f.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-57e3828d.js');
-var index$3 = require('./index-e9bf6716.js');
-var Channel = require('./index-7b681386.js');
+var index$2 = require('./index-926fdfea.js');
+var index$3 = require('./index-819aa3a0.js');
+var Channel = require('./index-122dfd3d.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-a084dd9e.js');
+require('./actionTypes-1bcc5642.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-35b650d3.js');
-require('./utils-b35fe9e9.js');
-require('./LeaveChannel-3c10e540.js');
-require('./index-ffb87d1c.js');
-require('./index-36a2c139.js');
-require('./index-77b9c439.js');
+require('./index-1d15ee88.js');
+require('./utils-ded92c4a.js');
+require('./LeaveChannel-7c49df00.js');
+require('./index-b9b30113.js');
+require('./index-529c4fdc.js');
+require('./index-8b479ccb.js');
 require('./ChannelSettings.js');
-require('./index-ba863913.js');
+require('./index-3ccd18cb.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -754,7 +754,7 @@ function reducer(state, action) {
 
         return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
           unreadCount: _unreadCount,
-          unreadSince: _unreadCount === 1 ? index$2.format(new Date(), 'p MMM dd') : unreadSince,
+          unreadSince: _unreadCount === 1 ? index$2.format(new Date(), 'HH.mm dd MMM yyyy') : unreadSince,
           allMessages: passUnsuccessfullMessages(state.allMessages, message)
         });
       }
@@ -4872,7 +4872,8 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     className: "rogu-fileviewer__header__right__actions__download",
     rel: "noopener noreferrer",
     href: url,
-    onClick: onDownloadClick
+    onClick: onDownloadClick,
+    target: "_blank"
   }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.ROGU_DOWNLOAD,
     height: "24px",
