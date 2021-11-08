@@ -16,7 +16,6 @@ import { LocalizationContext } from '../../../lib/LocalizationContext';
 import Icon, { IconTypes, IconColors } from '../Icon';
 import ContextMenu, { MenuItems, MenuItem } from '../ContextMenu';
 import Toast from '../Toast';
-import { repliedParentMessage } from '../MessageContent';
 import "./index.scss";
 import { destructureRepliedMessage } from '../../utils';
 
@@ -33,7 +32,6 @@ interface Props {
   setSupposedHover?: (bool: boolean) => void;
   showFileViewer?: (bool: boolean) => void;
   isRepliedMessage: boolean;
-  onReplyChosen?: (repliedParentMessage: repliedParentMessage) => void;
   
 };
 
@@ -49,7 +47,6 @@ export default function MessageItemMenu({
   setSupposedHover,
   showFileViewer,
   isRepliedMessage,
-  onReplyChosen,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const [showToast, setShowToast] = useState(false);
@@ -130,13 +127,6 @@ export default function MessageItemMenu({
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
                     // TODO: Add replying message logic
-                    onReplyChosen({
-                      hasParent: true,
-                      messageId: message.messageId,
-                      username: message.sender.nickname,
-                      message:  isFileMessage(message as FileMessage) ? (message as FileMessage)?.name : (message as UserMessage)?.message
-                    });
-                    
                     closeDropdown();
                   }}
                   disable={message?.parentMessageId > 0}
