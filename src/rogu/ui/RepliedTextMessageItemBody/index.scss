@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+.rogu-replied-text-message-item-body {
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  border-left-width: 2px;
+  border-left-style: solid;
+  cursor: pointer;
+
+  @include themed() {
+    border-left-color: t(primary-5);
+  }
+
+  &.rogu-replied-text-message-item-body--outgoing {
+    @include themed() {
+      background-color: t(primary-2);
+    }
+  }
+
+  &.rogu-replied-text-message-item-body--incoming {
+    @include themed() {
+      background-color: t(bg-1);
+    }
+  }
+
+  .rogu-replied-text-message-item-body__reply-message {
+    white-space: pre-wrap;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}

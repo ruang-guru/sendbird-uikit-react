@@ -10,19 +10,19 @@
     word-break: break-all;
   }
 
-  .rogu-text-message-item-body__reply-container {
-    padding: 8px;
-    border-radius: 4px;
-    margin-bottom: 8px;
-    border-left-width: 2px;
-    border-left-style: solid;
-    cursor: pointer;
+  // .rogu-text-message-item-body__reply-container {
+  //   padding: 8px;
+  //   border-radius: 4px;
+  //   margin-bottom: 8px;
+  //   border-left-width: 2px;
+  //   border-left-style: solid;
+  //   cursor: pointer;
 
-    @include themed() {
-      background-color: t(primary-2);
-      border-left-color: t(primary-5);
-    }
-  }
+  //   @include themed() {
+  //     background-color: t(primary-2);
+  //     border-left-color: t(primary-5);
+  //   }
+  // }
 
   .rogu-text-message-item-body__reply-message {
     white-space: pre-wrap;
@@ -54,7 +54,7 @@
       }
     }
 
-    .rogu-text-message-item-body__reply-container {
+    .rogu-replied-text-message-item-body__reply-container {
       @include themed() {
         background-color: t(bg-1);
       }
