@@ -6,4 +6,5 @@ export default {
   '--sendbird-light-background-700': '#BEC8D0',
   '--sendbird-light-onlight-01': '#434856',
   '--sendbird-light-secondary-300': '#2EB5C0',
+  '--sendbird-light-secondary-200': '#25919A',
 };
