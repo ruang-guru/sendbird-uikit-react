@@ -10,6 +10,6 @@ export const isFileMessage = (message: FileMessage): boolean =>
 export const isThumbnailMessage = (message: FileMessage): boolean =>
   message && isFileMessage(message) && isSupportedFileView(message.type);
 
-export const isRepliedMessage = (message: CoreMessageType): boolean => {
+export const isReplyingMessage = (message: CoreMessageType): boolean => {
   return message?.metaArrays?.[0]?.key === 'parentMessageId';
 };

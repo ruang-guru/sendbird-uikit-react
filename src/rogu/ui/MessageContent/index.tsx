@@ -6,6 +6,7 @@ import ClampedMessageItemBody from '../ClampedMessageItemBody';
 import OGMessageItemBody from '../OGMessageItemBody';
 import FileMessageItemBody from '../FileMessageItemBody';
 import ThumbnailMessageItemBody from '../ThumbnailMessageItemBody';
+import TextMessageItemBody from '../TextMessageItemBody';
 
 import Avatar from '../../../ui/Avatar';
 import ClientAdminMessage from '../../../ui/AdminMessage';
@@ -31,10 +32,8 @@ import {
 } from '../../../utils';
 
 import {
-  // getParentMessageId,
   isAssignmentMessage,
   isMaterialMessage,
-  // isRepliedMessage,
   isThumbnailMessage,
 } from '../../utils';
 import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
@@ -110,10 +109,10 @@ Props): ReactElement {
     return <ClientAdminMessage message={message} />;
   }
 
-  //TODO: integrate onScrollToMessage
-  // const onScrollToMessage = () => {
-  //scrollToMessage(message.createdAt, getParentMessageId(message));
-  // };
+  const onScrollToMessage = () => {
+    //TODO: integrate onScrollToMessage
+    // scrollToMessage(message.createdAt, getParentMessageId(message));
+  };
 
   return (
     <div
@@ -185,9 +184,10 @@ Props): ReactElement {
             <div className="rogu-message-content__bubble__body__inner">
               {/* Message content */}
               {isTextMessage(message as UserMessage) && (
-                <ClampedMessageItemBody
+                <TextMessageItemBody
                   isByMe={isByMe}
-                  content={(message as UserMessage)?.message}
+                  message={message as UserMessage}
+                  onScrollToMessage={onScrollToMessage}
                 />
               )}
               {isOGMessage(message as UserMessage) && (
