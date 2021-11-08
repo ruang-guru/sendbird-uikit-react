@@ -45,6 +45,7 @@ const MessageInput = React.forwardRef((props, ref) => {
     onSendMessage,
     onCancelEdit,
     onStartTyping,
+    repliedParentMessage,
   } = props;
 
   const { stringSet } = useContext(LocalizationContext);
@@ -141,6 +142,13 @@ const MessageInput = React.forwardRef((props, ref) => {
     return <OGMessageItemBody message={message} isOnPreview onClosePreview={() => setUrl({ hasUrl: false, text: '' })} />;
   };
 
+  const renderParentMessage = (repliedParentMessage) => {
+    return <div>
+      <p>{repliedParentMessage.message}</p>
+    </div>
+
+  };
+
   // after setHeight called twice, the textarea goes to the initialized
   useEffect(() => {
     setHeight();
@@ -181,6 +189,9 @@ const MessageInput = React.forwardRef((props, ref) => {
     <div className="rogu-message-input--wrapper">
       {
         url.hasUrl && isUrl(url.text) && <LinkPreview url={url.text} render={renderPreviewUrl} />
+      }
+      {
+        <p>{JSON.stringify(repliedParentMessage)}</p>
       }
       <form
         className={[

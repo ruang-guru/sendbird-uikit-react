@@ -44,6 +44,19 @@ import './index.scss';
 
 import MessageItemMenu from '../MessageItemMenu';
 
+export type repliedParentMessage = {
+  hasParent: boolean;
+  messageId: number;
+  username: string;
+  message: string;
+  file?: {
+    name: string;
+    size: number;
+    type: string;
+    url: string;
+  }
+};
+
 interface Props {
   chainBottom?: boolean;
   chainTop?: boolean;
@@ -64,6 +77,8 @@ interface Props {
     isReacted: boolean
   ) => void;
   disabled?: boolean;
+  onReplyChosen: (repliedParentMessage:repliedParentMessage) => void;
+
 }
 
 export default function MessageContent({
@@ -82,6 +97,7 @@ export default function MessageContent({
   showRemove,
   resendMessage,
   disabled = false,
+  onReplyChosen,
 }: // showRemove,
   // toggleReaction,
   Props): ReactElement {
@@ -97,7 +113,6 @@ export default function MessageContent({
   const isOperatorMessage: boolean = isMessageSentByOperator(
     message as CoreMessageType
   );
-
 
 
   const isByMeClassName = isByMe
@@ -179,6 +194,9 @@ export default function MessageContent({
                     showRemove={showRemove}
                     resendMessage={resendMessage}
                     showFileViewer={showFileViewer}
+                    onReplyChosen={onReplyChosen}
+                    isRepliedMessage={isRepliedMessage(message)}
+
                   />
                 }
               </>
@@ -256,6 +274,8 @@ export default function MessageContent({
                 showRemove={showRemove}
                 resendMessage={resendMessage}
                 showFileViewer={showFileViewer}
+                onReplyChosen={onReplyChosen}
+                isRepliedMessage={isRepliedMessage(message)}
               />
             )}
           </div>

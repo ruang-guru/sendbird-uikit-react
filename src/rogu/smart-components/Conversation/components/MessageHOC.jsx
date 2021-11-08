@@ -42,6 +42,14 @@ export default function MessageHoc({
   const editMessageInputRef = useRef(null);
   const useMessageScrollRef = useRef(null);
 
+  const [repliedParentMessage, setRepliedParentMessage] = useState({
+    hasParent: false,
+    messageId: 0,
+    username: '',
+    message: '',
+    
+  });
+
   useLayoutEffect(() => {
     if (highLightedMessageId === message.messageId) {
       if (useMessageScrollRef && useMessageScrollRef.current) {
@@ -113,6 +121,7 @@ export default function MessageHoc({
           setShowEdit(false);
         }}
         value={message.message}
+        repliedParentMessage={repliedParentMessage}
       />
     );
   }
@@ -147,6 +156,7 @@ export default function MessageHoc({
         showFileViewer={setShowFileViewer}
         resendMessage={resendMessage}
         toggleReaction={toggleReaction}
+        onReplyChosen={repliedParentMessage => {setRepliedParentMessage(repliedParentMessage); console.log(repliedParentMessage)}}
       />
       {/* Modal */}
       {showRemove && (
