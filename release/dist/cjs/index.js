@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-2ed6f0a6.js');
-var index$1 = require('./index-172b78c9.js');
+var LocalizationContext = require('./LocalizationContext-6002553a.js');
+var index$1 = require('./index-2b6079aa.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-aabd798c.js');
-var index$3 = require('./index-2c052d28.js');
-var Channel = require('./index-afde012a.js');
+var index$2 = require('./index-57e3828d.js');
+var index$3 = require('./index-e9bf6716.js');
+var Channel = require('./index-7b681386.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-516165d6.js');
+require('./actionTypes-a084dd9e.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-d91df53d.js');
-require('./utils-6b5f1550.js');
-require('./LeaveChannel-e9e529f7.js');
-require('./index-35dc4e72.js');
-require('./index-9dd33919.js');
-require('./index-02e8ad32.js');
+require('./index-35b650d3.js');
+require('./utils-b35fe9e9.js');
+require('./LeaveChannel-3c10e540.js');
+require('./index-ffb87d1c.js');
+require('./index-36a2c139.js');
+require('./index-77b9c439.js');
 require('./ChannelSettings.js');
-require('./index-568fc5d2.js');
+require('./index-ba863913.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -211,19 +211,20 @@ var isQuoteFormat = function isQuoteFormat(word) {
 };
 
 var destructureRepliedMessage = function destructureRepliedMessage(message) {
+  // TODO: consider to use regex instead
   var repliedMessage = message.split('\n').filter(function (word) {
     return isQuoteFormat(word);
   }).map(function (word) {
     return word.substr(1);
   });
-  var sender = repliedMessage[0],
+  var senderNickname = repliedMessage[0],
       rest = repliedMessage.slice(1);
   var parentMessage = rest.join('\n');
   var originalMessage = message.split('\n').filter(function (word) {
     return !isQuoteFormat(word);
   }).join('\n');
   return {
-    sender: sender,
+    senderNickname: senderNickname,
     parentMessage: parentMessage,
     originalMessage: originalMessage
   };
@@ -237,7 +238,7 @@ var isFileMessage = function isFileMessage(message) {
 var isThumbnailMessage = function isThumbnailMessage(message) {
   return message && isFileMessage(message) && isSupportedFileView(message.type);
 };
-var isRepliedMessage = function isRepliedMessage(message) {
+var isReplyingMessage = function isReplyingMessage(message) {
   var _a, _b;
 
   return ((_b = (_a = message === null || message === void 0 ? void 0 : message.metaArrays) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.key) === 'parentMessageId';
@@ -3289,60 +3290,22 @@ LinkLabel.defaultProps = {
   className: ''
 };
 
-var colorSet = {
-  "#DF4141": ["A", "B", "C", "D"],
-  "#61CE5E": ["E", "F", "G", "H"],
-  "#6073E2": ["I", "J", "K", "L"],
-  "#F89825": ["M", "N", "O", "P"],
-  "#2EB5C0": ["Q", "R", "S", "T"],
-  "#BB58D0": ["U", "V", "W", "X"],
-  "#00A5FF": ["Y", "Z"]
-};
-var generateColorFromString = function generateColorFromString(str) {
-  var firstChar = str[0] || "";
-  var normalizedFirstChar = firstChar.toUpperCase();
-  var color = "inherit";
-
-  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
-    var _b = _a[_i],
-        hex = _b[0],
-        chars = _b[1];
-
-    if (chars.includes(normalizedFirstChar)) {
-      color = hex;
-      break;
-    }
-  }
-
-  return color;
-};
-
-function TextMessageItemBody(_a) {
+function TextMessageItemBody$1(_a) {
   var className = _a.className,
       _b = _a.isByMe,
       isByMe = _b === void 0 ? false : _b,
-      message = _a.message,
+      content = _a.content,
       _c = _a.mode,
       mode = _c === void 0 ? 'normal' : _c,
       _d = _a.isHidden,
-      isHidden = _d === void 0 ? false : _d,
-      _e = _a.isRepliedMessage,
-      isRepliedMessage = _e === void 0 ? false : _e,
-      onScrollToMessage = _a.onScrollToMessage;
+      isHidden = _d === void 0 ? false : _d;
   var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
 
-  var _f = React$1.useState('init'),
-      clampState = _f[0],
-      setClampState = _f[1];
+  var _e = React$1.useState('init'),
+      clampState = _e[0],
+      setClampState = _e[1];
 
   var textRef = React$1.useRef(null);
-
-  var _g = isRepliedMessage && destructureRepliedMessage(message),
-      sender = _g.sender,
-      parentMessage = _g.parentMessage,
-      originalMessage = _g.originalMessage;
-
-  var msg = isRepliedMessage ? originalMessage : message;
   React$1.useEffect(function () {
     if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
       setClampState('clamped');
@@ -3353,37 +3316,21 @@ function TextMessageItemBody(_a) {
     setClampState('expanded');
   }
 
-  var renderRepliedMessage = function renderRepliedMessage(sender, parentMessage) {
-    return /*#__PURE__*/React__default$1["default"].createElement("div", {
-      className: "rogu-text-message-item-body__reply-container",
-      onClick: onScrollToMessage
-    }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
-      className: "rogu-message-content__sender-name",
-      color: LabelColors.ONBACKGROUND_2,
-      style: {
-        color: generateColorFromString(sender || '')
-      },
-      type: LabelTypography.CAPTION_1
-    }, sender), /*#__PURE__*/React__default$1["default"].createElement("br", null), /*#__PURE__*/React__default$1["default"].createElement(Label, {
-      className: "rogu-text-message-item-body__reply-message",
-      color: LabelColors.ONBACKGROUND_1,
-      type: LabelTypography.BODY_3
-    }, parentMessage));
-  };
-
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: index$1.getClassName([className, 'rogu-text-message-item-body', clampState == 'expanded' ? 'rogu-text-message-item-body--expanded' : '', !isByMe ? 'rogu-text-message-item-body--incoming' : '', mode === 'fileViewerCaption' ? 'rogu-text-message-item-body--viewer-mode' : '', mode === 'fileViewerCaption' && isHidden ? 'rogu-text-message-item-body--viewer-mode__hidden' : '', mode === 'thumbnailCaption' ? 'rogu-text-message-item-body--preview-mode' : ''])
+    className: index$1.getClassName([className, 'rogu-clamped-message-item-body', clampState == 'expanded' ? 'rogu-clamped-message-item-body--expanded' : '', !isByMe ? 'rogu-clamped-message-item-body--incoming' : '', mode === 'fileViewerCaption' ? 'rogu-clamped-message-item-body--viewer-mode' : '', mode === 'fileViewerCaption' && isHidden ? 'rogu-clamped-message-item-body--viewer-mode__hidden' : '', mode === 'thumbnailCaption' ? 'rogu-clamped-message-item-body--preview-mode' : ''])
   }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     ref: textRef,
-    className: "rogu-text-message-item-body__inner"
-  }, isRepliedMessage && renderRepliedMessage(sender, parentMessage), msg === null || msg === void 0 ? void 0 : msg.split(/\r/).map(function (words, i) {
+    className: "rogu-clamped-message-item-body__inner"
+  }, content === null || content === void 0 ? void 0 : content.split(/\r/).map(function (words, i) {
     return words === '' ? /*#__PURE__*/React__default$1["default"].createElement("br", {
       key: i
     }) : replaceUrlsWithLink(words);
   })), clampState === 'clamped' && /*#__PURE__*/React__default$1["default"].createElement(TextButton, {
-    className: "rogu-text-message-item-body__read-more",
+    className: "rogu-clamped-message-item-body__read-more",
     onClick: handleExpand
-  }, /*#__PURE__*/React__default$1["default"].createElement(Label, null, stringSet.BUTTON__READ_MORE)));
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    type: LabelTypography.BODY_1
+  }, stringSet.BUTTON__READ_MORE)));
 }
 
 function replaceUrlsWithLink(text) {
@@ -3771,6 +3718,123 @@ function ThumbnailMessageItemBody(_a) {
     width: "34px",
     height: "34px"
   }))));
+}
+
+var colorSet = {
+  "#DF4141": ["A", "B", "C", "D"],
+  "#61CE5E": ["E", "F", "G", "H"],
+  "#6073E2": ["I", "J", "K", "L"],
+  "#F89825": ["M", "N", "O", "P"],
+  "#2EB5C0": ["Q", "R", "S", "T"],
+  "#BB58D0": ["U", "V", "W", "X"],
+  "#00A5FF": ["Y", "Z"]
+};
+var generateColorFromString = function generateColorFromString(str) {
+  var firstChar = str[0] || "";
+  var normalizedFirstChar = firstChar.toUpperCase();
+  var color = "inherit";
+
+  for (var _i = 0, _a = Object.entries(colorSet); _i < _a.length; _i++) {
+    var _b = _a[_i],
+        hex = _b[0],
+        chars = _b[1];
+
+    if (chars.includes(normalizedFirstChar)) {
+      color = hex;
+      break;
+    }
+  }
+
+  return color;
+};
+
+function RepliedTextMessageItemBody(_a) {
+  var content = _a.content,
+      isByMe = _a.isByMe,
+      nickname = _a.nickname,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: index$1.getClassName(['rogu-replied-text-message-item-body', isByMe ? 'rogu-replied-text-message-item-body--outgoing' : 'rogu-replied-text-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-text-message-item-body__reply-message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, content));
+}
+
+/**
+ * TODO
+ * [ ] Handle normal text message
+ * [ ] Handle file message
+ * [ ] Handle assignment message
+ * [ ] Handle material message
+ * [ ] Handle image message
+ * [ ] Handle video message
+ */
+var RepliedMessageTypes;
+
+(function (RepliedMessageTypes) {
+  RepliedMessageTypes[RepliedMessageTypes["Text"] = 0] = "Text";
+})(RepliedMessageTypes || (RepliedMessageTypes = {}));
+
+function RepliedMessageItemBody(_a) {
+  var isByMe = _a.isByMe,
+      nickname = _a.nickname,
+      messageContent = _a.messageContent,
+      type = _a.type,
+      onClick = _a.onClick;
+
+  switch (type) {
+    case RepliedMessageTypes.Text:
+      return /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+        isByMe: isByMe,
+        nickname: nickname,
+        content: messageContent,
+        onClick: onClick
+      });
+
+    default:
+      return null;
+  }
+}
+
+function TextMessageItemBody(_a) {
+  var className = _a.className,
+      _b = _a.isByMe,
+      isByMe = _b === void 0 ? false : _b,
+      message = _a.message,
+      onScrollToRepliedMessage = _a.onScrollToRepliedMessage;
+  var messageContent = message.message;
+  var hasRepliedMessage = isReplyingMessage(message);
+
+  var _c = hasRepliedMessage && destructureRepliedMessage(messageContent),
+      senderNickname = _c.senderNickname,
+      parentMessage = _c.parentMessage,
+      originalMessage = _c.originalMessage;
+
+  var resolvedMessageContent = hasRepliedMessage ? originalMessage : messageContent;
+  return /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, hasRepliedMessage && /*#__PURE__*/React__default$1["default"].createElement(RepliedMessageItemBody, {
+    isByMe: isByMe,
+    nickname: senderNickname,
+    messageContent: parentMessage,
+    type: RepliedMessageTypes.Text,
+    onClick: onScrollToRepliedMessage
+  }), /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody$1, {
+    className: className,
+    isByMe: isByMe,
+    content: resolvedMessageContent
+  }));
 }
 
 function AssignmentMessageItemBody(_a) {
@@ -4246,13 +4310,13 @@ function MessageItemMenu(_a) {
 }
 
 function MessageContent(_a) {
-  var _b, _c, _d, _e;
+  var _b, _c, _d;
 
   var channel = _a.channel,
-      _f = _a.chainBottom,
-      chainBottom = _f === void 0 ? false : _f,
-      _g = _a.chainTop,
-      chainTop = _g === void 0 ? false : _g,
+      _e = _a.chainBottom,
+      chainBottom = _e === void 0 ? false : _e,
+      _f = _a.chainTop,
+      chainTop = _f === void 0 ? false : _f,
       className = _a.className,
       message = _a.message,
       // nicknamesMap,
@@ -4264,8 +4328,8 @@ function MessageContent(_a) {
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
       resendMessage = _a.resendMessage,
-      _h = _a.disabled,
-      disabled = _h === void 0 ? false : _h;
+      _g = _a.disabled,
+      disabled = _g === void 0 ? false : _g;
   var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
   var messageTypes = index$1.getUIKitMessageTypes();
   var avatarRef = React$1.useRef(null);
@@ -4282,7 +4346,7 @@ function MessageContent(_a) {
   }
 
   var onScrollToMessage = function onScrollToMessage() {//TODO: integrate onScrollToMessage
-    //scrollToMessage(message.createdAt, getParentMessageId(message));
+    // scrollToMessage(message.createdAt, getParentMessageId(message));
   };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
@@ -4327,8 +4391,7 @@ function MessageContent(_a) {
     className: "rogu-message-content__bubble__body__inner"
   }, index$1.isTextMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
-    message: (_e = message) === null || _e === void 0 ? void 0 : _e.message,
-    isRepliedMessage: isRepliedMessage(message),
+    message: message,
     onScrollToMessage: onScrollToMessage
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(OGMessageItemBody, {
     message: message,
@@ -4347,10 +4410,10 @@ function MessageContent(_a) {
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING
-  }), message.name && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
+  }), message.name && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody$1, {
     isByMe: isByMe,
     mode: "thumbnailCaption",
-    message: message.name
+    content: message.name
   })), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -4851,8 +4914,8 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     src: url,
     alt: "Uploaded by ".concat(userName),
     className: "rogu-fileviewer__content__img"
-  }), !isPreview && captionMsg && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
-    message: captionMsg,
+  }), !isPreview && captionMsg && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody$1, {
+    content: captionMsg,
     mode: "fileViewerCaption",
     isHidden: isCaptionHidden
   }), !isSupportedFileView(type) && /*#__PURE__*/React__default$1["default"].createElement("div", {
