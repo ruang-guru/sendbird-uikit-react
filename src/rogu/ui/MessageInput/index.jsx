@@ -6,8 +6,6 @@ import LinkPreview from '@ashwamegh/react-link-preview';
 
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import { getClassName, isUrl } from '../../../utils';
-import IconButton from '../../../ui/IconButton';
-import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
 
 import { getMimeTypesString, isImage } from '../../utils';
 
@@ -16,6 +14,8 @@ import Icon, { IconTypes, IconColors } from '../Icon';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import { FileViewerComponent } from '../FileViewer';
 import Toast from '../Toast';
+import IconButton from '../IconButton';
+import Button, { ButtonTypes, ButtonSizes } from '../Button';
 
 import { getUrlFromWords, debounce } from './utils';
 import './index.scss';

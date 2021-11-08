@@ -1,7 +1,7 @@
 @import '../../../styles/variables';
 
-.sendbird-iconbutton {
-  color: var(--sendbird-iconbutton-color);
+.rogu-iconbutton {
+  color: var(--rogu-iconbutton-color);
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
   border-radius: 4px;
   outline: 0;
 
-  .sendbird-iconbutton__inner {
+  .rogu-iconbutton__inner {
     svg {
       @include themed() {
         fill: t(on-bg-1);
@@ -36,7 +36,7 @@
   &:disabled {
     cursor: not-allowed !important;
 
-    .sendbird-iconbutton__inner {
+    .rogu-iconbutton__inner {
       svg,
       path {
         @include themed() {
@@ -47,7 +47,7 @@
   }
 }
 
-.sendbird-iconbutton--pressed {
+.rogu-iconbutton--pressed {
   @include themed() {
     background-color: t(primary--1-bg--7);
   }

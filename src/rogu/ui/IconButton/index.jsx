@@ -23,7 +23,7 @@ const IconButton = React.forwardRef((props, ref) => {
     <button
       className={[
         ...(Array.isArray(className) ? className : [className]),
-        'sendbird-iconbutton',
+        'rogu-iconbutton',
         pressed,
       ].join(' ')}
       disabled={disabled}
@@ -36,7 +36,7 @@ const IconButton = React.forwardRef((props, ref) => {
       }}
       onClick={(e) => {
         if (disabled) { return; }
-        setPressed('sendbird-iconbutton--pressed');
+        setPressed('rogu-iconbutton--pressed');
         onClick(e);
       }}
       onBlur={(e) => {
@@ -44,7 +44,7 @@ const IconButton = React.forwardRef((props, ref) => {
         onBlur(e);
       }}
     >
-      <span className="sendbird-iconbutton__inner">
+      <span className="rogu-iconbutton__inner">
         {children}
       </span>
     </button>
