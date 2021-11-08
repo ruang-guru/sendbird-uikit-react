@@ -61,16 +61,20 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
       <div
         className="rogu-message-content__bubble__header"
       >
-        <span
-          className="rogu-message-content__sender-name sendbird-label sendbird-label--caption-1 sendbird-label--color-onbackground-2"
-          style={
-            Object {
-              "color": "#6073E2",
-            }
-          }
+        <div
+          className="rogu-message-content__id-container"
         >
-          Kukuh Aji Sulistyo Bangun Jaya Abadi Mangkubumi
-        </span>
+          <span
+            className="rogu-message-content__sender-name sendbird-label sendbird-label--caption-1 sendbird-label--color-onbackground-2"
+            style={
+              Object {
+                "color": "#6073E2",
+              }
+            }
+          >
+            Kukuh Aji Sulistyo Bangun Jaya Abadi Mangkubumi
+          </span>
+        </div>
         <div
           className="rogu-message-content__menu rogu-message-item-menu"
         >
@@ -127,10 +131,10 @@ exports[`MessageContent should do a snapshot test of the MessageContent DOM 1`] 
           className="rogu-message-content__bubble__body__inner"
         >
           <div
-            className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming   "
+            className=" rogu-clamped-message-item-body  rogu-clamped-message-item-body--incoming   "
           >
             <div
-              className="rogu-text-message-item-body__inner"
+              className="rogu-clamped-message-item-body__inner"
             >
               <span
                 className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"

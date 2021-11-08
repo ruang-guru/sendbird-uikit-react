@@ -8,8 +8,12 @@ import React, {
 
 import TextButton from '../TextButton';
 import Label, { LabelTypography, LabelColors } from '../Label';
+import LinkLabel from '../LinkLabel';
+
 import { getClassName } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
+import { extractUrls } from '../../utils';
+import uuidv4 from '../../../utils/uuid';
 
 import './index.scss';
 
@@ -69,20 +73,11 @@ export default function TextMessageItemBody({
       ])}
     >
       <div ref={textRef} className="rogu-clamped-message-item-body__inner">
-        {content?.split(/\r/).map((word, i) =>
-          word === '' ? (
-            <br key={i} />
-          ) : (
-            <Label
-              className="rogu-clamped-message-item-body__message"
-              color={LabelColors.ONBACKGROUND_1}
-              key={i}
-              type={LabelTypography.BODY_1}
-            >
-              {word}
-            </Label>
-          )
-        )}
+        {content
+          ?.split(/\r/)
+          .map((words, i) =>
+            words === '' ? <br key={i} /> : replaceUrlsWithLink(words)
+          )}
       </div>
 
       {clampState === 'clamped' && (
@@ -97,4 +92,41 @@ export default function TextMessageItemBody({
       )}
     </div>
   );
+}
+
+function replaceUrlsWithLink(text: string): Array<JSX.Element> {
+  const { urls, sentences } = extractUrls(text);
+  const elements = [];
+
+  sentences.forEach((sentence, i) => {
+    if (sentence !== '') {
+      elements.push(
+        <Label
+          className="rogu-text-message-item-body__message"
+          color={LabelColors.ONBACKGROUND_1}
+          key={uuidv4()}
+          type={LabelTypography.BODY_1}
+        >
+          {sentence}
+        </Label>
+      );
+    }
+
+    const currentUrl = urls[i];
+    if (currentUrl) {
+      elements.push(
+        <LinkLabel
+          className="rogu-text-message-item-body__message"
+          color={LabelColors.SECONDARY_3}
+          key={uuidv4()}
+          src={currentUrl}
+          type={LabelTypography.BODY_1}
+        >
+          {currentUrl}
+        </LinkLabel>
+      );
+    }
+  });
+
+  return elements;
 }
