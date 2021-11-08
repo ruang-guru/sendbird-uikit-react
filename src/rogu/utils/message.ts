@@ -19,33 +19,34 @@ export const groupMessagesByDate = (
   }, new Map());
 };
 
-type structureRepliedMessage = {
-  sender: string;
-  parentMessage: string;
-  originalMessage: string;
-};
-
 const QUOTE_FORMAT = '>';
 
 const isQuoteFormat = (word: string): boolean => {
   return word.charAt(0) === QUOTE_FORMAT;
 };
 
+type StructuredRepliedMessage = {
+  senderNickname: string;
+  parentMessage: string;
+  originalMessage: string;
+};
+
 export const destructureRepliedMessage = (
   message: string
-): structureRepliedMessage => {
+): StructuredRepliedMessage => {
+  // TODO: consider to use regex instead
   const repliedMessage = message
     .split('\n')
     .filter((word) => isQuoteFormat(word))
     .map((word) => word.substr(1));
-  const [sender, ...rest] = repliedMessage;
+  const [senderNickname, ...rest] = repliedMessage;
   const parentMessage = rest.join('\n');
   const originalMessage = message
     .split('\n')
     .filter((word) => !isQuoteFormat(word))
     .join('\n');
   return {
-    sender: sender,
+    senderNickname,
     parentMessage,
     originalMessage,
   };

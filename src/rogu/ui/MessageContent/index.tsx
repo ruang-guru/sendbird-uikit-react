@@ -2,10 +2,11 @@ import React, { ReactElement, useRef, useContext } from 'react';
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from 'sendbird';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import MessageStatus from '../MessageStatus';
-import TextMessageItemBody from '../TextMessageItemBody';
+import ClampedMessageItemBody from '../ClampedMessageItemBody';
 import OGMessageItemBody from '../OGMessageItemBody';
 import FileMessageItemBody from '../FileMessageItemBody';
 import ThumbnailMessageItemBody from '../ThumbnailMessageItemBody';
+import TextMessageItemBody from '../TextMessageItemBody';
 
 import Avatar from '../../../ui/Avatar';
 import ClientAdminMessage from '../../../ui/AdminMessage';
@@ -31,10 +32,8 @@ import {
 } from '../../../utils';
 
 import {
-  // getParentMessageId,
   isAssignmentMessage,
   isMaterialMessage,
-  isRepliedMessage,
   isThumbnailMessage,
 } from '../../utils';
 import AssignmentMessageItemBody from '../AssignmentMessageItemBody';
@@ -83,8 +82,8 @@ export default function MessageContent({
   resendMessage,
   disabled = false,
 }: // showRemove,
-  // toggleReaction,
-  Props): ReactElement {
+// toggleReaction,
+Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
@@ -98,8 +97,6 @@ export default function MessageContent({
     message as CoreMessageType
   );
 
-
-
   const isByMeClassName = isByMe
     ? 'rogu-message-content--outgoing'
     : 'rogu-message-content--incoming';
@@ -112,10 +109,9 @@ export default function MessageContent({
     return <ClientAdminMessage message={message} />;
   }
 
-
   const onScrollToMessage = () => {
     //TODO: integrate onScrollToMessage
-    //scrollToMessage(message.createdAt, getParentMessageId(message));
+    // scrollToMessage(message.createdAt, getParentMessageId(message));
   };
 
   return (
@@ -169,7 +165,8 @@ export default function MessageContent({
                     </Label>
                   )}
                 </div>
-                {!channel.isFrozen &&
+
+                {!channel.isFrozen && (
                   <MessageItemMenu
                     className="rogu-message-content__menu"
                     channel={channel}
@@ -181,7 +178,7 @@ export default function MessageContent({
                     resendMessage={resendMessage}
                     showFileViewer={showFileViewer}
                   />
-                }
+                )}
               </>
             )}
           </div>
@@ -191,8 +188,7 @@ export default function MessageContent({
               {isTextMessage(message as UserMessage) && (
                 <TextMessageItemBody
                   isByMe={isByMe}
-                  message={(message as UserMessage)?.message}
-                  isRepliedMessage={isRepliedMessage(message)}
+                  message={message as UserMessage}
                   onScrollToMessage={onScrollToMessage}
                 />
               )}
@@ -216,11 +212,11 @@ export default function MessageContent({
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.FILE && (
-                  <FileMessageItemBody
-                    message={message as FileMessage}
-                    isByMe={isByMe}
-                  />
-                )}
+                <FileMessageItemBody
+                  message={message as FileMessage}
+                  isByMe={isByMe}
+                />
+              )}
               {isThumbnailMessage(message as FileMessage) && (
                 <>
                   <ThumbnailMessageItemBody
@@ -233,18 +229,18 @@ export default function MessageContent({
                     }
                   />
                   {(message as FileMessage).name && (
-                    <TextMessageItemBody
+                    <ClampedMessageItemBody
                       isByMe={isByMe}
                       mode="thumbnailCaption"
-                      message={(message as FileMessage).name}
+                      content={(message as FileMessage).name}
                     />
                   )}
                 </>
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
-                  <UnknownMessageItemBody message={message} isByMe={isByMe} />
-                )}
+                <UnknownMessageItemBody message={message} isByMe={isByMe} />
+              )}
             </div>
             {((!isByMe && chainTop) || isByMe) && (
               <MessageItemMenu

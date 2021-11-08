@@ -148,10 +148,10 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
       tabIndex="0"
     />
     <div
-      className=" rogu-text-message-item-body  rogu-text-message-item-body--incoming rogu-text-message-item-body--viewer-mode  "
+      className=" rogu-clamped-message-item-body  rogu-clamped-message-item-body--incoming rogu-clamped-message-item-body--viewer-mode  "
     >
       <div
-        className="rogu-text-message-item-body__inner"
+        className="rogu-clamped-message-item-body__inner"
       >
         <span
           className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
