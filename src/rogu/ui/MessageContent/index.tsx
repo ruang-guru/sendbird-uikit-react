@@ -141,29 +141,31 @@ Props): ReactElement {
           <div className="rogu-message-content__bubble__header">
             {!isByMe && !chainTop && (
               <>
-                {/* Sender's name */}
-                <Label
-                  className="rogu-message-content__sender-name"
-                  color={LabelColors.ONBACKGROUND_2}
-                  style={{
-                    color: generateColorFromString(
-                      message?.sender?.nickname || ''
-                    ),
-                  }}
-                  type={LabelTypography.CAPTION_1}
-                >
-                  {getSenderName(message)}
-                </Label>
-
-                {/* Teacher label */}
-                {isOperatorMessage && !chainTop && (
+                <div className="rogu-message-content__id-container">
+                  {/* Sender's name */}
                   <Label
-                    className="rogu-message-content__operator-label"
-                    type={LabelTypography.CAPTION_3}
+                    className="rogu-message-content__sender-name"
+                    color={LabelColors.ONBACKGROUND_2}
+                    style={{
+                      color: generateColorFromString(
+                        message?.sender?.nickname || ''
+                      ),
+                    }}
+                    type={LabelTypography.CAPTION_1}
                   >
-                    {stringSet.LABEL__OPERATOR}
+                    {getSenderName(message)}
                   </Label>
-                )}
+                  {/* Teacher label */}
+                  {isOperatorMessage && !chainTop && (
+                    <Label
+                      className="rogu-message-content__operator-label"
+                      type={LabelTypography.CAPTION_3}
+                    >
+                      {stringSet.LABEL__OPERATOR}
+                    </Label>
+                  )}
+                </div>
+
                 {!channel.isFrozen && (
                   <MessageItemMenu
                     className="rogu-message-content__menu"
