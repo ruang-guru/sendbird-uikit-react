@@ -23,7 +23,7 @@ import './index.scss';
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
 const LINE_HEIGHT = 36;
-const noop = () => {};
+const noop = () => { };
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
@@ -246,24 +246,6 @@ const MessageInput = React.forwardRef((props, ref) => {
               {placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER}
             </Label>
           )}
-          {/* send icon */}
-          {/* {
-          (!isEdit && inputValue && inputValue.trim().length > 0) && (
-            <IconButton
-              className="rogu-message-input--send"
-              height="32px"
-              width="32px"
-              onClick={sendMessage}
-            >
-              <Icon
-                type={IconTypes.SEND}
-                fillColor={IconColors.PRIMARY}
-                width="20px"
-                height="20px"
-              />
-            </IconButton>
-          )
-        } */}
           {/* upload icon */}
           {!isEdit && !imagePreviewFile && (
             <IconButton
@@ -302,7 +284,7 @@ const MessageInput = React.forwardRef((props, ref) => {
               onClick={sendMessage}
             >
               <Icon
-                type={IconTypes.SEND}
+                type={IconTypes.ROGU_SEND}
                 fillColor={IconColors.WHITE}
                 width="16px"
                 height="16px"
@@ -385,7 +367,7 @@ MessageInput.defaultProps = {
   isEdit: false,
   disabled: false,
   placeholder: '',
-  maxLength: 5000,
+  maxLength: 3000,
   onFileUpload: noop,
   onCancelEdit: noop,
   onStartTyping: noop,
