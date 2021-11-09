@@ -40,7 +40,7 @@ export default function useSendMessageCallback(
 
       if (repliedMessage) {
         const {
-          parentMessageContent,
+          parentMessageBody,
           parentMessageId,
           parentMessageNickname,
         } = repliedMessage;
@@ -54,7 +54,7 @@ export default function useSendMessageCallback(
 
         params.message = generateRepliedMessage(
           text,
-          parentMessageContent,
+          parentMessageBody,
           parentMessageNickname,
         );
       }

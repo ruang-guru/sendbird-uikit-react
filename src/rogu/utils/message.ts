@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import { MessageMetaArray } from 'sendbird';
 
 import { CoreMessageType } from '../../utils';
 
@@ -49,6 +50,36 @@ export const destructureRepliedMessage = (
     senderNickname,
     parentMessage,
     originalMessage,
+  };
+};
+
+export type RepliedMessage = {
+  body: string;
+  messageId: string;
+  nickname: string;
+};
+
+export const getRepliedMessageFromMetaArrays = (
+  metaArrays: Array<MessageMetaArray>
+): RepliedMessage => {
+  const messageId =
+    metaArrays.find((meta) => meta.key === 'parentMessageId')?.value[0] || '';
+  let nickname = '';
+  let body = '';
+
+  const parentMessageContent = metaArrays.find(
+    (meta) => meta.key === 'parentMessageContent'
+  )?.value[0];
+  if (parentMessageContent) {
+    const content = JSON.parse(parentMessageContent);
+    body = content.body;
+    nickname = content.nickname;
+  }
+
+  return {
+    body,
+    messageId,
+    nickname,
   };
 };
 

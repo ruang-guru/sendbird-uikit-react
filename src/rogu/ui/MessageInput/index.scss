@@ -1,10 +1,12 @@
 @import '../../../styles/variables';
 
 // TODO: fix naming to comply with BEM convention
-.rogu-message-input--container {
-  &.rogu-message-input--preview {
+.rogu-message-input--preview {
+  // make sure the MessageInput and RepliedMessagePreview shows on top of the FileViewer
+  .rogu-message-input--container,
+  .rogu-message-input__replied-preview {
     position: relative;
-    z-index: $modal + 1; // make sure the MessageInput shows on top of the FileViewer
+    z-index: $modal + 1;
   }
 }
 
@@ -14,7 +16,6 @@
   position: relative;
 
   .rogu-message-input--textarea {
-    // width: 100%;
     width: calc(100% - 48px);
     border-radius: 42px;
     font-size: 14px;

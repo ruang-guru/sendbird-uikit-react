@@ -16,7 +16,7 @@ import { getClassName, isUrl } from '../../../utils';
 import IconButton from '../../../ui/IconButton';
 import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
 
-import { getMimeTypesString, isImage } from '../../utils';
+import { getMimeTypesString, isImage, SUPPORTED_MIMES } from '../../utils';
 
 import OGMessageItemBody from '../OGMessageItemBody';
 import Icon, { IconTypes, IconColors } from '../Icon';
@@ -175,13 +175,23 @@ const MessageInput = React.forwardRef((props, ref) => {
       });
       modifiedFile.name = inputValue;
 
-      onFileUpload(modifiedFile);
+      if (repliedMessage) {
+        onFileUpload(modifiedFile, {
+          parentMessageBody: repliedMessage.message,
+          parentMessageId: repliedMessage.messageId,
+          parentMessageNickname: repliedMessage.sender?.nickname || '-',
+        });
+      } else {
+        onFileUpload(modifiedFile);
+      }
+
       setImagePreviewFile(null);
+      onCancelRepliedMessage();
       setInputValue('');
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
         onSendMessage({
-          parentMessageContent: repliedMessage.message,
+          parentMessageBody: repliedMessage.message,
           parentMessageId: repliedMessage.messageId,
           parentMessageNickname: repliedMessage.sender?.nickname || '-',
         });
@@ -199,10 +209,16 @@ const MessageInput = React.forwardRef((props, ref) => {
   };
 
   return (
-    <div className="rogu-message-input--wrapper">
+    <div
+      className={getClassName([
+        'rogu-message-input--wrapper',
+        imagePreviewFile ? 'rogu-message-input--preview' : '',
+      ])}
+    >
       {/* Replied message */}
       {repliedMessage && (
         <RepliedMessagePreview
+          className="rogu-message-input__replied-preview"
           message={repliedMessage}
           onCancel={onCancelRepliedMessage}
           onClick={onClickRepliedMessage}
@@ -219,7 +235,7 @@ const MessageInput = React.forwardRef((props, ref) => {
         className={[
           'rogu-message-input--container',
           isEdit ? 'rogu-message-input__edit' : '',
-          imagePreviewFile ? 'rogu-message-input--preview' : '',
+
           disabled ? 'rogu-message-input-form__disabled ' : '',
         ].join(' ')}
       >
@@ -289,7 +305,11 @@ const MessageInput = React.forwardRef((props, ref) => {
                 height="20px"
               />
               <input
-                accept={getMimeTypesString()}
+                accept={
+                  repliedMessage
+                    ? SUPPORTED_MIMES.IMAGE.map((mime) => mime.mimeType)
+                    : getMimeTypesString()
+                }
                 className="rogu-message-input--attach-input"
                 type="file"
                 ref={fileInputRef}
@@ -350,7 +370,7 @@ const MessageInput = React.forwardRef((props, ref) => {
 
       {imagePreviewFile !== null && (
         <FileViewerComponent
-          captionMsg="TODO: caption here"
+          captionMsg=""
           isByMe
           isPreview
           profileUrl={profileUrl}

@@ -1,6 +1,6 @@
 /**
  * TODO
- * [ ] Handle normal text message
+ * [x] Handle normal text message
  * [ ] Handle file message
  * [ ] Handle assignment message
  * [ ] Handle material message
