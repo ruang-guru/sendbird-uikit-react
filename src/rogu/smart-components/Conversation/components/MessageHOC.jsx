@@ -33,6 +33,7 @@ export default function MessageHoc({
   toggleReaction,
   renderCustomMessage,
   currentGroupChannel,
+  onReplyMessage,
 }) {
   const { sender = {} } = message;
   const [showEdit, setShowEdit] = useState(false);
@@ -145,6 +146,7 @@ export default function MessageHoc({
         showEdit={setShowEdit}
         showRemove={setShowRemove}
         showFileViewer={setShowFileViewer}
+        showReply={() => onReplyMessage(message)}
         resendMessage={resendMessage}
         toggleReaction={toggleReaction}
       />
@@ -220,6 +222,7 @@ MessageHoc.propTypes = {
     ),
   }),
   toggleReaction: PropTypes.func,
+  onReplyMessage: PropTypes.func,
 };
 
 MessageHoc.defaultProps = {
@@ -231,7 +234,8 @@ MessageHoc.defaultProps = {
   // hasSeparator: false,
   disabled: false,
   highLightedMessageId: null,
-  toggleReaction: () => { },
-  scrollToMessage: () => { },
+  toggleReaction: () => {},
+  scrollToMessage: () => {},
+  onReplyMessage: () => {},
   emojiContainer: {},
 };
