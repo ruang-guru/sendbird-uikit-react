@@ -181,9 +181,9 @@ const MessageInput = React.forwardRef((props, ref) => {
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
         onSendMessage({
-          nickname: repliedMessage.sender?.nickname || '-',
           parentMessageContent: repliedMessage.message,
           parentMessageId: repliedMessage.messageId,
+          parentMessageNickname: repliedMessage.sender?.nickname || '-',
         });
       } else {
         onSendMessage();

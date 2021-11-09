@@ -40,9 +40,9 @@ export default function useSendMessageCallback(
 
       if (repliedMessage) {
         const {
-          parentMessageNickname,
           parentMessageContent,
           parentMessageId,
+          parentMessageNickname,
         } = repliedMessage;
 
         params.metaArrays = [
