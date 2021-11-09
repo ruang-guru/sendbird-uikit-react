@@ -9,7 +9,7 @@ import ThumbnailMessageItemBody from '../ThumbnailMessageItemBody';
 import TextMessageItemBody from '../TextMessageItemBody';
 
 import Avatar from '../../../ui/Avatar';
-import ClientAdminMessage from '../../../ui/AdminMessage';
+import ClientAdminMessage from '../AdminMessage';
 import UnknownMessageItemBody from '../../../ui/UnknownMessageItemBody'; // TODO: refine this component
 
 import { LocalizationContext } from '../../../lib/LocalizationContext';
