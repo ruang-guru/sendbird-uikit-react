@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-2e3a4063.js';
-export { w as withSendBird } from './LocalizationContext-2e3a4063.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as Button$1, L as ButtonTypes$1, N as ButtonSizes, P as UserProfileProvider } from './index-ba421434.js';
-export { Q as sendBirdSelectors } from './index-ba421434.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-f3d39bac.js';
+export { w as withSendBird } from './LocalizationContext-f3d39bac.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as Button$1, L as ButtonTypes$1, N as ButtonSizes, P as UserProfileProvider } from './index-c5badd9f.js';
+export { Q as sendBirdSelectors } from './index-c5badd9f.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-b6580438.js';
-import { c as compareIds, L as LinkLabel$1 } from './index-0d5f9e29.js';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-d49e0eba.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-b6147a6c.js';
+import { c as compareIds, L as LinkLabel$1 } from './index-9ed808f3.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-f3a902f1.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-3b69e48d.js';
+import './actionTypes-64672aca.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-855bd1bc.js';
-import './utils-383dfe40.js';
-import './LeaveChannel-899a9006.js';
-import './index-b11960e4.js';
-import './index-5e5dce31.js';
-import './index-debbb7ab.js';
+import './index-55292d1a.js';
+import './utils-8c86e617.js';
+import './LeaveChannel-ff6e33f9.js';
+import './index-4104e27f.js';
+import './index-1873caf1.js';
+import './index-0bc804be.js';
 import './ChannelSettings.js';
-import './index-20d1bd54.js';
+import './index-f59f01f4.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -204,6 +204,9 @@ var destructureRepliedMessage = function destructureRepliedMessage(message) {
     originalMessage: originalMessage
   };
 };
+var generateRepliedMessage = function generateRepliedMessage(message, parentMessageContent, parentMessageNickname) {
+  return ['>', parentMessageNickname, '\n>', parentMessageContent, '\n', message].join('');
+};
 
 var isFileMessage = function isFileMessage(message) {
   var _a;
@@ -214,9 +217,15 @@ var isThumbnailMessage = function isThumbnailMessage(message) {
   return message && isFileMessage(message) && isSupportedFileView(message.type);
 };
 var isReplyingMessage = function isReplyingMessage(message) {
-  var _a, _b;
+  var isReplying = false;
 
-  return ((_b = (_a = message === null || message === void 0 ? void 0 : message.metaArrays) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.key) === 'parentMessageId';
+  if (message.metaArrays) {
+    isReplying = message.metaArrays.some(function (meta) {
+      return meta.key === 'parentMessageId';
+    });
+  }
+
+  return isReplying;
 };
 
 var REGEX_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*?)/g;
@@ -1555,7 +1564,7 @@ function useSendMessageCallback(_ref, _ref2) {
       pubSub = _ref2.pubSub,
       messagesDispatcher = _ref2.messagesDispatcher;
   var messageInputRef = useRef(null);
-  var sendMessage = useCallback(function () {
+  var sendMessage = useCallback(function (repliedMessage) {
     var text = messageInputRef.current.value;
 
     var createParamsDefault = function createParamsDefault(txt) {
@@ -1572,6 +1581,15 @@ function useSendMessageCallback(_ref, _ref2) {
     }
 
     var params = onBeforeSendUserMessage ? onBeforeSendUserMessage(text) : createParamsDefault(text);
+
+    if (repliedMessage) {
+      var parentMessageContent = repliedMessage.parentMessageContent,
+          parentMessageId = repliedMessage.parentMessageId,
+          parentMessageNickname = repliedMessage.parentMessageNickname;
+      params.metaArrays = [].concat(_toConsumableArray(params.metaArrays), [new sdk.MessageMetaArray('parentMessageId', [String(parentMessageId)])]);
+      params.message = generateRepliedMessage(text, parentMessageContent, parentMessageNickname);
+    }
+
     logger.info('Channel: Sending message has started', params);
     var pendingMsg = currentGroupChannel.sendUserMessage(params, function (res, err) {
       var swapParams = sdk.getErrorFirstCallback();
@@ -3727,6 +3745,9 @@ function RepliedTextMessageItemBody(_a) {
   var content = _a.content,
       isByMe = _a.isByMe,
       nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
       _onClick = _a.onClick;
   return /*#__PURE__*/React__default$1.createElement("div", {
     className: getClassName(['rogu-replied-text-message-item-body', isByMe ? 'rogu-replied-text-message-item-body--outgoing' : 'rogu-replied-text-message-item-body--incoming']),
@@ -3735,6 +3756,8 @@ function RepliedTextMessageItemBody(_a) {
     onClick: function onClick(e) {
       if (_onClick) _onClick(e);
     }
+  }, /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-replied-text-message-item-body__content"
   }, /*#__PURE__*/React__default$1.createElement(Label, {
     color: LabelColors.ONBACKGROUND_2,
     style: {
@@ -3742,10 +3765,24 @@ function RepliedTextMessageItemBody(_a) {
     },
     type: LabelTypography.CAPTION_1
   }, nickname), /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-replied-text-message-item-body__reply-message",
+    className: "rogu-replied-text-message-item-body__content__message",
     color: LabelColors.ONBACKGROUND_1,
     type: LabelTypography.BODY_3
-  }, content));
+  }, content)), withCancelButton && /*#__PURE__*/React__default$1.createElement(IconButton, {
+    className: "rogu-replied-text-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
 }
 
 /**
@@ -4187,6 +4224,7 @@ function MessageItemMenu(_a) {
       disabled = _a.disabled;
       _a.showEdit;
       var showRemove = _a.showRemove,
+      showReply = _a.showReply,
       resendMessage = _a.resendMessage,
       setSupposedHover = _a.setSupposedHover,
       showFileViewer = _a.showFileViewer;
@@ -4263,8 +4301,10 @@ function MessageItemMenu(_a) {
       }, showMenuItemReply && /*#__PURE__*/React__default$1.createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
-          // TODO: Add replying message logic
-          closeDropdown();
+          if (!disabled && showReply && typeof showReply == 'function') {
+            showReply(true);
+            closeDropdown();
+          }
         },
         disable: (message === null || message === void 0 ? void 0 : message.parentMessageId) > 0,
         iconType: IconTypes.ROGU_REPLY
@@ -4333,6 +4373,7 @@ function MessageContent(_a) {
   showEdit = _a.showEdit,
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
+      showReply = _a.showReply,
       resendMessage = _a.resendMessage,
       _g = _a.disabled,
       disabled = _g === void 0 ? false : _g;
@@ -4398,7 +4439,7 @@ function MessageContent(_a) {
   }, isTextMessage(message) && /*#__PURE__*/React__default$1.createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message,
-    onScrollToMessage: onScrollToMessage
+    onScrollToRepliedMessage: onScrollToMessage
   }), isOGMessage(message) && /*#__PURE__*/React__default$1.createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -4432,7 +4473,8 @@ function MessageContent(_a) {
     showEdit: showEdit,
     showRemove: showRemove,
     resendMessage: resendMessage,
-    showFileViewer: showFileViewer
+    showFileViewer: showFileViewer,
+    showReply: showReply
   }))), !chainBottom && /*#__PURE__*/React__default$1.createElement("div", {
     className: 'rogu-message-content__misc'
   }, isByMe ? /*#__PURE__*/React__default$1.createElement(MessageStatus, {
@@ -5000,6 +5042,32 @@ FileViewer.defaultProps = {
   isPreview: false
 };
 
+/**
+ * TODO
+ * [x] Handle reply text message
+ * [ ] Handle reply file message
+ * [ ] Handle reply assignment message
+ * [ ] Handle reply material message
+ * [ ] Handle reply image message
+ * [ ] Handle reply video message
+ * [ ] Handle reply replied message
+ */
+function RepliedMessagePreview(_a) {
+  var _b;
+
+  var message = _a.message,
+      onCancel = _a.onCancel,
+      onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1.createElement(React__default$1.Fragment, null, (isTextMessage(message) || isOGMessage(message)) && /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody, {
+    content: message.message,
+    isByMe: false,
+    nickname: (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname,
+    withCancelButton: true,
+    onClick: onClick,
+    onCancel: onCancel
+  }));
+}
+
 // https://davidwalsh.name/javascript-debounce-function
 
 function debounce(func, wait, immediate) {
@@ -5054,10 +5122,13 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
       maxLength = props.maxLength,
       nickname = props.nickname,
       profileUrl = props.profileUrl,
+      repliedMessage = props.repliedMessage,
       onFileUpload = props.onFileUpload,
       onSendMessage = props.onSendMessage,
       onCancelEdit = props.onCancelEdit,
-      onStartTyping = props.onStartTyping;
+      onStartTyping = props.onStartTyping,
+      onCancelRepliedMessage = props.onCancelRepliedMessage,
+      onClickRepliedMessage = props.onClickRepliedMessage;
 
   var _useContext = useContext(LocalizationContext),
       stringSet = _useContext.stringSet;
@@ -5216,24 +5287,34 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
       setImagePreviewFile(null);
       setInputValue('');
     } else if (inputValue && inputValue.trim().length > 0) {
-      var trimmedInputValue = inputValue.trim();
+      if (repliedMessage) {
+        var _repliedMessage$sende;
 
-      if (isEdit) {
-        onSendMessage(name, trimmedInputValue, function () {
-          onCancelEdit();
+        onSendMessage({
+          parentMessageContent: repliedMessage.message,
+          parentMessageId: repliedMessage.messageId,
+          parentMessageNickname: ((_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname) || '-'
         });
       } else {
-        onSendMessage(trimmedInputValue);
-        setInputValue('');
+        onSendMessage();
+      }
 
-        if (elem) {
-          elem.style.height = "".concat(LINE_HEIGHT, "px");
-        }
+      setInputValue('');
+      onCancelRepliedMessage();
+
+      if (elem) {
+        elem.style.height = "".concat(LINE_HEIGHT, "px");
       }
     }
   };
 
-  return /*#__PURE__*/React__default$1.createElement("div", null, url.hasUrl && isUrl(url.text) && /*#__PURE__*/React__default$1.createElement(dist, {
+  return /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-message-input--wrapper"
+  }, repliedMessage && /*#__PURE__*/React__default$1.createElement(RepliedMessagePreview, {
+    message: repliedMessage,
+    onCancel: onCancelRepliedMessage,
+    onClick: onClickRepliedMessage
+  }), url.hasUrl && isUrl(url.text) && /*#__PURE__*/React__default$1.createElement(dist, {
     url: url.text,
     render: renderPreviewUrl
   }), /*#__PURE__*/React__default$1.createElement("form", {
@@ -5350,10 +5431,13 @@ MessageInput.propTypes = {
   maxLength: PropTypes$1.number,
   nickname: PropTypes$1.string.isRequired,
   profileUrl: PropTypes$1.string.isRequired,
+  repliedMessage: PropTypes$1.object,
   onFileUpload: PropTypes$1.func,
   onSendMessage: PropTypes$1.func,
   onStartTyping: PropTypes$1.func,
-  onCancelEdit: PropTypes$1.func
+  onCancelEdit: PropTypes$1.func,
+  onCancelRepliedMessage: PropTypes$1.func,
+  onClickRepliedMessage: PropTypes$1.func
 };
 MessageInput.defaultProps = {
   value: '',
@@ -5363,9 +5447,12 @@ MessageInput.defaultProps = {
   disabled: false,
   placeholder: '',
   maxLength: 3000,
+  repliedMessage: null,
   onFileUpload: noop$1,
   onCancelEdit: noop$1,
-  onStartTyping: noop$1
+  onStartTyping: noop$1,
+  onCancelRepliedMessage: noop$1,
+  onClickRepliedMessage: noop$1
 };
 
 var Type = {
@@ -5600,7 +5687,8 @@ function MessageHoc(_ref) {
       highLightedMessageId = _ref.highLightedMessageId,
       toggleReaction = _ref.toggleReaction,
       renderCustomMessage = _ref.renderCustomMessage,
-      currentGroupChannel = _ref.currentGroupChannel;
+      currentGroupChannel = _ref.currentGroupChannel,
+      onReplyMessage = _ref.onReplyMessage;
   var _message$sender = message.sender,
       sender = _message$sender === void 0 ? {} : _message$sender;
 
@@ -5696,6 +5784,9 @@ function MessageHoc(_ref) {
     showEdit: setShowEdit,
     showRemove: setShowRemove,
     showFileViewer: setShowFileViewer,
+    showReply: function showReply() {
+      return onReplyMessage(message);
+    },
     resendMessage: resendMessage,
     toggleReaction: toggleReaction
   }), showRemove && /*#__PURE__*/React__default$1.createElement(RemoveMessage, {
@@ -5759,7 +5850,8 @@ MessageHoc.propTypes = {
       }))
     }))
   }),
-  toggleReaction: PropTypes$1.func
+  toggleReaction: PropTypes$1.func,
+  onReplyMessage: PropTypes$1.func
 };
 MessageHoc.defaultProps = {
   userId: '',
@@ -5772,6 +5864,7 @@ MessageHoc.defaultProps = {
   highLightedMessageId: null,
   toggleReaction: function toggleReaction() {},
   scrollToMessage: function scrollToMessage() {},
+  onReplyMessage: function onReplyMessage() {},
   emojiContainer: {}
 };
 
@@ -5921,7 +6014,8 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
           currentGroupChannel = _this$props2.currentGroupChannel,
           memoizedEmojiListItems = _this$props2.memoizedEmojiListItems,
           showScrollBot = _this$props2.showScrollBot,
-          onClickScrollBot = _this$props2.onClickScrollBot;
+          onClickScrollBot = _this$props2.onClickScrollBot,
+          onReplyMessage = _this$props2.onReplyMessage;
 
       if (allMessages.length < 1) {
         return /*#__PURE__*/React__default$1.createElement(PlaceHolder, {
@@ -6002,7 +6096,8 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
               deleteMessage: deleteMessage,
               resendMessage: resendMessage,
               toggleReaction: toggleReaction,
-              memoizedEmojiListItems: memoizedEmojiListItems
+              memoizedEmojiListItems: memoizedEmojiListItems,
+              onReplyMessage: onReplyMessage
             });
           }))
         );
@@ -6058,7 +6153,8 @@ ConversationScroll.propTypes = {
   membersMap: PropTypes$1.instanceOf(Map),
   useMessageGrouping: PropTypes$1.bool,
   toggleReaction: PropTypes$1.func,
-  memoizedEmojiListItems: PropTypes$1.func
+  memoizedEmojiListItems: PropTypes$1.func,
+  onReplyMessage: PropTypes$1.func
 };
 ConversationScroll.defaultProps = {
   hasMore: false,
@@ -6081,7 +6177,8 @@ ConversationScroll.defaultProps = {
   toggleReaction: function toggleReaction() {},
   memoizedEmojiListItems: function memoizedEmojiListItems() {
     return '';
-  }
+  },
+  onReplyMessage: function onReplyMessage() {}
 };
 
 function Notification(_ref) {
@@ -6214,11 +6311,14 @@ TypingIndicator.propTypes = {
 var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
   var channel = _a.channel,
       user = _a.user,
+      repliedMessage = _a.repliedMessage,
       onSendMessage = _a.onSendMessage,
       onFileUpload = _a.onFileUpload,
       renderMessageInput = _a.renderMessageInput,
       isOnline = _a.isOnline,
-      initialized = _a.initialized;
+      initialized = _a.initialized,
+      onClickRepliedMessage = _a.onClickRepliedMessage,
+      onCancelRepliedMessage = _a.onCancelRepliedMessage;
   var stringSet = useContext(LocalizationContext).stringSet;
   var disabled = !initialized || isDisabledBecauseFrozen(channel) || isDisabledBecauseMuted(channel) || !isOnline;
   var isOperator$1 = isOperator(channel);
@@ -6244,11 +6344,14 @@ var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
     profileUrl: user.profileUrl || '',
     ref: ref,
     disabled: disabled,
+    repliedMessage: repliedMessage,
     onStartTyping: function onStartTyping() {
       channel.startTyping();
     },
     onSendMessage: onSendMessage,
-    onFileUpload: onFileUpload
+    onFileUpload: onFileUpload,
+    onCancelRepliedMessage: onCancelRepliedMessage,
+    onClickRepliedMessage: onClickRepliedMessage
   });
 };
 
@@ -6358,7 +6461,13 @@ var ConversationPanel = function ConversationPanel(props) {
   var usingReaction = appInfo.isUsingReaction && !isBroadcast && !isSuper && useReaction;
   var userDefinedDisableUserProfile = disableUserProfile || config.disableUserProfile;
   var userDefinedRenderProfile = renderUserProfile || config.renderUserProfile;
-  var showScrollBot = hasMoreToBottom; // TODO: emojiAllMap, emoijAllList, nicknamesMap => should be moved to messagesStore
+  var showScrollBot = hasMoreToBottom; // Replied message
+
+  var _useState5 = useState(),
+      _useState6 = _slicedToArray(_useState5, 2),
+      repliedMessage = _useState6[0],
+      setRepliedMessage = _useState6[1]; // TODO: emojiAllMap, emoijAllList, nicknamesMap => should be moved to messagesStore
+
 
   var emojiAllMap = useMemo(function () {
     return usingReaction ? getAllEmojisMapFromEmojiContainer(emojiContainer) : new Map();
@@ -6611,7 +6720,10 @@ var ConversationPanel = function ConversationPanel(props) {
     useMessageGrouping: useMessageGrouping,
     messagesDispatcher: messagesDispatcher,
     currentGroupChannel: currentGroupChannel,
-    memoizedEmojiListItems: memoizedEmojiListItems
+    memoizedEmojiListItems: memoizedEmojiListItems,
+    onReplyMessage: function onReplyMessage(message) {
+      return setRepliedMessage(message);
+    }
   }), /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-conversation__footer"
   }, isFrozen ? /*#__PURE__*/React__default$1.createElement(ArchivedBanner, null) : /*#__PURE__*/React__default$1.createElement(React__default$1.Fragment, null, /*#__PURE__*/React__default$1.createElement("div", {
@@ -6628,7 +6740,13 @@ var ConversationPanel = function ConversationPanel(props) {
     onFileUpload: onSendFileMessage,
     renderMessageInput: renderMessageInput,
     isOnline: isOnline,
-    initialized: initialized
+    initialized: initialized,
+    repliedMessage: repliedMessage,
+    onClickRepliedMessage: function onClickRepliedMessage() {// TODO: scroll to the replied message
+    },
+    onCancelRepliedMessage: function onCancelRepliedMessage() {
+      return setRepliedMessage(null);
+    }
   }), !isOnline && /*#__PURE__*/React__default$1.createElement(ConnectionStatus, {
     sdkInit: sdkInit,
     sb: sdk,

@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-5a966f8f.js');
-var index$1 = require('./index-ed69ca54.js');
+var LocalizationContext = require('./LocalizationContext-c30d96ec.js');
+var index$1 = require('./index-d2fb260c.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-879450f6.js');
-var index$3 = require('./index-e0f9fbbe.js');
-var Channel = require('./index-77436837.js');
+var index$2 = require('./index-474cea13.js');
+var index$3 = require('./index-9d51bafe.js');
 var dateFns = require('date-fns');
+var Channel = require('./index-8296c042.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-b53b337b.js');
+require('./actionTypes-a60dbd07.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-e7c4bf44.js');
-require('./utils-5db048b7.js');
-require('./LeaveChannel-0f3f2136.js');
-require('./index-5fd44c35.js');
-require('./index-c5746906.js');
-require('./index-72d75363.js');
+require('./index-2256f764.js');
+require('./utils-d59c094e.js');
+require('./LeaveChannel-a971e0d9.js');
+require('./index-8c02640f.js');
+require('./index-06651757.js');
+require('./index-f8acdd78.js');
 require('./ChannelSettings.js');
-require('./index-86c26bcc.js');
+require('./index-a20455e4.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -229,6 +229,9 @@ var destructureRepliedMessage = function destructureRepliedMessage(message) {
     originalMessage: originalMessage
   };
 };
+var generateRepliedMessage = function generateRepliedMessage(message, parentMessageContent, parentMessageNickname) {
+  return ['>', parentMessageNickname, '\n>', parentMessageContent, '\n', message].join('');
+};
 
 var isFileMessage = function isFileMessage(message) {
   var _a;
@@ -239,9 +242,15 @@ var isThumbnailMessage = function isThumbnailMessage(message) {
   return message && isFileMessage(message) && isSupportedFileView(message.type);
 };
 var isReplyingMessage = function isReplyingMessage(message) {
-  var _a, _b;
+  var isReplying = false;
 
-  return ((_b = (_a = message === null || message === void 0 ? void 0 : message.metaArrays) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.key) === 'parentMessageId';
+  if (message.metaArrays) {
+    isReplying = message.metaArrays.some(function (meta) {
+      return meta.key === 'parentMessageId';
+    });
+  }
+
+  return isReplying;
 };
 
 var REGEX_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*?)/g;
@@ -1580,7 +1589,7 @@ function useSendMessageCallback(_ref, _ref2) {
       pubSub = _ref2.pubSub,
       messagesDispatcher = _ref2.messagesDispatcher;
   var messageInputRef = React$1.useRef(null);
-  var sendMessage = React$1.useCallback(function () {
+  var sendMessage = React$1.useCallback(function (repliedMessage) {
     var text = messageInputRef.current.value;
 
     var createParamsDefault = function createParamsDefault(txt) {
@@ -1597,6 +1606,15 @@ function useSendMessageCallback(_ref, _ref2) {
     }
 
     var params = onBeforeSendUserMessage ? onBeforeSendUserMessage(text) : createParamsDefault(text);
+
+    if (repliedMessage) {
+      var parentMessageContent = repliedMessage.parentMessageContent,
+          parentMessageId = repliedMessage.parentMessageId,
+          parentMessageNickname = repliedMessage.parentMessageNickname;
+      params.metaArrays = [].concat(LocalizationContext._toConsumableArray(params.metaArrays), [new sdk.MessageMetaArray('parentMessageId', [String(parentMessageId)])]);
+      params.message = generateRepliedMessage(text, parentMessageContent, parentMessageNickname);
+    }
+
     logger.info('Channel: Sending message has started', params);
     var pendingMsg = currentGroupChannel.sendUserMessage(params, function (res, err) {
       var swapParams = sdk.getErrorFirstCallback();
@@ -3752,6 +3770,9 @@ function RepliedTextMessageItemBody(_a) {
   var content = _a.content,
       isByMe = _a.isByMe,
       nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
       _onClick = _a.onClick;
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName(['rogu-replied-text-message-item-body', isByMe ? 'rogu-replied-text-message-item-body--outgoing' : 'rogu-replied-text-message-item-body--incoming']),
@@ -3760,6 +3781,8 @@ function RepliedTextMessageItemBody(_a) {
     onClick: function onClick(e) {
       if (_onClick) _onClick(e);
     }
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-replied-text-message-item-body__content"
   }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     color: LabelColors.ONBACKGROUND_2,
     style: {
@@ -3767,10 +3790,24 @@ function RepliedTextMessageItemBody(_a) {
     },
     type: LabelTypography.CAPTION_1
   }, nickname), /*#__PURE__*/React__default$1["default"].createElement(Label, {
-    className: "rogu-replied-text-message-item-body__reply-message",
+    className: "rogu-replied-text-message-item-body__content__message",
     color: LabelColors.ONBACKGROUND_1,
     type: LabelTypography.BODY_3
-  }, content));
+  }, content)), withCancelButton && /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
+    className: "rogu-replied-text-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
 }
 
 /**
@@ -4212,6 +4249,7 @@ function MessageItemMenu(_a) {
       disabled = _a.disabled;
       _a.showEdit;
       var showRemove = _a.showRemove,
+      showReply = _a.showReply,
       resendMessage = _a.resendMessage,
       setSupposedHover = _a.setSupposedHover,
       showFileViewer = _a.showFileViewer;
@@ -4288,8 +4326,10 @@ function MessageItemMenu(_a) {
       }, showMenuItemReply && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
-          // TODO: Add replying message logic
-          closeDropdown();
+          if (!disabled && showReply && typeof showReply == 'function') {
+            showReply(true);
+            closeDropdown();
+          }
         },
         disable: (message === null || message === void 0 ? void 0 : message.parentMessageId) > 0,
         iconType: IconTypes.ROGU_REPLY
@@ -4358,6 +4398,7 @@ function MessageContent(_a) {
   showEdit = _a.showEdit,
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
+      showReply = _a.showReply,
       resendMessage = _a.resendMessage,
       _g = _a.disabled,
       disabled = _g === void 0 ? false : _g;
@@ -4423,7 +4464,7 @@ function MessageContent(_a) {
   }, index$1.isTextMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message,
-    onScrollToMessage: onScrollToMessage
+    onScrollToRepliedMessage: onScrollToMessage
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -4457,7 +4498,8 @@ function MessageContent(_a) {
     showEdit: showEdit,
     showRemove: showRemove,
     resendMessage: resendMessage,
-    showFileViewer: showFileViewer
+    showFileViewer: showFileViewer,
+    showReply: showReply
   }))), !chainBottom && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: 'rogu-message-content__misc'
   }, isByMe ? /*#__PURE__*/React__default$1["default"].createElement(MessageStatus, {
@@ -5025,6 +5067,32 @@ FileViewer.defaultProps = {
   isPreview: false
 };
 
+/**
+ * TODO
+ * [x] Handle reply text message
+ * [ ] Handle reply file message
+ * [ ] Handle reply assignment message
+ * [ ] Handle reply material message
+ * [ ] Handle reply image message
+ * [ ] Handle reply video message
+ * [ ] Handle reply replied message
+ */
+function RepliedMessagePreview(_a) {
+  var _b;
+
+  var message = _a.message,
+      onCancel = _a.onCancel,
+      onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, (index$1.isTextMessage(message) || index$1.isOGMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+    content: message.message,
+    isByMe: false,
+    nickname: (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname,
+    withCancelButton: true,
+    onClick: onClick,
+    onCancel: onCancel
+  }));
+}
+
 // https://davidwalsh.name/javascript-debounce-function
 
 function debounce(func, wait, immediate) {
@@ -5079,10 +5147,13 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       maxLength = props.maxLength,
       nickname = props.nickname,
       profileUrl = props.profileUrl,
+      repliedMessage = props.repliedMessage,
       onFileUpload = props.onFileUpload,
       onSendMessage = props.onSendMessage,
       onCancelEdit = props.onCancelEdit,
-      onStartTyping = props.onStartTyping;
+      onStartTyping = props.onStartTyping,
+      onCancelRepliedMessage = props.onCancelRepliedMessage,
+      onClickRepliedMessage = props.onClickRepliedMessage;
 
   var _useContext = React$1.useContext(LocalizationContext.LocalizationContext),
       stringSet = _useContext.stringSet;
@@ -5241,24 +5312,34 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       setImagePreviewFile(null);
       setInputValue('');
     } else if (inputValue && inputValue.trim().length > 0) {
-      var trimmedInputValue = inputValue.trim();
+      if (repliedMessage) {
+        var _repliedMessage$sende;
 
-      if (isEdit) {
-        onSendMessage(name, trimmedInputValue, function () {
-          onCancelEdit();
+        onSendMessage({
+          parentMessageContent: repliedMessage.message,
+          parentMessageId: repliedMessage.messageId,
+          parentMessageNickname: ((_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname) || '-'
         });
       } else {
-        onSendMessage(trimmedInputValue);
-        setInputValue('');
+        onSendMessage();
+      }
 
-        if (elem) {
-          elem.style.height = "".concat(LINE_HEIGHT, "px");
-        }
+      setInputValue('');
+      onCancelRepliedMessage();
+
+      if (elem) {
+        elem.style.height = "".concat(LINE_HEIGHT, "px");
       }
     }
   };
 
-  return /*#__PURE__*/React__default$1["default"].createElement("div", null, url.hasUrl && index$1.isUrl(url.text) && /*#__PURE__*/React__default$1["default"].createElement(dist, {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-message-input--wrapper"
+  }, repliedMessage && /*#__PURE__*/React__default$1["default"].createElement(RepliedMessagePreview, {
+    message: repliedMessage,
+    onCancel: onCancelRepliedMessage,
+    onClick: onClickRepliedMessage
+  }), url.hasUrl && index$1.isUrl(url.text) && /*#__PURE__*/React__default$1["default"].createElement(dist, {
     url: url.text,
     render: renderPreviewUrl
   }), /*#__PURE__*/React__default$1["default"].createElement("form", {
@@ -5375,10 +5456,13 @@ MessageInput.propTypes = {
   maxLength: PropTypes__default["default"].number,
   nickname: PropTypes__default["default"].string.isRequired,
   profileUrl: PropTypes__default["default"].string.isRequired,
+  repliedMessage: PropTypes__default["default"].object,
   onFileUpload: PropTypes__default["default"].func,
   onSendMessage: PropTypes__default["default"].func,
   onStartTyping: PropTypes__default["default"].func,
-  onCancelEdit: PropTypes__default["default"].func
+  onCancelEdit: PropTypes__default["default"].func,
+  onCancelRepliedMessage: PropTypes__default["default"].func,
+  onClickRepliedMessage: PropTypes__default["default"].func
 };
 MessageInput.defaultProps = {
   value: '',
@@ -5388,9 +5472,12 @@ MessageInput.defaultProps = {
   disabled: false,
   placeholder: '',
   maxLength: 3000,
+  repliedMessage: null,
   onFileUpload: noop$1,
   onCancelEdit: noop$1,
-  onStartTyping: noop$1
+  onStartTyping: noop$1,
+  onCancelRepliedMessage: noop$1,
+  onClickRepliedMessage: noop$1
 };
 
 var Type = {
@@ -5625,7 +5712,8 @@ function MessageHoc(_ref) {
       highLightedMessageId = _ref.highLightedMessageId,
       toggleReaction = _ref.toggleReaction,
       renderCustomMessage = _ref.renderCustomMessage,
-      currentGroupChannel = _ref.currentGroupChannel;
+      currentGroupChannel = _ref.currentGroupChannel,
+      onReplyMessage = _ref.onReplyMessage;
   var _message$sender = message.sender,
       sender = _message$sender === void 0 ? {} : _message$sender;
 
@@ -5721,6 +5809,9 @@ function MessageHoc(_ref) {
     showEdit: setShowEdit,
     showRemove: setShowRemove,
     showFileViewer: setShowFileViewer,
+    showReply: function showReply() {
+      return onReplyMessage(message);
+    },
     resendMessage: resendMessage,
     toggleReaction: toggleReaction
   }), showRemove && /*#__PURE__*/React__default$1["default"].createElement(RemoveMessage, {
@@ -5784,7 +5875,8 @@ MessageHoc.propTypes = {
       }))
     }))
   }),
-  toggleReaction: PropTypes__default["default"].func
+  toggleReaction: PropTypes__default["default"].func,
+  onReplyMessage: PropTypes__default["default"].func
 };
 MessageHoc.defaultProps = {
   userId: '',
@@ -5797,6 +5889,7 @@ MessageHoc.defaultProps = {
   highLightedMessageId: null,
   toggleReaction: function toggleReaction() {},
   scrollToMessage: function scrollToMessage() {},
+  onReplyMessage: function onReplyMessage() {},
   emojiContainer: {}
 };
 
@@ -5946,7 +6039,8 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
           currentGroupChannel = _this$props2.currentGroupChannel,
           memoizedEmojiListItems = _this$props2.memoizedEmojiListItems,
           showScrollBot = _this$props2.showScrollBot,
-          onClickScrollBot = _this$props2.onClickScrollBot;
+          onClickScrollBot = _this$props2.onClickScrollBot,
+          onReplyMessage = _this$props2.onReplyMessage;
 
       if (allMessages.length < 1) {
         return /*#__PURE__*/React__default$1["default"].createElement(index$2.PlaceHolder, {
@@ -6027,7 +6121,8 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
               deleteMessage: deleteMessage,
               resendMessage: resendMessage,
               toggleReaction: toggleReaction,
-              memoizedEmojiListItems: memoizedEmojiListItems
+              memoizedEmojiListItems: memoizedEmojiListItems,
+              onReplyMessage: onReplyMessage
             });
           }))
         );
@@ -6083,7 +6178,8 @@ ConversationScroll.propTypes = {
   membersMap: PropTypes__default["default"].instanceOf(Map),
   useMessageGrouping: PropTypes__default["default"].bool,
   toggleReaction: PropTypes__default["default"].func,
-  memoizedEmojiListItems: PropTypes__default["default"].func
+  memoizedEmojiListItems: PropTypes__default["default"].func,
+  onReplyMessage: PropTypes__default["default"].func
 };
 ConversationScroll.defaultProps = {
   hasMore: false,
@@ -6106,7 +6202,8 @@ ConversationScroll.defaultProps = {
   toggleReaction: function toggleReaction() {},
   memoizedEmojiListItems: function memoizedEmojiListItems() {
     return '';
-  }
+  },
+  onReplyMessage: function onReplyMessage() {}
 };
 
 function Notification(_ref) {
@@ -6239,11 +6336,14 @@ TypingIndicator.propTypes = {
 var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
   var channel = _a.channel,
       user = _a.user,
+      repliedMessage = _a.repliedMessage,
       onSendMessage = _a.onSendMessage,
       onFileUpload = _a.onFileUpload,
       renderMessageInput = _a.renderMessageInput,
       isOnline = _a.isOnline,
-      initialized = _a.initialized;
+      initialized = _a.initialized,
+      onClickRepliedMessage = _a.onClickRepliedMessage,
+      onCancelRepliedMessage = _a.onCancelRepliedMessage;
   var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
   var disabled = !initialized || isDisabledBecauseFrozen(channel) || isDisabledBecauseMuted(channel) || !isOnline;
   var isOperator$1 = isOperator(channel);
@@ -6269,11 +6369,14 @@ var MessageInputWrapper = function MessageInputWrapper(_a, ref) {
     profileUrl: user.profileUrl || '',
     ref: ref,
     disabled: disabled,
+    repliedMessage: repliedMessage,
     onStartTyping: function onStartTyping() {
       channel.startTyping();
     },
     onSendMessage: onSendMessage,
-    onFileUpload: onFileUpload
+    onFileUpload: onFileUpload,
+    onCancelRepliedMessage: onCancelRepliedMessage,
+    onClickRepliedMessage: onClickRepliedMessage
   });
 };
 
@@ -6383,7 +6486,13 @@ var ConversationPanel = function ConversationPanel(props) {
   var usingReaction = appInfo.isUsingReaction && !isBroadcast && !isSuper && useReaction;
   var userDefinedDisableUserProfile = disableUserProfile || config.disableUserProfile;
   var userDefinedRenderProfile = renderUserProfile || config.renderUserProfile;
-  var showScrollBot = hasMoreToBottom; // TODO: emojiAllMap, emoijAllList, nicknamesMap => should be moved to messagesStore
+  var showScrollBot = hasMoreToBottom; // Replied message
+
+  var _useState5 = React$1.useState(),
+      _useState6 = LocalizationContext._slicedToArray(_useState5, 2),
+      repliedMessage = _useState6[0],
+      setRepliedMessage = _useState6[1]; // TODO: emojiAllMap, emoijAllList, nicknamesMap => should be moved to messagesStore
+
 
   var emojiAllMap = React$1.useMemo(function () {
     return usingReaction ? getAllEmojisMapFromEmojiContainer(emojiContainer) : new Map();
@@ -6636,7 +6745,10 @@ var ConversationPanel = function ConversationPanel(props) {
     useMessageGrouping: useMessageGrouping,
     messagesDispatcher: messagesDispatcher,
     currentGroupChannel: currentGroupChannel,
-    memoizedEmojiListItems: memoizedEmojiListItems
+    memoizedEmojiListItems: memoizedEmojiListItems,
+    onReplyMessage: function onReplyMessage(message) {
+      return setRepliedMessage(message);
+    }
   }), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-conversation__footer"
   }, isFrozen ? /*#__PURE__*/React__default$1["default"].createElement(ArchivedBanner, null) : /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, /*#__PURE__*/React__default$1["default"].createElement("div", {
@@ -6653,7 +6765,13 @@ var ConversationPanel = function ConversationPanel(props) {
     onFileUpload: onSendFileMessage,
     renderMessageInput: renderMessageInput,
     isOnline: isOnline,
-    initialized: initialized
+    initialized: initialized,
+    repliedMessage: repliedMessage,
+    onClickRepliedMessage: function onClickRepliedMessage() {// TODO: scroll to the replied message
+    },
+    onCancelRepliedMessage: function onCancelRepliedMessage() {
+      return setRepliedMessage(null);
+    }
   }), !isOnline && /*#__PURE__*/React__default$1["default"].createElement(Channel.ConnectionStatus, {
     sdkInit: sdkInit,
     sb: sdk,
