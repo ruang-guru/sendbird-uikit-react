@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-62bfaf95.js';
-export { w as withSendBird } from './LocalizationContext-62bfaf95.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as Button$1, L as ButtonTypes$1, N as ButtonSizes, P as UserProfileProvider } from './index-17a399bd.js';
-export { Q as sendBirdSelectors } from './index-17a399bd.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-99d0825c.js';
+export { w as withSendBird } from './LocalizationContext-99d0825c.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as changeColorToClassName$2, C as Colors$2, h as getClassName, j as isUrl, k as isEditedMessage, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as Button$1, L as ButtonTypes$1, N as ButtonSizes, P as UserProfileProvider } from './index-3f2a13af.js';
+export { Q as sendBirdSelectors } from './index-3f2a13af.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-6ae5c056.js';
-import { c as compareIds, L as LinkLabel$1 } from './index-78f8fc24.js';
-import { R as ReactionButton, A as AdminMessage, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-fc4bda36.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-76a9097f.js';
+import { c as compareIds, L as LinkLabel$1 } from './index-bbf2ded1.js';
+import { R as ReactionButton, A as AdminMessage, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-25d9d03d.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-4895fee2.js';
+import './actionTypes-1e231b54.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-0061b0b9.js';
-import './utils-2e528aff.js';
-import './LeaveChannel-fa7031a4.js';
-import './index-d1fc71bc.js';
-import './index-52a1bff4.js';
-import './index-60fbf77d.js';
+import './index-40d80315.js';
+import './utils-76b4e13c.js';
+import './LeaveChannel-18e44375.js';
+import './index-a44a28dd.js';
+import './index-1a194c53.js';
+import './index-2442f920.js';
 import './ChannelSettings.js';
-import './index-682af229.js';
+import './index-5166b652.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -5202,9 +5202,7 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
     }
   };
 
-  return /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-message-input--wrapper"
-  }, url.hasUrl && isUrl(url.text) && /*#__PURE__*/React__default$1.createElement(dist, {
+  return /*#__PURE__*/React__default$1.createElement("div", null, url.hasUrl && isUrl(url.text) && /*#__PURE__*/React__default$1.createElement(dist, {
     url: url.text,
     render: renderPreviewUrl
   }), /*#__PURE__*/React__default$1.createElement("form", {
@@ -6159,7 +6157,7 @@ function TypingIndicator(_ref2) {
         sb.removeChannelHandler(handlerId);
       }
     };
-  }, [channelUrl]);
+  }, [sb, channelUrl]);
   return /*#__PURE__*/React__default$1.createElement(Label, {
     type: LabelTypography.TYPING_INDICATOR,
     color: LabelColors.ONBACKGROUND_2
