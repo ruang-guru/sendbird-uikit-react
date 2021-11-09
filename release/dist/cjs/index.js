@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-41da8417.js');
-var index$1 = require('./index-f3cb22cc.js');
+var LocalizationContext = require('./LocalizationContext-fc914e1f.js');
+var index$1 = require('./index-3be975bf.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-7cd8bc51.js');
-var index$3 = require('./index-edea774c.js');
-var Channel = require('./index-59c647da.js');
+var index$2 = require('./index-51b20137.js');
+var index$3 = require('./index-2278dab6.js');
+var Channel = require('./index-1426bf5a.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-8d33a6c2.js');
+require('./actionTypes-a15e7f10.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-4173bbda.js');
-require('./utils-cd5644b3.js');
-require('./LeaveChannel-7d37c033.js');
-require('./index-ecb6ef6e.js');
-require('./index-2e614ac1.js');
-require('./index-36eaa41e.js');
+require('./index-8bbff39f.js');
+require('./utils-a1b44d23.js');
+require('./LeaveChannel-d6c6a799.js');
+require('./index-d732e280.js');
+require('./index-2c58af29.js');
+require('./index-71673b31.js');
 require('./ChannelSettings.js');
-require('./index-30f61286.js');
+require('./index-e6931e2c.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -5227,9 +5227,7 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
     }
   };
 
-  return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: "rogu-message-input--wrapper"
-  }, url.hasUrl && index$1.isUrl(url.text) && /*#__PURE__*/React__default$1["default"].createElement(dist, {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", null, url.hasUrl && index$1.isUrl(url.text) && /*#__PURE__*/React__default$1["default"].createElement(dist, {
     url: url.text,
     render: renderPreviewUrl
   }), /*#__PURE__*/React__default$1["default"].createElement("form", {
@@ -6184,7 +6182,7 @@ function TypingIndicator(_ref2) {
         sb.removeChannelHandler(handlerId);
       }
     };
-  }, [channelUrl]);
+  }, [sb, channelUrl]);
   return /*#__PURE__*/React__default$1["default"].createElement(Label, {
     type: LabelTypography.TYPING_INDICATOR,
     color: LabelColors.ONBACKGROUND_2
