@@ -72,6 +72,7 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
           href="https://sendbird-staging.s3.amazonaws.com/26FA710D-A7F6-4483-ABEA-1F07A07A112E/upload/n/e49e0a4111d4445a8840bd51f3c9d933.png"
           onClick={[Function]}
           rel="noopener noreferrer"
+          target="_blank"
         >
           <div
             className=" sendbird-icon "
