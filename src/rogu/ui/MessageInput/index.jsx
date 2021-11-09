@@ -178,7 +178,7 @@ const MessageInput = React.forwardRef((props, ref) => {
   };
 
   return (
-    <div className="rogu-message-input--wrapper">
+    <div>
       {
         url.hasUrl && isUrl(url.text) && <LinkPreview url={url.text} render={renderPreviewUrl} />
       }
