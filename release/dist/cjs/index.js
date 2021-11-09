@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-6f544a6a.js');
-var index$1 = require('./index-1a98c70f.js');
+var LocalizationContext = require('./LocalizationContext-41da8417.js');
+var index$1 = require('./index-f3cb22cc.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-926fdfea.js');
-var index$3 = require('./index-819aa3a0.js');
-var Channel = require('./index-122dfd3d.js');
+var index$2 = require('./index-7cd8bc51.js');
+var index$3 = require('./index-edea774c.js');
+var Channel = require('./index-59c647da.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-1bcc5642.js');
+require('./actionTypes-8d33a6c2.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-1d15ee88.js');
-require('./utils-ded92c4a.js');
-require('./LeaveChannel-7c49df00.js');
-require('./index-b9b30113.js');
-require('./index-529c4fdc.js');
-require('./index-8b479ccb.js');
+require('./index-4173bbda.js');
+require('./utils-cd5644b3.js');
+require('./LeaveChannel-7d37c033.js');
+require('./index-ecb6ef6e.js');
+require('./index-2e614ac1.js');
+require('./index-36eaa41e.js');
 require('./ChannelSettings.js');
-require('./index-3ccd18cb.js');
+require('./index-30f61286.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -4417,7 +4417,7 @@ function MessageContent(_a) {
   })), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
-  })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
+  })), (!isByMe && chainTop || isByMe) && !channel.isFrozen && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
     className: "rogu-message-content__menu",
     channel: channel,
     message: message,
