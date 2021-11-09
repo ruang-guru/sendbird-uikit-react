@@ -80,7 +80,7 @@ export default function MessageContent({
   const [supposedHover, setSupposedHover] = useState(false);
 
   const isByMe: boolean = isPendingMessage(channel, message as UserMessage | FileMessage)
-    || isSentMessage(channel, message as UserMessage | FileMessage)
+    || !isSentMessage(channel, message as UserMessage | FileMessage)
     || isMessageSentByMe(userId, message as UserMessage | FileMessage);
 
   const isByMeClassName = isByMe ? 'outgoing' : 'incoming';

@@ -11,8 +11,9 @@ import MessageContent from '../../../ui/MessageContent';
 import DateSeparator from '../../../ui/DateSeparator';
 import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
 import MessageInput from '../../../ui/MessageInput';
-import FileViewer from '../../../ui/FileViewer';
-import RemoveMessageModal from './RemoveMessage';
+import FileViewer from '../../../rogu/ui/FileViewer';
+// import RemoveMessageModal from './RemoveMessage';
+import RemoveMessageModal from '../../../rogu/smart-components/Conversation/components/RemoveMessage';
 
 export default function MessageHoc({
   message,
