@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 1rem;
 
   .rogu-admin-message__container {
     display: flex;
@@ -13,7 +14,7 @@
     padding: 6px 7px;
 
     @include themed() {
-      background-color: t(bg-7);
+      background-color: t(bg-1);
     }
 
     .rogu-admin-message__text {
