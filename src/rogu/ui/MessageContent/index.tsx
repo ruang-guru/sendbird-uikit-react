@@ -57,6 +57,7 @@ interface Props {
   showEdit?: (bool: boolean) => void;
   showFileViewer?: (bool: boolean) => void;
   showRemove?: (bool: boolean) => void;
+  showReply?: (bool: boolean) => void;
   toggleReaction?: (
     message: UserMessage | FileMessage,
     reactionKey: string,
@@ -79,6 +80,7 @@ export default function MessageContent({
   showEdit,
   showFileViewer,
   showRemove,
+  showReply,
   resendMessage,
   disabled = false,
 }: // showRemove,
@@ -189,7 +191,7 @@ Props): ReactElement {
                 <TextMessageItemBody
                   isByMe={isByMe}
                   message={message as UserMessage}
-                  onScrollToMessage={onScrollToMessage}
+                  onScrollToRepliedMessage={onScrollToMessage}
                 />
               )}
               {isOGMessage(message as UserMessage) && (
@@ -253,6 +255,7 @@ Props): ReactElement {
                 showRemove={showRemove}
                 resendMessage={resendMessage}
                 showFileViewer={showFileViewer}
+                showReply={showReply}
               />
             )}
           </div>
