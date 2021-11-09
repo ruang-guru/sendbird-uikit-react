@@ -228,7 +228,7 @@ export default function MessageContent({
                       OutgoingMessageStates.PENDING
                     }
                   />
-                  {(message as FileMessage).name && (
+                  {(message as FileMessage).name !== 'EMPTY_MESSAGE' && (
                     <ClampedMessageItemBody
                       isByMe={isByMe}
                       mode="thumbnailCaption"
