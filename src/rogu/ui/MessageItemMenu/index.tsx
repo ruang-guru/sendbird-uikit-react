@@ -17,7 +17,7 @@ import Icon, { IconTypes, IconColors } from '../Icon';
 import ContextMenu, { MenuItems, MenuItem } from '../ContextMenu';
 import Toast from '../Toast';
 
-import "./index.scss";
+import './index.scss';
 
 interface Props {
   className?: string | Array<string>;
@@ -27,6 +27,7 @@ interface Props {
   disabled?: boolean;
   showEdit?: (bool: boolean) => void;
   showRemove?: (bool: boolean) => void;
+  showReply?: (bool: boolean) => void;
   resendMessage?: (message: UserMessage | FileMessage) => void;
   setSupposedHover?: (bool: boolean) => void;
   showFileViewer?: (bool: boolean) => void;
@@ -40,6 +41,7 @@ export default function MessageItemMenu({
   disabled,
   showEdit,
   showRemove,
+  showReply,
   resendMessage,
   setSupposedHover,
   showFileViewer,
@@ -51,16 +53,35 @@ export default function MessageItemMenu({
   const containerRef = useRef(null);
 
   const showMenuItemCopy: boolean = isUserMessage(message as UserMessage);
-  const showMenuItemReply: boolean = isUserMessage(message as UserMessage) || isFileMessage(message as FileMessage);
-  const showMenuItemResend: boolean = (isFailedMessage(channel, message) && message.isResendable() && isByMe);
-  const showMenuItemDelete: boolean = (isSentMessage(channel, message) && isByMe);
-  {/* hide menu edit */ }
-  const showMenuItemEdit: boolean = false && (isUserMessage(message as UserMessage) && isSentMessage(channel, message) && isByMe);
+  const showMenuItemReply: boolean =
+    isUserMessage(message as UserMessage) ||
+    isFileMessage(message as FileMessage);
+  const showMenuItemResend: boolean =
+    isFailedMessage(channel, message) && message.isResendable() && isByMe;
+  const showMenuItemDelete: boolean = isSentMessage(channel, message) && isByMe;
+  {
+    /* hide menu edit */
+  }
+  const showMenuItemEdit: boolean =
+    false &&
+    isUserMessage(message as UserMessage) &&
+    isSentMessage(channel, message) &&
+    isByMe;
 
-  {/* show menu view on image or video */}
-  const showMenuItemView:boolean = isFileMessage(message as FileMessage);
+  {
+    /* show menu view on image or video */
+  }
+  const showMenuItemView: boolean = isFileMessage(message as FileMessage);
 
-  if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
+  if (
+    !(
+      showMenuItemCopy ||
+      showMenuItemEdit ||
+      showMenuItemResend ||
+      showMenuItemDelete ||
+      showMenuItemView
+    )
+  ) {
     return null;
   }
 
@@ -72,8 +93,8 @@ export default function MessageItemMenu({
     }, 3000);
   };
 
-  const onOpenFile = (message: FileMessage):void => {
-    window.open(message.url)
+  const onOpenFile = (message: FileMessage): void => {
+    window.open(message.url);
   };
 
   return (
@@ -90,10 +111,12 @@ export default function MessageItemMenu({
             height="16px"
             onClick={(): void => {
               toggleDropdown();
-              if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(true);
+              if (setSupposedHover && typeof setSupposedHover === 'function')
+                setSupposedHover(true);
             }}
             onBlur={(): void => {
-              if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
+              if (setSupposedHover && typeof setSupposedHover === 'function')
+                setSupposedHover(false);
             }}
           >
             <Icon
@@ -108,7 +131,8 @@ export default function MessageItemMenu({
         menuItems={(close: () => void): ReactElement => {
           const closeDropdown = (): void => {
             close();
-            if (setSupposedHover && typeof setSupposedHover === 'function') setSupposedHover(false);
+            if (setSupposedHover && typeof setSupposedHover === 'function')
+              setSupposedHover(false);
           };
           return (
             <MenuItems
@@ -122,8 +146,14 @@ export default function MessageItemMenu({
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
-                    // TODO: Add replying message logic
-                    closeDropdown();
+                    if (
+                      !disabled &&
+                      showReply &&
+                      typeof showReply == 'function'
+                    ) {
+                      showReply(true);
+                      closeDropdown();
+                    }
                   }}
                   disable={message?.parentMessageId > 0}
                   iconType={IconTypes.ROGU_REPLY}
@@ -147,13 +177,12 @@ export default function MessageItemMenu({
                 <MenuItem
                   className="rogu-message-item-menu__list__menu-item"
                   onClick={() => {
-                    if(isThumbnailMessage(message as FileMessage)){
+                    if (isThumbnailMessage(message as FileMessage)) {
                       showFileViewer(true);
-                    } else{
-                      onOpenFile(message as FileMessage)
-                    }    
+                    } else {
+                      onOpenFile(message as FileMessage);
+                    }
                     closeDropdown();
-
                   }}
                   iconType={IconTypes.ROGU_VIEW}
                 >
@@ -207,9 +236,7 @@ export default function MessageItemMenu({
           );
         }}
       />
-      {showToast && (
-        <Toast message={stringSet.TOAST__COPY} />
-      )}
+      {showToast && <Toast message={stringSet.TOAST__COPY} />}
     </div>
   );
 }

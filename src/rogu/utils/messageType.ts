@@ -11,5 +11,13 @@ export const isThumbnailMessage = (message: FileMessage): boolean =>
   message && isFileMessage(message) && isSupportedFileView(message.type);
 
 export const isReplyingMessage = (message: CoreMessageType): boolean => {
-  return message?.metaArrays?.[0]?.key === 'parentMessageId';
+  let isReplying = false;
+
+  if (message.metaArrays) {
+    isReplying = message.metaArrays.some(
+      (meta) => meta.key === 'parentMessageId'
+    );
+  }
+
+  return isReplying;
 };

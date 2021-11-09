@@ -97,6 +97,7 @@ export default class ConversationScroll extends Component {
       memoizedEmojiListItems,
       showScrollBot,
       onClickScrollBot,
+      onReplyMessage,
     } = this.props;
 
     if (allMessages.length < 1) {
@@ -191,6 +192,7 @@ export default class ConversationScroll extends Component {
                           resendMessage={resendMessage}
                           toggleReaction={toggleReaction}
                           memoizedEmojiListItems={memoizedEmojiListItems}
+                          onReplyMessage={onReplyMessage}
                         />
                       );
                     })}
@@ -326,6 +328,7 @@ ConversationScroll.propTypes = {
   useMessageGrouping: PropTypes.bool,
   toggleReaction: PropTypes.func,
   memoizedEmojiListItems: PropTypes.func,
+  onReplyMessage: PropTypes.func,
 };
 
 ConversationScroll.defaultProps = {
@@ -348,4 +351,5 @@ ConversationScroll.defaultProps = {
   useMessageGrouping: true,
   toggleReaction: () => {},
   memoizedEmojiListItems: () => '',
+  onReplyMessage: () => {},
 };
