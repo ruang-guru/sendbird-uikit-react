@@ -1,3 +1,10 @@
+/**
+ * TODO
+ * [x] Handle replying with text message
+ * [ ] Handle replying with image message
+ * [x] Handle cancel reply
+ */
+
 import React, {
   useState, useRef, useEffect, useContext,
 } from 'react';
@@ -16,6 +23,7 @@ import Icon, { IconTypes, IconColors } from '../Icon';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import { FileViewerComponent } from '../FileViewer';
 import Toast from '../Toast';
+import RepliedMessagePreview from './RepliedMessagePreview';
 
 import { getUrlFromWords, debounce } from './utils';
 import './index.scss';
@@ -23,7 +31,7 @@ import './index.scss';
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
 const LINE_HEIGHT = 36;
-const noop = () => { };
+const noop = () => {};
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
@@ -41,10 +49,13 @@ const MessageInput = React.forwardRef((props, ref) => {
     maxLength,
     nickname,
     profileUrl,
+    repliedMessage,
     onFileUpload,
     onSendMessage,
     onCancelEdit,
     onStartTyping,
+    onCancelRepliedMessage,
+    onClickRepliedMessage,
   } = props;
 
   const { stringSet } = useContext(LocalizationContext);
@@ -138,7 +149,13 @@ const MessageInput = React.forwardRef((props, ref) => {
       );
     }
 
-    return <OGMessageItemBody message={message} isOnPreview onClosePreview={() => setUrl({ hasUrl: false, text: '' })} />;
+    return (
+      <OGMessageItemBody
+        message={message}
+        isOnPreview
+        onClosePreview={() => setUrl({ hasUrl: false, text: '' })}
+      />
+    );
   };
 
   // after setHeight called twice, the textarea goes to the initialized
@@ -162,26 +179,42 @@ const MessageInput = React.forwardRef((props, ref) => {
       setImagePreviewFile(null);
       setInputValue('');
     } else if (inputValue && inputValue.trim().length > 0) {
-      const trimmedInputValue = inputValue.trim();
-      if (isEdit) {
-        onSendMessage(name, trimmedInputValue, () => {
-          onCancelEdit();
+      if (repliedMessage) {
+        onSendMessage({
+          parentMessageContent: repliedMessage.message,
+          parentMessageId: repliedMessage.messageId,
+          parentMessageNickname: repliedMessage.sender?.nickname || '-',
         });
       } else {
-        onSendMessage(trimmedInputValue);
-        setInputValue('');
-        if (elem) {
-          elem.style.height = `${LINE_HEIGHT}px`;
-        }
+        onSendMessage();
+      }
+
+      setInputValue('');
+      onCancelRepliedMessage();
+
+      if (elem) {
+        elem.style.height = `${LINE_HEIGHT}px`;
       }
     }
   };
 
   return (
-    <div>
-      {
-        url.hasUrl && isUrl(url.text) && <LinkPreview url={url.text} render={renderPreviewUrl} />
-      }
+    <div className="rogu-message-input--wrapper">
+      {/* Replied message */}
+      {repliedMessage && (
+        <RepliedMessagePreview
+          message={repliedMessage}
+          onCancel={onCancelRepliedMessage}
+          onClick={onClickRepliedMessage}
+        />
+      )}
+
+      {/* URL preview */}
+      {url.hasUrl && isUrl(url.text) && (
+        <LinkPreview url={url.text} render={renderPreviewUrl} />
+      )}
+
+      {/* Input form */}
       <form
         className={[
           'rogu-message-input--container',
@@ -220,7 +253,10 @@ const MessageInput = React.forwardRef((props, ref) => {
               if (e.keyCode === KeyCode.SHIFT) {
                 setIsShiftPressed(false);
               }
-              if (e.keyCode === KeyCode.BACKSPACE || e.keyCode === KeyCode.DELETE) {
+              if (
+                e.keyCode === KeyCode.BACKSPACE
+                || e.keyCode === KeyCode.DELETE
+              ) {
                 setUrl({ hasUrl: false, text: '' });
               }
             }}
@@ -322,7 +358,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           url={URL.createObjectURL(imagePreviewFile)}
           userName={nickname}
           onClose={() => setImagePreviewFile(null)}
-          onDelete={() => { }}
+          onDelete={() => {}}
         />
       )}
 
@@ -330,7 +366,6 @@ const MessageInput = React.forwardRef((props, ref) => {
         <Toast message={stringSet.TOAST__MAX_FILE_SIZE_ERROR} />
       )}
     </div>
-
   );
 });
 
@@ -343,10 +378,13 @@ MessageInput.propTypes = {
   maxLength: PropTypes.number,
   nickname: PropTypes.string.isRequired,
   profileUrl: PropTypes.string.isRequired,
+  repliedMessage: PropTypes.object,
   onFileUpload: PropTypes.func,
   onSendMessage: PropTypes.func,
   onStartTyping: PropTypes.func,
   onCancelEdit: PropTypes.func,
+  onCancelRepliedMessage: PropTypes.func,
+  onClickRepliedMessage: PropTypes.func,
 };
 
 MessageInput.defaultProps = {
@@ -357,9 +395,12 @@ MessageInput.defaultProps = {
   disabled: false,
   placeholder: '',
   maxLength: 3000,
+  repliedMessage: null,
   onFileUpload: noop,
   onCancelEdit: noop,
   onStartTyping: noop,
+  onCancelRepliedMessage: noop,
+  onClickRepliedMessage: noop,
 };
 
 export default MessageInput;

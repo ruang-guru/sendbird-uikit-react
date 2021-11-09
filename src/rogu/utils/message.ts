@@ -52,6 +52,15 @@ export const destructureRepliedMessage = (
   };
 };
 
+export const generateRepliedMessage = (
+  message: string,
+  parentMessageContent: string,
+  parentMessageNickname: string
+): string =>
+  ['>', parentMessageNickname, '\n>', parentMessageContent, '\n', message].join(
+    ''
+  );
+
 export const getParentMessageId = (
   message: CoreMessageType
 ): string[] | undefined => {
