@@ -52,7 +52,7 @@ function TypingIndicator({ channelUrl, sb, logger }) {
         sb.removeChannelHandler(handlerId);
       }
     };
-  }, [channelUrl]);
+  }, [sb, channelUrl]);
 
   return (
     <Label type={LabelTypography.TYPING_INDICATOR} color={LabelColors.ONBACKGROUND_2}>

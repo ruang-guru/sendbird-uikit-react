@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-6002553a.js');
-var index$1 = require('./index-2b6079aa.js');
+var LocalizationContext = require('./LocalizationContext-5a966f8f.js');
+var index$1 = require('./index-ed69ca54.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-57e3828d.js');
-var index$3 = require('./index-e9bf6716.js');
-var Channel = require('./index-7b681386.js');
+var index$2 = require('./index-879450f6.js');
+var index$3 = require('./index-e0f9fbbe.js');
+var Channel = require('./index-77436837.js');
 var dateFns = require('date-fns');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-a084dd9e.js');
+require('./actionTypes-b53b337b.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-35b650d3.js');
-require('./utils-b35fe9e9.js');
-require('./LeaveChannel-3c10e540.js');
-require('./index-ffb87d1c.js');
-require('./index-36a2c139.js');
-require('./index-77b9c439.js');
+require('./index-e7c4bf44.js');
+require('./utils-5db048b7.js');
+require('./LeaveChannel-0f3f2136.js');
+require('./index-5fd44c35.js');
+require('./index-c5746906.js');
+require('./index-72d75363.js');
 require('./ChannelSettings.js');
-require('./index-ba863913.js');
+require('./index-86c26bcc.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -754,7 +754,7 @@ function reducer(state, action) {
 
         return LocalizationContext._objectSpread2(LocalizationContext._objectSpread2({}, state), {}, {
           unreadCount: _unreadCount,
-          unreadSince: _unreadCount === 1 ? index$2.format(new Date(), 'p MMM dd') : unreadSince,
+          unreadSince: _unreadCount === 1 ? index$2.format(new Date(), 'HH.mm dd MMM yyyy') : unreadSince,
           allMessages: passUnsuccessfullMessages(state.allMessages, message)
         });
       }
@@ -3837,6 +3837,37 @@ function TextMessageItemBody(_a) {
   }));
 }
 
+function AdminMessage(_ref) {
+  var className = _ref.className,
+      message = _ref.message;
+
+  if (!(message.isAdminMessage || message.messageType) || !message.isAdminMessage() || message.messageType !== 'admin') {
+    return null;
+  }
+
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-admin-message']).join(' ')
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-admin-message__container"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-admin-message__text",
+    type: LabelTypography.CAPTION_2,
+    color: LabelColors.ONBACKGROUND_1
+  }, message.message)));
+}
+AdminMessage.propTypes = {
+  message: PropTypes__default["default"].shape({
+    message: PropTypes__default["default"].string,
+    messageType: PropTypes__default["default"].string,
+    isAdminMessage: PropTypes__default["default"].func
+  }),
+  className: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)])
+};
+AdminMessage.defaultProps = {
+  message: {},
+  className: ''
+};
+
 function AssignmentMessageItemBody(_a) {
   var _b;
 
@@ -4340,7 +4371,7 @@ function MessageContent(_a) {
   var chainTopClassName = chainTop ? 'rogu-message-content--chain-top' : '';
 
   if (((_b = message === null || message === void 0 ? void 0 : message.isAdminMessage) === null || _b === void 0 ? void 0 : _b.call(message)) || (message === null || message === void 0 ? void 0 : message.messageType) === 'admin') {
-    return /*#__PURE__*/React__default$1["default"].createElement(Channel.AdminMessage, {
+    return /*#__PURE__*/React__default$1["default"].createElement(AdminMessage, {
       message: message
     });
   }
@@ -4417,7 +4448,7 @@ function MessageContent(_a) {
   })), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
-  })), (!isByMe && chainTop || isByMe) && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
+  })), (!isByMe && chainTop || isByMe) && !channel.isFrozen && /*#__PURE__*/React__default$1["default"].createElement(MessageItemMenu, {
     className: "rogu-message-content__menu",
     channel: channel,
     message: message,
@@ -4872,7 +4903,8 @@ var FileViewerComponent = function FileViewerComponent(_ref) {
     className: "rogu-fileviewer__header__right__actions__download",
     rel: "noopener noreferrer",
     href: url,
-    onClick: onDownloadClick
+    onClick: onDownloadClick,
+    target: "_blank"
   }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     type: IconTypes.ROGU_DOWNLOAD,
     height: "24px",
@@ -5226,9 +5258,7 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
     }
   };
 
-  return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: "rogu-message-input--wrapper"
-  }, url.hasUrl && index$1.isUrl(url.text) && /*#__PURE__*/React__default$1["default"].createElement(dist, {
+  return /*#__PURE__*/React__default$1["default"].createElement("div", null, url.hasUrl && index$1.isUrl(url.text) && /*#__PURE__*/React__default$1["default"].createElement(dist, {
     url: url.text,
     render: renderPreviewUrl
   }), /*#__PURE__*/React__default$1["default"].createElement("form", {
@@ -6183,7 +6213,7 @@ function TypingIndicator(_ref2) {
         sb.removeChannelHandler(handlerId);
       }
     };
-  }, [channelUrl]);
+  }, [sb, channelUrl]);
   return /*#__PURE__*/React__default$1["default"].createElement(Label, {
     type: LabelTypography.TYPING_INDICATOR,
     color: LabelColors.ONBACKGROUND_2
