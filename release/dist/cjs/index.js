@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-c30d96ec.js');
-var index$1 = require('./index-d2fb260c.js');
+var LocalizationContext = require('./LocalizationContext-f7f9959b.js');
+var index$1 = require('./index-0ddc2dbc.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-474cea13.js');
-var index$3 = require('./index-9d51bafe.js');
+var index$2 = require('./index-6e281a5a.js');
+var index$3 = require('./index-2317a427.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-8296c042.js');
+var Channel = require('./index-5b769937.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-a60dbd07.js');
+require('./actionTypes-7c4e0a22.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-2256f764.js');
-require('./utils-d59c094e.js');
-require('./LeaveChannel-a971e0d9.js');
-require('./index-8c02640f.js');
-require('./index-06651757.js');
-require('./index-f8acdd78.js');
+require('./index-41c2093b.js');
+require('./utils-6a0342db.js');
+require('./LeaveChannel-c983a204.js');
+require('./index-62a5b174.js');
+require('./index-9b0b85ed.js');
+require('./index-5a5fb7a0.js');
 require('./ChannelSettings.js');
-require('./index-a20455e4.js');
+require('./index-748acec4.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -4482,7 +4482,7 @@ function MessageContent(_a) {
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING
-  }), message.name && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody$1, {
+  }), message.name !== 'EMPTY_MESSAGE' && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody$1, {
     isByMe: isByMe,
     mode: "thumbnailCaption",
     content: message.name
