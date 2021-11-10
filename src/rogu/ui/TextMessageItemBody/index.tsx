@@ -38,7 +38,7 @@ export default function TextMessageItemBody({
           isByMe={isByMe}
           nickname={senderNickname}
           messageContent={parentMessage}
-          type={RepliedMessageTypes.Text}
+          type={RepliedMessageTypes.Image}
           onClick={onClickRepliedMessage}
         />
       )}

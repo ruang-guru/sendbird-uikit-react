@@ -8,11 +8,14 @@
  * [ ] Handle video message
  */
 import React from 'react';
+import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
 
 import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
 
 export enum RepliedMessageTypes {
   Text,
+  Image,
+  Video,
 }
 
 export type RepliedMessageItemBodyProps = {
@@ -37,6 +40,18 @@ export function RepliedMessageItemBody({
           nickname={nickname}
           content={messageContent}
           onClick={onClick}
+        />
+      );
+    case RepliedMessageTypes.Image:
+      return (
+        <RepliedMediaMessageItemBody
+          isByMe={isByMe}
+          // nickname={nickname}
+          nickname="Andaine"
+          // content={messageContent}
+          content="gimana gimana"
+          onClick={onClick}
+          mediaUrl="https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f09296bcc9454448940a4830092377b0.png"
         />
       );
     default:
