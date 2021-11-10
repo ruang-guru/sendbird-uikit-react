@@ -1,30 +1,3 @@
-.sendbird-openchannel-conversation {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%; }
-  .sendbird-theme--light .sendbird-openchannel-conversation {
-    background-color: var(--sendbird-light-background-50); }
-  .sendbird-theme--dark .sendbird-openchannel-conversation {
-    background-color: var(--sendbird-dark-background-600); }
-  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll {
-    overflow-y: auto;
-    flex: 1 1 0;
-    order: 2;
-    width: 100%; }
-  .sendbird-openchannel-conversation .sendbird-openchannel-footer {
-    order: 3;
-    padding: 12px 24px 24px 24px; }
-  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container {
-    display: flex;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    flex-direction: column; }
-    .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container .sendbird-openchannel-conversation-scroll-padding {
-      flex: 1 1 0; }
-
 .sendbird-openchannel-settings {
   height: 100%;
   width: 320px;
@@ -145,6 +118,33 @@
     left: 16px;
     top: 10px;
     cursor: pointer; }
+
+.sendbird-openchannel-conversation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+  .sendbird-theme--light .sendbird-openchannel-conversation {
+    background-color: var(--sendbird-light-background-50); }
+  .sendbird-theme--dark .sendbird-openchannel-conversation {
+    background-color: var(--sendbird-dark-background-600); }
+  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll {
+    overflow-y: auto;
+    flex: 1 1 0;
+    order: 2;
+    width: 100%; }
+  .sendbird-openchannel-conversation .sendbird-openchannel-footer {
+    order: 3;
+    padding: 12px 24px 24px 24px; }
+  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container {
+    display: flex;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column; }
+    .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container .sendbird-openchannel-conversation-scroll-padding {
+      flex: 1 1 0; }
 
 .sendbird-openchannel-conversation-header {
   position: relative;
@@ -4292,122 +4292,6 @@
 .sendbird-theme--dark .sendbird-icon-color--error [class*='fill'] {
   fill: var(--sendbird-dark-error-200); }
 
-.rogu-text-button {
-  cursor: pointer;
-  display: inline-block; }
-  .rogu-text-button.rogu-text-button--underline {
-    text-decoration: underline; }
-  .rogu-text-button.rogu-text-button--disabled {
-    cursor: not-allowed; }
-    .sendbird-theme--light .rogu-text-button.rogu-text-button--disabled {
-      color: var(--sendbird-light-onlight-03); }
-    .sendbird-theme--dark .rogu-text-button.rogu-text-button--disabled {
-      color: var(--sendbird-dark-ondark-03); }
-
-.rogu-link-label {
-  text-decoration: unset; }
-  .rogu-link-label:hover {
-    cursor: pointer;
-    text-decoration: underline; }
-  .rogu-link-label:focus {
-    outline: none; }
-  .rogu-link-label__label {
-    display: inline; }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-onbackground-1 {
-  color: var(--sendbird-light-onlight-01); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-onbackground-1 {
-  color: var(--sendbird-dark-ondark-01); }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-onbackground-2 {
-  color: var(--sendbird-light-onlight-02); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-onbackground-2 {
-  color: var(--sendbird-dark-ondark-02); }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-onbackground-3 {
-  color: var(--sendbird-light-onlight-03); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-onbackground-3 {
-  color: var(--sendbird-dark-ondark-03); }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-oncontent-1 {
-  color: var(--sendbird-light-ondark-01); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-oncontent-1 {
-  color: var(--sendbird-dark-onlight-01); }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-oncontent-2 {
-  color: var(--sendbird-light-ondark-02); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-oncontent-2 {
-  color: var(--sendbird-dark-onlight-02); }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-primary {
-  color: var(--sendbird-light-primary-300); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-primary {
-  color: var(--sendbird-dark-primary-200); }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-error {
-  color: var(--sendbird-light-error-300); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-error {
-  color: var(--sendbird-dark-error-200); }
-
-.sendbird-theme--light .rogu-link-label .sendbird-label--color-secondary-3 {
-  color: var(--sendbird-light-secondary-300); }
-
-.sendbird-theme--dark .rogu-link-label .sendbird-label--color-secondary-3 {
-  color: var(--sendbird-dark-secondary-200); }
-
-.rogu-clamped-message-item-body {
-  position: relative;
-  display: inline-block;
-  box-sizing: content-box; }
-  .rogu-clamped-message-item-body .rogu-clamped-message-item-body__message {
-    white-space: pre-wrap;
-    word-break: break-all; }
-  .rogu-clamped-message-item-body .rogu-clamped-message-item-body__read-more > * {
-    font-weight: bolder; }
-  .rogu-clamped-message-item-body .rogu-clamped-message-item-body__inner {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    -webkit-box-orient: vertical;
-    align-self: center; }
-  .sendbird-theme--light .rogu-clamped-message-item-body.rogu-clamped-message-item-body--incoming .rogu-clamped-message-item-body__read-more {
-    color: var(--sendbird-light-secondary-300); }
-  .sendbird-theme--dark .rogu-clamped-message-item-body.rogu-clamped-message-item-body--incoming .rogu-clamped-message-item-body__read-more {
-    color: var(--sendbird-dark-secondary-200); }
-  .rogu-clamped-message-item-body.rogu-clamped-message-item-body--expanded .rogu-clamped-message-item-body__inner {
-    display: block;
-    overflow: visible; }
-  .rogu-clamped-message-item-body.rogu-clamped-message-item-body--viewer-mode {
-    position: absolute;
-    bottom: 5%;
-    max-height: 40%;
-    min-width: 85%;
-    max-width: 95%;
-    background: #f1f4f9;
-    -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-    padding: 24px;
-    overflow: auto;
-    transition: all 0.2s;
-    display: flex;
-    flex-direction: column; }
-    @media (min-width: 640px) {
-      .rogu-clamped-message-item-body.rogu-clamped-message-item-body--viewer-mode {
-        max-width: 70%; } }
-    .rogu-clamped-message-item-body.rogu-clamped-message-item-body--viewer-mode.rogu-clamped-message-item-body--viewer-mode__hidden {
-      max-height: 0;
-      padding: 0; }
-  .rogu-clamped-message-item-body.rogu-clamped-message-item-body--preview-mode {
-    display: block; }
-
 .rogu-og-message-item-body {
   position: relative;
   display: inline-block;
@@ -4687,6 +4571,122 @@
   .rogu-replied-text-message-item-body .rogu-replied-text-message-item-body__cancel {
     flex-shrink: 0;
     margin: 0 20px; }
+
+.rogu-text-button {
+  cursor: pointer;
+  display: inline-block; }
+  .rogu-text-button.rogu-text-button--underline {
+    text-decoration: underline; }
+  .rogu-text-button.rogu-text-button--disabled {
+    cursor: not-allowed; }
+    .sendbird-theme--light .rogu-text-button.rogu-text-button--disabled {
+      color: var(--sendbird-light-onlight-03); }
+    .sendbird-theme--dark .rogu-text-button.rogu-text-button--disabled {
+      color: var(--sendbird-dark-ondark-03); }
+
+.rogu-link-label {
+  text-decoration: unset; }
+  .rogu-link-label:hover {
+    cursor: pointer;
+    text-decoration: underline; }
+  .rogu-link-label:focus {
+    outline: none; }
+  .rogu-link-label__label {
+    display: inline; }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-onbackground-1 {
+  color: var(--sendbird-light-onlight-01); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-onbackground-1 {
+  color: var(--sendbird-dark-ondark-01); }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-onbackground-2 {
+  color: var(--sendbird-light-onlight-02); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-onbackground-2 {
+  color: var(--sendbird-dark-ondark-02); }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-onbackground-3 {
+  color: var(--sendbird-light-onlight-03); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-onbackground-3 {
+  color: var(--sendbird-dark-ondark-03); }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-oncontent-1 {
+  color: var(--sendbird-light-ondark-01); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-oncontent-1 {
+  color: var(--sendbird-dark-onlight-01); }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-oncontent-2 {
+  color: var(--sendbird-light-ondark-02); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-oncontent-2 {
+  color: var(--sendbird-dark-onlight-02); }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-primary {
+  color: var(--sendbird-light-primary-300); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-primary {
+  color: var(--sendbird-dark-primary-200); }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-error {
+  color: var(--sendbird-light-error-300); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-error {
+  color: var(--sendbird-dark-error-200); }
+
+.sendbird-theme--light .rogu-link-label .sendbird-label--color-secondary-3 {
+  color: var(--sendbird-light-secondary-300); }
+
+.sendbird-theme--dark .rogu-link-label .sendbird-label--color-secondary-3 {
+  color: var(--sendbird-dark-secondary-200); }
+
+.rogu-clamped-message-item-body {
+  position: relative;
+  display: inline-block;
+  box-sizing: content-box; }
+  .rogu-clamped-message-item-body .rogu-clamped-message-item-body__message {
+    white-space: pre-wrap;
+    word-break: break-all; }
+  .rogu-clamped-message-item-body .rogu-clamped-message-item-body__read-more > * {
+    font-weight: bolder; }
+  .rogu-clamped-message-item-body .rogu-clamped-message-item-body__inner {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    align-self: center; }
+  .sendbird-theme--light .rogu-clamped-message-item-body.rogu-clamped-message-item-body--incoming .rogu-clamped-message-item-body__read-more {
+    color: var(--sendbird-light-secondary-300); }
+  .sendbird-theme--dark .rogu-clamped-message-item-body.rogu-clamped-message-item-body--incoming .rogu-clamped-message-item-body__read-more {
+    color: var(--sendbird-dark-secondary-200); }
+  .rogu-clamped-message-item-body.rogu-clamped-message-item-body--expanded .rogu-clamped-message-item-body__inner {
+    display: block;
+    overflow: visible; }
+  .rogu-clamped-message-item-body.rogu-clamped-message-item-body--viewer-mode {
+    position: absolute;
+    bottom: 5%;
+    max-height: 40%;
+    min-width: 85%;
+    max-width: 95%;
+    background: #f1f4f9;
+    -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+    padding: 24px;
+    overflow: auto;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column; }
+    @media (min-width: 640px) {
+      .rogu-clamped-message-item-body.rogu-clamped-message-item-body--viewer-mode {
+        max-width: 70%; } }
+    .rogu-clamped-message-item-body.rogu-clamped-message-item-body--viewer-mode.rogu-clamped-message-item-body--viewer-mode__hidden {
+      max-height: 0;
+      padding: 0; }
+  .rogu-clamped-message-item-body.rogu-clamped-message-item-body--preview-mode {
+    display: block; }
 
 .rogu-admin-message {
   display: flex;
@@ -5060,299 +5060,6 @@
       .sendbird-theme--dark .rogu-message-item-menu .rogu-message-item-menu__trigger.sendbird-iconbutton--pressed {
         background-color: var(--sendbird-dark-background-500); }
 
-.rogu-fileviewer__header__right__actions__download,
-.rogu-fileviewer__header__right__actions__delete,
-.rogu-fileviewer__header__right__actions__close {
-  box-sizing: border-box;
-  cursor: pointer; }
-  .sendbird-theme--light .rogu-fileviewer__header__right__actions__download path, .sendbird-theme--light
-  .rogu-fileviewer__header__right__actions__delete path, .sendbird-theme--light
-  .rogu-fileviewer__header__right__actions__close path {
-    fill: var(--sendbird-light-onlight-01); }
-  .sendbird-theme--dark .rogu-fileviewer__header__right__actions__download path, .sendbird-theme--dark
-  .rogu-fileviewer__header__right__actions__delete path, .sendbird-theme--dark
-  .rogu-fileviewer__header__right__actions__close path {
-    fill: var(--sendbird-dark-ondark-01); }
-
-.rogu-fileviewer__header__right__actions__download,
-.rogu-fileviewer__header__right__actions__delete {
-  margin-right: 24px; }
-
-.rogu-fileviewer__header__right__actions__close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  padding: 0 16px; }
-
-.rogu-fileviewer {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1300; }
-  .sendbird-theme--light .rogu-fileviewer {
-    background-color: var(--sendbird-light-background-50); }
-  .sendbird-theme--dark .rogu-fileviewer {
-    background-color: var(--sendbird-dark-background-600); }
-  .rogu-fileviewer .rogu-fileviewer__header {
-    height: 60px;
-    min-height: 60px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 1px 0 #d4d9e0; }
-    @media (min-width: 640px) {
-      .rogu-fileviewer .rogu-fileviewer__header {
-        padding: 0 16px; } }
-    .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left {
-      display: flex;
-      align-items: center;
-      padding: 10px 16px;
-      min-width: 0;
-      overflow: hidden; }
-      .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__avatar {
-        margin-right: 12px;
-        flex-shrink: 0; }
-      .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__metadata {
-        min-width: 0; }
-        .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__metadata .rogu-fileviewer__header__left__sender-name {
-          width: 100%;
-          max-width: 500px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: inline-block; }
-        .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__metadata .rogu-fileviewer__header__left__createdat {
-          width: 100%;
-          max-width: 200px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: inline-block; }
-    .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right {
-      display: flex;
-      align-items: center; }
-      .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right .rogu-fileviewer__header__right__actions {
-        display: flex; }
-      .sendbird-theme--light .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right .rogu-fileviewer__header__right__actions__close {
-        border-left: 1px solid #e6ebf1; }
-      .sendbird-theme--dark .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right .rogu-fileviewer__header__right__actions__close {
-        border-left: 1px solid #e6ebf1; }
-  .rogu-fileviewer .rogu-fileviewer__content {
-    height: calc(100% - 72px);
-    padding-top: 8px;
-    overflow-y: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(241, 244, 249, 0.95);
-    -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px); }
-    .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__video {
-      max-width: 100%;
-      max-height: 100%; }
-      @media (min-width: 640px) {
-        .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__video {
-          max-width: 80%;
-          max-height: 80%; } }
-    .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__img {
-      max-width: 90%;
-      max-height: 90%; }
-    .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__unsupported {
-      max-width: 100%;
-      max-height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
-
-/* stylelint-disable no-descending-specificity -- False negative */
-.sendbird-avatar {
-  display: inline-block;
-  overflow: hidden;
-  border-radius: 50%;
-  position: relative; }
-  .sendbird-avatar:focus {
-    outline: none; }
-  .sendbird-avatar .sendbird-avatar-img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .sendbird-theme--light .sendbird-avatar .sendbird-avatar-img {
-      background-color: var(--sendbird-light-background-300); }
-    .sendbird-theme--dark .sendbird-avatar .sendbird-avatar-img {
-      background-color: var(--sendbird-dark-background-300); }
-  .sendbird-avatar .sendbird-avatar--inner__two-child .sendbird-avatar-img:first-child {
-    transform: translate(2%, -50%); }
-  .sendbird-avatar .sendbird-avatar--inner__two-child .sendbird-avatar-img:last-child {
-    transform: translate(-102%, -50%); }
-  .sendbird-avatar .sendbird-avatar--inner__three-child--upper .sendbird-avatar-img:first-child {
-    transform: translate(-50%, -102%); }
-  .sendbird-avatar .sendbird-avatar--inner__three-child--lower .sendbird-avatar-img:first-child {
-    transform: translate(-77%, -23%) scale(0.5); }
-  .sendbird-avatar .sendbird-avatar--inner__three-child--lower .sendbird-avatar-img:last-child {
-    transform: translate(-23%, -23%) scale(0.5); }
-  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:first-child {
-    transform: translate(-77%, -77%) scale(0.5); }
-  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:nth-child(2) {
-    transform: translate(-23%, -77%) scale(0.5); }
-  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:nth-child(3) {
-    transform: translate(-77%, -23%) scale(0.5); }
-  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:last-child {
-    transform: translate(-23%, -23%) scale(0.5); }
-  .sendbird-avatar .sendbird-avatar-img--default {
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .sendbird-theme--light .sendbird-avatar .sendbird-avatar-img--default {
-      background-color: var(--sendbird-light-background-300); }
-    .sendbird-theme--dark .sendbird-avatar .sendbird-avatar-img--default {
-      background-color: var(--sendbird-dark-background-300); }
-
-.rogu-message-input--container.rogu-message-input--preview {
-  position: relative;
-  z-index: 1301; }
-
-.rogu-message-input {
-  display: flex;
-  width: 100%;
-  position: relative; }
-  .rogu-message-input .rogu-message-input--textarea {
-    width: calc(100% - 48px);
-    border-radius: 42px;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1;
-    height: 36px;
-    overflow-y: hidden;
-    letter-spacing: normal;
-    padding: 9px 64px 9px 16px;
-    box-sizing: border-box;
-    resize: none;
-    font-family: var(--sendbird-font-family-default);
-    background-color: inherit; }
-    .sendbird-theme--light .rogu-message-input .rogu-message-input--textarea {
-      color: var(--sendbird-light-onlight-01);
-      caret-color: var(--sendbird-light-primary-300);
-      border: solid 1px var(--sendbird-light-onlight-03);
-      background-color: var(--sendbird-light-background-50); }
-    .sendbird-theme--dark .rogu-message-input .rogu-message-input--textarea {
-      color: var(--sendbird-dark-ondark-01);
-      caret-color: var(--sendbird-dark-primary-200);
-      border: solid 1px var(--sendbird-dark-ondark-03);
-      background-color: var(--sendbird-dark-background-500); }
-    .rogu-message-input .rogu-message-input--textarea:focus {
-      outline: none; }
-      .sendbird-theme--light .rogu-message-input .rogu-message-input--textarea:focus {
-        color: var(--sendbird-light-onlight-01);
-        border: solid 1px var(--sendbird-light-primary-300);
-        box-shadow: var(--sendbird-light-shadow-message-input); }
-      .sendbird-theme--dark .rogu-message-input .rogu-message-input--textarea:focus {
-        color: var(--sendbird-dark-ondark-01);
-        border: solid 1px var(--sendbird-dark-primary-200);
-        box-shadow: var(--sendbird-dark-shadow-message-input); }
-    .sendbird-theme--light .rogu-message-input .rogu-message-input--textarea:active {
-      border: solid 1px var(--rogu-message-input-border-active);
-      color: var(--sendbird-light-onlight-01); }
-    .sendbird-theme--dark .rogu-message-input .rogu-message-input--textarea:active {
-      border: solid 1px var(--rogu-message-input-border-active);
-      color: var(--sendbird-dark-ondark-01); }
-  .rogu-message-input .rogu-message-input--placeholder {
-    position: absolute;
-    pointer-events: none;
-    top: 9px;
-    left: 16px;
-    font-family: var(--sendbird-font-family-default);
-    font-size: 14px;
-    line-height: 1.43; }
-    .sendbird-theme--light .rogu-message-input .rogu-message-input--placeholder {
-      color: var(--sendbird-light-onlight-03); }
-    .sendbird-theme--dark .rogu-message-input .rogu-message-input--placeholder {
-      color: var(--sendbird-dark-ondark-03); }
-  .rogu-message-input .rogu-message-input--attach {
-    position: absolute;
-    right: 56px;
-    bottom: 0;
-    padding: 0; }
-    .rogu-message-input .rogu-message-input--attach:hover {
-      background-color: transparent !important;
-      transform: scale(1.2); }
-  .rogu-message-input .rogu-message-input--send {
-    right: 0;
-    bottom: 0;
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    border-radius: 50%;
-    margin-left: 12px; }
-    .rogu-message-input .rogu-message-input--send:hover {
-      transform: scale(1.2); }
-    .sendbird-theme--light .rogu-message-input .rogu-message-input--send {
-      background-color: var(--sendbird-light-primary-500);
-      box-shadow: 0 2px 12px var(--sendbird-light-overlay-02); }
-    .sendbird-theme--dark .rogu-message-input .rogu-message-input--send {
-      background-color: var(--sendbird-dark-primary-400);
-      box-shadow: 0 2px 12px var(--sendbird-dark-overlay-02); }
-    .sendbird-theme--light .rogu-message-input .rogu-message-input--send .rogu-message-input--send-disabled {
-      background-color: var(--sendbird-light-background-400);
-      box-shadow: 0 2px 12px var(--sendbird-light-overlay-02); }
-    .sendbird-theme--dark .rogu-message-input .rogu-message-input--send .rogu-message-input--send-disabled {
-      background-color: var(--sendbird-dark-background-300);
-      box-shadow: 0 2px 12px var(--sendbird-dark-overlay-02); }
-  .rogu-message-input .rogu-message-input--attach-input {
-    display: none; }
-
-.rogu-message-input__text-loading {
-  margin-bottom: 8px; }
-
-.rogu-message-input__edit {
-  padding: 16px;
-  box-sizing: border-box; }
-  .sendbird-theme--light .rogu-message-input__edit {
-    background-color: var(--sendbird-light-primary-100); }
-  .sendbird-theme--dark .rogu-message-input__edit {
-    background-color: var(--sendbird-dark-background-700); }
-
-.rogu-message-input--edit-action {
-  text-align: right;
-  margin-top: 4px; }
-  .rogu-message-input--edit-action button:last-child {
-    margin-left: 8px; }
-  .rogu-message-input--edit-action .rogu-message-input--edit-action__cancel {
-    width: 80px; }
-    .sendbird-theme--light .rogu-message-input--edit-action .rogu-message-input--edit-action__cancel {
-      border: solid 1px var(--sendbird-light-onlight-03); }
-    .sendbird-theme--dark .rogu-message-input--edit-action .rogu-message-input--edit-action__cancel {
-      border: solid 1px var(--sendbird-dark-ondark-03); }
-  .rogu-message-input--edit-action .rogu-message-input--edit-action__save {
-    width: 80px; }
-
-.rogu-message-input-form__disabled {
-  cursor: not-allowed; }
-
-.rogu-message-input.rogu-message-input__disabled {
-  pointer-events: none;
-  cursor: disabled; }
-  .sendbird-theme--light .rogu-message-input.rogu-message-input__disabled .rogu-message-input--textarea {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .rogu-message-input.rogu-message-input__disabled .rogu-message-input--textarea {
-    background-color: var(--sendbird-dark-background-500); }
-  .sendbird-theme--light .rogu-message-input.rogu-message-input__disabled .rogu-message-input--send {
-    background-color: var(--sendbird-light-background-300); }
-  .sendbird-theme--dark .rogu-message-input.rogu-message-input__disabled .rogu-message-input--send {
-    background-color: var(--sendbird-dark-background-400); }
-  .sendbird-theme--light .rogu-message-input.rogu-message-input__disabled svg {
-    fill: var(--sendbird-light-onlight-03); }
-  .sendbird-theme--dark .rogu-message-input.rogu-message-input__disabled svg {
-    fill: var(--sendbird-dark-ondark-03); }
-
 .rogu-delete-message__subtitle {
   display: block;
   text-align: center; }
@@ -5544,6 +5251,160 @@
       background-color: var(--sendbird-dark-background-400);
       color: var(--sendbird-dark-onlight-01); }
 
+.rogu-fileviewer__header__right__actions__download,
+.rogu-fileviewer__header__right__actions__delete,
+.rogu-fileviewer__header__right__actions__close {
+  box-sizing: border-box;
+  cursor: pointer; }
+  .sendbird-theme--light .rogu-fileviewer__header__right__actions__download path, .sendbird-theme--light
+  .rogu-fileviewer__header__right__actions__delete path, .sendbird-theme--light
+  .rogu-fileviewer__header__right__actions__close path {
+    fill: var(--sendbird-light-onlight-01); }
+  .sendbird-theme--dark .rogu-fileviewer__header__right__actions__download path, .sendbird-theme--dark
+  .rogu-fileviewer__header__right__actions__delete path, .sendbird-theme--dark
+  .rogu-fileviewer__header__right__actions__close path {
+    fill: var(--sendbird-dark-ondark-01); }
+
+.rogu-fileviewer__header__right__actions__download,
+.rogu-fileviewer__header__right__actions__delete {
+  margin-right: 24px; }
+
+.rogu-fileviewer__header__right__actions__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 16px; }
+
+.rogu-fileviewer {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1300; }
+  .sendbird-theme--light .rogu-fileviewer {
+    background-color: var(--sendbird-light-background-50); }
+  .sendbird-theme--dark .rogu-fileviewer {
+    background-color: var(--sendbird-dark-background-600); }
+  .rogu-fileviewer .rogu-fileviewer__header {
+    height: 60px;
+    min-height: 60px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 #d4d9e0; }
+    @media (min-width: 640px) {
+      .rogu-fileviewer .rogu-fileviewer__header {
+        padding: 0 16px; } }
+    .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left {
+      display: flex;
+      align-items: center;
+      padding: 10px 16px;
+      min-width: 0;
+      overflow: hidden; }
+      .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__avatar {
+        margin-right: 12px;
+        flex-shrink: 0; }
+      .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__metadata {
+        min-width: 0; }
+        .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__metadata .rogu-fileviewer__header__left__sender-name {
+          width: 100%;
+          max-width: 500px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: inline-block; }
+        .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__left .rogu-fileviewer__header__left__metadata .rogu-fileviewer__header__left__createdat {
+          width: 100%;
+          max-width: 200px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: inline-block; }
+    .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right {
+      display: flex;
+      align-items: center; }
+      .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right .rogu-fileviewer__header__right__actions {
+        display: flex; }
+      .sendbird-theme--light .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right .rogu-fileviewer__header__right__actions__close {
+        border-left: 1px solid #e6ebf1; }
+      .sendbird-theme--dark .rogu-fileviewer .rogu-fileviewer__header .rogu-fileviewer__header__right .rogu-fileviewer__header__right__actions__close {
+        border-left: 1px solid #e6ebf1; }
+  .rogu-fileviewer .rogu-fileviewer__content {
+    height: calc(100% - 72px);
+    padding-top: 8px;
+    overflow-y: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(241, 244, 249, 0.95);
+    -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px); }
+    .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__video {
+      max-width: 100%;
+      max-height: 100%; }
+      @media (min-width: 640px) {
+        .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__video {
+          max-width: 80%;
+          max-height: 80%; } }
+    .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__img {
+      max-width: 90%;
+      max-height: 90%; }
+    .rogu-fileviewer .rogu-fileviewer__content .rogu-fileviewer__content__unsupported {
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+
+/* stylelint-disable no-descending-specificity -- False negative */
+.sendbird-avatar {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative; }
+  .sendbird-avatar:focus {
+    outline: none; }
+  .sendbird-avatar .sendbird-avatar-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .sendbird-theme--light .sendbird-avatar .sendbird-avatar-img {
+      background-color: var(--sendbird-light-background-300); }
+    .sendbird-theme--dark .sendbird-avatar .sendbird-avatar-img {
+      background-color: var(--sendbird-dark-background-300); }
+  .sendbird-avatar .sendbird-avatar--inner__two-child .sendbird-avatar-img:first-child {
+    transform: translate(2%, -50%); }
+  .sendbird-avatar .sendbird-avatar--inner__two-child .sendbird-avatar-img:last-child {
+    transform: translate(-102%, -50%); }
+  .sendbird-avatar .sendbird-avatar--inner__three-child--upper .sendbird-avatar-img:first-child {
+    transform: translate(-50%, -102%); }
+  .sendbird-avatar .sendbird-avatar--inner__three-child--lower .sendbird-avatar-img:first-child {
+    transform: translate(-77%, -23%) scale(0.5); }
+  .sendbird-avatar .sendbird-avatar--inner__three-child--lower .sendbird-avatar-img:last-child {
+    transform: translate(-23%, -23%) scale(0.5); }
+  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:first-child {
+    transform: translate(-77%, -77%) scale(0.5); }
+  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:nth-child(2) {
+    transform: translate(-23%, -77%) scale(0.5); }
+  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:nth-child(3) {
+    transform: translate(-77%, -23%) scale(0.5); }
+  .sendbird-avatar .sendbird-avatar--inner__four-child .sendbird-avatar-img:last-child {
+    transform: translate(-23%, -23%) scale(0.5); }
+  .sendbird-avatar .sendbird-avatar-img--default {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .sendbird-theme--light .sendbird-avatar .sendbird-avatar-img--default {
+      background-color: var(--sendbird-light-background-300); }
+    .sendbird-theme--dark .sendbird-avatar .sendbird-avatar-img--default {
+      background-color: var(--sendbird-dark-background-300); }
+
 .rogu-date-separator {
   width: 100%;
   text-align: center;
@@ -5596,6 +5457,115 @@
     color: var(--sendbird-light-onlight-01); }
   .sendbird-theme--dark .rogu-notification.rogu-notification--frozen .rogu-notification__text {
     color: var(--sendbird-dark-onlight-01); }
+
+.rogu-message-input .rogu-message-input__form {
+  display: flex;
+  width: 100%;
+  position: relative; }
+  .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea {
+    width: calc(100% - 48px);
+    border-radius: 42px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1;
+    height: 36px;
+    overflow-y: hidden;
+    letter-spacing: normal;
+    padding: 9px 64px 9px 16px;
+    box-sizing: border-box;
+    resize: none;
+    font-family: var(--sendbird-font-family-default);
+    background-color: inherit; }
+    .sendbird-theme--light .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea {
+      color: var(--sendbird-light-onlight-01);
+      caret-color: var(--sendbird-light-primary-300);
+      border: solid 1px var(--sendbird-light-onlight-03);
+      background-color: var(--sendbird-light-background-50); }
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea {
+      color: var(--sendbird-dark-ondark-01);
+      caret-color: var(--sendbird-dark-primary-200);
+      border: solid 1px var(--sendbird-dark-ondark-03);
+      background-color: var(--sendbird-dark-background-500); }
+    .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea:focus {
+      outline: none; }
+      .sendbird-theme--light .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea:focus {
+        color: var(--sendbird-light-onlight-01);
+        border: solid 1px var(--sendbird-light-primary-300);
+        box-shadow: var(--sendbird-light-shadow-message-input); }
+      .sendbird-theme--dark .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea:focus {
+        color: var(--sendbird-dark-ondark-01);
+        border: solid 1px var(--sendbird-dark-primary-200);
+        box-shadow: var(--sendbird-dark-shadow-message-input); }
+    .sendbird-theme--light .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea:active {
+      border: solid 1px var(--rogu-message-input-border-active);
+      color: var(--sendbird-light-onlight-01); }
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input__form .rogu-message-input__textarea:active {
+      border: solid 1px var(--rogu-message-input-border-active);
+      color: var(--sendbird-dark-ondark-01); }
+  .rogu-message-input .rogu-message-input__form .rogu-message-input__placeholder {
+    position: absolute;
+    pointer-events: none;
+    top: 9px;
+    left: 16px;
+    font-family: var(--sendbird-font-family-default);
+    font-size: 14px;
+    line-height: 1.43; }
+    .sendbird-theme--light .rogu-message-input .rogu-message-input__form .rogu-message-input__placeholder {
+      color: var(--sendbird-light-onlight-03); }
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input__form .rogu-message-input__placeholder {
+      color: var(--sendbird-dark-ondark-03); }
+  .rogu-message-input .rogu-message-input__form .rogu-message-input__attach {
+    position: absolute;
+    right: 56px;
+    bottom: 0;
+    padding: 0; }
+    .rogu-message-input .rogu-message-input__form .rogu-message-input__attach:hover {
+      background-color: transparent !important;
+      transform: scale(1.2); }
+  .rogu-message-input .rogu-message-input__form .rogu-message-input__send {
+    right: 0;
+    bottom: 0;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    margin-left: 12px; }
+    .rogu-message-input .rogu-message-input__form .rogu-message-input__send:hover {
+      transform: scale(1.2); }
+    .sendbird-theme--light .rogu-message-input .rogu-message-input__form .rogu-message-input__send {
+      background-color: var(--sendbird-light-primary-500);
+      box-shadow: 0 2px 12px var(--sendbird-light-overlay-02); }
+    .sendbird-theme--dark .rogu-message-input .rogu-message-input__form .rogu-message-input__send {
+      background-color: var(--sendbird-dark-primary-400);
+      box-shadow: 0 2px 12px var(--sendbird-dark-overlay-02); }
+  .rogu-message-input .rogu-message-input__form .rogu-message-input__attach__input {
+    display: none; }
+
+.rogu-message-input .rogu-message-input__url-loading {
+  margin-bottom: 8px; }
+
+.rogu-message-input.rogu-message-input--preview .rogu-message-input__form,
+.rogu-message-input.rogu-message-input--preview .rogu-message-input__replied-preview {
+  position: relative;
+  z-index: 1301; }
+
+.rogu-message-input.rogu-message-input--disabled .rogu-message-input__form {
+  pointer-events: none;
+  cursor: not-allowed; }
+  .sendbird-theme--light .rogu-message-input.rogu-message-input--disabled .rogu-message-input__form .rogu-message-input__textarea {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .rogu-message-input.rogu-message-input--disabled .rogu-message-input__form .rogu-message-input__textarea {
+    background-color: var(--sendbird-dark-background-500); }
+  .sendbird-theme--light .rogu-message-input.rogu-message-input--disabled .rogu-message-input__form .rogu-message-input__send {
+    background-color: var(--sendbird-light-background-300); }
+  .sendbird-theme--dark .rogu-message-input.rogu-message-input--disabled .rogu-message-input__form .rogu-message-input__send {
+    background-color: var(--sendbird-dark-background-400); }
+  .sendbird-theme--light .rogu-message-input.rogu-message-input--disabled .rogu-message-input__form svg {
+    fill: var(--sendbird-light-onlight-03); }
+  .sendbird-theme--dark .rogu-message-input.rogu-message-input--disabled .rogu-message-input__form svg {
+    fill: var(--sendbird-dark-ondark-03); }
 
 .rogu-archived-banner {
   margin: -12px -16px;
