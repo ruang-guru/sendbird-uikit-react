@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-2ff5bb33.js');
-var index$1 = require('./index-086f6366.js');
+var LocalizationContext = require('./LocalizationContext-496e49ba.js');
+var index$1 = require('./index-12229822.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-f6f4c1da.js');
-var index$3 = require('./index-edb98f77.js');
+var index$2 = require('./index-6460da46.js');
+var index$3 = require('./index-0944d0ce.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-7d22eb0d.js');
+var Channel = require('./index-660fa6cb.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-1ca464e4.js');
+require('./actionTypes-dca79f50.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-b2463248.js');
-require('./utils-6dcd32aa.js');
-require('./LeaveChannel-800126af.js');
-require('./index-53c731d2.js');
-require('./index-3367c97f.js');
-require('./index-bbd525d7.js');
+require('./index-f26c4bfb.js');
+require('./utils-1dd74703.js');
+require('./LeaveChannel-6cff7352.js');
+require('./index-3fff204e.js');
+require('./index-53dd6de1.js');
+require('./index-38695d24.js');
 require('./ChannelSettings.js');
-require('./index-d4e31e27.js');
+require('./index-9f76bc7e.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -5991,12 +5991,21 @@ function RepliedMessagePreview(_a) {
       message = _a.message,
       onCancel = _a.onCancel,
       onClick = _a.onClick;
+  var nickname = (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname;
+  var body = isFileMessage(message) ? message.name : message.message; // if the replied message is replying another message
+
+  if (isReplyingMessage(message)) {
+    var originalMessage = destructureRepliedMessage(body).originalMessage;
+    body = originalMessage;
+  }
+
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: className
   }, (index$1.isTextMessage(message) || index$1.isOGMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
-    content: message.message,
-    isByMe: false,
-    nickname: (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname,
+    content: body,
+    isByMe: false // always false to match the styling
+    ,
+    nickname: nickname,
     withCancelButton: true,
     onClick: onClick,
     onCancel: onCancel
@@ -6204,11 +6213,6 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
   }, [inputValue]);
 
   var sendMessage = function sendMessage() {
-    setUrl({
-      hasUrl: false,
-      text: ''
-    });
-
     if (imagePreviewFile !== null) {
       // In order to change the file name, we need to create a copy of File object
       var modifiedFile = new Blob([imagePreviewFile], {
@@ -6220,38 +6224,59 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       if (repliedMessage) {
         var _repliedMessage$sende;
 
+        var repliedMessageBody = isFileMessage(repliedMessage) ? repliedMessage.name : repliedMessage.message; // if the replied message is replying another message
+
+        if (isReplyingMessage(repliedMessage)) {
+          var _destructureRepliedMe = destructureRepliedMessage(repliedMessageBody),
+              originalMessage = _destructureRepliedMe.originalMessage;
+
+          repliedMessageBody = originalMessage;
+        }
+
         onFileUpload(modifiedFile, {
-          parentMessageBody: repliedMessage.message,
+          parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: ((_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname) || '-'
+          parentMessageNickname: (_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname
         });
       } else {
         onFileUpload(modifiedFile);
       }
-
-      setImagePreviewFile(null);
-      onCancelRepliedMessage();
-      setInputValue('');
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
         var _repliedMessage$sende2;
 
+        var _repliedMessageBody = isFileMessage(repliedMessage) ? repliedMessage.name : repliedMessage.message; // if the replied message is replying another message
+
+
+        if (isReplyingMessage(repliedMessage)) {
+          var _destructureRepliedMe2 = destructureRepliedMessage(_repliedMessageBody),
+              _originalMessage = _destructureRepliedMe2.originalMessage;
+
+          _repliedMessageBody = _originalMessage;
+        }
+
         onSendMessage({
-          parentMessageBody: repliedMessage.message,
+          parentMessageBody: _repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: ((_repliedMessage$sende2 = repliedMessage.sender) === null || _repliedMessage$sende2 === void 0 ? void 0 : _repliedMessage$sende2.nickname) || '-'
+          parentMessageNickname: (_repliedMessage$sende2 = repliedMessage.sender) === null || _repliedMessage$sende2 === void 0 ? void 0 : _repliedMessage$sende2.nickname
         });
       } else {
         onSendMessage();
       }
 
-      setInputValue('');
-      onCancelRepliedMessage();
-
       if (elem) {
         elem.style.height = "".concat(LINE_HEIGHT, "px");
       }
-    }
+    } // Reset
+
+
+    setImagePreviewFile(null);
+    setInputValue('');
+    onCancelRepliedMessage();
+    setUrl({
+      hasUrl: false,
+      text: ''
+    });
   };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
@@ -6534,7 +6559,7 @@ var ConversationPanel = function ConversationPanel(props) {
   var usingReaction = appInfo.isUsingReaction && !isBroadcast && !isSuper && useReaction;
   var userDefinedDisableUserProfile = disableUserProfile || config.disableUserProfile;
   var userDefinedRenderProfile = renderUserProfile || config.renderUserProfile;
-  var showScrollBot = hasMoreToBottom; // Replied message
+  var showScrollBot = hasMoreToBottom; // Reply message
 
   var _useState5 = React$1.useState(),
       _useState6 = LocalizationContext._slicedToArray(_useState5, 2),

@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-3738c4df.js';
-export { w as withSendBird } from './LocalizationContext-3738c4df.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as getClassName, h as isUrl, j as isEditedMessage, k as changeColorToClassName$2, C as Colors$2, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as UserProfileProvider } from './index-23e3efbf.js';
-export { L as sendBirdSelectors } from './index-23e3efbf.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-9c81c299.js';
+export { w as withSendBird } from './LocalizationContext-9c81c299.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as getClassName, h as isUrl, j as isEditedMessage, k as changeColorToClassName$2, C as Colors$2, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as UserProfileProvider } from './index-06eb8f1c.js';
+export { L as sendBirdSelectors } from './index-06eb8f1c.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-594ff4e4.js';
-import { c as compareIds, L as LinkLabel$1 } from './index-3821e79d.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-d706d73a.js';
+import { c as compareIds, L as LinkLabel$1 } from './index-4886f4fa.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-e5e6a27c.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-15191566.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-ef4bd1b1.js';
+import './actionTypes-6b39b45f.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-017ac256.js';
-import './utils-da5200e5.js';
-import './LeaveChannel-7079781f.js';
-import './index-8d87dbfc.js';
-import './index-5eb915cd.js';
-import './index-6b0eeeaf.js';
+import './index-a9c0ac0a.js';
+import './utils-70e8c9d3.js';
+import './LeaveChannel-2d47c2f5.js';
+import './index-5a0eda55.js';
+import './index-a8ce8f11.js';
+import './index-c629b0a5.js';
 import './ChannelSettings.js';
-import './index-4e5475ad.js';
+import './index-3dc71ac4.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -5966,12 +5966,21 @@ function RepliedMessagePreview(_a) {
       message = _a.message,
       onCancel = _a.onCancel,
       onClick = _a.onClick;
+  var nickname = (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname;
+  var body = isFileMessage(message) ? message.name : message.message; // if the replied message is replying another message
+
+  if (isReplyingMessage(message)) {
+    var originalMessage = destructureRepliedMessage(body).originalMessage;
+    body = originalMessage;
+  }
+
   return /*#__PURE__*/React__default$1.createElement("div", {
     className: className
   }, (isTextMessage(message) || isOGMessage(message)) && /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody, {
-    content: message.message,
-    isByMe: false,
-    nickname: (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname,
+    content: body,
+    isByMe: false // always false to match the styling
+    ,
+    nickname: nickname,
     withCancelButton: true,
     onClick: onClick,
     onCancel: onCancel
@@ -6179,11 +6188,6 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
   }, [inputValue]);
 
   var sendMessage = function sendMessage() {
-    setUrl({
-      hasUrl: false,
-      text: ''
-    });
-
     if (imagePreviewFile !== null) {
       // In order to change the file name, we need to create a copy of File object
       var modifiedFile = new Blob([imagePreviewFile], {
@@ -6195,38 +6199,59 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
       if (repliedMessage) {
         var _repliedMessage$sende;
 
+        var repliedMessageBody = isFileMessage(repliedMessage) ? repliedMessage.name : repliedMessage.message; // if the replied message is replying another message
+
+        if (isReplyingMessage(repliedMessage)) {
+          var _destructureRepliedMe = destructureRepliedMessage(repliedMessageBody),
+              originalMessage = _destructureRepliedMe.originalMessage;
+
+          repliedMessageBody = originalMessage;
+        }
+
         onFileUpload(modifiedFile, {
-          parentMessageBody: repliedMessage.message,
+          parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: ((_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname) || '-'
+          parentMessageNickname: (_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname
         });
       } else {
         onFileUpload(modifiedFile);
       }
-
-      setImagePreviewFile(null);
-      onCancelRepliedMessage();
-      setInputValue('');
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
         var _repliedMessage$sende2;
 
+        var _repliedMessageBody = isFileMessage(repliedMessage) ? repliedMessage.name : repliedMessage.message; // if the replied message is replying another message
+
+
+        if (isReplyingMessage(repliedMessage)) {
+          var _destructureRepliedMe2 = destructureRepliedMessage(_repliedMessageBody),
+              _originalMessage = _destructureRepliedMe2.originalMessage;
+
+          _repliedMessageBody = _originalMessage;
+        }
+
         onSendMessage({
-          parentMessageBody: repliedMessage.message,
+          parentMessageBody: _repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: ((_repliedMessage$sende2 = repliedMessage.sender) === null || _repliedMessage$sende2 === void 0 ? void 0 : _repliedMessage$sende2.nickname) || '-'
+          parentMessageNickname: (_repliedMessage$sende2 = repliedMessage.sender) === null || _repliedMessage$sende2 === void 0 ? void 0 : _repliedMessage$sende2.nickname
         });
       } else {
         onSendMessage();
       }
 
-      setInputValue('');
-      onCancelRepliedMessage();
-
       if (elem) {
         elem.style.height = "".concat(LINE_HEIGHT, "px");
       }
-    }
+    } // Reset
+
+
+    setImagePreviewFile(null);
+    setInputValue('');
+    onCancelRepliedMessage();
+    setUrl({
+      hasUrl: false,
+      text: ''
+    });
   };
 
   return /*#__PURE__*/React__default$1.createElement("div", {
@@ -6509,7 +6534,7 @@ var ConversationPanel = function ConversationPanel(props) {
   var usingReaction = appInfo.isUsingReaction && !isBroadcast && !isSuper && useReaction;
   var userDefinedDisableUserProfile = disableUserProfile || config.disableUserProfile;
   var userDefinedRenderProfile = renderUserProfile || config.renderUserProfile;
-  var showScrollBot = hasMoreToBottom; // Replied message
+  var showScrollBot = hasMoreToBottom; // Reply message
 
   var _useState5 = useState(),
       _useState6 = _slicedToArray(_useState5, 2),
