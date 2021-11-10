@@ -1,175 +1,139 @@
 @import '../../../styles/variables';
 
 // TODO: fix naming to comply with BEM convention
-.rogu-message-input--container {
-  &.rogu-message-input--preview {
-    position: relative;
-    z-index: $modal + 1; // make sure the MessageInput shows on top of the FileViewer
-  }
-}
-
 .rogu-message-input {
-  display: flex;
-  width: 100%;
-  position: relative;
+  .rogu-message-input__form {
+    display: flex;
+    width: 100%;
+    position: relative;
 
-  .rogu-message-input--textarea {
-    // width: 100%;
-    width: calc(100% - 48px);
-    border-radius: 42px;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1;
-    height: 36px;
-    overflow-y: hidden;
-    letter-spacing: normal;
-    padding: 9px 64px 9px 16px;
-    box-sizing: border-box;
-    resize: none;
-    font-family: var(--sendbird-font-family-default);
-    background-color: inherit;
-
-    @include themed() {
-      color: t(on-bg-1);
-      caret-color: t(primary-3);
-      border: solid 1px t(on-bg-3);
-      background-color: t(bg--0-5);
-    }
-
-    &:focus {
-      outline: none;
+    .rogu-message-input__textarea {
+      width: calc(100% - 48px);
+      border-radius: 42px;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1;
+      height: 36px;
+      overflow-y: hidden;
+      letter-spacing: normal;
+      padding: 9px 64px 9px 16px;
+      box-sizing: border-box;
+      resize: none;
+      font-family: var(--sendbird-font-family-default);
+      background-color: inherit;
 
       @include themed() {
         color: t(on-bg-1);
-        border: solid 1px t(primary--3-2);
-        box-shadow: t(shadow-message-input);
+        caret-color: t(primary-3);
+        border: solid 1px t(on-bg-3);
+        background-color: t(bg--0-5);
+      }
+
+      &:focus {
+        outline: none;
+
+        @include themed() {
+          color: t(on-bg-1);
+          border: solid 1px t(primary--3-2);
+          box-shadow: t(shadow-message-input);
+        }
+      }
+
+      &:active {
+        @include themed() {
+          border: solid 1px var(--rogu-message-input-border-active);
+          color: t(on-bg-1);
+        }
       }
     }
 
-    &:active {
+    .rogu-message-input__placeholder {
+      position: absolute;
+      pointer-events: none;
+      top: 9px;
+      left: 16px;
+      font-family: var(--sendbird-font-family-default);
+      font-size: 14px;
+      line-height: 1.43;
+
       @include themed() {
-        border: solid 1px var(--rogu-message-input-border-active);
-        color: t(on-bg-1);
+        color: t(on-bg-3);
       }
     }
-  }
 
-  .rogu-message-input--placeholder {
-    position: absolute;
-    pointer-events: none;
-    top: 9px;
-    left: 16px;
-    font-family: var(--sendbird-font-family-default);
-    font-size: 14px;
-    line-height: 1.43;
+    .rogu-message-input__attach {
+      position: absolute;
+      right: 56px;
+      bottom: 0;
+      padding: 0;
 
-    @include themed() {
-      color: t(on-bg-3);
-    }
-  }
-
-  .rogu-message-input--attach {
-    position: absolute;
-    right: 56px;
-    bottom: 0;
-    padding: 0;
-
-    &:hover {
-      background-color: transparent !important;
-      transform: scale(1.2);
-    }
-  }
-
-  .rogu-message-input--send {
-    right: 0;
-    bottom: 0;
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    border-radius: 50%;
-    margin-left: 12px;
-
-    &:hover {
-      transform: scale(1.2);
+      &:hover {
+        background-color: transparent !important;
+        transform: scale(1.2);
+      }
     }
 
-    @include themed() {
-      background-color: t(primary-5);
-      box-shadow: 0 2px 12px t(overlay-2);
-    }
+    .rogu-message-input__send {
+      right: 0;
+      bottom: 0;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border-radius: 50%;
+      margin-left: 12px;
 
-    .rogu-message-input--send-disabled {
+      &:hover {
+        transform: scale(1.2);
+      }
+
       @include themed() {
-        background-color: t(bg-4);
+        background-color: t(primary-5);
         box-shadow: 0 2px 12px t(overlay-2);
       }
     }
-  }
 
-  .rogu-message-input--attach-input {
-    display: none;
-  }
-}
-
-.rogu-message-input__text-loading {
-  margin-bottom: 8px;
-}
-
-.rogu-message-input__edit {
-  padding: 16px;
-  box-sizing: border-box;
-
-  @include themed() {
-    background-color: t(primary--1-bg--7);
-  }
-}
-
-.rogu-message-input--edit-action {
-  text-align: right;
-  margin-top: 4px;
-
-  button:last-child {
-    margin-left: 8px;
-  }
-
-  .rogu-message-input--edit-action__cancel {
-    width: 80px;
-
-    @include themed() {
-      border: solid 1px t(on-bg-3);
+    .rogu-message-input__attach__input {
+      display: none;
     }
   }
 
-  .rogu-message-input--edit-action__save {
-    width: 80px;
+  .rogu-message-input__url-loading {
+    margin-bottom: 8px;
   }
-}
 
-.rogu-message-input-form__disabled {
-  cursor: not-allowed;
-}
-
-.rogu-message-input.rogu-message-input__disabled {
-  pointer-events: none;
-  cursor: disabled;
-
-  .rogu-message-input--textarea {
-    @include themed() {
-      background-color: t(bg-1);
+  &.rogu-message-input--preview {
+    // make sure the MessageInput and RepliedMessagePreview shows on top of the FileViewer
+    .rogu-message-input__form,
+    .rogu-message-input__replied-preview {
+      position: relative;
+      z-index: $modal + 1;
     }
   }
 
-  .rogu-message-input--send {
-    @include themed() {
-      background-color: t(bg-3);
-    }
-  }
+  &.rogu-message-input--disabled {
+    .rogu-message-input__form {
+      pointer-events: none;
+      cursor: not-allowed;
 
-  svg {
-    @include themed() {
-      fill: t(on-bg-3);
+      .rogu-message-input__textarea {
+        @include themed() {
+          background-color: t(bg-1);
+        }
+      }
+
+      .rogu-message-input__send {
+        @include themed() {
+          background-color: t(bg-3);
+        }
+      }
+
+      svg {
+        @include themed() {
+          fill: t(on-bg-3);
+        }
+      }
     }
   }
 }

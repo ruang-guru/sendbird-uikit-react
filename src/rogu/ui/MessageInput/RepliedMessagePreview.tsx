@@ -17,18 +17,20 @@ import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
 import { isOGMessage, isTextMessage } from '../../../utils';
 
 export type RepliedMessagePreviewProps = {
+  className?: string;
   message: FileMessage | UserMessage;
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   onCancel?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 export function RepliedMessagePreview({
+  className = '',
   message,
   onCancel,
   onClick,
 }: RepliedMessagePreviewProps): JSX.Element {
   return (
-    <>
+    <div className={className}>
       {(isTextMessage(message as UserMessage) ||
         isOGMessage(message as UserMessage)) && (
         <RepliedTextMessageItemBody
@@ -40,7 +42,7 @@ export function RepliedMessagePreview({
           onCancel={onCancel}
         />
       )}
-    </>
+    </div>
   );
 }
 

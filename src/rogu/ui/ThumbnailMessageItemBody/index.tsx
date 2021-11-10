@@ -1,10 +1,18 @@
-import React, { ReactElement } from "react";
-import { FileMessage } from "sendbird";
-import "./index.scss";
+import React, { ReactElement } from 'react';
+import { FileMessage } from 'sendbird';
+import './index.scss';
 
-import Icon, { IconTypes, IconColors } from "../Icon";
-import ImageRenderer from "../ImageRenderer";
-import { getClassName, isGifMessage, isVideoMessage } from "../../../utils";
+import Icon, { IconTypes, IconColors } from '../Icon';
+import ImageRenderer from '../ImageRenderer';
+import RepliedMessageItemBody, {
+  RepliedMessageTypes,
+} from '../RepliedMessageItemBody';
+import ClampedMessageItemBody from '../ClampedMessageItemBody';
+import {
+  getRepliedMessageFromMetaArrays,
+  isReplyingMessage,
+} from '../../utils';
+import { getClassName, isGifMessage, isVideoMessage } from '../../../utils';
 
 interface Props {
   className?: string | Array<string>;
@@ -13,6 +21,9 @@ interface Props {
   mouseHover?: boolean;
   showFileViewer?: (bool: boolean) => void;
   isClickable: boolean;
+  onClickRepliedMessage?: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
 }
 
 export default function ThumbnailMessageItemBody({
@@ -22,39 +33,79 @@ export default function ThumbnailMessageItemBody({
   mouseHover = false,
   showFileViewer,
   isClickable = true,
+  onClickRepliedMessage,
 }: Props): ReactElement {
   const { thumbnails = [] } = message;
-  const thumbnailUrl: string = thumbnails.length > 0 ? thumbnails[0]?.url : "";
+  const thumbnailUrl: string = thumbnails.length > 0 ? thumbnails[0]?.url : '';
+
+  const hasRepliedMessage = isReplyingMessage(message);
+
+  const renderRepliedMessage = () => {
+    const { body, nickname } = getRepliedMessageFromMetaArrays(
+      message.metaArrays
+    );
+    return (
+      <RepliedMessageItemBody
+        isByMe={isByMe}
+        nickname={nickname}
+        messageContent={body}
+        type={RepliedMessageTypes.Text}
+        onClick={onClickRepliedMessage}
+      />
+    );
+  };
 
   return (
-    <div
-      className={getClassName([
-        className,
-        "rogu-thumbnail-message-item-body",
-        isByMe ? "outgoing" : "incoming",
-        mouseHover ? "mouse-hover" : "",
-        message?.reactions?.length > 0 ? "reactions" : "",
-      ])}
-      onClick={() => {
-        if (isClickable) showFileViewer(true);
-      }}
-    >
-      <ImageRenderer
-        className="rogu-thumbnail-message-item-body__thumbnail"
-        url={thumbnailUrl || message?.url}
-        alt={message?.type}
-        width="100%"
-        height="270px"
-        placeHolder={(style) => (
-          <div
-            className="rogu-thumbnail-message-item-body__placeholder"
-            style={style}
-          >
-            <div className="rogu-thumbnail-message-item-body__placeholder__icon">
+    <>
+      {hasRepliedMessage && renderRepliedMessage()}
+
+      <div
+        className={getClassName([
+          className,
+          'rogu-thumbnail-message-item-body',
+          isByMe ? 'outgoing' : 'incoming',
+          mouseHover ? 'mouse-hover' : '',
+          message?.reactions?.length > 0 ? 'reactions' : '',
+        ])}
+        onClick={() => {
+          if (isClickable) showFileViewer(true);
+        }}
+      >
+        <ImageRenderer
+          className="rogu-thumbnail-message-item-body__thumbnail"
+          url={thumbnailUrl || message?.url}
+          alt={message?.type}
+          width="100%"
+          height="270px"
+          placeHolder={(style) => (
+            <div
+              className="rogu-thumbnail-message-item-body__placeholder"
+              style={style}
+            >
+              <div className="rogu-thumbnail-message-item-body__placeholder__icon">
+                <Icon
+                  type={
+                    isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO
+                  }
+                  fillColor={IconColors.ON_BACKGROUND_2}
+                  width="34px"
+                  height="34px"
+                />
+              </div>
+            </div>
+          )}
+        />
+        {isVideoMessage(message) && !thumbnailUrl && (
+          <video className="rogu-thumbnail-message-item-body__video">
+            <source src={message?.url} type={message?.type} />
+          </video>
+        )}
+        <div className="rogu-thumbnail-message-item-body__image-cover" />
+        {(isVideoMessage(message) || isGifMessage(message)) && (
+          <div className="rogu-thumbnail-message-item-body__icon-wrapper">
+            <div className="rogu-thumbnail-message-item-body__icon-wrapper__icon">
               <Icon
-                type={
-                  isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO
-                }
+                type={isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF}
                 fillColor={IconColors.ON_BACKGROUND_2}
                 width="34px"
                 height="34px"
@@ -62,25 +113,15 @@ export default function ThumbnailMessageItemBody({
             </div>
           </div>
         )}
-      />
-      {isVideoMessage(message) && !thumbnailUrl && (
-        <video className="rogu-thumbnail-message-item-body__video">
-          <source src={message?.url} type={message?.type} />
-        </video>
+      </div>
+
+      {message.name && message.name !== 'EMPTY_MESSAGE' && (
+        <ClampedMessageItemBody
+          isByMe={isByMe}
+          mode="thumbnailCaption"
+          content={message.name}
+        />
       )}
-      <div className="rogu-thumbnail-message-item-body__image-cover" />
-      {(isVideoMessage(message) || isGifMessage(message)) && (
-        <div className="rogu-thumbnail-message-item-body__icon-wrapper">
-          <div className="rogu-thumbnail-message-item-body__icon-wrapper__icon">
-            <Icon
-              type={isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF}
-              fillColor={IconColors.ON_BACKGROUND_2}
-              width="34px"
-              height="34px"
-            />
-          </div>
-        </div>
-      )}
-    </div>
+    </>
   );
 }

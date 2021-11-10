@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 // Rogu components
 import MessageContent from '../../../ui/MessageContent';
 // import Label, { LabelTypography, LabelColors } from '../../../ui/Label';
-import MessageInput from '../../../ui/MessageInput';
+// import MessageInput from '../../../ui/MessageInput';
 import RemoveMessageModal from './RemoveMessage';
 
 // Sendbird original components
@@ -18,10 +18,10 @@ export default function MessageHoc({
   message,
   userId,
   disabled,
-  editDisabled,
+  // editDisabled,
   // hasSeparator,
   deleteMessage,
-  updateMessage,
+  // updateMessage,
   scrollToMessage,
   resendMessage,
   useReaction,
@@ -36,11 +36,11 @@ export default function MessageHoc({
   onReplyMessage,
 }) {
   const { sender = {} } = message;
-  const [showEdit, setShowEdit] = useState(false);
+  // const [showEdit, setShowEdit] = useState(false);
   const [showRemove, setShowRemove] = useState(false);
   const [showFileViewer, setShowFileViewer] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
-  const editMessageInputRef = useRef(null);
+  // const editMessageInputRef = useRef(null);
   const useMessageScrollRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -102,22 +102,6 @@ export default function MessageHoc({
     );
   }
 
-  if (showEdit) {
-    return (
-      <MessageInput
-        isEdit
-        disabled={editDisabled}
-        ref={editMessageInputRef}
-        name={message.messageId}
-        onSendMessage={updateMessage}
-        onCancelEdit={() => {
-          setShowEdit(false);
-        }}
-        value={message.message}
-      />
-    );
-  }
-
   return (
     <div
       ref={useMessageScrollRef}
@@ -143,7 +127,7 @@ export default function MessageHoc({
         // useReplying={} TODO: Set useReplying
         nicknamesMap={membersMap}
         emojiContainer={emojiContainer}
-        showEdit={setShowEdit}
+        // showEdit={setShowEdit}
         showRemove={setShowRemove}
         showFileViewer={setShowFileViewer}
         showReply={() => onReplyMessage(message)}
@@ -200,10 +184,10 @@ MessageHoc.propTypes = {
   currentGroupChannel: PropTypes.shape({}),
   // hasSeparator: PropTypes.bool,
   disabled: PropTypes.bool,
-  editDisabled: PropTypes.bool,
+  // editDisabled: PropTypes.bool,
   deleteMessage: PropTypes.func.isRequired,
   scrollToMessage: PropTypes.func,
-  updateMessage: PropTypes.func.isRequired,
+  // updateMessage: PropTypes.func.isRequired,
   resendMessage: PropTypes.func.isRequired,
   useReaction: PropTypes.bool.isRequired,
   chainTop: PropTypes.bool.isRequired,
@@ -227,7 +211,7 @@ MessageHoc.propTypes = {
 
 MessageHoc.defaultProps = {
   userId: '',
-  editDisabled: false,
+  // editDisabled: false,
   renderCustomMessage: null,
   currentGroupChannel: {},
   message: {},

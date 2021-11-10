@@ -19,10 +19,10 @@ describe('MessageInput', () => {
     // expect(
     //   component.find('.rogu-message-input--send').exists()
     // ).toBe(false);
-    expect(component.find('.rogu-message-input--attach').exists()).toBe(true);
-    expect(component.find('.rogu-message-input--edit-action').exists()).toBe(
-      false
-    );
+    expect(component.find('.rogu-message-input__attach').exists()).toBe(true);
+    // expect(component.find('.rogu-message-input--edit-action').exists()).toBe(
+    //   false
+    // );
   });
 
   it('should render send icon if text is present', () => {
@@ -34,30 +34,13 @@ describe('MessageInput', () => {
         profileUrl="https://imgix3.ruangguru.com/assets/avatar/avatar|6371.png?w=360"
       />
     );
-    expect(component.find('.rogu-message-input--send').exists()).toBe(true);
+    expect(component.find('.rogu-message-input__send').exists()).toBe(true);
     // TODO: complete the test case
     // expect(
     //   component.find('.rogu-message-input--attach').exists()
     // ).toBe(false);
-    expect(component.find('.rogu-message-input--edit-action').exists()).toBe(
-      false
-    );
-  });
-
-  it('should display save/cancel button on edit mode', () => {
-    const component = shallow(
-      <MessageInput
-        onSendMessage={noop}
-        value=""
-        isEdit
-        nickname="Kukuh Sulistyo"
-        profileUrl="https://imgix3.ruangguru.com/assets/avatar/avatar|6371.png?w=360"
-      />
-    );
-    expect(component.find('.rogu-message-input--send').exists()).toBe(false);
-    expect(component.find('.rogu-message-input--attach').exists()).toBe(false);
-    expect(component.find('.rogu-message-input--edit-action').exists()).toBe(
-      true
-    );
+    // expect(component.find('.rogu-message-input--edit-action').exists()).toBe(
+    //   false
+    // );
   });
 });

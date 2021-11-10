@@ -4,21 +4,23 @@ import { UserMessage } from 'sendbird';
 import ClampedTextMessageItemBody from '../ClampedMessageItemBody';
 import RepliedMessageItemBody, {
   RepliedMessageTypes,
-} from './RepliedMessageItemBody';
+} from '../RepliedMessageItemBody';
 import { destructureRepliedMessage, isReplyingMessage } from '../../utils';
 
 interface Props {
   className?: string | Array<string>;
   isByMe?: boolean;
   message: UserMessage;
-  onScrollToRepliedMessage?: () => void;
+  onClickRepliedMessage?: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => void;
 }
 
 export default function TextMessageItemBody({
   className,
   isByMe = false,
   message,
-  onScrollToRepliedMessage,
+  onClickRepliedMessage,
 }: Props): ReactElement {
   const messageContent = message.message;
 
@@ -37,7 +39,7 @@ export default function TextMessageItemBody({
           nickname={senderNickname}
           messageContent={parentMessage}
           type={RepliedMessageTypes.Text}
-          onClick={onScrollToRepliedMessage}
+          onClick={onClickRepliedMessage}
         />
       )}
 

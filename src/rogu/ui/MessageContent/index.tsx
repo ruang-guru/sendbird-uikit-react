@@ -2,7 +2,6 @@ import React, { ReactElement, useRef, useContext } from 'react';
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from 'sendbird';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import MessageStatus from '../MessageStatus';
-import ClampedMessageItemBody from '../ClampedMessageItemBody';
 import OGMessageItemBody from '../OGMessageItemBody';
 import FileMessageItemBody from '../FileMessageItemBody';
 import ThumbnailMessageItemBody from '../ThumbnailMessageItemBody';
@@ -84,8 +83,8 @@ export default function MessageContent({
   resendMessage,
   disabled = false,
 }: // showRemove,
-  // toggleReaction,
-  Props): ReactElement {
+// toggleReaction,
+Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
   const messageTypes = getUIKitMessageTypes();
   const avatarRef = useRef(null);
@@ -179,6 +178,7 @@ export default function MessageContent({
                     showRemove={showRemove}
                     resendMessage={resendMessage}
                     showFileViewer={showFileViewer}
+                    showReply={showReply}
                   />
                 )}
               </>
@@ -214,37 +214,28 @@ export default function MessageContent({
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.FILE && (
-                  <FileMessageItemBody
-                    message={message as FileMessage}
-                    isByMe={isByMe}
-                  />
-                )}
+                <FileMessageItemBody
+                  message={message as FileMessage}
+                  isByMe={isByMe}
+                />
+              )}
               {isThumbnailMessage(message as FileMessage) && (
-                <>
-                  <ThumbnailMessageItemBody
-                    message={message as FileMessage}
-                    isByMe={isByMe}
-                    showFileViewer={showFileViewer}
-                    isClickable={
-                      getOutgoingMessageState(channel, message) !==
-                      OutgoingMessageStates.PENDING
-                    }
-                  />
-                  {(message as FileMessage).name !== 'EMPTY_MESSAGE' && (
-                    <ClampedMessageItemBody
-                      isByMe={isByMe}
-                      mode="thumbnailCaption"
-                      content={(message as FileMessage).name}
-                    />
-                  )}
-                </>
+                <ThumbnailMessageItemBody
+                  message={message as FileMessage}
+                  isByMe={isByMe}
+                  showFileViewer={showFileViewer}
+                  isClickable={
+                    getOutgoingMessageState(channel, message) !==
+                    OutgoingMessageStates.PENDING
+                  }
+                />
               )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
-                  <UnknownMessageItemBody message={message} isByMe={isByMe} />
-                )}
+                <UnknownMessageItemBody message={message} isByMe={isByMe} />
+              )}
             </div>
-            {(((!isByMe && chainTop) || isByMe) && !channel.isFrozen) && (
+            {((!isByMe && chainTop) || isByMe) && !channel.isFrozen && (
               <MessageItemMenu
                 className="rogu-message-content__menu"
                 channel={channel}
