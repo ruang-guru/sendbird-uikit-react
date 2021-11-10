@@ -58,7 +58,7 @@ export default function ThumbnailMessageItemBody({
   return (
     <>
       {hasRepliedMessage && renderRepliedMessage()}
-      
+
       <div
         className={getClassName([
           className,
@@ -115,7 +115,7 @@ export default function ThumbnailMessageItemBody({
         )}
       </div>
 
-      {message.name !== 'EMPTY_MESSAGE' && (
+      {message.name && message.name !== 'EMPTY_MESSAGE' && (
         <ClampedMessageItemBody
           isByMe={isByMe}
           mode="thumbnailCaption"

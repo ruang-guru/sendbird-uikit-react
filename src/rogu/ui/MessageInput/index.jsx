@@ -14,9 +14,6 @@ import LinkPreview from '@ashwamegh/react-link-preview';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import { getClassName, isUrl } from '../../../utils';
 import IconButton from '../../../ui/IconButton';
-import Button, { ButtonTypes, ButtonSizes } from '../../../ui/Button';
-
-import { getMimeTypesString, isImage, SUPPORTED_MIMES } from '../../utils';
 
 import OGMessageItemBody from '../OGMessageItemBody';
 import Icon, { IconTypes, IconColors } from '../Icon';
@@ -25,7 +22,9 @@ import { FileViewerComponent } from '../FileViewer';
 import Toast from '../Toast';
 import RepliedMessagePreview from './RepliedMessagePreview';
 
+import { getMimeTypesString, isImage, SUPPORTED_MIMES } from '../../utils';
 import { getUrlFromWords, debounce } from './utils';
+
 import './index.scss';
 
 const MAX_FILE_SIZE = 10000000; // 10MB;
@@ -41,7 +40,6 @@ const KeyCode = {
 
 const MessageInput = React.forwardRef((props, ref) => {
   const {
-    isEdit,
     disabled,
     value,
     name,
@@ -52,7 +50,6 @@ const MessageInput = React.forwardRef((props, ref) => {
     repliedMessage,
     onFileUpload,
     onSendMessage,
-    onCancelEdit,
     onStartTyping,
     onCancelRepliedMessage,
     onClickRepliedMessage,
@@ -140,7 +137,7 @@ const MessageInput = React.forwardRef((props, ref) => {
     if (loading) {
       return (
         <Label
-          className="rogu-message-input__text-loading"
+          className="rogu-message-input__url-loading"
           type={LabelTypography.BODY_1}
           color={LabelColors.ONBACKGROUND_1}
         >
@@ -211,7 +208,8 @@ const MessageInput = React.forwardRef((props, ref) => {
   return (
     <div
       className={getClassName([
-        'rogu-message-input--wrapper',
+        'rogu-message-input',
+        disabled ? 'rogu-message-input--disabled ' : '',
         imagePreviewFile ? 'rogu-message-input--preview' : '',
       ])}
     >
@@ -231,141 +229,93 @@ const MessageInput = React.forwardRef((props, ref) => {
       )}
 
       {/* Input form */}
-      <form
-        className={[
-          'rogu-message-input--container',
-          isEdit ? 'rogu-message-input__edit' : '',
-
-          disabled ? 'rogu-message-input-form__disabled ' : '',
-        ].join(' ')}
-      >
-        <div
-          className={[
-            'rogu-message-input',
-            disabled ? 'rogu-message-input__disabled' : '',
-          ].join(' ')}
-        >
-          <textarea
-            className="rogu-message-input--textarea"
-            disabled={disabled}
-            ref={ref}
-            name={name}
-            value={inputValue}
-            maxLength={maxLength}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-              onStartTyping();
-            }}
-            onKeyDown={(e) => {
-              if (e.keyCode === KeyCode.SHIFT) {
-                setIsShiftPressed(true);
-              }
-              if (!isShiftPressed && e.keyCode === KeyCode.ENTER) {
-                e.preventDefault();
-                sendMessage();
-              }
-            }}
-            onKeyUp={(e) => {
-              if (e.keyCode === KeyCode.SHIFT) {
-                setIsShiftPressed(false);
-              }
-              if (
-                e.keyCode === KeyCode.BACKSPACE
-                || e.keyCode === KeyCode.DELETE
-              ) {
-                setUrl({ hasUrl: false, text: '' });
-              }
-            }}
-          />
-          {/* placeholder */}
-          {!inputValue && (
-            <Label
-              className="rogu-message-input--placeholder"
-              type={LabelTypography.BODY_1}
-              color={LabelColors.ONBACKGROUND_3}
-            >
-              {placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER}
-            </Label>
-          )}
-          {/* upload icon */}
-          {!isEdit && !imagePreviewFile && (
-            <IconButton
-              className="rogu-message-input--attach"
-              height="32px"
-              width="32px"
-              onClick={() => {
-                // todo: clear previous input
-                fileInputRef.current.click();
-              }}
-            >
-              <Icon
-                type={IconTypes.ATTACH}
-                fillColor={IconColors.CONTENT_INVERSE}
-                width="20px"
-                height="20px"
-              />
-              <input
-                accept={
-                  repliedMessage
-                    ? SUPPORTED_MIMES.IMAGE.map((mime) => mime.mimeType)
-                    : getMimeTypesString()
-                }
-                className="rogu-message-input--attach-input"
-                type="file"
-                ref={fileInputRef}
-                onChange={handleUploadFile(onFileUpload)}
-              />
-            </IconButton>
-          )}
-
-          {!isEdit && (
-            <IconButton
-              className={getClassName([
-                'rogu-message-input--send',
-                disabled ? 'rogu-message-input--send-disabled' : '',
-              ])}
-              height="36px"
-              width="36px"
-              onClick={sendMessage}
-            >
-              <Icon
-                type={IconTypes.ROGU_SEND}
-                fillColor={IconColors.WHITE}
-                width="16px"
-                height="16px"
-              />
-            </IconButton>
-          )}
-        </div>
-        {/* Edit */}
-
-        {isEdit && (
-          <div className="rogu-message-input--edit-action">
-            <Button
-              className="rogu-message-input--edit-action__cancel"
-              type={ButtonTypes.SECONDARY}
-              size={ButtonSizes.SMALL}
-              onClick={onCancelEdit}
-            >
-              {stringSet.BUTTON__CANCEL}
-            </Button>
-            <Button
-              className="rogu-message-input--edit-action__save"
-              type={ButtonTypes.PRIMARY}
-              size={ButtonSizes.SMALL}
-              onClick={() => {
-                if (inputValue) {
-                  const trimmedInputValue = inputValue.trim();
-                  onSendMessage(name, trimmedInputValue, () => {
-                    onCancelEdit();
-                  });
-                }
-              }}
-            >
-              {stringSet.BUTTON__SAVE}
-            </Button>
-          </div>
+      <form className={['rogu-message-input__form'].join(' ')}>
+        <textarea
+          className="rogu-message-input__textarea"
+          disabled={disabled}
+          ref={ref}
+          name={name}
+          value={inputValue}
+          maxLength={maxLength}
+          onChange={(e) => {
+            setInputValue(e.target.value);
+            onStartTyping();
+          }}
+          onKeyDown={(e) => {
+            if (e.keyCode === KeyCode.SHIFT) {
+              setIsShiftPressed(true);
+            }
+            if (!isShiftPressed && e.keyCode === KeyCode.ENTER) {
+              e.preventDefault();
+              sendMessage();
+            }
+          }}
+          onKeyUp={(e) => {
+            if (e.keyCode === KeyCode.SHIFT) {
+              setIsShiftPressed(false);
+            }
+            if (
+              e.keyCode === KeyCode.BACKSPACE
+              || e.keyCode === KeyCode.DELETE
+            ) {
+              setUrl({ hasUrl: false, text: '' });
+            }
+          }}
+        />
+        {/* placeholder */}
+        {!inputValue && (
+          <Label
+            className="rogu-message-input__placeholder"
+            type={LabelTypography.BODY_1}
+            color={LabelColors.ONBACKGROUND_3}
+          >
+            {placeholder || stringSet.CHANNEL__MESSAGE_INPUT__PLACE_HOLDER}
+          </Label>
         )}
+        {/* upload icon */}
+        {!imagePreviewFile && (
+          <IconButton
+            className="rogu-message-input__attach"
+            height="32px"
+            width="32px"
+            onClick={() => {
+              // todo: clear previous input
+              fileInputRef.current.click();
+            }}
+          >
+            <Icon
+              type={IconTypes.ATTACH}
+              fillColor={IconColors.CONTENT_INVERSE}
+              width="20px"
+              height="20px"
+            />
+            <input
+              accept={
+                repliedMessage
+                  ? SUPPORTED_MIMES.IMAGE.map((mime) => mime.mimeType)
+                  : getMimeTypesString()
+              }
+              className="rogu-message-input__attach__input"
+              type="file"
+              ref={fileInputRef}
+              onChange={handleUploadFile(onFileUpload)}
+            />
+          </IconButton>
+        )}
+
+        <IconButton
+          className="rogu-message-input__send"
+          height="36px"
+          width="36px"
+          onClick={sendMessage}
+        >
+          <Icon
+            type={IconTypes.ROGU_SEND}
+            fillColor={IconColors.WHITE}
+            width="16px"
+            height="16px"
+          />
+        </IconButton>
       </form>
 
       {imagePreviewFile !== null && (
@@ -391,7 +341,6 @@ const MessageInput = React.forwardRef((props, ref) => {
 
 MessageInput.propTypes = {
   placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  isEdit: PropTypes.bool,
   name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   value: PropTypes.string,
   disabled: PropTypes.bool,
@@ -402,7 +351,6 @@ MessageInput.propTypes = {
   onFileUpload: PropTypes.func,
   onSendMessage: PropTypes.func,
   onStartTyping: PropTypes.func,
-  onCancelEdit: PropTypes.func,
   onCancelRepliedMessage: PropTypes.func,
   onClickRepliedMessage: PropTypes.func,
 };
@@ -411,13 +359,11 @@ MessageInput.defaultProps = {
   value: '',
   onSendMessage: noop,
   name: 'rogu-message-input',
-  isEdit: false,
   disabled: false,
   placeholder: '',
   maxLength: 3000,
   repliedMessage: null,
   onFileUpload: noop,
-  onCancelEdit: noop,
   onStartTyping: noop,
   onCancelRepliedMessage: noop,
   onClickRepliedMessage: noop,
