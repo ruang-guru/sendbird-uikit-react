@@ -22,7 +22,14 @@ import { FileViewerComponent } from '../FileViewer';
 import Toast from '../Toast';
 import RepliedMessagePreview from './RepliedMessagePreview';
 
-import { getMimeTypesString, isImage, SUPPORTED_MIMES } from '../../utils';
+import {
+  destructureRepliedMessage,
+  getMimeTypesString,
+  isFileMessage,
+  isImage,
+  isReplyingMessage,
+  SUPPORTED_MIMES,
+} from '../../utils';
 import { getUrlFromWords, debounce } from './utils';
 
 import './index.scss';
@@ -163,7 +170,6 @@ const MessageInput = React.forwardRef((props, ref) => {
   }, [inputValue]);
 
   const sendMessage = () => {
-    setUrl({ hasUrl: false, text: '' });
     if (imagePreviewFile !== null) {
       // In order to change the file name, we need to create a copy of File object
       const modifiedFile = new Blob([imagePreviewFile], {
@@ -173,36 +179,60 @@ const MessageInput = React.forwardRef((props, ref) => {
       modifiedFile.name = inputValue;
 
       if (repliedMessage) {
+        let repliedMessageBody = isFileMessage(repliedMessage)
+          ? repliedMessage.name
+          : repliedMessage.message;
+
+        // if the replied message is replying another message
+        if (isReplyingMessage(repliedMessage)) {
+          const { originalMessage } = destructureRepliedMessage(
+            repliedMessageBody,
+          );
+
+          repliedMessageBody = originalMessage;
+        }
         onFileUpload(modifiedFile, {
-          parentMessageBody: repliedMessage.message,
+          parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: repliedMessage.sender?.nickname || '-',
+          parentMessageNickname: repliedMessage.sender?.nickname,
         });
       } else {
         onFileUpload(modifiedFile);
       }
-
-      setImagePreviewFile(null);
-      onCancelRepliedMessage();
-      setInputValue('');
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
+        let repliedMessageBody = isFileMessage(repliedMessage)
+          ? repliedMessage.name
+          : repliedMessage.message;
+
+        // if the replied message is replying another message
+        if (isReplyingMessage(repliedMessage)) {
+          const { originalMessage } = destructureRepliedMessage(
+            repliedMessageBody,
+          );
+
+          repliedMessageBody = originalMessage;
+        }
+
         onSendMessage({
-          parentMessageBody: repliedMessage.message,
+          parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: repliedMessage.sender?.nickname || '-',
+          parentMessageNickname: repliedMessage.sender?.nickname,
         });
       } else {
         onSendMessage();
       }
 
-      setInputValue('');
-      onCancelRepliedMessage();
-
       if (elem) {
         elem.style.height = `${LINE_HEIGHT}px`;
       }
     }
+
+    // Reset
+    setImagePreviewFile(null);
+    setInputValue('');
+    onCancelRepliedMessage();
+    setUrl({ hasUrl: false, text: '' });
   };
 
   return (

@@ -118,7 +118,7 @@ export const ConversationPanel = (props) => {
   const userDefinedRenderProfile = renderUserProfile || config.renderUserProfile;
   const showScrollBot = hasMoreToBottom;
 
-  // Replied message
+  // Reply message
   const [repliedMessage, setRepliedMessage] = useState();
 
   // TODO: emojiAllMap, emoijAllList, nicknamesMap => should be moved to messagesStore
