@@ -1,30 +1,33 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-9c81c299.js';
-export { w as withSendBird } from './LocalizationContext-9c81c299.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as getClassName, h as isUrl, j as isEditedMessage, k as changeColorToClassName$2, C as Colors$2, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as UserProfileProvider } from './index-06eb8f1c.js';
-export { L as sendBirdSelectors } from './index-06eb8f1c.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-62a9fe38.js';
+export { w as withSendBird } from './LocalizationContext-62a9fe38.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, E as EmojiListItems, i as isSentStatus, d as getMessageCreatedAt$1, e as getClassName, h as isUrl, j as isEditedMessage, k as changeColorToClassName$2, C as Colors$2, l as isVideoMessage, m as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, r as isFailedMessage, s as isSentMessage, I as IconButton$1, t as isThumbnailMessage$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getUIKitMessageType, J as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, K as UserProfileProvider } from './index-d0088467.js';
+export { L as sendBirdSelectors } from './index-d0088467.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-d706d73a.js';
-import { c as compareIds, L as LinkLabel$1 } from './index-4886f4fa.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-e3ba6b53.js';
+import { c as compareIds, L as LinkLabel$1 } from './index-3820710a.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-15191566.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-6df1890f.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-6b39b45f.js';
+import './actionTypes-0fe0da00.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-a9c0ac0a.js';
-import './utils-70e8c9d3.js';
-import './LeaveChannel-2d47c2f5.js';
-import './index-5a0eda55.js';
-import './index-a8ce8f11.js';
-import './index-c629b0a5.js';
+import './index-a3e48a6f.js';
+import './utils-a672e6f8.js';
+import './LeaveChannel-22fe8144.js';
+import './index-e91ff261.js';
+import './index-54afd38f.js';
+import './index-5aca8266.js';
 import './ChannelSettings.js';
-import './index-3dc71ac4.js';
+import './index-2b06cf7c.js';
 import './MessageSearch.js';
+
+var META_ARRAY_VALUE_MAX_CHAR = 128;
+var REPLIED_MESSAGE_QUOTE_FORMAT = '>';
 
 var getDayString = function getDayString(dayNumber, strings) {
   return strings[dayNumber];
@@ -179,58 +182,6 @@ var groupMessagesByDate = function groupMessagesByDate(messages) {
     return groupedMessagesByDate;
   }, new Map());
 };
-var QUOTE_FORMAT = '>';
-
-var isQuoteFormat = function isQuoteFormat(word) {
-  return word.charAt(0) === QUOTE_FORMAT;
-};
-
-var destructureRepliedMessage = function destructureRepliedMessage(message) {
-  // TODO: consider to use regex instead
-  var repliedMessage = message.split('\n').filter(function (word) {
-    return isQuoteFormat(word);
-  }).map(function (word) {
-    return word.substr(1);
-  });
-  var senderNickname = repliedMessage[0],
-      rest = repliedMessage.slice(1);
-  var parentMessage = rest.join('\n');
-  var originalMessage = message.split('\n').filter(function (word) {
-    return !isQuoteFormat(word);
-  }).join('\n');
-  return {
-    senderNickname: senderNickname,
-    parentMessage: parentMessage,
-    originalMessage: originalMessage
-  };
-};
-var getRepliedMessageFromMetaArrays = function getRepliedMessageFromMetaArrays(metaArrays) {
-  var _a, _b;
-
-  var messageId = ((_a = metaArrays.find(function (meta) {
-    return meta.key === 'parentMessageId';
-  })) === null || _a === void 0 ? void 0 : _a.value[0]) || '';
-  var nickname = '';
-  var body = '';
-  var parentMessageContent = (_b = metaArrays.find(function (meta) {
-    return meta.key === 'parentMessageContent';
-  })) === null || _b === void 0 ? void 0 : _b.value[0];
-
-  if (parentMessageContent) {
-    var content = JSON.parse(parentMessageContent);
-    body = content.body;
-    nickname = content.nickname;
-  }
-
-  return {
-    body: body,
-    messageId: messageId,
-    nickname: nickname
-  };
-};
-var generateRepliedMessage = function generateRepliedMessage(message, parentMessageContent, parentMessageNickname) {
-  return ['>', parentMessageNickname, '\n>', parentMessageContent, '\n', message].join('');
-};
 
 var isFileMessage = function isFileMessage(message) {
   var _a;
@@ -250,6 +201,70 @@ var isReplyingMessage = function isReplyingMessage(message) {
   }
 
   return isReplying;
+};
+
+var formatedStringToRepliedMessage = function formatedStringToRepliedMessage(message) {
+  // TODO: consider to use regex instead
+  var repliedMessage = message.split('\n').filter(function (word) {
+    return isQuoteFormat(word);
+  }).map(function (word) {
+    return word.substr(1);
+  });
+  var parentMessageNickname = repliedMessage[0],
+      rest = repliedMessage.slice(1);
+  var parentMessageBody = rest.join('\n');
+  var originalMessage = message.split('\n').filter(function (word) {
+    return !isQuoteFormat(word);
+  }).join('\n');
+  return {
+    originalMessage: originalMessage,
+    parentMessageId: '',
+    parentMessageBody: parentMessageBody,
+    parentMessageNickname: parentMessageNickname
+  };
+};
+var repliedMessageToFormatedString = function repliedMessageToFormatedString(_a) {
+  var originalMessage = _a.originalMessage,
+      parentMessageBody = _a.parentMessageBody,
+      parentMessageNickname = _a.parentMessageNickname;
+  return ['>', parentMessageNickname, '\n>', parentMessageBody, '\n', originalMessage].join('');
+};
+
+var isQuoteFormat = function isQuoteFormat(word) {
+  return word.charAt(0) === REPLIED_MESSAGE_QUOTE_FORMAT;
+};
+
+var stringToMetaArrayValue = function stringToMetaArrayValue(str) {
+  var metaArrayValue = [];
+  var end = META_ARRAY_VALUE_MAX_CHAR;
+
+  for (var i = 0; i < str.length; i += META_ARRAY_VALUE_MAX_CHAR) {
+    metaArrayValue.push(str.substring(i, end));
+    end += META_ARRAY_VALUE_MAX_CHAR;
+  }
+
+  return metaArrayValue;
+};
+var repliedMessageToMetaArrays = function repliedMessageToMetaArrays(sdk, repliedMessage) {
+  var metaArrays = [];
+  Object.entries(repliedMessage).forEach(function (_a) {
+    var key = _a[0],
+        value = _a[1];
+    metaArrays.push(new sdk.MessageMetaArray(key, stringToMetaArrayValue(value)));
+  });
+  return metaArrays;
+};
+var metaArraysToRepliedMessage = function metaArraysToRepliedMessage(metaArrays) {
+  return metaArrays.reduce(function (repliedMessage, meta) {
+    var _a;
+
+    repliedMessage[meta.key] = (_a = meta.value) === null || _a === void 0 ? void 0 : _a.join('');
+    return repliedMessage;
+  }, {
+    parentMessageId: '',
+    parentMessageBody: '',
+    parentMessageNickname: ''
+  });
 };
 
 var REGEX_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*?)/g;
@@ -1611,7 +1626,11 @@ function useSendMessageCallback(_ref, _ref2) {
           parentMessageId = repliedMessage.parentMessageId,
           parentMessageNickname = repliedMessage.parentMessageNickname;
       params.metaArrays = [].concat(_toConsumableArray(params.metaArrays), [new sdk.MessageMetaArray('parentMessageId', [String(parentMessageId)])]);
-      params.message = generateRepliedMessage(text, parentMessageBody, parentMessageNickname);
+      params.message = repliedMessageToFormatedString({
+        originalMessage: text,
+        parentMessageBody: parentMessageBody,
+        parentMessageNickname: parentMessageNickname
+      });
     }
 
     logger.info('Channel: Sending message has started', params);
@@ -1683,16 +1702,6 @@ function useSendFileMessageCallback(_ref, _ref2) {
       return params;
     };
 
-    var generateRepliedMessageMetaArrays = function generateRepliedMessageMetaArrays(_ref3) {
-      var body = _ref3.body,
-          messageId = _ref3.messageId,
-          nickname = _ref3.nickname;
-      return [new sdk.MessageMetaArray('parentMessageId', [String(messageId)]), new sdk.MessageMetaArray('parentMessageContent', [JSON.stringify({
-        nickname: nickname,
-        body: body
-      })])];
-    };
-
     if (canCompressImage) {
       // Using image compression
       try {
@@ -1733,10 +1742,10 @@ function useSendFileMessageCallback(_ref, _ref2) {
               var parentMessageBody = repliedMessage.parentMessageBody,
                   parentMessageId = repliedMessage.parentMessageId,
                   parentMessageNickname = repliedMessage.parentMessageNickname;
-              params.metaArrays = [].concat(_toConsumableArray(params.metaArrays), _toConsumableArray(generateRepliedMessageMetaArrays({
-                body: parentMessageBody,
-                messageId: parentMessageId,
-                nickname: parentMessageNickname
+              params.metaArrays = [].concat(_toConsumableArray(params.metaArrays), _toConsumableArray(repliedMessageToMetaArrays(sdk, {
+                parentMessageBody: parentMessageBody,
+                parentMessageId: parentMessageId,
+                parentMessageNickname: parentMessageNickname
               })));
             }
 
@@ -1744,10 +1753,10 @@ function useSendFileMessageCallback(_ref, _ref2) {
             var pendingMessage = currentGroupChannel.sendFileMessage(params, function (response, err) {
               var swapParams = sdk.getErrorFirstCallback();
 
-              var _ref4 = swapParams ? [err, response] : [response, err],
-                  _ref5 = _slicedToArray(_ref4, 2),
-                  message = _ref5[0],
-                  error = _ref5[1];
+              var _ref3 = swapParams ? [err, response] : [response, err],
+                  _ref4 = _slicedToArray(_ref3, 2),
+                  message = _ref4[0],
+                  error = _ref4[1];
 
               if (error) {
                 // sending params instead of pending message
@@ -1801,10 +1810,10 @@ function useSendFileMessageCallback(_ref, _ref2) {
         var parentMessageBody = repliedMessage.parentMessageBody,
             parentMessageId = repliedMessage.parentMessageId,
             parentMessageNickname = repliedMessage.parentMessageNickname;
-        params.metaArrays = [].concat(_toConsumableArray(params.metaArrays), _toConsumableArray(generateRepliedMessageMetaArrays({
-          body: parentMessageBody,
-          messageId: parentMessageId,
-          nickname: parentMessageNickname
+        params.metaArrays = [].concat(_toConsumableArray(params.metaArrays), _toConsumableArray(repliedMessageToMetaArrays(sdk, {
+          parentMessageBody: parentMessageBody,
+          parentMessageId: parentMessageId,
+          parentMessageNickname: parentMessageNickname
         })));
       }
 
@@ -1812,10 +1821,10 @@ function useSendFileMessageCallback(_ref, _ref2) {
       var pendingMsg = currentGroupChannel.sendFileMessage(params, function (response, err) {
         var swapParams = sdk.getErrorFirstCallback();
 
-        var _ref6 = swapParams ? [err, response] : [response, err],
-            _ref7 = _slicedToArray(_ref6, 2),
-            message = _ref7[0],
-            error = _ref7[1];
+        var _ref5 = swapParams ? [err, response] : [response, err],
+            _ref6 = _slicedToArray(_ref5, 2),
+            message = _ref6[0],
+            error = _ref6[1];
 
         if (error) {
           // sending params instead of pending message
@@ -3624,6 +3633,7 @@ function RepliedTextMessageItemBody(_a) {
   }, /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-replied-text-message-item-body__content"
   }, /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-replied-text-message-item-body__content__nickname",
     color: LabelColors.ONBACKGROUND_2,
     style: {
       color: generateColorFromString(nickname || '')
@@ -3840,14 +3850,14 @@ function ThumbnailMessageItemBody(_a) {
   var hasRepliedMessage = isReplyingMessage(message);
 
   var renderRepliedMessage = function renderRepliedMessage() {
-    var _a = getRepliedMessageFromMetaArrays(message.metaArrays),
-        body = _a.body,
-        nickname = _a.nickname;
+    var _a = metaArraysToRepliedMessage(message.metaArrays),
+        parentMessageBody = _a.parentMessageBody,
+        parentMessageNickname = _a.parentMessageNickname;
 
     return /*#__PURE__*/React__default$1.createElement(RepliedMessageItemBody, {
       isByMe: isByMe,
-      nickname: nickname,
-      messageContent: body,
+      nickname: parentMessageNickname,
+      messageContent: parentMessageBody,
       type: RepliedMessageTypes.Text,
       onClick: onClickRepliedMessage
     });
@@ -3909,16 +3919,16 @@ function TextMessageItemBody(_a) {
   var messageContent = message.message;
   var hasRepliedMessage = isReplyingMessage(message);
 
-  var _c = hasRepliedMessage && destructureRepliedMessage(messageContent),
-      senderNickname = _c.senderNickname,
-      parentMessage = _c.parentMessage,
-      originalMessage = _c.originalMessage;
+  var _c = hasRepliedMessage && formatedStringToRepliedMessage(messageContent),
+      originalMessage = _c.originalMessage,
+      parentMessageBody = _c.parentMessageBody,
+      parentMessageNickname = _c.parentMessageNickname;
 
   var resolvedMessageContent = hasRepliedMessage ? originalMessage : messageContent;
   return /*#__PURE__*/React__default$1.createElement(React__default$1.Fragment, null, hasRepliedMessage && /*#__PURE__*/React__default$1.createElement(RepliedMessageItemBody, {
     isByMe: isByMe,
-    nickname: senderNickname,
-    messageContent: parentMessage,
+    nickname: parentMessageNickname,
+    messageContent: parentMessageBody,
     type: RepliedMessageTypes.Text,
     onClick: onClickRepliedMessage
   }), /*#__PURE__*/React__default$1.createElement(TextMessageItemBody$1, {
@@ -4519,7 +4529,7 @@ function MessageContent(_a) {
   }, isTextMessage(message) && /*#__PURE__*/React__default$1.createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message,
-    onScrollToRepliedMessage: onScrollToMessage
+    onClickRepliedMessage: onScrollToMessage
   }), isOGMessage(message) && /*#__PURE__*/React__default$1.createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -5956,7 +5966,7 @@ var dist = LinkPreview;
  * [ ] Handle reply material message
  * [ ] Handle reply image message
  * [ ] Handle reply video message
- * [ ] Handle reply replied message
+ * [x] Handle reply replied message
  */
 function RepliedMessagePreview(_a) {
   var _b;
@@ -5970,7 +5980,7 @@ function RepliedMessagePreview(_a) {
   var body = isFileMessage(message) ? message.name : message.message; // if the replied message is replying another message
 
   if (isReplyingMessage(message)) {
-    var originalMessage = destructureRepliedMessage(body).originalMessage;
+    var originalMessage = formatedStringToRepliedMessage(body).originalMessage;
     body = originalMessage;
   }
 
@@ -6202,8 +6212,8 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
         var repliedMessageBody = isFileMessage(repliedMessage) ? repliedMessage.name : repliedMessage.message; // if the replied message is replying another message
 
         if (isReplyingMessage(repliedMessage)) {
-          var _destructureRepliedMe = destructureRepliedMessage(repliedMessageBody),
-              originalMessage = _destructureRepliedMe.originalMessage;
+          var _formatedStringToRepl = formatedStringToRepliedMessage(repliedMessageBody),
+              originalMessage = _formatedStringToRepl.originalMessage;
 
           repliedMessageBody = originalMessage;
         }
@@ -6224,8 +6234,8 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
 
 
         if (isReplyingMessage(repliedMessage)) {
-          var _destructureRepliedMe2 = destructureRepliedMessage(_repliedMessageBody),
-              _originalMessage = _destructureRepliedMe2.originalMessage;
+          var _formatedStringToRepl2 = formatedStringToRepliedMessage(_repliedMessageBody),
+              _originalMessage = _formatedStringToRepl2.originalMessage;
 
           _repliedMessageBody = _originalMessage;
         }
