@@ -30,7 +30,7 @@ export default function useSendFileMessageCallback(
       const compressibleDiamensions = utils.pxToNumber(resizingWidth)
         || utils.pxToNumber(resizingHeight);
 
-      const canCompressImage = compressibleFileType 
+      const canCompressImage = compressibleFileType
         && (compressibleRatio || compressibleDiamensions);
 
       const createParamsDefault = (file_) => {
