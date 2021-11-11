@@ -28,14 +28,22 @@
   }
 
   .rogu-replied-text-message-item-body__content {
+    .rogu-replied-text-message-item-body__content__nickname,
     .rogu-replied-text-message-item-body__content__message {
       white-space: pre-wrap;
       word-break: break-word;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+    }
+
+    .rogu-replied-text-message-item-body__content__nickname {
+      -webkit-line-clamp: 1;
+    }
+
+    .rogu-replied-text-message-item-body__content__message {
+      -webkit-line-clamp: 2;
     }
   }
 
