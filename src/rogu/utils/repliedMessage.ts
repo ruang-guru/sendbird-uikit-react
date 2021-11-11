@@ -6,11 +6,24 @@ import {
   REPLIED_MESSAGE_QUOTE_FORMAT,
 } from './constants';
 
+export enum RepliedMessageType {
+  Text = 'text',
+  File = 'file',
+}
+
+// For JS usage
+export const REPLIED_MESSAGE_TYPE = {
+  Text: 'text',
+  File: 'file',
+};
+
 export type RepliedMessage = {
   originalMessage?: string;
   parentMessageId: string;
   parentMessageBody: string;
+  parentMessageMimeType?: string;
   parentMessageNickname: string;
+  parentMessageType: RepliedMessageType;
 };
 
 export const formatedStringToRepliedMessage = (
@@ -32,6 +45,7 @@ export const formatedStringToRepliedMessage = (
     parentMessageId: '',
     parentMessageBody,
     parentMessageNickname,
+    parentMessageType: RepliedMessageType.Text,
   };
 };
 
@@ -98,5 +112,7 @@ export const metaArraysToRepliedMessage = (
       parentMessageId: '',
       parentMessageBody: '',
       parentMessageNickname: '',
+      parentMessageType: RepliedMessageType.Text,
+      parentMessageMimeType: '*',
     }
   );

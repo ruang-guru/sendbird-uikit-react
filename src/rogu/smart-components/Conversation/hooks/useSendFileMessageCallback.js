@@ -30,7 +30,7 @@ export default function useSendFileMessageCallback(
       const compressibleDiamensions = utils.pxToNumber(resizingWidth)
         || utils.pxToNumber(resizingHeight);
 
-      const canCompressImage = compressibleFileType
+      const canCompressImage = compressibleFileType 
         && (compressibleRatio || compressibleDiamensions);
 
       const createParamsDefault = (file_) => {
@@ -82,19 +82,9 @@ export default function useSendFileMessageCallback(
 
                 // Add meta arrays param for replied message
                 if (repliedMessage) {
-                  const {
-                    parentMessageBody,
-                    parentMessageId,
-                    parentMessageNickname,
-                  } = repliedMessage;
-
                   params.metaArrays = [
                     ...params.metaArrays,
-                    ...repliedMessageToMetaArrays(sdk, {
-                      parentMessageBody,
-                      parentMessageId,
-                      parentMessageNickname,
-                    }),
+                    ...repliedMessageToMetaArrays(sdk, repliedMessage),
                   ];
                 }
 
@@ -165,19 +155,9 @@ export default function useSendFileMessageCallback(
 
         // Add meta arrays param for replied message
         if (repliedMessage) {
-          const {
-            parentMessageBody,
-            parentMessageId,
-            parentMessageNickname,
-          } = repliedMessage;
-
           params.metaArrays = [
             ...params.metaArrays,
-            ...repliedMessageToMetaArrays(sdk, {
-              parentMessageBody,
-              parentMessageId,
-              parentMessageNickname,
-            }),
+            ...repliedMessageToMetaArrays(sdk, repliedMessage),
           ];
         }
 
