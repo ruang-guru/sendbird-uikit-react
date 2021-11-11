@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-e6511b63.js';
-export { w as withSendBird } from './LocalizationContext-e6511b63.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as getClassName, j as isUrl, k as isEditedMessage, R as RepliedMessageType, l as changeColorToClassName$2, C as Colors$2, m as isVideoMessage, n as isGifMessage, o as metaArraysToRepliedMessage, p as formatedStringToRepliedMessage, q as convertAssignmentDueUTCtoLocale, s as convertCtaLinkToWebLink, t as isUserMessage, u as isFileMessage$1, v as isFailedMessage, w as isSentMessage, I as IconButton$1, x as isThumbnailMessage$1, y as copyToClipboard, z as getUIKitMessageTypes, A as isPendingMessage, B as isMessageSentByMe, F as isMessageSentByOperator, G as getSenderName, H as isTextMessage, J as isOGMessage, K as isAssignmentMessage, L as isMaterialMessage, M as getUIKitMessageType, N as getOutgoingMessageState, O as OutgoingMessageStates, P as MODAL_ROOT, Q as REPLIED_MESSAGE_TYPE, T as UserProfileProvider } from './index-c25320e3.js';
-export { V as sendBirdSelectors } from './index-c25320e3.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-4762228a.js';
+export { w as withSendBird } from './LocalizationContext-4762228a.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as getClassName, j as isUrl, k as isEditedMessage, R as RepliedMessageType, l as changeColorToClassName$2, C as Colors$2, m as isVideoMessage, n as isGifMessage, o as metaArraysToRepliedMessage, p as formatedStringToRepliedMessage, q as convertAssignmentDueUTCtoLocale, s as convertCtaLinkToWebLink, t as isUserMessage, u as isFileMessage$1, v as isFailedMessage, w as isSentMessage, I as IconButton$1, x as isThumbnailMessage$1, y as copyToClipboard, z as getUIKitMessageTypes, A as isPendingMessage, B as isMessageSentByMe, F as isMessageSentByOperator, G as getSenderName, H as isTextMessage, J as isOGMessage, K as isAssignmentMessage, L as isMaterialMessage, M as getUIKitMessageType, N as getOutgoingMessageState, O as OutgoingMessageStates, P as MODAL_ROOT, Q as REPLIED_MESSAGE_TYPE, T as UserProfileProvider } from './index-7e1e81fb.js';
+export { V as sendBirdSelectors } from './index-7e1e81fb.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-eed92d12.js';
-import { c as compareIds, L as LinkLabel$1 } from './index-dba47bbd.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-3427637d.js';
+import { c as compareIds, L as LinkLabel$1 } from './index-d0711e69.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-a30fe55f.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-5660e2c7.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-f64b7413.js';
+import './actionTypes-a56338a9.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-a6053deb.js';
-import './utils-39646b65.js';
-import './LeaveChannel-8f18595e.js';
-import './index-ff446153.js';
-import './index-1928e415.js';
-import './index-2903f561.js';
+import './index-3ad8a203.js';
+import './utils-26581982.js';
+import './LeaveChannel-f595a2d7.js';
+import './index-bf715b24.js';
+import './index-b5dee629.js';
+import './index-417637de.js';
 import './ChannelSettings.js';
-import './index-d3a4356b.js';
+import './index-af670877.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -3573,6 +3573,166 @@ var generateColorFromString = function generateColorFromString(str) {
   return color;
 };
 
+function RepliedAssignmentMessageItemBody(_a) {
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1.createElement("div", {
+    className: getClassName(['rogu-replied-assignment-message-item-body', isByMe ? 'rogu-replied-assignment-message-item-body--outgoing' : 'rogu-replied-assignment-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-replied-assignment-message-item-body__content"
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    className: 'rogu-replied-assignment-message-item-body__icon',
+    type: IconTypes.ROGU_ASSIGNMENT,
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1.createElement("div", null, /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-replied-assignment-message-item-body__content__nickname",
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-replied-assignment-message-item-body__content__message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, body))), withCancelButton && /*#__PURE__*/React__default$1.createElement(IconButton, {
+    className: "rogu-replied-assignment-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
+}
+
+function RepliedFileMessageItemBody(_a) {
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      mimeType = _a.mimeType,
+      nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1.createElement("div", {
+    className: getClassName(['rogu-replied-file-message-item-body', isByMe ? 'rogu-replied-file-message-item-body--outgoing' : 'rogu-replied-file-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-replied-file-message-item-body__content"
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    className: 'rogu-replied-file-message-item-body__icon',
+    type: {
+      WORD: IconTypes.ROGU_FILE_WORD,
+      EXCEL: IconTypes.ROGU_FILE_EXCEL,
+      POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
+      PDF: IconTypes.ROGU_FILE_PDF,
+      OTHERS: IconTypes.ROGU_FILE_OTHERS
+    }[getFileType(mimeType)],
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1.createElement("div", null, /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-replied-file-message-item-body__content__nickname",
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-replied-file-message-item-body__content__message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, body))), withCancelButton && /*#__PURE__*/React__default$1.createElement(IconButton, {
+    className: "rogu-replied-file-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
+}
+
+function RepliedMaterialMessageItemBody(_a) {
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1.createElement("div", {
+    className: getClassName(['rogu-replied-material-message-item-body', isByMe ? 'rogu-replied-material-message-item-body--outgoing' : 'rogu-replied-material-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-replied-material-message-item-body__content"
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    className: 'rogu-replied-material-message-item-body__icon',
+    type: IconTypes.ROGU_MATERIAL,
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1.createElement("div", null, /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-replied-material-message-item-body__content__nickname",
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-replied-material-message-item-body__content__message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, body))), withCancelButton && /*#__PURE__*/React__default$1.createElement(IconButton, {
+    className: "rogu-replied-material-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
+}
+
 function RepliedMediaMessageItemBody(_a) {
   var body = _a.body,
       isByMe = _a.isByMe,
@@ -3639,7 +3799,7 @@ function RepliedMediaMessageItemBody(_a) {
   })));
 }
 
-function RepliedTextMessageItemBody$1(_a) {
+function RepliedTextMessageItemBody(_a) {
   var content = _a.content,
       isByMe = _a.isByMe,
       nickname = _a.nickname,
@@ -3684,64 +3844,6 @@ function RepliedTextMessageItemBody$1(_a) {
   })));
 }
 
-function RepliedTextMessageItemBody(_a) {
-  var body = _a.body,
-      isByMe = _a.isByMe,
-      mimeType = _a.mimeType,
-      nickname = _a.nickname,
-      _b = _a.withCancelButton,
-      withCancelButton = _b === void 0 ? false : _b,
-      onCancel = _a.onCancel,
-      _onClick = _a.onClick;
-  return /*#__PURE__*/React__default$1.createElement("div", {
-    className: getClassName(['rogu-replied-file-message-item-body', isByMe ? 'rogu-replied-file-message-item-body--outgoing' : 'rogu-replied-file-message-item-body--incoming']),
-    role: "button",
-    tabIndex: 0,
-    onClick: function onClick(e) {
-      if (_onClick) _onClick(e);
-    }
-  }, /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-replied-file-message-item-body__content"
-  }, /*#__PURE__*/React__default$1.createElement(Icon, {
-    className: 'rogu-replied-file-message-item-body__icon',
-    type: {
-      WORD: IconTypes.ROGU_FILE_WORD,
-      EXCEL: IconTypes.ROGU_FILE_EXCEL,
-      POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
-      PDF: IconTypes.ROGU_FILE_PDF,
-      OTHERS: IconTypes.ROGU_FILE_OTHERS
-    }[getFileType(mimeType)],
-    fillColor: IconColors.PRIMARY,
-    width: "28px",
-    height: "28px"
-  }), /*#__PURE__*/React__default$1.createElement("div", null, /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-replied-file-message-item-body__content__nickname",
-    color: LabelColors.ONBACKGROUND_2,
-    style: {
-      color: generateColorFromString(nickname || '')
-    },
-    type: LabelTypography.CAPTION_1
-  }, nickname), /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-replied-file-message-item-body__content__message",
-    color: LabelColors.ONBACKGROUND_1,
-    type: LabelTypography.BODY_3
-  }, body))), withCancelButton && /*#__PURE__*/React__default$1.createElement(IconButton, {
-    className: "rogu-replied-file-message-item-body__cancel",
-    width: "24px",
-    height: "24px",
-    onClick: function onClick(e) {
-      if (onCancel && typeof onCancel === 'function') {
-        onCancel(e);
-      }
-    }
-  }, /*#__PURE__*/React__default$1.createElement(Icon, {
-    type: IconTypes.CLOSE,
-    fillColor: IconColors.ON_BACKGROUND_1,
-    width: "24px",
-    height: "24px"
-  })));
-}
-
 /**
  * TODO
  * [x] Handle normal text message
@@ -3763,7 +3865,7 @@ function RepliedMessageItemBody(_a) {
 
   switch (type) {
     case RepliedMessageType.Text:
-      return /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody$1, {
+      return /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody, {
         isByMe: isByMe,
         nickname: nickname,
         content: body,
@@ -3771,7 +3873,7 @@ function RepliedMessageItemBody(_a) {
       });
 
     case RepliedMessageType.File:
-      return /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody, {
+      return /*#__PURE__*/React__default$1.createElement(RepliedFileMessageItemBody, {
         body: body,
         isByMe: isByMe,
         mimeType: mimeType,
@@ -3792,6 +3894,24 @@ function RepliedMessageItemBody(_a) {
           return console.log('Scroll to the message');
         },
         mediaUrl: mediaUrl
+      });
+
+    case RepliedMessageType.Assignment:
+      return /*#__PURE__*/React__default$1.createElement(RepliedAssignmentMessageItemBody, {
+        body: body,
+        isByMe: isByMe // always false to match the styling
+        ,
+        nickname: nickname,
+        onClick: onClick
+      });
+
+    case RepliedMessageType.Material:
+      return /*#__PURE__*/React__default$1.createElement(RepliedMaterialMessageItemBody, {
+        body: body,
+        isByMe: isByMe // always false to match the styling
+        ,
+        nickname: nickname,
+        onClick: onClick
       });
 
     default:
@@ -6088,8 +6208,8 @@ var dist = LinkPreview;
  * [x] Handle reply file message
  * [ ] Handle reply assignment message
  * [ ] Handle reply material message
- * [ ] Handle reply image message
- * [ ] Handle reply video message
+ * [x] Handle reply image message
+ * [x] Handle reply video message
  * [x] Handle reply replied message
  */
 function RepliedMessagePreview(_a) {
@@ -6103,11 +6223,14 @@ function RepliedMessagePreview(_a) {
   var messageTypes = getUIKitMessageTypes();
   var nickname = (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname;
   var body = message.message;
-  var mimeType = "*";
+  var mimeType = '*';
 
   if (isFileMessage(message)) {
     body = message.name;
     mimeType = message.type;
+  } else if (isAssignmentMessage(message.customType) || isMaterialMessage(message.customType)) {
+    var data = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
+    body = data === null || data === void 0 ? void 0 : data.title;
   }
 
   var mediaUrl = isThumbnailMessage(message) ? message.url : ''; // if the replied message is replying another message
@@ -6119,7 +6242,7 @@ function RepliedMessagePreview(_a) {
 
   return /*#__PURE__*/React__default$1.createElement("div", {
     className: className
-  }, (isTextMessage(message) || isOGMessage(message)) && /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody$1, {
+  }, (isTextMessage(message) || isOGMessage(message)) && /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody, {
     content: body,
     isByMe: false // always false to match the styling
     ,
@@ -6137,11 +6260,27 @@ function RepliedMessagePreview(_a) {
     onClick: onClick,
     onCancel: onCancel,
     mediaUrl: mediaUrl
-  }), getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1.createElement(RepliedTextMessageItemBody, {
+  }), getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1.createElement(RepliedFileMessageItemBody, {
     body: body,
     isByMe: false // always false to match the styling
     ,
     mimeType: mimeType,
+    nickname: nickname,
+    withCancelButton: true,
+    onClick: onClick,
+    onCancel: onCancel
+  }), isAssignmentMessage(message.customType) && /*#__PURE__*/React__default$1.createElement(RepliedAssignmentMessageItemBody, {
+    body: body,
+    isByMe: false // always false to match the styling
+    ,
+    nickname: nickname,
+    withCancelButton: true,
+    onClick: onClick,
+    onCancel: onCancel
+  }), isMaterialMessage(message.customType) && /*#__PURE__*/React__default$1.createElement(RepliedMaterialMessageItemBody, {
+    body: body,
+    isByMe: false // always false to match the styling
+    ,
     nickname: nickname,
     withCancelButton: true,
     onClick: onClick,
@@ -6380,6 +6519,15 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
           repliedMessageBody = repliedMessage.name;
           repliedMessageMimeType = repliedMessage.type;
           repliedMessageType = REPLIED_MESSAGE_TYPE.File;
+        } else if (isMaterialMessage(repliedMessage.customType)) {
+          var materialData = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+          repliedMessageBody = materialData === null || materialData === void 0 ? void 0 : materialData.title;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.Material;
+        } else if (isAssignmentMessage(repliedMessage.customType)) {
+          var _materialData = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+
+          repliedMessageBody = _materialData === null || _materialData === void 0 ? void 0 : _materialData.title;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.Assignment;
         } // if the replied message is replying another message
 
 
@@ -6424,6 +6572,16 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
           _repliedMessageBody = repliedMessage.name;
           _repliedMessageMimeType = repliedMessage.type;
           _repliedMessageType = REPLIED_MESSAGE_TYPE.File;
+        } else if (isMaterialMessage(repliedMessage.customType)) {
+          var _materialData2 = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+
+          _repliedMessageBody = _materialData2 === null || _materialData2 === void 0 ? void 0 : _materialData2.title;
+          _repliedMessageType = REPLIED_MESSAGE_TYPE.Material;
+        } else if (isAssignmentMessage(repliedMessage.customType)) {
+          var _materialData3 = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+
+          _repliedMessageBody = _materialData3 === null || _materialData3 === void 0 ? void 0 : _materialData3.title;
+          _repliedMessageType = REPLIED_MESSAGE_TYPE.Assignment;
         } // if the replied message is replying another message
 
 

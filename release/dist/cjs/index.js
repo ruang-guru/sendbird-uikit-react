@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-59930752.js');
-var index$1 = require('./index-2954a121.js');
+var LocalizationContext = require('./LocalizationContext-714b5d93.js');
+var index$1 = require('./index-561487e7.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-d5578bbf.js');
-var index$3 = require('./index-137b8258.js');
+var index$2 = require('./index-ecc04d19.js');
+var index$3 = require('./index-0f7eb06d.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-615ab7a2.js');
+var Channel = require('./index-880dfbb2.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-ce5d4b2e.js');
+require('./actionTypes-f992f169.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-3154da58.js');
-require('./utils-34664a99.js');
-require('./LeaveChannel-b2afbe50.js');
-require('./index-0b98007a.js');
-require('./index-ea56fd9c.js');
-require('./index-0bf12186.js');
+require('./index-277a02ed.js');
+require('./utils-395d4ab1.js');
+require('./LeaveChannel-bb55d3ff.js');
+require('./index-76e5002c.js');
+require('./index-7e8c5abc.js');
+require('./index-2d215902.js');
 require('./ChannelSettings.js');
-require('./index-69e3aed0.js');
+require('./index-6b4781b8.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3598,6 +3598,166 @@ var generateColorFromString = function generateColorFromString(str) {
   return color;
 };
 
+function RepliedAssignmentMessageItemBody(_a) {
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: index$1.getClassName(['rogu-replied-assignment-message-item-body', isByMe ? 'rogu-replied-assignment-message-item-body--outgoing' : 'rogu-replied-assignment-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-replied-assignment-message-item-body__content"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    className: 'rogu-replied-assignment-message-item-body__icon',
+    type: IconTypes.ROGU_ASSIGNMENT,
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-assignment-message-item-body__content__nickname",
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-assignment-message-item-body__content__message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, body))), withCancelButton && /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
+    className: "rogu-replied-assignment-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
+}
+
+function RepliedFileMessageItemBody(_a) {
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      mimeType = _a.mimeType,
+      nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: index$1.getClassName(['rogu-replied-file-message-item-body', isByMe ? 'rogu-replied-file-message-item-body--outgoing' : 'rogu-replied-file-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-replied-file-message-item-body__content"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    className: 'rogu-replied-file-message-item-body__icon',
+    type: {
+      WORD: IconTypes.ROGU_FILE_WORD,
+      EXCEL: IconTypes.ROGU_FILE_EXCEL,
+      POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
+      PDF: IconTypes.ROGU_FILE_PDF,
+      OTHERS: IconTypes.ROGU_FILE_OTHERS
+    }[getFileType(mimeType)],
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-file-message-item-body__content__nickname",
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-file-message-item-body__content__message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, body))), withCancelButton && /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
+    className: "rogu-replied-file-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
+}
+
+function RepliedMaterialMessageItemBody(_a) {
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: index$1.getClassName(['rogu-replied-material-message-item-body', isByMe ? 'rogu-replied-material-message-item-body--outgoing' : 'rogu-replied-material-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-replied-material-message-item-body__content"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    className: 'rogu-replied-material-message-item-body__icon',
+    type: IconTypes.ROGU_MATERIAL,
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-material-message-item-body__content__nickname",
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-material-message-item-body__content__message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, body))), withCancelButton && /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
+    className: "rogu-replied-material-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
+}
+
 function RepliedMediaMessageItemBody(_a) {
   var body = _a.body,
       isByMe = _a.isByMe,
@@ -3664,7 +3824,7 @@ function RepliedMediaMessageItemBody(_a) {
   })));
 }
 
-function RepliedTextMessageItemBody$1(_a) {
+function RepliedTextMessageItemBody(_a) {
   var content = _a.content,
       isByMe = _a.isByMe,
       nickname = _a.nickname,
@@ -3709,64 +3869,6 @@ function RepliedTextMessageItemBody$1(_a) {
   })));
 }
 
-function RepliedTextMessageItemBody(_a) {
-  var body = _a.body,
-      isByMe = _a.isByMe,
-      mimeType = _a.mimeType,
-      nickname = _a.nickname,
-      _b = _a.withCancelButton,
-      withCancelButton = _b === void 0 ? false : _b,
-      onCancel = _a.onCancel,
-      _onClick = _a.onClick;
-  return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: index$1.getClassName(['rogu-replied-file-message-item-body', isByMe ? 'rogu-replied-file-message-item-body--outgoing' : 'rogu-replied-file-message-item-body--incoming']),
-    role: "button",
-    tabIndex: 0,
-    onClick: function onClick(e) {
-      if (_onClick) _onClick(e);
-    }
-  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: "rogu-replied-file-message-item-body__content"
-  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
-    className: 'rogu-replied-file-message-item-body__icon',
-    type: {
-      WORD: IconTypes.ROGU_FILE_WORD,
-      EXCEL: IconTypes.ROGU_FILE_EXCEL,
-      POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
-      PDF: IconTypes.ROGU_FILE_PDF,
-      OTHERS: IconTypes.ROGU_FILE_OTHERS
-    }[getFileType(mimeType)],
-    fillColor: IconColors.PRIMARY,
-    width: "28px",
-    height: "28px"
-  }), /*#__PURE__*/React__default$1["default"].createElement("div", null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
-    className: "rogu-replied-file-message-item-body__content__nickname",
-    color: LabelColors.ONBACKGROUND_2,
-    style: {
-      color: generateColorFromString(nickname || '')
-    },
-    type: LabelTypography.CAPTION_1
-  }, nickname), /*#__PURE__*/React__default$1["default"].createElement(Label, {
-    className: "rogu-replied-file-message-item-body__content__message",
-    color: LabelColors.ONBACKGROUND_1,
-    type: LabelTypography.BODY_3
-  }, body))), withCancelButton && /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
-    className: "rogu-replied-file-message-item-body__cancel",
-    width: "24px",
-    height: "24px",
-    onClick: function onClick(e) {
-      if (onCancel && typeof onCancel === 'function') {
-        onCancel(e);
-      }
-    }
-  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
-    type: IconTypes.CLOSE,
-    fillColor: IconColors.ON_BACKGROUND_1,
-    width: "24px",
-    height: "24px"
-  })));
-}
-
 /**
  * TODO
  * [x] Handle normal text message
@@ -3788,7 +3890,7 @@ function RepliedMessageItemBody(_a) {
 
   switch (type) {
     case index$1.RepliedMessageType.Text:
-      return /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody$1, {
+      return /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
         isByMe: isByMe,
         nickname: nickname,
         content: body,
@@ -3796,7 +3898,7 @@ function RepliedMessageItemBody(_a) {
       });
 
     case index$1.RepliedMessageType.File:
-      return /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+      return /*#__PURE__*/React__default$1["default"].createElement(RepliedFileMessageItemBody, {
         body: body,
         isByMe: isByMe,
         mimeType: mimeType,
@@ -3817,6 +3919,24 @@ function RepliedMessageItemBody(_a) {
           return console.log('Scroll to the message');
         },
         mediaUrl: mediaUrl
+      });
+
+    case index$1.RepliedMessageType.Assignment:
+      return /*#__PURE__*/React__default$1["default"].createElement(RepliedAssignmentMessageItemBody, {
+        body: body,
+        isByMe: isByMe // always false to match the styling
+        ,
+        nickname: nickname,
+        onClick: onClick
+      });
+
+    case index$1.RepliedMessageType.Material:
+      return /*#__PURE__*/React__default$1["default"].createElement(RepliedMaterialMessageItemBody, {
+        body: body,
+        isByMe: isByMe // always false to match the styling
+        ,
+        nickname: nickname,
+        onClick: onClick
       });
 
     default:
@@ -6113,8 +6233,8 @@ var dist = LinkPreview;
  * [x] Handle reply file message
  * [ ] Handle reply assignment message
  * [ ] Handle reply material message
- * [ ] Handle reply image message
- * [ ] Handle reply video message
+ * [x] Handle reply image message
+ * [x] Handle reply video message
  * [x] Handle reply replied message
  */
 function RepliedMessagePreview(_a) {
@@ -6128,11 +6248,14 @@ function RepliedMessagePreview(_a) {
   var messageTypes = index$1.getUIKitMessageTypes();
   var nickname = (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname;
   var body = message.message;
-  var mimeType = "*";
+  var mimeType = '*';
 
   if (isFileMessage(message)) {
     body = message.name;
     mimeType = message.type;
+  } else if (index$1.isAssignmentMessage(message.customType) || index$1.isMaterialMessage(message.customType)) {
+    var data = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
+    body = data === null || data === void 0 ? void 0 : data.title;
   }
 
   var mediaUrl = isThumbnailMessage(message) ? message.url : ''; // if the replied message is replying another message
@@ -6144,7 +6267,7 @@ function RepliedMessagePreview(_a) {
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: className
-  }, (index$1.isTextMessage(message) || index$1.isOGMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody$1, {
+  }, (index$1.isTextMessage(message) || index$1.isOGMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
     content: body,
     isByMe: false // always false to match the styling
     ,
@@ -6162,11 +6285,27 @@ function RepliedMessagePreview(_a) {
     onClick: onClick,
     onCancel: onCancel,
     mediaUrl: mediaUrl
-  }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+  }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(RepliedFileMessageItemBody, {
     body: body,
     isByMe: false // always false to match the styling
     ,
     mimeType: mimeType,
+    nickname: nickname,
+    withCancelButton: true,
+    onClick: onClick,
+    onCancel: onCancel
+  }), index$1.isAssignmentMessage(message.customType) && /*#__PURE__*/React__default$1["default"].createElement(RepliedAssignmentMessageItemBody, {
+    body: body,
+    isByMe: false // always false to match the styling
+    ,
+    nickname: nickname,
+    withCancelButton: true,
+    onClick: onClick,
+    onCancel: onCancel
+  }), index$1.isMaterialMessage(message.customType) && /*#__PURE__*/React__default$1["default"].createElement(RepliedMaterialMessageItemBody, {
+    body: body,
+    isByMe: false // always false to match the styling
+    ,
     nickname: nickname,
     withCancelButton: true,
     onClick: onClick,
@@ -6405,6 +6544,15 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
           repliedMessageBody = repliedMessage.name;
           repliedMessageMimeType = repliedMessage.type;
           repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.File;
+        } else if (index$1.isMaterialMessage(repliedMessage.customType)) {
+          var materialData = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+          repliedMessageBody = materialData === null || materialData === void 0 ? void 0 : materialData.title;
+          repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Material;
+        } else if (index$1.isAssignmentMessage(repliedMessage.customType)) {
+          var _materialData = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+
+          repliedMessageBody = _materialData === null || _materialData === void 0 ? void 0 : _materialData.title;
+          repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Assignment;
         } // if the replied message is replying another message
 
 
@@ -6449,6 +6597,16 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
           _repliedMessageBody = repliedMessage.name;
           _repliedMessageMimeType = repliedMessage.type;
           _repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.File;
+        } else if (index$1.isMaterialMessage(repliedMessage.customType)) {
+          var _materialData2 = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+
+          _repliedMessageBody = _materialData2 === null || _materialData2 === void 0 ? void 0 : _materialData2.title;
+          _repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Material;
+        } else if (index$1.isAssignmentMessage(repliedMessage.customType)) {
+          var _materialData3 = JSON.parse(repliedMessage === null || repliedMessage === void 0 ? void 0 : repliedMessage.data);
+
+          _repliedMessageBody = _materialData3 === null || _materialData3 === void 0 ? void 0 : _materialData3.title;
+          _repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Assignment;
         } // if the replied message is replying another message
 
 
