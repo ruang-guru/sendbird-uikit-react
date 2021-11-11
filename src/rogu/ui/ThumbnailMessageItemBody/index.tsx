@@ -9,7 +9,7 @@ import RepliedMessageItemBody, {
 } from '../RepliedMessageItemBody';
 import ClampedMessageItemBody from '../ClampedMessageItemBody';
 import {
-  getRepliedMessageFromMetaArrays,
+  metaArraysToRepliedMessage,
   isReplyingMessage,
 } from '../../utils';
 import { getClassName, isGifMessage, isVideoMessage } from '../../../utils';
@@ -41,14 +41,14 @@ export default function ThumbnailMessageItemBody({
   const hasRepliedMessage = isReplyingMessage(message);
 
   const renderRepliedMessage = () => {
-    const { body, nickname } = getRepliedMessageFromMetaArrays(
+    const { parentMessageBody, parentMessageNickname } = metaArraysToRepliedMessage(
       message.metaArrays
     );
     return (
       <RepliedMessageItemBody
         isByMe={isByMe}
-        nickname={nickname}
-        messageContent={body}
+        nickname={parentMessageNickname}
+        messageContent={parentMessageBody}
         type={RepliedMessageTypes.Text}
         onClick={onClickRepliedMessage}
       />

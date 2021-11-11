@@ -191,7 +191,7 @@ Props): ReactElement {
                 <TextMessageItemBody
                   isByMe={isByMe}
                   message={message as UserMessage}
-                  onScrollToRepliedMessage={onScrollToMessage}
+                  onClickRepliedMessage={onScrollToMessage}
                 />
               )}
               {isOGMessage(message as UserMessage) && (

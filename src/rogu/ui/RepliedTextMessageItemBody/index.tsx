@@ -42,6 +42,7 @@ export default function RepliedTextMessageItemBody({
     >
       <div className="rogu-replied-text-message-item-body__content">
         <Label
+          className="rogu-replied-text-message-item-body__content__nickname"
           color={LabelColors.ONBACKGROUND_2}
           style={{
             color: generateColorFromString(nickname || ''),
