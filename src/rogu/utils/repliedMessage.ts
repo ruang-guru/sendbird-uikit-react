@@ -7,17 +7,21 @@ import {
 } from './constants';
 
 export enum RepliedMessageType {
-  Text = 'text',
+  Assignment = 'assignment',
   File = 'file',
   Image = 'image',
+  Material = 'material',
+  Text = 'text',
   Video = 'video',
 }
 
 // For JS usage
 export const REPLIED_MESSAGE_TYPE = {
-  Text: 'text',
+  Assignment: 'assignment',
   File: 'file',
   Image: 'image',
+  Material: 'material',
+  Text: 'text',
   Video: 'video',
 };
 

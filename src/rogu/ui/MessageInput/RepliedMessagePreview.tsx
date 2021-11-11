@@ -4,16 +4,19 @@
  * [x] Handle reply file message
  * [ ] Handle reply assignment message
  * [ ] Handle reply material message
- * [ ] Handle reply image message
- * [ ] Handle reply video message
+ * [x] Handle reply image message
+ * [x] Handle reply video message
  * [x] Handle reply replied message
  */
 
 import React from 'react';
 import { FileMessage, UserMessage } from 'sendbird';
 
-import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
+import RepliedAssignmentMessageItemBody from '../RepliedAssignmentMessageItemBody';
+import RepliedMaterialMessageItemBody from '../RepliedMaterialMessageItemBody';
 import RepliedFileMessageItemBody from '../RepliedFileMessageItemBody';
+import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
+import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
 
 import {
   getUIKitMessageType,
@@ -23,11 +26,12 @@ import {
 } from '../../../utils';
 import {
   formatedStringToRepliedMessage,
+  isAssignmentMessage,
   isFileMessage,
+  isMaterialMessage,
   isReplyingMessage,
   isThumbnailMessage,
 } from '../../utils';
-import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
 
 export type RepliedMessagePreviewProps = {
   className?: string;
@@ -47,14 +51,22 @@ export function RepliedMessagePreview({
 
   const nickname = message.sender?.nickname;
   let body = (message as UserMessage).message;
-  let mimeType = "*";
+  let mimeType = '*';
 
   if (isFileMessage(message as FileMessage)) {
     body = (message as FileMessage).name;
     mimeType = (message as FileMessage).type;
+  } else if (
+    isAssignmentMessage(message.customType) ||
+    isMaterialMessage(message.customType)
+  ) {
+    const data = JSON.parse(message?.data);
+    body = data?.title;
   }
 
-  let mediaUrl = isThumbnailMessage(message as FileMessage) ? (message as FileMessage).url : ''
+  const mediaUrl = isThumbnailMessage(message as FileMessage)
+    ? (message as FileMessage).url
+    : '';
 
   // if the replied message is replying another message
   if (isReplyingMessage(message)) {
@@ -67,17 +79,17 @@ export function RepliedMessagePreview({
     <div className={className}>
       {(isTextMessage(message as UserMessage) ||
         isOGMessage(message as UserMessage)) && (
-          <RepliedTextMessageItemBody
-            content={body}
-            isByMe={false} // always false to match the styling
-            nickname={nickname}
-            withCancelButton
-            onClick={onClick}
-            onCancel={onCancel}
-          />
-        )}
+        <RepliedTextMessageItemBody
+          content={body}
+          isByMe={false} // always false to match the styling
+          nickname={nickname}
+          withCancelButton
+          onClick={onClick}
+          onCancel={onCancel}
+        />
+      )}
 
-      {(isThumbnailMessage(message as FileMessage)) && (
+      {isThumbnailMessage(message as FileMessage) && (
         <RepliedMediaMessageItemBody
           body={body}
           isByMe={false} // always false to match the styling
@@ -95,6 +107,28 @@ export function RepliedMessagePreview({
           body={body}
           isByMe={false} // always false to match the styling
           mimeType={mimeType}
+          nickname={nickname}
+          withCancelButton
+          onClick={onClick}
+          onCancel={onCancel}
+        />
+      )}
+
+      {isAssignmentMessage(message.customType) && (
+        <RepliedAssignmentMessageItemBody
+          body={body}
+          isByMe={false} // always false to match the styling
+          nickname={nickname}
+          withCancelButton
+          onClick={onClick}
+          onCancel={onCancel}
+        />
+      )}
+
+      {isMaterialMessage(message.customType) && (
+        <RepliedMaterialMessageItemBody
+          body={body}
+          isByMe={false} // always false to match the styling
           nickname={nickname}
           withCancelButton
           onClick={onClick}
