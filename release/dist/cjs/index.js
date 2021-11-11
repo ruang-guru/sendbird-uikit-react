@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-e3554f97.js');
-var index$1 = require('./index-b9b418dc.js');
+var LocalizationContext = require('./LocalizationContext-67a3f622.js');
+var index$1 = require('./index-1cabef0b.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-87b0f94b.js');
-var index$3 = require('./index-4fde0faa.js');
+var index$2 = require('./index-cc5787f3.js');
+var index$3 = require('./index-1fd86b1e.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-e107144a.js');
+var Channel = require('./index-1caef37a.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-075136a2.js');
+require('./actionTypes-139677a8.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-2fcfe7f0.js');
-require('./utils-df89f0e3.js');
-require('./LeaveChannel-919fa767.js');
-require('./index-79cd6553.js');
-require('./index-de4e67f7.js');
-require('./index-c1ac6d7b.js');
+require('./index-949a34f4.js');
+require('./utils-0ab4966b.js');
+require('./LeaveChannel-2af80761.js');
+require('./index-66b69e55.js');
+require('./index-65250005.js');
+require('./index-484bb8f2.js');
 require('./ChannelSettings.js');
-require('./index-720404ba.js');
+require('./index-0bc07570.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -50,9 +50,6 @@ function _interopNamespace(e) {
 var React__default$1 = /*#__PURE__*/_interopDefaultLegacy(React$1);
 var React__namespace = /*#__PURE__*/_interopNamespace(React$1);
 var PropTypes__default = /*#__PURE__*/_interopDefaultLegacy(PropTypes$1);
-
-var META_ARRAY_VALUE_MAX_CHAR = 128;
-var REPLIED_MESSAGE_QUOTE_FORMAT = '>';
 
 var getDayString = function getDayString(dayNumber, strings) {
   return strings[dayNumber];
@@ -226,70 +223,6 @@ var isReplyingMessage = function isReplyingMessage(message) {
   }
 
   return isReplying;
-};
-
-var formatedStringToRepliedMessage = function formatedStringToRepliedMessage(message) {
-  // TODO: consider to use regex instead
-  var repliedMessage = message.split('\n').filter(function (word) {
-    return isQuoteFormat(word);
-  }).map(function (word) {
-    return word.substr(1);
-  });
-  var parentMessageNickname = repliedMessage[0],
-      rest = repliedMessage.slice(1);
-  var parentMessageBody = rest.join('\n');
-  var originalMessage = message.split('\n').filter(function (word) {
-    return !isQuoteFormat(word);
-  }).join('\n');
-  return {
-    originalMessage: originalMessage,
-    parentMessageId: '',
-    parentMessageBody: parentMessageBody,
-    parentMessageNickname: parentMessageNickname
-  };
-};
-var repliedMessageToFormatedString = function repliedMessageToFormatedString(_a) {
-  var originalMessage = _a.originalMessage,
-      parentMessageBody = _a.parentMessageBody,
-      parentMessageNickname = _a.parentMessageNickname;
-  return ['>', parentMessageNickname, '\n>', parentMessageBody, '\n', originalMessage].join('');
-};
-
-var isQuoteFormat = function isQuoteFormat(word) {
-  return word.charAt(0) === REPLIED_MESSAGE_QUOTE_FORMAT;
-};
-
-var stringToMetaArrayValue = function stringToMetaArrayValue(str) {
-  var metaArrayValue = [];
-  var end = META_ARRAY_VALUE_MAX_CHAR;
-
-  for (var i = 0; i < str.length; i += META_ARRAY_VALUE_MAX_CHAR) {
-    metaArrayValue.push(str.substring(i, end));
-    end += META_ARRAY_VALUE_MAX_CHAR;
-  }
-
-  return metaArrayValue;
-};
-var repliedMessageToMetaArrays = function repliedMessageToMetaArrays(sdk, repliedMessage) {
-  var metaArrays = [];
-  Object.entries(repliedMessage).forEach(function (_a) {
-    var key = _a[0],
-        value = _a[1];
-    metaArrays.push(new sdk.MessageMetaArray(key, stringToMetaArrayValue(value)));
-  });
-  return metaArrays;
-};
-var metaArraysToRepliedMessage = function metaArraysToRepliedMessage(metaArrays) {
-  return metaArrays.reduce(function (repliedMessage, meta) {
-    var _a;
-
-    repliedMessage[meta.key] = (_a = meta.value) === null || _a === void 0 ? void 0 : _a.join('');
-    return repliedMessage;
-  }, {
-    parentMessageId: '',
-    parentMessageBody: '',
-    parentMessageNickname: ''
-  });
 };
 
 var REGEX_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*?)/g;
@@ -1647,14 +1580,11 @@ function useSendMessageCallback(_ref, _ref2) {
     var params = onBeforeSendUserMessage ? onBeforeSendUserMessage(text) : createParamsDefault(text);
 
     if (repliedMessage) {
-      var parentMessageBody = repliedMessage.parentMessageBody,
-          parentMessageId = repliedMessage.parentMessageId,
-          parentMessageNickname = repliedMessage.parentMessageNickname;
-      params.metaArrays = [].concat(LocalizationContext._toConsumableArray(params.metaArrays), [new sdk.MessageMetaArray('parentMessageId', [String(parentMessageId)])]);
-      params.message = repliedMessageToFormatedString({
+      params.metaArrays = [].concat(LocalizationContext._toConsumableArray(params.metaArrays), LocalizationContext._toConsumableArray(index$1.repliedMessageToMetaArrays(sdk, repliedMessage)));
+      params.message = index$1.repliedMessageToFormatedString({
         originalMessage: text,
-        parentMessageBody: parentMessageBody,
-        parentMessageNickname: parentMessageNickname
+        parentMessageBody: repliedMessage.parentMessageBody,
+        parentMessageNickname: repliedMessage.parentMessageNickname
       });
     }
 
@@ -1764,14 +1694,7 @@ function useSendFileMessageCallback(_ref, _ref2) {
             var params = createCustomParams ? onBeforeSendFileMessage(compressedFile) : createParamsDefault(compressedFile); // Add meta arrays param for replied message
 
             if (repliedMessage) {
-              var parentMessageBody = repliedMessage.parentMessageBody,
-                  parentMessageId = repliedMessage.parentMessageId,
-                  parentMessageNickname = repliedMessage.parentMessageNickname;
-              params.metaArrays = [].concat(LocalizationContext._toConsumableArray(params.metaArrays), LocalizationContext._toConsumableArray(repliedMessageToMetaArrays(sdk, {
-                parentMessageBody: parentMessageBody,
-                parentMessageId: parentMessageId,
-                parentMessageNickname: parentMessageNickname
-              })));
+              params.metaArrays = [].concat(LocalizationContext._toConsumableArray(params.metaArrays), LocalizationContext._toConsumableArray(index$1.repliedMessageToMetaArrays(sdk, repliedMessage)));
             }
 
             logger.info('Channel: Uploading file message start!', params);
@@ -1832,14 +1755,7 @@ function useSendFileMessageCallback(_ref, _ref2) {
       var params = onBeforeSendFileMessage ? onBeforeSendFileMessage(file) : createParamsDefault(file); // Add meta arrays param for replied message
 
       if (repliedMessage) {
-        var parentMessageBody = repliedMessage.parentMessageBody,
-            parentMessageId = repliedMessage.parentMessageId,
-            parentMessageNickname = repliedMessage.parentMessageNickname;
-        params.metaArrays = [].concat(LocalizationContext._toConsumableArray(params.metaArrays), LocalizationContext._toConsumableArray(repliedMessageToMetaArrays(sdk, {
-          parentMessageBody: parentMessageBody,
-          parentMessageId: parentMessageId,
-          parentMessageNickname: parentMessageNickname
-        })));
+        params.metaArrays = [].concat(LocalizationContext._toConsumableArray(params.metaArrays), LocalizationContext._toConsumableArray(index$1.repliedMessageToMetaArrays(sdk, repliedMessage)));
       }
 
       logger.info('Channel: Uploading file message start!', params);
@@ -3640,7 +3556,7 @@ var generateColorFromString = function generateColorFromString(str) {
   return color;
 };
 
-function RepliedTextMessageItemBody(_a) {
+function RepliedTextMessageItemBody$1(_a) {
   var content = _a.content,
       isByMe = _a.isByMe,
       nickname = _a.nickname,
@@ -3685,35 +3601,99 @@ function RepliedTextMessageItemBody(_a) {
   })));
 }
 
+function RepliedTextMessageItemBody(_a) {
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      mimeType = _a.mimeType,
+      nickname = _a.nickname,
+      _b = _a.withCancelButton,
+      withCancelButton = _b === void 0 ? false : _b,
+      onCancel = _a.onCancel,
+      _onClick = _a.onClick;
+  return /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: index$1.getClassName(['rogu-replied-file-message-item-body', isByMe ? 'rogu-replied-file-message-item-body--outgoing' : 'rogu-replied-file-message-item-body--incoming']),
+    role: "button",
+    tabIndex: 0,
+    onClick: function onClick(e) {
+      if (_onClick) _onClick(e);
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement("div", {
+    className: "rogu-replied-file-message-item-body__content"
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    className: 'rogu-replied-file-message-item-body__icon',
+    type: {
+      WORD: IconTypes.ROGU_FILE_WORD,
+      EXCEL: IconTypes.ROGU_FILE_EXCEL,
+      POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
+      PDF: IconTypes.ROGU_FILE_PDF,
+      OTHERS: IconTypes.ROGU_FILE_OTHERS
+    }[getFileType(mimeType)],
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1["default"].createElement("div", null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-file-message-item-body__content__nickname",
+    color: LabelColors.ONBACKGROUND_2,
+    style: {
+      color: generateColorFromString(nickname || '')
+    },
+    type: LabelTypography.CAPTION_1
+  }, nickname), /*#__PURE__*/React__default$1["default"].createElement(Label, {
+    className: "rogu-replied-file-message-item-body__content__message",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.BODY_3
+  }, body))), withCancelButton && /*#__PURE__*/React__default$1["default"].createElement(IconButton, {
+    className: "rogu-replied-file-message-item-body__cancel",
+    width: "24px",
+    height: "24px",
+    onClick: function onClick(e) {
+      if (onCancel && typeof onCancel === 'function') {
+        onCancel(e);
+      }
+    }
+  }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  })));
+}
+
 /**
  * TODO
  * [x] Handle normal text message
- * [ ] Handle file message
+ * [x] Handle file message
  * [ ] Handle assignment message
  * [ ] Handle material message
  * [ ] Handle image message
  * [ ] Handle video message
  */
-var RepliedMessageTypes;
-
-(function (RepliedMessageTypes) {
-  RepliedMessageTypes[RepliedMessageTypes["Text"] = 0] = "Text";
-})(RepliedMessageTypes || (RepliedMessageTypes = {}));
-
 function RepliedMessageItemBody(_a) {
-  var isByMe = _a.isByMe,
+  var body = _a.body,
+      isByMe = _a.isByMe,
+      mimeType = _a.mimeType,
       nickname = _a.nickname,
-      messageContent = _a.messageContent,
       type = _a.type,
       onClick = _a.onClick;
 
   switch (type) {
-    case RepliedMessageTypes.Text:
-      return /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+    case index$1.RepliedMessageType.Text:
+      return /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody$1, {
         isByMe: isByMe,
         nickname: nickname,
-        content: messageContent,
+        content: body,
         onClick: onClick
+      });
+
+    case index$1.RepliedMessageType.File:
+      return /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+        body: body,
+        isByMe: isByMe,
+        mimeType: mimeType,
+        nickname: nickname,
+        onClick: function onClick() {
+          return console.log('Scroll to the message');
+        }
       });
 
     default:
@@ -3875,15 +3855,18 @@ function ThumbnailMessageItemBody(_a) {
   var hasRepliedMessage = isReplyingMessage(message);
 
   var renderRepliedMessage = function renderRepliedMessage() {
-    var _a = metaArraysToRepliedMessage(message.metaArrays),
+    var _a = index$1.metaArraysToRepliedMessage(message.metaArrays),
         parentMessageBody = _a.parentMessageBody,
-        parentMessageNickname = _a.parentMessageNickname;
+        parentMessageMimeType = _a.parentMessageMimeType,
+        parentMessageNickname = _a.parentMessageNickname,
+        parentMessageType = _a.parentMessageType;
 
     return /*#__PURE__*/React__default$1["default"].createElement(RepliedMessageItemBody, {
+      body: parentMessageBody,
       isByMe: isByMe,
+      mimeType: parentMessageMimeType,
       nickname: parentMessageNickname,
-      messageContent: parentMessageBody,
-      type: RepliedMessageTypes.Text,
+      type: parentMessageType,
       onClick: onClickRepliedMessage
     });
   };
@@ -3941,25 +3924,39 @@ function TextMessageItemBody(_a) {
       isByMe = _b === void 0 ? false : _b,
       message = _a.message,
       onClickRepliedMessage = _a.onClickRepliedMessage;
-  var messageContent = message.message;
+  var repliedMessageNickname = '';
+  var repliedMessageBody = '';
+  var repliedMessageMimeType = '*';
+  var repliedMessageType = index$1.RepliedMessageType.Text;
+  var messageBody = message.message;
   var hasRepliedMessage = isReplyingMessage(message);
+  console.log(hasRepliedMessage);
 
-  var _c = hasRepliedMessage && formatedStringToRepliedMessage(messageContent),
-      originalMessage = _c.originalMessage,
-      parentMessageBody = _c.parentMessageBody,
-      parentMessageNickname = _c.parentMessageNickname;
+  if (hasRepliedMessage) {
+    var _c = index$1.formatedStringToRepliedMessage(messageBody),
+        originalMessage = _c.originalMessage,
+        parentMessageBody = _c.parentMessageBody,
+        parentMessageNickname = _c.parentMessageNickname;
 
-  var resolvedMessageContent = hasRepliedMessage ? originalMessage : messageContent;
+    var repliedMessage = index$1.metaArraysToRepliedMessage(message.metaArrays);
+    repliedMessageNickname = parentMessageNickname;
+    repliedMessageBody = parentMessageBody;
+    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
+    repliedMessageType = repliedMessage.parentMessageType;
+    messageBody = originalMessage;
+  }
+
   return /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, hasRepliedMessage && /*#__PURE__*/React__default$1["default"].createElement(RepliedMessageItemBody, {
+    body: repliedMessageBody,
     isByMe: isByMe,
-    nickname: parentMessageNickname,
-    messageContent: parentMessageBody,
-    type: RepliedMessageTypes.Text,
+    mimeType: repliedMessageMimeType,
+    nickname: repliedMessageNickname,
+    type: repliedMessageType,
     onClick: onClickRepliedMessage
   }), /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody$1, {
     className: className,
     isByMe: isByMe,
-    content: resolvedMessageContent
+    content: messageBody
   }));
 }
 
@@ -5986,7 +5983,7 @@ var dist = LinkPreview;
 /**
  * TODO
  * [x] Handle reply text message
- * [ ] Handle reply file message
+ * [x] Handle reply file message
  * [ ] Handle reply assignment message
  * [ ] Handle reply material message
  * [ ] Handle reply image message
@@ -6001,20 +5998,37 @@ function RepliedMessagePreview(_a) {
       message = _a.message,
       onCancel = _a.onCancel,
       onClick = _a.onClick;
+  var messageTypes = index$1.getUIKitMessageTypes();
   var nickname = (_b = message.sender) === null || _b === void 0 ? void 0 : _b.nickname;
-  var body = isFileMessage(message) ? message.name : message.message; // if the replied message is replying another message
+  var body = message.message;
+  var mimeType = "*";
+
+  if (isFileMessage(message)) {
+    body = message.name;
+    mimeType = message.type;
+  } // if the replied message is replying another message
+
 
   if (isReplyingMessage(message)) {
-    var originalMessage = formatedStringToRepliedMessage(body).originalMessage;
+    var originalMessage = index$1.formatedStringToRepliedMessage(body).originalMessage;
     body = originalMessage;
   }
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: className
-  }, (index$1.isTextMessage(message) || index$1.isOGMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+  }, (index$1.isTextMessage(message) || index$1.isOGMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody$1, {
     content: body,
     isByMe: false // always false to match the styling
     ,
+    nickname: nickname,
+    withCancelButton: true,
+    onClick: onClick,
+    onCancel: onCancel
+  }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(RepliedTextMessageItemBody, {
+    body: body,
+    isByMe: false // always false to match the styling
+    ,
+    mimeType: mimeType,
     nickname: nickname,
     withCancelButton: true,
     onClick: onClick,
@@ -6234,10 +6248,19 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       if (repliedMessage) {
         var _repliedMessage$sende;
 
-        var repliedMessageBody = isFileMessage(repliedMessage) ? repliedMessage.name : repliedMessage.message; // if the replied message is replying another message
+        var repliedMessageBody = repliedMessage.message;
+        var repliedMessageMimeType = '*';
+        var repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Text;
+
+        if (isFileMessage(repliedMessage)) {
+          repliedMessageBody = repliedMessage.name;
+          repliedMessageMimeType = repliedMessage.type;
+          repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.File;
+        } // if the replied message is replying another message
+
 
         if (isReplyingMessage(repliedMessage)) {
-          var _formatedStringToRepl = formatedStringToRepliedMessage(repliedMessageBody),
+          var _formatedStringToRepl = index$1.formatedStringToRepliedMessage(repliedMessageBody),
               originalMessage = _formatedStringToRepl.originalMessage;
 
           repliedMessageBody = originalMessage;
@@ -6246,7 +6269,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
         onFileUpload(modifiedFile, {
           parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: (_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname
+          parentMessageMimeType: repliedMessageMimeType,
+          parentMessageNickname: (_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname,
+          parentMessageType: repliedMessageType
         });
       } else {
         onFileUpload(modifiedFile);
@@ -6255,11 +6280,19 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       if (repliedMessage) {
         var _repliedMessage$sende2;
 
-        var _repliedMessageBody = isFileMessage(repliedMessage) ? repliedMessage.name : repliedMessage.message; // if the replied message is replying another message
+        var _repliedMessageBody = repliedMessage.message;
+        var _repliedMessageMimeType = '*';
+        var _repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Text;
+
+        if (isFileMessage(repliedMessage)) {
+          _repliedMessageBody = repliedMessage.name;
+          _repliedMessageMimeType = repliedMessage.type;
+          _repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.File;
+        } // if the replied message is replying another message
 
 
         if (isReplyingMessage(repliedMessage)) {
-          var _formatedStringToRepl2 = formatedStringToRepliedMessage(_repliedMessageBody),
+          var _formatedStringToRepl2 = index$1.formatedStringToRepliedMessage(_repliedMessageBody),
               _originalMessage = _formatedStringToRepl2.originalMessage;
 
           _repliedMessageBody = _originalMessage;
@@ -6268,7 +6301,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
         onSendMessage({
           parentMessageBody: _repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
-          parentMessageNickname: (_repliedMessage$sende2 = repliedMessage.sender) === null || _repliedMessage$sende2 === void 0 ? void 0 : _repliedMessage$sende2.nickname
+          parentMessageMimeType: _repliedMessageMimeType,
+          parentMessageNickname: (_repliedMessage$sende2 = repliedMessage.sender) === null || _repliedMessage$sende2 === void 0 ? void 0 : _repliedMessage$sende2.nickname,
+          parentMessageType: _repliedMessageType
         });
       } else {
         onSendMessage();
