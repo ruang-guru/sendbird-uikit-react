@@ -1,7 +1,7 @@
 /**
  * TODO
  * [x] Handle normal text message
- * [ ] Handle file message
+ * [x] Handle file message
  * [ ] Handle assignment message
  * [ ] Handle material message
  * [ ] Handle image message
@@ -10,33 +10,44 @@
 import React from 'react';
 
 import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
+import RepliedFileMessageItemBody from '../RepliedFileMessageItemBody';
 
-export enum RepliedMessageTypes {
-  Text,
-}
+import { RepliedMessageType } from '../../utils';
 
 export type RepliedMessageItemBodyProps = {
-  type: RepliedMessageTypes;
+  type: RepliedMessageType;
+  body: string;
+  mimeType?: string;
   nickname: string;
-  messageContent: string;
   isByMe: boolean;
-  onClick;
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 export function RepliedMessageItemBody({
+  body,
   isByMe,
+  mimeType,
   nickname,
-  messageContent,
   type,
   onClick,
 }: RepliedMessageItemBodyProps): JSX.Element {
   switch (type) {
-    case RepliedMessageTypes.Text:
+    case RepliedMessageType.Text:
       return (
         <RepliedTextMessageItemBody
           isByMe={isByMe}
           nickname={nickname}
-          content={messageContent}
+          content={body}
           onClick={onClick}
+        />
+      );
+    case RepliedMessageType.File:
+      return (
+        <RepliedFileMessageItemBody
+          body={body}
+          isByMe={isByMe}
+          mimeType={mimeType}
+          nickname={nickname}
+          onClick={() => console.log('Scroll to the message')}
         />
       );
     default:
