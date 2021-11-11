@@ -18,13 +18,15 @@ import RepliedMessagePreview from './RepliedMessagePreview';
 import {
   formatedStringToRepliedMessage,
   getMimeTypesString,
+  isAssignmentMessage,
   isFileMessage,
   isImage,
+  isMaterialMessage,
   isReplyingMessage,
   isThumbnailMessage,
+  isVideo,
   SUPPORTED_MIMES,
   REPLIED_MESSAGE_TYPE,
-  isVideo,
 } from '../../utils';
 import { getUrlFromWords, debounce } from './utils';
 
@@ -33,7 +35,7 @@ import './index.scss';
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
 const LINE_HEIGHT = 36;
-const noop = () => { };
+const noop = () => {};
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
@@ -194,6 +196,14 @@ const MessageInput = React.forwardRef((props, ref) => {
           repliedMessageBody = repliedMessage.name;
           repliedMessageMimeType = repliedMessage.type;
           repliedMessageType = REPLIED_MESSAGE_TYPE.File;
+        } else if (isMaterialMessage(repliedMessage.customType)) {
+          const materialData = JSON.parse(repliedMessage?.data);
+          repliedMessageBody = materialData?.title;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.Material;
+        } else if (isAssignmentMessage(repliedMessage.customType)) {
+          const materialData = JSON.parse(repliedMessage?.data);
+          repliedMessageBody = materialData?.title;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.Assignment;
         }
 
         // if the replied message is replying another message
@@ -236,6 +246,14 @@ const MessageInput = React.forwardRef((props, ref) => {
           repliedMessageBody = repliedMessage.name;
           repliedMessageMimeType = repliedMessage.type;
           repliedMessageType = REPLIED_MESSAGE_TYPE.File;
+        } else if (isMaterialMessage(repliedMessage.customType)) {
+          const materialData = JSON.parse(repliedMessage?.data);
+          repliedMessageBody = materialData?.title;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.Material;
+        } else if (isAssignmentMessage(repliedMessage.customType)) {
+          const materialData = JSON.parse(repliedMessage?.data);
+          repliedMessageBody = materialData?.title;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.Assignment;
         }
 
         // if the replied message is replying another message
@@ -394,7 +412,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           url={URL.createObjectURL(imagePreviewFile)}
           userName={nickname}
           onClose={() => setImagePreviewFile(null)}
-          onDelete={() => { }}
+          onDelete={() => {}}
         />
       )}
 

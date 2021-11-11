@@ -8,10 +8,12 @@
  * [ ] Handle video message
  */
 import React from 'react';
-import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
 
-import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
+import RepliedAssignmentMessageItemBody from '../RepliedAssignmentMessageItemBody';
 import RepliedFileMessageItemBody from '../RepliedFileMessageItemBody';
+import RepliedMaterialMessageItemBody from '../RepliedMaterialMessageItemBody';
+import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
+import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
 
 import { RepliedMessageType } from '../../utils';
 
@@ -64,6 +66,24 @@ export function RepliedMessageItemBody({
           nickname={nickname}
           onClick={() => console.log('Scroll to the message')}
           mediaUrl={mediaUrl}
+        />
+      );
+    case RepliedMessageType.Assignment:
+      return (
+        <RepliedAssignmentMessageItemBody
+          body={body}
+          isByMe={isByMe} // always false to match the styling
+          nickname={nickname}
+          onClick={onClick}
+        />
+      );
+    case RepliedMessageType.Material:
+      return (
+        <RepliedMaterialMessageItemBody
+          body={body}
+          isByMe={isByMe} // always false to match the styling
+          nickname={nickname}
+          onClick={onClick}
         />
       );
     default:

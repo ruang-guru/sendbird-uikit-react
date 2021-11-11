@@ -6,36 +6,33 @@ import IconButton from '../IconButton';
 
 import generateColorFromString from '../MessageContent/utils';
 import { getClassName } from '../../../utils';
-import { getFileType } from '../../utils';
 
 import './index.scss';
 
-export type RepliedFileMessageItemBodyProps = {
+export type RepliedAssignmentMessageItemBodyProps = {
   body: string;
   isByMe: boolean;
-  mimeType: string;
   nickname: string;
   withCancelButton?: boolean;
   onCancel?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
-export default function RepliedFileMessageItemBody({
+export default function RepliedAssignmentMessageItemBody({
   body,
   isByMe,
-  mimeType,
   nickname,
   withCancelButton = false,
   onCancel,
   onClick,
-}: RepliedFileMessageItemBodyProps): JSX.Element {
+}: RepliedAssignmentMessageItemBodyProps): JSX.Element {
   return (
     <div
       className={getClassName([
-        'rogu-replied-file-message-item-body',
+        'rogu-replied-assignment-message-item-body',
         isByMe
-          ? 'rogu-replied-file-message-item-body--outgoing'
-          : 'rogu-replied-file-message-item-body--incoming',
+          ? 'rogu-replied-assignment-message-item-body--outgoing'
+          : 'rogu-replied-assignment-message-item-body--incoming',
       ])}
       role="button"
       tabIndex={0}
@@ -43,25 +40,17 @@ export default function RepliedFileMessageItemBody({
         if (onClick) onClick(e);
       }}
     >
-      <div className="rogu-replied-file-message-item-body__content">
+      <div className="rogu-replied-assignment-message-item-body__content">
         <Icon
-          className={'rogu-replied-file-message-item-body__icon'}
-          type={
-            {
-              WORD: IconTypes.ROGU_FILE_WORD,
-              EXCEL: IconTypes.ROGU_FILE_EXCEL,
-              POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
-              PDF: IconTypes.ROGU_FILE_PDF,
-              OTHERS: IconTypes.ROGU_FILE_OTHERS,
-            }[getFileType(mimeType)]
-          }
+          className={'rogu-replied-assignment-message-item-body__icon'}
+          type={IconTypes.ROGU_ASSIGNMENT}
           fillColor={IconColors.PRIMARY}
           width="28px"
           height="28px"
         />
         <div>
           <Label
-            className="rogu-replied-file-message-item-body__content__nickname"
+            className="rogu-replied-assignment-message-item-body__content__nickname"
             color={LabelColors.ONBACKGROUND_2}
             style={{
               color: generateColorFromString(nickname || ''),
@@ -71,7 +60,7 @@ export default function RepliedFileMessageItemBody({
             {nickname}
           </Label>
           <Label
-            className="rogu-replied-file-message-item-body__content__message"
+            className="rogu-replied-assignment-message-item-body__content__message"
             color={LabelColors.ONBACKGROUND_1}
             type={LabelTypography.BODY_3}
           >
@@ -82,7 +71,7 @@ export default function RepliedFileMessageItemBody({
 
       {withCancelButton && (
         <IconButton
-          className="rogu-replied-file-message-item-body__cancel"
+          className="rogu-replied-assignment-message-item-body__cancel"
           width="24px"
           height="24px"
           onClick={(e) => {
