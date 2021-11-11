@@ -30,9 +30,9 @@ export default function TextMessageItemBody({
   let repliedMessageMimeType = '*';
   let repliedMessageType = RepliedMessageType.Text;
   let messageBody = message.message;
+  let repliedMessageMediaUrl = '';
 
   const hasRepliedMessage = isReplyingMessage(message);
-  console.log(hasRepliedMessage);
 
   if (hasRepliedMessage) {
     const {
@@ -48,6 +48,7 @@ export default function TextMessageItemBody({
     repliedMessageMimeType = repliedMessage.parentMessageMimeType;
     repliedMessageType = repliedMessage.parentMessageType;
     messageBody = originalMessage;
+    repliedMessageMediaUrl = repliedMessage.parentMessageMediaUrl;
   }
 
   return (
@@ -60,6 +61,7 @@ export default function TextMessageItemBody({
           nickname={repliedMessageNickname}
           type={repliedMessageType}
           onClick={onClickRepliedMessage}
+          mediaUrl={repliedMessageMediaUrl}
         />
       )}
 

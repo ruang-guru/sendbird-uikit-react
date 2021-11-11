@@ -21,8 +21,10 @@ import {
   isFileMessage,
   isImage,
   isReplyingMessage,
+  isThumbnailMessage,
   SUPPORTED_MIMES,
   REPLIED_MESSAGE_TYPE,
+  isVideo,
 } from '../../utils';
 import { getUrlFromWords, debounce } from './utils';
 
@@ -31,7 +33,7 @@ import './index.scss';
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
 const LINE_HEIGHT = 36;
-const noop = () => {};
+const noop = () => { };
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
@@ -176,8 +178,19 @@ const MessageInput = React.forwardRef((props, ref) => {
         let repliedMessageBody = repliedMessage.message;
         let repliedMessageMimeType = '*';
         let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
+        let repliedMessageMediaUrl = '';
 
-        if (isFileMessage(repliedMessage)) {
+        if (isThumbnailMessage(repliedMessage)) {
+          repliedMessageMimeType = repliedMessage.type;
+          repliedMessageMediaUrl = repliedMessage.url;
+
+          if (isImage(repliedMessageMimeType)) {
+            repliedMessageBody = repliedMessage.name;
+            repliedMessageType = REPLIED_MESSAGE_TYPE.Image;
+          } else if (isVideo(repliedMessageMimeType)) {
+            repliedMessageType = REPLIED_MESSAGE_TYPE.Video;
+          }
+        } else if (isFileMessage(repliedMessage)) {
           repliedMessageBody = repliedMessage.name;
           repliedMessageMimeType = repliedMessage.type;
           repliedMessageType = REPLIED_MESSAGE_TYPE.File;
@@ -196,6 +209,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           parentMessageId: repliedMessage.messageId,
           parentMessageMimeType: repliedMessageMimeType,
           parentMessageNickname: repliedMessage.sender?.nickname,
+          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageType: repliedMessageType,
         });
       } else {
@@ -206,8 +220,19 @@ const MessageInput = React.forwardRef((props, ref) => {
         let repliedMessageBody = repliedMessage.message;
         let repliedMessageMimeType = '*';
         let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
+        let repliedMessageMediaUrl = '';
 
-        if (isFileMessage(repliedMessage)) {
+        if (isThumbnailMessage(repliedMessage)) {
+          repliedMessageMimeType = repliedMessage.type;
+          repliedMessageMediaUrl = repliedMessage.url;
+
+          if (isImage(repliedMessageMimeType)) {
+            repliedMessageBody = repliedMessage.name;
+            repliedMessageType = REPLIED_MESSAGE_TYPE.Image;
+          } else if (isVideo(repliedMessageMimeType)) {
+            repliedMessageType = REPLIED_MESSAGE_TYPE.Video;
+          }
+        } else if (isFileMessage(repliedMessage)) {
           repliedMessageBody = repliedMessage.name;
           repliedMessageMimeType = repliedMessage.type;
           repliedMessageType = REPLIED_MESSAGE_TYPE.File;
@@ -227,6 +252,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           parentMessageId: repliedMessage.messageId,
           parentMessageMimeType: repliedMessageMimeType,
           parentMessageNickname: repliedMessage.sender?.nickname,
+          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageType: repliedMessageType,
         });
       } else {
@@ -368,7 +394,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           url={URL.createObjectURL(imagePreviewFile)}
           userName={nickname}
           onClose={() => setImagePreviewFile(null)}
-          onDelete={() => {}}
+          onDelete={() => { }}
         />
       )}
 

@@ -8,6 +8,7 @@
  * [ ] Handle video message
  */
 import React from 'react';
+import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
 
 import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
 import RepliedFileMessageItemBody from '../RepliedFileMessageItemBody';
@@ -20,8 +21,10 @@ export type RepliedMessageItemBodyProps = {
   mimeType?: string;
   nickname: string;
   isByMe: boolean;
+  mediaUrl?: string;
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
+
 export function RepliedMessageItemBody({
   body,
   isByMe,
@@ -29,6 +32,7 @@ export function RepliedMessageItemBody({
   nickname,
   type,
   onClick,
+  mediaUrl = '',
 }: RepliedMessageItemBodyProps): JSX.Element {
   switch (type) {
     case RepliedMessageType.Text:
@@ -48,6 +52,18 @@ export function RepliedMessageItemBody({
           mimeType={mimeType}
           nickname={nickname}
           onClick={() => console.log('Scroll to the message')}
+        />
+      );
+    case RepliedMessageType.Image:
+    case RepliedMessageType.Video:
+      return (
+        <RepliedMediaMessageItemBody
+          body={body}
+          isByMe={isByMe}
+          mimeType={mimeType}
+          nickname={nickname}
+          onClick={() => console.log('Scroll to the message')}
+          mediaUrl={mediaUrl}
         />
       );
     default:

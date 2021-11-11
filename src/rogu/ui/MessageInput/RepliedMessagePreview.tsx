@@ -25,7 +25,9 @@ import {
   formatedStringToRepliedMessage,
   isFileMessage,
   isReplyingMessage,
+  isThumbnailMessage,
 } from '../../utils';
+import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
 
 export type RepliedMessagePreviewProps = {
   className?: string;
@@ -52,6 +54,8 @@ export function RepliedMessagePreview({
     mimeType = (message as FileMessage).type;
   }
 
+  let mediaUrl = isThumbnailMessage(message as FileMessage) ? (message as FileMessage).url : ''
+
   // if the replied message is replying another message
   if (isReplyingMessage(message)) {
     const { originalMessage } = formatedStringToRepliedMessage(body);
@@ -63,13 +67,26 @@ export function RepliedMessagePreview({
     <div className={className}>
       {(isTextMessage(message as UserMessage) ||
         isOGMessage(message as UserMessage)) && (
-        <RepliedTextMessageItemBody
-          content={body}
+          <RepliedTextMessageItemBody
+            content={body}
+            isByMe={false} // always false to match the styling
+            nickname={nickname}
+            withCancelButton
+            onClick={onClick}
+            onCancel={onCancel}
+          />
+        )}
+
+      {(isThumbnailMessage(message as FileMessage)) && (
+        <RepliedMediaMessageItemBody
+          body={body}
           isByMe={false} // always false to match the styling
+          mimeType={mimeType}
           nickname={nickname}
           withCancelButton
           onClick={onClick}
           onCancel={onCancel}
+          mediaUrl={mediaUrl}
         />
       )}
 
