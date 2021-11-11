@@ -2,10 +2,13 @@ import React, { ReactElement } from 'react';
 import { UserMessage } from 'sendbird';
 
 import ClampedTextMessageItemBody from '../ClampedMessageItemBody';
-import RepliedMessageItemBody, {
-  RepliedMessageTypes,
-} from '../RepliedMessageItemBody';
-import { formatedStringToRepliedMessage, isReplyingMessage } from '../../utils';
+import RepliedMessageItemBody from '../RepliedMessageItemBody';
+import {
+  formatedStringToRepliedMessage,
+  isReplyingMessage,
+  metaArraysToRepliedMessage,
+  RepliedMessageType,
+} from '../../utils';
 
 interface Props {
   className?: string | Array<string>;
@@ -22,27 +25,40 @@ export default function TextMessageItemBody({
   message,
   onClickRepliedMessage,
 }: Props): ReactElement {
-  const messageContent = message.message;
+  let repliedMessageNickname = '';
+  let repliedMessageBody = '';
+  let repliedMessageMimeType = '*';
+  let repliedMessageType = RepliedMessageType.Text;
+  let messageBody = message.message;
 
   const hasRepliedMessage = isReplyingMessage(message);
-  hasRepliedMessage && console.log('message', message);
-  const hasMedia = isReplyingMediaMessage(message);
+  console.log(hasRepliedMessage);
 
-  const { originalMessage, parentMessageBody, parentMessageNickname } =
-    hasRepliedMessage && formatedStringToRepliedMessage(messageContent);
+  if (hasRepliedMessage) {
+    const {
+      originalMessage,
+      parentMessageBody,
+      parentMessageNickname,
+    } = formatedStringToRepliedMessage(messageBody);
 
-  const resolvedMessageContent = hasRepliedMessage
-    ? originalMessage
-    : messageContent;
+    const repliedMessage = metaArraysToRepliedMessage(message.metaArrays);
+
+    repliedMessageNickname = parentMessageNickname;
+    repliedMessageBody = parentMessageBody;
+    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
+    repliedMessageType = repliedMessage.parentMessageType;
+    messageBody = originalMessage;
+  }
 
   return (
     <>
       {hasRepliedMessage && !hasMedia && (
         <RepliedMessageItemBody
+          body={repliedMessageBody}
           isByMe={isByMe}
-          nickname={parentMessageNickname}
-          messageContent={parentMessageBody}
-          type={RepliedMessageTypes.Text}
+          mimeType={repliedMessageMimeType}
+          nickname={repliedMessageNickname}
+          type={repliedMessageType}
           onClick={onClickRepliedMessage}
         />
       )}
@@ -61,7 +77,7 @@ export default function TextMessageItemBody({
       <ClampedTextMessageItemBody
         className={className}
         isByMe={isByMe}
-        content={resolvedMessageContent}
+        content={messageBody}
       />
     </>
   );

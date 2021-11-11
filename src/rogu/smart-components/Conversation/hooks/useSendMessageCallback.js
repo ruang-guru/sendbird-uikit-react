@@ -3,7 +3,10 @@ import { useRef, useCallback } from 'react';
 import * as messageActionTypes from '../dux/actionTypes';
 import * as utils from '../utils';
 import * as topics from '../../../../lib/pubSub/topics';
-import { repliedMessageToFormatedString } from '../../../utils';
+import {
+  repliedMessageToFormatedString,
+  repliedMessageToMetaArrays,
+} from '../../../utils';
 
 export default function useSendMessageCallback(
   { currentGroupChannel, onBeforeSendUserMessage },
@@ -40,38 +43,15 @@ export default function useSendMessageCallback(
         : createParamsDefault(text);
 
       if (repliedMessage) {
-        const {
-          parentMessageType,
-          parentMessageBody,
-          parentMessageId,
-          parentMessageNickname,
-          parentMessageImageUrl,
-        } = repliedMessage;
-
         params.metaArrays = [
           ...params.metaArrays,
-          new sdk.MessageMetaArray('parentMessageId', [
-            String(parentMessageId),
-          ]),
-          new sdk.MessageMetaArray('parentMessageContent', [
-            JSON.stringify({
-              type: parentMessageType,
-              body: parentMessageBody,
-              messageId: parentMessageId,
-              nickname: parentMessageNickname,
-            }),
-          ]),
-          new sdk.MessageMetaArray('parentMessageImageUrl', [
-            JSON.stringify({
-              imageUrl: parentMessageImageUrl,
-            }),
-          ]),
+          ...repliedMessageToMetaArrays(sdk, repliedMessage),
         ];
 
         params.message = repliedMessageToFormatedString({
           originalMessage: text,
-          parentMessageBody,
-          parentMessageNickname,
+          parentMessageBody: repliedMessage.parentMessageBody,
+          parentMessageNickname: repliedMessage.parentMessageNickname,
         });
       }
 

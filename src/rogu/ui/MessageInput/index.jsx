@@ -23,6 +23,7 @@ import {
   isReplyingMessage,
   isThumbnailMessage,
   SUPPORTED_MIMES,
+  REPLIED_MESSAGE_TYPE,
 } from '../../utils';
 import { getUrlFromWords, debounce } from './utils';
 
@@ -173,9 +174,15 @@ const MessageInput = React.forwardRef((props, ref) => {
       modifiedFile.name = inputValue;
 
       if (repliedMessage) {
-        let repliedMessageBody = isFileMessage(repliedMessage)
-          ? repliedMessage.name
-          : repliedMessage.message;
+        let repliedMessageBody = repliedMessage.message;
+        let repliedMessageMimeType = '*';
+        let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
+
+        if (isFileMessage(repliedMessage)) {
+          repliedMessageBody = repliedMessage.name;
+          repliedMessageMimeType = repliedMessage.type;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.File;
+        }
 
         // if the replied message is replying another message
         if (isReplyingMessage(repliedMessage)) {
@@ -188,19 +195,24 @@ const MessageInput = React.forwardRef((props, ref) => {
         onFileUpload(modifiedFile, {
           parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
+          parentMessageMimeType: repliedMessageMimeType,
           parentMessageNickname: repliedMessage.sender?.nickname,
+          parentMessageType: repliedMessageType,
         });
       } else {
         onFileUpload(modifiedFile);
       }
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
-        let repliedMessageBody = isFileMessage(repliedMessage)
-          ? repliedMessage.name
-          : repliedMessage.message;
+        let repliedMessageBody = repliedMessage.message;
+        let repliedMessageMimeType = '*';
+        let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
 
-
-        const repliedMessageUrl = isThumbnailMessage(repliedMessage) && repliedMessage.url;
+        if (isFileMessage(repliedMessage)) {
+          repliedMessageBody = repliedMessage.name;
+          repliedMessageMimeType = repliedMessage.type;
+          repliedMessageType = REPLIED_MESSAGE_TYPE.File;
+        }
 
         // if the replied message is replying another message
         if (isReplyingMessage(repliedMessage)) {
@@ -214,8 +226,10 @@ const MessageInput = React.forwardRef((props, ref) => {
         onSendMessage({
           parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
+          parentMessageMimeType: repliedMessageMimeType,
           parentMessageNickname: repliedMessage.sender?.nickname,
-          parentMessageImageUrl: repliedMessageUrl,
+          parentMessageImageUrl: repliedMessage.url || '',
+          parentMessageType: repliedMessageType,
         });
       } else {
         onSendMessage();

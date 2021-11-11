@@ -1,7 +1,7 @@
 /**
  * TODO
  * [x] Handle normal text message
- * [ ] Handle file message
+ * [x] Handle file message
  * [ ] Handle assignment message
  * [ ] Handle material message
  * [ ] Handle image message
@@ -11,51 +11,47 @@ import React from 'react';
 import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
 
 import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
+import RepliedFileMessageItemBody from '../RepliedFileMessageItemBody';
 
-export enum RepliedMessageTypes {
-  Text,
-  Image,
-  Video,
-}
+import { RepliedMessageType } from '../../utils';
 
 export type RepliedMessageItemBodyProps = {
-  type: RepliedMessageTypes;
+  type: RepliedMessageType;
+  body: string;
+  mimeType?: string;
   nickname: string;
-  messageContent: string;
   isByMe: boolean;
-  onClick;
   mediaUrl?: string;
+  onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 export function RepliedMessageItemBody({
+  body,
   isByMe,
+  mimeType,
   nickname,
-  messageContent,
   type,
   onClick,
   mediaUrl = '',
 }: RepliedMessageItemBodyProps): JSX.Element {
   switch (type) {
-    case RepliedMessageTypes.Text:
+    case RepliedMessageType.Text:
       return (
         <RepliedTextMessageItemBody
           isByMe={isByMe}
           nickname={nickname}
-          content={messageContent}
+          content={body}
           onClick={onClick}
         />
       );
-    case RepliedMessageTypes.Image:
+    case RepliedMessageType.File:
       return (
-        <RepliedMediaMessageItemBody
+        <RepliedFileMessageItemBody
+          body={body}
           isByMe={isByMe}
-          // nickname={nickname}
-          nickname="Andaine"
-          // content={messageContent}
-          content=""
-          onClick={onClick}
-          mediaUrl={mediaUrl}
-        // mediaUrl="https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f09296bcc9454448940a4830092377b0.png"
+          mimeType={mimeType}
+          nickname={nickname}
+          onClick={() => console.log('Scroll to the message')}
         />
       );
     default:

@@ -82,23 +82,9 @@ export default function useSendFileMessageCallback(
 
                 // Add meta arrays param for replied message
                 if (repliedMessage) {
-                  const {
-                    parentMessageType,
-                    parentMessageBody,
-                    parentMessageId,
-                    parentMessageNickname,
-                    parentMessageImageUrl,
-                  } = repliedMessage;
-
                   params.metaArrays = [
                     ...params.metaArrays,
-                    ...repliedMessageToMetaArrays(sdk, {
-                      parentMessageType,
-                      parentMessageBody,
-                      parentMessageId,
-                      parentMessageNickname,
-                      parentMessageImageUrl,
-                    }),
+                    ...repliedMessageToMetaArrays(sdk, repliedMessage),
                   ];
                 }
 
@@ -169,23 +155,9 @@ export default function useSendFileMessageCallback(
 
         // Add meta arrays param for replied message
         if (repliedMessage) {
-          const {
-            parentMessageType,
-            parentMessageBody,
-            parentMessageId,
-            parentMessageNickname,
-            parentMessageImageUrl,
-          } = repliedMessage;
-
           params.metaArrays = [
             ...params.metaArrays,
-            ...repliedMessageToMetaArrays(sdk, {
-              parentMessageType,
-              parentMessageBody,
-              parentMessageId,
-              parentMessageNickname,
-              parentMessageImageUrl,
-            }),
+            ...repliedMessageToMetaArrays(sdk, repliedMessage),
           ];
         }
 

@@ -1,7 +1,7 @@
 /**
  * TODO
  * [x] Handle reply text message
- * [ ] Handle reply file message
+ * [x] Handle reply file message
  * [ ] Handle reply assignment message
  * [ ] Handle reply material message
  * [ ] Handle reply image message
@@ -13,8 +13,14 @@ import React from 'react';
 import { FileMessage, UserMessage } from 'sendbird';
 
 import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
+import RepliedFileMessageItemBody from '../RepliedFileMessageItemBody';
 
-import { isOGMessage, isTextMessage } from '../../../utils';
+import {
+  getUIKitMessageType,
+  getUIKitMessageTypes,
+  isOGMessage,
+  isTextMessage,
+} from '../../../utils';
 import {
   formatedStringToRepliedMessage,
   isFileMessage,
@@ -37,10 +43,16 @@ export function RepliedMessagePreview({
   onCancel,
   onClick,
 }: RepliedMessagePreviewProps): JSX.Element {
+  const messageTypes = getUIKitMessageTypes();
+
   const nickname = message.sender?.nickname;
-  let body = isFileMessage(message as FileMessage)
-    ? (message as FileMessage).name
-    : (message as UserMessage).message;
+  let body = (message as UserMessage).message;
+  let mimeType = "*";
+
+  if (isFileMessage(message as FileMessage)) {
+    body = (message as FileMessage).name;
+    mimeType = (message as FileMessage).type;
+  }
 
   let imageUrl = isFileMessage(message as FileMessage) && (message as FileMessage).type === 'image/png'
     ? (message as FileMessage).url
@@ -76,6 +88,18 @@ export function RepliedMessagePreview({
           onClick={onClick}
           onCancel={onCancel}
           mediaUrl={imageUrl}
+        />
+      )}
+
+      {getUIKitMessageType(message as FileMessage) === messageTypes.FILE && (
+        <RepliedFileMessageItemBody
+          body={body}
+          isByMe={false} // always false to match the styling
+          mimeType={mimeType}
+          nickname={nickname}
+          withCancelButton
+          onClick={onClick}
+          onCancel={onCancel}
         />
       )}
     </div>
