@@ -1,0 +1,2 @@
+export const META_ARRAY_VALUE_MAX_CHAR = 128;
+export const REPLIED_MESSAGE_QUOTE_FORMAT = '>';

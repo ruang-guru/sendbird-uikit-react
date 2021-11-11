@@ -5,7 +5,7 @@ import ClampedTextMessageItemBody from '../ClampedMessageItemBody';
 import RepliedMessageItemBody, {
   RepliedMessageTypes,
 } from '../RepliedMessageItemBody';
-import { destructureRepliedMessage, isReplyingMediaMessage, isReplyingMessage } from '../../utils';
+import { formatedStringToRepliedMessage, isReplyingMessage } from '../../utils';
 
 interface Props {
   className?: string | Array<string>;
@@ -28,19 +28,21 @@ export default function TextMessageItemBody({
   hasRepliedMessage && console.log('message', message);
   const hasMedia = isReplyingMediaMessage(message);
 
-  const { senderNickname, parentMessage, originalMessage } =
-    hasRepliedMessage && destructureRepliedMessage(messageContent);
+  const { originalMessage, parentMessageBody, parentMessageNickname } =
+    hasRepliedMessage && formatedStringToRepliedMessage(messageContent);
+
   const resolvedMessageContent = hasRepliedMessage
     ? originalMessage
     : messageContent;
+
   return (
     <>
       {hasRepliedMessage && !hasMedia && (
         <RepliedMessageItemBody
           isByMe={isByMe}
-          nickname={senderNickname}
-          messageContent={parentMessage}
-          type={RepliedMessageTypes.Image}
+          nickname={parentMessageNickname}
+          messageContent={parentMessageBody}
+          type={RepliedMessageTypes.Text}
           onClick={onClickRepliedMessage}
         />
       )}
@@ -48,8 +50,8 @@ export default function TextMessageItemBody({
       {hasRepliedMessage && hasMedia && (
         <RepliedMessageItemBody
           isByMe={isByMe}
-          nickname={senderNickname}
-          messageContent={parentMessage}
+          nickname={parentMessageNickname}
+          messageContent={parentMessageBody}
           type={RepliedMessageTypes.Image}
           onClick={onClickRepliedMessage}
           mediaUrl="https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f09296bcc9454448940a4830092377b0.png"

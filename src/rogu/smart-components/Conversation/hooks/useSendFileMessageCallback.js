@@ -4,6 +4,8 @@ import * as messageActionTypes from '../dux/actionTypes';
 import * as utils from '../utils';
 import * as topics from '../../../../lib/pubSub/topics';
 
+import { repliedMessageToMetaArrays } from '../../../utils';
+
 export default function useSendFileMessageCallback(
   { currentGroupChannel, onBeforeSendFileMessage, imageCompression = {} },
   {
@@ -36,28 +38,6 @@ export default function useSendFileMessageCallback(
         params.file = file_;
         return params;
       };
-
-      const generateRepliedMessageMetaArrays = ({
-        type,
-        body,
-        messageId,
-        nickname,
-        imageUrl,
-      }) => [
-        new sdk.MessageMetaArray('parentMessageId', [String(messageId)]),
-        new sdk.MessageMetaArray('parentMessageContent', [
-          JSON.stringify({
-            type,
-            nickname,
-            body,
-          }),
-        ]),
-        new sdk.MessageMetaArray('parentMessageMediaUrl', [
-          JSON.stringify({
-            imageUrl,
-          }),
-        ]),
-      ];
 
       if (canCompressImage) {
         // Using image compression
@@ -112,12 +92,12 @@ export default function useSendFileMessageCallback(
 
                   params.metaArrays = [
                     ...params.metaArrays,
-                    ...generateRepliedMessageMetaArrays({
-                      type: parentMessageType,
-                      body: parentMessageBody,
-                      messageId: parentMessageId,
-                      nickname: parentMessageNickname,
-                      imageUrl: parentMessageImageUrl,
+                    ...repliedMessageToMetaArrays(sdk, {
+                      parentMessageType,
+                      parentMessageBody,
+                      parentMessageId,
+                      parentMessageNickname,
+                      parentMessageImageUrl,
                     }),
                   ];
                 }
@@ -199,12 +179,12 @@ export default function useSendFileMessageCallback(
 
           params.metaArrays = [
             ...params.metaArrays,
-            ...generateRepliedMessageMetaArrays({
-              type: parentMessageType,
-              body: parentMessageBody,
-              messageId: parentMessageId,
-              nickname: parentMessageNickname,
-              imageUrl: parentMessageImageUrl,
+            ...repliedMessageToMetaArrays(sdk, {
+              parentMessageType,
+              parentMessageBody,
+              parentMessageId,
+              parentMessageNickname,
+              parentMessageImageUrl,
             }),
           ];
         }

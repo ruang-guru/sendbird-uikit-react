@@ -3,7 +3,7 @@ import { useRef, useCallback } from 'react';
 import * as messageActionTypes from '../dux/actionTypes';
 import * as utils from '../utils';
 import * as topics from '../../../../lib/pubSub/topics';
-import { generateRepliedMessage } from '../../../utils';
+import { repliedMessageToFormatedString } from '../../../utils';
 
 export default function useSendMessageCallback(
   { currentGroupChannel, onBeforeSendUserMessage },
@@ -68,11 +68,11 @@ export default function useSendMessageCallback(
           ]),
         ];
 
-        params.message = generateRepliedMessage(
-          text,
+        params.message = repliedMessageToFormatedString({
+          originalMessage: text,
           parentMessageBody,
           parentMessageNickname,
-        );
+        });
       }
 
       logger.info('Channel: Sending message has started', params);

@@ -6,7 +6,7 @@
  * [ ] Handle reply material message
  * [ ] Handle reply image message
  * [ ] Handle reply video message
- * [ ] Handle reply replied message
+ * [x] Handle reply replied message
  */
 
 import React from 'react';
@@ -16,7 +16,7 @@ import RepliedTextMessageItemBody from '../RepliedTextMessageItemBody';
 
 import { isOGMessage, isTextMessage } from '../../../utils';
 import {
-  destructureRepliedMessage,
+  formatedStringToRepliedMessage,
   isFileMessage,
   isReplyingMessage,
   isThumbnailMessage,
@@ -48,7 +48,7 @@ export function RepliedMessagePreview({
 
   // if the replied message is replying another message
   if (isReplyingMessage(message)) {
-    const { originalMessage } = destructureRepliedMessage(body);
+    const { originalMessage } = formatedStringToRepliedMessage(body);
 
     body = originalMessage;
   }
