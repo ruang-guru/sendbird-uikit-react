@@ -20,7 +20,7 @@ export type RepliedFileMessageItemBodyProps = {
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
-export default function RepliedTextMessageItemBody({
+export default function RepliedFileMessageItemBody({
   body,
   isByMe,
   mimeType,
