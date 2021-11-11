@@ -4,6 +4,8 @@ import * as messageActionTypes from '../dux/actionTypes';
 import * as utils from '../utils';
 import * as topics from '../../../../lib/pubSub/topics';
 
+import { repliedMessageToMetaArrays } from '../../../utils';
+
 export default function useSendFileMessageCallback(
   { currentGroupChannel, onBeforeSendFileMessage, imageCompression = {} },
   {
@@ -36,20 +38,6 @@ export default function useSendFileMessageCallback(
         params.file = file_;
         return params;
       };
-
-      const generateRepliedMessageMetaArrays = ({
-        body,
-        messageId,
-        nickname,
-      }) => [
-        new sdk.MessageMetaArray('parentMessageId', [String(messageId)]),
-        new sdk.MessageMetaArray('parentMessageContent', [
-          JSON.stringify({
-            nickname,
-            body,
-          }),
-        ]),
-      ];
 
       if (canCompressImage) {
         // Using image compression
@@ -102,10 +90,10 @@ export default function useSendFileMessageCallback(
 
                   params.metaArrays = [
                     ...params.metaArrays,
-                    ...generateRepliedMessageMetaArrays({
-                      body: parentMessageBody,
-                      messageId: parentMessageId,
-                      nickname: parentMessageNickname,
+                    ...repliedMessageToMetaArrays(sdk, {
+                      parentMessageBody,
+                      parentMessageId,
+                      parentMessageNickname,
                     }),
                   ];
                 }
@@ -185,10 +173,10 @@ export default function useSendFileMessageCallback(
 
           params.metaArrays = [
             ...params.metaArrays,
-            ...generateRepliedMessageMetaArrays({
-              body: parentMessageBody,
-              messageId: parentMessageId,
-              nickname: parentMessageNickname,
+            ...repliedMessageToMetaArrays(sdk, {
+              parentMessageBody,
+              parentMessageId,
+              parentMessageNickname,
             }),
           ];
         }

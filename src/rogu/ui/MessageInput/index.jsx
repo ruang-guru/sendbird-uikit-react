@@ -1,10 +1,3 @@
-/**
- * TODO
- * [x] Handle replying with text message
- * [ ] Handle replying with image message
- * [x] Handle cancel reply
- */
-
 import React, {
   useState, useRef, useEffect, useContext,
 } from 'react';
@@ -23,7 +16,7 @@ import Toast from '../Toast';
 import RepliedMessagePreview from './RepliedMessagePreview';
 
 import {
-  destructureRepliedMessage,
+  formatedStringToRepliedMessage,
   getMimeTypesString,
   isFileMessage,
   isImage,
@@ -185,7 +178,7 @@ const MessageInput = React.forwardRef((props, ref) => {
 
         // if the replied message is replying another message
         if (isReplyingMessage(repliedMessage)) {
-          const { originalMessage } = destructureRepliedMessage(
+          const { originalMessage } = formatedStringToRepliedMessage(
             repliedMessageBody,
           );
 
@@ -207,7 +200,7 @@ const MessageInput = React.forwardRef((props, ref) => {
 
         // if the replied message is replying another message
         if (isReplyingMessage(repliedMessage)) {
-          const { originalMessage } = destructureRepliedMessage(
+          const { originalMessage } = formatedStringToRepliedMessage(
             repliedMessageBody,
           );
 

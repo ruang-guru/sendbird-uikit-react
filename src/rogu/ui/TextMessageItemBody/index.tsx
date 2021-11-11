@@ -5,7 +5,7 @@ import ClampedTextMessageItemBody from '../ClampedMessageItemBody';
 import RepliedMessageItemBody, {
   RepliedMessageTypes,
 } from '../RepliedMessageItemBody';
-import { destructureRepliedMessage, isReplyingMessage } from '../../utils';
+import { formatedStringToRepliedMessage, isReplyingMessage } from '../../utils';
 
 interface Props {
   className?: string | Array<string>;
@@ -26,18 +26,20 @@ export default function TextMessageItemBody({
 
   const hasRepliedMessage = isReplyingMessage(message);
 
-  const { senderNickname, parentMessage, originalMessage } =
-    hasRepliedMessage && destructureRepliedMessage(messageContent);
+  const { originalMessage, parentMessageBody, parentMessageNickname } =
+    hasRepliedMessage && formatedStringToRepliedMessage(messageContent);
+    
   const resolvedMessageContent = hasRepliedMessage
     ? originalMessage
     : messageContent;
+
   return (
     <>
       {hasRepliedMessage && (
         <RepliedMessageItemBody
           isByMe={isByMe}
-          nickname={senderNickname}
-          messageContent={parentMessage}
+          nickname={parentMessageNickname}
+          messageContent={parentMessageBody}
           type={RepliedMessageTypes.Text}
           onClick={onClickRepliedMessage}
         />
