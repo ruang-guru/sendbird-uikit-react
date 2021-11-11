@@ -15,6 +15,7 @@ export default function useSendMessageCallback(
 
   const sendMessage = useCallback(
     (repliedMessage) => {
+      console.log('repliedMessage', repliedMessage);
       const text = messageInputRef.current.value;
 
       const createParamsDefault = (txt) => {
@@ -40,15 +41,30 @@ export default function useSendMessageCallback(
 
       if (repliedMessage) {
         const {
+          parentMessageType,
           parentMessageBody,
           parentMessageId,
           parentMessageNickname,
+          parentMessageImageUrl,
         } = repliedMessage;
 
         params.metaArrays = [
           ...params.metaArrays,
           new sdk.MessageMetaArray('parentMessageId', [
             String(parentMessageId),
+          ]),
+          new sdk.MessageMetaArray('parentMessageContent', [
+            JSON.stringify({
+              type: parentMessageType,
+              body: parentMessageBody,
+              messageId: parentMessageId,
+              nickname: parentMessageNickname,
+            }),
+          ]),
+          new sdk.MessageMetaArray('parentMessageImageUrl', [
+            JSON.stringify({
+              imageUrl: parentMessageImageUrl,
+            }),
           ]),
         ];
 

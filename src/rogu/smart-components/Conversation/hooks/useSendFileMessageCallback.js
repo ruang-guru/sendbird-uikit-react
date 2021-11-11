@@ -38,15 +38,23 @@ export default function useSendFileMessageCallback(
       };
 
       const generateRepliedMessageMetaArrays = ({
+        type,
         body,
         messageId,
         nickname,
+        imageUrl,
       }) => [
         new sdk.MessageMetaArray('parentMessageId', [String(messageId)]),
         new sdk.MessageMetaArray('parentMessageContent', [
           JSON.stringify({
+            type,
             nickname,
             body,
+          }),
+        ]),
+        new sdk.MessageMetaArray('parentMessageMediaUrl', [
+          JSON.stringify({
+            imageUrl,
           }),
         ]),
       ];
@@ -95,17 +103,21 @@ export default function useSendFileMessageCallback(
                 // Add meta arrays param for replied message
                 if (repliedMessage) {
                   const {
+                    parentMessageType,
                     parentMessageBody,
                     parentMessageId,
                     parentMessageNickname,
+                    parentMessageImageUrl,
                   } = repliedMessage;
 
                   params.metaArrays = [
                     ...params.metaArrays,
                     ...generateRepliedMessageMetaArrays({
+                      type: parentMessageType,
                       body: parentMessageBody,
                       messageId: parentMessageId,
                       nickname: parentMessageNickname,
+                      imageUrl: parentMessageImageUrl,
                     }),
                   ];
                 }
@@ -178,17 +190,21 @@ export default function useSendFileMessageCallback(
         // Add meta arrays param for replied message
         if (repliedMessage) {
           const {
+            parentMessageType,
             parentMessageBody,
             parentMessageId,
             parentMessageNickname,
+            parentMessageImageUrl,
           } = repliedMessage;
 
           params.metaArrays = [
             ...params.metaArrays,
             ...generateRepliedMessageMetaArrays({
+              type: parentMessageType,
               body: parentMessageBody,
               messageId: parentMessageId,
               nickname: parentMessageNickname,
+              imageUrl: parentMessageImageUrl,
             }),
           ];
         }

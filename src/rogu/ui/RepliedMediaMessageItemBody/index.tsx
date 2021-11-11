@@ -43,48 +43,49 @@ export default function RepliedMediaMessageItemBody({
         if (onClick) onClick(e);
       }}
     >
-      {mediaUrl &&
-        <ImageRenderer
-          className="rogu-text-message-item-body__reply-image"
-          url={mediaUrl}
-          alt="placeholder"
-        />
-      }
-      <div>
-        <Label
-          className="rogu-message-content__sender-name"
-          color={LabelColors.ONBACKGROUND_2}
-          style={{
-            color: generateColorFromString(
-              nickname || ''
-            ),
-          }}
-          type={LabelTypography.CAPTION_1}
-        >
-          {nickname}
-        </Label>
-
-        <div className="rogu-text-message-item-body__caption-container">
-          {mediaUrl &&
-            <Icon
-              className="rogu-text-message-item-body__caption-icon"
-              type={IconTypes.ROGU_IMAGE}
-              width="18px"
-              height="18px"
-            />
-          }
+      <div className="rogu-media-message-item-body__metadata">
+        {mediaUrl &&
+          <ImageRenderer
+            className="rogu-media-message-item-body__reply-image"
+            url={mediaUrl}
+            alt="placeholder"
+          />
+        }
+        <div>
           <Label
-            className="rogu-text-message-item-body__reply-message"
-            color={LabelColors.ONBACKGROUND_1}
-            type={LabelTypography.BODY_3}
+            className="rogu-message-content__sender-name"
+            color={LabelColors.ONBACKGROUND_2}
+            style={{
+              color: generateColorFromString(
+                nickname || ''
+              ),
+            }}
+            type={LabelTypography.CAPTION_1}
           >
-            {content}
+            {nickname}
           </Label>
+          <div className="rogu-media-message-item-body__caption-container">
+            {mediaUrl &&
+              <Icon
+                className="rogu-media-message-item-body__caption-icon"
+                type={IconTypes.ROGU_IMAGE}
+                width="18px"
+                height="18px"
+              />
+            }
+            <Label
+              className="rogu-media-message-item-body__reply-message"
+              color={LabelColors.ONBACKGROUND_1}
+              type={LabelTypography.BODY_3}
+            >
+              {content && content !== 'EMPTY_MESSAGE' ? content : 'Foto'}
+            </Label>
+          </div>
         </div>
       </div>
       {withCancelButton && (
         <IconButton
-          className="rogu-replied-text-message-item-body__cancel"
+          className="rogu-replied-media-message-item-body__cancel"
           width="24px"
           height="24px"
           onClick={(e) => {

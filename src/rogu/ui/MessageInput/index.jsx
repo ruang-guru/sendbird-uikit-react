@@ -28,6 +28,7 @@ import {
   isFileMessage,
   isImage,
   isReplyingMessage,
+  isThumbnailMessage,
   SUPPORTED_MIMES,
 } from '../../utils';
 import { getUrlFromWords, debounce } from './utils';
@@ -37,7 +38,7 @@ import './index.scss';
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
 const LINE_HEIGHT = 36;
-const noop = () => {};
+const noop = () => { };
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
@@ -205,6 +206,9 @@ const MessageInput = React.forwardRef((props, ref) => {
           ? repliedMessage.name
           : repliedMessage.message;
 
+
+        const repliedMessageUrl = isThumbnailMessage(repliedMessage) && repliedMessage.url;
+
         // if the replied message is replying another message
         if (isReplyingMessage(repliedMessage)) {
           const { originalMessage } = destructureRepliedMessage(
@@ -218,6 +222,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           parentMessageBody: repliedMessageBody,
           parentMessageId: repliedMessage.messageId,
           parentMessageNickname: repliedMessage.sender?.nickname,
+          parentMessageImageUrl: repliedMessageUrl,
         });
       } else {
         onSendMessage();
@@ -358,7 +363,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           url={URL.createObjectURL(imagePreviewFile)}
           userName={nickname}
           onClose={() => setImagePreviewFile(null)}
-          onDelete={() => {}}
+          onDelete={() => { }}
         />
       )}
 

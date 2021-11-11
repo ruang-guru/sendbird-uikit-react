@@ -19,7 +19,9 @@ import {
   destructureRepliedMessage,
   isFileMessage,
   isReplyingMessage,
+  isThumbnailMessage,
 } from '../../utils';
+import RepliedMediaMessageItemBody from '../RepliedMediaMessageItemBody';
 
 export type RepliedMessagePreviewProps = {
   className?: string;
@@ -40,6 +42,10 @@ export function RepliedMessagePreview({
     ? (message as FileMessage).name
     : (message as UserMessage).message;
 
+  let imageUrl = isFileMessage(message as FileMessage) && (message as FileMessage).type === 'image/png'
+    ? (message as FileMessage).url
+    : ''
+
   // if the replied message is replying another message
   if (isReplyingMessage(message)) {
     const { originalMessage } = destructureRepliedMessage(body);
@@ -51,13 +57,25 @@ export function RepliedMessagePreview({
     <div className={className}>
       {(isTextMessage(message as UserMessage) ||
         isOGMessage(message as UserMessage)) && (
-        <RepliedTextMessageItemBody
+          <RepliedTextMessageItemBody
+            content={body}
+            isByMe={false} // always false to match the styling
+            nickname={nickname}
+            withCancelButton
+            onClick={onClick}
+            onCancel={onCancel}
+          />
+        )}
+
+      {(isThumbnailMessage(message as FileMessage)) && (
+        <RepliedMediaMessageItemBody
           content={body}
           isByMe={false} // always false to match the styling
           nickname={nickname}
           withCancelButton
           onClick={onClick}
           onCancel={onCancel}
+          mediaUrl={imageUrl}
         />
       )}
     </div>

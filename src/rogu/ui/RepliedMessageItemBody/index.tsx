@@ -24,13 +24,16 @@ export type RepliedMessageItemBodyProps = {
   messageContent: string;
   isByMe: boolean;
   onClick;
+  mediaUrl?: string;
 };
+
 export function RepliedMessageItemBody({
   isByMe,
   nickname,
   messageContent,
   type,
   onClick,
+  mediaUrl = '',
 }: RepliedMessageItemBodyProps): JSX.Element {
   switch (type) {
     case RepliedMessageTypes.Text:
@@ -49,9 +52,10 @@ export function RepliedMessageItemBody({
           // nickname={nickname}
           nickname="Andaine"
           // content={messageContent}
-          content="gimana gimana"
+          content=""
           onClick={onClick}
-          mediaUrl="https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f09296bcc9454448940a4830092377b0.png"
+          mediaUrl={mediaUrl}
+        // mediaUrl="https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f09296bcc9454448940a4830092377b0.png"
         />
       );
     default:

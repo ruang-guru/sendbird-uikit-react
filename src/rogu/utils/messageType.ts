@@ -21,3 +21,22 @@ export const isReplyingMessage = (message: CoreMessageType): boolean => {
 
   return isReplying;
 };
+
+export const isReplyingMediaMessage = (message: CoreMessageType): boolean => {
+  let isReplying = false;
+  let isHaveUrl = false;
+
+  if (message.metaArrays) {
+    isReplying = message.metaArrays.some(
+      (meta) => meta.key === 'parentMessageContent'
+    );
+  }
+
+  if (message.metaArrays) {
+    isHaveUrl = message.metaArrays.some(
+      (meta) => meta.key === 'parentMessageImageUrl'
+    );
+  }
+
+  return isReplying && isHaveUrl;
+};
