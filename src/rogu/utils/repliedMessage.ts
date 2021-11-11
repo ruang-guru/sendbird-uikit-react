@@ -9,12 +9,16 @@ import {
 export enum RepliedMessageType {
   Text = 'text',
   File = 'file',
+  Image = 'image',
+  Video = 'video',
 }
 
 // For JS usage
 export const REPLIED_MESSAGE_TYPE = {
   Text: 'text',
   File: 'file',
+  Image: 'image',
+  Video: 'video',
 };
 
 export type RepliedMessage = {
@@ -24,6 +28,7 @@ export type RepliedMessage = {
   parentMessageMimeType?: string;
   parentMessageNickname: string;
   parentMessageType: RepliedMessageType;
+  parentMessageMediaUrl?: string;
 };
 
 export const formatedStringToRepliedMessage = (
@@ -114,5 +119,6 @@ export const metaArraysToRepliedMessage = (
       parentMessageNickname: '',
       parentMessageType: RepliedMessageType.Text,
       parentMessageMimeType: '*',
+      parentMessageMediaUrl: '',
     }
   );

@@ -41,6 +41,7 @@ export default function ThumbnailMessageItemBody({
       parentMessageMimeType,
       parentMessageNickname,
       parentMessageType,
+      parentMessageMediaUrl,
     } = metaArraysToRepliedMessage(message.metaArrays);
 
     return (
@@ -51,6 +52,7 @@ export default function ThumbnailMessageItemBody({
         nickname={parentMessageNickname}
         type={parentMessageType}
         onClick={onClickRepliedMessage}
+        mediaUrl={parentMessageMediaUrl}
       />
     );
   };

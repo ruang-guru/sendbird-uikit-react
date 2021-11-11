@@ -18,7 +18,6 @@ export default function useSendMessageCallback(
 
   const sendMessage = useCallback(
     (repliedMessage) => {
-      console.log('repliedMessage', repliedMessage);
       const text = messageInputRef.current.value;
 
       const createParamsDefault = (txt) => {

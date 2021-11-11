@@ -74,4 +74,5 @@ export default {
   ROGU_VIEW: 'ROGU_VIEW',
   ROGU_SEND: 'ROGU_SEND',
   ROGU_IMAGE: 'ROGU_IMAGE',
+  ROGU_VIDEO: 'ROGU_VIDEO',
 };

@@ -54,6 +54,18 @@ export function RepliedMessageItemBody({
           onClick={() => console.log('Scroll to the message')}
         />
       );
+    case RepliedMessageType.Image:
+    case RepliedMessageType.Video:
+      return (
+        <RepliedMediaMessageItemBody
+          body={body}
+          isByMe={isByMe}
+          mimeType={mimeType}
+          nickname={nickname}
+          onClick={() => console.log('Scroll to the message')}
+          mediaUrl={mediaUrl}
+        />
+      );
     default:
       return null;
   }

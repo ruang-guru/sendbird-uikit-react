@@ -54,9 +54,7 @@ export function RepliedMessagePreview({
     mimeType = (message as FileMessage).type;
   }
 
-  let imageUrl = isFileMessage(message as FileMessage) && (message as FileMessage).type === 'image/png'
-    ? (message as FileMessage).url
-    : ''
+  let mediaUrl = isThumbnailMessage(message as FileMessage) ? (message as FileMessage).url : ''
 
   // if the replied message is replying another message
   if (isReplyingMessage(message)) {
@@ -81,13 +79,14 @@ export function RepliedMessagePreview({
 
       {(isThumbnailMessage(message as FileMessage)) && (
         <RepliedMediaMessageItemBody
-          content={body}
+          body={body}
           isByMe={false} // always false to match the styling
+          mimeType={mimeType}
           nickname={nickname}
           withCancelButton
           onClick={onClick}
           onCancel={onCancel}
-          mediaUrl={imageUrl}
+          mediaUrl={mediaUrl}
         />
       )}
 

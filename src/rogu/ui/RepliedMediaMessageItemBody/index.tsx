@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Label, { LabelTypography, LabelColors } from '../Label';
 import Icon, { IconTypes, IconColors } from '../Icon';
@@ -9,10 +9,13 @@ import { getClassName } from '../../../utils';
 import ImageRenderer from '../ImageRenderer';
 
 import './index.scss';
+import { isImage, isVideo } from '../../utils';
+import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 export type RepliedMediaMessageItemBodyProps = {
-  content: string;
+  body: string;
   isByMe: boolean;
+  mimeType: string;
   nickname: string;
   mediaUrl: string;
   withCancelButton?: boolean;
@@ -21,14 +24,23 @@ export type RepliedMediaMessageItemBodyProps = {
 };
 
 export default function RepliedMediaMessageItemBody({
-  content,
+  body,
   isByMe,
+  mimeType,
   nickname,
   mediaUrl,
   withCancelButton = false,
   onCancel,
   onClick,
 }: RepliedMediaMessageItemBodyProps): JSX.Element {
+  const { stringSet } = useContext(LocalizationContext);
+
+  let content = '';
+
+  if (body && body !== 'EMPTY_MESSAGE' && !isVideo(mimeType)) content = body;
+  else if (isImage(mimeType)) content = stringSet.LABEL__IMAGE;
+  else if (isVideo(mimeType)) content = stringSet.LABEL__VIDEO;
+
   return (
     <div
       className={getClassName([
@@ -44,12 +56,17 @@ export default function RepliedMediaMessageItemBody({
       }}
     >
       <div className="rogu-media-message-item-body__metadata">
-        {mediaUrl &&
+        {mediaUrl && isImage(mimeType) &&
           <ImageRenderer
             className="rogu-media-message-item-body__reply-image"
             url={mediaUrl}
             alt="placeholder"
           />
+        }
+        {mediaUrl && isVideo(mimeType) &&
+          <video className="rogu-media-message-item-body__reply-image">
+            <source src={mediaUrl} type={mimeType} />
+          </video>
         }
         <div>
           <Label
@@ -68,7 +85,7 @@ export default function RepliedMediaMessageItemBody({
             {mediaUrl &&
               <Icon
                 className="rogu-media-message-item-body__caption-icon"
-                type={IconTypes.ROGU_IMAGE}
+                type={isImage(mimeType) ? IconTypes.ROGU_IMAGE : IconTypes.ROGU_VIDEO}
                 width="18px"
                 height="18px"
               />
@@ -78,7 +95,7 @@ export default function RepliedMediaMessageItemBody({
               color={LabelColors.ONBACKGROUND_1}
               type={LabelTypography.BODY_3}
             >
-              {content && content !== 'EMPTY_MESSAGE' ? content : 'Foto'}
+              {content}
             </Label>
           </div>
         </div>

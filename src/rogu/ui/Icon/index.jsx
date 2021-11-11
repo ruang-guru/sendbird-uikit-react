@@ -80,6 +80,7 @@ import RoguIconFilePDF from '../../../svgs/rogu-icon-file-pdf.svg';
 import RoguIconView from '../../../svgs/rogu-icon-view.svg';
 import RoguIconSend from '../../../svgs/rogu-icon-send.svg';
 import RoguIconImage from '../../../svgs/rogu-icon-image.svg';
+import RoguIconVideo from '../../../svgs/rogu-icon-video.svg';
 
 const Colors = {
   DEFAULT: 'DEFAULT',
@@ -280,6 +281,8 @@ function changeTypeToIconComponent(type) {
       return <RoguIconSend />;
     case Type.ROGU_IMAGE:
       return <RoguIconImage />;
+    case Type.ROGU_VIDEO:
+      return <RoguIconVideo />;
     default:
       return 'icon'; // If you see this text 'icon' replace icon for it
   }

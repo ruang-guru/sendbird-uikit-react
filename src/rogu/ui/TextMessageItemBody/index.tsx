@@ -30,9 +30,9 @@ export default function TextMessageItemBody({
   let repliedMessageMimeType = '*';
   let repliedMessageType = RepliedMessageType.Text;
   let messageBody = message.message;
+  let repliedMessageMediaUrl = '';
 
   const hasRepliedMessage = isReplyingMessage(message);
-  console.log(hasRepliedMessage);
 
   if (hasRepliedMessage) {
     const {
@@ -48,11 +48,12 @@ export default function TextMessageItemBody({
     repliedMessageMimeType = repliedMessage.parentMessageMimeType;
     repliedMessageType = repliedMessage.parentMessageType;
     messageBody = originalMessage;
+    repliedMessageMediaUrl = repliedMessage.parentMessageMediaUrl;
   }
 
   return (
     <>
-      {hasRepliedMessage && !hasMedia && (
+      {hasRepliedMessage && (
         <RepliedMessageItemBody
           body={repliedMessageBody}
           isByMe={isByMe}
@@ -60,17 +61,7 @@ export default function TextMessageItemBody({
           nickname={repliedMessageNickname}
           type={repliedMessageType}
           onClick={onClickRepliedMessage}
-        />
-      )}
-
-      {hasRepliedMessage && hasMedia && (
-        <RepliedMessageItemBody
-          isByMe={isByMe}
-          nickname={parentMessageNickname}
-          messageContent={parentMessageBody}
-          type={RepliedMessageTypes.Image}
-          onClick={onClickRepliedMessage}
-          mediaUrl="https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/f09296bcc9454448940a4830092377b0.png"
+          mediaUrl={repliedMessageMediaUrl}
         />
       )}
 

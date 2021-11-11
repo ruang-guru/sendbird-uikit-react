@@ -109,6 +109,8 @@ const getStringSet = (lang = 'en') => {
       LABEL__DAY_SATURDAY: 'Saturday',
       LABEL__OPERATOR: 'Teacher',
       LABEL__OTHER: 'Others',
+      LABEL__IMAGE: 'Image',
+      LABEL__VIDEO: 'Video',
       TOAST__DOWNLOAD: 'Download successful',
       ROGU__MODAL__DELETE_MESSAGE__TITLE:
         'Are you sure you want to delete the chat?',
