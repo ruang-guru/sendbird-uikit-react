@@ -4,14 +4,9 @@ import './index.scss';
 
 import Icon, { IconTypes, IconColors } from '../Icon';
 import ImageRenderer from '../ImageRenderer';
-import RepliedMessageItemBody, {
-  RepliedMessageTypes,
-} from '../RepliedMessageItemBody';
+import RepliedMessageItemBody from '../RepliedMessageItemBody';
 import ClampedMessageItemBody from '../ClampedMessageItemBody';
-import {
-  metaArraysToRepliedMessage,
-  isReplyingMessage,
-} from '../../utils';
+import { isReplyingMessage, metaArraysToRepliedMessage } from '../../utils';
 import { getClassName, isGifMessage, isVideoMessage } from '../../../utils';
 
 interface Props {
@@ -41,15 +36,20 @@ export default function ThumbnailMessageItemBody({
   const hasRepliedMessage = isReplyingMessage(message);
 
   const renderRepliedMessage = () => {
-    const { parentMessageBody, parentMessageNickname } = metaArraysToRepliedMessage(
-      message.metaArrays
-    );
+    const {
+      parentMessageBody,
+      parentMessageMimeType,
+      parentMessageNickname,
+      parentMessageType,
+    } = metaArraysToRepliedMessage(message.metaArrays);
+
     return (
       <RepliedMessageItemBody
+        body={parentMessageBody}
         isByMe={isByMe}
+        mimeType={parentMessageMimeType}
         nickname={parentMessageNickname}
-        messageContent={parentMessageBody}
-        type={RepliedMessageTypes.Text}
+        type={parentMessageType}
         onClick={onClickRepliedMessage}
       />
     );
