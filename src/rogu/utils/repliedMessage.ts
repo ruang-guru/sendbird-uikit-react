@@ -92,7 +92,7 @@ export const repliedMessageToMetaArrays = (
 
   Object.entries(repliedMessage).forEach(([key, value]) => {
     metaArrays.push(
-      new sdk.MessageMetaArray(key, stringToMetaArrayValue(value))
+      new sdk.MessageMetaArray(key, stringToMetaArrayValue(String(value)))
     );
   });
 
