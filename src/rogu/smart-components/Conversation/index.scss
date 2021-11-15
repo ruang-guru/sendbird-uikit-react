@@ -29,68 +29,6 @@
   justify-content: flex-end;
 }
 
-@keyframes sbHighlight {
-  0% {
-    background-color: #fff2b6;
-  }
-
-  99% {
-    background-color: #fff2b6;
-  }
-}
-
-@keyframes sbTextHighlight {
-  0% {
-    color: var(--sendbird-dark-onlight-01);
-  }
-
-  99% {
-    color: var(--sendbird-dark-onlight-01);
-  }
-}
-
-@keyframes sbHighlightBlock {
-  0% {
-    opacity: 0.5;
-    background-color: #fff2b6;
-  }
-
-  99% {
-    opacity: 0.5;
-    background-color: #fff2b6;
-  }
-}
-
-.sendbird-msg-hoc__animated {
-  .sendbird-text-message-item-body,
-  .sendbird-file-message-item-body {
-    animation-name: sbHighlight;
-    animation-duration: 1.6s;
-    animation-fill-mode: forwards;
-  }
-
-  .sendbird-text-message-item-body__message,
-  .sendbird-file-message-item-body__file-name__text {
-    animation-name: sbTextHighlight;
-    animation-duration: 1.6s;
-    animation-fill-mode: forwards;
-  }
-
-  .sendbird-thumbnail-message-item-body .sendbird-thumbnail-message-item-body__image-cover {
-    display: block;
-    animation-name: sbHighlightBlock;
-    animation-duration: 1.6s;
-    animation-fill-mode: forwards;
-  }
-
-  .sendbird-og-message-item-body .sendbird-og-message-item-body__cover {
-    display: block;
-    animation-name: sbHighlightBlock;
-    animation-duration: 1.6s;
-    animation-fill-mode: forwards;
-  }
-}
-
 .rogu-conversation__scroll-container {
   display: flex;
   height: 100%;
@@ -110,5 +48,52 @@
 
   .rogu-conversation__typing-indicator {
     margin-bottom: 4px;
+  }
+}
+
+.rogu-message-hoc {
+  padding-right: 24px;
+  padding-left: 24px;
+  background: transparent;
+  transition: background-color 400ms ease-in;
+
+  &.rogu-message-hoc--highlighted {
+    animation:
+      highlightFadeIn 300ms forwards,
+      highlightFadeOut 300ms 3s forwards;
+
+    &.rogu-message-hoc--chain-bottom {
+      padding-bottom: 8px;
+
+      .rogu-message-hoc__message-content {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+$highlightColor: rgba(46, 180, 192, 0.2);
+
+@keyframes highlightFadeIn {
+  from {
+    padding-top: 0;
+    background: transparent;
+  }
+
+  to {
+    padding-top: 8px;
+    background: $highlightColor;
+  }
+}
+
+@keyframes highlightFadeOut {
+  from {
+    padding-top: 8px;
+    background: $highlightColor;
+  }
+
+  to {
+    background: transparent;
+    padding-top: 0;
   }
 }

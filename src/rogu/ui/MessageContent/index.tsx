@@ -1,3 +1,11 @@
+/**
+ * TODO:
+ *
+ * [x] Add created at to the metaarray
+ * [ ] Handle click, scroll to the replied message
+ * [ ] Add highlight upon click
+ */
+
 import React, { ReactElement, useRef, useContext } from 'react';
 import { GroupChannel, AdminMessage, UserMessage, FileMessage } from 'sendbird';
 import Label, { LabelTypography, LabelColors } from '../Label';
@@ -75,7 +83,7 @@ export default function MessageContent({
   userId,
   // useReaction = false,
   // useReplying,
-  // scrollToMessage,
+  scrollToMessage,
   showEdit,
   showFileViewer,
   showRemove,
@@ -109,11 +117,6 @@ Props): ReactElement {
   if (message?.isAdminMessage?.() || message?.messageType === 'admin') {
     return <ClientAdminMessage message={message} />;
   }
-
-  const onScrollToMessage = () => {
-    //TODO: integrate onScrollToMessage
-    // scrollToMessage(message.createdAt, getParentMessageId(message));
-  };
 
   return (
     <div
@@ -191,7 +194,7 @@ Props): ReactElement {
                 <TextMessageItemBody
                   isByMe={isByMe}
                   message={message as UserMessage}
-                  onClickRepliedMessage={onScrollToMessage}
+                  onClickRepliedMessage={scrollToMessage}
                 />
               )}
               {isOGMessage(message as UserMessage) && (
@@ -228,6 +231,7 @@ Props): ReactElement {
                     getOutgoingMessageState(channel, message) !==
                     OutgoingMessageStates.PENDING
                   }
+                  onClickRepliedMessage={scrollToMessage}
                 />
               )}
               {getUIKitMessageType(message as FileMessage) ===

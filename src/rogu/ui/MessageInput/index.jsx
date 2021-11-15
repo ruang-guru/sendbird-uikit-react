@@ -178,9 +178,9 @@ const MessageInput = React.forwardRef((props, ref) => {
 
       if (repliedMessage) {
         let repliedMessageBody = repliedMessage.message;
+        let repliedMessageMediaUrl = '';
         let repliedMessageMimeType = '*';
         let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
-        let repliedMessageMediaUrl = '';
 
         if (isThumbnailMessage(repliedMessage)) {
           repliedMessageMimeType = repliedMessage.type;
@@ -216,10 +216,11 @@ const MessageInput = React.forwardRef((props, ref) => {
         }
         onFileUpload(modifiedFile, {
           parentMessageBody: repliedMessageBody,
+          parentMessageCreatedAt: repliedMessage.createdAt,
           parentMessageId: repliedMessage.messageId,
+          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageMimeType: repliedMessageMimeType,
           parentMessageNickname: repliedMessage.sender?.nickname,
-          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageType: repliedMessageType,
         });
       } else {
@@ -228,9 +229,9 @@ const MessageInput = React.forwardRef((props, ref) => {
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
         let repliedMessageBody = repliedMessage.message;
+        let repliedMessageMediaUrl = '';
         let repliedMessageMimeType = '*';
         let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
-        let repliedMessageMediaUrl = '';
 
         if (isThumbnailMessage(repliedMessage)) {
           repliedMessageMimeType = repliedMessage.type;
@@ -267,10 +268,11 @@ const MessageInput = React.forwardRef((props, ref) => {
 
         onSendMessage({
           parentMessageBody: repliedMessageBody,
+          parentMessageCreatedAt: repliedMessage.createdAt,
           parentMessageId: repliedMessage.messageId,
+          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageMimeType: repliedMessageMimeType,
           parentMessageNickname: repliedMessage.sender?.nickname,
-          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageType: repliedMessageType,
         });
       } else {

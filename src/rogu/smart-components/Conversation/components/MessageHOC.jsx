@@ -14,6 +14,8 @@ import RemoveMessageModal from './RemoveMessage';
 // import DateSeparator from '../../../ui/DateSeparator';
 import FileViewer from '../../../ui/FileViewer';
 
+import { getClassName } from '../../../../utils';
+
 export default function MessageHoc({
   message,
   userId,
@@ -39,7 +41,7 @@ export default function MessageHoc({
   // const [showEdit, setShowEdit] = useState(false);
   const [showRemove, setShowRemove] = useState(false);
   const [showFileViewer, setShowFileViewer] = useState(false);
-  const [isAnimated, setIsAnimated] = useState(false);
+  const [isHighlighted, setAsHighlighted] = useState(false);
   // const editMessageInputRef = useRef(null);
   const useMessageScrollRef = useRef(null);
 
@@ -47,15 +49,16 @@ export default function MessageHoc({
     if (highLightedMessageId === message.messageId) {
       if (useMessageScrollRef && useMessageScrollRef.current) {
         useMessageScrollRef.current.scrollIntoView({
+          behavior: 'smooth', // iOS Safari incompatible (https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
           block: 'center',
           inline: 'center',
         });
         setTimeout(() => {
-          setIsAnimated(true);
+          setAsHighlighted(true);
         }, 500);
       }
     } else {
-      setIsAnimated(false);
+      setAsHighlighted(false);
     }
   }, [highLightedMessageId, useMessageScrollRef.current, message.messageId]);
   const RenderedMessage = useMemo(() => {
@@ -80,24 +83,16 @@ export default function MessageHoc({
     return (
       <div
         ref={useMessageScrollRef}
-        className={`
-          sendbird-msg-hoc sendbird-msg--scroll-ref
-          ${isAnimated ? 'sendbird-msg-hoc__animated' : ''}
-        `}
+        className={getClassName([
+          'rogu-message-hoc',
+          chainBottom ? 'rogu-message-hoc--chain-bottom' : '',
+          isHighlighted ? 'rogu-message-hoc--highlighted' : '',
+        ])}
       >
-        {/* date-separator */}
-        {
-          // hasSeparator && null
-          // <DateSeparator>
-          //   <Label
-          //     type={LabelTypography.CAPTION_2}
-          //     color={LabelColors.ONBACKGROUND_2}
-          //   >
-          //     {format(message.createdAt, 'MMMM dd, yyyy')}
-          //   </Label>
-          // </DateSeparator>
-        }
-        <RenderedMessage message={message} />
+        <RenderedMessage
+          className="rogu-message-hoc__message-content"
+          message={message}
+        />
       </div>
     );
   }
@@ -105,17 +100,14 @@ export default function MessageHoc({
   return (
     <div
       ref={useMessageScrollRef}
-      className={`
-        sendbird-msg-hoc sendbird-msg--scroll-ref
-        ${isAnimated ? 'sendbird-msg-hoc__animated' : ''}
-      `}
-      style={{ marginBottom: '2px' }}
+      className={getClassName([
+        'rogu-message-hoc',
+        chainBottom ? 'rogu-message-hoc--chain-bottom' : '',
+        isHighlighted ? 'rogu-message-hoc--highlighted' : '',
+      ])}
     >
-      {/* date-separator */}
-      {/* {hasSeparator && <DateSeparator createdAt={message.createdAt} />} */}
-      {/* Message */}
       <MessageContent
-        className="sendbird-message-hoc__message-content"
+        className="rogu-message-hoc__message-content"
         userId={userId}
         scrollToMessage={scrollToMessage}
         channel={currentGroupChannel}
