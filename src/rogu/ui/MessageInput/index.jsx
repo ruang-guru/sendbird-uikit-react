@@ -35,7 +35,7 @@ import './index.scss';
 const MAX_FILE_SIZE = 10000000; // 10MB;
 const TOAST_AUTO_HIDE_DURATION = 3000;
 const LINE_HEIGHT = 36;
-const noop = () => {};
+const noop = () => { };
 const KeyCode = {
   SHIFT: 16,
   ENTER: 13,
@@ -87,6 +87,7 @@ const MessageInput = React.forwardRef((props, ref) => {
       if (file.size > MAX_FILE_SIZE) {
         setShowUploadErrorToast(true);
       } else if (isImage(file.type)) {
+        setInputValue(inputValue.slice(0, 930));
         setImagePreviewFile(file);
       } else {
         upload(file);
@@ -102,18 +103,12 @@ const MessageInput = React.forwardRef((props, ref) => {
     try {
       const MAX_HEIGHT = window.document.body.offsetHeight * 0.6;
       if (elem && elem.scrollHeight >= LINE_HEIGHT) {
-        if (MAX_HEIGHT < elem.scrollHeight) {
-          elem.style.height = 'auto';
-          elem.style.height = `${MAX_HEIGHT}px`;
-          elem.style.borderRadius = '12px';
-        } else {
-          elem.style.height = 'auto';
-          elem.style.height = `${elem.scrollHeight}px`;
-          elem.style.borderRadius = '12px';
-        }
-      } else {
-        elem.style.height = '';
+        elem.style.borderRadius = '12px';
+        elem.style.height = '36px';
+        if (MAX_HEIGHT < elem.scrollHeight) elem.style.height = `${MAX_HEIGHT}px`;
+        else elem.style.height = `${elem.scrollHeight}px`;
       }
+      if (inputValue === '') elem.style.borderRadius = '42px';
     } catch (error) {
       // error
     }
@@ -172,9 +167,9 @@ const MessageInput = React.forwardRef((props, ref) => {
       // In order to change the file name, we need to create a copy of File object
       const modifiedFile = new Blob([imagePreviewFile], {
         type: imagePreviewFile.type,
-        name: inputValue,
+        name: inputValue.slice(0, 930),
       });
-      modifiedFile.name = inputValue;
+      modifiedFile.name = inputValue.slice(0, 930);
 
       if (repliedMessage) {
         let repliedMessageBody = repliedMessage.message;
@@ -322,7 +317,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           ref={ref}
           name={name}
           value={inputValue}
-          maxLength={maxLength}
+          maxLength={imagePreviewFile ? 930 : maxLength}
           onChange={(e) => {
             setInputValue(e.target.value);
             onStartTyping();
@@ -414,7 +409,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           url={URL.createObjectURL(imagePreviewFile)}
           userName={nickname}
           onClose={() => setImagePreviewFile(null)}
-          onDelete={() => {}}
+          onDelete={() => { }}
         />
       )}
 
