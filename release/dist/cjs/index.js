@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-714b5d93.js');
-var index$1 = require('./index-561487e7.js');
+var LocalizationContext = require('./LocalizationContext-632f8f39.js');
+var index$1 = require('./index-b6522028.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-ecc04d19.js');
-var index$3 = require('./index-0f7eb06d.js');
+var index$2 = require('./index-7d1e81b9.js');
+var index$3 = require('./index-aa9d9d4f.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-880dfbb2.js');
+var Channel = require('./index-e5350de6.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-f992f169.js');
+require('./actionTypes-bb59196e.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-277a02ed.js');
-require('./utils-395d4ab1.js');
-require('./LeaveChannel-bb55d3ff.js');
-require('./index-76e5002c.js');
-require('./index-7e8c5abc.js');
-require('./index-2d215902.js');
+require('./index-73c268cd.js');
+require('./utils-095c4552.js');
+require('./LeaveChannel-83a63572.js');
+require('./index-6f53d3f7.js');
+require('./index-525a49c3.js');
+require('./index-b16c187e.js');
 require('./ChannelSettings.js');
-require('./index-6b4781b8.js');
+require('./index-53b18736.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3869,15 +3869,6 @@ function RepliedTextMessageItemBody(_a) {
   })));
 }
 
-/**
- * TODO
- * [x] Handle normal text message
- * [x] Handle file message
- * [ ] Handle assignment message
- * [ ] Handle material message
- * [ ] Handle image message
- * [ ] Handle video message
- */
 function RepliedMessageItemBody(_a) {
   var body = _a.body,
       isByMe = _a.isByMe,
@@ -3903,9 +3894,7 @@ function RepliedMessageItemBody(_a) {
         isByMe: isByMe,
         mimeType: mimeType,
         nickname: nickname,
-        onClick: function onClick() {
-          return console.log('Scroll to the message');
-        }
+        onClick: onClick
       });
 
     case index$1.RepliedMessageType.Image:
@@ -3915,17 +3904,14 @@ function RepliedMessageItemBody(_a) {
         isByMe: isByMe,
         mimeType: mimeType,
         nickname: nickname,
-        onClick: function onClick() {
-          return console.log('Scroll to the message');
-        },
+        onClick: onClick,
         mediaUrl: mediaUrl
       });
 
     case index$1.RepliedMessageType.Assignment:
       return /*#__PURE__*/React__default$1["default"].createElement(RepliedAssignmentMessageItemBody, {
         body: body,
-        isByMe: isByMe // always false to match the styling
-        ,
+        isByMe: isByMe,
         nickname: nickname,
         onClick: onClick
       });
@@ -3933,8 +3919,7 @@ function RepliedMessageItemBody(_a) {
     case index$1.RepliedMessageType.Material:
       return /*#__PURE__*/React__default$1["default"].createElement(RepliedMaterialMessageItemBody, {
         body: body,
-        isByMe: isByMe // always false to match the styling
-        ,
+        isByMe: isByMe,
         nickname: nickname,
         onClick: onClick
       });
@@ -4100,19 +4085,25 @@ function ThumbnailMessageItemBody(_a) {
   var renderRepliedMessage = function renderRepliedMessage() {
     var _a = index$1.metaArraysToRepliedMessage(message.metaArrays),
         parentMessageBody = _a.parentMessageBody,
+        parentMessageCreatedAt = _a.parentMessageCreatedAt,
+        parentMessageId = _a.parentMessageId,
+        parentMessageMediaUrl = _a.parentMessageMediaUrl,
         parentMessageMimeType = _a.parentMessageMimeType,
         parentMessageNickname = _a.parentMessageNickname,
-        parentMessageType = _a.parentMessageType,
-        parentMessageMediaUrl = _a.parentMessageMediaUrl;
+        parentMessageType = _a.parentMessageType;
 
     return /*#__PURE__*/React__default$1["default"].createElement(RepliedMessageItemBody, {
       body: parentMessageBody,
       isByMe: isByMe,
+      mediaUrl: parentMessageMediaUrl,
       mimeType: parentMessageMimeType,
       nickname: parentMessageNickname,
       type: parentMessageType,
-      onClick: onClickRepliedMessage,
-      mediaUrl: parentMessageMediaUrl
+      onClick: function onClick() {
+        if (onClickRepliedMessage && typeof onClickRepliedMessage === 'function') {
+          onClickRepliedMessage(Number(parentMessageCreatedAt), Number(parentMessageId));
+        }
+      }
     });
   };
 
@@ -4169,12 +4160,14 @@ function TextMessageItemBody(_a) {
       isByMe = _b === void 0 ? false : _b,
       message = _a.message,
       onClickRepliedMessage = _a.onClickRepliedMessage;
-  var repliedMessageNickname = '';
-  var repliedMessageBody = '';
-  var repliedMessageMimeType = '*';
-  var repliedMessageType = index$1.RepliedMessageType.Text;
   var messageBody = message.message;
+  var repliedMessageBody = '';
+  var repliedMessageCreatedAt = 0;
+  var repliedMessageId = '';
   var repliedMessageMediaUrl = '';
+  var repliedMessageMimeType = '*';
+  var repliedMessageNickname = '';
+  var repliedMessageType = index$1.RepliedMessageType.Text;
   var hasRepliedMessage = isReplyingMessage(message);
 
   if (hasRepliedMessage) {
@@ -4184,13 +4177,21 @@ function TextMessageItemBody(_a) {
         parentMessageNickname = _c.parentMessageNickname;
 
     var repliedMessage = index$1.metaArraysToRepliedMessage(message.metaArrays);
-    repliedMessageNickname = parentMessageNickname;
-    repliedMessageBody = parentMessageBody;
-    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
-    repliedMessageType = repliedMessage.parentMessageType;
     messageBody = originalMessage;
+    repliedMessageBody = parentMessageBody;
+    repliedMessageCreatedAt = repliedMessage.parentMessageCreatedAt;
+    repliedMessageId = repliedMessage.parentMessageId;
     repliedMessageMediaUrl = repliedMessage.parentMessageMediaUrl;
+    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
+    repliedMessageNickname = parentMessageNickname;
+    repliedMessageType = repliedMessage.parentMessageType;
   }
+
+  var handleScrollToRepliedMessage = function handleScrollToRepliedMessage() {
+    if (hasRepliedMessage && onClickRepliedMessage && typeof onClickRepliedMessage === 'function') {
+      onClickRepliedMessage(Number(repliedMessageCreatedAt), Number(repliedMessageId));
+    }
+  };
 
   return /*#__PURE__*/React__default$1["default"].createElement(React__default$1["default"].Fragment, null, hasRepliedMessage && /*#__PURE__*/React__default$1["default"].createElement(RepliedMessageItemBody, {
     body: repliedMessageBody,
@@ -4198,7 +4199,9 @@ function TextMessageItemBody(_a) {
     mimeType: repliedMessageMimeType,
     nickname: repliedMessageNickname,
     type: repliedMessageType,
-    onClick: onClickRepliedMessage,
+    onClick: function onClick() {
+      return handleScrollToRepliedMessage();
+    },
     mediaUrl: repliedMessageMediaUrl
   }), /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody$1, {
     className: className,
@@ -4713,6 +4716,13 @@ function MessageItemMenu(_a) {
   }));
 }
 
+/**
+ * TODO:
+ *
+ * [x] Add created at to the metaarray
+ * [ ] Handle click, scroll to the replied message
+ * [ ] Add highlight upon click
+ */
 function MessageContent(_a) {
   var _b, _c, _d;
 
@@ -4727,8 +4737,8 @@ function MessageContent(_a) {
   userId = _a.userId,
       // useReaction = false,
   // useReplying,
-  // scrollToMessage,
-  showEdit = _a.showEdit,
+  scrollToMessage = _a.scrollToMessage,
+      showEdit = _a.showEdit,
       showFileViewer = _a.showFileViewer,
       showRemove = _a.showRemove,
       showReply = _a.showReply,
@@ -4749,10 +4759,6 @@ function MessageContent(_a) {
       message: message
     });
   }
-
-  var onScrollToMessage = function onScrollToMessage() {//TODO: integrate onScrollToMessage
-    // scrollToMessage(message.createdAt, getParentMessageId(message));
-  };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: index$1.getClassName([className, 'rogu-message-content', isByMeClassName, chainBottomClassName, chainTopClassName])
@@ -4798,7 +4804,7 @@ function MessageContent(_a) {
   }, index$1.isTextMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(TextMessageItemBody, {
     isByMe: isByMe,
     message: message,
-    onClickRepliedMessage: onScrollToMessage
+    onClickRepliedMessage: scrollToMessage
   }), index$1.isOGMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(OGMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -4815,7 +4821,8 @@ function MessageContent(_a) {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
-    isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING
+    isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING,
+    onClickRepliedMessage: scrollToMessage
   }), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
@@ -5474,8 +5481,8 @@ function MessageHoc(_ref) {
 
   var _useState5 = React$1.useState(false),
       _useState6 = LocalizationContext._slicedToArray(_useState5, 2),
-      isAnimated = _useState6[0],
-      setIsAnimated = _useState6[1]; // const editMessageInputRef = useRef(null);
+      isHighlighted = _useState6[0],
+      setAsHighlighted = _useState6[1]; // const editMessageInputRef = useRef(null);
 
 
   var useMessageScrollRef = React$1.useRef(null);
@@ -5483,15 +5490,17 @@ function MessageHoc(_ref) {
     if (highLightedMessageId === message.messageId) {
       if (useMessageScrollRef && useMessageScrollRef.current) {
         useMessageScrollRef.current.scrollIntoView({
+          behavior: 'smooth',
+          // iOS Safari incompatible (https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView)
           block: 'center',
           inline: 'center'
         });
         setTimeout(function () {
-          setIsAnimated(true);
+          setAsHighlighted(true);
         }, 500);
       }
     } else {
-      setIsAnimated(false);
+      setAsHighlighted(false);
     }
   }, [highLightedMessageId, useMessageScrollRef.current, message.messageId]);
   var RenderedMessage = React$1.useMemo(function () {
@@ -5507,20 +5516,18 @@ function MessageHoc(_ref) {
   if (RenderedMessage) {
     return /*#__PURE__*/React__default$1["default"].createElement("div", {
       ref: useMessageScrollRef,
-      className: "\n          sendbird-msg-hoc sendbird-msg--scroll-ref\n          ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n        ")
+      className: index$1.getClassName(['rogu-message-hoc', chainBottom ? 'rogu-message-hoc--chain-bottom' : '', isHighlighted ? 'rogu-message-hoc--highlighted' : ''])
     }, /*#__PURE__*/React__default$1["default"].createElement(RenderedMessage, {
+      className: "rogu-message-hoc__message-content",
       message: message
     }));
   }
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
     ref: useMessageScrollRef,
-    className: "\n        sendbird-msg-hoc sendbird-msg--scroll-ref\n        ".concat(isAnimated ? 'sendbird-msg-hoc__animated' : '', "\n      "),
-    style: {
-      marginBottom: '2px'
-    }
+    className: index$1.getClassName(['rogu-message-hoc', chainBottom ? 'rogu-message-hoc--chain-bottom' : '', isHighlighted ? 'rogu-message-hoc--highlighted' : ''])
   }, /*#__PURE__*/React__default$1["default"].createElement(MessageContent, {
-    className: "sendbird-message-hoc__message-content",
+    className: "rogu-message-hoc__message-content",
     userId: userId,
     scrollToMessage: scrollToMessage,
     channel: currentGroupChannel,
@@ -5781,10 +5788,6 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
         ref: scrollRef,
         className: "rogu-conversation__scroll-container",
         onScroll: this.onScroll
-      }, /*#__PURE__*/React__default$1["default"].createElement("div", {
-        className: "rogu-conversation__padding"
-      }), /*#__PURE__*/React__default$1["default"].createElement("div", {
-        className: "rogu-conversation__messages-padding"
       }, Array.from(groupMessagesByDate(allMessages).values()).map(function (messages, i) {
         var _messages$;
 
@@ -5852,7 +5855,7 @@ var ConversationScroll = /*#__PURE__*/function (_Component) {
             });
           }))
         );
-      }))), showScrollBot && /*#__PURE__*/React__default$1["default"].createElement("div", {
+      })), showScrollBot && /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-conversation__scroll-bottom-button",
         onClick: onClickScrollBot,
         onKeyDown: onClickScrollBot,
@@ -6526,9 +6529,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
         var _repliedMessage$sende;
 
         var repliedMessageBody = repliedMessage.message;
+        var repliedMessageMediaUrl = '';
         var repliedMessageMimeType = '*';
         var repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Text;
-        var repliedMessageMediaUrl = '';
 
         if (isThumbnailMessage(repliedMessage)) {
           repliedMessageMimeType = repliedMessage.type;
@@ -6565,10 +6568,11 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
 
         onFileUpload(modifiedFile, {
           parentMessageBody: repliedMessageBody,
+          parentMessageCreatedAt: repliedMessage.createdAt,
           parentMessageId: repliedMessage.messageId,
+          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageMimeType: repliedMessageMimeType,
           parentMessageNickname: (_repliedMessage$sende = repliedMessage.sender) === null || _repliedMessage$sende === void 0 ? void 0 : _repliedMessage$sende.nickname,
-          parentMessageMediaUrl: repliedMessageMediaUrl,
           parentMessageType: repliedMessageType
         });
       } else {
@@ -6579,9 +6583,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
         var _repliedMessage$sende2;
 
         var _repliedMessageBody = repliedMessage.message;
+        var _repliedMessageMediaUrl = '';
         var _repliedMessageMimeType = '*';
         var _repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Text;
-        var _repliedMessageMediaUrl = '';
 
         if (isThumbnailMessage(repliedMessage)) {
           _repliedMessageMimeType = repliedMessage.type;
@@ -6619,10 +6623,11 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
 
         onSendMessage({
           parentMessageBody: _repliedMessageBody,
+          parentMessageCreatedAt: repliedMessage.createdAt,
           parentMessageId: repliedMessage.messageId,
+          parentMessageMediaUrl: _repliedMessageMediaUrl,
           parentMessageMimeType: _repliedMessageMimeType,
           parentMessageNickname: (_repliedMessage$sende2 = repliedMessage.sender) === null || _repliedMessage$sende2 === void 0 ? void 0 : _repliedMessage$sende2.nickname,
-          parentMessageMediaUrl: _repliedMessageMediaUrl,
           parentMessageType: _repliedMessageType
         });
       } else {
