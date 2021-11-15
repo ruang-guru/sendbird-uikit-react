@@ -10,6 +10,8 @@ exports[`OGMessageItemBody should do a snapshot test of the OGMessageItemBody DO
     <div
       className="rogu-og-message-item-body__og-container"
       onClick={[Function]}
+      role="button"
+      tabIndex={0}
     >
       <div
         className="rogu-og-message-item-body__og-thumbnail"
@@ -29,7 +31,7 @@ exports[`OGMessageItemBody should do a snapshot test of the OGMessageItemBody DO
             className="sendbird-image-renderer__image"
             style={
               Object {
-                "backgroundImage": "url()",
+                "backgroundImage": "url(https://ik.imagekit.io/dnha0dbp86x/suliskh_com/Home_1__8lvqRSrdOB.png)",
                 "backgroundPosition": "center",
                 "backgroundRepeat": "no-repeat",
                 "backgroundSize": "cover",
@@ -43,24 +45,64 @@ exports[`OGMessageItemBody should do a snapshot test of the OGMessageItemBody DO
             }
           />
           <img
-            alt=""
+            alt={null}
             className="sendbird-image-renderer__hidden-image-loader"
             onError={[Function]}
             onLoad={[Function]}
-            src=""
+            src="https://ik.imagekit.io/dnha0dbp86x/suliskh_com/Home_1__8lvqRSrdOB.png"
           />
         </div>
       </div>
       <div
         className="rogu-og-message-item-body__description"
-      />
+      >
+        <span
+          className="rogu-og-message-item-body__description__title sendbird-label sendbird-label--subtitle-2 sendbird-label--color-onbackground-1"
+        >
+          Kukuh Sulistyo — Insinyur Perangkat Lunak
+        </span>
+        <span
+          className="rogu-og-message-item-body__description__description sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-1"
+        >
+          Insinyur perangkat lunak berfokus di web. Tertarik dengan design system dan aksesibilitas
+        </span>
+        <span
+          className="rogu-og-message-item-body__description__url sendbird-label sendbird-label--caption-3 sendbird-label--color-onbackground-2"
+        >
+          https://suliskh.com
+        </span>
+      </div>
     </div>
   </div>
   <div
-    className="rogu-og-message-item-body__text-bubble"
-  />
-  <div
-    className="rogu-og-message-item-body__cover"
-  />
+    className=" rogu-clamped-message-item-body  rogu-clamped-message-item-body--incoming   "
+  >
+    <div
+      className="rogu-clamped-message-item-body__inner"
+    >
+      <span
+        className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
+      >
+        Visit 
+      </span>
+      <a
+        className="rogu-text-message-item-body__message rogu-link-label sendbird-label--color-secondary-3"
+        href="https://suliskh.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <span
+          className="rogu-link-label__label sendbird-label sendbird-label--body-1 sendbird-label--color-secondary-3"
+        >
+          https://suliskh.com
+        </span>
+      </a>
+      <span
+        className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
+      >
+        !
+      </span>
+    </div>
+  </div>
 </div>
 `;

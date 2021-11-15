@@ -201,6 +201,7 @@ Props): ReactElement {
                 <OGMessageItemBody
                   message={message as UserMessage}
                   isByMe={isByMe}
+                  onClickRepliedMessage={scrollToMessage}
                 />
               )}
               {isAssignmentMessage(message.customType) && (
