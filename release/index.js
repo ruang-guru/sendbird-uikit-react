@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-fdb94a10.js';
-export { w as withSendBird } from './LocalizationContext-fdb94a10.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as getClassName, j as isUrl, k as isEditedMessage, R as RepliedMessageType, l as changeColorToClassName$2, C as Colors$2, m as isVideoMessage, n as isGifMessage, o as metaArraysToRepliedMessage, p as formatedStringToRepliedMessage, q as convertAssignmentDueUTCtoLocale, s as convertCtaLinkToWebLink, t as isUserMessage, u as isFileMessage$1, v as isFailedMessage, w as isSentMessage, I as IconButton$1, x as isThumbnailMessage$1, y as copyToClipboard, z as getUIKitMessageTypes, A as isPendingMessage, B as isMessageSentByMe, F as isMessageSentByOperator, G as getSenderName, H as isTextMessage, J as isOGMessage, K as isAssignmentMessage, L as isMaterialMessage, M as getUIKitMessageType, N as getOutgoingMessageState, O as OutgoingMessageStates, P as MODAL_ROOT, Q as REPLIED_MESSAGE_TYPE, T as UserProfileProvider } from './index-de9bf5e0.js';
-export { V as sendBirdSelectors } from './index-de9bf5e0.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-5d7ce3dd.js';
+export { w as withSendBird } from './LocalizationContext-5d7ce3dd.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as getClassName, j as isUrl, k as isEditedMessage, R as RepliedMessageType, l as changeColorToClassName$2, C as Colors$2, m as isVideoMessage, n as isGifMessage, o as metaArraysToRepliedMessage, p as formatedStringToRepliedMessage, q as convertAssignmentDueUTCtoLocale, s as convertCtaLinkToWebLink, t as isUserMessage, u as isFileMessage$1, v as isFailedMessage, w as isSentMessage, I as IconButton$1, x as isThumbnailMessage$1, y as copyToClipboard, z as getUIKitMessageTypes, A as isPendingMessage, B as isMessageSentByMe, F as isMessageSentByOperator, G as getSenderName, H as isTextMessage, J as isOGMessage, K as isAssignmentMessage, L as isMaterialMessage, M as getUIKitMessageType, N as getOutgoingMessageState, O as OutgoingMessageStates, P as MODAL_ROOT, Q as REPLIED_MESSAGE_TYPE, T as UserProfileProvider } from './index-2f26f15d.js';
+export { V as sendBirdSelectors } from './index-2f26f15d.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-12b7e9c8.js';
-import { c as compareIds, L as LinkLabel$1 } from './index-c759871d.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-37b0f298.js';
+import { c as compareIds, L as LinkLabel$1 } from './index-f4e3b780.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-9bac4001.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-1a60cc4a.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-f3eed0e2.js';
+import './actionTypes-a897fba6.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-9f761b01.js';
-import './utils-a103a822.js';
-import './LeaveChannel-ecc602c1.js';
-import './index-e6ec5652.js';
-import './index-868049b0.js';
-import './index-47f79a6c.js';
+import './index-51e564cf.js';
+import './utils-df885994.js';
+import './LeaveChannel-f12072e0.js';
+import './index-3eac0c73.js';
+import './index-57a6be0b.js';
+import './index-43c8086b.js';
 import './ChannelSettings.js';
-import './index-6d93e89c.js';
+import './index-7bc99eb0.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -6401,6 +6401,7 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
         if (file.size > MAX_FILE_SIZE) {
           setShowUploadErrorToast(true);
         } else if (isImage(file.type)) {
+          setInputValue(inputValue.slice(0, 930));
           setImagePreviewFile(file);
         } else {
           upload(file);
@@ -6419,18 +6420,12 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
       var MAX_HEIGHT = window.document.body.offsetHeight * 0.6;
 
       if (elem && elem.scrollHeight >= LINE_HEIGHT) {
-        if (MAX_HEIGHT < elem.scrollHeight) {
-          elem.style.height = 'auto';
-          elem.style.height = "".concat(MAX_HEIGHT, "px");
-          elem.style.borderRadius = '12px';
-        } else {
-          elem.style.height = 'auto';
-          elem.style.height = "".concat(elem.scrollHeight, "px");
-          elem.style.borderRadius = '12px';
-        }
-      } else {
-        elem.style.height = '';
+        elem.style.borderRadius = '12px';
+        elem.style.height = '36px';
+        if (MAX_HEIGHT < elem.scrollHeight) elem.style.height = "".concat(MAX_HEIGHT, "px");else elem.style.height = "".concat(elem.scrollHeight, "px");
       }
+
+      if (inputValue === '') elem.style.borderRadius = '42px';
     } catch (error) {// error
     }
   };
@@ -6496,9 +6491,9 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
       // In order to change the file name, we need to create a copy of File object
       var modifiedFile = new Blob([imagePreviewFile], {
         type: imagePreviewFile.type,
-        name: inputValue
+        name: inputValue.slice(0, 930)
       });
-      modifiedFile.name = inputValue;
+      modifiedFile.name = inputValue.slice(0, 930);
 
       if (repliedMessage) {
         var _repliedMessage$sende;
@@ -6642,7 +6637,7 @@ var MessageInput = /*#__PURE__*/React__default$1.forwardRef(function (props, ref
     ref: ref,
     name: name,
     value: inputValue,
-    maxLength: maxLength,
+    maxLength: imagePreviewFile ? 930 : maxLength,
     onChange: function onChange(e) {
       setInputValue(e.target.value);
       onStartTyping();

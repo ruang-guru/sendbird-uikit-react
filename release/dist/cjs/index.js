@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-632f8f39.js');
-var index$1 = require('./index-b6522028.js');
+var LocalizationContext = require('./LocalizationContext-7bd73139.js');
+var index$1 = require('./index-ce4fdd08.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-7d1e81b9.js');
-var index$3 = require('./index-aa9d9d4f.js');
+var index$2 = require('./index-f88cf0be.js');
+var index$3 = require('./index-d4ea073d.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-e5350de6.js');
+var Channel = require('./index-5176ac58.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-bb59196e.js');
+require('./actionTypes-06c52930.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-73c268cd.js');
-require('./utils-095c4552.js');
-require('./LeaveChannel-83a63572.js');
-require('./index-6f53d3f7.js');
-require('./index-525a49c3.js');
-require('./index-b16c187e.js');
+require('./index-0f4c95df.js');
+require('./utils-5f487a66.js');
+require('./LeaveChannel-304822da.js');
+require('./index-b1b1ba20.js');
+require('./index-74625b1e.js');
+require('./index-8ca6790d.js');
 require('./ChannelSettings.js');
-require('./index-53b18736.js');
+require('./index-54be8559.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -6426,6 +6426,7 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
         if (file.size > MAX_FILE_SIZE) {
           setShowUploadErrorToast(true);
         } else if (isImage(file.type)) {
+          setInputValue(inputValue.slice(0, 930));
           setImagePreviewFile(file);
         } else {
           upload(file);
@@ -6444,18 +6445,12 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       var MAX_HEIGHT = window.document.body.offsetHeight * 0.6;
 
       if (elem && elem.scrollHeight >= LINE_HEIGHT) {
-        if (MAX_HEIGHT < elem.scrollHeight) {
-          elem.style.height = 'auto';
-          elem.style.height = "".concat(MAX_HEIGHT, "px");
-          elem.style.borderRadius = '12px';
-        } else {
-          elem.style.height = 'auto';
-          elem.style.height = "".concat(elem.scrollHeight, "px");
-          elem.style.borderRadius = '12px';
-        }
-      } else {
-        elem.style.height = '';
+        elem.style.borderRadius = '12px';
+        elem.style.height = '36px';
+        if (MAX_HEIGHT < elem.scrollHeight) elem.style.height = "".concat(MAX_HEIGHT, "px");else elem.style.height = "".concat(elem.scrollHeight, "px");
       }
+
+      if (inputValue === '') elem.style.borderRadius = '42px';
     } catch (error) {// error
     }
   };
@@ -6521,9 +6516,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       // In order to change the file name, we need to create a copy of File object
       var modifiedFile = new Blob([imagePreviewFile], {
         type: imagePreviewFile.type,
-        name: inputValue
+        name: inputValue.slice(0, 930)
       });
-      modifiedFile.name = inputValue;
+      modifiedFile.name = inputValue.slice(0, 930);
 
       if (repliedMessage) {
         var _repliedMessage$sende;
@@ -6667,7 +6662,7 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
     ref: ref,
     name: name,
     value: inputValue,
-    maxLength: maxLength,
+    maxLength: imagePreviewFile ? 930 : maxLength,
     onChange: function onChange(e) {
       setInputValue(e.target.value);
       onStartTyping();
