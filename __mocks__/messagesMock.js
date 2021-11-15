@@ -143,16 +143,20 @@ export const VIDEO_MESSAGE = {
   ...IMAGE_MESSAGE,
   size: 771699,
   type: 'video/mp4',
-  url: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/360a8dad320646298788f68a0d417c1c.mp4',
-  plainUrl: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/360a8dad320646298788f68a0d417c1c.mp4',
+  url:
+    'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/360a8dad320646298788f68a0d417c1c.mp4',
+  plainUrl:
+    'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/360a8dad320646298788f68a0d417c1c.mp4',
 };
 
 export const GIF_MESSAGE = {
   ...IMAGE_MESSAGE,
   size: 2676798,
   type: 'image/gif',
-  url: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/65bd937a3a4641bb98c0fe878eabafa3.gif',
-  plainUrl: 'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/65bd937a3a4641bb98c0fe878eabafa3.gif',
+  url:
+    'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/65bd937a3a4641bb98c0fe878eabafa3.gif',
+  plainUrl:
+    'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/65bd937a3a4641bb98c0fe878eabafa3.gif',
 };
 
 export const FILE_MESSAGE = {
@@ -214,4 +218,24 @@ export const FILE_MESSAGE_PDF = {
     'https://sendbird-upload.s3.amazonaws.com/D74864D6-2283-48E1-8381-89719216DC7F/upload/n/ba3f15a990f84cef9f87f2d88fd30712.pdf',
   size: 8900,
   type: 'application/pdf',
+};
+
+export const OG_MESSAGE = {
+  ...BASIC_MESSAGE,
+  message: 'Visit https://suliskh.com!',
+  ogMetaData: {
+    title: 'Kukuh Sulistyo — Insinyur Perangkat Lunak',
+    url: 'https://suliskh.com',
+    description:
+      'Insinyur perangkat lunak berfokus di web. Tertarik dengan design system dan aksesibilitas',
+    defaultImage: {
+      url:
+        'https://ik.imagekit.io/dnha0dbp86x/suliskh_com/Home_1__8lvqRSrdOB.png',
+      secureUrl: null,
+      type: null,
+      width: 0,
+      height: 0,
+      alt: null,
+    },
+  },
 };
