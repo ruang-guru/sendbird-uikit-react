@@ -1,15 +1,15 @@
-import { c as _slicedToArray, L as LocalizationContext, _ as __spreadArray, j as __assign, w as withSendbirdContext, u as uuidv4, a as _toConsumableArray } from './LocalizationContext-5d7ce3dd.js';
+import { c as _slicedToArray, L as LocalizationContext, _ as __spreadArray, j as __assign, w as withSendbirdContext, u as uuidv4, a as _toConsumableArray } from './LocalizationContext-0c2bf896.js';
 import React__default, { useRef, useState, useContext, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { Z as Modal, _ as Type, $ as TextButton, a0 as ContextMenu, I as IconButton, a1 as MenuItems, a2 as MenuItem, ac as Button, ad as ButtonTypes, ae as ButtonSizes, aa as UserProfileContext, ab as ConnectedUserProfile, af as getSdk, T as UserProfileProvider } from './index-2f26f15d.js';
-import { I as InviteMembers$1, B as Badge, c as createDefaultUserListQuery, L as LeaveChannel } from './LeaveChannel-f12072e0.js';
-import { a5 as Avatar, aa as Label, ac as LabelTypography, ab as LabelColors, a as Icon, b as IconTypes, a9 as IconColors, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-37b0f298.js';
-import { I as InputLabel, a as Input, n as noop, U as UserListItem$2, M as MutedAvatarOverlay } from './index-3eac0c73.js';
-import { C as ChannelAvatar } from './index-51e564cf.js';
-import { A as AccordionGroup, a as Accordion } from './index-7bc99eb0.js';
+import { Y as Modal, Z as Type, _ as TextButton, $ as ContextMenu, I as IconButton, a0 as MenuItems, a1 as MenuItem, ac as Button, ad as ButtonTypes, ae as ButtonSizes, aa as UserProfileContext, ab as ConnectedUserProfile, af as getSdk, Q as UserProfileProvider } from './index-85238f80.js';
+import { I as InviteMembers$1, B as Badge, c as createDefaultUserListQuery, L as LeaveChannel } from './LeaveChannel-642d5d9f.js';
+import { a5 as Avatar, aa as Label, ac as LabelTypography, ab as LabelColors, a as Icon, b as IconTypes, a9 as IconColors, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-1189ae0c.js';
+import { I as InputLabel, a as Input, n as noop, U as UserListItem$2, M as MutedAvatarOverlay } from './index-d4353345.js';
+import { C as ChannelAvatar } from './index-6cebcfb4.js';
+import { A as AccordionGroup, a as Accordion } from './index-3338fb59.js';
 import 'react-dom';
 import 'date-fns';
-import './utils-df885994.js';
+import './utils-4f6187cd.js';
 
 var EditDetails = function EditDetails(props) {
   var _onSubmit = props.onSubmit,

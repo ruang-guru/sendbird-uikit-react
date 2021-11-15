@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-5d7ce3dd.js';
-export { w as withSendBird } from './LocalizationContext-5d7ce3dd.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as getClassName, j as isUrl, k as isEditedMessage, R as RepliedMessageType, l as changeColorToClassName$2, C as Colors$2, m as isVideoMessage, n as isGifMessage, o as metaArraysToRepliedMessage, p as formatedStringToRepliedMessage, q as convertAssignmentDueUTCtoLocale, s as convertCtaLinkToWebLink, t as isUserMessage, u as isFileMessage$1, v as isFailedMessage, w as isSentMessage, I as IconButton$1, x as isThumbnailMessage$1, y as copyToClipboard, z as getUIKitMessageTypes, A as isPendingMessage, B as isMessageSentByMe, F as isMessageSentByOperator, G as getSenderName, H as isTextMessage, J as isOGMessage, K as isAssignmentMessage, L as isMaterialMessage, M as getUIKitMessageType, N as getOutgoingMessageState, O as OutgoingMessageStates, P as MODAL_ROOT, Q as REPLIED_MESSAGE_TYPE, T as UserProfileProvider } from './index-2f26f15d.js';
-export { V as sendBirdSelectors } from './index-2f26f15d.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-0c2bf896.js';
+export { w as withSendBird } from './LocalizationContext-0c2bf896.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as changeColorToClassName$2, C as Colors$2, j as getClassName, R as RepliedMessageType, k as formatedStringToRepliedMessage, m as metaArraysToRepliedMessage, l as isVideoMessage, n as isGifMessage, o as convertAssignmentDueUTCtoLocale, p as convertCtaLinkToWebLink, q as isUserMessage, s as isFileMessage$1, t as isFailedMessage, u as isSentMessage, I as IconButton$1, v as isThumbnailMessage$1, w as copyToClipboard, x as getUIKitMessageTypes, y as isPendingMessage, z as isMessageSentByMe, A as isMessageSentByOperator, B as getSenderName, F as isTextMessage, G as isOGMessage, H as isAssignmentMessage, J as isMaterialMessage, K as getUIKitMessageType, L as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, N as isUrl, P as REPLIED_MESSAGE_TYPE, Q as UserProfileProvider } from './index-85238f80.js';
+export { T as sendBirdSelectors } from './index-85238f80.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-37b0f298.js';
-import { c as compareIds, L as LinkLabel$1 } from './index-f4e3b780.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-1189ae0c.js';
+import { c as compareIds } from './index-31e45f23.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-1a60cc4a.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-ca2d823d.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-a897fba6.js';
+import './actionTypes-d157a51f.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-51e564cf.js';
-import './utils-df885994.js';
-import './LeaveChannel-f12072e0.js';
-import './index-3eac0c73.js';
-import './index-57a6be0b.js';
-import './index-43c8086b.js';
+import './index-6cebcfb4.js';
+import './utils-4f6187cd.js';
+import './LeaveChannel-642d5d9f.js';
+import './index-d4353345.js';
+import './index-6173777f.js';
+import './index-ed48e90e.js';
 import './ChannelSettings.js';
-import './index-7bc99eb0.js';
+import './index-3338fb59.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -3317,233 +3317,140 @@ IconButton.defaultProps = {
   style: {}
 };
 
-function OGMessageItemBody(_a) {
-  var _b, _c, _d, _e, _f, _g, _h, _j;
-
-  var className = _a.className,
-      message = _a.message,
-      _k = _a.isByMe,
-      isByMe = _k === void 0 ? false : _k,
-      _l = _a.mouseHover,
-      mouseHover = _l === void 0 ? false : _l,
-      _m = _a.isOnPreview,
-      isOnPreview = _m === void 0 ? false : _m,
-      onClosePreview = _a.onClosePreview;
-  var stringSet = useContext(LocalizationContext).stringSet;
-
-  var openOGUrl = function openOGUrl() {
-    var _a, _b;
-
-    if ((_a = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _a === void 0 ? void 0 : _a.url) window.open((_b = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _b === void 0 ? void 0 : _b.url);
-  };
-
-  return /*#__PURE__*/React__default$1.createElement("div", {
-    className: getClassName([className, 'rogu-og-message-item-body', isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming', isOnPreview ? 'rogu-og-message-item-body--preview' : '', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'rogu-og-message-reactions' : ''])
-  }, /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-og-message-item-body__og-wrapper"
-  }, /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-og-message-item-body__og-container",
-    onClick: openOGUrl
-  }, /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-og-message-item-body__og-thumbnail"
-  }, /*#__PURE__*/React__default$1.createElement(ImageRenderer$1, {
-    className: "rogu-og-message-item-body__og-thumbnail__image",
-    url: ((_d = (_c = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _c === void 0 ? void 0 : _c.defaultImage) === null || _d === void 0 ? void 0 : _d.url) || '',
-    alt: (_f = (_e = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _e === void 0 ? void 0 : _e.defaultImage) === null || _f === void 0 ? void 0 : _f.alt,
-    width: "60px",
-    height: "60px",
-    defaultComponent: /*#__PURE__*/React__default$1.createElement("div", {
-      className: "rogu-og-message-item-body__og-thumbnail__place-holder"
-    }, /*#__PURE__*/React__default$1.createElement(Icon, {
-      className: "rogu-og-message-item-body__og-thumbnail__place-holder__icon",
-      type: IconTypes.THUMBNAIL_NONE,
-      width: "60px",
-      height: "60px"
-    }))
-  })), /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-og-message-item-body__description"
-  }, ((_g = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _g === void 0 ? void 0 : _g.title) && /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-og-message-item-body__description__title",
-    type: LabelTypography.SUBTITLE_2,
-    color: LabelColors.ONBACKGROUND_1
-  }, message.ogMetaData.title), ((_h = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _h === void 0 ? void 0 : _h.description) && /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-og-message-item-body__description__description",
-    type: LabelTypography.BODY_2,
-    color: LabelColors.ONBACKGROUND_1
-  }, message.ogMetaData.description), ((_j = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _j === void 0 ? void 0 : _j.url) && /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-og-message-item-body__description__url",
-    type: LabelTypography.CAPTION_3,
-    color: LabelColors.ONBACKGROUND_2
-  }, message.ogMetaData.url))), isOnPreview && /*#__PURE__*/React__default$1.createElement(IconButton, {
-    className: "sendbird-chat-header__right__search",
-    width: "32px",
-    height: "32px",
-    onClick: onClosePreview
-  }, /*#__PURE__*/React__default$1.createElement(Icon, {
-    type: IconTypes.CLOSE,
-    fillColor: IconColors.ON_BACKGROUND_1,
-    width: "24px",
-    height: "24px"
-  }))), /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-og-message-item-body__text-bubble"
-  }, message === null || message === void 0 ? void 0 : message.message.split(' ').map(function (word) {
-    return isUrl(word) ? /*#__PURE__*/React__default$1.createElement(LinkLabel$1, {
-      className: "rogu-og-message-item-body__text-bubble__message",
-      key: uuidv4(),
-      src: word,
-      type: LabelTypography.BODY_1,
-      color: isByMe ? LabelColors.ONBACKGROUND_1 : LabelColors.SECONDARY_3
-    }, word) : /*#__PURE__*/React__default$1.createElement(Label, {
-      className: "rogu-og-message-item-body__text-bubble__message",
-      key: uuidv4(),
-      type: LabelTypography.BODY_1,
-      color: LabelColors.ONBACKGROUND_1
-    }, word + ' ');
-  }), isEditedMessage(message) && /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-og-message-item-body__text-bubble__message",
-    type: LabelTypography.BODY_1,
-    color: isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2
-  }, " " + stringSet.MESSAGE_EDITED + " ")), /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-og-message-item-body__cover"
-  }));
-}
-
-function FileMessageItemBody(_a) {
-  var className = _a.className,
-      message = _a.message,
-      _b = _a.isByMe,
-      isByMe = _b === void 0 ? false : _b;
-  var stringSet = useContext(LocalizationContext).stringSet;
-  return /*#__PURE__*/React__default$1.createElement("a", {
-    className: getClassName([className, 'rogu-file-message-item-body', isByMe ? 'rogu-file-message-item-body--outgoing' : 'rogu-file-message-item-body--incoming']),
-    href: message.plainUrl,
-    target: "_blank",
-    rel: "noreferrer"
-  }, /*#__PURE__*/React__default$1.createElement(Icon, {
-    className: 'rogu-file-message-item-body__icon',
-    type: {
-      WORD: IconTypes.ROGU_FILE_WORD,
-      EXCEL: IconTypes.ROGU_FILE_EXCEL,
-      POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
-      PDF: IconTypes.ROGU_FILE_PDF,
-      OTHERS: IconTypes.ROGU_FILE_OTHERS
-    }[getFileType(message === null || message === void 0 ? void 0 : message.type)],
-    fillColor: IconColors.PRIMARY,
-    width: "28px",
-    height: "28px"
-  }), /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-file-message-item-body__content"
-  }, message.name && /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-file-message-item-body__name",
-    color: LabelColors.ONBACKGROUND_1,
-    type: LabelTypography.SUBTITLE_2
-  }, message.name), /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-file-message-item-body__meta"
-  }, message.size && /*#__PURE__*/React__default$1.createElement(Label, {
-    color: LabelColors.ONBACKGROUND_2,
-    type: LabelTypography.BODY_2
-  }, formatBytes(message.size) + " \xB7 "), /*#__PURE__*/React__default$1.createElement(Label, {
-    color: LabelColors.ONBACKGROUND_2,
-    type: LabelTypography.BODY_2
-  }, getMimeExtension(message.type) || stringSet.LABEL__OTHER))));
-}
-
-/*
-  ImageRenderer displays image with url or source
-  it checks if the source exist with img tag first
-  if it exists onLoad is called, if not onError is called
-  and those properties switch img tag to real purposing element
-*/
-// TODO: Set up the official constant of width and height with DesignTeam
-
-function ImageRenderer(_ref) {
+function TextButton(_ref) {
   var className = _ref.className,
-      url = _ref.url,
-      alt = _ref.alt,
-      width = _ref.width,
-      height = _ref.height,
-      defaultComponent = _ref.defaultComponent,
-      circle = _ref.circle,
-      placeHolder = _ref.placeHolder;
-
-  var _useState = useState(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      showDefaultComponent = _useState2[0],
-      setShowDefaultComponent = _useState2[1];
-
-  var _useState3 = useState(true),
-      _useState4 = _slicedToArray(_useState3, 2),
-      showPlaceHolder = _useState4[0],
-      setShowPlaceHolder = _useState4[1];
-
-  var DefaultComponent = useMemo(function () {
-    if (typeof defaultComponent === 'function') {
-      return defaultComponent();
-    }
-
-    return defaultComponent;
-  }, [defaultComponent]);
-  var PlaceHolder = useMemo(function () {
-    if (placeHolder && typeof placeHolder === 'function') {
-      return placeHolder({
-        style: {
-          width: '100%',
-          minWidth: width,
-          height: height,
-          position: 'absolute',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }
-      });
-    }
-
-    return null;
-  }, [placeHolder]);
-  var HiddenImageLoader = useMemo(function () {
-    setShowDefaultComponent(false); // reset the state when url is changed
-
-    return /*#__PURE__*/React__default$1.createElement("img", {
-      className: "rogu-image-renderer__hidden-image-loader",
-      src: url,
-      alt: alt,
-      onLoad: function onLoad() {
-        return setShowPlaceHolder(false);
-      },
-      onError: function onError() {
-        return setShowDefaultComponent(true);
-      }
-    });
-  }, [url]);
+      color = _ref.color,
+      disabled = _ref.disabled,
+      underline = _ref.underline,
+      onClick = _ref.onClick,
+      children = _ref.children;
   return /*#__PURE__*/React__default$1.createElement("div", {
-    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-image-renderer']).join(' ')
-  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default$1.createElement("div", {
-    className: "rogu-image-renderer__image",
-    style: {
-      backgroundImage: "url(".concat(url, ")"),
-      borderRadius: circle ? '50%' : null
-    }
-  }), HiddenImageLoader);
+    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), [changeColorToClassName$2(color), 'rogu-text-button', underline ? 'rogu-text-button--no-underline' : '', disabled ? 'rogu-text-button--disabled' : '']).join(' '),
+    role: "button",
+    tabIndex: 0,
+    onClick: onClick,
+    onKeyPress: onClick
+  }, children);
 }
-ImageRenderer.propTypes = {
-  className: PropTypes$1.oneOfType([PropTypes$1.arrayOf(PropTypes$1.string), PropTypes$1.string]),
-  url: PropTypes$1.string.isRequired,
-  alt: PropTypes$1.string,
-  width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
-  height: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
-  defaultComponent: PropTypes$1.oneOfType([PropTypes$1.element, PropTypes$1.func]),
-  placeHolder: PropTypes$1.func,
-  circle: PropTypes$1.bool
+TextButton.propTypes = {
+  className: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.arrayOf(PropTypes$1.string)]),
+  color: PropTypes$1.string,
+  disabled: PropTypes$1.bool,
+  underline: PropTypes$1.bool,
+  onClick: PropTypes$1.func,
+  children: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.element]).isRequired
 };
-ImageRenderer.defaultProps = {
+TextButton.defaultProps = {
   className: '',
-  defaultComponent: null,
-  placeHolder: null,
-  alt: '',
-  width: null,
-  height: null,
-  circle: false
+  color: Colors$2.ONBACKGROUND_1,
+  disabled: false,
+  underline: false,
+  onClick: function onClick() {}
 };
+
+var http = /https?:\/\//;
+function LinkLabel(_ref) {
+  var className = _ref.className,
+      src = _ref.src,
+      type = _ref.type,
+      color = _ref.color,
+      children = _ref.children;
+  var url = http.test(src) ? src : "http://".concat(src);
+  return /*#__PURE__*/React__default$1.createElement("a", {
+    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-link-label', color ? changeColorToClassName$1(color) : '']).join(' '),
+    href: url,
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-link-label__label",
+    type: type,
+    color: color
+  }, children));
+}
+LinkLabel.propTypes = {
+  className: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.arrayOf(PropTypes$1.string)]),
+  src: PropTypes$1.string.isRequired,
+  type: PropTypes$1.oneOf(Object.keys(LabelTypography)).isRequired,
+  color: PropTypes$1.oneOf(Object.keys(LabelColors)).isRequired,
+  children: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.element, PropTypes$1.arrayOf(PropTypes$1.string), PropTypes$1.arrayOf(PropTypes$1.element)]).isRequired
+};
+LinkLabel.defaultProps = {
+  className: ''
+};
+
+function TextMessageItemBody$1(_a) {
+  var className = _a.className,
+      _b = _a.isByMe,
+      isByMe = _b === void 0 ? false : _b,
+      content = _a.content,
+      _c = _a.mode,
+      mode = _c === void 0 ? 'normal' : _c,
+      _d = _a.isHidden,
+      isHidden = _d === void 0 ? false : _d;
+  var stringSet = useContext(LocalizationContext).stringSet;
+
+  var _e = useState('init'),
+      clampState = _e[0],
+      setClampState = _e[1];
+
+  var textRef = useRef(null);
+  useEffect(function () {
+    if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
+      setClampState('clamped');
+    }
+  }, [textRef.current]);
+
+  function handleExpand() {
+    setClampState('expanded');
+  }
+
+  return /*#__PURE__*/React__default$1.createElement("div", {
+    className: getClassName([className, 'rogu-clamped-message-item-body', clampState == 'expanded' ? 'rogu-clamped-message-item-body--expanded' : '', !isByMe ? 'rogu-clamped-message-item-body--incoming' : '', mode === 'fileViewerCaption' ? 'rogu-clamped-message-item-body--viewer-mode' : '', mode === 'fileViewerCaption' && isHidden ? 'rogu-clamped-message-item-body--viewer-mode__hidden' : '', mode === 'thumbnailCaption' ? 'rogu-clamped-message-item-body--preview-mode' : ''])
+  }, /*#__PURE__*/React__default$1.createElement("div", {
+    ref: textRef,
+    className: "rogu-clamped-message-item-body__inner"
+  }, content === null || content === void 0 ? void 0 : content.split(/\r/).map(function (words, i) {
+    return words === '' ? /*#__PURE__*/React__default$1.createElement("br", {
+      key: i
+    }) : replaceUrlsWithLink(words);
+  })), clampState === 'clamped' && /*#__PURE__*/React__default$1.createElement(TextButton, {
+    className: "rogu-clamped-message-item-body__read-more",
+    onClick: handleExpand
+  }, /*#__PURE__*/React__default$1.createElement(Label, {
+    type: LabelTypography.BODY_1
+  }, stringSet.BUTTON__READ_MORE)));
+}
+
+function replaceUrlsWithLink(text) {
+  var _a = extractUrls(text),
+      urls = _a.urls,
+      sentences = _a.sentences;
+
+  var elements = [];
+  sentences.forEach(function (sentence, i) {
+    if (sentence !== '') {
+      elements.push( /*#__PURE__*/React__default$1.createElement(Label, {
+        className: "rogu-text-message-item-body__message",
+        color: LabelColors.ONBACKGROUND_1,
+        key: uuidv4(),
+        type: LabelTypography.BODY_1
+      }, sentence));
+    }
+
+    var currentUrl = urls[i];
+
+    if (currentUrl) {
+      elements.push( /*#__PURE__*/React__default$1.createElement(LinkLabel, {
+        className: "rogu-text-message-item-body__message",
+        color: LabelColors.SECONDARY_3,
+        key: uuidv4(),
+        src: currentUrl,
+        type: LabelTypography.BODY_1
+      }, currentUrl));
+    }
+  });
+  return elements;
+}
 
 var colorSet = {
   "#DF4141": ["A", "B", "C", "D"],
@@ -3733,6 +3640,103 @@ function RepliedMaterialMessageItemBody(_a) {
   })));
 }
 
+/*
+  ImageRenderer displays image with url or source
+  it checks if the source exist with img tag first
+  if it exists onLoad is called, if not onError is called
+  and those properties switch img tag to real purposing element
+*/
+// TODO: Set up the official constant of width and height with DesignTeam
+
+function ImageRenderer(_ref) {
+  var className = _ref.className,
+      url = _ref.url,
+      alt = _ref.alt,
+      width = _ref.width,
+      height = _ref.height,
+      defaultComponent = _ref.defaultComponent,
+      circle = _ref.circle,
+      placeHolder = _ref.placeHolder;
+
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showDefaultComponent = _useState2[0],
+      setShowDefaultComponent = _useState2[1];
+
+  var _useState3 = useState(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      showPlaceHolder = _useState4[0],
+      setShowPlaceHolder = _useState4[1];
+
+  var DefaultComponent = useMemo(function () {
+    if (typeof defaultComponent === 'function') {
+      return defaultComponent();
+    }
+
+    return defaultComponent;
+  }, [defaultComponent]);
+  var PlaceHolder = useMemo(function () {
+    if (placeHolder && typeof placeHolder === 'function') {
+      return placeHolder({
+        style: {
+          width: '100%',
+          minWidth: width,
+          height: height,
+          position: 'absolute',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }
+      });
+    }
+
+    return null;
+  }, [placeHolder]);
+  var HiddenImageLoader = useMemo(function () {
+    setShowDefaultComponent(false); // reset the state when url is changed
+
+    return /*#__PURE__*/React__default$1.createElement("img", {
+      className: "rogu-image-renderer__hidden-image-loader",
+      src: url,
+      alt: alt,
+      onLoad: function onLoad() {
+        return setShowPlaceHolder(false);
+      },
+      onError: function onError() {
+        return setShowDefaultComponent(true);
+      }
+    });
+  }, [url]);
+  return /*#__PURE__*/React__default$1.createElement("div", {
+    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-image-renderer']).join(' ')
+  }, showPlaceHolder && PlaceHolder, showDefaultComponent ? DefaultComponent : /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-image-renderer__image",
+    style: {
+      backgroundImage: "url(".concat(url, ")"),
+      borderRadius: circle ? '50%' : null
+    }
+  }), HiddenImageLoader);
+}
+ImageRenderer.propTypes = {
+  className: PropTypes$1.oneOfType([PropTypes$1.arrayOf(PropTypes$1.string), PropTypes$1.string]),
+  url: PropTypes$1.string.isRequired,
+  alt: PropTypes$1.string,
+  width: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+  height: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.number]),
+  defaultComponent: PropTypes$1.oneOfType([PropTypes$1.element, PropTypes$1.func]),
+  placeHolder: PropTypes$1.func,
+  circle: PropTypes$1.bool
+};
+ImageRenderer.defaultProps = {
+  className: '',
+  defaultComponent: null,
+  placeHolder: null,
+  alt: '',
+  width: null,
+  height: null,
+  circle: false
+};
+
 function RepliedMediaMessageItemBody(_a) {
   var body = _a.body,
       isByMe = _a.isByMe,
@@ -3904,139 +3908,162 @@ function RepliedMessageItemBody(_a) {
   }
 }
 
-function TextButton(_ref) {
-  var className = _ref.className,
-      color = _ref.color,
-      disabled = _ref.disabled,
-      underline = _ref.underline,
-      onClick = _ref.onClick,
-      children = _ref.children;
-  return /*#__PURE__*/React__default$1.createElement("div", {
-    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), [changeColorToClassName$2(color), 'rogu-text-button', underline ? 'rogu-text-button--no-underline' : '', disabled ? 'rogu-text-button--disabled' : '']).join(' '),
-    role: "button",
-    tabIndex: 0,
-    onClick: onClick,
-    onKeyPress: onClick
-  }, children);
-}
-TextButton.propTypes = {
-  className: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.arrayOf(PropTypes$1.string)]),
-  color: PropTypes$1.string,
-  disabled: PropTypes$1.bool,
-  underline: PropTypes$1.bool,
-  onClick: PropTypes$1.func,
-  children: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.element]).isRequired
-};
-TextButton.defaultProps = {
-  className: '',
-  color: Colors$2.ONBACKGROUND_1,
-  disabled: false,
-  underline: false,
-  onClick: function onClick() {}
-};
+function OGMessageItemBody(_a) {
+  var _b, _c, _d, _e, _f, _g, _h, _j;
 
-var http = /https?:\/\//;
-function LinkLabel(_ref) {
-  var className = _ref.className,
-      src = _ref.src,
-      type = _ref.type,
-      color = _ref.color,
-      children = _ref.children;
-  var url = http.test(src) ? src : "http://".concat(src);
-  return /*#__PURE__*/React__default$1.createElement("a", {
-    className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-link-label', color ? changeColorToClassName$1(color) : '']).join(' '),
-    href: url,
-    target: "_blank",
-    rel: "noopener noreferrer"
-  }, /*#__PURE__*/React__default$1.createElement(Label, {
-    className: "rogu-link-label__label",
-    type: type,
-    color: color
-  }, children));
-}
-LinkLabel.propTypes = {
-  className: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.arrayOf(PropTypes$1.string)]),
-  src: PropTypes$1.string.isRequired,
-  type: PropTypes$1.oneOf(Object.keys(LabelTypography)).isRequired,
-  color: PropTypes$1.oneOf(Object.keys(LabelColors)).isRequired,
-  children: PropTypes$1.oneOfType([PropTypes$1.string, PropTypes$1.element, PropTypes$1.arrayOf(PropTypes$1.string), PropTypes$1.arrayOf(PropTypes$1.element)]).isRequired
-};
-LinkLabel.defaultProps = {
-  className: ''
-};
-
-function TextMessageItemBody$1(_a) {
   var className = _a.className,
-      _b = _a.isByMe,
-      isByMe = _b === void 0 ? false : _b,
-      content = _a.content,
-      _c = _a.mode,
-      mode = _c === void 0 ? 'normal' : _c,
-      _d = _a.isHidden,
-      isHidden = _d === void 0 ? false : _d;
-  var stringSet = useContext(LocalizationContext).stringSet;
+      _k = _a.isByMe,
+      isByMe = _k === void 0 ? false : _k,
+      _l = _a.isOnPreview,
+      isOnPreview = _l === void 0 ? false : _l,
+      message = _a.message,
+      _m = _a.mouseHover,
+      mouseHover = _m === void 0 ? false : _m,
+      onClickRepliedMessage = _a.onClickRepliedMessage,
+      onClosePreview = _a.onClosePreview;
+  var messageBody = message.message;
+  var repliedMessageBody = '';
+  var repliedMessageCreatedAt = 0;
+  var repliedMessageId = '';
+  var repliedMessageMediaUrl = '';
+  var repliedMessageMimeType = '*';
+  var repliedMessageNickname = '';
+  var repliedMessageType = RepliedMessageType.Text;
+  var hasRepliedMessage = isReplyingMessage(message);
 
-  var _e = useState('init'),
-      clampState = _e[0],
-      setClampState = _e[1];
+  if (hasRepliedMessage) {
+    var _o = formatedStringToRepliedMessage(messageBody),
+        originalMessage = _o.originalMessage,
+        parentMessageBody = _o.parentMessageBody,
+        parentMessageNickname = _o.parentMessageNickname;
 
-  var textRef = useRef(null);
-  useEffect(function () {
-    if (textRef.current && textRef.current.scrollHeight > textRef.current.clientHeight) {
-      setClampState('clamped');
-    }
-  }, [textRef.current]);
-
-  function handleExpand() {
-    setClampState('expanded');
+    var repliedMessage = metaArraysToRepliedMessage(message.metaArrays);
+    messageBody = originalMessage;
+    repliedMessageBody = parentMessageBody;
+    repliedMessageCreatedAt = repliedMessage.parentMessageCreatedAt;
+    repliedMessageId = repliedMessage.parentMessageId;
+    repliedMessageMediaUrl = repliedMessage.parentMessageMediaUrl;
+    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
+    repliedMessageNickname = parentMessageNickname;
+    repliedMessageType = repliedMessage.parentMessageType;
   }
 
+  var handleScrollToRepliedMessage = function handleScrollToRepliedMessage() {
+    if (hasRepliedMessage && onClickRepliedMessage && typeof onClickRepliedMessage === 'function') {
+      onClickRepliedMessage(Number(repliedMessageCreatedAt), Number(repliedMessageId));
+    }
+  };
+
+  var handleOpenOGUrl = function handleOpenOGUrl() {
+    var _a, _b;
+
+    if ((_a = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _a === void 0 ? void 0 : _a.url) window.open((_b = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _b === void 0 ? void 0 : _b.url);
+  };
+
   return /*#__PURE__*/React__default$1.createElement("div", {
-    className: getClassName([className, 'rogu-clamped-message-item-body', clampState == 'expanded' ? 'rogu-clamped-message-item-body--expanded' : '', !isByMe ? 'rogu-clamped-message-item-body--incoming' : '', mode === 'fileViewerCaption' ? 'rogu-clamped-message-item-body--viewer-mode' : '', mode === 'fileViewerCaption' && isHidden ? 'rogu-clamped-message-item-body--viewer-mode__hidden' : '', mode === 'thumbnailCaption' ? 'rogu-clamped-message-item-body--preview-mode' : ''])
+    className: getClassName([className, 'rogu-og-message-item-body', isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming', isOnPreview ? 'rogu-og-message-item-body--preview' : '', mouseHover ? 'mouse-hover' : '', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'rogu-og-message-reactions' : ''])
+  }, hasRepliedMessage && /*#__PURE__*/React__default$1.createElement(RepliedMessageItemBody, {
+    body: repliedMessageBody,
+    isByMe: isByMe,
+    mimeType: repliedMessageMimeType,
+    nickname: repliedMessageNickname,
+    type: repliedMessageType,
+    onClick: function onClick() {
+      return handleScrollToRepliedMessage();
+    },
+    mediaUrl: repliedMessageMediaUrl
+  }), /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-og-message-item-body__og-wrapper"
   }, /*#__PURE__*/React__default$1.createElement("div", {
-    ref: textRef,
-    className: "rogu-clamped-message-item-body__inner"
-  }, content === null || content === void 0 ? void 0 : content.split(/\r/).map(function (words, i) {
-    return words === '' ? /*#__PURE__*/React__default$1.createElement("br", {
-      key: i
-    }) : replaceUrlsWithLink(words);
-  })), clampState === 'clamped' && /*#__PURE__*/React__default$1.createElement(TextButton, {
-    className: "rogu-clamped-message-item-body__read-more",
-    onClick: handleExpand
-  }, /*#__PURE__*/React__default$1.createElement(Label, {
-    type: LabelTypography.BODY_1
-  }, stringSet.BUTTON__READ_MORE)));
+    className: "rogu-og-message-item-body__og-container",
+    onClick: handleOpenOGUrl,
+    role: "button",
+    tabIndex: 0
+  }, /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-og-message-item-body__og-thumbnail"
+  }, /*#__PURE__*/React__default$1.createElement(ImageRenderer$1, {
+    className: "rogu-og-message-item-body__og-thumbnail__image",
+    url: ((_d = (_c = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _c === void 0 ? void 0 : _c.defaultImage) === null || _d === void 0 ? void 0 : _d.url) || '',
+    alt: (_f = (_e = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _e === void 0 ? void 0 : _e.defaultImage) === null || _f === void 0 ? void 0 : _f.alt,
+    width: "60px",
+    height: "60px",
+    defaultComponent: /*#__PURE__*/React__default$1.createElement("div", {
+      className: "rogu-og-message-item-body__og-thumbnail__place-holder"
+    }, /*#__PURE__*/React__default$1.createElement(Icon, {
+      className: "rogu-og-message-item-body__og-thumbnail__place-holder__icon",
+      type: IconTypes.THUMBNAIL_NONE,
+      width: "60px",
+      height: "60px"
+    }))
+  })), /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-og-message-item-body__description"
+  }, ((_g = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _g === void 0 ? void 0 : _g.title) && /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-og-message-item-body__description__title",
+    type: LabelTypography.SUBTITLE_2,
+    color: LabelColors.ONBACKGROUND_1
+  }, message.ogMetaData.title), ((_h = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _h === void 0 ? void 0 : _h.description) && /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-og-message-item-body__description__description",
+    type: LabelTypography.BODY_2,
+    color: LabelColors.ONBACKGROUND_1
+  }, message.ogMetaData.description), ((_j = message === null || message === void 0 ? void 0 : message.ogMetaData) === null || _j === void 0 ? void 0 : _j.url) && /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-og-message-item-body__description__url",
+    type: LabelTypography.CAPTION_3,
+    color: LabelColors.ONBACKGROUND_2
+  }, message.ogMetaData.url))), isOnPreview && /*#__PURE__*/React__default$1.createElement(IconButton, {
+    className: "sendbird-chat-header__right__search",
+    width: "32px",
+    height: "32px",
+    onClick: onClosePreview
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    type: IconTypes.CLOSE,
+    fillColor: IconColors.ON_BACKGROUND_1,
+    width: "24px",
+    height: "24px"
+  }))), /*#__PURE__*/React__default$1.createElement(TextMessageItemBody$1, {
+    className: className,
+    isByMe: isByMe,
+    content: messageBody
+  }));
 }
 
-function replaceUrlsWithLink(text) {
-  var _a = extractUrls(text),
-      urls = _a.urls,
-      sentences = _a.sentences;
-
-  var elements = [];
-  sentences.forEach(function (sentence, i) {
-    if (sentence !== '') {
-      elements.push( /*#__PURE__*/React__default$1.createElement(Label, {
-        className: "rogu-text-message-item-body__message",
-        color: LabelColors.ONBACKGROUND_1,
-        key: uuidv4(),
-        type: LabelTypography.BODY_1
-      }, sentence));
-    }
-
-    var currentUrl = urls[i];
-
-    if (currentUrl) {
-      elements.push( /*#__PURE__*/React__default$1.createElement(LinkLabel, {
-        className: "rogu-text-message-item-body__message",
-        color: LabelColors.SECONDARY_3,
-        key: uuidv4(),
-        src: currentUrl,
-        type: LabelTypography.BODY_1
-      }, currentUrl));
-    }
-  });
-  return elements;
+function FileMessageItemBody(_a) {
+  var className = _a.className,
+      message = _a.message,
+      _b = _a.isByMe,
+      isByMe = _b === void 0 ? false : _b;
+  var stringSet = useContext(LocalizationContext).stringSet;
+  return /*#__PURE__*/React__default$1.createElement("a", {
+    className: getClassName([className, 'rogu-file-message-item-body', isByMe ? 'rogu-file-message-item-body--outgoing' : 'rogu-file-message-item-body--incoming']),
+    href: message.plainUrl,
+    target: "_blank",
+    rel: "noreferrer"
+  }, /*#__PURE__*/React__default$1.createElement(Icon, {
+    className: 'rogu-file-message-item-body__icon',
+    type: {
+      WORD: IconTypes.ROGU_FILE_WORD,
+      EXCEL: IconTypes.ROGU_FILE_EXCEL,
+      POWERPOINT: IconTypes.ROGU_FILE_POWERPOINT,
+      PDF: IconTypes.ROGU_FILE_PDF,
+      OTHERS: IconTypes.ROGU_FILE_OTHERS
+    }[getFileType(message === null || message === void 0 ? void 0 : message.type)],
+    fillColor: IconColors.PRIMARY,
+    width: "28px",
+    height: "28px"
+  }), /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-file-message-item-body__content"
+  }, message.name && /*#__PURE__*/React__default$1.createElement(Label, {
+    className: "rogu-file-message-item-body__name",
+    color: LabelColors.ONBACKGROUND_1,
+    type: LabelTypography.SUBTITLE_2
+  }, message.name), /*#__PURE__*/React__default$1.createElement("div", {
+    className: "rogu-file-message-item-body__meta"
+  }, message.size && /*#__PURE__*/React__default$1.createElement(Label, {
+    color: LabelColors.ONBACKGROUND_2,
+    type: LabelTypography.BODY_2
+  }, formatBytes(message.size) + " \xB7 "), /*#__PURE__*/React__default$1.createElement(Label, {
+    color: LabelColors.ONBACKGROUND_2,
+    type: LabelTypography.BODY_2
+  }, getMimeExtension(message.type) || stringSet.LABEL__OTHER))));
 }
 
 function ThumbnailMessageItemBody(_a) {
@@ -4782,7 +4809,8 @@ function MessageContent(_a) {
     onClickRepliedMessage: scrollToMessage
   }), isOGMessage(message) && /*#__PURE__*/React__default$1.createElement(OGMessageItemBody, {
     message: message,
-    isByMe: isByMe
+    isByMe: isByMe,
+    onClickRepliedMessage: scrollToMessage
   }), isAssignmentMessage(message.customType) && /*#__PURE__*/React__default$1.createElement(AssignmentMessageItemBody, {
     message: message,
     isByMe: isByMe
