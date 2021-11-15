@@ -116,7 +116,6 @@ export default class ConversationScroll extends Component {
           className="rogu-conversation__scroll-container"
           onScroll={this.onScroll}
         >
-          <div className="rogu-conversation__padding" />
           {/*
             To do: Implement windowing
             Implement windowing if you are dealing with large number of messages/channels
@@ -124,147 +123,81 @@ export default class ConversationScroll extends Component {
             We hesitate to bring one more dependency to our library,
             we are planning to implement it inside the library
           */}
-          <div className="rogu-conversation__messages-padding">
-            {Array.from(groupMessagesByDate(allMessages).values()).map(
-              (messages, i) => {
-                const currentCreatedAt = messages[0]?.createdAt;
-
-                return (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <div key={i}>
-                    <DateSeparator createdAt={currentCreatedAt} />
-                    {messages.map((m, idx) => {
-                      const previousMessage = messages[idx - 1];
-                      const nextMessage = messages[idx + 1];
-                      const [chainTop, chainBottom] = useMessageGrouping
-                        ? compareMessagesForGrouping(
-                          previousMessage,
-                          m,
-                          nextMessage,
-                        )
-                        : [false, false];
-
-                      if (renderChatItem) {
-                        return (
-                          <div
-                            key={m.messageId || m.reqId}
-                            className="sendbird-msg--scroll-ref"
-                          >
-                            {renderChatItem({
-                              message: m,
-                              highLightedMessageId,
-                              channel: currentGroupChannel,
-                              // hasSeparator: hasSeparator,
-                              onDeleteMessage: deleteMessage,
-                              onUpdateMessage: updateMessage,
-                              onResendMessage: resendMessage,
-                              onScrollToMessage: scrollToMessage,
-                              emojiContainer,
-                              chainTop,
-                              chainBottom,
-                              menuDisabled: disabled,
-                            })}
-                          </div>
-                        );
-                      }
-
-                      return (
-                        <MessageHOC
-                          highLightedMessageId={highLightedMessageId}
-                          renderCustomMessage={renderCustomMessage}
-                          key={m.messageId || m.reqId}
-                          userId={userId}
-                          // show status for pending/failed messages
-                          message={m}
-                          scrollToMessage={scrollToMessage}
-                          currentGroupChannel={currentGroupChannel}
-                          disabled={disabled}
-                          membersMap={membersMap}
-                          chainTop={chainTop}
-                          useReaction={useReaction}
-                          emojiAllMap={emojiAllMap}
-                          emojiContainer={emojiContainer}
-                          editDisabled={editDisabled}
-                          // hasSeparator={hasSeparator}
-                          chainBottom={chainBottom}
-                          updateMessage={updateMessage}
-                          deleteMessage={deleteMessage}
-                          resendMessage={resendMessage}
-                          toggleReaction={toggleReaction}
-                          memoizedEmojiListItems={memoizedEmojiListItems}
-                          onReplyMessage={onReplyMessage}
-                        />
-                      );
-                    })}
-                  </div>
-                );
-              },
-            )}
-            {/* {allMessages.map((m, idx) => {
-              const previousMessage = allMessages[idx - 1];
-              const nextMessage = allMessages[idx + 1];
-              const [chainTop, chainBottom] = useMessageGrouping
-                ? compareMessagesForGrouping(previousMessage, m, nextMessage)
-                : [false, false];
-              const previousMessageCreatedAt = previousMessage && previousMessage.createdAt;
-              const currentCreatedAt = m.createdAt;
-              // https://stackoverflow.com/a/41855608
-              const hasSeparator = !(
-                previousMessageCreatedAt
-                && isSameDay(currentCreatedAt, previousMessageCreatedAt)
-              );
-              if (renderChatItem) {
-                return (
-                  <div
-                    key={m.messageId || m.reqId}
-                    className="sendbird-msg--scroll-ref"
-                  >
-                    {renderChatItem({
-                      message: m,
-                      highLightedMessageId,
-                      channel: currentGroupChannel,
-                      onDeleteMessage: deleteMessage,
-                      onUpdateMessage: updateMessage,
-                      onResendMessage: resendMessage,
-                      onScrollToMessage: scrollToMessage,
-                      emojiContainer,
-                      chainTop,
-                      chainBottom,
-                      hasSeparator,
-                      menuDisabled: disabled,
-                    })}
-                  </div>
-                );
-              }
+          {Array.from(groupMessagesByDate(allMessages).values()).map(
+            (messages, i) => {
+              const currentCreatedAt = messages[0]?.createdAt;
 
               return (
-                <MessageHOC
-                  highLightedMessageId={highLightedMessageId}
-                  renderCustomMessage={renderCustomMessage}
-                  key={m.messageId || m.reqId}
-                  userId={userId}
-                  // show status for pending/failed messages
-                  message={m}
-                  scrollToMessage={scrollToMessage}
-                  currentGroupChannel={currentGroupChannel}
-                  disabled={disabled}
-                  membersMap={membersMap}
-                  chainTop={chainTop}
-                  useReaction={useReaction}
-                  emojiAllMap={emojiAllMap}
-                  emojiContainer={emojiContainer}
-                  editDisabled={editDisabled}
-                  hasSeparator={hasSeparator}
-                  chainBottom={chainBottom}
-                  updateMessage={updateMessage}
-                  deleteMessage={deleteMessage}
-                  resendMessage={resendMessage}
-                  toggleReaction={toggleReaction}
-                  memoizedEmojiListItems={memoizedEmojiListItems}
-                />
+                // eslint-disable-next-line react/no-array-index-key
+                <div key={i}>
+                  <DateSeparator createdAt={currentCreatedAt} />
+                  {messages.map((m, idx) => {
+                    const previousMessage = messages[idx - 1];
+                    const nextMessage = messages[idx + 1];
+                    const [chainTop, chainBottom] = useMessageGrouping
+                      ? compareMessagesForGrouping(
+                        previousMessage,
+                        m,
+                        nextMessage,
+                      )
+                      : [false, false];
+
+                    if (renderChatItem) {
+                      return (
+                        <div
+                          key={m.messageId || m.reqId}
+                          className="sendbird-msg--scroll-ref"
+                        >
+                          {renderChatItem({
+                            message: m,
+                            highLightedMessageId,
+                            channel: currentGroupChannel,
+                            // hasSeparator: hasSeparator,
+                            onDeleteMessage: deleteMessage,
+                            onUpdateMessage: updateMessage,
+                            onResendMessage: resendMessage,
+                            onScrollToMessage: scrollToMessage,
+                            emojiContainer,
+                            chainTop,
+                            chainBottom,
+                            menuDisabled: disabled,
+                          })}
+                        </div>
+                      );
+                    }
+
+                    return (
+                      <MessageHOC
+                        highLightedMessageId={highLightedMessageId}
+                        renderCustomMessage={renderCustomMessage}
+                        key={m.messageId || m.reqId}
+                        userId={userId}
+                        // show status for pending/failed messages
+                        message={m}
+                        scrollToMessage={scrollToMessage}
+                        currentGroupChannel={currentGroupChannel}
+                        disabled={disabled}
+                        membersMap={membersMap}
+                        chainTop={chainTop}
+                        useReaction={useReaction}
+                        emojiAllMap={emojiAllMap}
+                        emojiContainer={emojiContainer}
+                        editDisabled={editDisabled}
+                        // hasSeparator={hasSeparator}
+                        chainBottom={chainBottom}
+                        updateMessage={updateMessage}
+                        deleteMessage={deleteMessage}
+                        resendMessage={resendMessage}
+                        toggleReaction={toggleReaction}
+                        memoizedEmojiListItems={memoizedEmojiListItems}
+                        onReplyMessage={onReplyMessage}
+                      />
+                    );
+                  })}
+                </div>
               );
-            })} */}
-          </div>
+            },
+          )}
         </div>
         {showScrollBot && (
           <div

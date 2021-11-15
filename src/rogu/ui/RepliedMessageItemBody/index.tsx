@@ -1,12 +1,3 @@
-/**
- * TODO
- * [x] Handle normal text message
- * [x] Handle file message
- * [ ] Handle assignment message
- * [ ] Handle material message
- * [ ] Handle image message
- * [ ] Handle video message
- */
 import React from 'react';
 
 import RepliedAssignmentMessageItemBody from '../RepliedAssignmentMessageItemBody';
@@ -53,7 +44,7 @@ export function RepliedMessageItemBody({
           isByMe={isByMe}
           mimeType={mimeType}
           nickname={nickname}
-          onClick={() => console.log('Scroll to the message')}
+          onClick={onClick}
         />
       );
     case RepliedMessageType.Image:
@@ -64,7 +55,7 @@ export function RepliedMessageItemBody({
           isByMe={isByMe}
           mimeType={mimeType}
           nickname={nickname}
-          onClick={() => console.log('Scroll to the message')}
+          onClick={onClick}
           mediaUrl={mediaUrl}
         />
       );
@@ -72,7 +63,7 @@ export function RepliedMessageItemBody({
       return (
         <RepliedAssignmentMessageItemBody
           body={body}
-          isByMe={isByMe} // always false to match the styling
+          isByMe={isByMe}
           nickname={nickname}
           onClick={onClick}
         />
@@ -81,7 +72,7 @@ export function RepliedMessageItemBody({
       return (
         <RepliedMaterialMessageItemBody
           body={body}
-          isByMe={isByMe} // always false to match the styling
+          isByMe={isByMe}
           nickname={nickname}
           onClick={onClick}
         />

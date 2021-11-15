@@ -16,9 +16,7 @@ interface Props {
   mouseHover?: boolean;
   showFileViewer?: (bool: boolean) => void;
   isClickable: boolean;
-  onClickRepliedMessage?: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => void;
+  onClickRepliedMessage?: (createdAt: number, messageId: number) => void;
 }
 
 export default function ThumbnailMessageItemBody({
@@ -38,21 +36,33 @@ export default function ThumbnailMessageItemBody({
   const renderRepliedMessage = () => {
     const {
       parentMessageBody,
+      parentMessageCreatedAt,
+      parentMessageId,
+      parentMessageMediaUrl,
       parentMessageMimeType,
       parentMessageNickname,
       parentMessageType,
-      parentMessageMediaUrl,
     } = metaArraysToRepliedMessage(message.metaArrays);
 
     return (
       <RepliedMessageItemBody
         body={parentMessageBody}
         isByMe={isByMe}
+        mediaUrl={parentMessageMediaUrl}
         mimeType={parentMessageMimeType}
         nickname={parentMessageNickname}
         type={parentMessageType}
-        onClick={onClickRepliedMessage}
-        mediaUrl={parentMessageMediaUrl}
+        onClick={() => {
+          if (
+            onClickRepliedMessage &&
+            typeof onClickRepliedMessage === 'function'
+          ) {
+            onClickRepliedMessage(
+              Number(parentMessageCreatedAt),
+              Number(parentMessageId)
+            );
+          }
+        }}
       />
     );
   };

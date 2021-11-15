@@ -27,12 +27,13 @@ export const REPLIED_MESSAGE_TYPE = {
 
 export type RepliedMessage = {
   originalMessage?: string;
-  parentMessageId: string;
   parentMessageBody: string;
+  parentMessageCreatedAt: number;
+  parentMessageId: string;
+  parentMessageMediaUrl?: string;
   parentMessageMimeType?: string;
   parentMessageNickname: string;
   parentMessageType: RepliedMessageType;
-  parentMessageMediaUrl?: string;
 };
 
 export const formatedStringToRepliedMessage = (
@@ -55,6 +56,7 @@ export const formatedStringToRepliedMessage = (
     parentMessageBody,
     parentMessageNickname,
     parentMessageType: RepliedMessageType.Text,
+    parentMessageCreatedAt: 0,
   };
 };
 
@@ -118,11 +120,12 @@ export const metaArraysToRepliedMessage = (
       return repliedMessage;
     },
     {
-      parentMessageId: '',
       parentMessageBody: '',
+      parentMessageCreatedAt: 0,
+      parentMessageId: '',
+      parentMessageMediaUrl: '',
+      parentMessageMimeType: '*',
       parentMessageNickname: '',
       parentMessageType: RepliedMessageType.Text,
-      parentMessageMimeType: '*',
-      parentMessageMediaUrl: '',
     }
   );

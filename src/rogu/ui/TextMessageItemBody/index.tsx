@@ -14,9 +14,7 @@ interface Props {
   className?: string | Array<string>;
   isByMe?: boolean;
   message: UserMessage;
-  onClickRepliedMessage?: (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => void;
+  onClickRepliedMessage?: (createdAt: number, messageId: number) => void;
 }
 
 export default function TextMessageItemBody({
@@ -25,12 +23,14 @@ export default function TextMessageItemBody({
   message,
   onClickRepliedMessage,
 }: Props): ReactElement {
-  let repliedMessageNickname = '';
-  let repliedMessageBody = '';
-  let repliedMessageMimeType = '*';
-  let repliedMessageType = RepliedMessageType.Text;
   let messageBody = message.message;
+  let repliedMessageBody = '';
+  let repliedMessageCreatedAt = 0;
+  let repliedMessageId = '';
   let repliedMessageMediaUrl = '';
+  let repliedMessageMimeType = '*';
+  let repliedMessageNickname = '';
+  let repliedMessageType = RepliedMessageType.Text;
 
   const hasRepliedMessage = isReplyingMessage(message);
 
@@ -43,13 +43,28 @@ export default function TextMessageItemBody({
 
     const repliedMessage = metaArraysToRepliedMessage(message.metaArrays);
 
-    repliedMessageNickname = parentMessageNickname;
-    repliedMessageBody = parentMessageBody;
-    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
-    repliedMessageType = repliedMessage.parentMessageType;
     messageBody = originalMessage;
+    repliedMessageBody = parentMessageBody;
+    repliedMessageCreatedAt = repliedMessage.parentMessageCreatedAt;
+    repliedMessageId = repliedMessage.parentMessageId;
     repliedMessageMediaUrl = repliedMessage.parentMessageMediaUrl;
+    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
+    repliedMessageNickname = parentMessageNickname;
+    repliedMessageType = repliedMessage.parentMessageType;
   }
+
+  const handleScrollToRepliedMessage = () => {
+    if (
+      hasRepliedMessage &&
+      onClickRepliedMessage &&
+      typeof onClickRepliedMessage === 'function'
+    ) {
+      onClickRepliedMessage(
+        Number(repliedMessageCreatedAt),
+        Number(repliedMessageId)
+      );
+    }
+  };
 
   return (
     <>
@@ -60,7 +75,7 @@ export default function TextMessageItemBody({
           mimeType={repliedMessageMimeType}
           nickname={repliedMessageNickname}
           type={repliedMessageType}
-          onClick={onClickRepliedMessage}
+          onClick={() => handleScrollToRepliedMessage()}
           mediaUrl={repliedMessageMediaUrl}
         />
       )}
