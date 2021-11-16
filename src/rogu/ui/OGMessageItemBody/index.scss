@@ -3,8 +3,9 @@
 .rogu-og-message-item-body {
   position: relative;
   display: inline-block;
+  // TODO: Change fixing width and height lengths
   width: 100%;
-  min-width: 200px;
+  min-width: 320px;
   max-width: 400px;
 
   .rogu-og-message-item-body__og-wrapper {
@@ -17,7 +18,7 @@
   .rogu-og-message-item-body__og-container {
     display: flex;
     position: relative;
-    width: auto;
+    width: 100%;
   }
 
   .rogu-og-message-item-body__og-thumbnail {
@@ -31,24 +32,30 @@
   }
 
   .rogu-og-message-item-body__description {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     padding: 4px 8px;
-    flex: 1;
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0;
 
     .rogu-og-message-item-body__description__title,
     .rogu-og-message-item-body__description__description {
       margin-bottom: 4px;
+      width: 100%;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      display: block;
+      display: inline-block;
     }
 
     .rogu-og-message-item-body__description__url {
+      width: 100%;
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-      display: block;
+      display: inline-block;
       margin: 0;
     }
   }
