@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-19edd113.js');
-var index$1 = require('./index-29f46788.js');
+var LocalizationContext = require('./LocalizationContext-4fe85bc0.js');
+var index$1 = require('./index-c20367e3.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-89b9b76c.js');
-var index$3 = require('./index-d977f030.js');
+var index$2 = require('./index-2ea15f3c.js');
+var index$3 = require('./index-f2387f01.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-2f6ad963.js');
+var Channel = require('./index-65b5d489.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-06d6d3ba.js');
+require('./actionTypes-04f99617.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-68c36dfe.js');
-require('./utils-3a858984.js');
-require('./LeaveChannel-ad0b84bc.js');
-require('./index-f88a7a69.js');
-require('./index-bb905412.js');
-require('./index-03e1ec86.js');
+require('./index-52fd918b.js');
+require('./utils-898f1912.js');
+require('./LeaveChannel-81eeb4e4.js');
+require('./index-c4c1b7b4.js');
+require('./index-acc45933.js');
+require('./index-d6aa2ffa.js');
 require('./ChannelSettings.js');
-require('./index-4644d9ec.js');
+require('./index-1afde0a5.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -6348,7 +6348,10 @@ function RepliedMessagePreview(_a) {
 }
 
 // https://davidwalsh.name/javascript-debounce-function
-
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// N milliseconds. If `immediate` is passed, trigger the function on the
+// leading edge, instead of the trailing.
 function debounce(func, wait, immediate) {
   var timeout;
   return function _debounce() {
@@ -6366,17 +6369,6 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-}
-function getUrlFromWords(inputValue, setUrl) {
-  var inputValueArray = inputValue.split(/\s+/);
-  var url = inputValueArray.find(function (word) {
-    return index$1.isUrl(word);
-  });
-  var hasUrl = !!url;
-  return hasUrl && setUrl({
-    hasUrl: true,
-    text: url
-  });
 }
 
 var MAX_FILE_SIZE = 10000000; // 10MB;
@@ -6494,6 +6486,25 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       url = _useState10[0],
       setUrl = _useState10[1];
 
+  var handleUrlCheck = function handleUrlCheck(sentence) {
+    var _extractUrls = extractUrls(sentence),
+        urls = _extractUrls.urls;
+
+    var firstLink = urls[0];
+
+    if (firstLink) {
+      // Add `https://` since LinkPreview only support url with 'https://'
+      if (firstLink.indexOf('http://') === -1 || firstLink.indexOf('https://') === -1) {
+        firstLink = "https://".concat(firstLink);
+      }
+
+      setUrl({
+        hasUrl: true,
+        text: firstLink
+      });
+    }
+  };
+
   var renderPreviewUrl = function renderPreviewUrl(_ref) {
     var loading = _ref.loading,
         preview = _ref.preview;
@@ -6537,8 +6548,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
 
 
   React$1.useEffect(function () {
-    setHeight();
-    debounce(getUrlFromWords(inputValue, setUrl), 1000);
+    setHeight(); // TODO: this call is not debounced correctly. Consider to use lodash.debounce instead
+
+    debounce(handleUrlCheck(inputValue), 3000);
     return setHeight;
   }, [inputValue]);
 
