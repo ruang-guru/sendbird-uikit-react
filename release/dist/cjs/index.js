@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-fb3831f3.js');
-var index$1 = require('./index-efa85aa3.js');
+var LocalizationContext = require('./LocalizationContext-e1b3a8b1.js');
+var index$1 = require('./index-7a766d9e.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-ad8e9b5f.js');
-var index$3 = require('./index-9d3f943b.js');
+var index$2 = require('./index-3e684515.js');
+var index$3 = require('./index-fe48247a.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-e7437530.js');
+var Channel = require('./index-cd7d9154.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-19ed7a36.js');
+require('./actionTypes-cf5cb509.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-ec5979a8.js');
-require('./utils-4bb90be5.js');
-require('./LeaveChannel-45eec609.js');
-require('./index-9da1efad.js');
-require('./index-df01cbaf.js');
-require('./index-f7bfb223.js');
+require('./index-3f678423.js');
+require('./utils-45dd6d91.js');
+require('./LeaveChannel-890a932b.js');
+require('./index-7961cd7b.js');
+require('./index-ef646d9c.js');
+require('./index-14111d6f.js');
 require('./ChannelSettings.js');
-require('./index-9fb55392.js');
+require('./index-fee984c9.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -4639,7 +4639,8 @@ function MessageItemMenu(_a) {
   }
 
   var onCopyClick = function onCopyClick(message) {
-    index$1.copyToClipboard(message);
+    var originalMessage = index$1.formatedStringToRepliedMessage(message).originalMessage;
+    index$1.copyToClipboard(originalMessage);
     setShowToast(true);
     setTimeout(function () {
       setShowToast(false);
