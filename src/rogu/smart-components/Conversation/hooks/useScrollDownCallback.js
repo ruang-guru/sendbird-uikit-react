@@ -18,6 +18,7 @@ function useScrollDownCallback({
     if (!hasMoreToBottom) { return; }
     const messageListParams = new sdk.MessageListParams();
     messageListParams.nextResultSize = RESULT_SIZE;
+    messageListParams.includeMetaArray = true;
     messageListParams.includeReplies = false;
     messageListParams.includeReaction = true;
 

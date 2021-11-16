@@ -4459,9 +4459,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
+    word-break: break-word;
     -webkit-line-clamp: 10;
-    -webkit-box-orient: vertical;
-    align-self: center; }
+    -webkit-box-orient: vertical; }
   .sendbird-theme--light .rogu-clamped-message-item-body.rogu-clamped-message-item-body--incoming .rogu-clamped-message-item-body__read-more {
     color: var(--sendbird-light-secondary-300); }
   .sendbird-theme--dark .rogu-clamped-message-item-body.rogu-clamped-message-item-body--incoming .rogu-clamped-message-item-body__read-more {

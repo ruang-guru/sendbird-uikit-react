@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-20d3729d.js');
-var index$1 = require('./index-6ede9d93.js');
+var LocalizationContext = require('./LocalizationContext-19edd113.js');
+var index$1 = require('./index-29f46788.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-2717a226.js');
-var index$3 = require('./index-9f503d59.js');
+var index$2 = require('./index-89b9b76c.js');
+var index$3 = require('./index-d977f030.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-c8a5b4ac.js');
+var Channel = require('./index-2f6ad963.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-b3cc336b.js');
+require('./actionTypes-06d6d3ba.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-f6fc0de0.js');
-require('./utils-b0dac025.js');
-require('./LeaveChannel-a4dc794c.js');
-require('./index-8e84eaf6.js');
-require('./index-0a9e261e.js');
-require('./index-ebb95ec8.js');
+require('./index-68c36dfe.js');
+require('./utils-3a858984.js');
+require('./LeaveChannel-ad0b84bc.js');
+require('./index-f88a7a69.js');
+require('./index-bb905412.js');
+require('./index-03e1ec86.js');
 require('./ChannelSettings.js');
-require('./index-c6626b9b.js');
+require('./index-4644d9ec.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -1203,6 +1203,7 @@ function useHandleReconnect(_ref, _ref2) {
         var useReaction = appInfo.isUsingReaction || false;
         var messageListParams = new sdk.MessageListParams();
         messageListParams.prevResultSize = 30;
+        messageListParams.includeMetaArray = true;
         messageListParams.includeReplies = false;
         messageListParams.includeReaction = useReaction;
 
@@ -1265,6 +1266,7 @@ function useScrollCallback(_ref, _ref2) {
 
     var messageListParams = new sdk.MessageListParams();
     messageListParams.prevResultSize = 30;
+    messageListParams.includeMetaArray = true;
     messageListParams.includeReplies = false;
     messageListParams.includeReaction = true;
 
@@ -1326,6 +1328,7 @@ function useScrollDownCallback(_ref, _ref2) {
 
     var messageListParams = new sdk.MessageListParams();
     messageListParams.nextResultSize = RESULT_SIZE;
+    messageListParams.includeMetaArray = true;
     messageListParams.includeReplies = false;
     messageListParams.includeReaction = true;
 
