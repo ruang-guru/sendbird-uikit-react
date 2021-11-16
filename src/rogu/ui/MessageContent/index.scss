@@ -29,7 +29,9 @@ $avatarSize: 32px;
     flex-direction: column;
     align-items: flex-end;
     position: relative;
+    width: 100%;
     max-width: 548px;
+    box-sizing: border-box;
 
     .rogu-message-content__menu {
       margin-left: 4px;
@@ -43,6 +45,8 @@ $avatarSize: 32px;
       border-top-right-radius: $borderRadius;
       border-bottom-left-radius: $borderRadius;
       border-bottom-right-radius: $borderRadius;
+      box-sizing: border-box;
+      max-width: 100%;
 
       .rogu-message-content__bubble__header {
         line-height: 0;
