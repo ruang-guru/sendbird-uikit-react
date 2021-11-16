@@ -17,6 +17,8 @@ import Icon, { IconTypes, IconColors } from '../Icon';
 import ContextMenu, { MenuItems, MenuItem } from '../ContextMenu';
 import Toast from '../Toast';
 
+import {formatedStringToRepliedMessage} from '../../utils/repliedMessage';
+
 import './index.scss';
 
 interface Props {
@@ -85,8 +87,11 @@ export default function MessageItemMenu({
     return null;
   }
 
+  
+
   const onCopyClick = (message: string) => {
-    copyToClipboard(message);
+    const {originalMessage} = formatedStringToRepliedMessage(message);
+    copyToClipboard(originalMessage);
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
