@@ -7,20 +7,11 @@
   min-width: 200px;
   max-width: 400px;
 
-  .rogu-og-message-item-body__text-bubble {
-    position: relative;
-    word-break: break-all;
-    margin-top: 8px;
-
-    .rogu-og-message-item-body__text-bubble__message {
-      display: inline;
-    }
-  }
-
   .rogu-og-message-item-body__og-wrapper {
     padding: 8px;
     display: flex;
     border-radius: 4px;
+    margin-bottom: 8px;
   }
 
   .rogu-og-message-item-body__og-container {
@@ -117,15 +108,5 @@
         }
       }
     }
-  }
-
-  .rogu-og-message-item-body__cover {
-    display: none;
-    position: absolute;
-    top: 0%;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px 16px 0 0;
   }
 }

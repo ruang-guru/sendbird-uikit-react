@@ -1,60 +1,124 @@
-import React, { ReactElement, useContext } from 'react';
+import React, { ReactElement } from 'react';
 import { UserMessage } from 'sendbird';
+
 import './index.scss';
 
-import LinkLabel from '../../../ui/LinkLabel';
 import ImageRenderer from '../../../ui/ImageRenderer';
-
-import {
-  getClassName,
-  isEditedMessage,
-  isUrl,
-} from '../../../utils';
-import uuidv4 from '../../../utils/uuid';
-import { LocalizationContext } from '../../../lib/LocalizationContext';
 
 import Label, { LabelTypography, LabelColors } from '../Label';
 import Icon, { IconTypes, IconColors } from '../Icon';
-
 import IconButton from '../IconButton';
+import ClampedTextMessageItemBody from '../ClampedMessageItemBody';
+import RepliedMessageItemBody from '../RepliedMessageItemBody';
+
+import { getClassName } from '../../../utils';
+
+import {
+  formatedStringToRepliedMessage,
+  isReplyingMessage,
+  metaArraysToRepliedMessage,
+  RepliedMessageType,
+} from '../../utils';
 
 interface Props {
   className?: string | Array<string>;
-  message: UserMessage;
   isByMe?: boolean;
-  mouseHover?: boolean;
   isOnPreview?: boolean;
+  message: UserMessage;
+  mouseHover?: boolean;
+  onClickRepliedMessage?: (createdAt: number, messageId: number) => void;
   onClosePreview?: () => void;
 }
 
 export default function OGMessageItemBody({
   className,
-  message,
   isByMe = false,
-  mouseHover = false,
   isOnPreview = false,
+  message,
+  mouseHover = false,
+  onClickRepliedMessage,
   onClosePreview,
 }: Props): ReactElement {
-  const { stringSet } = useContext(LocalizationContext);
-  const openOGUrl = (): void => {
+  let messageBody = message.message;
+  let repliedMessageBody = '';
+  let repliedMessageCreatedAt = 0;
+  let repliedMessageId = '';
+  let repliedMessageMediaUrl = '';
+  let repliedMessageMimeType = '*';
+  let repliedMessageNickname = '';
+  let repliedMessageType = RepliedMessageType.Text;
+
+  const hasRepliedMessage = isReplyingMessage(message);
+
+  if (hasRepliedMessage) {
+    const {
+      originalMessage,
+      parentMessageBody,
+      parentMessageNickname,
+    } = formatedStringToRepliedMessage(messageBody);
+
+    const repliedMessage = metaArraysToRepliedMessage(message.metaArrays);
+
+    messageBody = originalMessage;
+    repliedMessageBody = parentMessageBody;
+    repliedMessageCreatedAt = repliedMessage.parentMessageCreatedAt;
+    repliedMessageId = repliedMessage.parentMessageId;
+    repliedMessageMediaUrl = repliedMessage.parentMessageMediaUrl;
+    repliedMessageMimeType = repliedMessage.parentMessageMimeType;
+    repliedMessageNickname = parentMessageNickname;
+    repliedMessageType = repliedMessage.parentMessageType;
+  }
+
+  const handleScrollToRepliedMessage = () => {
+    if (
+      hasRepliedMessage &&
+      onClickRepliedMessage &&
+      typeof onClickRepliedMessage === 'function'
+    ) {
+      onClickRepliedMessage(
+        Number(repliedMessageCreatedAt),
+        Number(repliedMessageId)
+      );
+    }
+  };
+
+  const handleOpenOGUrl = (): void => {
     if (message?.ogMetaData?.url) window.open(message?.ogMetaData?.url);
   };
 
   return (
-    <div className={getClassName([
-      className,
-      'rogu-og-message-item-body',
-      isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming',
-      isOnPreview ? 'rogu-og-message-item-body--preview' : '',
-      mouseHover ? 'mouse-hover' : '',
-      message?.reactions?.length > 0 ? 'rogu-og-message-reactions' : '',
-    ])}>
+    <div
+      className={getClassName([
+        className,
+        'rogu-og-message-item-body',
+        isByMe ? 'rogu-og-message--outgoing' : 'rogu-og-message--incoming',
+        isOnPreview ? 'rogu-og-message-item-body--preview' : '',
+        mouseHover ? 'mouse-hover' : '',
+        message?.reactions?.length > 0 ? 'rogu-og-message-reactions' : '',
+      ])}
+    >
+      {/* Replied message */}
+      {hasRepliedMessage && (
+        <RepliedMessageItemBody
+          body={repliedMessageBody}
+          isByMe={isByMe}
+          mimeType={repliedMessageMimeType}
+          nickname={repliedMessageNickname}
+          type={repliedMessageType}
+          onClick={() => handleScrollToRepliedMessage()}
+          mediaUrl={repliedMessageMediaUrl}
+        />
+      )}
 
-      <div className="rogu-og-message-item-body__og-wrapper" >
-        <div className="rogu-og-message-item-body__og-container" onClick={openOGUrl}>
-          <div
-            className="rogu-og-message-item-body__og-thumbnail"
-          >
+      {/* OG preview */}
+      <div className="rogu-og-message-item-body__og-wrapper">
+        <div
+          className="rogu-og-message-item-body__og-container"
+          onClick={handleOpenOGUrl}
+          role="button"
+          tabIndex={0}
+        >
+          <div className="rogu-og-message-item-body__og-thumbnail">
             <ImageRenderer
               className="rogu-og-message-item-body__og-thumbnail__image"
               url={message?.ogMetaData?.defaultImage?.url || ''}
@@ -103,8 +167,9 @@ export default function OGMessageItemBody({
             )}
           </div>
         </div>
-        {
-          isOnPreview && <IconButton
+
+        {isOnPreview && (
+          <IconButton
             className="sendbird-chat-header__right__search"
             width="32px"
             height="32px"
@@ -117,46 +182,15 @@ export default function OGMessageItemBody({
               height="24px"
             />
           </IconButton>
-        }
+        )}
       </div>
 
-      <div className="rogu-og-message-item-body__text-bubble">
-        {message?.message.split(' ').map((word: string) => (
-          isUrl(word)
-            ? (
-              <LinkLabel
-                className="rogu-og-message-item-body__text-bubble__message"
-                key={uuidv4()}
-                src={word}
-                type={LabelTypography.BODY_1}
-                color={isByMe ? LabelColors.ONBACKGROUND_1 : LabelColors.SECONDARY_3}
-              >
-                {word}
-              </LinkLabel>
-            )
-            : (
-              <Label
-                className="rogu-og-message-item-body__text-bubble__message"
-                key={uuidv4()}
-                type={LabelTypography.BODY_1}
-                color={LabelColors.ONBACKGROUND_1}
-              >
-                {word + ' '}
-              </Label>
-            )
-        )
-        )}
-        {isEditedMessage(message) && (
-          <Label
-            className="rogu-og-message-item-body__text-bubble__message"
-            type={LabelTypography.BODY_1}
-            color={isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2}
-          >
-            {` ${stringSet.MESSAGE_EDITED} `}
-          </Label>
-        )}
-      </div>
-      <div className="rogu-og-message-item-body__cover" />
-    </div>
+      {/* Message body */}
+      <ClampedTextMessageItemBody
+        className={className}
+        isByMe={isByMe}
+        content={messageBody}
+      />
+    </div >
   );
 }

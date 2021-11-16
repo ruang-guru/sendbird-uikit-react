@@ -1,14 +1,14 @@
 import React from 'react';
-import {shallow} from 'enzyme';
 import renderer from 'react-test-renderer';
 
-import OGMessageItemBody from "../index";
+import OGMessageItemBody from '../index';
+
+import { OG_MESSAGE } from '../../../../../__mocks__/messagesMock';
 
 describe('OGMessageItemBody', () => {
-  it('should do a snapshot test of the OGMessageItemBody DOM', function() {
-    const text = "example-text";
+  it('should do a snapshot test of the OGMessageItemBody DOM', function () {
     const component = renderer.create(
-      <OGMessageItemBody />,
+      <OGMessageItemBody message={OG_MESSAGE} />
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
