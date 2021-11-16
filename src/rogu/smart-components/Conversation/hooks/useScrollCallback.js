@@ -16,6 +16,7 @@ function useScrollCallback({
     if (!hasMore) { return; }
     const messageListParams = new sdk.MessageListParams();
     messageListParams.prevResultSize = 30;
+    messageListParams.includeMetaArray = true;
     messageListParams.includeReplies = false;
     messageListParams.includeReaction = true;
 
