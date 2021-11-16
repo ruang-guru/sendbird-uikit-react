@@ -125,7 +125,7 @@ export default function OGMessageItemBody({
               alt={message?.ogMetaData?.defaultImage?.alt}
               width="60px"
               height="60px"
-              defaultComponent={
+              defaultComponent={(
                 <div className="rogu-og-message-item-body__og-thumbnail__place-holder">
                   <Icon
                     className="rogu-og-message-item-body__og-thumbnail__place-holder__icon"
@@ -134,7 +134,7 @@ export default function OGMessageItemBody({
                     height="60px"
                   />
                 </div>
-              }
+              )}
             />
           </div>
           <div className="rogu-og-message-item-body__description">
@@ -191,6 +191,6 @@ export default function OGMessageItemBody({
         isByMe={isByMe}
         content={messageBody}
       />
-    </div>
+    </div >
   );
 }
