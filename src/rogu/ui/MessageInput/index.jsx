@@ -16,6 +16,7 @@ import Toast from '../Toast';
 import RepliedMessagePreview from './RepliedMessagePreview';
 
 import {
+  extractUrls,
   formatedStringToRepliedMessage,
   getMimeTypesString,
   isAssignmentMessage,
@@ -25,10 +26,10 @@ import {
   isReplyingMessage,
   isThumbnailMessage,
   isVideo,
-  SUPPORTED_MIMES,
   REPLIED_MESSAGE_TYPE,
+  SUPPORTED_MIMES,
 } from '../../utils';
-import { getUrlFromWords, debounce } from './utils';
+import { debounce } from './utils';
 
 import './index.scss';
 
@@ -115,6 +116,22 @@ const MessageInput = React.forwardRef((props, ref) => {
   };
 
   const [url, setUrl] = useState({ hasUrl: false, text: '' });
+  const handleUrlCheck = (sentence) => {
+    const { urls } = extractUrls(sentence);
+    let firstLink = urls[0];
+
+    if (firstLink) {
+      // Add `https://` since LinkPreview only support url with 'https://'
+      if (
+        firstLink.indexOf('http://') === -1
+        || firstLink.indexOf('https://') === -1
+      ) {
+        firstLink = `https://${firstLink}`;
+      }
+      setUrl({ hasUrl: true, text: firstLink });
+    }
+  };
+
   const renderPreviewUrl = ({ loading, preview }) => {
     const message = {
       sender: {
@@ -158,7 +175,8 @@ const MessageInput = React.forwardRef((props, ref) => {
   // after setHeight called twice, the textarea goes to the initialized
   useEffect(() => {
     setHeight();
-    debounce(getUrlFromWords(inputValue, setUrl), 1000);
+    // TODO: this call is not debounced correctly. Consider to use lodash.debounce instead
+    debounce(handleUrlCheck(inputValue), 3000);
     return setHeight;
   }, [inputValue]);
 
