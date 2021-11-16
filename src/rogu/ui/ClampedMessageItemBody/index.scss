@@ -18,9 +18,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
+    word-break: break-word;
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
-    align-self: center;
   }
 
   &.rogu-clamped-message-item-body--incoming {
