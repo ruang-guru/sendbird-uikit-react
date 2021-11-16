@@ -52,120 +52,109 @@ export default function OGMessageItemBody({
 
       <div className="rogu-og-message-item-body__og-wrapper" >
         <div className="rogu-og-message-item-body__og-container" onClick={openOGUrl}>
-        <div
-          className="rogu-og-message-item-body__og-thumbnail"          
-        >
-          <ImageRenderer
-            className="rogu-og-message-item-body__og-thumbnail__image"
-            url={message?.ogMetaData?.defaultImage?.url || ''}
-            alt={message?.ogMetaData?.defaultImage?.alt}
-            width="60px"
-            height="60px"
-            defaultComponent={(
-              <div className="rogu-og-message-item-body__og-thumbnail__place-holder">
-                <Icon
-                  className="rogu-og-message-item-body__og-thumbnail__place-holder__icon"
-                  type={IconTypes.THUMBNAIL_NONE}
-                  width="60px"
-                  height="60px"
-                />
-              </div>
+          <div
+            className="rogu-og-message-item-body__og-thumbnail"
+          >
+            <ImageRenderer
+              className="rogu-og-message-item-body__og-thumbnail__image"
+              url={message?.ogMetaData?.defaultImage?.url || ''}
+              alt={message?.ogMetaData?.defaultImage?.alt}
+              width="60px"
+              height="60px"
+              defaultComponent={(
+                <div className="rogu-og-message-item-body__og-thumbnail__place-holder">
+                  <Icon
+                    className="rogu-og-message-item-body__og-thumbnail__place-holder__icon"
+                    type={IconTypes.THUMBNAIL_NONE}
+                    width="60px"
+                    height="60px"
+                  />
+                </div>
+              )}
+            />
+          </div>
+          <div className="rogu-og-message-item-body__description">
+            {message?.ogMetaData?.title && (
+              <Label
+                className="rogu-og-message-item-body__description__title"
+                type={LabelTypography.SUBTITLE_2}
+                color={LabelColors.ONBACKGROUND_1}
+              >
+                {message.ogMetaData.title}
+              </Label>
             )}
-          />
+            {message?.ogMetaData?.description && (
+              <Label
+                className="rogu-og-message-item-body__description__description"
+                type={LabelTypography.BODY_2}
+                color={LabelColors.ONBACKGROUND_1}
+              >
+                {message.ogMetaData.description}
+              </Label>
+            )}
+            {message?.ogMetaData?.url && (
+              <Label
+                className="rogu-og-message-item-body__description__url"
+                type={LabelTypography.CAPTION_3}
+                color={LabelColors.ONBACKGROUND_2}
+              >
+                {message.ogMetaData.url}
+              </Label>
+            )}
+          </div>
         </div>
-        <div
-          className="rogu-og-message-item-body__description"          
-        >
-          {message?.ogMetaData?.title && (
-            <Label
-              className="rogu-og-message-item-body__description__title"
-              type={LabelTypography.SUBTITLE_2}
-              color={LabelColors.ONBACKGROUND_1}
-            >
-              {message.ogMetaData.title}
-            </Label>
-          )}
-          {message?.ogMetaData?.description && (
-            <Label
-              className="rogu-og-message-item-body__description__description"
-              type={LabelTypography.BODY_2}
-              color={LabelColors.ONBACKGROUND_1}
-            >
-              {message.ogMetaData.description}
-            </Label>
-          )}
-          {message?.ogMetaData?.url && (
-            <Label
-              className="rogu-og-message-item-body__description__url"
-              type={LabelTypography.CAPTION_3}
-              color={LabelColors.ONBACKGROUND_2}
-            >
-              {message.ogMetaData.url}
-            </Label>
-          )}
-        </div>
-        </div>
-
         {
           isOnPreview && <IconButton
-          className="sendbird-chat-header__right__search"
-          width="32px"
-          height="32px"
-          onClick={onClosePreview}
-        >
-          <Icon
-            type={IconTypes.CLOSE}
-            fillColor={IconColors.ON_BACKGROUND_1}
-            width="24px"
-            height="24px"
-          />
-        </IconButton>
+            className="sendbird-chat-header__right__search"
+            width="32px"
+            height="32px"
+            onClick={onClosePreview}
+          >
+            <Icon
+              type={IconTypes.CLOSE}
+              fillColor={IconColors.ON_BACKGROUND_1}
+              width="24px"
+              height="24px"
+            />
+          </IconButton>
         }
-
-        
-
       </div>
-      
-      
-      
+
       <div className="rogu-og-message-item-body__text-bubble">
-        {
-          message?.message.split(' ').map((word: string) => (
-            isUrl(word)
-              ? (
-                <LinkLabel
-                  className="rogu-og-message-item-body__text-bubble__message"
-                  key={uuidv4()}
-                  src={word}
-                  type={LabelTypography.BODY_1}
-                  color={isByMe ? LabelColors.ONBACKGROUND_1 : LabelColors.SECONDARY_3}
-                >
-                  {word}
-                </LinkLabel>
-              )
-              : (
-                <Label
-                  className="rogu-og-message-item-body__text-bubble__message"
-                  key={uuidv4()}
-                  type={LabelTypography.BODY_1}
-                  color={LabelColors.ONBACKGROUND_1}
-                >
-                  {word + ' '}
-                </Label>
-              )
-          ))
-        }
-        {
-          isEditedMessage(message) && (
-            <Label
-              className="rogu-og-message-item-body__text-bubble__message"
-              type={LabelTypography.BODY_1}
-              color={isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2}
-            >
-              {` ${stringSet.MESSAGE_EDITED} `}
-            </Label>
-          )
-        }
+        {message?.message.split(' ').map((word: string) => (
+          isUrl(word)
+            ? (
+              <LinkLabel
+                className="rogu-og-message-item-body__text-bubble__message"
+                key={uuidv4()}
+                src={word}
+                type={LabelTypography.BODY_1}
+                color={isByMe ? LabelColors.ONBACKGROUND_1 : LabelColors.SECONDARY_3}
+              >
+                {word}
+              </LinkLabel>
+            )
+            : (
+              <Label
+                className="rogu-og-message-item-body__text-bubble__message"
+                key={uuidv4()}
+                type={LabelTypography.BODY_1}
+                color={LabelColors.ONBACKGROUND_1}
+              >
+                {word + ' '}
+              </Label>
+            )
+        )
+        )}
+        {isEditedMessage(message) && (
+          <Label
+            className="rogu-og-message-item-body__text-bubble__message"
+            type={LabelTypography.BODY_1}
+            color={isByMe ? LabelColors.ONCONTENT_2 : LabelColors.ONBACKGROUND_2}
+          >
+            {` ${stringSet.MESSAGE_EDITED} `}
+          </Label>
+        )}
       </div>
       <div className="rogu-og-message-item-body__cover" />
     </div>
