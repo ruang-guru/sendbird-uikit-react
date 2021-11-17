@@ -6,8 +6,12 @@ import Icon, { IconTypes, IconColors } from '../Icon';
 import ImageRenderer from '../ImageRenderer';
 import RepliedMessageItemBody from '../RepliedMessageItemBody';
 import ClampedMessageItemBody from '../ClampedMessageItemBody';
-import { isReplyingMessage, metaArraysToRepliedMessage } from '../../utils';
-import { getClassName, isGifMessage, isVideoMessage } from '../../../utils';
+import {
+  isReplyingMessage,
+  isVideo,
+  metaArraysToRepliedMessage,
+} from '../../utils';
+import { getClassName, isGifMessage } from '../../../utils';
 
 interface Props {
   className?: string | Array<string>;
@@ -97,7 +101,7 @@ export default function ThumbnailMessageItemBody({
               <div className="rogu-thumbnail-message-item-body__placeholder__icon">
                 <Icon
                   type={
-                    isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO
+                    isVideo(message.type) ? IconTypes.PLAY : IconTypes.PHOTO
                   }
                   fillColor={IconColors.ON_BACKGROUND_2}
                   width="34px"
@@ -107,17 +111,17 @@ export default function ThumbnailMessageItemBody({
             </div>
           )}
         />
-        {isVideoMessage(message) && !thumbnailUrl && (
+        {isVideo(message.type) && !thumbnailUrl && (
           <video className="rogu-thumbnail-message-item-body__video">
             <source src={message?.url} type={message?.type} />
           </video>
         )}
         <div className="rogu-thumbnail-message-item-body__image-cover" />
-        {(isVideoMessage(message) || isGifMessage(message)) && (
+        {(isVideo(message.type) || isGifMessage(message)) && (
           <div className="rogu-thumbnail-message-item-body__icon-wrapper">
             <div className="rogu-thumbnail-message-item-body__icon-wrapper__icon">
               <Icon
-                type={isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF}
+                type={isVideo(message.type) ? IconTypes.PLAY : IconTypes.GIF}
                 fillColor={IconColors.ON_BACKGROUND_2}
                 width="34px"
                 height="34px"
