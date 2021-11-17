@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-43a8d885.js';
-export { w as withSendBird } from './LocalizationContext-43a8d885.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as changeColorToClassName$2, C as Colors$2, j as getClassName, R as RepliedMessageType, k as formatedStringToRepliedMessage, m as metaArraysToRepliedMessage, l as isVideoMessage, n as isGifMessage, o as convertAssignmentDueUTCtoLocale, p as convertCtaLinkToWebLink, q as isUserMessage, s as isFileMessage$1, t as isFailedMessage, u as isSentMessage, I as IconButton$1, v as isThumbnailMessage$1, w as copyToClipboard, x as getUIKitMessageTypes, y as isPendingMessage, z as isMessageSentByMe, A as isMessageSentByOperator, B as getSenderName, F as isTextMessage, G as isOGMessage, H as isAssignmentMessage, J as isMaterialMessage, K as getUIKitMessageType, L as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, N as isUrl, P as REPLIED_MESSAGE_TYPE, Q as UserProfileProvider } from './index-51871b29.js';
-export { T as sendBirdSelectors } from './index-51871b29.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-f98262c8.js';
+export { w as withSendBird } from './LocalizationContext-f98262c8.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as changeColorToClassName$2, C as Colors$2, j as getClassName, R as RepliedMessageType, k as formatedStringToRepliedMessage, m as metaArraysToRepliedMessage, l as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFileMessage$1, s as isFailedMessage, t as isSentMessage, I as IconButton$1, u as isThumbnailMessage$1, v as copyToClipboard, w as getUIKitMessageTypes, x as isPendingMessage, y as isMessageSentByMe, z as isMessageSentByOperator, A as getSenderName, B as isTextMessage, F as isOGMessage, G as isAssignmentMessage, H as isMaterialMessage, J as getOutgoingMessageState, O as OutgoingMessageStates, K as getUIKitMessageType, M as MODAL_ROOT, L as isUrl, N as REPLIED_MESSAGE_TYPE, P as UserProfileProvider } from './index-6248f4b6.js';
+export { Q as sendBirdSelectors } from './index-6248f4b6.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-d08dd9cf.js';
-import { c as compareIds } from './index-7ddb6a79.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-ae4d8997.js';
+import { c as compareIds } from './index-9984d4c8.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-9bbb7f6c.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-fdec81c8.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-bdb745ad.js';
+import './actionTypes-1710c65b.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-9108439e.js';
-import './utils-f995f833.js';
-import './LeaveChannel-94a82ff7.js';
-import './index-bca2a225.js';
-import './index-d228d581.js';
-import './index-bd76bcac.js';
+import './index-4af78d3d.js';
+import './utils-58d91f13.js';
+import './LeaveChannel-a40cf92e.js';
+import './index-adb5b75f.js';
+import './index-39be5e9d.js';
+import './index-ddfed9a2.js';
 import './ChannelSettings.js';
-import './index-c9e48886.js';
+import './index-f2b69f7e.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -4130,25 +4130,25 @@ function ThumbnailMessageItemBody(_a) {
       }, /*#__PURE__*/React__default$1.createElement("div", {
         className: "rogu-thumbnail-message-item-body__placeholder__icon"
       }, /*#__PURE__*/React__default$1.createElement(Icon, {
-        type: isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO,
+        type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.PHOTO,
         fillColor: IconColors.ON_BACKGROUND_2,
         width: "34px",
         height: "34px"
       })));
     }
-  }), isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default$1.createElement("video", {
+  }), isVideo(message.type) && !thumbnailUrl && /*#__PURE__*/React__default$1.createElement("video", {
     className: "rogu-thumbnail-message-item-body__video"
   }, /*#__PURE__*/React__default$1.createElement("source", {
     src: message === null || message === void 0 ? void 0 : message.url,
     type: message === null || message === void 0 ? void 0 : message.type
   })), /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-thumbnail-message-item-body__image-cover"
-  }), (isVideoMessage(message) || isGifMessage(message)) && /*#__PURE__*/React__default$1.createElement("div", {
+  }), (isVideo(message.type) || isGifMessage(message)) && /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper"
   }, /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper__icon"
   }, /*#__PURE__*/React__default$1.createElement(Icon, {
-    type: isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF,
+    type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.GIF,
     fillColor: IconColors.ON_BACKGROUND_2,
     width: "34px",
     height: "34px"
@@ -4821,15 +4821,15 @@ function MessageContent(_a) {
   }), isMaterialMessage(message.customType) && /*#__PURE__*/React__default$1.createElement(MaterialMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1.createElement(FileMessageItemBody, {
-    message: message,
-    isByMe: isByMe
   }), isThumbnailMessage(message) && /*#__PURE__*/React__default$1.createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: getOutgoingMessageState(channel, message) !== OutgoingMessageStates.PENDING,
     onClickRepliedMessage: scrollToMessage
+  }), !isThumbnailMessage(message) && getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1.createElement(FileMessageItemBody, {
+    message: message,
+    isByMe: isByMe
   }), getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1.createElement(UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
