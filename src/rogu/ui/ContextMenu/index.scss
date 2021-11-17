@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 .rogu-dropdown__menu {
   z-index: $drawer;
@@ -41,6 +41,8 @@
 
     .rogu-dropdown__menu-item-icon {
       margin-right: 12px;
+      display: flex;
+      align-items: center;
     }
   }
 }
