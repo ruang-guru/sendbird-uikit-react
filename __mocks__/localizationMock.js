@@ -17,6 +17,15 @@ export const STRING_SET = {
   ROGU__MODAL__DELETE_MESSAGE__TITLE: 'Yakin kamu mau menghapus chat?',
   ROGU__MODAL__DELETE_MESSAGE__SUBTITLE: 'Chat yang telah kamu hapus tidak bisa dilihat dan diakses kembali',
   TOAST__MAX_FILE_SIZE_ERROR: 'Gagal terkirim, ukuran melebihi 10MB',
+  MESSAGE_MENU__VIEW: 'Lihat Pesan',
+  MESSAGE_MENU__VIEW_FILE: 'Lihat File',
+  MESSAGE_MENU__VIEW_IMAGE: 'Lihat Foto',
+  MESSAGE_MENU__VIEW_VIDEO: 'Lihat Video',
+  MESSAGE_MENU__COPY: 'Salin',
+  MESSAGE_MENU__REPLY: 'Balas',
+  MESSAGE_MENU__EDIT: 'Edit',
+  MESSAGE_MENU__RESEND: 'Kirim Ulang',
+  MESSAGE_MENU__DELETE: 'Hapus',
 };
 
 export default STRING_SET;
