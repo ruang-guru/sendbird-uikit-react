@@ -216,13 +216,6 @@ Props): ReactElement {
                   isByMe={isByMe}
                 />
               )}
-              {getUIKitMessageType(message as FileMessage) ===
-                messageTypes.FILE && (
-                <FileMessageItemBody
-                  message={message as FileMessage}
-                  isByMe={isByMe}
-                />
-              )}
               {isThumbnailMessage(message as FileMessage) && (
                 <ThumbnailMessageItemBody
                   message={message as FileMessage}
@@ -235,6 +228,14 @@ Props): ReactElement {
                   onClickRepliedMessage={scrollToMessage}
                 />
               )}
+              {!isThumbnailMessage(message as FileMessage) &&
+                getUIKitMessageType(message as FileMessage) ===
+                  messageTypes.FILE && (
+                  <FileMessageItemBody
+                    message={message as FileMessage}
+                    isByMe={isByMe}
+                  />
+                )}
               {getUIKitMessageType(message as FileMessage) ===
                 messageTypes.UNKNOWN && (
                 <UnknownMessageItemBody message={message} isByMe={isByMe} />

@@ -34,8 +34,8 @@ export const MenuItem = ({
         className="rogu-dropdown__menu-item-icon"
         type={iconType}
         fillColor={disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1}
-        width="18px"
-        height="18px"
+        width="18"
+        height="18"
       />
       <Label
         className="rogu-dropdown__menu-item__text"

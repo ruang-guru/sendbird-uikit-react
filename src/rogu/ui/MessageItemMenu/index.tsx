@@ -8,8 +8,6 @@ import {
   isUserMessage,
   isSentMessage,
   isFailedMessage,
-  isThumbnailMessage,
-  isFileMessage,
 } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 
@@ -17,7 +15,13 @@ import Icon, { IconTypes, IconColors } from '../Icon';
 import ContextMenu, { MenuItems, MenuItem } from '../ContextMenu';
 import Toast from '../Toast';
 
-import {formatedStringToRepliedMessage} from '../../utils/repliedMessage';
+import {
+  formatedStringToRepliedMessage,
+  isFileMessage,
+  isImage,
+  isThumbnailMessage,
+  isVideo,
+} from '../../utils';
 
 import './index.scss';
 
@@ -87,10 +91,8 @@ export default function MessageItemMenu({
     return null;
   }
 
-  
-
   const onCopyClick = (message: string) => {
-    const {originalMessage} = formatedStringToRepliedMessage(message);
+    const { originalMessage } = formatedStringToRepliedMessage(message);
     copyToClipboard(originalMessage);
     setShowToast(true);
     setTimeout(() => {
@@ -100,6 +102,22 @@ export default function MessageItemMenu({
 
   const onOpenFile = (message: FileMessage): void => {
     window.open(message.url);
+  };
+
+  const getViewMessageWording = () => {
+    let resolvedWording = stringSet.MESSAGE_MENU__VIEW;
+
+    if (isThumbnailMessage(message as FileMessage)) {
+      if (isVideo((message as FileMessage).type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_VIDEO;
+      } else if (isImage((message as FileMessage).type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_IMAGE;
+      }
+    } else if (isFileMessage(message as FileMessage)) {
+      resolvedWording = stringSet.MESSAGE_MENU__VIEW_FILE;
+    }
+
+    return resolvedWording;
   };
 
   return (
@@ -191,7 +209,7 @@ export default function MessageItemMenu({
                   }}
                   iconType={IconTypes.ROGU_VIEW}
                 >
-                  {stringSet.MESSAGE_MENU__VIEW}
+                  {getViewMessageWording()}
                 </MenuItem>
               )}
 

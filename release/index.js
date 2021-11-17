@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-43a8d885.js';
-export { w as withSendBird } from './LocalizationContext-43a8d885.js';
-import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as changeColorToClassName$2, C as Colors$2, j as getClassName, R as RepliedMessageType, k as formatedStringToRepliedMessage, m as metaArraysToRepliedMessage, l as isVideoMessage, n as isGifMessage, o as convertAssignmentDueUTCtoLocale, p as convertCtaLinkToWebLink, q as isUserMessage, s as isFileMessage$1, t as isFailedMessage, u as isSentMessage, I as IconButton$1, v as isThumbnailMessage$1, w as copyToClipboard, x as getUIKitMessageTypes, y as isPendingMessage, z as isMessageSentByMe, A as isMessageSentByOperator, B as getSenderName, F as isTextMessage, G as isOGMessage, H as isAssignmentMessage, J as isMaterialMessage, K as getUIKitMessageType, L as getOutgoingMessageState, O as OutgoingMessageStates, M as MODAL_ROOT, N as isUrl, P as REPLIED_MESSAGE_TYPE, Q as UserProfileProvider } from './index-51871b29.js';
-export { T as sendBirdSelectors } from './index-51871b29.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-b3cacb08.js';
+export { w as withSendBird } from './LocalizationContext-b3cacb08.js';
+import { g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as changeColorToClassName$2, C as Colors$2, j as getClassName, R as RepliedMessageType, k as formatedStringToRepliedMessage, m as metaArraysToRepliedMessage, l as isGifMessage, n as convertAssignmentDueUTCtoLocale, o as convertCtaLinkToWebLink, p as isUserMessage, q as isFailedMessage, s as isSentMessage, I as IconButton$1, t as copyToClipboard, u as getUIKitMessageTypes, v as isPendingMessage, w as isMessageSentByMe, x as isMessageSentByOperator, y as getSenderName, z as isTextMessage, A as isOGMessage, B as isAssignmentMessage, F as isMaterialMessage, G as getOutgoingMessageState, O as OutgoingMessageStates, H as getUIKitMessageType, M as MODAL_ROOT, J as isUrl, K as REPLIED_MESSAGE_TYPE, L as UserProfileProvider } from './index-fa84f887.js';
+export { N as sendBirdSelectors } from './index-fa84f887.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-d08dd9cf.js';
-import { c as compareIds } from './index-7ddb6a79.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-397f63d8.js';
+import { c as compareIds } from './index-a3a5b816.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-9bbb7f6c.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-944f5235.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-bdb745ad.js';
+import './actionTypes-948fb723.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-9108439e.js';
-import './utils-f995f833.js';
-import './LeaveChannel-94a82ff7.js';
-import './index-bca2a225.js';
-import './index-d228d581.js';
-import './index-bd76bcac.js';
+import './index-7fe161c3.js';
+import './utils-78397464.js';
+import './LeaveChannel-60f06f10.js';
+import './index-38f5ff97.js';
+import './index-622c3534.js';
+import './index-a51ce914.js';
 import './ChannelSettings.js';
-import './index-c9e48886.js';
+import './index-8df07d14.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -4130,25 +4130,25 @@ function ThumbnailMessageItemBody(_a) {
       }, /*#__PURE__*/React__default$1.createElement("div", {
         className: "rogu-thumbnail-message-item-body__placeholder__icon"
       }, /*#__PURE__*/React__default$1.createElement(Icon, {
-        type: isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO,
+        type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.PHOTO,
         fillColor: IconColors.ON_BACKGROUND_2,
         width: "34px",
         height: "34px"
       })));
     }
-  }), isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default$1.createElement("video", {
+  }), isVideo(message.type) && !thumbnailUrl && /*#__PURE__*/React__default$1.createElement("video", {
     className: "rogu-thumbnail-message-item-body__video"
   }, /*#__PURE__*/React__default$1.createElement("source", {
     src: message === null || message === void 0 ? void 0 : message.url,
     type: message === null || message === void 0 ? void 0 : message.type
   })), /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-thumbnail-message-item-body__image-cover"
-  }), (isVideoMessage(message) || isGifMessage(message)) && /*#__PURE__*/React__default$1.createElement("div", {
+  }), (isVideo(message.type) || isGifMessage(message)) && /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper"
   }, /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper__icon"
   }, /*#__PURE__*/React__default$1.createElement(Icon, {
-    type: isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF,
+    type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.GIF,
     fillColor: IconColors.ON_BACKGROUND_2,
     width: "34px",
     height: "34px"
@@ -4524,8 +4524,8 @@ var MenuItem = function MenuItem(_ref) {
     className: "rogu-dropdown__menu-item-icon",
     type: iconType,
     fillColor: disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1,
-    width: "18px",
-    height: "18px"
+    width: "18",
+    height: "18"
   }), /*#__PURE__*/React__default$1.createElement(Label, {
     className: "rogu-dropdown__menu-item__text",
     type: LabelTypography.BUTTON_2,
@@ -4603,11 +4603,11 @@ function MessageItemMenu(_a) {
   var triggerRef = useRef(null);
   var containerRef = useRef(null);
   var showMenuItemCopy = isUserMessage(message);
-  var showMenuItemReply = isUserMessage(message) || isFileMessage$1(message);
+  var showMenuItemReply = isUserMessage(message) || isFileMessage(message);
   var showMenuItemResend = isFailedMessage(channel, message) && message.isResendable() && isByMe;
   var showMenuItemDelete = isSentMessage(channel, message) && isByMe;
   var showMenuItemEdit = false   ;
-  var showMenuItemView = isFileMessage$1(message);
+  var showMenuItemView = isFileMessage(message);
 
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
@@ -4624,6 +4624,22 @@ function MessageItemMenu(_a) {
 
   var onOpenFile = function onOpenFile(message) {
     window.open(message.url);
+  };
+
+  var getViewMessageWording = function getViewMessageWording() {
+    var resolvedWording = stringSet.MESSAGE_MENU__VIEW;
+
+    if (isThumbnailMessage(message)) {
+      if (isVideo(message.type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_VIDEO;
+      } else if (isImage(message.type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_IMAGE;
+      }
+    } else if (isFileMessage(message)) {
+      resolvedWording = stringSet.MESSAGE_MENU__VIEW_FILE;
+    }
+
+    return resolvedWording;
   };
 
   return /*#__PURE__*/React__default$1.createElement("div", {
@@ -4687,7 +4703,7 @@ function MessageItemMenu(_a) {
       }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default$1.createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
-          if (isThumbnailMessage$1(message)) {
+          if (isThumbnailMessage(message)) {
             showFileViewer(true);
           } else {
             onOpenFile(message);
@@ -4696,7 +4712,7 @@ function MessageItemMenu(_a) {
           closeDropdown();
         },
         iconType: IconTypes.ROGU_VIEW
-      }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1.createElement(MenuItem, {
+      }, getViewMessageWording()), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1.createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           if (!disabled) {
@@ -4821,15 +4837,15 @@ function MessageContent(_a) {
   }), isMaterialMessage(message.customType) && /*#__PURE__*/React__default$1.createElement(MaterialMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1.createElement(FileMessageItemBody, {
-    message: message,
-    isByMe: isByMe
   }), isThumbnailMessage(message) && /*#__PURE__*/React__default$1.createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: getOutgoingMessageState(channel, message) !== OutgoingMessageStates.PENDING,
     onClickRepliedMessage: scrollToMessage
+  }), !isThumbnailMessage(message) && getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1.createElement(FileMessageItemBody, {
+    message: message,
+    isByMe: isByMe
   }), getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1.createElement(UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe

@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-b48400fe.js');
-var index$1 = require('./index-59f7019b.js');
+var LocalizationContext = require('./LocalizationContext-31e2d791.js');
+var index$1 = require('./index-224a0049.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-613d283d.js');
-var index$3 = require('./index-fba42734.js');
+var index$2 = require('./index-ff01b4a0.js');
+var index$3 = require('./index-e47fc061.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-b5a6299c.js');
+var Channel = require('./index-48687bb8.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-9376406d.js');
+require('./actionTypes-6fd72122.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-6866f180.js');
-require('./utils-e5e441e6.js');
-require('./LeaveChannel-184b021f.js');
-require('./index-4998c52e.js');
-require('./index-8a8ffd53.js');
-require('./index-8049db56.js');
+require('./index-a7f92326.js');
+require('./utils-a69626bb.js');
+require('./LeaveChannel-3051f1a9.js');
+require('./index-ce8813b7.js');
+require('./index-46338707.js');
+require('./index-a58ab15a.js');
 require('./ChannelSettings.js');
-require('./index-4cc09e03.js');
+require('./index-2c3b211e.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -4155,25 +4155,25 @@ function ThumbnailMessageItemBody(_a) {
       }, /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-thumbnail-message-item-body__placeholder__icon"
       }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
-        type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO,
+        type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.PHOTO,
         fillColor: IconColors.ON_BACKGROUND_2,
         width: "34px",
         height: "34px"
       })));
     }
-  }), index$1.isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default$1["default"].createElement("video", {
+  }), isVideo(message.type) && !thumbnailUrl && /*#__PURE__*/React__default$1["default"].createElement("video", {
     className: "rogu-thumbnail-message-item-body__video"
   }, /*#__PURE__*/React__default$1["default"].createElement("source", {
     src: message === null || message === void 0 ? void 0 : message.url,
     type: message === null || message === void 0 ? void 0 : message.type
   })), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__image-cover"
-  }), (index$1.isVideoMessage(message) || index$1.isGifMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement("div", {
+  }), (isVideo(message.type) || index$1.isGifMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper"
   }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper__icon"
   }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
-    type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF,
+    type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.GIF,
     fillColor: IconColors.ON_BACKGROUND_2,
     width: "34px",
     height: "34px"
@@ -4549,8 +4549,8 @@ var MenuItem = function MenuItem(_ref) {
     className: "rogu-dropdown__menu-item-icon",
     type: iconType,
     fillColor: disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1,
-    width: "18px",
-    height: "18px"
+    width: "18",
+    height: "18"
   }), /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-dropdown__menu-item__text",
     type: LabelTypography.BUTTON_2,
@@ -4628,11 +4628,11 @@ function MessageItemMenu(_a) {
   var triggerRef = React$1.useRef(null);
   var containerRef = React$1.useRef(null);
   var showMenuItemCopy = index$1.isUserMessage(message);
-  var showMenuItemReply = index$1.isUserMessage(message) || index$1.isFileMessage(message);
+  var showMenuItemReply = index$1.isUserMessage(message) || isFileMessage(message);
   var showMenuItemResend = index$1.isFailedMessage(channel, message) && message.isResendable() && isByMe;
   var showMenuItemDelete = index$1.isSentMessage(channel, message) && isByMe;
   var showMenuItemEdit = false   ;
-  var showMenuItemView = index$1.isFileMessage(message);
+  var showMenuItemView = isFileMessage(message);
 
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
@@ -4649,6 +4649,22 @@ function MessageItemMenu(_a) {
 
   var onOpenFile = function onOpenFile(message) {
     window.open(message.url);
+  };
+
+  var getViewMessageWording = function getViewMessageWording() {
+    var resolvedWording = stringSet.MESSAGE_MENU__VIEW;
+
+    if (isThumbnailMessage(message)) {
+      if (isVideo(message.type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_VIDEO;
+      } else if (isImage(message.type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_IMAGE;
+      }
+    } else if (isFileMessage(message)) {
+      resolvedWording = stringSet.MESSAGE_MENU__VIEW_FILE;
+    }
+
+    return resolvedWording;
   };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
@@ -4712,7 +4728,7 @@ function MessageItemMenu(_a) {
       }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
-          if (index$1.isThumbnailMessage(message)) {
+          if (isThumbnailMessage(message)) {
             showFileViewer(true);
           } else {
             onOpenFile(message);
@@ -4721,7 +4737,7 @@ function MessageItemMenu(_a) {
           closeDropdown();
         },
         iconType: IconTypes.ROGU_VIEW
-      }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
+      }, getViewMessageWording()), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           if (!disabled) {
@@ -4846,15 +4862,15 @@ function MessageContent(_a) {
   }), index$1.isMaterialMessage(message.customType) && /*#__PURE__*/React__default$1["default"].createElement(MaterialMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(FileMessageItemBody, {
-    message: message,
-    isByMe: isByMe
   }), isThumbnailMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING,
     onClickRepliedMessage: scrollToMessage
+  }), !isThumbnailMessage(message) && index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(FileMessageItemBody, {
+    message: message,
+    isByMe: isByMe
   }), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe

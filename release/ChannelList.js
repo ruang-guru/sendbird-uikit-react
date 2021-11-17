@@ -1,17 +1,17 @@
-import { b as _objectSpread2, a as _toConsumableArray, L as LocalizationContext, w as withSendbirdContext, c as _slicedToArray, u as uuidv4 } from './LocalizationContext-43a8d885.js';
+import { b as _objectSpread2, a as _toConsumableArray, L as LocalizationContext, w as withSendbirdContext, c as _slicedToArray, u as uuidv4 } from './LocalizationContext-b3cacb08.js';
 import React__default, { useContext, useRef, useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { U as UPDATE_USER_INFO } from './actionTypes-bdb745ad.js';
-import { V as filterChannelListParams, W as getChannelsWithUpsertedChannel, X as truncateString, I as IconButton, Y as Modal, Z as Type, _ as TextButton, $ as ContextMenu, a0 as MenuItems, a1 as MenuItem, a2 as CREATE_CHANNEL$1, U as UPDATE_USER_MESSAGE, a3 as LEAVE_CHANNEL, b as SEND_MESSAGE_START, Q as UserProfileProvider } from './index-51871b29.js';
-import { C as ChannelAvatar } from './index-9108439e.js';
-import { B as Badge, i as isBroadcastChannelEnabled, a as isSuperGroupChannelEnabled, I as InviteMembers, c as createDefaultUserListQuery, b as createChannel, L as LeaveChannel } from './LeaveChannel-94a82ff7.js';
-import { f as format, ae as LabelStringSet, a as Icon, b as IconTypes, a9 as IconColors, aa as Label, ac as LabelTypography, ab as LabelColors, a5 as Avatar, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-d08dd9cf.js';
-import { i as isToday, a as isYesterday } from './index-d228d581.js';
-import { I as InputLabel, a as Input, n as noop$1 } from './index-bca2a225.js';
+import { U as UPDATE_USER_INFO } from './actionTypes-948fb723.js';
+import { P as filterChannelListParams, Q as getChannelsWithUpsertedChannel, T as truncateString, I as IconButton, V as Modal, W as Type, X as TextButton, Y as ContextMenu, Z as MenuItems, _ as MenuItem, $ as CREATE_CHANNEL$1, U as UPDATE_USER_MESSAGE, a0 as LEAVE_CHANNEL, b as SEND_MESSAGE_START, L as UserProfileProvider } from './index-fa84f887.js';
+import { C as ChannelAvatar } from './index-7fe161c3.js';
+import { B as Badge, i as isBroadcastChannelEnabled, a as isSuperGroupChannelEnabled, I as InviteMembers, c as createDefaultUserListQuery, b as createChannel, L as LeaveChannel } from './LeaveChannel-60f06f10.js';
+import { f as format, ae as LabelStringSet, a as Icon, b as IconTypes, a9 as IconColors, aa as Label, ac as LabelTypography, ab as LabelColors, a5 as Avatar, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-397f63d8.js';
+import { i as isToday, a as isYesterday } from './index-622c3534.js';
+import { I as InputLabel, a as Input, n as noop$1 } from './index-38f5ff97.js';
 import 'react-dom';
 import 'date-fns';
-import './utils-f995f833.js';
-import './index-bd76bcac.js';
+import './utils-78397464.js';
+import './index-a51ce914.js';
 
 var RESET_CHANNEL_LIST = 'RESET_CHANNEL_LIST';
 var CREATE_CHANNEL = 'CREATE_CHANNEL';
