@@ -64,7 +64,7 @@ export default function RepliedMediaMessageItemBody({
           />
         }
         {mediaUrl && isVideo(mimeType) &&
-          <video className="rogu-media-message-item-body__reply-image">
+          <video className="rogu-media-message-item-body__reply-video">
             <source src={mediaUrl} type={mimeType} />
           </video>
         }

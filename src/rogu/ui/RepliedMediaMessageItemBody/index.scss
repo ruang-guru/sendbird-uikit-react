@@ -30,11 +30,13 @@
   .rogu-media-message-item-body__metadata {
     display: flex;
 
-    .rogu-media-message-item-body__reply-image {
+    .rogu-media-message-item-body__reply-image,
+    .rogu-media-message-item-body__reply-video {
       margin-right: 8px;
       border-radius: 4px;
       width: 38px;
       height: 38px;
+      flex-shrink: 0;
     }
 
     .rogu-media-message-item-body__caption-container {
