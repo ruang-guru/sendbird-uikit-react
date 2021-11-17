@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-b48400fe.js');
-var index$1 = require('./index-59f7019b.js');
+var LocalizationContext = require('./LocalizationContext-9c0bb304.js');
+var index$1 = require('./index-e26bac4a.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-613d283d.js');
-var index$3 = require('./index-fba42734.js');
+var index$2 = require('./index-49ec83c2.js');
+var index$3 = require('./index-59c3efef.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-b5a6299c.js');
+var Channel = require('./index-1585d341.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-9376406d.js');
+require('./actionTypes-65ddbdec.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-6866f180.js');
-require('./utils-e5e441e6.js');
-require('./LeaveChannel-184b021f.js');
-require('./index-4998c52e.js');
-require('./index-8a8ffd53.js');
-require('./index-8049db56.js');
+require('./index-3ec56355.js');
+require('./utils-df4a8081.js');
+require('./LeaveChannel-d054580d.js');
+require('./index-e1b5719e.js');
+require('./index-3596eaa1.js');
+require('./index-5dd104ea.js');
 require('./ChannelSettings.js');
-require('./index-4cc09e03.js');
+require('./index-66681583.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -4155,25 +4155,25 @@ function ThumbnailMessageItemBody(_a) {
       }, /*#__PURE__*/React__default$1["default"].createElement("div", {
         className: "rogu-thumbnail-message-item-body__placeholder__icon"
       }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
-        type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.PHOTO,
+        type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.PHOTO,
         fillColor: IconColors.ON_BACKGROUND_2,
         width: "34px",
         height: "34px"
       })));
     }
-  }), index$1.isVideoMessage(message) && !thumbnailUrl && /*#__PURE__*/React__default$1["default"].createElement("video", {
+  }), isVideo(message.type) && !thumbnailUrl && /*#__PURE__*/React__default$1["default"].createElement("video", {
     className: "rogu-thumbnail-message-item-body__video"
   }, /*#__PURE__*/React__default$1["default"].createElement("source", {
     src: message === null || message === void 0 ? void 0 : message.url,
     type: message === null || message === void 0 ? void 0 : message.type
   })), /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__image-cover"
-  }), (index$1.isVideoMessage(message) || index$1.isGifMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement("div", {
+  }), (isVideo(message.type) || index$1.isGifMessage(message)) && /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper"
   }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-thumbnail-message-item-body__icon-wrapper__icon"
   }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
-    type: index$1.isVideoMessage(message) ? IconTypes.PLAY : IconTypes.GIF,
+    type: isVideo(message.type) ? IconTypes.PLAY : IconTypes.GIF,
     fillColor: IconColors.ON_BACKGROUND_2,
     width: "34px",
     height: "34px"
@@ -4846,15 +4846,15 @@ function MessageContent(_a) {
   }), index$1.isMaterialMessage(message.customType) && /*#__PURE__*/React__default$1["default"].createElement(MaterialMessageItemBody, {
     message: message,
     isByMe: isByMe
-  }), index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(FileMessageItemBody, {
-    message: message,
-    isByMe: isByMe
   }), isThumbnailMessage(message) && /*#__PURE__*/React__default$1["default"].createElement(ThumbnailMessageItemBody, {
     message: message,
     isByMe: isByMe,
     showFileViewer: showFileViewer,
     isClickable: index$1.getOutgoingMessageState(channel, message) !== index$1.OutgoingMessageStates.PENDING,
     onClickRepliedMessage: scrollToMessage
+  }), !isThumbnailMessage(message) && index$1.getUIKitMessageType(message) === messageTypes.FILE && /*#__PURE__*/React__default$1["default"].createElement(FileMessageItemBody, {
+    message: message,
+    isByMe: isByMe
   }), index$1.getUIKitMessageType(message) === messageTypes.UNKNOWN && /*#__PURE__*/React__default$1["default"].createElement(Channel.UnknownMessageItemBody, {
     message: message,
     isByMe: isByMe
