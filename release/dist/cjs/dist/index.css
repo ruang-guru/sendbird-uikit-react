@@ -1,30 +1,3 @@
-.sendbird-openchannel-conversation {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%; }
-  .sendbird-theme--light .sendbird-openchannel-conversation {
-    background-color: var(--sendbird-light-background-50); }
-  .sendbird-theme--dark .sendbird-openchannel-conversation {
-    background-color: var(--sendbird-dark-background-600); }
-  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll {
-    overflow-y: auto;
-    flex: 1 1 0;
-    order: 2;
-    width: 100%; }
-  .sendbird-openchannel-conversation .sendbird-openchannel-footer {
-    order: 3;
-    padding: 12px 24px 24px 24px; }
-  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container {
-    display: flex;
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    flex-direction: column; }
-    .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container .sendbird-openchannel-conversation-scroll-padding {
-      flex: 1 1 0; }
-
 .sendbird-openchannel-settings {
   height: 100%;
   width: 320px;
@@ -145,6 +118,33 @@
     left: 16px;
     top: 10px;
     cursor: pointer; }
+
+.sendbird-openchannel-conversation {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%; }
+  .sendbird-theme--light .sendbird-openchannel-conversation {
+    background-color: var(--sendbird-light-background-50); }
+  .sendbird-theme--dark .sendbird-openchannel-conversation {
+    background-color: var(--sendbird-dark-background-600); }
+  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll {
+    overflow-y: auto;
+    flex: 1 1 0;
+    order: 2;
+    width: 100%; }
+  .sendbird-openchannel-conversation .sendbird-openchannel-footer {
+    order: 3;
+    padding: 12px 24px 24px 24px; }
+  .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container {
+    display: flex;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex-direction: column; }
+    .sendbird-openchannel-conversation .sendbird-openchannel-conversation-scroll-container .sendbird-openchannel-conversation-scroll-padding {
+      flex: 1 1 0; }
 
 .sendbird-openchannel-conversation-header {
   position: relative;
@@ -282,6 +282,22 @@
         width: 100%;
         height: 100%; }
 
+.sendbird-openchannel-admin-message {
+  position: relative;
+  margin: 16px 24px;
+  padding: 12px 16px;
+  border-radius: 4px; }
+  .sendbird-theme--light .sendbird-openchannel-admin-message {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .sendbird-openchannel-admin-message {
+    background-color: var(--sendbird-dark-background-500); }
+  .sendbird-theme--light .sendbird-openchannel-admin-message:hover {
+    background-color: var(--sendbird-light-background-100); }
+  .sendbird-theme--dark .sendbird-openchannel-admin-message:hover {
+    background-color: var(--sendbird-dark-background-400); }
+  .sendbird-openchannel-admin-message .sendbird-openchannel-admin-message__text {
+    word-wrap: break-word; }
+
 .sendbird-openchannel-user-message {
   position: relative;
   display: flex;
@@ -342,22 +358,6 @@
       background-color: var(--sendbird-light-primary-100); }
     .sendbird-theme--dark .sendbird-openchannel-user-message .sendbird-openchannel-user-message__context-menu .sendbird-openchannel-user-message__context-menu--icon:hover {
       background-color: var(--sendbird-dark-background-700); }
-
-.sendbird-openchannel-admin-message {
-  position: relative;
-  margin: 16px 24px;
-  padding: 12px 16px;
-  border-radius: 4px; }
-  .sendbird-theme--light .sendbird-openchannel-admin-message {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-openchannel-admin-message {
-    background-color: var(--sendbird-dark-background-500); }
-  .sendbird-theme--light .sendbird-openchannel-admin-message:hover {
-    background-color: var(--sendbird-light-background-100); }
-  .sendbird-theme--dark .sendbird-openchannel-admin-message:hover {
-    background-color: var(--sendbird-dark-background-400); }
-  .sendbird-openchannel-admin-message .sendbird-openchannel-admin-message__text {
-    word-wrap: break-word; }
 
 .sendbird-openchannel-og-message {
   position: relative;
@@ -4265,7 +4265,7 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  min-width: 200px;
+  min-width: 100px;
   max-width: 400px; }
   .rogu-og-message-item-body .rogu-og-message-item-body__og-wrapper {
     padding: 8px;
@@ -4275,7 +4275,7 @@
   .rogu-og-message-item-body .rogu-og-message-item-body__og-container {
     display: flex;
     position: relative;
-    width: auto; }
+    width: 100%; }
   .rogu-og-message-item-body .rogu-og-message-item-body__og-thumbnail {
     position: relative;
     width: 60px;
@@ -4285,7 +4285,7 @@
   .rogu-og-message-item-body .rogu-og-message-item-body__description {
     padding: 4px 8px;
     flex: 1;
-    width: 100px; }
+    min-width: 0; }
     .rogu-og-message-item-body .rogu-og-message-item-body__description .rogu-og-message-item-body__description__title,
     .rogu-og-message-item-body .rogu-og-message-item-body__description .rogu-og-message-item-body__description__description {
       margin-bottom: 4px;
@@ -4843,7 +4843,7 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  min-width: 200px; }
+  min-width: 100px; }
   .rogu-assignment-message-item-body .rogu-assignment-message-item-body__text-bubble {
     position: relative;
     padding: 8px;
@@ -4875,7 +4875,7 @@
     .rogu-assignment-message-item-body .rogu-assignment-message-item-body__container .rogu-assignment-message-item-body__text-deadline {
       margin: 0 0 0 3px; }
       .rogu-assignment-message-item-body .rogu-assignment-message-item-body__container .rogu-assignment-message-item-body__text-deadline::before {
-        content: ".";
+        content: '.';
         margin-right: 3px; }
   .sendbird-theme--light .rogu-assignment-message-item-body.rogu-assignment-message-item-body--outgoing .rogu-assignment-message-item-body__container {
     background-color: var(--sendbird-light-primary-200); }
@@ -4953,7 +4953,9 @@
     flex-direction: column;
     align-items: flex-end;
     position: relative;
-    max-width: 548px; }
+    width: 100%;
+    max-width: 548px;
+    box-sizing: border-box; }
     .rogu-message-content .rogu-message-content__content .rogu-message-content__menu {
       margin-left: 4px; }
     .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble {
@@ -4963,7 +4965,9 @@
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
       border-bottom-left-radius: 8px;
-      border-bottom-right-radius: 8px; }
+      border-bottom-right-radius: 8px;
+      box-sizing: border-box;
+      max-width: 100%; }
       .rogu-message-content .rogu-message-content__content .rogu-message-content__bubble .rogu-message-content__bubble__header {
         line-height: 0;
         display: flex;

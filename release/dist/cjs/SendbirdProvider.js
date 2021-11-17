@@ -1,10 +1,10 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-e1b3a8b1.js');
+var LocalizationContext = require('./LocalizationContext-b48400fe.js');
 var React = require('react');
 var PropTypes = require('prop-types');
 var Sb = require('sendbird');
-var actionTypes = require('./actionTypes-cf5cb509.js');
+var actionTypes = require('./actionTypes-9376406d.js');
 var cssVars = require('css-vars-ponyfill');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
