@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-9c0bb304.js');
-var index$1 = require('./index-e26bac4a.js');
+var LocalizationContext = require('./LocalizationContext-31e2d791.js');
+var index$1 = require('./index-224a0049.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-49ec83c2.js');
-var index$3 = require('./index-59c3efef.js');
+var index$2 = require('./index-ff01b4a0.js');
+var index$3 = require('./index-e47fc061.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-1585d341.js');
+var Channel = require('./index-48687bb8.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-65ddbdec.js');
+require('./actionTypes-6fd72122.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-3ec56355.js');
-require('./utils-df4a8081.js');
-require('./LeaveChannel-d054580d.js');
-require('./index-e1b5719e.js');
-require('./index-3596eaa1.js');
-require('./index-5dd104ea.js');
+require('./index-a7f92326.js');
+require('./utils-a69626bb.js');
+require('./LeaveChannel-3051f1a9.js');
+require('./index-ce8813b7.js');
+require('./index-46338707.js');
+require('./index-a58ab15a.js');
 require('./ChannelSettings.js');
-require('./index-66681583.js');
+require('./index-2c3b211e.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -4549,8 +4549,8 @@ var MenuItem = function MenuItem(_ref) {
     className: "rogu-dropdown__menu-item-icon",
     type: iconType,
     fillColor: disable ? IconColors.ON_BACKGROUND_3 : IconColors.ON_BACKGROUND_1,
-    width: "18px",
-    height: "18px"
+    width: "18",
+    height: "18"
   }), /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-dropdown__menu-item__text",
     type: LabelTypography.BUTTON_2,
@@ -4628,11 +4628,11 @@ function MessageItemMenu(_a) {
   var triggerRef = React$1.useRef(null);
   var containerRef = React$1.useRef(null);
   var showMenuItemCopy = index$1.isUserMessage(message);
-  var showMenuItemReply = index$1.isUserMessage(message) || index$1.isFileMessage(message);
+  var showMenuItemReply = index$1.isUserMessage(message) || isFileMessage(message);
   var showMenuItemResend = index$1.isFailedMessage(channel, message) && message.isResendable() && isByMe;
   var showMenuItemDelete = index$1.isSentMessage(channel, message) && isByMe;
   var showMenuItemEdit = false   ;
-  var showMenuItemView = index$1.isFileMessage(message);
+  var showMenuItemView = isFileMessage(message);
 
   if (!(showMenuItemCopy || showMenuItemEdit || showMenuItemResend || showMenuItemDelete || showMenuItemView)) {
     return null;
@@ -4649,6 +4649,22 @@ function MessageItemMenu(_a) {
 
   var onOpenFile = function onOpenFile(message) {
     window.open(message.url);
+  };
+
+  var getViewMessageWording = function getViewMessageWording() {
+    var resolvedWording = stringSet.MESSAGE_MENU__VIEW;
+
+    if (isThumbnailMessage(message)) {
+      if (isVideo(message.type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_VIDEO;
+      } else if (isImage(message.type)) {
+        resolvedWording = stringSet.MESSAGE_MENU__VIEW_IMAGE;
+      }
+    } else if (isFileMessage(message)) {
+      resolvedWording = stringSet.MESSAGE_MENU__VIEW_FILE;
+    }
+
+    return resolvedWording;
   };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
@@ -4712,7 +4728,7 @@ function MessageItemMenu(_a) {
       }, stringSet.MESSAGE_MENU__COPY), showMenuItemView && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
-          if (index$1.isThumbnailMessage(message)) {
+          if (isThumbnailMessage(message)) {
             showFileViewer(true);
           } else {
             onOpenFile(message);
@@ -4721,7 +4737,7 @@ function MessageItemMenu(_a) {
           closeDropdown();
         },
         iconType: IconTypes.ROGU_VIEW
-      }, stringSet.MESSAGE_MENU__VIEW), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
+      }, getViewMessageWording()), showMenuItemEdit , showMenuItemResend && /*#__PURE__*/React__default$1["default"].createElement(MenuItem, {
         className: "rogu-message-item-menu__list__menu-item",
         onClick: function onClick() {
           if (!disabled) {
