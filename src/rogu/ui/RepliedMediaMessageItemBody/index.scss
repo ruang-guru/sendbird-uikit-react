@@ -39,6 +39,16 @@
       flex-shrink: 0;
     }
 
+    .rogu-media-message-item-body__sender-name {
+      white-space: pre-wrap;
+      word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+    }
+
     .rogu-media-message-item-body__caption-container {
       display: flex;
       align-items: center;
