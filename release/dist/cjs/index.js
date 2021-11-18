@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-58301edd.js');
-var index$1 = require('./index-fe47bbcd.js');
+var LocalizationContext = require('./LocalizationContext-1845fc9b.js');
+var index$1 = require('./index-0f346f34.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-77713ca4.js');
-var index$3 = require('./index-71f8074e.js');
+var index$2 = require('./index-af8d08f5.js');
+var index$3 = require('./index-18abeee7.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-a6a69c1d.js');
+var Channel = require('./index-baaeee2d.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-23e97f84.js');
+require('./actionTypes-f4692e15.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-9fe9924b.js');
-require('./utils-94479ee2.js');
-require('./LeaveChannel-1c186b6a.js');
-require('./index-345b9ba1.js');
-require('./index-c7b5c02e.js');
-require('./index-973c8e38.js');
+require('./index-7a488e41.js');
+require('./utils-9fe83e62.js');
+require('./LeaveChannel-66497e75.js');
+require('./index-de5331b1.js');
+require('./index-a52b1974.js');
+require('./index-7e81d58c.js');
 require('./ChannelSettings.js');
-require('./index-2b8438d4.js');
+require('./index-3ca6d26a.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3437,11 +3437,7 @@ function TextMessageItemBody$1(_a) {
   }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     ref: textRef,
     className: "rogu-clamped-message-item-body__inner"
-  }, content === null || content === void 0 ? void 0 : content.split(/\r/).map(function (words, i) {
-    return words === '' ? /*#__PURE__*/React__default$1["default"].createElement("br", {
-      key: i
-    }) : replaceUrlsWithLink(words);
-  })), clampState === 'clamped' && /*#__PURE__*/React__default$1["default"].createElement(TextButton, {
+  }, parseLinks(content)), clampState === 'clamped' && /*#__PURE__*/React__default$1["default"].createElement(TextButton, {
     className: "rogu-clamped-message-item-body__read-more",
     onClick: handleExpand
   }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
@@ -3449,7 +3445,7 @@ function TextMessageItemBody$1(_a) {
   }, stringSet.BUTTON__READ_MORE)));
 }
 
-function replaceUrlsWithLink(text) {
+function parseLinks(text) {
   var _a = extractUrls(text),
       urls = _a.urls,
       sentences = _a.sentences;
