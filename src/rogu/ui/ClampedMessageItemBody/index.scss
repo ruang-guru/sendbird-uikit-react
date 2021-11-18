@@ -19,6 +19,7 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     word-break: break-word;
+    white-space: pre-wrap; // preserve white-space and line break
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
   }

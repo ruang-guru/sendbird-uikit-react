@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import TextMessageItemBody from "../index";
+import ClampedMessageItemBody from "../index";
 
-describe('TextMessageItemBody', () => {
-  it('should do a snapshot test of the TextMessageItemBody DOM', function() {
+describe('ClampedMessageItemBody', () => {
+  it('should do a snapshot test of the ClampedMessageItemBody DOM', function() {
     const text = "example-text";
     const component = renderer.create(
-      <TextMessageItemBody />,
+      <ClampedMessageItemBody content="Some message here" />,
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();

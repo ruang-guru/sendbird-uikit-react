@@ -73,11 +73,7 @@ export default function TextMessageItemBody({
       ])}
     >
       <div ref={textRef} className="rogu-clamped-message-item-body__inner">
-        {content
-          ?.split(/\r/)
-          .map((words, i) =>
-            words === '' ? <br key={i} /> : replaceUrlsWithLink(words)
-          )}
+        {parseLinks(content)}
       </div>
 
       {clampState === 'clamped' && (
@@ -94,7 +90,7 @@ export default function TextMessageItemBody({
   );
 }
 
-function replaceUrlsWithLink(text: string): Array<JSX.Element> {
+function parseLinks(text: string): Array<JSX.Element> {
   const { urls, sentences } = extractUrls(text);
   const elements = [];
 
