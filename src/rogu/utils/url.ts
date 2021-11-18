@@ -1,4 +1,4 @@
-export const REGEX_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*?)/g;
+import { REGEX_URL } from './constants';
 
 const K = '[[SPLIT_KEYWORD]]';
 export const extractUrls = (
