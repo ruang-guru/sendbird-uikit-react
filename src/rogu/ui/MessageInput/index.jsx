@@ -26,6 +26,7 @@ import {
   isReplyingMessage,
   isThumbnailMessage,
   isVideo,
+  REGEX_LINE_BREAK,
   REPLIED_MESSAGE_TYPE,
   SUPPORTED_MIMES,
 } from '../../utils';
@@ -190,7 +191,9 @@ const MessageInput = React.forwardRef((props, ref) => {
       modifiedFile.name = inputValue.slice(0, 930);
 
       if (repliedMessage) {
-        let repliedMessageBody = repliedMessage.message;
+        // Replace line break with space to avoid breaking the reply message workaround
+        let repliedMessageBody = repliedMessage.message?.replace(REGEX_LINE_BREAK, ' ');
+
         let repliedMessageMediaUrl = '';
         let repliedMessageMimeType = '*';
         let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
@@ -241,7 +244,9 @@ const MessageInput = React.forwardRef((props, ref) => {
       }
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
-        let repliedMessageBody = repliedMessage.message;
+        // Replace line break with space to avoid breaking the reply message workaround
+        let repliedMessageBody = repliedMessage.message?.replace(REGEX_LINE_BREAK, ' ');
+
         let repliedMessageMediaUrl = '';
         let repliedMessageMimeType = '*';
         let repliedMessageType = REPLIED_MESSAGE_TYPE.Text;
