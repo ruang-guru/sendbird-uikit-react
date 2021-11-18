@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-1845fc9b.js');
-var index$1 = require('./index-0f346f34.js');
+var LocalizationContext = require('./LocalizationContext-d4054b8e.js');
+var index$1 = require('./index-5f7a1acd.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-af8d08f5.js');
-var index$3 = require('./index-18abeee7.js');
+var index$2 = require('./index-392bae78.js');
+var index$3 = require('./index-f5456359.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-baaeee2d.js');
+var Channel = require('./index-fe204505.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-f4692e15.js');
+require('./actionTypes-79412412.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-7a488e41.js');
-require('./utils-9fe83e62.js');
-require('./LeaveChannel-66497e75.js');
-require('./index-de5331b1.js');
-require('./index-a52b1974.js');
-require('./index-7e81d58c.js');
+require('./index-47a367b6.js');
+require('./utils-d0cdf728.js');
+require('./LeaveChannel-004533e7.js');
+require('./index-e8e75ecd.js');
+require('./index-08963d7e.js');
+require('./index-b00ccc9e.js');
 require('./ChannelSettings.js');
-require('./index-3ca6d26a.js');
+require('./index-c34ca403.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -225,13 +225,12 @@ var isReplyingMessage = function isReplyingMessage(message) {
   return isReplying;
 };
 
-var REGEX_URL = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*?)/g;
 var K = '[[SPLIT_KEYWORD]]';
 var extractUrls = function extractUrls(text) {
   // Array of extracted urls
-  var urls = text.match(REGEX_URL) || []; // Array of splitted sentences without any url
+  var urls = text.match(index$1.REGEX_URL) || []; // Array of splitted sentences without any url
 
-  var sentences = text.replace(REGEX_URL, K).split(K) || [];
+  var sentences = text.replace(index$1.REGEX_URL, K).split(K) || [];
   return {
     urls: urls,
     sentences: sentences
@@ -6577,9 +6576,10 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       modifiedFile.name = inputValue.slice(0, 930);
 
       if (repliedMessage) {
-        var _repliedMessage$sende;
+        var _repliedMessage$messa, _repliedMessage$sende;
 
-        var repliedMessageBody = repliedMessage.message;
+        // Replace line break with space to avoid breaking the reply message workaround
+        var repliedMessageBody = (_repliedMessage$messa = repliedMessage.message) === null || _repliedMessage$messa === void 0 ? void 0 : _repliedMessage$messa.replace(index$1.REGEX_LINE_BREAK, ' ');
         var repliedMessageMediaUrl = '';
         var repliedMessageMimeType = '*';
         var repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Text;
@@ -6631,9 +6631,11 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       }
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
-        var _repliedMessage$sende2;
+        var _repliedMessage$messa2, _repliedMessage$sende2;
 
-        var _repliedMessageBody = repliedMessage.message;
+        // Replace line break with space to avoid breaking the reply message workaround
+        var _repliedMessageBody = (_repliedMessage$messa2 = repliedMessage.message) === null || _repliedMessage$messa2 === void 0 ? void 0 : _repliedMessage$messa2.replace(index$1.REGEX_LINE_BREAK, ' ');
+
         var _repliedMessageMediaUrl = '';
         var _repliedMessageMimeType = '*';
         var _repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Text;

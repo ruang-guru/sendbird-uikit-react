@@ -26,7 +26,7 @@ import {
   isReplyingMessage,
   isThumbnailMessage,
   isVideo,
-  REGEX_LINE_BREAK,
+  normalizeRepliedMessageBody,
   REPLIED_MESSAGE_TYPE,
   SUPPORTED_MIMES,
 } from '../../utils';
@@ -191,8 +191,7 @@ const MessageInput = React.forwardRef((props, ref) => {
       modifiedFile.name = inputValue.slice(0, 930);
 
       if (repliedMessage) {
-        // Replace line break with space to avoid breaking the reply message workaround
-        let repliedMessageBody = repliedMessage.message?.replace(REGEX_LINE_BREAK, ' ');
+        let repliedMessageBody = repliedMessage.message;
 
         let repliedMessageMediaUrl = '';
         let repliedMessageMimeType = '*';
@@ -231,7 +230,7 @@ const MessageInput = React.forwardRef((props, ref) => {
           repliedMessageBody = originalMessage;
         }
         onFileUpload(modifiedFile, {
-          parentMessageBody: repliedMessageBody,
+          parentMessageBody: normalizeRepliedMessageBody(repliedMessageBody),
           parentMessageCreatedAt: repliedMessage.createdAt,
           parentMessageId: repliedMessage.messageId,
           parentMessageMediaUrl: repliedMessageMediaUrl,
@@ -244,8 +243,7 @@ const MessageInput = React.forwardRef((props, ref) => {
       }
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
-        // Replace line break with space to avoid breaking the reply message workaround
-        let repliedMessageBody = repliedMessage.message?.replace(REGEX_LINE_BREAK, ' ');
+        let repliedMessageBody = repliedMessage.message;
 
         let repliedMessageMediaUrl = '';
         let repliedMessageMimeType = '*';
@@ -285,7 +283,7 @@ const MessageInput = React.forwardRef((props, ref) => {
         }
 
         onSendMessage({
-          parentMessageBody: repliedMessageBody,
+          parentMessageBody: normalizeRepliedMessageBody(repliedMessageBody),
           parentMessageCreatedAt: repliedMessage.createdAt,
           parentMessageId: repliedMessage.messageId,
           parentMessageMediaUrl: repliedMessageMediaUrl,
