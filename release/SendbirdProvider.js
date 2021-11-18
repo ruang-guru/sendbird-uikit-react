@@ -1,8 +1,8 @@
-import { j as __assign, b as _objectSpread2, c as _slicedToArray, u as uuidv4, k as getStringSet, S as SendbirdSdkContext, l as LocalizationProvider } from './LocalizationContext-a9efaeb7.js';
+import { j as __assign, b as _objectSpread2, c as _slicedToArray, u as uuidv4, k as getStringSet, S as SendbirdSdkContext, l as LocalizationProvider } from './LocalizationContext-77666f6f.js';
 import React__default, { useLayoutEffect, useState, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Sb from 'sendbird';
-import { R as RESET_USER, I as INIT_USER, U as UPDATE_USER_INFO } from './actionTypes-f2df2153.js';
+import { R as RESET_USER, I as INIT_USER, U as UPDATE_USER_INFO } from './actionTypes-aa960e25.js';
 import cssVars from 'css-vars-ponyfill';
 
 var INIT_SDK = 'INIT_SDK';
@@ -10,7 +10,7 @@ var SET_SDK_LOADING = 'SET_SDK_LOADING';
 var RESET_SDK = 'RESET_SDK';
 var SDK_ERROR = 'SDK_ERROR';
 
-var APP_VERSION_STRING = '1.0.0';
+var APP_VERSION_STRING = '1.0.1';
 var disconnectSdk = function disconnectSdk(_ref) {
   var sdkDispatcher = _ref.sdkDispatcher,
       userDispatcher = _ref.userDispatcher,
