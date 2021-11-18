@@ -1,11 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextMessageItemBody should do a snapshot test of the TextMessageItemBody DOM 1`] = `
+exports[`ClampedMessageItemBody should do a snapshot test of the ClampedMessageItemBody DOM 1`] = `
 <div
   className=" rogu-clamped-message-item-body  rogu-clamped-message-item-body--incoming   "
 >
   <div
     className="rogu-clamped-message-item-body__inner"
-  />
+  >
+    <span
+      className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
+    >
+      Some message here
+    </span>
+  </div>
 </div>
 `;
