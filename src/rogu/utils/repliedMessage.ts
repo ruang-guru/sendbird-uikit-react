@@ -3,6 +3,8 @@ import { MessageMetaArray, SendBirdInstance } from 'sendbird';
 import { CoreMessageType } from '../../utils';
 import {
   META_ARRAY_VALUE_MAX_CHAR,
+  REGEX_LINE_BREAK,
+  REPLIED_MESSAGE_MAX_CHAR,
   REPLIED_MESSAGE_QUOTE_FORMAT,
 } from './constants';
 
@@ -129,3 +131,10 @@ export const metaArraysToRepliedMessage = (
       parentMessageType: RepliedMessageType.Text,
     }
   );
+
+export const normalizeRepliedMessageBody = (messageBody: string): string =>
+  messageBody
+    // Remove line break (`\n`) to avoid breaking the replied message workaround
+    .replace(REGEX_LINE_BREAK, ' ')
+    // Trim the replied message body to ensure that the character length is below the limit
+    .substring(0, REPLIED_MESSAGE_MAX_CHAR);
