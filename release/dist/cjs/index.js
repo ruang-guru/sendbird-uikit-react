@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-d4054b8e.js');
-var index$1 = require('./index-5f7a1acd.js');
+var LocalizationContext = require('./LocalizationContext-224ae614.js');
+var index$1 = require('./index-03c052e2.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-392bae78.js');
-var index$3 = require('./index-f5456359.js');
+var index$2 = require('./index-3e3350b3.js');
+var index$3 = require('./index-df5045fe.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-fe204505.js');
+var Channel = require('./index-afe6903b.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-79412412.js');
+require('./actionTypes-cc58019e.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-47a367b6.js');
-require('./utils-d0cdf728.js');
-require('./LeaveChannel-004533e7.js');
-require('./index-e8e75ecd.js');
-require('./index-08963d7e.js');
-require('./index-b00ccc9e.js');
+require('./index-4f404f30.js');
+require('./utils-2797892f.js');
+require('./LeaveChannel-8b8aec99.js');
+require('./index-44cf41df.js');
+require('./index-25629ea5.js');
+require('./index-6089985d.js');
 require('./ChannelSettings.js');
-require('./index-c34ca403.js');
+require('./index-08566b33.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3792,7 +3792,7 @@ function RepliedMediaMessageItemBody(_a) {
     src: mediaUrl,
     type: mimeType
   })), /*#__PURE__*/React__default$1["default"].createElement("div", null, /*#__PURE__*/React__default$1["default"].createElement(Label, {
-    className: "rogu-message-content__sender-name",
+    className: "rogu-media-message-item-body__sender-name",
     color: LabelColors.ONBACKGROUND_2,
     style: {
       color: generateColorFromString(nickname || '')
@@ -6576,10 +6576,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       modifiedFile.name = inputValue.slice(0, 930);
 
       if (repliedMessage) {
-        var _repliedMessage$messa, _repliedMessage$sende;
+        var _repliedMessage$sende;
 
-        // Replace line break with space to avoid breaking the reply message workaround
-        var repliedMessageBody = (_repliedMessage$messa = repliedMessage.message) === null || _repliedMessage$messa === void 0 ? void 0 : _repliedMessage$messa.replace(index$1.REGEX_LINE_BREAK, ' ');
+        var repliedMessageBody = index$1.normalizeRepliedMessageBody(repliedMessage.message || '');
         var repliedMessageMediaUrl = '';
         var repliedMessageMimeType = '*';
         var repliedMessageType = index$1.REPLIED_MESSAGE_TYPE.Text;
@@ -6631,10 +6630,9 @@ var MessageInput = /*#__PURE__*/React__default$1["default"].forwardRef(function 
       }
     } else if (inputValue && inputValue.trim().length > 0) {
       if (repliedMessage) {
-        var _repliedMessage$messa2, _repliedMessage$sende2;
+        var _repliedMessage$sende2;
 
-        // Replace line break with space to avoid breaking the reply message workaround
-        var _repliedMessageBody = (_repliedMessage$messa2 = repliedMessage.message) === null || _repliedMessage$messa2 === void 0 ? void 0 : _repliedMessage$messa2.replace(index$1.REGEX_LINE_BREAK, ' ');
+        var _repliedMessageBody = index$1.normalizeRepliedMessageBody(repliedMessage.message || '');
 
         var _repliedMessageMediaUrl = '';
         var _repliedMessageMimeType = '*';
