@@ -1,4 +1,5 @@
 export const META_ARRAY_VALUE_MAX_CHAR = 128;
+export const REPLIED_MESSAGE_MAX_CHAR = 200;
 export const REPLIED_MESSAGE_QUOTE_FORMAT = '>';
 
 export const REGEX_LINE_BREAK = /\r?\n|\r/g;

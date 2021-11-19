@@ -70,7 +70,7 @@ export default function RepliedMediaMessageItemBody({
         }
         <div>
           <Label
-            className="rogu-message-content__sender-name"
+            className="rogu-media-message-item-body__sender-name"
             color={LabelColors.ONBACKGROUND_2}
             style={{
               color: generateColorFromString(
