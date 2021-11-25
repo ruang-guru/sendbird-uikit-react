@@ -8,4 +8,10 @@ describe('utils/url', () => {
 
     expect(urls.length).toEqual(5);
   });
+
+  it('should not contain any trailling punctuations', () => {
+    const { urls, sentences } = extractUrls('aa.com.., bb.com!');
+
+    expect(urls).toEqual(expect.arrayContaining(['aa.com', 'bb.com']));
+  });
 });
