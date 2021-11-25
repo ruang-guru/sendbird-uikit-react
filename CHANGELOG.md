@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.3](Nov 25 2021)
+
+- Bugfixes
+  * String after the URLs port name (the .com, etc) does not rendered as part of the link in link message (#87)
 
 ## [1.0.2](Nov 19 2021)
 
@@ -8,7 +12,6 @@
   * Fix unexpectedly trimed replied message (#85)
   * Remove line break character in replied message bubble (#84)
   * Preserve line breaks and white spaces (#83)
-
 
 ## [1.0.1](Nov 18 2021)
 
