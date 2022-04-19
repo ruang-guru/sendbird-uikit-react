@@ -4,27 +4,27 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var SendbirdProvider = require('./SendbirdProvider.js');
 var App = require('./App.js');
-var LocalizationContext = require('./LocalizationContext-990b55f1.js');
-var index$1 = require('./index-40092b43.js');
+var LocalizationContext = require('./LocalizationContext-4517627b.js');
+var index$1 = require('./index-635b9a84.js');
 var React$1 = require('react');
 var PropTypes$1 = require('prop-types');
-var index$2 = require('./index-e23090ba.js');
-var index$3 = require('./index-a81a8b09.js');
+var index$2 = require('./index-3591971a.js');
+var index$3 = require('./index-fe6bd965.js');
 var dateFns = require('date-fns');
-var Channel = require('./index-52a116e0.js');
+var Channel = require('./index-e00ecae1.js');
+var index$4 = require('./index-60ec1cf7.js');
 var reactDom = require('react-dom');
 require('sendbird');
-require('./actionTypes-f825cc8c.js');
+require('./actionTypes-4c0dad17.js');
 require('css-vars-ponyfill');
 require('./ChannelList.js');
-require('./index-3238b9b3.js');
-require('./utils-a4520d32.js');
-require('./LeaveChannel-8d996e63.js');
-require('./index-752861fc.js');
-require('./index-64887da1.js');
-require('./index-2eca0ca8.js');
+require('./index-7291c863.js');
+require('./utils-c3b67cea.js');
+require('./LeaveChannel-970caab5.js');
+require('./index-1bccf9e2.js');
+require('./index-9844847b.js');
 require('./ChannelSettings.js');
-require('./index-758250fa.js');
+require('./index-1bd5d217.js');
 require('./MessageSearch.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
@@ -3383,10 +3383,11 @@ function LinkLabel(_ref) {
       color = _ref.color,
       children = _ref.children;
   var url = http.test(src) ? src : "http://".concat(src);
+  var target = index$4.isIOSWebView() ? '_top' : '_blank';
   return /*#__PURE__*/React__default$1["default"].createElement("a", {
     className: [].concat(LocalizationContext._toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-link-label', color ? changeColorToClassName$1(color) : '']).join(' '),
     href: url,
-    target: "_blank",
+    target: target,
     rel: "noopener noreferrer"
   }, /*#__PURE__*/React__default$1["default"].createElement(Label, {
     className: "rogu-link-label__label",
@@ -4055,10 +4056,11 @@ function FileMessageItemBody(_a) {
       _b = _a.isByMe,
       isByMe = _b === void 0 ? false : _b;
   var stringSet = React$1.useContext(LocalizationContext.LocalizationContext).stringSet;
+  var target = index$4.isIOSWebView() ? '_top' : '_blank';
   return /*#__PURE__*/React__default$1["default"].createElement("a", {
     className: index$1.getClassName([className, 'rogu-file-message-item-body', isByMe ? 'rogu-file-message-item-body--outgoing' : 'rogu-file-message-item-body--incoming']),
     href: message.plainUrl,
-    target: "_blank",
+    target: target,
     rel: "noreferrer"
   }, /*#__PURE__*/React__default$1["default"].createElement(Icon, {
     className: 'rogu-file-message-item-body__icon',
@@ -4278,10 +4280,12 @@ function AssignmentMessageItemBody(_a) {
   var assignmentData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
 
   var openAssignment = function openAssignment() {
+    var target = index$4.isIOSWebView() ? '_top' : '_blank';
+
     if ((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) && (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb.length) > 0) {
-      window.open((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) + "?from=chatroom");
+      window.open((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) + "?from=chatroom", target);
     } else {
-      window.open(index$1.convertCtaLinkToWebLink(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.cta, "assignment"));
+      window.open(index$1.convertCtaLinkToWebLink(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.cta, 'assignment'), target);
     }
   };
 
@@ -4311,7 +4315,7 @@ function AssignmentMessageItemBody(_a) {
     className: "rogu-assignment-message-item-body__text-deadline",
     color: LabelColors.ONBACKGROUND_2,
     type: LabelTypography.BODY_2
-  }, stringSet.ASSIGNMENT_DEADLINE + " " + index$1.convertAssignmentDueUTCtoLocale(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt))))));
+  }, stringSet.ASSIGNMENT_DEADLINE + ' ' + index$1.convertAssignmentDueUTCtoLocale(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt))))));
 }
 
 function MaterialMessageItemBody(_a) {
@@ -4324,15 +4328,17 @@ function MaterialMessageItemBody(_a) {
   var materialData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
 
   var openMaterial = function openMaterial() {
+    var target = index$4.isIOSWebView() ? '_top' : '_blank';
+
     if ((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) && (materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb.length) > 0) {
-      window.open((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) + "?from=chatroom");
+      window.open((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) + "?from=chatroom", target);
     } else {
-      window.open(index$1.convertCtaLinkToWebLink(materialData === null || materialData === void 0 ? void 0 : materialData.cta, "material"));
+      window.open(index$1.convertCtaLinkToWebLink(materialData === null || materialData === void 0 ? void 0 : materialData.cta, 'material'), target);
     }
   };
 
   return /*#__PURE__*/React__default$1["default"].createElement("div", {
-    className: index$1.getClassName([className, "rogu-material-message-item-body", isByMe ? 'rogu-material-message-item-body--outgoing' : 'rogu-material-message-item-body--incoming', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
+    className: index$1.getClassName([className, 'rogu-material-message-item-body', isByMe ? 'rogu-material-message-item-body--outgoing' : 'rogu-material-message-item-body--incoming', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
   }, /*#__PURE__*/React__default$1["default"].createElement("div", {
     className: "rogu-material-message-item-body__container",
     onClick: openMaterial

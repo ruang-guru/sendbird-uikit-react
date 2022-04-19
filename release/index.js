@@ -1,29 +1,29 @@
 export { default as SendBirdProvider } from './SendbirdProvider.js';
 export { default as App } from './App.js';
-import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-cb287e49.js';
-export { w as withSendBird } from './LocalizationContext-cb287e49.js';
-import { R as REGEX_URL, g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as changeColorToClassName$2, C as Colors$2, j as getClassName, k as RepliedMessageType, l as formatedStringToRepliedMessage, m as metaArraysToRepliedMessage, n as isGifMessage, o as convertAssignmentDueUTCtoLocale, p as convertCtaLinkToWebLink, q as isUserMessage, s as isFailedMessage, t as isSentMessage, I as IconButton$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getOutgoingMessageState, O as OutgoingMessageStates, J as getUIKitMessageType, M as MODAL_ROOT, K as isUrl, L as normalizeRepliedMessageBody, N as REPLIED_MESSAGE_TYPE, P as UserProfileProvider } from './index-a08de3c1.js';
-export { Q as sendBirdSelectors } from './index-a08de3c1.js';
+import { _ as __spreadArray, S as SendbirdSdkContext, a as _toConsumableArray, b as _objectSpread2, u as uuidv4, c as _slicedToArray, d as _defineProperty, L as LocalizationContext, e as _inherits, f as _createSuper, g as _classCallCheck, h as _assertThisInitialized, i as _createClass, w as withSendbirdContext } from './LocalizationContext-3a2cd920.js';
+export { w as withSendBird } from './LocalizationContext-3a2cd920.js';
+import { R as REGEX_URL, g as getOutgoingMessageStates, a as getSendingMessageStatus, S as SEND_USER_MESSAGE, b as SEND_MESSAGE_START, c as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, f as filterMessageListParams, r as repliedMessageToMetaArrays, d as repliedMessageToFormatedString, E as EmojiListItems, i as isSentStatus, e as getMessageCreatedAt$1, h as changeColorToClassName$2, C as Colors$2, j as getClassName, k as RepliedMessageType, l as formatedStringToRepliedMessage, m as metaArraysToRepliedMessage, n as isGifMessage, o as convertAssignmentDueUTCtoLocale, p as convertCtaLinkToWebLink, q as isUserMessage, s as isFailedMessage, t as isSentMessage, I as IconButton$1, u as copyToClipboard, v as getUIKitMessageTypes, w as isPendingMessage, x as isMessageSentByMe, y as isMessageSentByOperator, z as getSenderName, A as isTextMessage, B as isOGMessage, F as isAssignmentMessage, G as isMaterialMessage, H as getOutgoingMessageState, O as OutgoingMessageStates, J as getUIKitMessageType, M as MODAL_ROOT, K as isUrl, L as normalizeRepliedMessageBody, N as REPLIED_MESSAGE_TYPE, P as UserProfileProvider } from './index-f6f01531.js';
+export { Q as sendBirdSelectors } from './index-f6f01531.js';
 import * as React$1 from 'react';
 import React__default$1, { useContext, useEffect, useCallback, useRef, useMemo, useState, Component, useLayoutEffect, useReducer } from 'react';
 import PropTypes$1 from 'prop-types';
-import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-c71986fa.js';
-import { c as compareIds } from './index-740006e1.js';
+import { f as format$1, I as ImageRenderer$1, a as Icon$1, b as IconTypes$1, S as SvgIconUser, c as SvgIconToggleon, d as SvgIconToggleoff, e as SvgIconThumbnailNone, g as SvgIconSupergroup, h as SvgIconSpinner, i as SvgIconSettingsFilled, j as SvgIconSend, k as SvgIconSearch, l as SvgIconReplyFilled, m as SvgIconRemove, n as SvgIconRefresh, o as SvgIconQuestion, p as SvgIconPlus, q as SvgIconPlay, r as SvgIconPhoto, s as SvgIconOperator, t as SvgIconNotificationsOffFilled, u as SvgIconNotifications, v as SvgIconMute, w as SvgIconMore, x as SvgIconModerations, y as SvgIconMessage, z as SvgIconMembers, A as SvgIconLeave, B as SvgIconInfo, C as SvgIconGif, D as SvgIconFreeze, E as SvgIconFileDocument, F as SvgIconFileAudio, G as SvgIconExpand, H as SvgIconError, J as SvgIconEmojiMore, K as SvgIconEdit, L as SvgIconDownload, M as SvgIconDoneAll, N as SvgIconDone, O as SvgIconDocument, P as SvgIconDisconnected, Q as SvgIconDelete, R as SvgIconCreate, T as SvgIconCopy, U as SvgIconCollapse, V as SvgIconClose, W as SvgIconChevronRight, X as SvgIconChevronDown, Y as SvgIconChatFilled, Z as SvgIconChat, _ as SvgIconChannels, $ as SvgIconCamera, a0 as SvgIconBroadcast, a1 as SvgIconBan, a2 as SvgIconAttach, a3 as SvgIconArrowLeft, a4 as SvgIconAdd, a5 as Avatar$2, a6 as pxToNumber$1, a7 as PlaceHolder, a8 as PlaceHolderTypes, a9 as IconColors$1, aa as Label$1, ab as LabelColors$1, ac as LabelTypography$1 } from './index-663ef7c5.js';
+import { c as compareIds } from './index-b8bd8253.js';
 import { format, differenceInCalendarDays, getDay } from 'date-fns';
-import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-36724912.js';
+import { R as ReactionButton, U as UnknownMessageItemBody, C as ChatHeader, a as ConnectionStatus } from './index-2a4030dc.js';
+import { i as isIOSWebView } from './index-cfc10c8c.js';
 import { createPortal } from 'react-dom';
 import 'sendbird';
-import './actionTypes-d9325a2d.js';
+import './actionTypes-3ff3a4b2.js';
 import 'css-vars-ponyfill';
 import './ChannelList.js';
-import './index-8b7eaf9b.js';
-import './utils-5d00fcea.js';
-import './LeaveChannel-adca2429.js';
-import './index-bdbbedbd.js';
-import './index-9e8a7dc7.js';
-import './index-ccb6e4ef.js';
+import './index-be3d7ca2.js';
+import './utils-e50eccde.js';
+import './LeaveChannel-c1c8dd5f.js';
+import './index-6a5d4baf.js';
+import './index-68061d92.js';
 import './ChannelSettings.js';
-import './index-d1c01048.js';
+import './index-40461e68.js';
 import './MessageSearch.js';
 
 var getDayString = function getDayString(dayNumber, strings) {
@@ -3358,10 +3358,11 @@ function LinkLabel(_ref) {
       color = _ref.color,
       children = _ref.children;
   var url = http.test(src) ? src : "http://".concat(src);
+  var target = isIOSWebView() ? '_top' : '_blank';
   return /*#__PURE__*/React__default$1.createElement("a", {
     className: [].concat(_toConsumableArray(Array.isArray(className) ? className : [className]), ['rogu-link-label', color ? changeColorToClassName$1(color) : '']).join(' '),
     href: url,
-    target: "_blank",
+    target: target,
     rel: "noopener noreferrer"
   }, /*#__PURE__*/React__default$1.createElement(Label, {
     className: "rogu-link-label__label",
@@ -4030,10 +4031,11 @@ function FileMessageItemBody(_a) {
       _b = _a.isByMe,
       isByMe = _b === void 0 ? false : _b;
   var stringSet = useContext(LocalizationContext).stringSet;
+  var target = isIOSWebView() ? '_top' : '_blank';
   return /*#__PURE__*/React__default$1.createElement("a", {
     className: getClassName([className, 'rogu-file-message-item-body', isByMe ? 'rogu-file-message-item-body--outgoing' : 'rogu-file-message-item-body--incoming']),
     href: message.plainUrl,
-    target: "_blank",
+    target: target,
     rel: "noreferrer"
   }, /*#__PURE__*/React__default$1.createElement(Icon, {
     className: 'rogu-file-message-item-body__icon',
@@ -4253,10 +4255,12 @@ function AssignmentMessageItemBody(_a) {
   var assignmentData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
 
   var openAssignment = function openAssignment() {
+    var target = isIOSWebView() ? '_top' : '_blank';
+
     if ((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) && (assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb.length) > 0) {
-      window.open((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) + "?from=chatroom");
+      window.open((assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.ctaWeb) + "?from=chatroom", target);
     } else {
-      window.open(convertCtaLinkToWebLink(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.cta, "assignment"));
+      window.open(convertCtaLinkToWebLink(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.cta, 'assignment'), target);
     }
   };
 
@@ -4286,7 +4290,7 @@ function AssignmentMessageItemBody(_a) {
     className: "rogu-assignment-message-item-body__text-deadline",
     color: LabelColors.ONBACKGROUND_2,
     type: LabelTypography.BODY_2
-  }, stringSet.ASSIGNMENT_DEADLINE + " " + convertAssignmentDueUTCtoLocale(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt))))));
+  }, stringSet.ASSIGNMENT_DEADLINE + ' ' + convertAssignmentDueUTCtoLocale(assignmentData === null || assignmentData === void 0 ? void 0 : assignmentData.dueAt))))));
 }
 
 function MaterialMessageItemBody(_a) {
@@ -4299,15 +4303,17 @@ function MaterialMessageItemBody(_a) {
   var materialData = JSON.parse(message === null || message === void 0 ? void 0 : message.data);
 
   var openMaterial = function openMaterial() {
+    var target = isIOSWebView() ? '_top' : '_blank';
+
     if ((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) && (materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb.length) > 0) {
-      window.open((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) + "?from=chatroom");
+      window.open((materialData === null || materialData === void 0 ? void 0 : materialData.ctaWeb) + "?from=chatroom", target);
     } else {
-      window.open(convertCtaLinkToWebLink(materialData === null || materialData === void 0 ? void 0 : materialData.cta, "material"));
+      window.open(convertCtaLinkToWebLink(materialData === null || materialData === void 0 ? void 0 : materialData.cta, 'material'), target);
     }
   };
 
   return /*#__PURE__*/React__default$1.createElement("div", {
-    className: getClassName([className, "rogu-material-message-item-body", isByMe ? 'rogu-material-message-item-body--outgoing' : 'rogu-material-message-item-body--incoming', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
+    className: getClassName([className, 'rogu-material-message-item-body', isByMe ? 'rogu-material-message-item-body--outgoing' : 'rogu-material-message-item-body--incoming', ((_b = message === null || message === void 0 ? void 0 : message.reactions) === null || _b === void 0 ? void 0 : _b.length) > 0 ? 'reactions' : ''])
   }, /*#__PURE__*/React__default$1.createElement("div", {
     className: "rogu-material-message-item-body__container",
     onClick: openMaterial
