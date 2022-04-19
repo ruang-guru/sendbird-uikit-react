@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import Label, { LabelTypography, LabelColors } from '../Label';
 import { changeColorToClassName } from '../Label/utils';
 import './index.scss';
+import { isIOSWebView } from '../../../utils/utils';
 
 const http = /https?:\/\//;
 
-export default function LinkLabel({
-  className, src, type, color, children,
-}) {
+export default function LinkLabel({ className, src, type, color, children }) {
   const url = http.test(src) ? src : `http://${src}`;
+  const target = isIOSWebView() ? '_top' : '_blank';
 
   return (
     <a
@@ -20,7 +20,7 @@ export default function LinkLabel({
         color ? changeColorToClassName(color) : '',
       ].join(' ')}
       href={url}
-      target="_blank"
+      target={target}
       rel="noopener noreferrer"
     >
       <Label className="rogu-link-label__label" type={type} color={color}>
