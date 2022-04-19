@@ -7,6 +7,7 @@ import Icon, { IconTypes, IconColors } from '../Icon';
 import { getClassName } from '../../../utils';
 import { LocalizationContext } from '../../../lib/LocalizationContext';
 import { formatBytes, getFileType, getMimeExtension } from '../../utils';
+import { isIOSWebView } from '../../../utils/utils';
 
 interface Props {
   className?: string | Array<string>;
@@ -20,6 +21,7 @@ export default function FileMessageItemBody({
   isByMe = false,
 }: Props): ReactElement {
   const { stringSet } = useContext(LocalizationContext);
+  const target = isIOSWebView() ? '_top' : '_blank';
 
   return (
     <a
@@ -31,7 +33,7 @@ export default function FileMessageItemBody({
           : 'rogu-file-message-item-body--incoming',
       ])}
       href={message.plainUrl}
-      target="_blank"
+      target={target}
       rel="noreferrer"
     >
       <Icon
