@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.4](Apr 20 2022)
+## [1.1.0](Apr 20 2022)
 
 - Feature
   - Handle link target to open in the same window in iOS Webview (#89)
