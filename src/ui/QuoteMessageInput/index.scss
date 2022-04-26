@@ -1,0 +1,61 @@
+@import '../../styles/variables';
+
+.sendbird-quote_message_input {
+  position: relative;
+  padding: 16px 80px 16px 40px;
+  width: 100%;
+  height: 76px;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+
+  .sendbird-quote_message_input__avatar {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    position: relative;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include themed() {
+      background-color: t(bg-1);
+    }
+  }
+
+  .sendbird-quote_message_input__body {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+
+    .sendbird-quote_message_input__body__sender-name {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+    }
+    .sendbird-quote_message_input__body__message-content {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+  }
+
+  .sendbird-quote_message_input__close-button {
+    position: absolute;
+    top: 26px;
+    right: 40px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuoteMessageInput should do a snapshot test of the QuoteMessageInput DOM 1`] = `
+<div
+  className="sendbird-quote_message_input "
+>
+  <div
+    className="sendbird-quote_message_input__avatar"
+  >
+    <div
+      className=" sendbird-icon sendbird-icon-file-audio sendbird-icon-color--on-background-2"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "height": "24px",
+          "minHeight": "24px",
+          "minWidth": "24px",
+          "width": "24px",
+        }
+      }
+      tabIndex="0"
+    >
+      <test-file-stub />
+    </div>
+  </div>
+  <div
+    className="sendbird-quote_message_input__body"
+    style={
+      Object {
+        "left": "92px",
+        "width": "calc(100% - 164px)",
+      }
+    }
+  >
+    <span
+      className="sendbird-quote_message_input__body__sender-name sendbird-label sendbird-label--caption-1 sendbird-label--color-onbackground-1"
+    >
+      Reply to ME
+    </span>
+    <span
+      className="sendbird-quote_message_input__body__message-content sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-3"
+    >
+      72b35fef-acda-4e32-123323456789973567890dfvgbhnjmkiytdxbna0e4-37e1226b0615.mp3
+    </span>
+  </div>
+  <div
+    className="sendbird-quote_message_input__close-button sendbird-icon sendbird-icon-close sendbird-icon-color--on-background-2"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    role="button"
+    style={
+      Object {
+        "height": "24px",
+        "minHeight": "24px",
+        "minWidth": "24px",
+        "width": "24px",
+      }
+    }
+    tabIndex="0"
+  >
+    <test-file-stub />
+  </div>
+</div>
+`;

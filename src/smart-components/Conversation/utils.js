@@ -2,7 +2,10 @@ import format from 'date-fns/format';
 import * as channelActions from './dux/actionTypes';
 import * as topics from '../../lib/pubSub/topics';
 
-import { getSendingMessageStatus, getOutgoingMessageStates } from '../../utils';
+import {
+  getSendingMessageStatus,
+  getOutgoingMessageStates,
+} from '../../utils';
 
 const MessageStatusType = getOutgoingMessageStates();
 const UNDEFINED = 'undefined';
@@ -15,7 +18,7 @@ export const scrollIntoLast = (intialTry = 0) => {
     return;
   }
   try {
-    const scrollDOM = document.querySelector('.sendbird-conversation__scroll-container');
+    const scrollDOM = document.querySelector('.sendbird-conversation__messages-padding');
     // eslint-disable-next-line no-multi-assign
     scrollDOM.scrollTop = scrollDOM.scrollHeight;
   } catch (error) {
@@ -184,21 +187,23 @@ export const getNicknamesMapFromMembers = (members = []) => {
 export const getMessageCreatedAt = (message) => format(message.createdAt, 'p');
 
 export const isSameGroup = (message, comparingMessage) => {
-  if (
-    !message
-    || !comparingMessage
-    || !message.sender
-    || !comparingMessage.sender
-    || !message.createdAt
-    || !comparingMessage.createdAt
-    || !message.sender.userId
-    || !comparingMessage.sender.userId
-  ) {
+  if (!(message
+    && comparingMessage
+    && message?.messageType !== 'admin'
+    && comparingMessage?.messageType !== 'admin'
+    && message?.sender
+    && comparingMessage?.sender
+    && message?.createdAt
+    && comparingMessage?.createdAt
+    && message?.sender?.userId
+    && comparingMessage?.sender?.userId
+  )) {
     return false;
   }
+
   return (
-    message.sendingStatus === comparingMessage.sendingStatus
-    && message.sender.userId === comparingMessage.sender.userId
+    message?.sendingStatus === comparingMessage?.sendingStatus
+    && message?.sender?.userId === comparingMessage?.sender?.userId
     && getMessageCreatedAt(message) === getMessageCreatedAt(comparingMessage)
   );
 };
@@ -207,12 +212,14 @@ export const compareMessagesForGrouping = (
   prevMessage,
   currMessage,
   nextMessage,
-) => (
-  [
-    isSameGroup(prevMessage, currMessage),
-    isSameGroup(currMessage, nextMessage),
-  ]
-);
+) => {
+  const sendingStatus = currMessage?.sendingStatus || '';
+  const isAcceptable = sendingStatus !== 'pending' && sendingStatus !== 'failed';
+  return [
+    isSameGroup(prevMessage, currMessage) && isAcceptable,
+    isSameGroup(currMessage, nextMessage) && isAcceptable,
+  ];
+};
 
 export const hasOwnProperty = (property) => (payload) => {
   // eslint-disable-next-line no-prototype-builtins

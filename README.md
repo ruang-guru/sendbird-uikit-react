@@ -1,5 +1,11 @@
 # sendbird-uikit
 
+[![Platform React](https://img.shields.io/badge/Platform-React-orange.svg)](https://reactjs.org)
+[![Language TypeScript](https://img.shields.io/badge/Language-TypeScript-orange.svg)](https://www.typescriptlang.org/)
+
+[**Beta version of Sendbird UIKit 3.0**](https://github.com/sendbird/sendbird-uikit-react/tree/develop-v3) has been released.
+Try to make your own application with this amazing version which contains **new modular components** and **UI components of elementary level**.
+
 > React based UI kit based on sendbird javascript SDK
 
 > **ℹ️ NOTE**: This project is a forked version of the [Sendbird UI Kit](https://github.com/sendbird/sendbird-uikit-react) to match with the Ruangguru's internal requirements. Therefore, it is not yet set up to accept pull requests from external contributors. Please also be aware that we are not going to respond to any issues created from external contributors. Check the [internal docs](https://github.com/ruang-guru/sendbird-uikit-react/tree/rogu/v1/internal_docs) for more information about an internal contribution. The repository is here and you can always freely create a forked version from this repository to match with your own requirements.

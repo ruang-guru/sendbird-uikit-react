@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 
+const MENU_ITEMS_POP_UP = 'sendbird-menu-items-pop-up';
+
 export default class MenuItems extends Component {
   constructor(props) {
     super(props);
     this.menuRef = React.createRef();
+    this.rootForPopup = document.body;
     this.state = {
       menuStyle: {},
       handleClickOutside: () => { },
@@ -16,11 +19,15 @@ export default class MenuItems extends Component {
     this.setupEvents();
     this.getMenuPosition();
     this.showParent();
+    // add className to body
+    this.rootForPopup.className = `${MENU_ITEMS_POP_UP} ${this.rootForPopup.className}`;
   }
 
   componentWillUnmount() {
     this.cleanUpEvents();
     this.hideParent();
+    // remove className from body
+    this.rootForPopup.className = this.rootForPopup.className.split(' ').filter((className) => className !== MENU_ITEMS_POP_UP).join(' ');
   }
 
   showParent = () => {
@@ -140,11 +147,11 @@ MenuItems.propTypes = {
   // https://stackoverflow.com/a/51127130
   parentRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.element) }),
   ]).isRequired,
   parentContainRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+    PropTypes.shape({ current: PropTypes.instanceOf(PropTypes.element) }),
   ]).isRequired,
   openLeft: PropTypes.bool,
 };
