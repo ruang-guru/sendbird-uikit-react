@@ -2,20 +2,20 @@
 
 .sendbird-message-status {
   position: relative;
-  display: inline-flex;
-  flex-direction: column;
+  display: inline-block;
   width: 100%;
   height: 100%;
 
   .sendbird-message-status__icon {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    position: relative;
+    display: inline-block;
+    top: 4px;
   }
 
   .sendbird-message-status__text {
     position: relative;
-    margin-top: 18px;
+    display: inline-block;
+    margin-left: 4px;
 
     .sendbird-message-status__text__try-again {
       text-decoration: underline;

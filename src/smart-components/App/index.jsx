@@ -26,15 +26,18 @@ export default function App(props) {
     profileUrl,
     config = {},
     useReaction,
+    replyType,
     useMessageGrouping,
     colorSet,
     stringSet,
+    dateLocale,
     allowProfileEdit,
     disableUserProfile,
     renderUserProfile,
     showSearchIcon,
     onProfileEditSuccess,
     imageCompression,
+    disableAutoSelect,
   } = props;
   const [currentChannelUrl, setCurrentChannelUrl] = useState(null);
   const [showSettings, setShowSettings] = useState(false);
@@ -45,6 +48,7 @@ export default function App(props) {
   return (
     <Sendbird
       stringSet={stringSet}
+      dateLocale={dateLocale}
       appId={appId}
       userId={userId}
       accessToken={accessToken}
@@ -73,6 +77,7 @@ export default function App(props) {
                 setCurrentChannelUrl('');
               }
             }}
+            disableAutoSelect={disableAutoSelect}
           />
         </div>
         <div
@@ -96,6 +101,7 @@ export default function App(props) {
             startingPoint={startingPoint}
             highlightedMessage={highlightedMessage}
             useReaction={useReaction}
+            replyType={replyType}
             useMessageGrouping={useMessageGrouping}
           />
         </div>
@@ -155,7 +161,9 @@ App.propTypes = {
       PropTypes.arrayOf(PropTypes.string),
     ]),
   }),
+  dateLocale: PropTypes.shape({}),
   useReaction: PropTypes.bool,
+  replyType: PropTypes.oneOf(['NONE', 'QUOTE_REPLY', 'THREAD']),
   showSearchIcon: PropTypes.bool,
   useMessageGrouping: PropTypes.bool,
   stringSet: PropTypes.objectOf(PropTypes.string),
@@ -171,6 +179,7 @@ App.propTypes = {
       PropTypes.string,
     ]),
   }),
+  disableAutoSelect: PropTypes.bool,
 };
 
 App.defaultProps = {
@@ -185,9 +194,12 @@ App.defaultProps = {
   showSearchIcon: false,
   renderUserProfile: null,
   config: {},
+  dateLocale: null,
   useReaction: true,
+  replyType: 'NONE',
   useMessageGrouping: true,
   stringSet: null,
   colorSet: null,
   imageCompression: {},
+  disableAutoSelect: false,
 };

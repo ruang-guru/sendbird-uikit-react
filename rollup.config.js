@@ -35,12 +35,12 @@ module.exports = ({
   },
   output: [
     {
-      dir: 'release/dist/cjs',
+      dir: 'dist/cjs',
       format: 'cjs',
       sourcemap: true,
     },
     {
-      dir: 'release',
+      dir: 'dist',
       format: 'esm',
       sourcemap: true,
     },
@@ -63,7 +63,7 @@ module.exports = ({
         autoprefixer,
       ],
       sourceMap: true,
-      extract: 'dist/index.css',
+      extract: 'index.css',
       extensions: ['.sass', '.scss', '.css'],
     }),
     replace({
@@ -97,6 +97,7 @@ module.exports = ({
           },
         ],
       ],
+      babelHelpers: 'bundled',
       extensions: ['.tsx', '.ts', '.jsx', '.js'],
       exclude: 'node_modules/**',
       plugins: [
@@ -114,7 +115,7 @@ module.exports = ({
       targets: [
         {
           src: './src/index.d.ts',
-          dest: 'release',
+          dest: 'dist',
         },
       ],
     }),

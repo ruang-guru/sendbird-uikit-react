@@ -1,13 +1,14 @@
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 
 export const noop = () => {};
 
 export const getMessageCreatedAt = (message) => format(message.createdAt, 'p');
 
-export const getSenderName = (message) => message.sender
-  && (message.sender.friendName
+export const getSenderName = (message) => (
+  message.sender && (
+    message.sender.friendName
     || message.sender.nickname
-    || message.sender.userId);
+    || message.sender.userId));
 
 export const isIOSWebView = () => {
   let checkIOSWebView = false;
@@ -47,7 +48,6 @@ export const isIOSWebView = () => {
 export const getSenderProfileUrl = (message) => message.sender && message.sender.profileUrl;
 
 export default {
-  getMessageCreatedAt,
   getSenderName,
   getSenderProfileUrl,
 };

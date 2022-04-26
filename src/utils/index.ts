@@ -1,4 +1,4 @@
-import format from "date-fns/format";
+import format from 'date-fns/format';
 import {
   AdminMessage,
   Emoji,
@@ -14,95 +14,95 @@ import {
   SendBirdInstance,
   User,
   UserMessage,
-} from "sendbird";
+} from 'sendbird';
 import { isAssignmentMessage, isMaterialMessage } from '../rogu/utils';
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types
 const SUPPORTED_MIMES = {
   IMAGE: [
-    "image/jpeg",
-    "image/jpg",
-    "image/png",
-    "image/gif",
-    "image/svg+xml",
-    "image/webp", // not supported in IE
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/gif',
+    'image/svg+xml',
+    'image/webp', // not supported in IE
   ],
-  VIDEO: ["video/mpeg", "video/ogg", "video/webm", "video/mp4"],
+  VIDEO: ['video/mpeg', 'video/ogg', 'video/webm', 'video/mp4'],
   AUDIO: [
-    "audio/aac",
-    "audio/midi",
-    "audio/x-midi",
-    "audio/mpeg",
-    "audio/ogg",
-    "audio/opus",
-    "audio/wav",
-    "audio/webm",
-    "audio/3gpp",
-    "audio/3gpp2",
-    "audio/mp3",
+    'audio/aac',
+    'audio/midi',
+    'audio/x-midi',
+    'audio/mpeg',
+    'audio/ogg',
+    'audio/opus',
+    'audio/wav',
+    'audio/webm',
+    'audio/3gpp',
+    'audio/3gpp2',
+    'audio/mp3',
   ],
 };
 
 export interface UIKitMessageTypes {
-  ADMIN: "ADMIN";
-  TEXT: "TEXT";
-  FILE: "FILE";
-  THUMBNAIL: "THUMBNAIL";
-  OG: "OG";
-  UNKNOWN: "UNKNOWN";
+  ADMIN: 'ADMIN';
+  TEXT: 'TEXT';
+  FILE: 'FILE';
+  THUMBNAIL: 'THUMBNAIL';
+  OG: 'OG';
+  UNKNOWN: 'UNKNOWN';
 }
 const UIKitMessageTypes: UIKitMessageTypes = {
-  ADMIN: "ADMIN",
-  TEXT: "TEXT",
-  FILE: "FILE",
-  THUMBNAIL: "THUMBNAIL",
-  OG: "OG",
-  UNKNOWN: "UNKNOWN",
+  ADMIN: 'ADMIN',
+  TEXT: 'TEXT',
+  FILE: 'FILE',
+  THUMBNAIL: 'THUMBNAIL',
+  OG: 'OG',
+  UNKNOWN: 'UNKNOWN',
 };
 export interface UIKitFileTypes {
-  IMAGE: "IMAGE";
-  AUDIO: "AUDIO";
-  VIDEO: "VIDEO";
-  GIF: "GIF";
-  OTHERS: "OTHERS";
+  IMAGE: 'IMAGE';
+  AUDIO: 'AUDIO';
+  VIDEO: 'VIDEO';
+  GIF: 'GIF';
+  OTHERS: 'OTHERS';
 }
 export const UIKitFileTypes: UIKitFileTypes = {
-  IMAGE: "IMAGE",
-  AUDIO: "AUDIO",
-  VIDEO: "VIDEO",
-  GIF: "GIF",
-  OTHERS: "OTHERS",
+  IMAGE: 'IMAGE',
+  AUDIO: 'AUDIO',
+  VIDEO: 'VIDEO',
+  GIF: 'GIF',
+  OTHERS: 'OTHERS',
 };
 
 export interface SendingMessageStatus {
-  NONE: "none";
-  SUCCEEDED: "succeeded";
-  FAILED: "failed";
-  PENDING: "pending";
+  NONE: 'none';
+  SUCCEEDED: 'succeeded';
+  FAILED: 'failed';
+  PENDING: 'pending';
 }
 const SendingMessageStatus: SendingMessageStatus = {
-  NONE: "none",
-  SUCCEEDED: "succeeded",
-  FAILED: "failed",
-  PENDING: "pending",
+  NONE: 'none',
+  SUCCEEDED: 'succeeded',
+  FAILED: 'failed',
+  PENDING: 'pending',
 };
 
 interface OutgoingMessageStates {
-  NONE: "NONE";
-  PENDING: "PENDING";
-  SENT: "SENT";
-  FAILED: "FAILED";
-  DELIVERED: "DELIVERED";
-  READ: "READ";
+  NONE: 'NONE';
+  PENDING: 'PENDING';
+  SENT: 'SENT';
+  FAILED: 'FAILED';
+  DELIVERED: 'DELIVERED';
+  READ: 'READ';
   // delivered and read are only in group channel
 }
 export const OutgoingMessageStates: OutgoingMessageStates = {
-  NONE: "NONE",
-  PENDING: "PENDING",
-  SENT: "SENT",
-  FAILED: "FAILED",
-  DELIVERED: "DELIVERED",
-  READ: "READ",
+  NONE: 'NONE',
+  PENDING: 'PENDING',
+  SENT: 'SENT',
+  FAILED: 'FAILED',
+  DELIVERED: 'DELIVERED',
+  READ: 'READ',
 };
 
 export type CoreMessageType = (AdminMessage | UserMessage | FileMessage) & {
@@ -110,11 +110,18 @@ export type CoreMessageType = (AdminMessage | UserMessage | FileMessage) & {
   isOperatorMessage?: boolean;
 };
 
+export const isTextuallyNull = (text: string): boolean => {
+  if (text === '' || text === null) {
+    return true;
+  }
+  return false;
+};
+
 export const isImage = (type: string): boolean =>
   SUPPORTED_MIMES.IMAGE.indexOf(type) >= 0;
 export const isVideo = (type: string): boolean =>
   SUPPORTED_MIMES.VIDEO.indexOf(type) >= 0;
-export const isGif = (type: string): boolean => type === "image/gif";
+export const isGif = (type: string): boolean => type === 'image/gif';
 export const isSupportedFileView = (type: string): boolean =>
   isImage(type) || isVideo(type);
 export const isAudio = (type: string): boolean =>
@@ -122,10 +129,10 @@ export const isAudio = (type: string): boolean =>
 
 export const getUIKitFileTypes = (): UIKitFileTypes => ({ ...UIKitFileTypes });
 export const getUIKitFileType = (type: string): string => {
+  if (isGif(type)) return UIKitFileTypes.GIF;
   if (isImage(type)) return UIKitFileTypes.IMAGE;
   if (isVideo(type)) return UIKitFileTypes.VIDEO;
   if (isAudio(type)) return UIKitFileTypes.AUDIO;
-  if (isGif(type)) return UIKitFileTypes.GIF;
   return UIKitFileTypes.OTHERS;
 };
 export const getOutgoingMessageStates = (): OutgoingMessageStates => ({
@@ -135,9 +142,9 @@ export const getOutgoingMessageState = (
   channel: GroupChannel | OpenChannel,
   message: UserMessage | FileMessage
 ): string => {
-  if (message.sendingStatus === "pending") return OutgoingMessageStates.PENDING;
-  if (message.sendingStatus === "failed") return OutgoingMessageStates.FAILED;
-  if (channel.isGroupChannel()) {
+  if (message.sendingStatus === 'pending') return OutgoingMessageStates.PENDING;
+  if (message.sendingStatus === 'failed') return OutgoingMessageStates.FAILED;
+  if (channel?.isGroupChannel?.()) {
     /* GroupChannel only */
     if ((channel as GroupChannel).getUnreadMemberCount(message) === 0) {
       return OutgoingMessageStates.READ;
@@ -147,7 +154,7 @@ export const getOutgoingMessageState = (
       return OutgoingMessageStates.DELIVERED;
     }
   }
-  if (message.sendingStatus === "succeeded") return OutgoingMessageStates.SENT;
+  if (message.sendingStatus === 'succeeded') return OutgoingMessageStates.SENT;
   return OutgoingMessageStates.NONE;
 };
 export const isSentMessage = (
@@ -170,6 +177,7 @@ export const isReadMessage = (
   message: UserMessage | FileMessage
 ): boolean =>
   getOutgoingMessageState(channel, message) === OutgoingMessageStates.READ;
+// TODO: Remove channel from the params, it seems unnecessary
 export const isFailedMessage = (
   channel: GroupChannel | OpenChannel,
   message: UserMessage | FileMessage
@@ -188,15 +196,15 @@ export const isSentStatus = (state: string): boolean =>
 export const isAdminMessage = (message: AdminMessage): boolean =>
   message &&
   (message.isAdminMessage?.() ||
-    (message["messageType"] && message.messageType === "admin"));
+    (message['messageType'] && message.messageType === 'admin'));
 export const isUserMessage = (message: UserMessage): boolean =>
   message &&
   (message.isUserMessage?.() ||
-    (message["messageType"] && message.messageType === "user"));
+    (message['messageType'] && message.messageType === 'user'));
 export const isFileMessage = (message: FileMessage): boolean =>
   message &&
   (message.isFileMessage?.() ||
-    (message["messageType"] && message.messageType === "file"));
+    (message['messageType'] && message.messageType === 'file'));
 
 export const isOGMessage = (message: UserMessage): boolean =>
   !!(
@@ -206,9 +214,9 @@ export const isOGMessage = (message: UserMessage): boolean =>
     message?.ogMetaData?.url
   );
 export const isTextMessage = (message: UserMessage): boolean =>
-  isUserMessage(message) && 
-  !isOGMessage(message) && 
-  !isAssignmentMessage(message.customType) && 
+  isUserMessage(message) &&
+  !isOGMessage(message) &&
+  !isAssignmentMessage(message.customType) &&
   !isMaterialMessage(message.customType);
 export const isThumbnailMessage = (message: FileMessage): boolean =>
   message && isFileMessage(message) && isSupportedFileView(message.type);
@@ -262,7 +270,7 @@ export const getClassName = (
   classNames: string | Array<string | Array<string>>
 ): string =>
   Array.isArray(classNames)
-    ? classNames.reduce(reducer, []).join(" ")
+    ? classNames.reduce(reducer, []).join(' ')
     : classNames;
 export const isReactedBy = (userId: string, reaction: Reaction): boolean =>
   reaction.userIds.some(
@@ -279,7 +287,7 @@ export const getEmojiTooltipString = (
   memberNicknamesMap: Map<string, string>,
   stringSet: StringSet
 ): string => {
-  let you = "";
+  let you = '';
   if (isReactedBy(userId, reaction)) {
     you =
       reaction.userIds.length === 1
@@ -292,7 +300,7 @@ export const getEmojiTooltipString = (
       (reactorUserId: string) =>
         memberNicknamesMap.get(reactorUserId) || stringSet.TOOLTIP__UNKNOWN_USER
     )
-    .join(", ")}${you}`;
+    .join(', ')}${you}`;
 };
 
 // TODO: Use the interface after language tranlsatation of Sendbird.js
@@ -338,9 +346,9 @@ export const isUrl = (text: string): boolean => URL_REG.test(text);
 
 export const truncateString = (fullStr: string, strLen?: number): string => {
   if (!strLen) strLen = 40;
-  if (fullStr === null || fullStr === undefined) return "";
+  if (fullStr === null || fullStr === undefined) return '';
   if (fullStr.length <= strLen) return fullStr;
-  const separator = "...";
+  const separator = '...';
   const sepLen = separator.length;
   const charsToShow = strLen - sepLen;
   const frontChars = Math.ceil(charsToShow / 2);
@@ -357,19 +365,19 @@ export const copyToClipboard = (text: string): boolean => {
   if (window.clipboardData && window.clipboardData.setData) {
     // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
     // @ts-ignore: Unreachable code error
-    return window.clipboardData.setData("Text", text);
+    return window.clipboardData.setData('Text', text);
   }
   if (
     document.queryCommandSupported &&
-    document.queryCommandSupported("copy")
+    document.queryCommandSupported('copy')
   ) {
-    const textarea = document.createElement("textarea");
+    const textarea = document.createElement('textarea');
     textarea.textContent = text;
-    textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
+    textarea.style.position = 'fixed'; // Prevent scrolling to bottom of page in Microsoft Edge.
     document.body.appendChild(textarea);
     textarea.select();
     try {
-      return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+      return document.execCommand('copy'); // Security exception may be thrown by some browsers.
     } catch (ex) {
       return false;
     } finally {
@@ -380,8 +388,8 @@ export const copyToClipboard = (text: string): boolean => {
 };
 
 export const getEmojiListAll = (emojiContainer: EmojiContainer): Array<Emoji> =>
-  emojiContainer.emojiCategories
-    .map((emojiCategory: EmojiCategory) => emojiCategory.emojis)
+  emojiContainer?.emojiCategories
+    ?.map((emojiCategory: EmojiCategory) => emojiCategory.emojis)
     .reduce(
       (prevArr: Array<Emoji>, currArr: Array<Emoji>) => prevArr.concat(currArr),
       []
@@ -390,11 +398,13 @@ export const getEmojiMapAll = (
   emojiContainer: EmojiContainer
 ): Map<string, Emoji> => {
   const emojiMap = new Map();
-  emojiContainer.emojiCategories.forEach((category: EmojiCategory) =>
-    category.emojis.forEach((emoji: Emoji): void => {
-      emojiMap.set(emoji.key, emoji);
-    })
-  );
+  emojiContainer?.emojiCategories?.forEach((category: EmojiCategory) => {
+    category?.emojis?.forEach((emoji: Emoji): void => {
+      if (emoji && emoji.key) {
+        emojiMap.set(emoji.key, emoji);
+      }
+    });
+  });
   return emojiMap;
 };
 
@@ -404,7 +414,7 @@ export const getSenderName = (message: UserMessage | FileMessage): string =>
   message.sender && getUserName(message.sender);
 export const getMessageCreatedAt = (
   message: UserMessage | FileMessage
-): string => format(message.createdAt || 0, "HH:mm");
+): string => format(message.createdAt || 0, 'HH:mm');
 
 export const hasSameMembers = <T>(a: T[], b: T[]): boolean => {
   if (a === b) {
@@ -432,21 +442,22 @@ export const isFriend = (user: User): boolean =>
 
 export const filterMessageListParams = (
   params: MessageListParams,
-  message: UserMessage | FileMessage | AdminMessage
+  message: UserMessage | FileMessage
 ): boolean => {
   if (params?.messageType && params.messageType !== message.messageType) {
     return false;
   }
-  if (
-    params?.customTypes?.length > 0 &&
-    !params.customTypes.includes(message.customType)
-  ) {
-    return false;
+  if (params?.customTypes?.length > 0) {
+    const customTypes = params.customTypes.filter((item) => item !== '*');
+    // Because Chat SDK inserts '*' when customTypes is empty
+    if (customTypes.length > 0 && !customTypes.includes(message.customType)) {
+      return false;
+    }
   }
   if (params?.senderUserIds && params?.senderUserIds?.length > 0) {
     if (message?.isUserMessage() || message.isFileMessage()) {
       const messageSender =
-        (message as UserMessage | FileMessage).sender || message["_sender"];
+        (message as UserMessage | FileMessage).sender || message['_sender'];
       if (!params?.senderUserIds?.includes(messageSender?.userId)) {
         return false;
       }
@@ -454,18 +465,24 @@ export const filterMessageListParams = (
       return false;
     }
   }
+  if (
+    !params?.includeParentMessageInfo &&
+    (message?.parentMessageId || message?.parentMessage)
+  ) {
+    return false;
+  }
   return true;
 };
 
 interface SDKChannelListParamsPrivateProps extends GroupChannelListQuery {
   _searchFilter: {
     search_query: string;
-    search_fields: Array<"member_nickname" | "channel_name">;
+    search_fields: Array<'member_nickname' | 'channel_name'>;
   };
   _userIdsFilter: {
     userIds: Array<string>;
     includeMode: boolean;
-    queryType: "AND" | "OR";
+    queryType: 'AND' | 'OR';
   };
 }
 export const filterChannelListParams = (
@@ -491,12 +508,12 @@ export const filterChannelListParams = (
       if (
         !searchFields.some((searchField) => {
           switch (searchField) {
-            case "channel_name": {
+            case 'channel_name': {
               return channel.name
                 .toLowerCase()
                 .includes(searchQuery.toLowerCase());
             }
-            case "member_nickname": {
+            case 'member_nickname': {
               return channel.members.some((member: Member) =>
                 member.nickname
                   .toLowerCase()
@@ -532,13 +549,13 @@ export const filterChannelListParams = (
     } else if (userIds.length > 0) {
       // inclusive
       switch (queryType) {
-        case "AND": {
+        case 'AND': {
           if (userIds.some((userId: string) => !memberIds.includes(userId))) {
             return false;
           }
           break;
         }
-        case "OR": {
+        case 'OR': {
           if (userIds.every((userId: string) => !memberIds.includes(userId))) {
             return false;
           }
@@ -597,26 +614,26 @@ export const filterChannelListParams = (
   }
   if (params?.memberStateFilter) {
     switch (params.memberStateFilter) {
-      case "joined_only":
-        if (channel?.myMemberState !== "joined") {
+      case 'joined_only':
+        if (channel?.myMemberState !== 'joined') {
           return false;
         }
         break;
-      case "invited_only":
-        if (channel?.myMemberState !== "invited") {
+      case 'invited_only':
+        if (channel?.myMemberState !== 'invited') {
           return false;
         }
         break;
-      case "invited_by_friend":
+      case 'invited_by_friend':
         if (
-          channel?.myMemberState !== "invited" ||
+          channel?.myMemberState !== 'invited' ||
           !isFriend(channel.inviter)
         ) {
           return false;
         }
         break;
-      case "invited_by_non_friend":
-        if (channel?.myMemberState !== "invited" || isFriend(channel.inviter)) {
+      case 'invited_by_non_friend':
+        if (channel?.myMemberState !== 'invited' || isFriend(channel.inviter)) {
           return false;
         }
         break;
@@ -624,28 +641,28 @@ export const filterChannelListParams = (
   }
   if (params?.hiddenChannelFilter) {
     switch (params.hiddenChannelFilter) {
-      case "unhidden_only":
-        if (channel?.isHidden || channel?.hiddenState !== "unhidden") {
+      case 'unhidden_only':
+        if (channel?.isHidden || channel?.hiddenState !== 'unhidden') {
           return false;
         }
         break;
-      case "hidden_only":
+      case 'hidden_only':
         if (!channel?.isHidden) {
           return false;
         }
         break;
-      case "hidden_allow_auto_unhide":
+      case 'hidden_allow_auto_unhide':
         if (
           !channel?.isHidden ||
-          channel?.hiddenState !== "hidden_allow_auto_unhide"
+          channel?.hiddenState !== 'hidden_allow_auto_unhide'
         ) {
           return false;
         }
         break;
-      case "hidden_prevent_auto_unhide":
+      case 'hidden_prevent_auto_unhide':
         if (
           !channel?.isHidden ||
-          channel?.hiddenState !== "hidden_prevent_auto_unhide"
+          channel?.hiddenState !== 'hidden_prevent_auto_unhide'
         ) {
           return false;
         }
@@ -654,7 +671,7 @@ export const filterChannelListParams = (
   }
   if (params?.unreadChannelFilter) {
     switch (params.unreadChannelFilter) {
-      case "unread_message":
+      case 'unread_message':
         if (channel?.unreadMessageCount === 0) {
           return false;
         }
@@ -663,12 +680,12 @@ export const filterChannelListParams = (
   }
   if (params?.publicChannelFilter) {
     switch (params.publicChannelFilter) {
-      case "public":
+      case 'public':
         if (!channel?.isPublic) {
           return false;
         }
         break;
-      case "private":
+      case 'private':
         if (channel?.isPublic) {
           return false;
         }
@@ -677,12 +694,12 @@ export const filterChannelListParams = (
   }
   if (params?.superChannelFilter) {
     switch (params.superChannelFilter) {
-      case "super":
+      case 'super':
         if (!channel?.isSuper) {
           return false;
         }
         break;
-      case "nonsuper":
+      case 'nonsuper':
         if (channel?.isSuper) {
           return false;
         }
