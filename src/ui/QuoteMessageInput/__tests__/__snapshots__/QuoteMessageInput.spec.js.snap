@@ -37,7 +37,7 @@ exports[`QuoteMessageInput should do a snapshot test of the QuoteMessageInput DO
     <span
       className="sendbird-quote_message_input__body__sender-name sendbird-label sendbird-label--caption-1 sendbird-label--color-onbackground-1"
     >
-      Reply to ME
+      undefined ME
     </span>
     <span
       className="sendbird-quote_message_input__body__message-content sendbird-label sendbird-label--body-2 sendbird-label--color-onbackground-3"

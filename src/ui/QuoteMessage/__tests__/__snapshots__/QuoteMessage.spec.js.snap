@@ -28,7 +28,7 @@ exports[`ReplyingMessageItemBody should do a snapshot test of the ReplyingMessag
     <span
       className="sendbird-quote-message__replied-to__text sendbird-label sendbird-label--caption-2 sendbird-label--color-onbackground-3"
     >
-      Simon replied to undefined
+      Simon undefined undefined
     </span>
   </div>
   <div

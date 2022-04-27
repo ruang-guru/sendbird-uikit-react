@@ -157,20 +157,8 @@ exports[`FileViewer should do a snapshot test of the FileViewer DOM 1`] = `
         <span
           className="rogu-text-message-item-body__message sendbird-label sendbird-label--body-1 sendbird-label--color-onbackground-1"
         >
-          sent-mail 
+          sent-mail (1).png
         </span>
-        <a
-          className="rogu-text-message-item-body__message rogu-link-label sendbird-label--color-secondary-3"
-          href="http://(1).png"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <span
-            className="rogu-link-label__label sendbird-label sendbird-label--body-1 sendbird-label--color-secondary-3"
-          >
-            (1).png
-          </span>
-        </a>
       </div>
     </div>
   </div>
