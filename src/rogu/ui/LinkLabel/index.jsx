@@ -8,7 +8,9 @@ import { isIOSWebView } from '../../../utils/utils';
 
 const http = /https?:\/\//;
 
-export default function LinkLabel({ className, src, type, color, children }) {
+export default function LinkLabel({
+  className, src, type, color, children,
+}) {
   const url = http.test(src) ? src : `http://${src}`;
   const target = isIOSWebView() ? '_top' : '_blank';
 
