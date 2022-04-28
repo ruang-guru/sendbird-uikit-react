@@ -20,7 +20,7 @@ const APP_VERSION_STRING = '__uikit_app_version__';
 const IS_ROLLUP = '__is_rollup__';
 const IS_ROLLUP_REPLACE = '__is_rollup_replace__';
 
-module.exports = ({
+module.exports = {
   // To bundle split
   input: {
     index: 'src/index.js',
@@ -35,12 +35,12 @@ module.exports = ({
   },
   output: [
     {
-      dir: 'dist/cjs',
+      dir: 'release/dist/cjs',
       format: 'cjs',
       sourcemap: true,
     },
     {
-      dir: 'dist',
+      dir: 'release',
       format: 'esm',
       sourcemap: true,
     },
@@ -55,15 +55,14 @@ module.exports = ({
   ],
   plugins: [
     postcss({
-      preprocessor: (content, id) => new Promise((resolvecss) => {
-        const result = scss.renderSync({ file: id });
-        resolvecss({ code: result.css.toString() });
-      }),
-      plugins: [
-        autoprefixer,
-      ],
+      preprocessor: (content, id) =>
+        new Promise((resolvecss) => {
+          const result = scss.renderSync({ file: id });
+          resolvecss({ code: result.css.toString() });
+        }),
+      plugins: [autoprefixer],
       sourceMap: true,
-      extract: 'index.css',
+      extract: 'dist/index.css',
       extensions: ['.sass', '.scss', '.css'],
     }),
     replace({
@@ -115,9 +114,9 @@ module.exports = ({
       targets: [
         {
           src: './src/index.d.ts',
-          dest: 'dist',
+          dest: 'release',
         },
       ],
     }),
   ],
-});
+};
