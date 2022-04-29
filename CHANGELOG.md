@@ -1,6 +1,11 @@
 # Changelog
 
-## [1.2.0](Apr 20 2022)
+## [1.2.1](Apr 22 2022)
+
+- Feature
+  - Add copy-css.sh
+
+## [1.2.0](Apr 29 2022)
 
 - Feature
   - Sync with upstream sendbird-uikit-react, release v2.7.0 (#93)
