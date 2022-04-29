@@ -1,19 +1,21 @@
 import format from 'date-fns/format';
+import formatRelative from 'date-fns/formatRelative';
 import isToday from 'date-fns/isToday';
 import isYesterday from 'date-fns/isYesterday';
 import { IconTypes } from '../Icon';
 
-export function getCreatedAt(createdAt: number): string {
+export function getCreatedAt(createdAt: number, locale: Locale): string {
+  const optionalParam = locale ? { locale } : null;
   if (!createdAt) {
     return '';
   }
   if (isToday(createdAt)) {
-    return format(createdAt, 'p');
+    return format(createdAt, 'p', optionalParam);
   }
   if (isYesterday(createdAt)) {
-    return 'Yesterday';
+    return formatRelative(createdAt, new Date(), optionalParam);
   }
-  return format(createdAt, 'MMM dd');
+  return format(createdAt, 'MMM dd', optionalParam);
 }
 
 export function getIconOfFileType(message: SendbirdUIKit.ClientFileMessage): string {

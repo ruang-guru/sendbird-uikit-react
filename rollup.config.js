@@ -20,7 +20,7 @@ const APP_VERSION_STRING = '__uikit_app_version__';
 const IS_ROLLUP = '__is_rollup__';
 const IS_ROLLUP_REPLACE = '__is_rollup_replace__';
 
-module.exports = ({
+module.exports = {
   // To bundle split
   input: {
     index: 'src/index.js',
@@ -55,13 +55,12 @@ module.exports = ({
   ],
   plugins: [
     postcss({
-      preprocessor: (content, id) => new Promise((resolvecss) => {
-        const result = scss.renderSync({ file: id });
-        resolvecss({ code: result.css.toString() });
-      }),
-      plugins: [
-        autoprefixer,
-      ],
+      preprocessor: (content, id) =>
+        new Promise((resolvecss) => {
+          const result = scss.renderSync({ file: id });
+          resolvecss({ code: result.css.toString() });
+        }),
+      plugins: [autoprefixer],
       sourceMap: true,
       extract: 'dist/index.css',
       extensions: ['.sass', '.scss', '.css'],
@@ -97,6 +96,7 @@ module.exports = ({
           },
         ],
       ],
+      babelHelpers: 'bundled',
       extensions: ['.tsx', '.ts', '.jsx', '.js'],
       exclude: 'node_modules/**',
       plugins: [
@@ -119,4 +119,4 @@ module.exports = ({
       ],
     }),
   ],
-});
+};

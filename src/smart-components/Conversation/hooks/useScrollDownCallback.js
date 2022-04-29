@@ -9,6 +9,7 @@ function useScrollDownCallback({
   latestFetchedMessageTimeStamp,
   userFilledMessageListQuery,
   hasMoreToBottom,
+  replyType,
 }, {
   logger,
   messagesDispatcher,
@@ -16,11 +17,19 @@ function useScrollDownCallback({
 }) {
   return useCallback((cb) => {
     if (!hasMoreToBottom) { return; }
+    const { appInfo = {} } = sdk;
+    const useReaction = appInfo.isUsingReaction || false;
+
     const messageListParams = new sdk.MessageListParams();
     messageListParams.nextResultSize = RESULT_SIZE;
+    messageListParams.isInclusive = true;
     messageListParams.includeReplies = false;
-    messageListParams.includeReaction = true;
-
+    messageListParams.includeReaction = useReaction;
+    if (replyType && replyType === 'QUOTE_REPLY') {
+      messageListParams.includeThreadInfo = true;
+      messageListParams.includeParentMessageInfo = true;
+      messageListParams.replyType = 'only_reply_to_channel';
+    }
     if (userFilledMessageListQuery) {
       Object.keys(userFilledMessageListQuery).forEach((key) => {
         messageListParams[key] = userFilledMessageListQuery[key];
@@ -64,9 +73,13 @@ function useScrollDownCallback({
         cb([null, error]);
       })
       .finally(() => {
-        currentGroupChannel.markAsRead();
+        try {
+          currentGroupChannel.markAsRead();
+        } catch {
+          //
+        }
       });
-  }, [currentGroupChannel, latestFetchedMessageTimeStamp, hasMoreToBottom]);
+  }, [currentGroupChannel, latestFetchedMessageTimeStamp, hasMoreToBottom, replyType]);
 }
 
 export default useScrollDownCallback;

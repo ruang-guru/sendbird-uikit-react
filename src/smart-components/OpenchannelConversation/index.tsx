@@ -35,6 +35,7 @@ import useFileUploadCallback from './hooks/useFileUploadCallback';
 import useUpdateMessageCallback from './hooks/useUpdateMessageCallback';
 import useDeleteMessageCallback from './hooks/useDeleteMessageCallback';
 import useResendMessageCallback from './hooks/useResendMessageCallback';
+import useTrimMessageList from './hooks/useTrimMessageList';
 
 const COMPONENT_CLASS_NAME = 'sendbird-openchannel-conversation';
 
@@ -76,6 +77,7 @@ export const OpenchannelConversation = (props: Props): JSX.Element => {
     renderChannelTitle,
     renderMessageInput,
     onBeforeSendUserMessage,
+    experimentalMessageLimit,
     onBeforeSendFileMessage,
     onChatHeaderActionClick
   } = props;
@@ -144,6 +146,14 @@ export const OpenchannelConversation = (props: Props): JSX.Element => {
     { channelUrl, sdkInit, fetchingParticipants },
     { sdk, logger, messagesDispatcher },
   );
+
+  useEffect(() => {
+    if (renderCustomMessage) {
+      // eslint-disable-next-line no-console
+      console.info('The parameter type of renderCustomMessage will be changed to the object in the next minor update.');
+    }
+  }, []);
+
   const checkScrollBottom = useCheckScrollBottom(
     { conversationScrollRef },
     { logger },
@@ -156,8 +166,11 @@ export const OpenchannelConversation = (props: Props): JSX.Element => {
     { currentOpenChannel, userFilledMessageListParams },
     { sdk, logger, messagesDispatcher },
   );
+
+  // donot fetch more for streaming
+  const fetchMore = utils.shouldFetchMore(allMessages?.length, experimentalMessageLimit);
   const onScroll = useScrollCallback(
-    { currentOpenChannel, lastMessageTimestamp },
+    { currentOpenChannel, lastMessageTimestamp, fetchMore },
     { sdk, logger, messagesDispatcher, hasMore, userFilledMessageListParams },
   );
   const handleSendMessage = useSendMessageCallback(
@@ -181,6 +194,11 @@ export const OpenchannelConversation = (props: Props): JSX.Element => {
     { logger, messagesDispatcher },
   );
 
+  useTrimMessageList(
+    { messagesLength: allMessages?.length, experimentalMessageLimit },
+    { messagesDispatcher, logger }
+  );
+
   // handle API calls from withSendbird
   useEffect(() => {
     const subscriber = new Map();
@@ -202,7 +220,7 @@ export const OpenchannelConversation = (props: Props): JSX.Element => {
       if (channel && (channelUrl === channel.url)) {
         messagesDispatcher({
           type: messageActionTypes.SENDING_MESSAGE_START,
-          payload: message,
+          payload: { message, channel },
         });
       }
     }));
@@ -212,7 +230,7 @@ export const OpenchannelConversation = (props: Props): JSX.Element => {
       if (channel && (channelUrl === channel.url)) {
         messagesDispatcher({
           type: messageActionTypes.SENDING_MESSAGE_SUCCEEDED,
-          payload: message,
+          payload: { message, channel },
         });
       }
     }));
@@ -306,11 +324,15 @@ export const OpenchannelConversation = (props: Props): JSX.Element => {
       {
         renderMessageInput
           ? (
-            renderMessageInput({
-              channel: currentOpenChannel,
-              user: user,
-              disabled: disabled,
-            })
+            <div className="sendbird-openchannel-footer">
+              {
+                renderMessageInput({
+                  channel: currentOpenChannel,
+                  user: user,
+                  disabled: disabled,
+                })
+              }
+            </div>
           )
           : (
             <MessageInputWrapper

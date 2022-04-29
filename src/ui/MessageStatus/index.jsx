@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
+
+import format from 'date-fns/format';
 
 import './index.scss';
 import Icon, { IconTypes, IconColors } from '../Icon';
@@ -7,17 +9,23 @@ import Label, { LabelColors, LabelTypography } from '../Label';
 import Loader from '../Loader';
 
 import {
-  getMessageCreatedAt,
+  getOutgoingMessageState,
   getOutgoingMessageStates,
   isSentStatus,
 } from '../../utils';
+import { LocalizationContext } from '../../lib/LocalizationContext';
 
 export const MessageStatusTypes = getOutgoingMessageStates();
 export default function MessageStatus({
   className,
   message,
-  status,
+  channel,
 }) {
+  const { dateLocale } = useContext(LocalizationContext);
+  const showMessageStatusIcon = channel?.isGroupChannel()
+    && !channel?.isSuper
+    && !channel?.isPublic
+    && !channel?.isBroadcast;
   const iconType = {
     [MessageStatusTypes.SENT]: IconTypes.DONE,
     [MessageStatusTypes.DELIVERED]: IconTypes.DONE_ALL,
@@ -31,6 +39,10 @@ export default function MessageStatus({
     [MessageStatusTypes.FAILED]: IconColors.ERROR,
   };
 
+  const messageStatus = useMemo(() => (
+    getOutgoingMessageState(channel, message)
+  ), [channel?.getUnreadMemberCount?.(message), channel?.getUndeliveredMemberCount?.(message)]);
+
   return (
     <div
       className={[
@@ -38,8 +50,8 @@ export default function MessageStatus({
         'sendbird-message-status',
       ].join(' ')}
     >
-      {(status === MessageStatusTypes.PENDING)
-        ? (
+      {(showMessageStatusIcon) && (
+        (messageStatus === MessageStatusTypes.PENDING) ? (
           <Loader
             className="sendbird-message-status__icon"
             width="16px"
@@ -52,23 +64,23 @@ export default function MessageStatus({
               height="16px"
             />
           </Loader>
-        )
-        : (
+        ) : (
           <Icon
             className="sendbird-message-status__icon"
-            type={iconType[status] || IconTypes.ERROR}
-            fillColor={iconColor[status]}
+            type={iconType[messageStatus] || IconTypes.ERROR}
+            fillColor={iconColor[messageStatus]}
             width="16px"
             height="16px"
           />
-        )}
-      {isSentStatus(status) && (
+        )
+      )}
+      {isSentStatus(messageStatus) && (
         <Label
           className="sendbird-message-status__text"
           type={LabelTypography.CAPTION_3}
           color={LabelColors.ONBACKGROUND_2}
         >
-          {getMessageCreatedAt(message)}
+          {format(message?.createdAt, 'p', { locale: dateLocale })}
         </Label>
       )}
     </div>
@@ -90,11 +102,18 @@ MessageStatus.propTypes = {
     }),
     sendingStatus: PropTypes.string,
   }),
-  status: PropTypes.string,
+  channel: PropTypes.shape({
+    isGroupChannel: PropTypes.func,
+    isSuper: PropTypes.bool,
+    isBroadcast: PropTypes.bool,
+    isPublic: PropTypes.bool,
+    getUnreadMemberCount: PropTypes.func,
+    getUndeliveredMemberCount: PropTypes.func,
+  }),
 };
 
 MessageStatus.defaultProps = {
   className: '',
   message: null,
-  status: '',
+  channel: null,
 };

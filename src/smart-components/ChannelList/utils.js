@@ -151,13 +151,18 @@ function setupChannelList({
   userFilledChannelListQuery,
   logger,
   sortChannelList,
+  disableAutoSelect,
 }) {
-  createEventHandler({
-    sdk,
-    channelListDispatcher,
-    sdkChannelHandlerId,
-    logger,
-  });
+  if (sdk && sdk.ChannelHandler) {
+    createEventHandler({
+      sdk,
+      channelListDispatcher,
+      sdkChannelHandlerId,
+      logger,
+    });
+  } else {
+    logger.console.warning('ChannelList - createEventHandler: sdk or sdk.ChannelHandler does not exist', sdk);
+  }
 
   logger.info('ChannelList - creating query', { userFilledChannelListQuery });
   const channelListQuery = createChannelListQuery({ sdk, userFilledChannelListQuery });
@@ -205,7 +210,9 @@ function setupChannelList({
         sorted = sortChannelList(channelList);
         logger.info('ChannelList - channel list sorted', sorted);
       }
-      onChannelSelect(sorted[0]);
+      if (!disableAutoSelect) {
+        onChannelSelect(sorted[0]);
+      }
       channelListDispatcher({
         type: channelActions.INIT_CHANNELS_SUCCESS,
         payload: sorted,
@@ -244,7 +251,9 @@ export const pubSubHandler = (pubSub, channelListDispatcher) => {
   subScriber.set(topics.UPDATE_USER_MESSAGE, pubSub.subscribe(topics.UPDATE_USER_MESSAGE, (msg) => {
     const { channel, message } = msg;
     const updatedChannel = channel;
-    updatedChannel.lastMessage = message;
+    if (updatedChannel?.lastMessage?.messageId === message.messageId) {
+      updatedChannel.lastMessage = message;
+    }
     if (channel) {
       channelListDispatcher({
         type: channelActions.ON_LAST_MESSAGE_UPDATED,
