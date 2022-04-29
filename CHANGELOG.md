@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.0.0](Apr 20 2022)
+
+- Feature
+  - Sync with upstream sendbird-uikit-react, release v2.7.0 (#93)
+
 ## [1.1.0](Apr 20 2022)
 
 - Feature
