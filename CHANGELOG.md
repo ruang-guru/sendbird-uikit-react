@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.2.1](Apr 22 2022)
+## [1.2.1](Apr 29 2022)
 
 - Feature
   - Add copy-css.sh
