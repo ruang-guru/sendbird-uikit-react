@@ -1,17 +1,18 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-98fa51f9.js');
+var LocalizationContext = require('./LocalizationContext-8ab589a6.js');
 var React = require('react');
 var PropTypes = require('prop-types');
-var index = require('./index-0572f648.js');
-var LeaveChannel = require('./LeaveChannel-bf0cbbc5.js');
-var index$2 = require('./index-2ebbb83a.js');
-var index$1 = require('./index-4c88149e.js');
-var index$3 = require('./index-1da4999b.js');
-var index$4 = require('./index-5d2bd463.js');
+var index = require('./index-0775e8af.js');
+var LeaveChannel = require('./LeaveChannel-b83fb379.js');
+var index$2 = require('./index-c39f95c7.js');
+var index$1 = require('./index-e4e9c4eb.js');
+var index$3 = require('./index-db011f5d.js');
+var index$4 = require('./index-c4bdf5e3.js');
 require('react-dom');
+require('./index-7a63bb1e.js');
 require('date-fns');
-require('./utils-3c1f801d.js');
+require('./utils-5833aba2.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -426,7 +427,7 @@ var UserListItem$1 = function UserListItem(_ref) {
   })), /*#__PURE__*/React__default["default"].createElement(index$2.Label, {
     type: index$2.LabelTypography.SUBTITLE_2,
     color: index$2.LabelColors.ONBACKGROUND_1
-  }, member.nickname || stringSet.NO_NAME, currentUser === member.userId && stringSet.YOU));
+  }, member.nickname || stringSet.NO_NAME, currentUser === member.userId && stringSet.CHANNEL_SETTING__MEMBERS__YOU));
 };
 
 UserListItem$1.propTypes = {

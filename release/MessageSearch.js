@@ -1,9 +1,9 @@
 import React__default, { useEffect, useCallback, useContext, useState, useReducer, useRef } from 'react';
-import { j as __assign, _ as __spreadArray, L as LocalizationContext, w as withSendbirdContext } from './LocalizationContext-60c6a18f.js';
-import { f as format, a5 as Avatar, aa as Label, ac as LabelTypography, ab as LabelColors, b as IconTypes, a as Icon, a9 as IconColors, a7 as PlaceHolder, a8 as PlaceHolderTypes } from './index-cc5e3ca5.js';
-import { i as isToday, a as isYesterday } from './index-3751f589.js';
+import { k as __assign, _ as __spreadArray, f as format, L as LocalizationContext, w as withSendbirdContext } from './LocalizationContext-f7ac3bcb.js';
+import { i as isToday, a as isYesterday, f as formatRelative } from './index-0d8d5433.js';
+import { a4 as Avatar, a9 as Label, ab as LabelTypography, aa as LabelColors, b as IconTypes, a as Icon, a8 as IconColors, a6 as PlaceHolder, a7 as PlaceHolderTypes } from './index-83aac00c.js';
+import './index-7f9764b1.js';
 import 'prop-types';
-import './index-56f2d96a.js';
 
 var GET_SEARCHED_MESSAGES = 'GET_SEARCHED_MESSAGES';
 var GET_NEXT_SEARCHED_MESSAGES = 'GET_NEXT_SEARCHED_MESSAGES';
@@ -12,6 +12,7 @@ var START_GETTING_SEARCHED_MESSAGES = 'START_GETTING_SEARCHED_MESSAGES';
 var SET_QUERY_INVALID = 'SET_QUERY_INVALID';
 var SET_CURRENT_CHANNEL = 'SET_CURRENT_CHANNEL';
 var CHANNEL_INVALID = 'CHANNEL_INVALID';
+var RESET_SEARCH_STRING = 'RESET_SEARCH_STRING';
 
 function reducer(state, action) {
   switch (action.type) {
@@ -83,6 +84,13 @@ function reducer(state, action) {
         });
       }
 
+    case RESET_SEARCH_STRING:
+      {
+        return __assign(__assign({}, state), {
+          allMessages: []
+        });
+      }
+
     default:
       {
         return state;
@@ -129,7 +137,7 @@ function useSetChannel(_a, _b) {
 function useGetSearchedMessages(_a, _b) {
   var currentChannel = _a.currentChannel,
       channelUrl = _a.channelUrl,
-      searchString = _a.searchString,
+      requestString = _a.requestString,
       messageSearchQuery = _a.messageSearchQuery,
       onResultLoaded = _a.onResultLoaded,
       retryCount = _a.retryCount;
@@ -143,13 +151,14 @@ function useGetSearchedMessages(_a, _b) {
     });
 
     if (sdk && channelUrl && sdk.createMessageSearchQuery && currentChannel) {
-      if (searchString) {
+      if (requestString) {
         var inputSearchMessageQueryObject = __assign(__assign({}, messageSearchQuery), {
+          order: 'ts',
           channelUrl: channelUrl,
           messageTimestampFrom: currentChannel.invitedAt
         });
 
-        var createdQuery_1 = sdk.createMessageSearchQuery(searchString, inputSearchMessageQueryObject);
+        var createdQuery_1 = sdk.createMessageSearchQuery(requestString, inputSearchMessageQueryObject);
         createdQuery_1.next(function (messages, error) {
           if (!error) {
             logger.info('MessageSearch | useGetSearchedMessages: succeeded getting messages', messages);
@@ -184,7 +193,7 @@ function useGetSearchedMessages(_a, _b) {
         logger.info('MessageSearch | useGetSeasrchedMessages: search string is empty');
       }
     }
-  }, [channelUrl, messageSearchQuery, searchString, currentChannel, retryCount]);
+  }, [channelUrl, messageSearchQuery, requestString, currentChannel, retryCount]);
 }
 
 function useScrollCallback(_a, _b) {
@@ -226,20 +235,24 @@ function useScrollCallback(_a, _b) {
   }, [currentMessageSearchQuery, hasMoreResult]);
 }
 
-var getCreatedAt$1 = (function (createdAt) {
+var getCreatedAt$1 = (function (createdAt, locale) {
+  var optionalParam = locale ? {
+    locale: locale
+  } : null;
+
   if (!createdAt) {
     return '';
   }
 
   if (isToday(createdAt)) {
-    return format(createdAt, 'p');
+    return format(createdAt, 'p', optionalParam);
   }
 
   if (isYesterday(createdAt)) {
-    return 'Yesterday';
+    return formatRelative(createdAt, new Date(), optionalParam);
   }
 
-  return format(createdAt, 'MMM dd');
+  return format(createdAt, 'MMM dd', optionalParam);
 });
 
 function MessageSearchItem(_a) {
@@ -252,7 +265,11 @@ function MessageSearchItem(_a) {
   var sender = message.sender || message._sender;
   var profileUrl = sender.profileUrl,
       nickname = sender.nickname;
-  var stringSet = useContext(LocalizationContext).stringSet;
+
+  var _b = useContext(LocalizationContext),
+      stringSet = _b.stringSet,
+      dateLocale = _b.dateLocale;
+
   return /*#__PURE__*/React__default.createElement("div", {
     className: __spreadArray(__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-message-search-item', selected ? 'sendbird-message-search-item--selected' : ''], false).join(' '),
     onClick: function onClick(e) {
@@ -282,25 +299,29 @@ function MessageSearchItem(_a) {
     className: "sendbird-message-search-item__right__message-created-at",
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
-  }, getCreatedAt$1(createdAt))), /*#__PURE__*/React__default.createElement("div", {
+  }, getCreatedAt$1(createdAt, dateLocale))), /*#__PURE__*/React__default.createElement("div", {
     className: "sendbird-message-search-item__right-footer"
   }));
 }
 
-function getCreatedAt(createdAt) {
+function getCreatedAt(createdAt, locale) {
+  var optionalParam = locale ? {
+    locale: locale
+  } : null;
+
   if (!createdAt) {
     return '';
   }
 
   if (isToday(createdAt)) {
-    return format(createdAt, 'p');
+    return format(createdAt, 'p', optionalParam);
   }
 
   if (isYesterday(createdAt)) {
-    return 'Yesterday';
+    return formatRelative(createdAt, new Date(), optionalParam);
   }
 
-  return format(createdAt, 'MMM dd');
+  return format(createdAt, 'MMM dd', optionalParam);
 }
 function getIconOfFileType(message) {
   var url = message.url;
@@ -341,7 +362,11 @@ function MessageSearchFileItem(props) {
   var sender = message.sender || message._sender;
   var profileUrl = sender.profileUrl,
       nickname = sender.nickname;
-  var stringSet = useContext(LocalizationContext).stringSet;
+
+  var _a = useContext(LocalizationContext),
+      stringSet = _a.stringSet,
+      dateLocale = _a.dateLocale;
+
   return /*#__PURE__*/React__default.createElement("div", {
     className: __spreadArray(__spreadArray([], Array.isArray(className) ? className : [className], true), ['sendbird-message-search-file-item', selected ? 'sendbird-message-search-file-item--selected' : ''], false).join(' '),
     onClick: function onClick(e) {
@@ -380,9 +405,41 @@ function MessageSearchFileItem(props) {
     className: "sendbird-message-search-file-item__message-created-at",
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
-  }, getCreatedAt(createdAt)), /*#__PURE__*/React__default.createElement("div", {
+  }, getCreatedAt(createdAt, dateLocale)), /*#__PURE__*/React__default.createElement("div", {
     className: "sendbird-message-search-file-item__right-footer"
   }));
+}
+
+var DEBOUNCING_TIME = 500;
+
+function useSearchStringEffect(_a, _b) {
+  var searchString = _a.searchString;
+  var messageSearchDispathcer = _b.messageSearchDispathcer;
+
+  var _c = useState(''),
+      requestString = _c[0],
+      setRequestString = _c[1];
+
+  var _d = useState(null),
+      debouncingTimer = _d[0],
+      setDebouncingTimer = _d[1];
+
+  useEffect(function () {
+    clearTimeout(debouncingTimer);
+
+    if (searchString) {
+      setDebouncingTimer(setTimeout(function () {
+        setRequestString(searchString);
+      }, DEBOUNCING_TIME));
+    } else {
+      setRequestString('');
+      messageSearchDispathcer({
+        type: RESET_SEARCH_STRING,
+        payload: ''
+      });
+    }
+  }, [searchString]);
+  return requestString;
 }
 
 var COMPONENT_CLASS_NAME = 'sendbird-message-search';
@@ -466,10 +523,15 @@ function MessageSearch(props) {
     logger: logger,
     messageSearchDispathcer: messageSearchDispathcer
   });
+  var requestString = useSearchStringEffect({
+    searchString: searchString
+  }, {
+    messageSearchDispathcer: messageSearchDispathcer
+  });
   useGetSearchedMessages({
     currentChannel: currentChannel,
     channelUrl: channelUrl,
-    searchString: searchString,
+    requestString: requestString,
     messageSearchQuery: messageSearchQuery,
     onResultLoaded: onResultLoaded,
     retryCount: retryCount
@@ -491,7 +553,7 @@ function MessageSearch(props) {
     setRetryCount(retryCount + 1);
   };
 
-  if (isInvalid && searchString) {
+  if (isInvalid && searchString && requestString) {
     return /*#__PURE__*/React__default.createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default.createElement(PlaceHolder, {
@@ -500,7 +562,7 @@ function MessageSearch(props) {
     }));
   }
 
-  if (loading && searchString) {
+  if (loading && searchString && requestString) {
     return /*#__PURE__*/React__default.createElement("div", {
       className: COMPONENT_CLASS_NAME
     }, /*#__PURE__*/React__default.createElement(PlaceHolder, {

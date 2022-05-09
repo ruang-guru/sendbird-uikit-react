@@ -1,11 +1,13 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-98fa51f9.js');
+var LocalizationContext = require('./LocalizationContext-8ab589a6.js');
 var React = require('react');
 var PropTypes = require('prop-types');
 var Sb = require('sendbird');
-var actionTypes = require('./actionTypes-7b1edd91.js');
+var actionTypes = require('./actionTypes-8665cb0e.js');
+var index = require('./index-7a63bb1e.js');
 var cssVars = require('css-vars-ponyfill');
+require('date-fns');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -19,7 +21,7 @@ var SET_SDK_LOADING = 'SET_SDK_LOADING';
 var RESET_SDK = 'RESET_SDK';
 var SDK_ERROR = 'SDK_ERROR';
 
-var APP_VERSION_STRING = '1.1.0';
+var APP_VERSION_STRING = '1.2.1';
 var disconnectSdk = function disconnectSdk(_ref) {
   var sdkDispatcher = _ref.sdkDispatcher,
       userDispatcher = _ref.userDispatcher,
@@ -88,14 +90,14 @@ var handleConnection = function handleConnection(_ref2, dispatchers) {
           }); // use nickname/profileUrl if provided
           // or set userID as nickname
 
-          var newNickName = nickname || user.nickname;
-          var newProfileUrl = profileUrl || user.profileUrl;
-          newSdk.updateCurrentUserInfo(newNickName, newProfileUrl).then(function (namedUser) {
-            userDispatcher({
-              type: actionTypes.UPDATE_USER_INFO,
-              payload: namedUser
+          if ((nickname !== user.nickname || profileUrl !== user.profileUrl) && !(index.isTextuallyNull(nickname) && index.isTextuallyNull(profileUrl))) {
+            newSdk.updateCurrentUserInfo(nickname || user.nickname, profileUrl || user.profileUrl).then(function (namedUser) {
+              userDispatcher({
+                type: actionTypes.UPDATE_USER_INFO,
+                payload: namedUser
+              });
             });
-          });
+          }
         };
 
         var connectCbError = function connectCbError(e) {
@@ -544,6 +546,7 @@ function Sendbird(props) {
       allowProfileEdit = props.allowProfileEdit,
       theme = props.theme,
       nickname = props.nickname,
+      dateLocale = props.dateLocale,
       profileUrl = props.profileUrl,
       userListQuery = props.userListQuery,
       _props$config = props.config,
@@ -686,7 +689,8 @@ function Sendbird(props) {
       }
     }
   }, /*#__PURE__*/React__default["default"].createElement(LocalizationContext.LocalizationProvider, {
-    stringSet: localeStringSet
+    stringSet: localeStringSet,
+    dateLocale: dateLocale
   }, children));
 }
 Sendbird.propTypes = {
@@ -697,6 +701,7 @@ Sendbird.propTypes = {
   theme: PropTypes__default["default"].string,
   nickname: PropTypes__default["default"].string,
   profileUrl: PropTypes__default["default"].string,
+  dateLocale: PropTypes__default["default"].shape({}),
   disableUserProfile: PropTypes__default["default"].bool,
   renderUserProfile: PropTypes__default["default"].func,
   allowProfileEdit: PropTypes__default["default"].bool,
@@ -723,6 +728,7 @@ Sendbird.defaultProps = {
   theme: 'light',
   nickname: '',
   profileUrl: '',
+  dateLocale: null,
   disableUserProfile: false,
   renderUserProfile: null,
   allowProfileEdit: false,

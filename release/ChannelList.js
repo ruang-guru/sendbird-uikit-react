@@ -1,20 +1,22 @@
-import { b as _objectSpread2, a as _toConsumableArray, L as LocalizationContext, w as withSendbirdContext, c as _slicedToArray, u as uuidv4 } from './LocalizationContext-60c6a18f.js';
+import { b as _objectSpread2, a as _toConsumableArray, f as format, L as LocalizationContext, w as withSendbirdContext, c as _slicedToArray, u as uuidv4 } from './LocalizationContext-f7ac3bcb.js';
 import React__default, { useContext, useRef, useState, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { U as UPDATE_USER_INFO } from './actionTypes-7ed443a7.js';
-import { T as filterChannelListParams, V as getChannelsWithUpsertedChannel, W as truncateString, I as IconButton, X as Modal, Y as Type, Z as TextButton, _ as ContextMenu, $ as MenuItems, a0 as MenuItem, a1 as CREATE_CHANNEL$1, U as UPDATE_USER_MESSAGE, a2 as LEAVE_CHANNEL, b as SEND_MESSAGE_START, P as UserProfileProvider } from './index-91d617e5.js';
-import { C as ChannelAvatar } from './index-63bd9344.js';
-import { B as Badge, i as isBroadcastChannelEnabled, a as isSuperGroupChannelEnabled, I as InviteMembers, c as createDefaultUserListQuery, b as createChannel, L as LeaveChannel } from './LeaveChannel-3754959d.js';
-import { f as format, ae as LabelStringSet, a as Icon, b as IconTypes, a9 as IconColors, aa as Label, ac as LabelTypography, ab as LabelColors, a5 as Avatar, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-cc5e3ca5.js';
-import { i as isToday, a as isYesterday } from './index-3751f589.js';
-import { I as InputLabel, a as Input, n as noop$1 } from './index-5a5f363d.js';
+import { U as UPDATE_USER_INFO } from './actionTypes-396d66a9.js';
+import { I as IconButton, e as Modal, T as Type, f as TextButton, g as ContextMenu, h as MenuItems, i as MenuItem, j as CREATE_CHANNEL$1, U as UPDATE_USER_MESSAGE, L as LEAVE_CHANNEL, a as SEND_MESSAGE_START, d as UserProfileProvider } from './index-b5696879.js';
+import { H as filterChannelListParams, I as getChannelsWithUpsertedChannel, J as truncateString } from './index-37a3224d.js';
+import { C as ChannelAvatar } from './index-3e33f9a0.js';
+import { B as Badge, i as isBroadcastChannelEnabled, a as isSuperGroupChannelEnabled, I as InviteMembers, c as createDefaultUserListQuery, b as createChannel, L as LeaveChannel } from './LeaveChannel-c606bf6d.js';
+import { ad as LabelStringSet, a as Icon, b as IconTypes, a8 as IconColors, a9 as Label, ab as LabelTypography, aa as LabelColors, a4 as Avatar, a6 as PlaceHolder, ae as PlaceHolderTypes } from './index-83aac00c.js';
+import { i as isToday, a as isYesterday, f as formatRelative } from './index-0d8d5433.js';
+import { I as InputLabel, a as Input, n as noop$1 } from './index-d0f8a4c0.js';
 import 'react-dom';
 import 'date-fns';
-import './utils-f6d75d2a.js';
-import './index-56f2d96a.js';
+import './utils-5a3497f4.js';
+import './index-7f9764b1.js';
 
 var RESET_CHANNEL_LIST = 'RESET_CHANNEL_LIST';
 var CREATE_CHANNEL = 'CREATE_CHANNEL';
+var SET_AUTO_SELECT_CHANNEL_ITEM = 'SET_AUTO_SELECT_CHANNEL_ITEM';
 var LEAVE_CHANNEL_SUCCESS = 'LEAVE_CHANNEL_SUCCESS';
 var SET_CURRENT_CHANNEL = 'SET_CURRENT_CHANNEL';
 var SHOW_CHANNEL_SETTINGS = 'SHOW_CHANNEL_SETTINGS';
@@ -46,7 +48,8 @@ var channelListInitialState = {
   currentChannel: null,
   showSettings: false,
   channelListQuery: null,
-  currentUserId: ''
+  currentUserId: '',
+  disableAutoSelect: false
 };
 
 function reducer(state, action) {
@@ -60,12 +63,15 @@ function reducer(state, action) {
       return channelListInitialState;
 
     case INIT_CHANNELS_SUCCESS:
-      return _objectSpread2(_objectSpread2({}, state), {}, {
-        initialized: true,
-        loading: false,
-        allChannels: action.payload,
-        currentChannel: action.payload && action.payload.length && action.payload.length > 0 ? action.payload[0].url : null
-      });
+      {
+        var nextChannel = action.payload && action.payload.length && action.payload.length > 0 ? action.payload[0].url : null;
+        return _objectSpread2(_objectSpread2({}, state), {}, {
+          initialized: true,
+          loading: false,
+          allChannels: action.payload,
+          currentChannel: state.disableAutoSelect ? null : nextChannel
+        });
+      }
 
     case FETCH_CHANNELS_SUCCESS:
       {
@@ -119,8 +125,10 @@ function reducer(state, action) {
           }
         }
 
+        var _nextChannel = _channel.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel.url ? 1 : 0].url : state.currentChannel;
+
         return _objectSpread2(_objectSpread2({}, state), {}, {
-          currentChannel: _channel.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel.url ? 1 : 0].url : state.currentChannel,
+          currentChannel: state.disableAutoSelect ? null : _nextChannel,
           allChannels: state.allChannels.filter(function (_ref2) {
             var url = _ref2.url;
             return url !== _channel.url;
@@ -132,8 +140,11 @@ function reducer(state, action) {
     case ON_CHANNEL_DELETED:
       {
         var channelUrl = action.payload;
+
+        var _nextChannel2 = channelUrl === state.currentChannel ? state.allChannels[0].url : state.currentChannel;
+
         return _objectSpread2(_objectSpread2({}, state), {}, {
-          currentChannel: channelUrl === state.currentChannel ? state.allChannels[0].url : state.currentChannel,
+          currentChannel: state.disableAutoSelect ? null : _nextChannel2,
           allChannels: state.allChannels.filter(function (_ref3) {
             var url = _ref3.url;
             return url !== channelUrl;
@@ -151,14 +162,18 @@ function reducer(state, action) {
           if (filterChannelListParams(state.channelListQuery, _channel2, state.currentUserId)) {
             var _filteredChannels2 = getChannelsWithUpsertedChannel(state.allChannels, _channel2);
 
+            var _nextChannel5 = isMe && _channel2.url === state.currentChannel ? _filteredChannels2[0].url : state.currentChannel;
+
             return _objectSpread2(_objectSpread2({}, state), {}, {
-              currentChannel: isMe && _channel2.url === state.currentChannel ? _filteredChannels2[0].url : state.currentChannel,
+              currentChannel: state.disableAutoSelect ? null : _nextChannel5,
               allChannels: _filteredChannels2
             });
           }
 
+          var _nextChannel4 = _channel2.url === state.currentChannel ? state.allChannels[0].url : state.currentChannel;
+
           return _objectSpread2(_objectSpread2({}, state), {}, {
-            currentChannel: _channel2.url === state.currentChannel ? state.allChannels[0].url : state.currentChannel,
+            currentChannel: state.disableAutoSelect ? null : _nextChannel4,
             allChannels: state.allChannels.filter(function (_ref4) {
               var url = _ref4.url;
               return url !== _channel2.url;
@@ -167,11 +182,13 @@ function reducer(state, action) {
         }
 
         var _filteredChannels = state.allChannels.filter(function (c) {
-          return c.url !== _channel2.url;
+          return !(c.url === _channel2.url && isMe);
         });
 
+        var _nextChannel3 = isMe && _channel2.url === state.currentChannel ? _filteredChannels[0].url : state.currentChannel;
+
         return _objectSpread2(_objectSpread2({}, state), {}, {
-          currentChannel: isMe && _channel2.url === state.currentChannel ? _filteredChannels[0].url : state.currentChannel,
+          currentChannel: state.disableAutoSelect ? null : _nextChannel3,
           allChannels: _filteredChannels
         });
       }
@@ -194,9 +211,11 @@ function reducer(state, action) {
             });
           }
 
+          var _nextChannel6 = _channel3.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel3.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
+          : state.currentChannel;
+
           return _objectSpread2(_objectSpread2({}, state), {}, {
-            currentChannel: _channel3.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel3.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
-            : state.currentChannel,
+            currentChannel: state.disableAutoSelect ? null : _nextChannel6,
             allChannels: state.allChannels.filter(function (_ref5) {
               var url = _ref5.url;
               return url !== _channel3.url;
@@ -262,9 +281,11 @@ function reducer(state, action) {
             });
           }
 
+          var _nextChannel7 = _channel4.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel4.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
+          : state.currentChannel;
+
           return _objectSpread2(_objectSpread2({}, state), {}, {
-            currentChannel: _channel4.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel4.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
-            : state.currentChannel,
+            currentChannel: state.disableAutoSelect ? null : _nextChannel7,
             allChannels: state.allChannels.filter(function (_ref8) {
               var url = _ref8.url;
               return url !== _channel4.url;
@@ -296,9 +317,11 @@ function reducer(state, action) {
             });
           }
 
+          var _nextChannel8 = _channel5.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel5.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
+          : state.currentChannel;
+
           return _objectSpread2(_objectSpread2({}, state), {}, {
-            currentChannel: _channel5.url === state.currentChannel ? state.allChannels[state.allChannels[0].url === _channel5.url ? 1 : 0].url // if coming channel is first of channel list, current channel will be the next one
-            : state.currentChannel,
+            currentChannel: state.disableAutoSelect ? null : _nextChannel8,
             allChannels: state.allChannels.filter(function (_ref9) {
               var url = _ref9.url;
               return url !== _channel5.url;
@@ -334,6 +357,11 @@ function reducer(state, action) {
         channelListQuery: action.payload.channelListQuery
       });
 
+    case SET_AUTO_SELECT_CHANNEL_ITEM:
+      return _objectSpread2(_objectSpread2({}, state), {}, {
+        disableAutoSelect: action.payload
+      });
+
     default:
       return state;
   }
@@ -364,22 +392,27 @@ var getChannelTitle = function getChannelTitle() {
     return nickname || stringSet.NO_NAME;
   }).join(', ');
 };
-var getLastMessageCreatedAt = function getLastMessageCreatedAt(channel) {
-  if (!channel || !channel.lastMessage) {
+var getLastMessageCreatedAt = function getLastMessageCreatedAt(channel, locale) {
+  var _channel$lastMessage;
+
+  var createdAt = channel === null || channel === void 0 ? void 0 : (_channel$lastMessage = channel.lastMessage) === null || _channel$lastMessage === void 0 ? void 0 : _channel$lastMessage.createdAt;
+  var optionalParam = locale ? {
+    locale: locale
+  } : null;
+
+  if (!createdAt) {
     return '';
   }
 
-  var date = channel.lastMessage.createdAt;
-
-  if (isToday(date)) {
-    return format(date, 'p');
+  if (isToday(createdAt)) {
+    return format(createdAt, 'p', optionalParam);
   }
 
-  if (isYesterday(date)) {
-    return 'Yesterday';
+  if (isYesterday(createdAt)) {
+    return formatRelative(createdAt, new Date(), optionalParam);
   }
 
-  return format(date, 'MMM dd');
+  return format(createdAt, 'MMM dd', optionalParam);
 };
 var getTotalMembers = function getTotalMembers(channel) {
   return channel && channel.memberCount ? channel.memberCount : 0;
@@ -418,7 +451,8 @@ function ChannelPreview(_ref) {
       isFrozen = channel.isFrozen;
 
   var _useContext = useContext(LocalizationContext),
-      stringSet = _useContext.stringSet;
+      stringSet = _useContext.stringSet,
+      dateLocale = _useContext.dateLocale;
 
   return /*#__PURE__*/React__default.createElement("div", {
     className: ['sendbird-channel-preview', isActive ? 'sendbird-channel-preview--active' : ''].join(' '),
@@ -465,7 +499,7 @@ function ChannelPreview(_ref) {
     className: "sendbird-channel-preview__content__upper__last-message-at",
     type: LabelTypography.CAPTION_3,
     color: LabelColors.ONBACKGROUND_2
-  }, getLastMessageCreatedAt(channel))), /*#__PURE__*/React__default.createElement("div", {
+  }, getLastMessageCreatedAt(channel, dateLocale))), /*#__PURE__*/React__default.createElement("div", {
     className: "sendbird-channel-preview__content__lower"
   }, /*#__PURE__*/React__default.createElement(Label, {
     className: "sendbird-channel-preview__content__lower__last-message",
@@ -737,7 +771,7 @@ function AddChannel(_ref) {
     width: "24px",
     height: "24px"
   })), showModal && step === 0 && /*#__PURE__*/React__default.createElement(Modal, {
-    titleText: "New channel",
+    titleText: stringSet.MODAL__CHOOSE_CHANNEL_TYPE__TITLE,
     hideFooter: true,
     onCancel: function onCancel() {
       setShowModal(false);
@@ -766,7 +800,7 @@ function AddChannel(_ref) {
   }), /*#__PURE__*/React__default.createElement(Label, {
     type: LabelTypography.SUBTITLE_1,
     color: LabelColors.ONBACKGROUND_1
-  }, "Group")), isSupergroupAvailable && /*#__PURE__*/React__default.createElement("div", {
+  }, stringSet.MODAL__CHOOSE_CHANNEL_TYPE__GROUP)), isSupergroupAvailable && /*#__PURE__*/React__default.createElement("div", {
     className: "sendbird-add-channel__rectangle",
     onClick: function onClick() {
       setType('supergroup');
@@ -787,7 +821,7 @@ function AddChannel(_ref) {
   }), /*#__PURE__*/React__default.createElement(Label, {
     type: LabelTypography.SUBTITLE_1,
     color: LabelColors.ONBACKGROUND_1
-  }, "Super group")), isBroadcastAvailable && /*#__PURE__*/React__default.createElement("div", {
+  }, stringSet.MODAL__CHOOSE_CHANNEL_TYPE__SUPER_GROUP)), isBroadcastAvailable && /*#__PURE__*/React__default.createElement("div", {
     className: "sendbird-add-channel__rectangle",
     onClick: function onClick() {
       setType('broadcast');
@@ -808,7 +842,7 @@ function AddChannel(_ref) {
   }), /*#__PURE__*/React__default.createElement(Label, {
     type: LabelTypography.SUBTITLE_1,
     color: LabelColors.ONBACKGROUND_1
-  }, "Broadcast")))), showModal && step === 1 && /*#__PURE__*/React__default.createElement(InviteMembers, {
+  }, stringSet.MODAL__CHOOSE_CHANNEL_TYPE__BROADCAST)))), showModal && step === 1 && /*#__PURE__*/React__default.createElement(InviteMembers, {
     swapParams: sdk && sdk.getErrorFirstCallback && sdk.getErrorFirstCallback(),
     titleText: stringSet.MODAL__CREATE_CHANNEL__TITLE,
     submitText: stringSet.BUTTON__CREATE,
@@ -1095,13 +1129,20 @@ function setupChannelList(_ref3) {
       onChannelSelect = _ref3.onChannelSelect,
       userFilledChannelListQuery = _ref3.userFilledChannelListQuery,
       logger = _ref3.logger,
-      sortChannelList = _ref3.sortChannelList;
-  createEventHandler({
-    sdk: sdk,
-    channelListDispatcher: channelListDispatcher,
-    sdkChannelHandlerId: sdkChannelHandlerId,
-    logger: logger
-  });
+      sortChannelList = _ref3.sortChannelList,
+      disableAutoSelect = _ref3.disableAutoSelect;
+
+  if (sdk && sdk.ChannelHandler) {
+    createEventHandler({
+      sdk: sdk,
+      channelListDispatcher: channelListDispatcher,
+      sdkChannelHandlerId: sdkChannelHandlerId,
+      logger: logger
+    });
+  } else {
+    logger.console.warning('ChannelList - createEventHandler: sdk or sdk.ChannelHandler does not exist', sdk);
+  }
+
   logger.info('ChannelList - creating query', {
     userFilledChannelListQuery: userFilledChannelListQuery
   });
@@ -1158,7 +1199,10 @@ function setupChannelList(_ref3) {
         logger.info('ChannelList - channel list sorted', sorted);
       }
 
-      onChannelSelect(sorted[0]);
+      if (!disableAutoSelect) {
+        onChannelSelect(sorted[0]);
+      }
+
       channelListDispatcher({
         type: INIT_CHANNELS_SUCCESS,
         payload: sorted
@@ -1195,10 +1239,15 @@ var pubSubHandler = function pubSubHandler(pubSub, channelListDispatcher) {
     });
   }));
   subScriber.set(UPDATE_USER_MESSAGE, pubSub.subscribe(UPDATE_USER_MESSAGE, function (msg) {
+    var _updatedChannel$lastM;
+
     var channel = msg.channel,
         message = msg.message;
     var updatedChannel = channel;
-    updatedChannel.lastMessage = message;
+
+    if ((updatedChannel === null || updatedChannel === void 0 ? void 0 : (_updatedChannel$lastM = updatedChannel.lastMessage) === null || _updatedChannel$lastM === void 0 ? void 0 : _updatedChannel$lastM.messageId) === message.messageId) {
+      updatedChannel.lastMessage = message;
+    }
 
     if (channel) {
       channelListDispatcher({
@@ -1251,7 +1300,8 @@ function ChannelList(props) {
       onProfileEditSuccess = props.onProfileEditSuccess,
       onThemeChange = props.onThemeChange,
       onBeforeCreateChannel = props.onBeforeCreateChannel,
-      onChannelSelect = props.onChannelSelect;
+      onChannelSelect = props.onChannelSelect,
+      disableAutoSelect = props.disableAutoSelect;
   var _props$config2 = props.config,
       config = _props$config2 === void 0 ? {} : _props$config2; // enable if it is true atleast once(both are flase by default)
 
@@ -1314,7 +1364,8 @@ function ChannelList(props) {
         onChannelSelect: onChannelSelect,
         userFilledChannelListQuery: userFilledChannelListQuery,
         logger: logger,
-        sortChannelList: sortChannelList
+        sortChannelList: sortChannelList,
+        disableAutoSelect: disableAutoSelect
       });
     } else {
       logger.info('ChannelList: Removing channelHandlers'); // remove previous channelHandlers
@@ -1355,6 +1406,12 @@ function ChannelList(props) {
     });
   }
 
+  useEffect(function () {
+    channelListDispatcher({
+      type: SET_AUTO_SELECT_CHANNEL_ITEM,
+      payload: disableAutoSelect
+    });
+  }, [disableAutoSelect]);
   useEffect(function () {
     if (!sdk || !sdk.GroupChannel || !currentChannel) {
       return;
@@ -1587,7 +1644,8 @@ ChannelList.propTypes = {
   onThemeChange: PropTypes.func,
   onProfileEditSuccess: PropTypes.func,
   renderHeader: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-  onChannelSelect: PropTypes.func
+  onChannelSelect: PropTypes.func,
+  disableAutoSelect: PropTypes.bool
 };
 ChannelList.defaultProps = {
   onBeforeCreateChannel: null,
@@ -1600,7 +1658,8 @@ ChannelList.defaultProps = {
   sortChannelList: null,
   onProfileEditSuccess: null,
   queries: {},
-  onChannelSelect: noop
+  onChannelSelect: noop,
+  disableAutoSelect: false
 };
 var ChannelList$1 = withSendbirdContext(ChannelList);
 

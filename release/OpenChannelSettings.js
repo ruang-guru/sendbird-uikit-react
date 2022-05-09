@@ -1,10 +1,11 @@
 import React__default, { useContext, useMemo, useRef, useState, useEffect } from 'react';
-import { X as Modal, Y as Type, Z as TextButton, ad as Button, ae as ButtonTypes, af as ButtonSizes, aa as UserProfileContext, _ as ContextMenu, $ as MenuItems, ab as ConnectedUserProfile, Q as selectors, P as UserProfileProvider, u as copyToClipboard } from './index-91d617e5.js';
-import { L as LocalizationContext, _ as __spreadArray, w as withSendbirdContext } from './LocalizationContext-60c6a18f.js';
-import { a5 as Avatar, aa as Label, ac as LabelTypography, ab as LabelColors, a as Icon, b as IconTypes, a9 as IconColors, a7 as PlaceHolder, af as PlaceHolderTypes } from './index-cc5e3ca5.js';
-import { a as getOpenChannelAvatar } from './utils-f6d75d2a.js';
-import { I as InputLabel, a as Input, n as noop, U as UserListItem$1 } from './index-5a5f363d.js';
-import { a as Accordion, A as AccordionGroup } from './index-bfbafc3d.js';
+import { e as Modal, T as Type, f as TextButton, m as Button, B as ButtonTypes, n as ButtonSizes, k as UserProfileContext, g as ContextMenu, h as MenuItems, l as ConnectedUserProfile, s as selectors, d as UserProfileProvider } from './index-b5696879.js';
+import { L as LocalizationContext, _ as __spreadArray, w as withSendbirdContext } from './LocalizationContext-f7ac3bcb.js';
+import { q as copyToClipboard } from './index-37a3224d.js';
+import { a4 as Avatar, a9 as Label, ab as LabelTypography, aa as LabelColors, a as Icon, b as IconTypes, a8 as IconColors, a6 as PlaceHolder, ae as PlaceHolderTypes } from './index-83aac00c.js';
+import { a as getOpenChannelAvatar } from './utils-5a3497f4.js';
+import { I as InputLabel, a as Input, n as noop, U as UserListItem$1 } from './index-d0f8a4c0.js';
+import { a as Accordion, A as AccordionGroup } from './index-56b11a63.js';
 import 'prop-types';
 import 'react-dom';
 import 'date-fns';
@@ -285,7 +286,7 @@ var UserListItem = function UserListItem(_a) {
   })), /*#__PURE__*/React__default.createElement(Label, {
     type: LabelTypography.SUBTITLE_2,
     color: LabelColors.ONBACKGROUND_1
-  }, member.nickname || stringSet.NO_NAME, currentUser === member.userId && stringSet.YOU));
+  }, member.nickname || stringSet.NO_NAME, currentUser === member.userId && stringSet.CHANNEL_SETTING__MEMBERS__YOU));
 };
 function ParticipantsAccordion(_a) {
   var channel = _a.channel,

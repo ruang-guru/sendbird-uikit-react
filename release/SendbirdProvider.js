@@ -1,16 +1,18 @@
-import { j as __assign, b as _objectSpread2, c as _slicedToArray, u as uuidv4, k as getStringSet, S as SendbirdSdkContext, l as LocalizationProvider } from './LocalizationContext-60c6a18f.js';
+import { k as __assign, b as _objectSpread2, c as _slicedToArray, u as uuidv4, l as getStringSet, S as SendbirdSdkContext, m as LocalizationProvider } from './LocalizationContext-f7ac3bcb.js';
 import React__default, { useLayoutEffect, useState, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Sb from 'sendbird';
-import { R as RESET_USER, I as INIT_USER, U as UPDATE_USER_INFO } from './actionTypes-7ed443a7.js';
+import { R as RESET_USER, I as INIT_USER, U as UPDATE_USER_INFO } from './actionTypes-396d66a9.js';
+import { G as isTextuallyNull } from './index-37a3224d.js';
 import cssVars from 'css-vars-ponyfill';
+import 'date-fns';
 
 var INIT_SDK = 'INIT_SDK';
 var SET_SDK_LOADING = 'SET_SDK_LOADING';
 var RESET_SDK = 'RESET_SDK';
 var SDK_ERROR = 'SDK_ERROR';
 
-var APP_VERSION_STRING = '1.1.0';
+var APP_VERSION_STRING = '1.2.1';
 var disconnectSdk = function disconnectSdk(_ref) {
   var sdkDispatcher = _ref.sdkDispatcher,
       userDispatcher = _ref.userDispatcher,
@@ -79,14 +81,14 @@ var handleConnection = function handleConnection(_ref2, dispatchers) {
           }); // use nickname/profileUrl if provided
           // or set userID as nickname
 
-          var newNickName = nickname || user.nickname;
-          var newProfileUrl = profileUrl || user.profileUrl;
-          newSdk.updateCurrentUserInfo(newNickName, newProfileUrl).then(function (namedUser) {
-            userDispatcher({
-              type: UPDATE_USER_INFO,
-              payload: namedUser
+          if ((nickname !== user.nickname || profileUrl !== user.profileUrl) && !(isTextuallyNull(nickname) && isTextuallyNull(profileUrl))) {
+            newSdk.updateCurrentUserInfo(nickname || user.nickname, profileUrl || user.profileUrl).then(function (namedUser) {
+              userDispatcher({
+                type: UPDATE_USER_INFO,
+                payload: namedUser
+              });
             });
-          });
+          }
         };
 
         var connectCbError = function connectCbError(e) {
@@ -535,6 +537,7 @@ function Sendbird(props) {
       allowProfileEdit = props.allowProfileEdit,
       theme = props.theme,
       nickname = props.nickname,
+      dateLocale = props.dateLocale,
       profileUrl = props.profileUrl,
       userListQuery = props.userListQuery,
       _props$config = props.config,
@@ -677,7 +680,8 @@ function Sendbird(props) {
       }
     }
   }, /*#__PURE__*/React__default.createElement(LocalizationProvider, {
-    stringSet: localeStringSet
+    stringSet: localeStringSet,
+    dateLocale: dateLocale
   }, children));
 }
 Sendbird.propTypes = {
@@ -688,6 +692,7 @@ Sendbird.propTypes = {
   theme: PropTypes.string,
   nickname: PropTypes.string,
   profileUrl: PropTypes.string,
+  dateLocale: PropTypes.shape({}),
   disableUserProfile: PropTypes.bool,
   renderUserProfile: PropTypes.func,
   allowProfileEdit: PropTypes.bool,
@@ -714,6 +719,7 @@ Sendbird.defaultProps = {
   theme: 'light',
   nickname: '',
   profileUrl: '',
+  dateLocale: null,
   disableUserProfile: false,
   renderUserProfile: null,
   allowProfileEdit: false,

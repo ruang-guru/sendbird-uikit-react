@@ -1,12 +1,13 @@
 'use strict';
 
 var React = require('react');
-var index$1 = require('./index-0572f648.js');
-var LocalizationContext = require('./LocalizationContext-98fa51f9.js');
-var index = require('./index-2ebbb83a.js');
-var utils = require('./utils-3c1f801d.js');
-var index$2 = require('./index-4c88149e.js');
-var index$3 = require('./index-5d2bd463.js');
+var index$1 = require('./index-0775e8af.js');
+var LocalizationContext = require('./LocalizationContext-8ab589a6.js');
+var index$4 = require('./index-7a63bb1e.js');
+var index = require('./index-c39f95c7.js');
+var utils = require('./utils-5833aba2.js');
+var index$2 = require('./index-e4e9c4eb.js');
+var index$3 = require('./index-c4bdf5e3.js');
 require('prop-types');
 require('react-dom');
 require('date-fns');
@@ -291,7 +292,7 @@ var UserListItem = function UserListItem(_a) {
   })), /*#__PURE__*/React__default["default"].createElement(index.Label, {
     type: index.LabelTypography.SUBTITLE_2,
     color: index.LabelColors.ONBACKGROUND_1
-  }, member.nickname || stringSet.NO_NAME, currentUser === member.userId && stringSet.YOU));
+  }, member.nickname || stringSet.NO_NAME, currentUser === member.userId && stringSet.CHANNEL_SETTING__MEMBERS__YOU));
 };
 function ParticipantsAccordion(_a) {
   var channel = _a.channel,
@@ -633,7 +634,7 @@ function OpenChannelSettings(props) {
     height: "22px",
     width: "22px",
     onClick: function onClick() {
-      index$1.copyToClipboard(channel.url);
+      index$4.copyToClipboard(channel.url);
     }
   }), /*#__PURE__*/React__default["default"].createElement(index.Label, {
     className: "sendbird-openchannel-settings__url-label",

@@ -1,28 +1,29 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-98fa51f9.js');
+var LocalizationContext = require('./LocalizationContext-8ab589a6.js');
 var React = require('react');
 var PropTypes = require('prop-types');
 var SendbirdProvider = require('./SendbirdProvider.js');
 var ChannelList = require('./ChannelList.js');
-var Channel = require('./index-68c0c59b.js');
+var Channel = require('./index-923e70d1.js');
 var ChannelSettings = require('./ChannelSettings.js');
 var MessageSearch = require('./MessageSearch.js');
-var index = require('./index-2ebbb83a.js');
-var index$1 = require('./index-0572f648.js');
+var index = require('./index-c39f95c7.js');
+var index$1 = require('./index-0775e8af.js');
 require('sendbird');
-require('./actionTypes-7b1edd91.js');
-require('css-vars-ponyfill');
-require('./index-1da4999b.js');
-require('./utils-3c1f801d.js');
-require('./LeaveChannel-bf0cbbc5.js');
-require('./index-4c88149e.js');
-require('./index-9268ce95.js');
-require('./index-43739a10.js');
-require('./index-053ba6a3.js');
-require('react-dom');
-require('./index-5d2bd463.js');
+require('./actionTypes-8665cb0e.js');
+require('./index-7a63bb1e.js');
 require('date-fns');
+require('css-vars-ponyfill');
+require('./index-db011f5d.js');
+require('./utils-5833aba2.js');
+require('./LeaveChannel-b83fb379.js');
+require('./index-e4e9c4eb.js');
+require('./index-1d23e7f7.js');
+require('./index-dfa14957.js');
+require('./index-fbe9c146.js');
+require('react-dom');
+require('./index-c4bdf5e3.js');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -146,15 +147,18 @@ function App(props) {
       _props$config = props.config,
       config = _props$config === void 0 ? {} : _props$config,
       useReaction = props.useReaction,
+      replyType = props.replyType,
       useMessageGrouping = props.useMessageGrouping,
       colorSet = props.colorSet,
       stringSet = props.stringSet,
+      dateLocale = props.dateLocale,
       allowProfileEdit = props.allowProfileEdit,
       disableUserProfile = props.disableUserProfile,
       renderUserProfile = props.renderUserProfile,
       showSearchIcon = props.showSearchIcon,
       onProfileEditSuccess = props.onProfileEditSuccess,
-      imageCompression = props.imageCompression;
+      imageCompression = props.imageCompression,
+      disableAutoSelect = props.disableAutoSelect;
 
   var _useState = React.useState(null),
       _useState2 = LocalizationContext._slicedToArray(_useState, 2),
@@ -183,6 +187,7 @@ function App(props) {
 
   return /*#__PURE__*/React__default["default"].createElement(SendbirdProvider, {
     stringSet: stringSet,
+    dateLocale: dateLocale,
     appId: appId,
     userId: userId,
     accessToken: accessToken,
@@ -212,7 +217,8 @@ function App(props) {
       } else {
         setCurrentChannelUrl('');
       }
-    }
+    },
+    disableAutoSelect: disableAutoSelect
   })), /*#__PURE__*/React__default["default"].createElement("div", {
     className: "\n            ".concat(showSettings ? 'sendbird-app__conversation--settings-open' : '', "\n            ").concat(showSearch ? 'sendbird-app__conversation--search-open' : '', "\n            sendbird-app__conversation-wrap\n          ")
   }, /*#__PURE__*/React__default["default"].createElement(Channel.Conversation, {
@@ -229,6 +235,7 @@ function App(props) {
     startingPoint: startingPoint,
     highlightedMessage: highlightedMessage,
     useReaction: useReaction,
+    replyType: replyType,
     useMessageGrouping: useMessageGrouping
   })), showSettings && /*#__PURE__*/React__default["default"].createElement("div", {
     className: "sendbird-app__settingspanel-wrap"
@@ -274,7 +281,9 @@ App.propTypes = {
     // None Error Warning Info 'All/Debug'
     logLevel: PropTypes__default["default"].oneOfType([PropTypes__default["default"].string, PropTypes__default["default"].arrayOf(PropTypes__default["default"].string)])
   }),
+  dateLocale: PropTypes__default["default"].shape({}),
   useReaction: PropTypes__default["default"].bool,
+  replyType: PropTypes__default["default"].oneOf(['NONE', 'QUOTE_REPLY', 'THREAD']),
   showSearchIcon: PropTypes__default["default"].bool,
   useMessageGrouping: PropTypes__default["default"].bool,
   stringSet: PropTypes__default["default"].objectOf(PropTypes__default["default"].string),
@@ -283,7 +292,8 @@ App.propTypes = {
     compressionRate: PropTypes__default["default"].number,
     resizingWidth: PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].string]),
     resizingHeight: PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].string])
-  })
+  }),
+  disableAutoSelect: PropTypes__default["default"].bool
 };
 App.defaultProps = {
   accessToken: '',
@@ -297,11 +307,14 @@ App.defaultProps = {
   showSearchIcon: false,
   renderUserProfile: null,
   config: {},
+  dateLocale: null,
   useReaction: true,
+  replyType: 'NONE',
   useMessageGrouping: true,
   stringSet: null,
   colorSet: null,
-  imageCompression: {}
+  imageCompression: {},
+  disableAutoSelect: false
 };
 
 module.exports = App;
