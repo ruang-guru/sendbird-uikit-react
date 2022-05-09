@@ -2,7 +2,7 @@
 
 ## [1.2.1](Apr 29 2022)
 
-- Feature
+- Chore
   - Add copy-css.sh
 
 ## [1.2.0](Apr 29 2022)
