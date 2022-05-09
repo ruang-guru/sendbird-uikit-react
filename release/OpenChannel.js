@@ -1,11 +1,11 @@
 import React__default, { useContext, useRef, useState, useMemo, useEffect, useCallback, useReducer } from 'react';
-import { f as format, L as LocalizationContext, u as uuidv4, _ as __spreadArray, k as __assign, w as withSendbirdContext } from './LocalizationContext-f7ac3bcb.js';
-import { M as MessageInput, L as LinkLabel, D as DateSeparator, F as FileViewer, c as compareIds } from './index-ce8c0027.js';
-import { a9 as Label, ab as LabelTypography, a4 as Avatar, a as Icon, b as IconTypes, a8 as IconColors, aa as LabelColors, ac as Loader, I as ImageRenderer, a6 as PlaceHolder, a7 as PlaceHolderTypes } from './index-83aac00c.js';
-import { I as IconButton, k as UserProfileContext, g as ContextMenu, h as MenuItems, l as ConnectedUserProfile, i as MenuItem, f as TextButton, e as Modal, S as SEND_USER_MESSAGE, a as SEND_MESSAGE_START, b as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, d as UserProfileProvider } from './index-b5696879.js';
-import { i as isSameDay } from './index-7f9764b1.js';
+import { f as format, L as LocalizationContext, u as uuidv4, _ as __spreadArray, k as __assign, w as withSendbirdContext } from './LocalizationContext-d1976d16.js';
+import { M as MessageInput, L as LinkLabel, D as DateSeparator, F as FileViewer, c as compareIds } from './index-d823b9af.js';
+import { a9 as Label, ab as LabelTypography, a4 as Avatar, a as Icon, b as IconTypes, a8 as IconColors, aa as LabelColors, ac as Loader, I as ImageRenderer, a6 as PlaceHolder, a7 as PlaceHolderTypes } from './index-bc3a5b5a.js';
+import { I as IconButton, k as UserProfileContext, g as ContextMenu, h as MenuItems, l as ConnectedUserProfile, i as MenuItem, f as TextButton, e as Modal, S as SEND_USER_MESSAGE, a as SEND_MESSAGE_START, b as SEND_FILE_MESSAGE, U as UPDATE_USER_MESSAGE, D as DELETE_MESSAGE, d as UserProfileProvider } from './index-f7fd6de2.js';
+import { i as isSameDay } from './index-2bc2b12e.js';
 import 'prop-types';
-import './index-37a3224d.js';
+import './index-9bb5ce48.js';
 import 'date-fns';
 import 'react-dom';
 

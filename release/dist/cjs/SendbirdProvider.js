@@ -1,11 +1,11 @@
 'use strict';
 
-var LocalizationContext = require('./LocalizationContext-8ab589a6.js');
+var LocalizationContext = require('./LocalizationContext-2d436a96.js');
 var React = require('react');
 var PropTypes = require('prop-types');
 var Sb = require('sendbird');
-var actionTypes = require('./actionTypes-8665cb0e.js');
-var index = require('./index-7a63bb1e.js');
+var actionTypes = require('./actionTypes-a9f232df.js');
+var index = require('./index-35867d77.js');
 var cssVars = require('css-vars-ponyfill');
 require('date-fns');
 
@@ -21,7 +21,7 @@ var SET_SDK_LOADING = 'SET_SDK_LOADING';
 var RESET_SDK = 'RESET_SDK';
 var SDK_ERROR = 'SDK_ERROR';
 
-var APP_VERSION_STRING = '1.2.1';
+var APP_VERSION_STRING = '1.2.2';
 var disconnectSdk = function disconnectSdk(_ref) {
   var sdkDispatcher = _ref.sdkDispatcher,
       userDispatcher = _ref.userDispatcher,
