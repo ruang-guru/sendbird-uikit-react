@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.2](May 9 2022)
+
+- Chore
+  - Delete copy-css.sh
+  - Delete cp-css from build pipeline
+
 ## [1.2.1](Apr 29 2022)
 
 - Chore
